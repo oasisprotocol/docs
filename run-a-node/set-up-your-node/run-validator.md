@@ -166,14 +166,14 @@ oasis-node registry entity update \
     --signer.plugin.name ledger \
     --signer.plugin.path "$LEDGER_SIGNER_PATH" \
     --signer.plugin.config "wallet_id:$LEDGER_WALLET_ID,index:$LEDGER_INDEX" \
-    --entity.node.descriptor /localhost/node/node_genesis.json
+    --entity.node.descriptor /localhostdir/node/node_genesis.json
 ```
 
 * **If using the file-based signer**, execute the following command in the `/localhostdir/entity` directory:
 
 ```bash
 oasis-node registry entity update \
-  --entity.node.descriptor /localhost/node/node_genesis.json
+  --entity.node.descriptor /localhostdir/node/node_genesis.json
 ```
 
 This will update the entity descriptor in `entity.json` and subsequently the `entity_genesis.json` file that contains the signed entity descriptor payload.

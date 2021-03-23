@@ -10,17 +10,17 @@ As proposed by the community, the upgrade from Mainnet Beta to Mainnet will kick
 
 In order to transition from Mainnet Beta to Mainnet, community members have collectively suggested the following criteria be met. This is a collection of community feedback.
 
-* [x]  Validators representing more than 2/3 of stake in the initial consensus committee successfully get online to launch Mainnet Beta.
-* [x]  Beta network runs successfully for at least 10 days.
-* [x]  No major security risks on the Beta Network have been discovered or otherwise unremediated and untested in the past 10 days.
-* [x]  At least 50 validators run on the Network.
+* [x] Validators representing more than 2/3 of stake in the initial consensus committee successfully get online to launch Mainnet Beta.
+* [x] Beta network runs successfully for at least 10 days.
+* [x] No major security risks on the Beta Network have been discovered or otherwise unremediated and untested in the past 10 days.
+* [x] At least 50 validators run on the Network.
   * _Throughout Mainnet Beta there have been between 75 and 77 active validators on the network._
-* [x]  There are NO Oasis Protocol Foundation or Oasis Labs nodes serving as validators.
-* [x]  At least one block explorer exists to track network stability, transactions, and validator activity.
+* [x] There are NO Oasis Protocol Foundation or Oasis Labs nodes serving as validators.
+* [x] At least one block explorer exists to track network stability, transactions, and validator activity.
   * _There is much more. See_ [_Block Explorers & Validator Leaderboards_](https://docs.oasis.dev/general/community-resources/community-made-resources#block-explorers-validator-leaderboards) _part of our docs._
-* [x]  At least one qualified custodian supports the native ROSE token.
+* [x] At least one qualified custodian supports the native ROSE token.
   * _Currently, Anchorage and Finoa support the ROSE token. See_ [_Custody Providers_](https://docs.oasis.dev/general/use-your-tokens/holding-tokens/custody-providers) _part of our docs._
-* [x]  At least one web wallet or hardware wallet supports native ROSE token.
+* [x] At least one web wallet or hardware wallet supports native ROSE token.
   * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_Mobile Wallets_](https://docs.oasis.dev/general/use-your-tokens/mobile-wallets) _and_ [_Web Wallets_](https://docs.oasis.dev/general/use-your-tokens/web-wallets) _parts of our docs._
 
 ## Mechanics of Upgrading to Mainnet
@@ -44,7 +44,7 @@ The following parts of the genesis file will be updated:
 * **`staking.params.reward_schedule`** will be updated to reflect the updated reward schedule as mentioned above.
 * **`staking.common_pool`** will be increased by 450M ROSE to fund increased staking rewards.
 * **`staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`**, which corresponds to the Community and Ecosystem Wallet, will have its `general.balance` reduced by 450M ROSE to `1183038701000000000` and transferred to the Common Pool to fund increased staking rewards.
-* **`extra_data`** will be set back to the value in the [Mainnet Beta genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-10-01/genesis.json) 
+* **`extra_data`** will be set back to the value in the [Mainnet Beta genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2020-10-01/genesis.json)
 
   to include the Oasis network's genesis quote: _”_[_Quis custodiet ipsos custodes?_](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_” \[submitted by Oasis Community Member Daniyar Borangaziyev\]:_
 
@@ -69,5 +69,5 @@ The Oasis team will be offering live video support during the launch of Mainnet.
 
 For any additional support, please reach out via the [**\#nodeoperators** Oasis Community Slack channel](../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet Beta.
 
-To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/). 
+To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).
 

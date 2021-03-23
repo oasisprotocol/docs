@@ -58,8 +58,8 @@ diff --unified=3 genesis_dump.json genesis.json
 Let's assume that the above `diff` command returns:
 
 ```diff
---- genesis_dump.json	2020-11-16 17:49:46.864554271 +0100
-+++ genesis.json	2020-11-16 17:49:40.353496022 +0100
+--- genesis_dump.json    2020-11-16 17:49:46.864554271 +0100
++++ genesis.json    2020-11-16 17:49:40.353496022 +0100
 @@ -1,7 +1,7 @@
  {
    "height": 702000,

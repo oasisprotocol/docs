@@ -66,7 +66,7 @@ consensus:
         num_kept: 100800
     core:
       listen_address: tcp://0.0.0.0:26656
-    
+
     ...
 ```
 
@@ -85,7 +85,7 @@ consensus:
   tendermint:
     core:
       listen_address: tcp://0.0.0.0:26656
-    
+
     ...
 ```
 

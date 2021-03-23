@@ -35,7 +35,7 @@ The concrete parameter values in the following sections pertain to the Mainnet. 
 {% endhint %}
 
 {% hint style="danger" %}
-The token balances in a genesis document \(or a genesis file\) are enumerated in base units. 
+The token balances in a genesis document \(or a genesis file\) are enumerated in base units.
 
 The **`staking.token_value_exponent`** parameter defines the token value's base-10 exponent. For the Mainnet it is set to 9 which means 1 ROSE equals 10^9 \(i.e. billion\) base units.
 {% endhint %}
@@ -72,7 +72,7 @@ For an upgrade to an existing network, the network's state dump tool captures th
 
 ### Gas Costs
 
-The following parameters define the gas costs for various types of transactions on the network: 
+The following parameters define the gas costs for various types of transactions on the network:
 
 * **`staking.params.gas_costs.add_escrow`** The cost for an add escrow \(i.e. stake tokens\) transaction. The value is set to 1000.
 * **`staking.params.gas_costs.burn`** The cost for a burn \(i.e. destroy tokens\) transaction. The value is set to 1000.
@@ -94,10 +94,10 @@ In addition to the gas costs specified above, each transaction also incurs a cos
 
 The **`consensus.params.gas_costs.tx_byte`** parameter specifies the additional gas cost for each byte of a transaction. The value is set to 1.
 
-For example, a staking transfer transaction of size 230 bytes would have a total gas cost of 1000 + 230. **``**
+For example, a staking transfer transaction of size 230 bytes would have a total gas cost of 1000 + 230. **\`\`**
 {% endhint %}
 
-###  Node & ParaTime Token Thresholds
+### Node & ParaTime Token Thresholds
 
 There are several **`staking.params.thresholds`** parameters that specify the minimum number of tokens that need to be staked in order for a particular entity or a particular type of node to participate in the network.
 
@@ -130,7 +130,7 @@ The following parameters control how commission rates and bounds can be defined 
 
 ### Token Supply & Ledger
 
-The following parameters specify the total token supply, total token pool reserved for staking rewards, and account balances across the network at the time of genesis: 
+The following parameters specify the total token supply, total token pool reserved for staking rewards, and account balances across the network at the time of genesis:
 
 * **`staking.total_supply`** The total token supply for the network. This is fixed at 10 billion ROSE tokens \(the value is set to 10,000,000,000,000,000,000 base units\).
 * **`staking.common_pool`** The tokens reserved for staking rewards to be paid out over time.
@@ -140,17 +140,17 @@ The following parameters specify the total token supply, total token pool reserv
 {% hint style="info" %}
 **Interpreting your account balance in the `staking.ledger`**
 
-Your account's **`general.balance`** includes all of your tokens that have not been staked or delegated. ****Within your account's **`escrow`** field, the **`active.balance`** holds the total amount of tokens are \(actively\) delegated to you.
+Your account's **`general.balance`** includes all of your tokens that have not been staked or delegated. **\*\*Within your account's** `escrow` **field, the** `active.balance`\*\* holds the total amount of tokens are \(actively\) delegated to you.
 {% endhint %}
 
-### Slashing 
+### Slashing
 
 These parameters specify key values for the network's slashing mechanism:
 
 * **`staking.params.slashing.0.amount`** The amount of tokens to slash for double signing. The value is set to 100,000,000,000 base units, or 100 ROSE tokens.
 * **`staking.params.slashing.0.freeze_interval`** The duration \(in epochs\) for which a node that has been slashed for double signing is “frozen,” or barred from participating in the network's consensus committee. The value of 18446744073709551615 \(the maximum value for a 64-bit unsigned integer\) means that any node slashed for double signing is, in effect, permanently banned from the network.
 
-### Consensus 
+### Consensus
 
 The following parameters are used to define key values for the network's consensus protocol:
 

@@ -49,15 +49,13 @@ All commands for generating and signing transactions need the following base fla
 
 * `--genesis.file`: Path to the genesis file, e.g. `/localhostdir/genesis.json`. 
 
+For convenience, set the `GENESIS_FILE` environment value to its value, e.g.:
 
-
-  For convenience, set the `GENESIS_FILE` environment value to its value, e.g.:
-
-  ```bash
+```bash
   GENESIS_FILE=/localhostdir/genesis.json
-  ```
+```
 
-* `--signer.dir`: Path to entity's artifacts directory, e.g.  `entity-$LEDGER_INDEX`
+* `--signer.dir`: Path to entity's artifacts directory, e.g. `entity-$LEDGER_INDEX`
 
   or `/localhostdir/entity/`
 
@@ -110,21 +108,19 @@ When generating a transaction, one needs to set the following transaction flags 
 
 * `--transaction.nonce`: Incremental number that must be unique for each account's transaction.
 
-  To get your current account's nonce, see [Checking Your Account nonce](maintenance/checking-account-nonce.md) doc.
+  To get your current account's nonce, see [Checking Your Account nonce](https://github.com/oasisprotocol/docs/tree/3a74b83033ddaa588de20480e695ec86c37a0f0c/manage-tokens/oasis-cli-tools/maintenance/checking-account-nonce.md) doc.
 
-* `--transaction.fee.gas`: Maximum amount of gas \(in _gas units_\) a transaction can spend.  
+* `--transaction.fee.gas`: Maximum amount of gas \(in _gas units_\) a transaction can spend.
 
+Gas costs for different staking transactions are specified by the `staking.params.gas_costs` consensus parameter.
 
-  Gas costs for different staking transactions are specified by the `staking.params.gas_costs` consensus parameter.  
+To obtain its value from the genesis file, run:
 
-
-  To obtain its value from the genesis file, run:
-
-  ```bash
+```bash
   cat $GENESIS_FILE | \
     python3 -c 'import sys, json; \
     print(json.dumps(json.load(sys.stdin)["staking"]["params"]["gas_costs"], indent=4))'
-  ```
+```
 
 * `--transaction.fee.amount`: Amount of base units we will pay as a fee for a transaction.
 
@@ -143,6 +139,4 @@ Currently, there is no mechanism to discover what minimum gas prices are used by
 
 For more details, see [Oasis Core \#2526](https://github.com/oasisprotocol/oasis-core/issues/2526).
 {% endhint %}
-
-## 
 

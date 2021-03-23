@@ -17,5 +17,3 @@ If you need features that are not yet supported, consider using the [Oasis CLI T
 * ROSE token Trust Wallet support is currently in development.
 * To learn more about Trust Wallet, visit [their website](https://trustwallet.com). 
 
-
-

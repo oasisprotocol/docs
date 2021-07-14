@@ -112,6 +112,62 @@ If you are an operator who successfully completed the KYC process and submitted 
 **Interpreting your account balance in the ledger:** Your **general** balance includes all of your tokens that have not been staked or delegated. This will be set to 100 tokens at genesis to cover gas, as most of your tokens \(except that general balance of 100 tokens\) will initially be staked \(i.e. self-delegated\) on your behalf. Within the **escrow** field, your **active** parameter shows the total tokens that have been allocated or delegated to you.
 {% endhint %}
 
+### Ad-hoc Token Q&A
+
+> What are the rate steps and bound steps in a commission schedule?
+
+Operators can set any commission rate, but as a service to delegators, they must specify a range two weeks in advance and have their commission rate stay within that range.
+That range is defined by the upper and lower bounds.
+In the Oasis Network, operators publish these bounds on-chain, and it's listed as part of their entity's account.
+
+Because operators have to specify the range two weeks in advance, they can only change their commission rate bounds at least two weeks from now at the earliest. So when an operator does this, it tells the network to change its commission rate bounds some time in the future.
+The network understands that the bounds will change over time, and it represents this as a sequence of "bound steps."
+Each bound step specifies an epoch time when the step goes into effect and the upper and lower bound.
+
+Operators can change their commission rate for the next epoch or for an epoch farther in the future.
+(The latter is necessary if a rate would become invalid at a bound change.)
+The network also represents this as a sequence of steps, called the "rate steps."
+Each rate step specifies an epoch time when the step goes into effect and the commission rate.
+
+> What are the balance and total shares in an escrow account?
+> Why have both when they're set to the same?
+
+The escrow accounts are "pools," which track the combination of contributions from multiple sources.
+A pool tracks the proportion of the total token balance that belongs to each contributor using numbers of "shares."
+Initially, a pool will have the same number of shares as nanoROSE of the token balance.
+However, the network tracks the two quantities separately because it sometimes adjusts the token balance without changing contributors' proportions.
+For example, if a node gets slashed, its entity's escrow pools lose tokens, but the total shares and each delegator's shares stay the same.
+Similarly, the non-commission part of a staking reward increases an entity's escrow pools' token balance without changing the shares.
+
+We've built the software so that a genesis file can also represent states after slashing and staking rewards have been applied (we currently use this to transfer state across upgrades), so it expects both fields to be present.
+
+> What are the initial commission rates and bounds?
+
+For all operator accounts, the commission rate is 5%, and the initial commission rate bounds are 0%-20%.
+
+> What if I want to set a different commission rate?
+
+We won't be setting custom initial commission rates in our proposed genesis file.
+After the network starts, to set your commission rate higher than the initial bounds included in the genesis file, use an "amend commission schedule" transaction to change your commission rate bounds at least 336 epochs in the future and include a change to the commission rate when that bound change would take effect.
+See the [stake management instructions](https://docs.oasis.dev/general/run-a-node/set-up-your-node/stake-management#amending-a-commission-schedule) for how to generate and send this transaction.
+
+> Regarding the criteria for the Foundation delegation from the Amber network reward, how can we check what the median commission rate is?
+
+We are not certain that the official median commission rate shall be available.
+
+> For The Quest winners, where in this genesis file are my reward tokens?
+
+We've split it between a small general balance of 100 ROSE and put the rest into a self-delegation.
+The amount in the self-delegation is not included in your account's general balance.
+It's listed in the `.staking.delegations` section of the proposed genesis file.
+This section is structured as a map of maps, with the outer key representing the operator's entity address and the inner key representing the delegator's address.
+Each entry specifies a number of shares in that operator's entity's active escrow pool.
+In the proposed genesis file, all escrow pools are initialized to have one share worth one nanoROSE.
+
+> Under the proposed initial delegations, how many validators will it take to start the network?
+
+It will take at least 36 validators to reach the +2/3 signature threshold.
+
 ## Slashing 
 
 These parameters specify key values for the network's slashing mechanism:

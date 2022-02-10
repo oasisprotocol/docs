@@ -21,10 +21,12 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+	// Serve the docs at the site's root.
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev',
+	  routeBasePath: '/', 
+          editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
         },
+	blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -36,21 +38,24 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Oasis Network Docs',
+        title: 'Docs',
         logo: {
           alt: 'OPF Logo',
           src: 'img/logo.png',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            href: 'https://oasisprotocol.org/',
+            label: 'Home',
             position: 'left',
-            label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg',
+            label: 'Support',
+            position: 'left',
+	  },
+          {
+            href: 'https://github.com/oasisprotocol',
             label: 'GitHub',
             position: 'right',
           },
@@ -58,47 +63,6 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
 	copyright: `Copyright © ${new Date().getFullYear()} Oasis Protocol Foundation. Built with Docusaurus.`,
       },
       prism: {

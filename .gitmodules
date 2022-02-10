@@ -1,0 +1,9 @@
+[submodule "external/oasis-core"]
+	path = external/oasis-core
+	url = https://github.com/oasisprotocol/oasis-core
+[submodule "external/oasis-sdk"]
+	path = external/oasis-sdk
+	url = https://github.com/oasisprotocol/oasis-sdk
+[submodule "external/oasis-core-ledger"]
+	path = external/oasis-core-ledger
+	url = https://github.com/oasisprotocol/oasis-core-ledger

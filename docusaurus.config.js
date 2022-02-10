@@ -8,29 +8,70 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Oasis Network Documentation',
   tagline: '',
-  url: 'https://docs.jekovc.si',
+  url: 'https://docs.oasis.dev',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+
   organizationName: 'oasisprotocol', // Usually your GitHub org/user name.
-  projectName: 'docs.oasis.dev', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
+  deploymentBranch: 'gh-pages',
 
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-	// Serve the docs at the site's root.
         docs: {
-	  routeBasePath: '/', 
+          path: 'docs/general',
+          routeBasePath: 'general',
+          sidebarPath: require.resolve('./sidebarsGeneral.js'),
           editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
         },
-	blog: false,
+	    blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
+    ],
+  ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'oasis-network-primer',
+        path: 'docs/oasis-network-primer',
+        routeBasePath: 'oasis-network-primer',
+        sidebarPath: require.resolve('./sidebarsOasisNetworkPrimer.js'),
+        editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'oasis-core',
+        path: 'external/oasis-core/docs',
+        routeBasePath: 'oasis-core',
+        sidebarPath: require.resolve('./sidebarsOasisCore.js'),
+        numberPrefixParser: false,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'oasis-sdk',
+        path: 'external/oasis-sdk/docs',
+        routeBasePath: 'oasis-sdk',
+        sidebarPath: require.resolve('./sidebarsOasisSdk.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'oasis-core-ledger',
+        path: 'external/oasis-core-ledger/docs',
+        routeBasePath: 'oasis-core-ledger',
+        sidebarPath: require.resolve('./sidebarsOasisCoreLedger.js'),
+      },
     ],
   ],
   themes: [
@@ -46,7 +87,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Docs',
+        title: 'Oasis Docs',
         logo: {
           alt: 'OPF Logo',
           src: 'img/logo.png',

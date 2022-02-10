@@ -11,13 +11,15 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "blc": "broken-link-checker --recursive --ordered --exclude https://t.me --exclude https://software.intel.com/content --exclude https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-185.pdf --exclude https://support.ledger.com/hc/en-us/articles --exclude https://www.linkedin.com --exclude https://csrc.nist.gov/publications/detail/fips/180/4/final --exclude https://www.coinspeaker.com/oasis-protocol-partnership-meta/ --exclude https://www.binance.com/en/support --exclude https://www.coinbase.com --filter-level 3 http://localhost"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-beta.15",
     "@docusaurus/preset-classic": "2.0.0-beta.15",
     "@easyops-cn/docusaurus-search-local": "^0.21.4",
     "@mdx-js/react": "^1.6.21",
+    "broken-link-checker": "^0.7.8",
     "clsx": "^1.1.1",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",

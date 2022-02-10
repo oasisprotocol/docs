@@ -1,6 +1,6 @@
 # Token Metrics and Distribution
 
-![](<.gitbook/assets/Frame 18.png>)
+![](<images/Frame_18.png>)
 
 ## Quick Token Facts
 
@@ -8,19 +8,19 @@
 
 **Token utility:** The ROSE token will be used for transaction fees, staking, and delegation at the Consensus Layer.
 
-**Staking rewards**: \~2.3 billion tokens will be automatically paid out as staking rewards to stakers and delegators for securing the network over time.&#x20;
+**Staking rewards**: \~2.3 billion tokens will be automatically paid out as staking rewards to stakers and delegators for securing the network over time.
 
 ## Token Distribution
 
 The quantity of ROSE tokens reserved for various network functions, as a percentage of the total existing token supply, approximately follows the distribution below.
 
-{% hint style="danger" %}
+:::caution
+
 Please note that these percentages and allocations are subject to change as we finalize the logistics for the network and its related programs.
-{% endhint %}
 
+:::
 
-
-![](<.gitbook/assets/Token Distribution.png>)
+![](<images/Token_Distribution.png>)
 
 ### Token Distribution Glossary
 
@@ -28,13 +28,13 @@ Please note that these percentages and allocations are subject to change as we f
 
 **Core Contributors**: Compensation to core contributors for contributing to the development of the Oasis Network.
 
-**Foundation Endowment**: Endowment to the Oasis Foundation to foster the development and maintenance of the Oasis Network. &#x20;
+**Foundation Endowment**: Endowment to the Oasis Foundation to foster the development and maintenance of the Oasis Network.
 
-**Community and Ecosystem**: Funding programs and services that engage the Oasis Network community, including developer grants and other community incentives by the Oasis Foundation.&#x20;
+**Community and Ecosystem**: Funding programs and services that engage the Oasis Network community, including developer grants and other community incentives by the Oasis Foundation.
 
 **Strategic Partners and Reserve**: Funding programs and services provided by key strategic partners in the Oasis Network.
 
-**Staking Rewards**: Rewards to be paid out on-chain to stakers and delegators for contributing to the security of the Oasis Network.  &#x20;
+**Staking Rewards**: Rewards to be paid out on-chain to stakers and delegators for contributing to the security of the Oasis Network.
 
 ### Circulating Supply
 
@@ -42,13 +42,13 @@ Not all tokens have been released publicly or will be released publicly by Mainn
 
 Tokens set aside for Staking Rewards will be disbursed in accordance with on-chain mining mechanisms, which are calculated based on how many blocks are produced, how many nodes are participating in staking, and how many tokens are staked etc. The remaining allocations will be disbursed according to the following release schedule:
 
-![](<.gitbook/assets/10-Year Token Circulation Schedule.png>)
+![](<images/10-Year_Token_Circulation_Schedule.png>)
 
 ## Fundraising History
 
-Between 2018 and 2020 Oasis has raised over $45 million from backers including:&#x20;
+Between 2018 and 2020 Oasis has raised over $45 million from backers including:
 
-![](.gitbook/assets/backers.png)
+![](images/backers.png)
 
 ## Staking Incentives
 
@@ -62,13 +62,13 @@ Given the Oasis Network’s founding vision to become a world-class, public, per
 * **Unbonding period**: The network will have a \~14 day unbonding period. During this time, staked tokens are at risk of getting slashed for double-signing and do not accrue rewards during this time.
 * **Consensus voting power**: The current voting power mechanism is stake-weighted. This means that the consensus voting power of a validator is proportional to its stake. In this model, the network will require signatures by validators representing +2/3 of the total stake of the committee to sign a block. Note that in Tendermint, a validator's opportunities to propose a block in the round-robin block proposer order are also proportional to its voting power.
 
-![Schedule is approximate based on block height of network.](<.gitbook/assets/token rewards.png>)
+![Schedule is approximate based on block height of network.](<images/token_rewards.png>)
 
 ## Delegation Policy
 
 The Oasis Protocol Foundation is committed to give delegations to entities participating in various incentivized networks.
 
-For more details, see its [Delegation Policy](https://docs.oasis.dev/general/foundation/delegation-policy).
+For more details, see its [Delegation Policy](/general/foundation/delegation-policy).
 
 ## Change Log
 
@@ -81,6 +81,6 @@ For more details, see its [Delegation Policy](https://docs.oasis.dev/general/fou
   * Added section on Foundation's Delegation Policy.
 * **Nov 15, 2020:**
   * Corrected the initial validator consensus committee to 80 validators. This reflects what is currently in the community approved genesis file and community proposed upgrade to Mainnet.
-* **Nov 2, 2020:**&#x20;
+* **Nov 2, 2020:**
   * Updated Backers image to include more publicly-known backers.
   * Included a community-proposed (and foundation supported) increase in staking rewards range from 15% - 2% to 20% - 2% over the first four years of the network. Impacted charts (distribution, token delivery schedule, and expected staking rewards) also updated to reflect the increase in staking rewards.

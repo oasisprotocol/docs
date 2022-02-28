@@ -5,7 +5,7 @@ const sidebars = {
   oasisSdk: [
     {
       type: 'doc',
-      label: 'Introduction',
+      label: 'Introduction to Oasis SDK',
       id: 'index',
     },
     {

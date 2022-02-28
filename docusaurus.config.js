@@ -23,6 +23,8 @@ const config = {
       ({
         docs: {
           path: 'docs/general',
+          breadcrumbs: false,
+          showLastUpdateTime: true,
           routeBasePath: 'general',
           sidebarPath: require.resolve('./sidebarsGeneral.js'),
           editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
@@ -40,6 +42,8 @@ const config = {
       {
         id: 'oasis-network-primer',
         path: 'docs/oasis-network-primer',
+        breadcrumbs: false,
+        showLastUpdateTime: true,
         routeBasePath: 'oasis-network-primer',
         sidebarPath: require.resolve('./sidebarsOasisNetworkPrimer.js'),
         editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
@@ -50,6 +54,8 @@ const config = {
       {
         id: 'oasis-core',
         path: 'external/oasis-core/docs',
+        breadcrumbs: false,
+        showLastUpdateTime: true,
         routeBasePath: 'oasis-core',
         sidebarPath: require.resolve('./sidebarsOasisCore.js'),
         numberPrefixParser: false,
@@ -60,6 +66,8 @@ const config = {
       {
         id: 'oasis-sdk',
         path: 'external/oasis-sdk/docs',
+        breadcrumbs: false,
+        showLastUpdateTime: true,
         routeBasePath: 'oasis-sdk',
         sidebarPath: require.resolve('./sidebarsOasisSdk.js'),
       },
@@ -69,6 +77,8 @@ const config = {
       {
         id: 'oasis-core-ledger',
         path: 'external/oasis-core-ledger/docs',
+        breadcrumbs: false,
+        showLastUpdateTime: true,
         routeBasePath: 'oasis-core-ledger',
         sidebarPath: require.resolve('./sidebarsOasisCoreLedger.js'),
       },

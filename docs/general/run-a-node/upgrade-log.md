@@ -510,7 +510,7 @@ Note the following configuration change in the [21.0](https://github.com/oasispr
 
 **Storage access policy changes**
 
-Due to the changes in the default access policy on storage nodes, at least one of the storage nodes should be configured with the`worker.storage.public_rpc.enabled` flag set to `true`.
+Due to the changes in the default access policy on storage nodes, at least one of the storage nodes should be configured with the `worker.storage.public_rpc.enabled` flag set to `true`.
 
 Otherwise, external runtime clients wont be able to connect to any storage nodes.
 

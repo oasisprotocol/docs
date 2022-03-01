@@ -67,17 +67,17 @@ Each escrow account also has a corresponding stake accumulator. It stores **stak
 We can observe that the stake accumulator currently has two claims:
 
 * The `registry.RegisterEntity` claim is for registering an entity.
-  
+
   It needs to satisfy the global threshold for registering an entity (`entity`) which is defined by the staking consensus parameters.
-  
+
   To see the value of the `entity` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info) doc.
 
 * The `registry.RegisterNode.9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=` claim is for registering the node with ID `9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=`.
-  
+
   It needs to satisfy the global staking threshold for registering a validator node (`node-validator`) which is defined by the staking consensus parameters.
-  
+
   To see the value of the `node-validator` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info) doc.
-  
+
   In addition to the global thresholds, each runtime the node is registering for may define their own thresholds. In case the node is registering for multiple runtimes, it needs to satisfy the sum of thresholds of all the runtimes it is registering for.
-  
-  For more details, see [Oasis Core Developer Docs on registering a node](https://github.com/oasisprotocol/oasis-core/blob/master/docs/consensus/registry.md#register-node).
+
+  For more details, see [Oasis Core Developer Docs on registering a node](https://github.com/oasisprotocol/oasis-core/blob/master/docs/consensus/services/registry.md#register-node).

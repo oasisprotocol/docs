@@ -1,43 +1,81 @@
-# Website
+# Oasis Docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This repository contains Oasis Docs deployed at <https://docs.oasis.dev/>.
 
-### Installation
+They are built using [Docusaurus 2](https://docusaurus.io/), a modern static
+website generator.
 
-```
-$ yarn
-```
+## Installation
 
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
+Install Node packages with:
 
 ```
-$ yarn build
+yarn
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Checkout all Git submodules with:
 
-### Deployment
+```
+git submodule update --init
+```
 
-This page will automatically be deployed once you commit your changes to the `main` branch.
+## Local Development
 
-### Broken Link Checker
+To start the local development server, use:
 
-Docusaurus already checks for any broken internal link. To check all the links
-of the site running locally including the external ones:
+```
+yarn start
+```
 
-1. configure page url in docusaurus.config.js to http://localhost
-2. ```yarn build```
-3. spin up a web server and host the static site at http://localhost
-4. ```yarn blc```
+This command will start a local development server and open your browser at
+<http://localhost:3000/>.
 
-Some external URLs appear to be receiving wrong 200-ish HTTP code despite
+Most changes will be reflected live without having to restart the server.
+
+## Build
+
+To generate the static site, use:
+
+```
+yarn build
+```
+
+This will generate the static content in the `build` directory. Its contents
+can be served using any static content hosting service.
+
+## Deployment
+
+Docs will be automatically re-generated and re-deployed once a pull request is
+merged into the `main` branch.
+
+## Broken Link Checker
+
+Docusaurus already checks all internal links if they are broken.
+
+To check all the links, including the external ones, using a local Oasis Docs
+deployment, do the following:
+
+1. Set `config.url` parameter in `docusaurus.config.js` to
+   `'http://localhost:3000/'`.
+
+2. Generate the static site using:
+
+   ```
+   yarn build
+   ```
+
+3. Serve the static site in the `build` directory locally using:
+
+   ```
+   yarn serve
+   ```
+
+4. Run broken link checker in a new terminal with:
+
+   ```
+   yarn blc
+   ```
+
+_NOTE: Some external URLs appear to be receiving wrong 200-ish HTTP code despite
 opening correctly in the browser. Exclude those links manually from the broken
-link checker in `package.json`.
+link checker in `package.json`._

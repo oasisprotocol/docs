@@ -15,12 +15,13 @@ We are proud of our diverse and talented community from all around the world. We
 
 * [Public Slack channel](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg)
 * [Public Telegram channel](https://t.me/oasisprotocolcommunity)
-* [Twitter](https://twitter.com/OasisProtocol) 
-* [Discord](https://discord.gg/RwNTK8t) 
+* [Twitter](https://twitter.com/OasisProtocol)
+* [Discord](https://discord.gg/RwNTK8t)
 
 ## Developer Resources
 
-* [Github](https://github.com/oasisprotocol/oasis-core/blob/master/docs/index.md)
+* [Github](https://github.com/oasisprotocol/)
+* See [Developer Resources](../developer-resources/overview.mdx) section
 
 ## Get Involved
 

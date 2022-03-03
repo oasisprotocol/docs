@@ -20,11 +20,11 @@ On the Testnet, TEST tokens are in use -- if you need some to test your clients,
 
 This page is meant to be kept up to date with the information from the currently released Testnet. Use the information here to deploy or upgrade your node on the Testnet.
 
-* Latest Testnet version: **2021-04-13**
-* [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2021-04-13/genesis.json):
-  * SHA256: `ccac45fdf81f572c63e915a2dcb90b4281443020229a0df38d76018b55674489`
+* Latest Testnet version: **2022-03-03**
+* [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2022-03-03/genesis.json):
+  * SHA256: `4c3d271253d2a324816de3b9a048261b674471e7d4f9a02995a769489bd41984`
 * Genesis document's hash ([explanation](../../oasis-network/genesis-doc#genesis-file-vs-genesis-document)):
-  * `5ba68bc5e01e06f755c4c044dd11ec508e4c17f1faf40c0e67874388437a9e55`
+  * `50304f98ddb656620ea817cc1446c401752a05a249b36c9b90dba4616829977a`
 * Oasis seed node address:
   * `05EAC99BB37F6DAAD4B13386FF5E087ACBDDC450@34.86.165.6:26656`
 
@@ -35,7 +35,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [21.3.10](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.10)
+  * [22.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0)
 
 :::info
 
@@ -50,11 +50,11 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [21.3.10](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.10)
+  * [22.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
-  * [2.0.0-alpha3](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.0.0-alpha3)
+  * _To be published_
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 
@@ -67,8 +67,8 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [21.3.10](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.10)
+  * [22.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v7.0.0-rc1#building)):
-  * [7.0.0-rc1](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.0.0-rc1)
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v7.0.0-rc2#building)):
+  * [7.0.0-rc2](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.0.0-rc2)

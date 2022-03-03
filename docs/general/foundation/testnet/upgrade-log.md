@@ -6,6 +6,247 @@ description: >-
 
 # Upgrade Log
 
+## 2022-03-03 Upgrade
+
+* **Upgrade height:** upgrade is scheduled to happen at epoch **14209.**
+
+:::info
+
+We expect the Testnet network to reach this epoch at around 2022-03-03 12:45 UTC.
+
+:::
+
+### Instructions
+
+* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance) for details on voting for proposals.
+
+:::caution
+
+The upgrade proposal contains a non-existing upgrade handler and will be used to
+coordinate the network shutdown, the rest of the upgrade is manual.
+
+:::
+
+The following steps should be performed only after the network has reached the
+upgrade network and has halted:
+
+* Download the Testnet genesis file published in the [Testnet 2022-03-03 release](https://github.com/oasisprotocol/testnet-artifacts/releases/tag/2022-03-03).
+
+:::info
+
+Testnet state at epoch **14209** will be exported and migrated to a 22.0
+compatible genesis file. The new genesis file will be published on the above
+link soon after reaching the upgrade epoch.
+
+:::
+
+* Replace the old genesis file with the new Testnet genesis file.
+  The [state changes](#state-changes) are described and explained below.
+* Replace the old version of Oasis Node with version [22.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0).
+* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* Perform any needed [configuration changes](#configuration-changes) described below.
+* Start your node.
+
+### Configuration Changes
+
+:::info
+
+To see the full extent of the changes examine the [Change Log](https://github.com/oasisprotocol/oasis-core/blob/v22.0/CHANGELOG.md#220-2022-03-01) of the 22.0 release.
+
+:::
+
+If your node is currently configured to run a ParaTime, you need to perform some
+additional steps.
+
+The way ParaTime binaries are distributed has changed so that all required
+artifacts are contained in a single archive called the Oasis Runtime Container
+and have the `.orc` extension. Links to updated ParaTime binaries will be
+published on the [Testnet network parameters page](.) for their respective
+ParaTimes.
+
+The configuration is simplified as the `runtime.paths` now only needs to list
+all of the supported `.orc` files (see below for an example).
+
+:::info
+
+The new binary for the Cipher ParaTime will be published at a later time.
+
+:::
+
+Instead of separately configuring various roles for a node, there is now a
+single configuration flag called `runtime.mode` which enables the correct roles
+as needed. It should be set to one of the following values:
+
+  - `none` (runtime support is disabled, only consensus layer is enabled)
+  - `compute` (node is participating as a runtime compute node for all the
+    configured runtimes)
+  - `keymanager` (node is participating as a keymanager node)
+  - `client` (node is a stateful runtime client)
+  - `client-stateless` (node is a stateless runtime client and connects to
+    remote nodes for any state queries)
+
+Nodes that have so far been participating as compute nodes should set the mode
+to `compute` and nodes that have been participating as clients for querying
+and transaction submission should set it to `client`.
+
+The following configuration flags have been removed:
+
+- `runtime.supported` (existing `runtime.paths` is used instead)
+- `worker.p2p.enabled` (now automatically set based on runtime mode)
+- `worker.compute.enabled` (now set based on runtime mode)
+- `worker.keymanager.enabled` (now set based on runtime mode)
+- `worker.storage.enabled` (no longer needed)
+
+Also the `worker.client` option is no longer needed unless you are providing
+consensus layer RPC services.
+
+For example if your _previous_ configuration looked like:
+
+```yaml
+runtime:
+  supported:
+    - "000000000000000000000000000000000000000000000000000000000000beef"
+
+  paths:
+    "000000000000000000000000000000000000000000000000000000000000beef": /path/to/runtime
+
+worker:
+  # ... other settings omitted ...
+
+  storage:
+    enabled: true
+
+  compute:
+    enabled: true
+
+  client:
+    port: 12345
+    addresses:
+      - "xx.yy.zz.vv:12345"
+
+  p2p:
+    enabled: true
+    port: 12346
+    addresses:
+      - "xx.yy.zz.vv:12346"
+```
+
+The _new_ configuration should look like:
+
+```yaml
+runtime:
+  mode: compute
+  paths:
+    - /path/to/runtime.orc
+
+worker:
+  # ... other settings omitted ...
+
+  p2p:
+    port: 12346
+    addresses:
+      - "xx.yy.zz.vv:12346"
+```
+
+### State Changes
+
+The following parts of the genesis document will be updated:
+
+:::info
+
+For a more detailed explanation of the parameters below, see the [Genesis Document](../../oasis-network/genesis-doc#parameters) docs.
+
+:::
+
+### **General**
+
+* **`height`** will be set to the height of the Testnet state dump + 1, i.e. `8535081`.
+* **`genesis_time`** will be set to `2022-03-03T13:00:00Z`.
+* **`chain_id`** will be set to `testnet-2022-03-03`.
+* **`halt_epoch`** will be set to `24210` (more than 1 year from the upgrade).
+
+### **Registry**
+
+* **`registry.runtimes`** list contains the registered runtimes' descriptors. In
+  this upgrade, all runtime descriptors will be migrated from version `2` to
+  version `3`.
+  The migration will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+* **`registry.suspended_runtimes`** list contains the suspended registered
+  runtimes' descriptors. In this upgrade, all runtime descriptors will be
+  migrated from version `2` to version `3`.
+  The migration will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+* Inactive registered entities in **`registry.entities`** (and their
+  corresponding nodes in **`registry.nodes`**) that don't pass the
+  [minimum staking thresholds](../../oasis-network/genesis-doc#node-and-paratime-token-thresholds) will be removed.
+  The removal will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+### **Root Hash**
+
+* **`roothash.params.gas_costs.submit_msg`** is a new parameter that specifies
+  the cost for an submit message transaction. It will be set to `1000`.
+  This will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`roothash.params.max_in_runtime_messages`** is a new parameter that _TODO_.
+  It will be set to `128`.
+  This will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`roothash.runtime_state`** contains the state roots of the runtimes.
+  Empty fields will be omitted.
+  This will be done automatically with the `oasis-node debug fix-genesis` command.
+
+### **Staking**
+
+* **`staking.params.thresholds`** specifies the minimum number of tokens that
+  need to be staked in order for a particular entity or a particular type of node
+  to participate in the network.
+  The `node-storage` key is removed since Oasis Core 22.0+ removes separate
+  storage nodes (for more details, see: [#4308](https://github.com/oasisprotocol/oasis-core/pull/4308)).
+  This will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`staking.params.min_transfer`** specifies the minimum number of tokens one
+  can transfer.
+  The value is set to 10,000,000 base units, or 0.01 TEST tokens.
+  This will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`staking.params.min_transact_balance`** specifies the minimum general balance
+  an account must have to be able to perform transactions on the network.
+  The value is set to 0 base units meaning this requirement is currently not
+  enforced.
+  This will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`staking.params.reward_schedule`** specifies the staking reward schedule
+  as an array with elements of the form:
+  ```
+  {
+    "until": 14226,
+    "scale": "1229"
+  }
+  ```
+  For example, this element specifies that the staking reward is 12.29% until
+  epoch `14226`.
+  It will be set to the same schedule that is currently on used on the Mainnet.
+
+### **Random Beacon**
+
+* **`beacon.base`** is the network's starting epoch. It will be set to the epoch
+of Testnet's state dump + 1, i.e. `14210`.
+* **`beacon.params.backend`** configures the random beacon backend to use. It
+will be set to `"vrf"` indicating that the beacon implementing a _TODO_ should be used.
+* **`beacon.params.vrf_parameters.alpha_hq_threshold`** is _TODO_.
+* **`beacon.params.vrf_parameters.interval`** is _TODO_.
+* _TODO_
+
+### **Governance**
+
+_TODO_
+
+### **Consensus**
+
+* **`consensus.params.state_checkpoint_interval`** parameter controls the
+  interval (in blocks) on which state checkpoints should be taken. It will be
+  increased from `10000` to `100000` to improve nodes' performance since
+  computing checkpoints is I/O intensive.
+
+
+
 ## 2021-08-11 Upgrade
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **8844.**

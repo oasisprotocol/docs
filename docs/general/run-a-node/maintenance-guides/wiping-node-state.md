@@ -8,12 +8,12 @@ The following instructions assume that your `datadir` is defined as `/serverdir/
 
 :::caution
 
-Make sure to include the `--preserve.mkvs_database` flag if you are wiping blockchain state on a runtime storage node and need to preserve runtime state.
+Make sure to include the `--preserve.mkvs_database` flag if you are wiping blockchain state on a runtime node and need to preserve runtime state.
 
 :::
 
 1. Stop the `oasis-node` server process (this will depend on your own deployment setup).
-2.  Remove blockchain state using the `oasis-node unsafe-reset` command:
+2. Remove blockchain state using the `oasis-node unsafe-reset` command:
 
     ```bash
     # Do a dry run first to see which files will get deleted.
@@ -29,7 +29,7 @@ Make sure to include the `--preserve.mkvs_database` flag if you are wiping block
       --datadir /serverdir/node \
       --log.level info
     ```
-3. Start the oasis-node server process.
+3. Start the `oasis-node` server process.
 
 :::info
 

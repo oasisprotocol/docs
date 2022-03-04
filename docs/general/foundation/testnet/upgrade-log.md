@@ -67,12 +67,6 @@ ParaTimes.
 The configuration is simplified as the `runtime.paths` now only needs to list
 all of the supported `.orc` files (see below for an example).
 
-:::info
-
-The new binary for the Cipher ParaTime will be published at a later time.
-
-:::
-
 Instead of separately configuring various roles for a node, there is now a
 single configuration flag called `runtime.mode` which enables the correct roles
 as needed. It should be set to one of the following values:

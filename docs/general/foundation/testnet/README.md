@@ -70,5 +70,23 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [22.0.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.1)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v7.0.0-rc2#building)):
-  * [7.0.0-rc2](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.0.0-rc2)
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v7.1.0-rc1#building)):
+  * [7.1.0-rc1](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.1.0-rc1)
+
+:::tip
+
+When upgrading the ParaTime version, make sure to just _add_ the path to the
+bundle for the new version while also _keeping the old one_. This ensures that
+the upgrade process happens at the right time.
+
+For example the new configuration after the recent upgrade would look like the
+following with **both versions** listed:
+
+```yaml
+runtime:
+  paths:
+    - /path/to/emerald-paratime-7.0.0-rc2.orc
+    - /path/to/emerald-paratime-7.1.0-rc1.orc
+```
+
+:::

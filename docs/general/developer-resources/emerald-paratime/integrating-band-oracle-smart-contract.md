@@ -21,10 +21,10 @@ contracts. You can read more about the specific details of the protocol
    1. Select "Injected Web3" in the Environment dropdown in the top left to connect Metamask.
    2. Make sure that Metamask is connected to the Emerald (Testnet/Mainnet) network. You can read about adding Emerald network to Metamask [here](https://docs.oasis.dev/general/manage-tokens/how-to-transfer-rose-into-emerald-paratime#metamask).
 
-![environment](../../images/emerald/Band_Deploy_DemoOracle_SmartContact.png)
+![environment](../../images/emerald/band_deploy_demooracle_smartcontact.png)
 
 1. Enter the Emerald testnet Band reference data aggregator contract address (`0x71046b955Cdd96bC54aCa5E66fd69cfb5780f3BB`) to the `DemoOracle` constructor and deploy the contract. You can access the reference data aggregator contract on mainnet at `0xDA7a001b254CD22e46d3eAB04d937489c93174C3`.
 
-![environment](../../images/emerald/Band_DemoOracle_SmartContract.png)
+![environment](../../images/emerald/band_demooracle_smartcontract.png)
 
 An interface to interact with the contract will appear in the bottom left corner of Remix.

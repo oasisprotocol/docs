@@ -37,7 +37,7 @@ Clicking the `getPrice` button will return the current price of WBTC in USD. Thi
 
 Note that the `DemoOracle` contract only returns the latest rate, but the reference contract also returns values of the last time the base and quote references were updated.
 
-The price is offset by 1e18. The returned value at the time of testing is `395670000000000000`. Multiplying by 1e-18 gives the current USD price given by the reference contract, 39567.00 WBTC/USD.
+The price is offset by 1e18. The returned value at the time of testing is `39567000000000000000000'. Multiplying by 1e-18 gives the current USD price given by the reference contract, 39567.00 WBTC/USD.
 
 Clicking the `getMultiPrices` button returns multiple quotes in the same call, WBTC/USD and ETH/USD in this case. This function calls `getReferenceDataBulk(string[] memory _bases, string[] memory _quotes)` on the Band reference data contract, passing "WBTC" and "ETH" as the base and "USD" for the quote. This will return the current WBTC and ETH prices in USD, as an array of integers. The call also returns just the exchange rates (multipilied by 1e18), but can be modified to return the last updated times for the bases and quotes.
 

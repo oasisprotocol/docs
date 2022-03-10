@@ -80,4 +80,4 @@ We can observe that the stake accumulator currently has two claims:
 
   In addition to the global thresholds, each runtime the node is registering for may define their own thresholds. In case the node is registering for multiple runtimes, it needs to satisfy the sum of thresholds of all the runtimes it is registering for.
 
-  For more details, see [Oasis Core Developer Docs on registering a node](../../../../../oasis-core/consensus/services/registry#register-node).
+  For more details, see [Oasis Core Developer Docs on registering a node](/oasis-core/consensus/services/registry#register-node).

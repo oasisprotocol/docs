@@ -10,7 +10,7 @@ description: >-
 
 :::caution
 
-BitPie wallet doesn't use the standardized account key generation process specified in [ADR 0008](../../../oasis-core/adr/0008-standard-account-key-generation). Consequently, your **Bitpie wallet's mnemonic phrase will not open the same account in Oasis Wallet**.
+BitPie wallet doesn't use the standardized account key generation process specified in [ADR 0008](/oasis-core/adr/0008-standard-account-key-generation). Consequently, your **Bitpie wallet's mnemonic phrase will not open the same account in Oasis Wallet**.
 
 :::
 
@@ -51,7 +51,7 @@ If all of the above works, then the issue is most likely that Chromium does not 
 
 ### How can I use my Oasis Wallet mnemonics in Ledger?
 
-Starting from Oasis app for Ledger v2.3.1 a standardized key derivation path as defined in [ADR 0008](../../../oasis-core/adr/0008-standard-account-key-generation) is supported. This means that you can copy the mnemonics keyphrase you use in the Oasis Wallet - Web or in the Chrome extension directly to your Ledger device. Ledger will then derive the same Oasis wallet address and can be used to sign transactions and send funds. Similarly, you can export your keyphrase from Ledger and use it the Oasis Wallets.
+Starting from Oasis app for Ledger v2.3.1 a standardized key derivation path as defined in [ADR 0008](/oasis-core/adr/0008-standard-account-key-generation) is supported. This means that you can copy the mnemonics keyphrase you use in the Oasis Wallet - Web or in the Chrome extension directly to your Ledger device. Ledger will then derive the same Oasis wallet address and can be used to sign transactions and send funds. Similarly, you can export your keyphrase from Ledger and use it the Oasis Wallets.
 
 :::caution
 
@@ -73,7 +73,7 @@ If you checked all of the above and the keyphrase still cannot be imported, plea
 
 First, check your wallet address. If the address equals the one that you expected your funds on, then the key derivation from mnemonics worked correctly. Make sure you have a working internet connection so that the wallet can fetch the latest balance. Then check that the correct network (Mainnet or Testnet) is selected. These are completely separated networks and although the wallet address can be the same, the transactions and consequently the balances may differ. Finally, there might be a temporary problem with the [Oasis Monitor service](https://oasismonitor.com) itself which observes the network and indexes transactions. Oasis Wallets rely on that service and once it is back up and running, you should be able to see the correct balance.
 
-If your wallet address is different than the one you used to transfer your funds to, then you used one of the wallets that don't implement the standardized key derivation path defined in [ADR 0008](../../../oasis-core/adr/0008-standard-account-key-generation). If you were using the BitPie wallet see [this question](faq.md#how-can-i-export-my-bitpie-wallets-oasis-account-private-key). Ledger hardware wallet users should refer to [this question](faq.md#how-can-i-use-my-oasis-wallet-mnemonics-in-ledger).
+If your wallet address is different than the one you used to transfer your funds to, then you used one of the wallets that don't implement the standardized key derivation path defined in [ADR 0008](/oasis-core/adr/0008-standard-account-key-generation). If you were using the BitPie wallet see [this question](faq.md#how-can-i-export-my-bitpie-wallets-oasis-account-private-key). Ledger hardware wallet users should refer to [this question](faq.md#how-can-i-use-my-oasis-wallet-mnemonics-in-ledger).
 
 If you still cannot access your funds, please contact Oasis support.
 

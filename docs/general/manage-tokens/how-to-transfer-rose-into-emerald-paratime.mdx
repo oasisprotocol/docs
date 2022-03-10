@@ -11,7 +11,7 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 ## About
 
-[Emerald](../developer-resources/emerald-paratime/README.mdx) is an EVM-compatible blockchain running inside the Oasis ParaTime. Because the balance of your ROSE wallet is stored on the consensus layer - outside of ParaTime's reach - there are special mechanisms for Emerald to access your tokens (formally defined in [ADR 0003](../../../oasis-core/adr/0003-consensus-runtime-token-transfer)).
+[Emerald](../developer-resources/emerald-paratime/README.mdx) is an EVM-compatible blockchain running inside the Oasis ParaTime. Because the balance of your ROSE wallet is stored on the consensus layer - outside of ParaTime's reach - there are special mechanisms for Emerald to access your tokens (formally defined in [ADR 0003](/oasis-core/adr/0003-consensus-runtime-token-transfer)).
 
 The _Deposit_ procedure will first create the allowance policy for the provided ParaTime (in our case Emerald) to access a specific amount of your ROSE. Then, the `Deposit` transaction will be executed inside the ParaTime and tokens will be implicitly transferred on the consensus layer from your account to the ParaTime. Finally, if that transaction succeeds, Emerald will mint the same amount of ROSE on its blockchain and fill the provided Ethereum-compatible account address.
 

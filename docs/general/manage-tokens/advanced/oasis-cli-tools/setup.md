@@ -39,7 +39,7 @@ We will pipe the output of commands that return JSON through [Python's `json.too
 
 :::caution
 
-Be aware that [jq](http://stedolan.github.io/jq/), the popular JSON CLI tool, [converts all numbers to IEEE 754 64-bit values](https://github.com/stedolan/jq/wiki/FAQ#caveats) which can result in silent loss of precision and/or other changes.
+Be aware that [jq](https://stedolan.github.io/jq/), the popular JSON CLI tool, [converts all numbers to IEEE 754 64-bit values](https://github.com/stedolan/jq/wiki/FAQ#caveats) which can result in silent loss of precision and/or other changes.
 
 Hence, we recommend avoiding its usage until this issue is resolved.
 

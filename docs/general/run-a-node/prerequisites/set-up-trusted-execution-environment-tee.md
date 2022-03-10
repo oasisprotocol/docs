@@ -199,7 +199,7 @@ sgxs-tools must be compiled with a nightly version of the Rust toolchain since t
 
 Make sure you have the following installed on your system:
 
-* [GCC](http://gcc.gnu.org).
+* [GCC](https://gcc.gnu.org).
 * [Protobuf](https://github.com/protocolbuffers/protobuf) compiler.
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config).
 * [OpenSSL](https://www.openssl.org) development package.
@@ -264,7 +264,7 @@ Detecting SGX, this may take a minute...
   ✔  Enclave attributes
   ✔  Enclave Page Cache
   SGX features
-    ✔  SGX2  ✔  EXINFO  ✔  ENCLV  ✔  OVERSUB  ✔  KSS  
+    ✔  SGX2  ✔  EXINFO  ✔  ENCLV  ✔  OVERSUB  ✔  KSS
     Total EPC size: 92.8MiB
 ✘  Flexible launch control
   ✔  CPU support

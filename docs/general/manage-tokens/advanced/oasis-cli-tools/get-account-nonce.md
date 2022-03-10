@@ -18,7 +18,7 @@ oasis-node stake account nonce \
 
 :::info
 
-This example assumes you have the [jq](http://stedolan.github.io/jq/) tool installed on your system.
+This example assumes you have the [jq](https://stedolan.github.io/jq/) tool installed on your system.
 
 :::
 

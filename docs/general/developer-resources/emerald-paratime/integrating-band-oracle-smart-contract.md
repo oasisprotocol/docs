@@ -15,7 +15,7 @@ contracts. You can read more about the specific details of the protocol
 
 ### Deploy Oracle
 
-1. Follow [this link][demooracle-remix]
+1. Follow [this link][demooracle-remix] to Remix. The link contains an encoded example `DemoOracle.sol` contract.
 2. Compile the contract with compiler version `0.6.11`.
 3. Switch to the Deploy tab of Remix.
    1. Select "Injected Web3" in the Environment dropdown in the top left to connect Metamask.

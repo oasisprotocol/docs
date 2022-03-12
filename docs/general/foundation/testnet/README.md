@@ -14,7 +14,7 @@ description: >-
 
 :::info
 
-On the Testnet, TEST tokens are in use -- if you need some to test your clients, nodes or paratimes, feel free to request them on [**#testnet** in the Community Slack](../../oasis-network/connect-with-us). Note that these are test-only tokens and account balances, as any other state, may be frequently reset.
+On the Testnet, TEST tokens are in use -- if you need some to test your clients, nodes or paratimes, feel free to request them on [**#testnet** in the Community Slack](../../oasis-network/connect-with-us.md). Note that these are test-only tokens and account balances, as any other state, may be frequently reset.
 
 :::
 
@@ -23,7 +23,7 @@ This page is meant to be kept up to date with the information from the currently
 * Latest Testnet version: **2022-03-03**
 * [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2022-03-03/genesis.json):
   * SHA256: `4c3d271253d2a324816de3b9a048261b674471e7d4f9a02995a769489bd41984`
-* Genesis document's hash ([explanation](../../oasis-network/genesis-doc#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](../../oasis-network/genesis-doc.md#genesis-file-vs-genesis-document)):
   * `50304f98ddb656620ea817cc1446c401752a05a249b36c9b90dba4616829977a`
 * Oasis seed node address:
   * `05EAC99BB37F6DAAD4B13386FF5E087ACBDDC450@34.86.165.6:26656`
@@ -60,7 +60,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../../run-a-node/set-up-your-node/run-an-ias-proxy).
+Feel free to use other IAS proxies besides the one provided here or [run your own](../../run-a-node/set-up-your-node/run-an-ias-proxy.md).
 
 :::
 

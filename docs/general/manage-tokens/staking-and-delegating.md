@@ -16,11 +16,11 @@ The Oasis Network is supported by an amazing community of validators and infrast
 
 ### Tools to use for Staking and Delegation
 
-In addition to using the [Oasis CLI](advanced/oasis-cli-tools/) for generating the `staking.AddEscrow` transaction, there is a number of wallets and custodians that support staking and delegation on the Oasis Network. Those include:
+In addition to using the [Oasis CLI](advanced/oasis-cli-tools/README.md) for generating the `staking.AddEscrow` transaction, there is a number of wallets and custodians that support staking and delegation on the Oasis Network. Those include:
 
-* [Oasis Wallet - Web](oasis-wallets/web)
-* [Oasis Wallet - Browser Extension](oasis-wallets/browser-extension)
-* [Copper.co](staking-and-delegating#rewards-and-tokenonomics) (custodian)
+* [Oasis Wallet - Web](oasis-wallets/web.md)
+* [Oasis Wallet - Browser Extension](oasis-wallets/browser-extension.md)
+* [Copper.co](staking-and-delegating.md#rewards-and-tokenonomics) (custodian)
 * [Anchorage](https://anchorage.com) (custodian)
 * [Finoa](https://finoa.io) (custodian)
 
@@ -32,7 +32,7 @@ Some validators prefer anonymity and they do not list their name or any contact 
 
 :::
 
-You can stop staking and reclaim your tokens at any time. This can be done with a CLI tool or any of the wallets mentioned above. After sending the corresponding `staking.ReclaimEscrow` transaction, your tokens will, to ensure the network security and robustness, enter the **debonding period** defined in the [genesis](../oasis-network/network-parameters) document. Currently, this period is 336 epochs (around 14 days) and no staking rewards are earned for the duration of this period. Afterwards your ROSE will be free to use.
+You can stop staking and reclaim your tokens at any time. This can be done with a CLI tool or any of the wallets mentioned above. After sending the corresponding `staking.ReclaimEscrow` transaction, your tokens will, to ensure the network security and robustness, enter the **debonding period** defined in the [genesis](../oasis-network/network-parameters.md) document. Currently, this period is 336 epochs (around 14 days) and no staking rewards are earned for the duration of this period. Afterwards your ROSE will be free to use.
 
 :::danger
 
@@ -62,4 +62,4 @@ You don't need to open your wallet, you can just search your `oasis1` address.
 
 ### Run your own Node
 
-If you're interested in running your own node and become a validator you can get started [here](../run-a-node/node-operator-overview). Be sure to [join the **#nodeoperator** channel on Slack and sign up for the node operator mailing list](../oasis-network/connect-with-us#social-media-channels)!
+If you're interested in running your own node and become a validator you can get started [here](../run-a-node/node-operator-overview.mdx). Be sure to [join the **#nodeoperator** channel on Slack and sign up for the node operator mailing list](../oasis-network/connect-with-us.md#social-media-channels)!

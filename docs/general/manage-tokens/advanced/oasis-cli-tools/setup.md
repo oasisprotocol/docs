@@ -1,6 +1,6 @@
 # Setup
 
-Make sure you have installed everything described in the [Prerequisites](prerequisites) section.
+Make sure you have installed everything described in the [Prerequisites](prerequisites.md) section.
 
 ## Server commands
 
@@ -18,7 +18,7 @@ Here are some examples of Oasis Node CLI commands that need a connection to an o
 
 ## Local commands
 
-The following commands are intended to be run on your local machine and only need access to the [network's current genesis file](../../../oasis-network/network-parameters) and your signer's private key:
+The following commands are intended to be run on your local machine and only need access to the [network's current genesis file](../../../oasis-network/network-parameters.md) and your signer's private key:
 
 * `oasis-node stake account gen_transfer`
 * `oasis-node stake account gen_escrow`
@@ -72,13 +72,13 @@ Currently, we provide two options for signing transactions:
     You will need to set it up as described in our [Oasis Core Ledger](/oasis-core-ledger/usage/transactions) docs.
 *   **File-based signer.**
 
-    You will need to create your Entity as described in [Running a Node on the Network](../../../run-a-node/set-up-your-node/run-validator#creating-your-entity) docs and set the following flags:
+    You will need to create your Entity as described in [Running a Node on the Network](../../../run-a-node/set-up-your-node/run-validator.md#creating-your-entity) docs and set the following flags:
 
     * `--signer.backend file`: Specifies use of the file signer.
 
 ### Storing Base and Signer flags in an Environment Variable
 
-To make the transaction commands shorter and avoid typing errors, one can create an environment variable, e.g. `TX_FLAGS`, with all the [Base Flags](setup#base-flags) and [Signer Flags](setup#signer-flags) configured for his particular set up.
+To make the transaction commands shorter and avoid typing errors, one can create an environment variable, e.g. `TX_FLAGS`, with all the [Base Flags](setup.md#base-flags) and [Signer Flags](setup.md#signer-flags) configured for his particular set up.
 
 For example, one could set `TX_FLAGS` for a Ledger device like below (make sure all `LEDGER_*` environment variables are set appropriately):
 
@@ -107,7 +107,7 @@ When generating a transaction, one needs to set the following transaction flags 
 * `--stake.amount`: Amount of base units to transfer, escrow, burn, etc.
 * `--transaction.file`: Path to the file where to store the generated transaction.
 * `--transaction.nonce`: Incremental number that must be unique for each account's transaction. To
-  get your current account's nonce, see [Checking Your Account nonce](get-account-nonce) doc.
+  get your current account's nonce, see [Checking Your Account nonce](get-account-nonce.md) doc.
 * `--transaction.fee.gas`: Maximum amount of gas (in _gas units_) a transaction can spend.
 
 Gas costs for different staking transactions are specified by the `staking.params.gas_costs` consensus parameter.

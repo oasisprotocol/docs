@@ -66,7 +66,7 @@ Oasis Wallet - Web uses English mnemonic phrase words as defined in [BIP39](http
 
 :::caution
 
-Oasis Wallet mnemonics are incompatible with BitPie mnemonics. Check our [FAQ](./#frequently-asked-questions) for more information.
+Oasis Wallet mnemonics are incompatible with BitPie mnemonics. Check our [FAQ](./README.mdx#frequently-asked-questions) for more information.
 
 :::
 
@@ -97,7 +97,7 @@ We suggest that you perform a test transaction the first time you import your wa
 
 #### Open wallet with Ledger
 
-To open your wallet via a Ledger hardware wallet, make sure you have your Ledger device readily available and have familiarized yourself with the [Oasis-specific Ledger usage instructions](../holding-rose-tokens/ledger-wallet).
+To open your wallet via a Ledger hardware wallet, make sure you have your Ledger device readily available and have familiarized yourself with the [Oasis-specific Ledger usage instructions](../holding-rose-tokens/ledger-wallet.md).
 
 Follow the instructions on the screens that follow to open your existing wallet address.
 

@@ -8,9 +8,9 @@ description: >-
 
 ## About
 
-[Emerald](../developer-resources/emerald-paratime) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dApp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
+[Emerald](../developer-resources/emerald-paratime/README.mdx) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dApp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
 
-To transfer your ROSE tokens into Emerald, follow [How to Transfer ROSE into Emerald ParaTime](how-to-transfer-rose-into-emerald-paratime).
+To transfer your ROSE tokens into Emerald, follow [How to Transfer ROSE into Emerald ParaTime](how-to-transfer-rose-into-emerald-paratime.mdx).
 
 To transfer (i.e. bridge and wrap) your ETH and ERC20 tokens, follow this guide. It will show you how to use [Wormhole Bridge](https://wormholebridge.com) to seamlessly transfer your tokens from Ethereum, Solana, Avalanche, BSC, Terra or Polygon to the Oasis Network.
 

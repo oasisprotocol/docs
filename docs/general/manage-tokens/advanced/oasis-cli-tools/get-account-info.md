@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 
@@ -58,7 +58,7 @@ We can observe that:
 
 ### Commission Schedule
 
-An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../../run-a-node/set-up-your-node/amend-commission-schedule) documentation.
+An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../../run-a-node/set-up-your-node/amend-commission-schedule.md) documentation.
 
 ### Stake Accumulator
 
@@ -70,13 +70,13 @@ We can observe that the stake accumulator currently has two claims:
 
   It needs to satisfy the global threshold for registering an entity (`entity`) which is defined by the staking consensus parameters.
 
-  To see the value of the `entity` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info) doc.
+  To see the value of the `entity` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info.md) doc.
 
 * The `registry.RegisterNode.9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=` claim is for registering the node with ID `9Epy5pYPGa91IJlJ8Ivb5iby+2ii8APXdfQoMZDEIDc=`.
 
   It needs to satisfy the global staking threshold for registering a validator node (`node-validator`) which is defined by the staking consensus parameters.
 
-  To see the value of the `node-validator` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info) doc.
+  To see the value of the `node-validator` global staking threshold, run the `oasis-node stake info` command as described in [Common Staking Info](common-staking-info.md) doc.
 
   In addition to the global thresholds, each runtime the node is registering for may define their own thresholds. In case the node is registering for multiple runtimes, it needs to satisfy the sum of thresholds of all the runtimes it is registering for.
 

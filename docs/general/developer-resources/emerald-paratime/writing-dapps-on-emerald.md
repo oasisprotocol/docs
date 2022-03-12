@@ -8,15 +8,15 @@ This tutorial will show you how to set up a dApp development environment using H
 
 ## Testnet and Mainnet
 
-The Oasis network currently has, similar to some other blockchains, two major public deployments: the [Mainnet](../../oasis-network/network-parameters) and the [Testnet](../../foundation/testnet/). The native tokens for the networks are called ROSE and TEST respectively. Each deployment has its own state, a different set of validators and ParaTimes. The state of the Mainnet is considered immutable for indefinite time, while the data on the Testnet can be subject to wipe in the future.
+The Oasis network currently has, similar to some other blockchains, two major public deployments: the [Mainnet](../../oasis-network/network-parameters.md) and the [Testnet](../../foundation/testnet/README.md). The native tokens for the networks are called ROSE and TEST respectively. Each deployment has its own state, a different set of validators and ParaTimes. The state of the Mainnet is considered immutable for indefinite time, while the data on the Testnet can be subject to wipe in the future.
 
-Emerald is deployed similarly: the [Emerald Mainnet](./#mainnet) is deployed on the Oasis Mainnet network, and the [Emerald Testnet](./#testnet) on the Oasis Testnet network. The Emerald state on the Mainnet is stable. Testnet, apart from running the unstable version of the code and being prone to bugs, can have the state deliberately wiped either on the Emerald ParaTime layer or on the Oasis Testnet network level, so you should **never deploy a production service on the Testnet**!
+Emerald is deployed similarly: the [Emerald Mainnet](./README.mdx#mainnet) is deployed on the Oasis Mainnet network, and the [Emerald Testnet](./README.mdx#testnet) on the Oasis Testnet network. The Emerald state on the Mainnet is stable. Testnet, apart from running the unstable version of the code and being prone to bugs, can have the state deliberately wiped either on the Emerald ParaTime layer or on the Oasis Testnet network level, so you should **never deploy a production service on the Testnet**!
 
 ## Oasis consensus network vs Emerald
 
 Emerald is running inside the Oasis ParaTime. While the Emerald's blockchain is separated from the Oasis network consensus layer, they share two important keypoints. Both have synchronized blocks with a common block time (around 6 seconds) which means that Emerald transactions will require at least this amount of time to be confirmed. Secondly, they share the same native token - ROSE on Mainnet and TEST on Testnet. This means that the gas fees will be paid in ROSE/TEST.
 
-On the other hand, the Oasis addresses are bech32-encoded (e.g. `oasis1qpupfu7e2n6pkezeaw0yhj8mcem8anj64ytrayne`) while Emerald uses the Ethereum-compatible hex-encoded addresses (e.g. `0x90adE3B7065fa715c7a150313877dF1d33e777D5`). This is not just a stylistic change - the underlying algorithm for signing the transactions is [ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) on Oasis and [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) on Emerald (the same as on the Ethereum network). For this reason we cannot use Oasis accounts directly in Emerald, but we need to use a special mechanism described in the [How to transfer ROSE into Emerald ParaTime](../../manage-tokens/how-to-transfer-rose-into-emerald-paratime) chapter. To deploy your smart contract on the Emerald Mainnet, you will have to perform this step.
+On the other hand, the Oasis addresses are bech32-encoded (e.g. `oasis1qpupfu7e2n6pkezeaw0yhj8mcem8anj64ytrayne`) while Emerald uses the Ethereum-compatible hex-encoded addresses (e.g. `0x90adE3B7065fa715c7a150313877dF1d33e777D5`). This is not just a stylistic change - the underlying algorithm for signing the transactions is [ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) on Oasis and [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) on Emerald (the same as on the Ethereum network). For this reason we cannot use Oasis accounts directly in Emerald, but we need to use a special mechanism described in the [How to transfer ROSE into Emerald ParaTime](../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx) chapter. To deploy your smart contract on the Emerald Mainnet, you will have to perform this step.
 
 :::tip
 
@@ -83,7 +83,7 @@ Changing greeting from 'Hello, world!' to 'Hola, mundo!'
 
 Hardhat already comes with a built-in EVM which is spun up from scratch each time we call `hardhat test` without parameters. It populates 20 accounts with ETH and registers them to the [ethers.js](https://docs.ethers.io/v5/) instance used by tests.
 
-Now, let's look at how to configure Hardhat for the Emerald Testnet and Mainnet networks. Open `hardhat.config.ts` and replace the `networks` field to match the ones from the [Network parameters](../../oasis-network/network-parameters) page:
+Now, let's look at how to configure Hardhat for the Emerald Testnet and Mainnet networks. Open `hardhat.config.ts` and replace the `networks` field to match the ones from the [Network parameters](../../oasis-network/network-parameters.md) page:
 
 ```
 networks: {
@@ -368,11 +368,11 @@ In our example, the MetaCoin cotract has been successfully deployed to address `
 
 ## Create dApp on Emerald with Remix - Ethereum IDE
 
-[Remix](writing-dapps-on-emerald#testnet-and-mainnet) is a popular web IDE for swift development, deployment and testing smart contracts on the Ethereum network. When you open Remix for the first time, it automatically creates an example project. Open one of the contracts and compile it in the "Solidity compiler" tab.
+[Remix](writing-dapps-on-emerald.md#testnet-and-mainnet) is a popular web IDE for swift development, deployment and testing smart contracts on the Ethereum network. When you open Remix for the first time, it automatically creates an example project. Open one of the contracts and compile it in the "Solidity compiler" tab.
 
 ![The initial example project in Remix - Ethereum IDE](<../../images/emerald/remix1.png>)
 
-If you haven't done it yet, you will need to install the [MetaMask](../../manage-tokens/how-to-transfer-rose-into-emerald-paratime#verifying-rose-balance-on-emerald-paratime) extension for your browser in order to deploy the contract with Remix. Import your wallet and configure it for the Emerald network.
+If you haven't done it yet, you will need to install the [MetaMask](../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx#verifying-rose-balance-on-emerald-paratime) extension for your browser in order to deploy the contract with Remix. Import your wallet and configure it for the Emerald network.
 
 Next, in the "Deploy and Run Transactions" tab, select the "Injected Web3" environment. A MetaMask popup will appear and you will have to connect one or more accounts with Remix. Once the connection succeeds, click on the "Deploy" button. The MetaMask popup appears again and you will have to review the transaction, the gas options and finally confirm the transaction.
 

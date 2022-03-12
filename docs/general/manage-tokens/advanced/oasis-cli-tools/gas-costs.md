@@ -2,13 +2,13 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 
 ### Obtaining Transactions' Gas Costs
 
-As explained in the [Common Transaction Flags](setup#common-transaction-flags) section, we can obtain gas costs for different staking transactions from the genesis file by running:
+As explained in the [Common Transaction Flags](setup.md#common-transaction-flags) section, we can obtain gas costs for different staking transactions from the genesis file by running:
 
 ```bash
 cat $GENESIS_FILE | \

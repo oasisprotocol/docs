@@ -1,12 +1,12 @@
 # Using Ledger-backed Consensus Key with a Remote Signer
 
-This guide will describe how you can set up your [_validator_ node](../set-up-your-node/run-validator) with a detached consensus key stored on a [Ledger](https://www.ledger.com) wallet connected via [Oasis Core's Remote Signer](https://github.com/oasisprotocol/oasis-core/tree/master/go/oasis-remote-signer).
+This guide will describe how you can set up your [_validator_ node](../set-up-your-node/run-validator.md) with a detached consensus key stored on a [Ledger](https://www.ledger.com) wallet connected via [Oasis Core's Remote Signer](https://github.com/oasisprotocol/oasis-core/tree/master/go/oasis-remote-signer).
 
 :::caution
 
 These instructions are still a work-in-progress draft.
 
-Your feedback is welcome. Please, reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us) with your questions, comments, and feedback.
+Your feedback is welcome. Please, reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback.
 
 :::
 
@@ -18,9 +18,9 @@ These are advanced instructions intended for node operators that want to increas
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) section and have the Oasis Node binary installed on your Oasis node system.
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/README.mdx) section and have the Oasis Node binary installed on your Oasis node system.
 
-Also make sure you've followed the [Install Oasis Remote Signer Binary](install-oasis-remote-signer-binary) section and have the Oasis Remote Signer binary installed on your remote signer system where your Ledger wallet will be connected.
+Also make sure you've followed the [Install Oasis Remote Signer Binary](install-oasis-remote-signer-binary.md) section and have the Oasis Remote Signer binary installed on your remote signer system where your Ledger wallet will be connected.
 
 Finally, you need to do steps described in the [Setup](/oasis-core-ledger/usage/setup) section of our [Oasis Core Ledger docs](/oasis-core-ledger). Make sure you also install the _**OasisVal**_** app** on your Ledger wallet.
 
@@ -106,17 +106,17 @@ For the Oasis node system to be able to connect to the Oasis Remote Signer on th
 
 ## Set Up Oasis Node System
 
-For setting up your Oasis Node system, follow the [Run a Validator Node](../set-up-your-node/run-validator) docs.
+For setting up your Oasis Node system, follow the [Run a Validator Node](../set-up-your-node/run-validator.md) docs.
 
 :::info
 
-Make sure you've copied the remote signer's certificate and remote signer's client key and certificate to your Oasis Node system as described in [Copy Remote Signer Certificate and Client Key and Certificate](using-ledger-backed-consensus-key-with-a-remote-signer#copy-remote-signer-certificate-and-client-key-and-certificate) section.
+Make sure you've copied the remote signer's certificate and remote signer's client key and certificate to your Oasis Node system as described in [Copy Remote Signer Certificate and Client Key and Certificate](using-ledger-backed-consensus-key-with-a-remote-signer.md#copy-remote-signer-certificate-and-client-key-and-certificate) section.
 
 :::
 
 ### Initialize Oasis Node
 
-When [initializing your Oasis node](../set-up-your-node/run-validator#initializing-a-node), you need to pass appropriate `--signer.*` flags to configure the composite and remote signers. For example:
+When [initializing your Oasis node](../set-up-your-node/run-validator.md#initializing-a-node), you need to pass appropriate `--signer.*` flags to configure the composite and remote signers. For example:
 
 ```
 ENTITY_DIR=<YOUR-ENTITY-DIR>
@@ -146,7 +146,7 @@ The resulting directory only has `consensus_pub.pem` and no `consensus.pem` sinc
 
 ### Configure Oasis Node
 
-When [configuring your Oasis Node](../set-up-your-node/run-validator#configuring-the-oasis-node), you need to add the appropriate `signer` section to configure the composite and remote signers. For example:
+When [configuring your Oasis Node](../set-up-your-node/run-validator.md#configuring-the-oasis-node), you need to add the appropriate `signer` section to configure the composite and remote signers. For example:
 
 ```yaml
 # Signer.

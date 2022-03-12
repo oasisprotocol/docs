@@ -12,7 +12,7 @@ This is only an example of a Sentry node deployment, and we take no responsibili
 
 ## Prerequisites
 
-Before following this guide, make sure you've read the [Prerequisites](../prerequisites/oasis-node) and [Running a Node on the Network](run-validator) guides and created your Entity.
+Before following this guide, make sure you've read the [Prerequisites](../prerequisites/oasis-node.md) and [Running a Node on the Network](run-validator.md) guides and created your Entity.
 
 ## Configuring the Oasis Sentry Node
 
@@ -33,7 +33,7 @@ An example of full `YAML` configuration of a sentry node is below.
 Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
 
 * `{{ external_address }}`: This is the external IP on which sentry node will be reachable.
-* `{{ seed_node_address }}`: This the seed node address of the form `ID@IP:port`. You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters).
+* `{{ seed_node_address }}`: This the seed node address of the form `ID@IP:port`. You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
 * `{{ validator_tendermint_id }}`: This is the Tendermint ID (address) of the Oasis validator node that will be protected by the sentry node. This address can be obtained by running:
 
   ```bash
@@ -152,7 +152,7 @@ If your validator node is already registered and running in a non-sentry setup, 
 
 :::
 
-When you are [initializing a validator node](run-validator#initializing-a-node), you should use the sentry node's external address and Consensus ID in the `node.consensus_address` flag. If you are running multiple sentry nodes, you can specify the `node.consensus_address` flag multiple times.
+When you are [initializing a validator node](run-validator.md#initializing-a-node), you should use the sentry node's external address and Consensus ID in the `node.consensus_address` flag. If you are running multiple sentry nodes, you can specify the `node.consensus_address` flag multiple times.
 
 To initialize a validator node with 2 sentry nodes, run the following commands from the `/localhostdir/node` directory:
 

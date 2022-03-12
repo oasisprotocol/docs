@@ -13,13 +13,13 @@ Currently, the only supported and documented way to use your tokens is by utiliz
 
 ## Oasis Node CLI
 
-To setup Oasis Node CLI, follow the [Oasis Node documentation](../../../run-a-node/prerequisites/oasis-node).
+To setup Oasis Node CLI, follow the [Oasis Node documentation](../../../run-a-node/prerequisites/oasis-node.md).
 
 ## Ledger-based signer
 
 :::info
 
-This is only needed if you will use the [Ledger wallet](../../holding-rose-tokens/ledger-wallet) to hold your tokens.
+This is only needed if you will use the [Ledger wallet](../../holding-rose-tokens/ledger-wallet.md) to hold your tokens.
 
 :::
 

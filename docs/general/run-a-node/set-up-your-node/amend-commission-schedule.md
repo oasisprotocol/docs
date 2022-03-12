@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](../../manage-tokens/advanced/oasis-cli-tools/prerequisites) and [Setup](../../manage-tokens/advanced/oasis-cli-tools/setup) sections of the _Use Your Tokens_ docs.
+This example assumes you have read and followed the instructions in the [Prerequisites](../../manage-tokens/advanced/oasis-cli-tools/prerequisites.md) and [Setup](../../manage-tokens/advanced/oasis-cli-tools/setup.md) sections of the _Use Your Tokens_ docs.
 
 :::
 
@@ -56,7 +56,7 @@ oasis-node stake account info \
 
 :::info
 
-For a detailed explanation on querying account information, see the [Get Info](../../manage-tokens/advanced/oasis-cli-tools/get-account-info) section of the _Use Your Tokens_ docs.
+For a detailed explanation on querying account information, see the [Get Info](../../manage-tokens/advanced/oasis-cli-tools/get-account-info.md) section of the _Use Your Tokens_ docs.
 
 :::
 
@@ -139,7 +139,7 @@ oasis-node consensus submit_tx \
 
 ## Query Our Account's Info Again
 
-Let's check [our account's info](amend-commission-schedule#query-our-accounts-info) again:
+Let's check [our account's info](amend-commission-schedule.md#query-our-accounts-info) again:
 
 ```javascript
 General Account:
@@ -166,7 +166,7 @@ We can observe that:
 
 :::info
 
-For more information on how commissions work in general, see the [Commission](../../manage-tokens/terminology#commission) explanation in the _Use Your Tokens_ docs.
+For more information on how commissions work in general, see the [Commission](../../manage-tokens/terminology.md#commission) explanation in the _Use Your Tokens_ docs.
 
 :::
 
@@ -192,7 +192,7 @@ oasis-node stake account gen_amend_commission_schedule \
   --transaction.fee.amount 2000
 ```
 
-would result in the following commission schedule being printed out in [our account's info](amend-commission-schedule#query-our-accounts-info):
+would result in the following commission schedule being printed out in [our account's info](amend-commission-schedule.md#query-our-accounts-info):
 
 ```
 ...

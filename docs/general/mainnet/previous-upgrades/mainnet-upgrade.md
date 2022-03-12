@@ -57,11 +57,11 @@ The following parts of the genesis file will be updated:
 
 :::
 
-See the updated [Network Parameters](../../oasis-network/network-parameters) for the published Mainnet genesis file.
+See the updated [Network Parameters](../../oasis-network/network-parameters.md) for the published Mainnet genesis file.
 
 :::info
 
-For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
+For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades.md#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
 
 :::
 
@@ -71,7 +71,7 @@ Mainnet will use [**Oasis Core 20.12.2**](https://github.com/oasisprotocol/oasis
 
 The Oasis team will be offering live video support during the launch of Mainnet. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us) with your questions, comments, and feedback related to Mainnet.
+For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet.
 
 To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).[  
 ](https://app.gitbook.com/@oasisprotocol/s/general/~/drafts/-MYKBZ_9kr9NSXQSnUVI/contribute-to-the-network/contribution-guidelines/@merged)

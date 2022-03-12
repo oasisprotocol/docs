@@ -17,7 +17,7 @@ Genesis file is signed by [network's current maintainers](https://github.com/oas
 
 :::
 
-* Genesis document's hash ([explanation](genesis-doc#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](genesis-doc.md#genesis-file-vs-genesis-document)):
   * `53852332637bacb61b91b6411ab4095168ba02a50be4c3f82448438826f23898`
 * Oasis seed node address:
   * `E27F6B7A350B4CC2B48A6CBE94B0A02B0DCB0BF3@35.199.49.168:26656`
@@ -43,7 +43,7 @@ Do not use a newer version of Oasis Core since it likely contains changes that a
 
 :::
 
-If you want to join our Testnet, see the [Testnet](../foundation/testnet/) docs for the current Testnet parameters.
+If you want to join our Testnet, see the [Testnet](../foundation/testnet/README.md) docs for the current Testnet parameters.
 
 ## ParaTimes
 
@@ -62,7 +62,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../run-a-node/set-up-your-node/run-an-ias-proxy).
+Feel free to use other IAS proxies besides the one provided here or [run your own](../run-a-node/set-up-your-node/run-an-ias-proxy.md).
 
 :::
 
@@ -79,6 +79,6 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 
 :::info
 
-Check the [Emerald ParaTime page](../developer-resources/emerald-paratime#web3-gateway) on how to access the public Web3 gateway.
+Check the [Emerald ParaTime page](../developer-resources/emerald-paratime/README.mdx#web3-gateway) on how to access the public Web3 gateway.
 
 :::

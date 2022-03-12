@@ -63,13 +63,13 @@ Submit a proposal [here](https://oasisfoundation.typeform.com/to/HtYql2aN) and w
 
 Please note that any tokens you earn or win through community programs, such as the Community Cup program  or the Ambassador Rewards program, are not sent to you immediately. You need to complete the KYC process and submit your ROSE wallet address before the Oasis Foundation can send you any ROSE tokens.
 
-This token distribution process can take several weeks from start to finish. To learn more about each step in the process and how long you can expect to wait before you receive your ROSE tokens, please see the [Token Delivery & KYC Guide](token-delivery-and-kyc).
+This token distribution process can take several weeks from start to finish. To learn more about each step in the process and how long you can expect to wait before you receive your ROSE tokens, please see the [Token Delivery & KYC Guide](token-delivery-and-kyc.md).
 
 ## 📲 Setting Up Your ROSE Wallet
 
 In order to receive your ROSE tokens from the Oasis Foundation for any work you have contributed to the network, you need to set up a ROSE wallet.
 
-The recommended way is to use one of the official [Oasis Wallets](../manage-tokens/oasis-wallets/), either the web wallet at [wallet.oasisprotocol.org](https://wallet.oasisprotocol.org) or the browser extension wallet [available in the Chrome Web Store](https://chrome.google.com/webstore/detail/oasis-wallet/ppdadbejkmjnefldpcdjhnkpbjkikoip).
+The recommended way is to use one of the official [Oasis Wallets](../manage-tokens/oasis-wallets/README.mdx), either the web wallet at [wallet.oasisprotocol.org](https://wallet.oasisprotocol.org) or the browser extension wallet [available in the Chrome Web Store](https://chrome.google.com/webstore/detail/oasis-wallet/ppdadbejkmjnefldpcdjhnkpbjkikoip).
 
 :::tip
 
@@ -77,7 +77,7 @@ Both Oasis Wallets also support connecting to your Ledger-backed ROSE wallet.
 
 :::
 
-If you need more options, take a look our [3rd Party Custody & Wallets](../manage-tokens/holding-rose-tokens/) guide.
+If you need more options, take a look our [3rd Party Custody & Wallets](../manage-tokens/holding-rose-tokens/README.md) guide.
 
 ## 💰 Delegate Your ROSE Tokens & Earn Staking Rewards
 
@@ -85,7 +85,7 @@ Did you know you grow your ROSE holdings over time, while also contributing to t
 
 Anyone who has ROSE tokens can delegate their tokens to a validator and start earning a slice of that validator's staking rewards, based on how many ROSE tokens are delegated.
 
-You can use one of the official [Oasis Wallets](../manage-tokens/oasis-wallets/) to delegate your ROSE tokens to validators. Additionally, [3rd party custody providers and wallets](../manage-tokens/holding-rose-tokens/) also offer you the option of delegating your ROSE tokens.
+You can use one of the official [Oasis Wallets](../manage-tokens/oasis-wallets/README.mdx) to delegate your ROSE tokens to validators. Additionally, [3rd party custody providers and wallets](../manage-tokens/holding-rose-tokens/README.md) also offer you the option of delegating your ROSE tokens.
 
 You can review the list of active Oasis Network validators via the [Oasis Scan](https://www.oasisscan.com/validators) or [Oasis Monitor](https://oasismonitor.com/validators) block explorers or use the built-in facilities of your wallet. You're welcome to delegate your ROSE tokens to any of the active validators.
 

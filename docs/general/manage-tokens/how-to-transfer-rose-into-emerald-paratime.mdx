@@ -11,7 +11,7 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 ## About
 
-[Emerald](../developer-resources/emerald-paratime) is an EVM-compatible blockchain running inside the Oasis ParaTime. Because the balance of your ROSE wallet is stored on the consensus layer - outside of ParaTime's reach - there are special mechanisms for Emerald to access your tokens (formally defined in [ADR 0003](../../../oasis-core/adr/0003-consensus-runtime-token-transfer)).
+[Emerald](../developer-resources/emerald-paratime/README.mdx) is an EVM-compatible blockchain running inside the Oasis ParaTime. Because the balance of your ROSE wallet is stored on the consensus layer - outside of ParaTime's reach - there are special mechanisms for Emerald to access your tokens (formally defined in [ADR 0003](../../../oasis-core/adr/0003-consensus-runtime-token-transfer)).
 
 The _Deposit_ procedure will first create the allowance policy for the provided ParaTime (in our case Emerald) to access a specific amount of your ROSE. Then, the `Deposit` transaction will be executed inside the ParaTime and tokens will be implicitly transferred on the consensus layer from your account to the ParaTime. Finally, if that transaction succeeds, Emerald will mint the same amount of ROSE on its blockchain and fill the provided Ethereum-compatible account address.
 
@@ -21,7 +21,7 @@ Currently, only the Oasis Wallet Browser Extension supports a graphical user int
 
 ## Managing your Emerald account with Oasis Wallet Browser Extension
 
-Firstly, install the Oasis Wallet Browser extension, restore your existing or create a new Oasis wallet as described in the [Oasis Wallet Browser Extension chapter](oasis-wallets/browser-extension#create-a-new-wallet).
+Firstly, install the Oasis Wallet Browser extension, restore your existing or create a new Oasis wallet as described in the [Oasis Wallet Browser Extension chapter](oasis-wallets/browser-extension.md#create-a-new-wallet).
 
 ![Oasis Wallet Extension - chrome web store](<../images/wallet/ext/chrome_web_store.png>)
 
@@ -99,7 +99,7 @@ You can check the balance in the Oasis Wallet extension by opening the "Account 
 
 #### Metamask
 
-You can verify your balance in [Metamask](https://metamask.io) (or a built-in wallet in the Brave browser). First, install the extension in your favorite browser and add the Emerald Network (refer to the Web3 gateway parameters [here](../developer-resources/emerald-paratime#web3-gateway) for either Emerald Mainnet or Testnet). Then, import your Ethereum keypair and your balance should immediately be visible.
+You can verify your balance in [Metamask](https://metamask.io) (or a built-in wallet in the Brave browser). First, install the extension in your favorite browser and add the Emerald Network (refer to the Web3 gateway parameters [here](../developer-resources/emerald-paratime/README.mdx#web3-gateway) for either Emerald Mainnet or Testnet). Then, import your Ethereum keypair and your balance should immediately be visible.
 
 :::info
 
@@ -123,7 +123,7 @@ If you want to transfer ROSE to an exchange and you currently have them deposite
 
 :::info
 
-Advanced users (e.g. those running Emerald ParaTime [compute nodes](../run-a-node/set-up-your-node/run-a-paratime-node)) may need to withdraw ROSE stored in their `oasis1` Emerald account. Oasis Wallet Browser Extension does not support such withdrawals. Read the [Oasis CLI Deposit/Withdraw Tokens to/from ParaTime chapter](advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime) to learn how to use Oasis CLI instead.
+Advanced users (e.g. those running Emerald ParaTime [compute nodes](../run-a-node/set-up-your-node/run-a-paratime-node.mdx)) may need to withdraw ROSE stored in their `oasis1` Emerald account. Oasis Wallet Browser Extension does not support such withdrawals. Read the [Oasis CLI Deposit/Withdraw Tokens to/from ParaTime chapter](advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime.mdx) to learn how to use Oasis CLI instead.
 
 :::
 

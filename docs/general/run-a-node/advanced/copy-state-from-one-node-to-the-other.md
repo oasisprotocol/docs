@@ -6,11 +6,11 @@ If one has access to an Oasis Node that is synced with the latest height, he cou
 
 :::info
 
-Another way to speed up bootstraping an Oasis Node is to sync the node using [State Sync](sync-node-using-state-sync).
+Another way to speed up bootstraping an Oasis Node is to sync the node using [State Sync](sync-node-using-state-sync.md).
 
 :::
 
-To bootstrap a new Oasis Node by copying state from a synced Oasis Node, first set up your new Oasis Node as a [Validator Node](../set-up-your-node/run-validator), a [Non-validator Node](../set-up-your-node/run-non-validator) or a [ParaTime Node](../set-up-your-node/run-a-paratime-node).
+To bootstrap a new Oasis Node by copying state from a synced Oasis Node, first set up your new Oasis Node as a [Validator Node](../set-up-your-node/run-validator.md), a [Non-validator Node](../set-up-your-node/run-non-validator.md) or a [ParaTime Node](../set-up-your-node/run-a-paratime-node.mdx).
 
 :::caution
 

@@ -16,7 +16,7 @@ To hold your ROSE tokens via a private key stored in a file, use the Oasis file-
 
 This is a simpler option since it allows you to import your private key stored in a file into a web browser app or a web browser extension.
 
-Follow the instructions in the [Oasis Wallets](../oasis-wallets/) doc.
+Follow the instructions in the [Oasis Wallets](../oasis-wallets/README.mdx) doc.
 
 :::danger
 
@@ -30,7 +30,7 @@ We recommend ONLY doing this with wallets with small amounts of ROSE tokens or w
 
 This is the most powerful option that allows performing any token-related management task.
 
-Follow the instructions in the [Oasis CLI Tools](oasis-cli-tools/) doc.
+Follow the instructions in the [Oasis CLI Tools](oasis-cli-tools/README.md) doc.
 
 :::caution
 

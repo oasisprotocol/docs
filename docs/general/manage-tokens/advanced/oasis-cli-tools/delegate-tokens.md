@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 
@@ -41,7 +41,7 @@ oasis-node stake account info \
 
 :::info
 
-For a detailed explanation on querying account information, see the [Get Info](get-account-info) section.
+For a detailed explanation on querying account information, see the [Get Info](get-account-info.md) section.
 
 :::
 
@@ -114,7 +114,7 @@ oasis-node consensus submit_tx \
 
 ## Query Our Account's Info Again
 
-Let's check [our account's info](delegate-tokens#query-our-accounts-info) again:
+Let's check [our account's info](delegate-tokens.md#query-our-accounts-info) again:
 
 ```
 General Account:

@@ -10,7 +10,7 @@ The following guide should be used when the network has agreed to do a software 
 
 ## Stop the node at specific epoch
 
-Before an upgrade we will update the [Upgrade Log](../upgrade-log) to specify the epoch height at which the upgrade will take place. Additionally, an upgrade descriptor will be provided which can be used to instruct the node to shutdown and export state at the start of the upgrade epoch.
+Before an upgrade we will update the [Upgrade Log](../upgrade-log.md) to specify the epoch height at which the upgrade will take place. Additionally, an upgrade descriptor will be provided which can be used to instruct the node to shutdown and export state at the start of the upgrade epoch.
 
 To submit the provided upgrade descriptor use the following command:
 
@@ -61,11 +61,11 @@ At the moment, we don't provide state patches.
 
 However, for certain upgrades we use the **`oasis-node debug fix-genesis`** CLI command to automatically migrate/update some parts of the genesis file.
 
-Other parts are updated manually, as described in each upgrade's Proposed State Changes section (e.g. [Cobalt upgrade's Proposed State Changes](../../mainnet/cobalt-upgrade#proposed-state-changes)).
+Other parts are updated manually, as described in each upgrade's Proposed State Changes section (e.g. [Cobalt upgrade's Proposed State Changes](../../mainnet/cobalt-upgrade.md#proposed-state-changes)).
 
 ## Download and Verify the Provided Genesis File
 
-Download the new genesis file linked in the [Network Parameters](../../oasis-network/network-parameters) and save it as `/serverdir/etc/genesis.json`.
+Download the new genesis file linked in the [Network Parameters](../../oasis-network/network-parameters.md) and save it as `/serverdir/etc/genesis.json`.
 
 Then compare the dumped state with the downloaded genesis file:
 
@@ -178,7 +178,7 @@ The following fields were a particular change in this upgrade:
 
 :::info
 
-The balances in the genesis file are enumerated in base units with 1 ROSE token equaling 10^9 (i.e. billion) base units. For more details, see the [Genesis Document](../../oasis-network/genesis-doc#parameters) docs.
+The balances in the genesis file are enumerated in base units with 1 ROSE token equaling 10^9 (i.e. billion) base units. For more details, see the [Genesis Document](../../oasis-network/genesis-doc.md#parameters) docs.
 
 :::
 
@@ -186,7 +186,7 @@ If you obtain the same result, then you have successfully verified the provided 
 
 ## Stop Your Node
 
-This will depend on your process manager. You should stop your [Oasis Node](../prerequisites/oasis-node) process however this is done for your setup.
+This will depend on your process manager. You should stop your [Oasis Node](../prerequisites/oasis-node.md) process however this is done for your setup.
 
 ## Wipe State
 
@@ -196,19 +196,19 @@ We do not suggest that you wipe _all_ state. You might lose node identities and 
 
 :::
 
-Before restarting your node you should wipe consensus state. The process for this is described in the [Wiping Node State](wiping-node-state#state-wipe-and-keep-node-identity) document.
+Before restarting your node you should wipe consensus state. The process for this is described in the [Wiping Node State](wiping-node-state.md#state-wipe-and-keep-node-identity) document.
 
 ## Update Configuration
 
-If the [Upgrade Log](../upgrade-log) provides instructions for updating your node's configuration, update the `/serverdir/etc/config.yml` file accordingly.
+If the [Upgrade Log](../upgrade-log.md) provides instructions for updating your node's configuration, update the `/serverdir/etc/config.yml` file accordingly.
 
 ## Upgrade Oasis Node
 
-Before starting your node again, make sure you upgrade your [Oasis Node](../prerequisites/oasis-node) binary to the current version specified in the [Network Parameters](../../oasis-network/network-parameters).
+Before starting your node again, make sure you upgrade your [Oasis Node](../prerequisites/oasis-node.md) binary to the current version specified in the [Network Parameters](../../oasis-network/network-parameters.md).
 
 ## Start Your Node
 
-This will depend on your process manager. If you don't have a process manager, you should use one. However, to start the node without a process manager you can start the [Oasis Node](../prerequisites/oasis-node) like so:
+This will depend on your process manager. If you don't have a process manager, you should use one. However, to start the node without a process manager you can start the [Oasis Node](../prerequisites/oasis-node.md) like so:
 
 ```bash
 oasis-node --config /serverdir/etc/config.yml

@@ -6,15 +6,15 @@ description: >-
 
 # Run a Consensus Validator Node
 
-[Oasis Network](../oasis-network/overview)'s Consensus Layer is a decentralised set of validator nodes that maintain a proof-of-stake blockchain.
+[Oasis Network](../oasis-network/overview.md)'s Consensus Layer is a decentralised set of validator nodes that maintain a proof-of-stake blockchain.
 
 Hence, it needs a set of distributed node operators that run different nodes (including validator nodes).
 
 ## Technical setup
 
-Make sure your system meets the [Hardware](../run-a-node/prerequisites/hardware-recommendations) prerequisites and has [Oasis Node](../run-a-node/prerequisites/oasis-node) installed.
+Make sure your system meets the [Hardware](../run-a-node/prerequisites/hardware-recommendations.md) prerequisites and has [Oasis Node](../run-a-node/prerequisites/oasis-node.md) installed.
 
-Then proceed by following the [Run a Validator Node](../run-a-node/set-up-your-node/run-validator) guide to:
+Then proceed by following the [Run a Validator Node](../run-a-node/set-up-your-node/run-validator.md) guide to:
 
 * Create your entity.
 * Initialize and configure your node.
@@ -27,24 +27,24 @@ To become a validator on the Oasis Network, you need to have enough tokens stake
 
 :::info
 
-For more information about obtaining information on your entity's account, see the [Account Get Info](../manage-tokens/advanced/oasis-cli-tools/get-account-info) doc.
+For more information about obtaining information on your entity's account, see the [Account Get Info](../manage-tokens/advanced/oasis-cli-tools/get-account-info.md) doc.
 
 :::
 
 Currently, you should have:
 
-* 100 ROSE staked for your entity's registration since that is the [current entity's staking threshold](../oasis-network/genesis-doc#node-and-paratime-token-thresholds).
-* 100 ROSE staked for your validator node's registration since that is the [current validator node's staking threshold](../oasis-network/genesis-doc#node-and-paratime-token-thresholds).
+* 100 ROSE staked for your entity's registration since that is the [current entity's staking threshold](../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds).
+* 100 ROSE staked for your validator node's registration since that is the [current validator node's staking threshold](../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds).
 * Enough ROSE staked to be in the top 110 entities (by stake) so your validator will be elected into the consensus committee.
 
 :::info
 
-The size of the consensus committee (i.e. the validator set) is configured by the [**max_validators** consensus parameter](../oasis-network/genesis-doc#consensus).
+The size of the consensus committee (i.e. the validator set) is configured by the [**max_validators** consensus parameter](../oasis-network/genesis-doc.md#consensus).
 
 :::
 
 :::info
 
-To determine if you are eligible to receive a delegation from the Oasis Protocol Foundation, see the [Delegation Policy](../foundation/delegation-policy) document.
+To determine if you are eligible to receive a delegation from the Oasis Protocol Foundation, see the [Delegation Policy](../foundation/delegation-policy.md) document.
 
 :::

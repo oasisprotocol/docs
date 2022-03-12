@@ -2,7 +2,7 @@
 
 :::caution
 
-Information contained in this document is subject to change. This document is intended to provide a high level, up-to-date overview of key information related to the Oasis Network and the network’s ROSE tokens. For more information, please check out our website at [**www.oasisprotocol.org**](http://www.oasisprotocol.org)
+Information contained in this document is subject to change. This document is intended to provide a high level, up-to-date overview of key information related to the Oasis Network and the network’s ROSE tokens. For more information, please check out our website at [**www.oasisprotocol.org**](https://www.oasisprotocol.org)
 
 :::
 
@@ -126,8 +126,8 @@ The versatility of the ParaTime Layer allows the Oasis Network to expand and gro
 ### Documentation and Support
 
 * [GitHub](https://github.com/oasisprotocol)
-* [Documentation](http://docs.oasis.dev)
-* [Slack](http://www.oasisprotocol.org/slack)
+* [Documentation](https://docs.oasis.dev)
+* [Slack](https://www.oasisprotocol.org/slack)
 * [Telegram](https://t.me/oasisprotocolcommunity)
 * [Medium ](https://medium.com/oasis-protocol-project)
 * [Twitter](https://twitter.com/OasisProtocol)
@@ -166,7 +166,7 @@ The Oasis Foundation has been working with many talented dev teams via our [Gran
 * [Castalise](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-castalise-347f155ab66f): Enabling privacy-preserving predictive analytics on pharmaceutical data
 * [Chainflow Mission Control](https://github.com/Chainflow/oasis-mission-control-grant)
 * [Dead Man’s Switch](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-dead-mans-switch-32d07cdfc057): A decentralized, censorship-resistant tool for whistleblowers
-* [Luther.ai:](http://luther.ai)  Building artificial intelligence to Retain, Reinforce, Recall and ultimately augment your human memory.
+* [Luther.ai:](https://luther.ai)  Building artificial intelligence to Retain, Reinforce, Recall and ultimately augment your human memory.
 * [Oasis.Fish (by Stakefish)](https://oasis.fish/leaderboard/)
 * [Oasis Hubble (by Figment Networks)](https://hubble.figment.network/oasis/chains/amber)
 * [Oasis Monitor (by Everstake)](https://oasismonitor.com)

@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 
@@ -18,7 +18,7 @@ oasis-node stake account nonce \
 
 :::info
 
-This example assumes you have the [jq](http://stedolan.github.io/jq/) tool installed on your system.
+This example assumes you have the [jq](https://stedolan.github.io/jq/) tool installed on your system.
 
 :::
 

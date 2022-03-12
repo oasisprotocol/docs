@@ -1,10 +1,10 @@
 # Using State Sync for Quick Bootstraping
 
-The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a [validator node](../set-up-your-node/run-validator) or a [non-validator node](../set-up-your-node/run-non-validator)) by  using [Tendermint's Light Client protocol](https://docs.tendermint.com/v0.35/tendermint-core/light-client.html). It allows one to initialize a node from a trusted height, its corresponding block's header and a trusted validator set (given in the [genesis document](../../oasis-network/genesis-doc)). It does so by securely updating the node's trusted state by requesting and verifying a minimal set of data from the network's full nodes.
+The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a [validator node](../set-up-your-node/run-validator.md) or a [non-validator node](../set-up-your-node/run-non-validator.md)) by  using [Tendermint's Light Client protocol](https://docs.tendermint.com/v0.35/tendermint-core/light-client.html). It allows one to initialize a node from a trusted height, its corresponding block's header and a trusted validator set (given in the [genesis document](../../oasis-network/genesis-doc.md)). It does so by securely updating the node's trusted state by requesting and verifying a minimal set of data from the network's full nodes.
 
 :::info
 
-If you have access to an Oasis Node that is synced with the latest height, another option to speed bootstraping a new Oasis Node is to [copy state from one node to the other](copy-state-from-one-node-to-the-other).
+If you have access to an Oasis Node that is synced with the latest height, another option to speed bootstraping a new Oasis Node is to [copy state from one node to the other](copy-state-from-one-node-to-the-other.md).
 
 :::
 
@@ -63,7 +63,7 @@ You need to provide publicly exposed gRPC endpoints for **at least 2 different c
 
 :::danger
 
-You need to **delete any existing node state** (if it exists), otherwise state sync will be skipped. To do that, follow the [Wiping Node State](../maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity) instructions.
+You need to **delete any existing node state** (if it exists), otherwise state sync will be skipped. To do that, follow the [Wiping Node State](../maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity) instructions.
 
 If existing node state is found and state sync is skipped, you will see something like the following in your node's logs:
 

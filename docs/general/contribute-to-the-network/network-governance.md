@@ -4,9 +4,9 @@
 
 :::info
 
-If you have a general question on how to use and deploy our software, please read our [Run a Node](../run-a-node/node-operator-overview) section or join our [community Slack](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
+If you have a general question on how to use and deploy our software, please read our [Run a Node](../run-a-node/node-operator-overview.mdx) section or join our [community Slack](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
 
-All community members are welcome and encouraged to commit code, documentation and enhancement proposals to the platform. Contribution guidelines can be found [here](contribution-guidelines).
+All community members are welcome and encouraged to commit code, documentation and enhancement proposals to the platform. Contribution guidelines can be found [here](contribution-guidelines.md).
 
 :::
 
@@ -24,8 +24,8 @@ In order for the community to balance distributed ownership and participation wi
 
 Moving forward, our proposed process for reviewing and approving major protocol updates is:
 
-* **Proposals** for features and roadmap updates can come from anyone in the community in the form of issues ([for minor features](network-governance#minor-feature-requests)) or [Architectural Decision Records](../../../oasis-core/adr) (ADRs, [for major features](network-governance#major-feature-requests)).
-* **Review and discussion of the proposals.** Decisions about the future of the project are made through discussion with all members of the community, from the newest user to the most experienced. All non-sensitive project management discussion takes place in the Oasis Protocol GitHub via issues ([for minor features](network-governance#minor-feature-requests)) and ADRs ([for major features](network-governance#major-feature-requests)).
+* **Proposals** for features and roadmap updates can come from anyone in the community in the form of issues ([for minor features](network-governance.md#minor-feature-requests)) or [Architectural Decision Records](/oasis-core/adr) (ADRs, [for major features](network-governance.md#major-feature-requests)).
+* **Review and discussion of the proposals.** Decisions about the future of the project are made through discussion with all members of the community, from the newest user to the most experienced. All non-sensitive project management discussion takes place in the Oasis Protocol GitHub via issues ([for minor features](network-governance.md#minor-feature-requests)) and ADRs ([for major features](network-governance.md#major-feature-requests)).
 * **Decision making process.** In order to ensure that the project is not bogged down by endless discussion and continual voting, the project operates a policy of lazy consensus. This allows the majority of decisions to be made without resorting to a formal vote.
 
   In general, as long as nobody explicitly opposes a proposal or patch, it is recognised as having the support of the community. For lazy consensus to be effective, it is necessary to allow at least 72 hours before assuming that there are no objections to the proposal. This requirement ensures that everyone is given enough time to read, digest and respond to the proposal.
@@ -42,7 +42,7 @@ If the feature is small - a change to a single piece of functionality, or an add
 
 ### Major Feature Requests
 
-If the feature is more complicated, involves protocol changes, or has potential safety or performance implications, then consider [proposing an Architectural Decision Record (ADR)](../../../oasis-core/adr) and submit it as a pull request to the Oasis Core repository. This will allow a structured review and commenting of the proposed changes. You should aim to get the ADR accepted and merged before starting on implementation. Please keep in mind that the project's committers still have the final word on what is accepted into the project.
+If the feature is more complicated, involves protocol changes, or has potential safety or performance implications, then consider [proposing an Architectural Decision Record (ADR)](/oasis-core/adr) and submit it as a pull request to the Oasis Core repository. This will allow a structured review and commenting of the proposed changes. You should aim to get the ADR accepted and merged before starting on implementation. Please keep in mind that the project's committers still have the final word on what is accepted into the project.
 
 :::info
 
@@ -64,4 +64,4 @@ Otherwise, please, first search between [existing issues in our repository](http
 
 ### Contributing to the Network
 
-If you are interested in contributing to the Oasis Network's codebase or documentation, please [review our contribution guidelines here.](contribution-guidelines)
+If you are interested in contributing to the Oasis Network's codebase or documentation, please [review our contribution guidelines here.](contribution-guidelines.md)

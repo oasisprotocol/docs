@@ -22,7 +22,7 @@ During genesis creation we will only accept a single node.
 
 :::
 
-The following commands should be executed on your local system, where you [initialized your Entity and Node](run-validator#initializing-an-entity):
+The following commands should be executed on your local system, where you [initialized your Entity and Node](run-validator.md#initializing-an-entity):
 
 ```
 mkdir -p package/entity package/node

@@ -199,7 +199,7 @@ sgxs-tools must be compiled with a nightly version of the Rust toolchain since t
 
 Make sure you have the following installed on your system:
 
-* [GCC](http://gcc.gnu.org).
+* [GCC](https://gcc.gnu.org).
 * [Protobuf](https://github.com/protocolbuffers/protobuf) compiler.
 * [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config).
 * [OpenSSL](https://www.openssl.org) development package.
@@ -264,7 +264,7 @@ Detecting SGX, this may take a minute...
   ✔  Enclave attributes
   ✔  Enclave Page Cache
   SGX features
-    ✔  SGX2  ✔  EXINFO  ✔  ENCLV  ✔  OVERSUB  ✔  KSS  
+    ✔  SGX2  ✔  EXINFO  ✔  ENCLV  ✔  OVERSUB  ✔  KSS
     Total EPC size: 92.8MiB
 ✘  Flexible launch control
   ✔  CPU support
@@ -286,7 +286,7 @@ In case you encounter errors, see the [list of common SGX installation issues](h
 
 ## Troubleshooting
 
-See  [the general troubleshooting section](../troubleshooting), before proceeding with ParaTime node-specific troubleshooting.
+See  [the general troubleshooting section](../troubleshooting.md), before proceeding with ParaTime node-specific troubleshooting.
 
 ### Missing `libsgx-aesm-epid-plugin`
 
@@ -296,7 +296,7 @@ If you are encountering the following error message in your node's logs:
 failed to initialize TEE: error while getting quote info from AESMD: aesm: error 30
 ```
 
-Ensure you have all required SGX driver libraries installed as listed in [Install SGX Linux Driver section](../set-up-your-node/run-a-paratime-node#install-sgx-linux-driver). Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
+Ensure you have all required SGX driver libraries installed as listed in [Install SGX Linux Driver section](../set-up-your-node/run-a-paratime-node.mdx#install-sgx-linux-driver). Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
 
 ### Unable to Launch Enclaves
 
@@ -312,4 +312,4 @@ debug: cause: Failed to map enclave into memory.
 debug: cause: Operation not permitted (os error 1)
 ```
 
-Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option](set-up-trusted-execution-environment-tee#ensure-dev-is-not-mounted-with-the-noexec-option).
+Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option](set-up-trusted-execution-environment-tee.md#ensure-dev-is-not-mounted-with-the-noexec-option).

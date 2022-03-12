@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 
@@ -37,4 +37,4 @@ oasis1qq2rlaz3yjfk8gtdhnrfkrz5rrxjnnrzeq7mst0r
 ... output trimmed ...
 ```
 
-For more information on account's address format, see the [Terminology](../../terminology#address) doc.
+For more information on account's address format, see the [Terminology](../../terminology.md#address) doc.

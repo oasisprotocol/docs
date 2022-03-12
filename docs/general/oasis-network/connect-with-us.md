@@ -4,7 +4,7 @@ We are proud of our diverse and talented community from all around the world. We
 
 ## Community Hub
 
-[Visit our Community Hub](../community-resources/community-hub) to learn about upcoming events and initiatives, new ways to get involved with the Oasis Network community, earn ROSE tokens, and much more.
+[Visit our Community Hub](../community-resources/community-hub.md) to learn about upcoming events and initiatives, new ways to get involved with the Oasis Network community, earn ROSE tokens, and much more.
 
 ## General Resources
 

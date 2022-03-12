@@ -18,7 +18,7 @@ We suggest that you build Oasis Node from source yourself for a production deplo
 
 :::
 
-For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](../../oasis-network/network-parameters) page.
+For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](../../oasis-network/network-parameters.md) page.
 
 ## Building From Source
 
@@ -30,7 +30,7 @@ See [Oasis Core's Build Environment Setup and Building](/oasis-core/development-
 
 The code in the [`master` branch](https://github.com/oasisprotocol/oasis-core/tree/master/) might be incompatible with the code used by other nodes in the Mainnet.
 
-Make sure to use the version specified in the [Network Parameters](../../oasis-network/network-parameters).
+Make sure to use the version specified in the [Network Parameters](../../oasis-network/network-parameters.md).
 
 :::
 
@@ -42,7 +42,7 @@ To install the `oasis-node` binary for all users of the system, copy it to `/usr
 
 ## Running ParaTimes
 
-If you intend to [run a ParaTime node](../set-up-your-node/run-a-paratime-node) you will need to additionally install the following software packages:
+If you intend to [run a ParaTime node](../set-up-your-node/run-a-paratime-node.mdx) you will need to additionally install the following software packages:
 
 * [Bubblewrap](https://github.com/projectatomic/bubblewrap) 0.4.1+, needed for creating process sandboxes.
 

@@ -1,6 +1,6 @@
 # Obtain Account Address From Entity's ID
 
-To convert an entity ID (Base64 encoded), e.g. `nyjbDRKAXgUkL6CYfJP0WVA0XbF0pAGuvObZNMufgfY=`, to a [staking account address](../../terminology#address), run:
+To convert an entity ID (Base64 encoded), e.g. `nyjbDRKAXgUkL6CYfJP0WVA0XbF0pAGuvObZNMufgfY=`, to a [staking account address](../../terminology.md#address), run:
 
 ```bash
 oasis-node stake pubkey2address \

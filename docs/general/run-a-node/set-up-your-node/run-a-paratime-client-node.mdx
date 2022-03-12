@@ -9,13 +9,13 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-These instructions are for setting up a _ParaTime client_ node which only observes ParaTime activity and can submit transactions. If you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](run-a-paratime-node). Similarly, if you want to run a _validator_ or a _non-validator_ node instead, see the [instructions for running a validator node](run-validator) or [instructions for running a non-validator node](run-non-validator).
+These instructions are for setting up a _ParaTime client_ node which only observes ParaTime activity and can submit transactions. If you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](run-a-paratime-node.mdx). Similarly, if you want to run a _validator_ or a _non-validator_ node instead, see the [instructions for running a validator node](run-validator.md) or [instructions for running a non-validator node](run-non-validator.md).
 
 :::
 
 :::tip
 
-If you are looking for some concrete ParaTimes that you can run, see [the list of ParaTimes and their parameters](../../contribute-to-the-network/run-a-paratime-node).
+If you are looking for some concrete ParaTimes that you can run, see [the list of ParaTimes and their parameters](../../contribute-to-the-network/run-a-paratime-node.mdx).
 
 :::
 
@@ -29,7 +29,7 @@ This guide will cover setting up your ParaTime client node for the Oasis Network
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) and [Run a Non-validator Node](run-non-validator) sections and have:
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/README.mdx) and [Run a Non-validator Node](run-non-validator.md) sections and have:
 
 * Oasis Node binary installed and configured on your system.
 * The chosen top-level `/node/` working directory prepared. In addition to `etc` and `data` directories, also prepare the following directories:
@@ -48,13 +48,13 @@ Just make sure to use the correct working directory path in the instructions bel
 
 :::tip
 
-Reading the rest of the [ParaTime node setup instructions](run-a-paratime-node) may also be useful.
+Reading the rest of the [ParaTime node setup instructions](run-a-paratime-node.mdx) may also be useful.
 
 :::
 
 :::info
 
-To speed up bootstraping your new node, we recommend [copying node's state from your existing node](../advanced/copy-state-from-one-node-to-the-other) or [syncing it using state sync](../advanced/sync-node-using-state-sync).
+To speed up bootstraping your new node, we recommend [copying node's state from your existing node](../advanced/copy-state-from-one-node-to-the-other.md) or [syncing it using state sync](../advanced/sync-node-using-state-sync.md).
 
 :::
 
@@ -214,10 +214,10 @@ worker:
 Before using this configuration you should collect the following information to replace  the  variables present in the configuration file:.
 
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
-  * You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters).
-* `{{ runtime_id }}`: The [ParaTime identifier](run-a-paratime-node#the-paratime-identifier-and-binary).
-  * You can find the current Oasis-supported ParaTime identifiers in the [Network Paramers](../../foundation/testnet/#paratimes).
-* `{{ non-sgx_runtime_bin_path }}`: Path to the [ParaTime's non-SGX binary](run-a-paratime-node#the-paratime-identifier-and-binary) of the form `/node/runtimes/foo-paratime`.
+  * You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
+* `{{ runtime_id }}`: The [ParaTime identifier](run-a-paratime-node.mdx#the-paratime-identifier-and-binary).
+  * You can find the current Oasis-supported ParaTime identifiers in the [Network Paramers](../../foundation/testnet/README.md#paratimes).
+* `{{ non-sgx_runtime_bin_path }}`: Path to the [ParaTime's non-SGX binary](run-a-paratime-node.mdx#the-paratime-identifier-and-binary) of the form `/node/runtimes/foo-paratime`.
 
 ## Starting the Oasis Node
 

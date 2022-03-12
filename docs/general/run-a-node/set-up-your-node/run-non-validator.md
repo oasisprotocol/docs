@@ -6,7 +6,7 @@ description: This page describes how to run a non-validator node on the Oasis Ne
 
 :::info
 
-These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](run-validator). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](run-a-paratime-node).
+These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](run-validator.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](run-a-paratime-node.mdx).
 
 :::
 
@@ -14,7 +14,7 @@ This guide will cover setting up your non-validator node for the Oasis Network. 
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) section and have the Oasis Node binary installed on your systems.
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/README.mdx) section and have the Oasis Node binary installed on your systems.
 
 ### Creating a Working Directory
 
@@ -33,7 +33,7 @@ mkdir -m700 -p /node/{etc,data}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
+The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
 
 ## Configuration
 
@@ -72,7 +72,7 @@ Before using this configuration you should collect the following information to 
 
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-  You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters).
+  You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
 
 ## Starting the Oasis Node
 

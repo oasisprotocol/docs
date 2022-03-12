@@ -4,7 +4,7 @@
 
 You only need to install the Oasis Remote Signer binary if you intend to configure your Oasis node with a remote signer setup.
 
-An example of such a setup is described in [Using Ledger-backed Consensus Key with a Remote Signer](using-ledger-backed-consensus-key-with-a-remote-signer).
+An example of such a setup is described in [Using Ledger-backed Consensus Key with a Remote Signer](using-ledger-backed-consensus-key-with-a-remote-signer.md).
 
 :::
 
@@ -26,7 +26,7 @@ We suggest that you build Oasis Remote Signer from source yourself for a product
 
 :::
 
-For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](../../oasis-network/network-parameters) page.
+For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](../../oasis-network/network-parameters.md) page.
 
 ## Building From Source
 
@@ -38,7 +38,7 @@ See [Oasis Core's Build Environment Setup and Building](/oasis-core/development-
 
 The code in the [`master` branch](https://github.com/oasisprotocol/oasis-core/tree/master/) might be incompatible with the code used by other nodes in the Mainnet.
 
-Make sure to use the version specified in the [Network Parameters](../../oasis-network/network-parameters).
+Make sure to use the version specified in the [Network Parameters](../../oasis-network/network-parameters.md).
 
 :::
 

@@ -48,10 +48,10 @@ Once installed, the Oasis app will use the [BIP 39](https://github.com/bitcoin/b
 
 This is a simpler option since it allows you to connect to your Ledger wallet via a web browser app or a web browser extension.
 
-Follow the instructions in the [Oasis Wallets](../oasis-wallets/) doc.
+Follow the instructions in the [Oasis Wallets](../oasis-wallets/README.mdx) doc.
 
 ### Using Oasis CLI Tools
 
 This is the most powerful option that allows performing any token-related management task.
 
-Follow the instructions in the [Oasis CLI Tools](../advanced/oasis-cli-tools/) doc.
+Follow the instructions in the [Oasis CLI Tools](../advanced/oasis-cli-tools/README.md) doc.

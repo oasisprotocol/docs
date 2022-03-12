@@ -8,7 +8,7 @@ description: This document provides an overview of the Oasis Network's genesis d
 
 A genesis document contains a set of parameters that outline the initial state of an Oasis network.
 
-The state defined in the network's genesis document contains all the necessary information for launching that particular network (i.e. Mainnet, [Testnet](../foundation/testnet/)), including initial token allocations, network parameters, and more.
+The state defined in the network's genesis document contains all the necessary information for launching that particular network (i.e. Mainnet, [Testnet](../foundation/testnet/README.md)), including initial token allocations, network parameters, and more.
 
 :::info
 
@@ -26,7 +26,7 @@ When Oasis Node loads a genesis file, it converts it to a genesis document.
 
 :::info
 
-Up to date information about the current genesis file and the current genesis document's hash can be found on the [Network Parameters](network-parameters) page.
+Up to date information about the current genesis file and the current genesis document's hash can be found on the [Network Parameters](network-parameters.md) page.
 
 :::
 
@@ -36,7 +36,7 @@ This sections explains some of the key parameters of the genesis document.
 
 :::caution
 
-The concrete parameter values in the following sections pertain to the Mainnet. Other Oasis networks (e.g. [Testnet](../foundation/testnet/)) might use different values.
+The concrete parameter values in the following sections pertain to the Mainnet. Other Oasis networks (e.g. [Testnet](../foundation/testnet/README.md)) might use different values.
 
 :::
 
@@ -50,7 +50,7 @@ The **`staking.token_value_exponent`** parameter defines the token value's base-
 
 ### Height, Genesis Time and Chain ID
 
-The **`height`** parameter specifies the network's initial block height. When a network is upgraded, its height is retained. For example, for the [Cobalt upgrade](../mainnet/cobalt-upgrade) the height of the Mainnet state dump was bumped by 1 from 3,027,600 to 3,027,601.
+The **`height`** parameter specifies the network's initial block height. When a network is upgraded, its height is retained. For example, for the [Cobalt upgrade](../mainnet/cobalt-upgrade.md) the height of the Mainnet state dump was bumped by 1 from 3,027,600 to 3,027,601.
 
 The **`genesis_time`** parameter is an ISO8601 UTC timestamp that specifies when the network is officially going to launch. At the time of genesis, validators are expected to come online and start participating in the consensus process for operating the network. The network starts once validators representing more than 2/3 of stake in the initial consensus committee are online.
 
@@ -66,7 +66,7 @@ It is important to note that this value alone doesn't dictate the version of an 
 
 :::caution
 
-The **`epochtime`**section will be removed in the [Cobalt upgrade](../mainnet/cobalt-upgrade) since it became obsolete with the new [improved random beacon](../../../oasis-core/adr/0007-improved-random-beacon). It will be replaced with the new **`beacon`** section described [below](../mainnet/cobalt-upgrade#beacon).
+The **`epochtime`**section will be removed in the [Cobalt upgrade](../mainnet/cobalt-upgrade.md) since it became obsolete with the new [improved random beacon](/oasis-core/adr/0007-improved-random-beacon). It will be replaced with the new **`beacon`** section described [below](../mainnet/cobalt-upgrade.md#beacon).
 
 :::
 
@@ -125,7 +125,7 @@ For example, a staking transfer transaction of size 230 bytes would have a total
 The **`roothash`** object contains parameters related to the [Root Hash service](/oasis-core/consensus/services/roothash) and a minimal state related to the runtimes.
 
 * **`roothash.params.max_runtime_messages` ** The global limit on the number of [messages](/oasis-core/runtime/messages) that can be emitted in each round by the runtime. The value is set to 256.
-* **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](../../../oasis-core/adr/0005-runtime-compute-slashing). The value is set to 100.
+* **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/oasis-core/adr/0005-runtime-compute-slashing). The value is set to 100.
 
 ### Staking
 
@@ -207,12 +207,12 @@ The **`scheduler`** object contains parameters controlling how various committee
 
 The **`beacon`** object contains parameters controlling the network's random beacon.
 
-* **`beacon.base`** Network's starting epoch. When a network is upgraded, its epoch is retained. For example, for the [Cobalt upgrade](../mainnet/cobalt-upgrade) the epoch of the Mainnet state dump was bumped by 1 from 5,046 to 5,047.
-* **`beacon.params.backend`** The random beacon backend to use. The value is set to "pvss" indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](../../../oasis-core/adr/0007-improved-random-beacon) should be used.
+* **`beacon.base`** Network's starting epoch. When a network is upgraded, its epoch is retained. For example, for the [Cobalt upgrade](../mainnet/cobalt-upgrade.md) the epoch of the Mainnet state dump was bumped by 1 from 5,046 to 5,047.
+* **`beacon.params.backend`** The random beacon backend to use. The value is set to "pvss" indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/oasis-core/adr/0007-improved-random-beacon) should be used.
 
 #### PVSS Beacon
 
-These parameters control the behavior of the new [improved random beacon](../../../oasis-core/adr/0007-improved-random-beacon) introduced in the [Cobalt upgrade](../mainnet/cobalt-upgrade):
+These parameters control the behavior of the new [improved random beacon](/oasis-core/adr/0007-improved-random-beacon) introduced in the [Cobalt upgrade](../mainnet/cobalt-upgrade.md):
 
 * **`beacon.params.pvss_parameters.participants`** The number of participants to be selected for each beacon generation protocol round. The value is set to 20.
 * **`beacon.params.pvss_parameters.threshold`** The minimum number of participants which must successfully contribute entropy for the final output to be considered valid. The value is set to 10.
@@ -222,7 +222,7 @@ These parameters control the behavior of the new [improved random beacon](../../
 
 ### **Governance**
 
-The **`governance`** object contains parameters controlling the network's [on-chain governance](/oasis-core/consensus/services/governance) introduced in the [Cobalt upgrade](../mainnet/cobalt-upgrade):
+The **`governance`** object contains parameters controlling the network's [on-chain governance](/oasis-core/consensus/services/governance) introduced in the [Cobalt upgrade](../mainnet/cobalt-upgrade.md):
 
 * **`governance.params.min_proposal_deposit`** The amount of tokens (in base units) that are deposited when creating a new proposal. The value is set to 10,000,000,000,000 base units, or 10,000 ROSE tokens.
 * **`governance.params.voting_period`** The number of epochs after which the voting for a proposal is closed and the votes are tallied. The value is set to 168, which is expected to be approximately 7 days.

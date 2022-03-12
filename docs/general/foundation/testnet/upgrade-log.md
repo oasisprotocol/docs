@@ -18,7 +18,7 @@ We expect the Testnet network to reach this epoch at around 2022-03-03 12:45 UTC
 
 ### Instructions
 
-* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance.md) for details on voting for proposals.
 
 :::caution
 
@@ -43,7 +43,7 @@ link soon after reaching the upgrade epoch.
 * Replace the old genesis file with the new Testnet genesis file.
   The [state changes](#state-changes) are described and explained below.
 * Replace the old version of Oasis Node with version [22.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0).
-* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Perform any needed [configuration changes](#configuration-changes) described below.
 * Start your node.
 
@@ -61,7 +61,7 @@ additional steps.
 The way ParaTime binaries are distributed has changed so that all required
 artifacts are contained in a single archive called the Oasis Runtime Container
 and have the `.orc` extension. Links to updated ParaTime binaries will be
-published on the [Testnet network parameters page](.) for their respective
+published on the [Testnet network parameters page](./README.md) for their respective
 ParaTimes.
 
 The configuration is simplified as the `runtime.paths` now only needs to list
@@ -148,7 +148,7 @@ The following parts of the genesis document will be updated:
 
 :::info
 
-For a more detailed explanation of the parameters below, see the [Genesis Document](../../oasis-network/genesis-doc#parameters) docs.
+For a more detailed explanation of the parameters below, see the [Genesis Document](../../oasis-network/genesis-doc.md#parameters) docs.
 
 :::
 
@@ -173,7 +173,7 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
   command.
 * Inactive registered entities in **`registry.entities`** (and their
   corresponding nodes in **`registry.nodes`**) that don't pass the
-  [minimum staking thresholds](../../oasis-network/genesis-doc#node-and-paratime-token-thresholds) will be removed.
+  [minimum staking thresholds](../../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds) will be removed.
   The removal will be done automatically with the `oasis-node debug fix-genesis`
   command.
 
@@ -255,14 +255,14 @@ We expect the Testnet network to reach this epoch at around 2021-08-11 08:50 UTC
 
 The [Oasis Core 21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) release contains the [`consensus-params-update-2021-08` upgrade handler](https://github.com/oasisprotocol/oasis-core/blob/v21.2.8/go/upgrade/migrations/consensus_parameters.go) which will update the following parameters in the consensus layer:
 
-* **`staking.params.max_allowances` ** specifies the maximum number of allowances on account can store. It will be set to `16` (default value is `0`) to enable support for beneficiary allowances which are required to transfer tokens into a ParaTime. _Note that this has already been the case on Testnet since the_ [_2021-06-23 upgrade_](upgrade-log#2021-06-23-upgrade)_._
+* **`staking.params.max_allowances` ** specifies the maximum number of allowances on account can store. It will be set to `16` (default value is `0`) to enable support for beneficiary allowances which are required to transfer tokens into a ParaTime. _Note that this has already been the case on Testnet since the_ [_2021-06-23 upgrade_](upgrade-log.md#2021-06-23-upgrade)_._
 * **`staking.params.gas_costs` ** , **`governance.params.gas_costs`** and **`roothash.params.gas_costs`** specify gas costs for various types of staking, governance and roothash transactions. Gas costs for transactions that were missing gas costs will be added.
 * **`scheduler.params.max_validators`** is the maximum size of the consensus committee (i.e. the validator set). It will be increased to`110` (it was set to `100` previously).
 
 ### Instructions - Before Upgrade System Preparation
 
 * This upgrade will upgrade **Oasis Core** to version **21.2.8** which:
-  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../../run-a-node/prerequisites/system-configuration#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
+  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../../run-a-node/prerequisites/system-configuration.md#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
 * Stop your node, replace the old version of Oasis Node with version [21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) and restart your node.
 
 :::tip
@@ -305,8 +305,8 @@ We expect the Testnet network to reach this epoch at around 2021-06-23 14:30 UTC
 
 ### Instructions
 
-* See [Before upgrade](upgrade-log#before-upgrade) section for required steps to be done before upgrade.
-* (optional) Vote for the upgrade. On 2021-06-21, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **7553.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance) for details on voting for proposals.
+* See [Before upgrade](upgrade-log.md#before-upgrade) section for required steps to be done before upgrade.
+* (optional) Vote for the upgrade. On 2021-06-21, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **7553.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance.md) for details on voting for proposals.
 
 :::info
 
@@ -420,8 +420,8 @@ We expect the Testnet network to reach this epoch at around 2021-04-13 12:00 UTC
 
 ### Instructions
 
-* Runtime operators see [Before upgrade](upgrade-log#before-upgrade) section for required steps to be done before upgrade.
-* (optional) Vote for the upgrade. On 2021-04-12 an upgrade proposal will be proposed which (if accepted) will schedule a network shutdown on epoch **5662.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance) for details on voting for proposals.
+* Runtime operators see [Before upgrade](upgrade-log.md#before-upgrade) section for required steps to be done before upgrade.
+* (optional) Vote for the upgrade. On 2021-04-12 an upgrade proposal will be proposed which (if accepted) will schedule a network shutdown on epoch **5662.** See the [Governance documentation](../../run-a-node/set-up-your-node/governance.md) for details on voting for proposals.
 
 :::caution
 
@@ -441,7 +441,7 @@ Testnet state at epoch **5662** will be exported and migrated to a 21.1.x compat
 
 * Replace the old genesis file with the new Testnet genesis file.
 * Replace the old version of Oasis Node with version [21.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.1).
-* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Start your node.
 
 ### Before upgrade
@@ -497,7 +497,7 @@ We expect the Testnet network to reach this epoch at around 2021-03-24 11:30 UTC
 
 ### Instructions
 
-*   (optional) To ensure your node will stop at epoch **5128** [submit the following upgrade descriptor](../../run-a-node/maintenance-guides/handling-network-upgrades#stop-the-node-at-specific-epoch) at any time before the upgrade:
+*   (optional) To ensure your node will stop at epoch **5128** [submit the following upgrade descriptor](../../run-a-node/maintenance-guides/handling-network-upgrades.md#stop-the-node-at-specific-epoch) at any time before the upgrade:
 
     ```
     {
@@ -515,17 +515,17 @@ Testnet state at epoch **5128** will be exported and migrated to a 21.0.x compat
 
 :::
 
-* (optional) Verify the provided Testnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades#download-and-verify-the-provided-genesis-file) guide.
+* (optional) Verify the provided Testnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
 * Replace the old genesis file with the new Testnet genesis file.
 * Stop your node (if you haven't stopped it already by submitting the upgrade descriptor).
 * Replace the old version of Oasis Node with version [21.0.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.0.1).
-* Update your node's configuration or perform any additional needed steps as per [Additional Steps](./#additional-steps) below.
-* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* Update your node's configuration or perform any additional needed steps as per [Additional Steps](./README.md#additional-steps) below.
+* [Wipe state](../../run-a-node/maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Start your node.
 
 :::info
 
-For more detailed instructions, see the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades) guide.
+For more detailed instructions, see the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades.md) guide.
 
 :::
 

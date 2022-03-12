@@ -40,13 +40,13 @@ If you can dynamically change the amount of RAM a node is provisioned, then feel
 
 The network accumulates state over time. The speed at which the state grows depends on the network's usage.
 
-For example, the Mainnet accumulated over 80 GB of state in 5+ months between [Mainnet launch](../../mainnet/previous-upgrades/mainnet-upgrade) (Nov 18, 2020) and [Cobalt upgrade](../../mainnet/cobalt-upgrade) (Apr 28, 2021).
+For example, the Mainnet accumulated over 80 GB of state in 5+ months between [Mainnet launch](../../mainnet/previous-upgrades/mainnet-upgrade.md) (Nov 18, 2020) and [Cobalt upgrade](../../mainnet/cobalt-upgrade.md) (Apr 28, 2021).
 
 :::
 
 :::info
 
-Node doesn't need to keep the state from before the latest dump & restore upgrade (e.g. before the [Cobalt upgrade](../../mainnet/cobalt-upgrade)). Historical state can be archived separately.
+Node doesn't need to keep the state from before the latest dump & restore upgrade (e.g. before the [Cobalt upgrade](../../mainnet/cobalt-upgrade.md)). Historical state can be archived separately.
 
 :::
 
@@ -54,7 +54,7 @@ Node doesn't need to keep the state from before the latest dump & restore upgrad
 
 It is also possible to configure the Node to _not_ keep all the state from the genesis onward, reducing the amount of storage needed to keep the network's state.
 
-To do that, set the **`consensus.tendermint.abci.prune.strategy`** and **`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your [Node's configuration](../set-up-your-node/run-validator#configuring-the-oasis-node).
+To do that, set the **`consensus.tendermint.abci.prune.strategy`** and **`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your [Node's configuration](../set-up-your-node/run-validator.md#configuring-the-oasis-node).
 
 :::
 

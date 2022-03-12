@@ -8,7 +8,7 @@ This guide will cover setting up a seed node for the Oasis Network. This guide a
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites Guide](../prerequisites/oasis-node) and understand how to use the `oasis-node` binary.
+Before following this guide, make sure you've followed the [Prerequisites Guide](../prerequisites/oasis-node.md) and understand how to use the `oasis-node` binary.
 
 ### Creating a Working Directory
 
@@ -27,7 +27,7 @@ mkdir -m700 -p /node/{etc,data}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
+The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
 
 ## Configuration
 

@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 

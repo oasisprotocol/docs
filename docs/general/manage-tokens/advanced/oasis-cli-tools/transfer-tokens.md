@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites) and [Setup](setup) sections.
+This example assumes you have read and followed the instructions in the [Prerequisites](prerequisites.md) and [Setup](setup.md) sections.
 
 :::
 
@@ -13,7 +13,7 @@ Let's assume:
 
 :::info
 
-To convert your entity's ID to a staking account address, see the [Obtain Account Address From Entity's ID](address#obtain-account-address-from-entitys-id) section.
+To convert your entity's ID to a staking account address, see the [Obtain Account Address From Entity's ID](address.md#obtain-account-address-from-entitys-id) section.
 
 :::
 
@@ -29,7 +29,7 @@ oasis-node stake account info \
 
 :::info
 
-For a detailed explanation on querying account information, see the [Get Info](get-account-info) section.
+For a detailed explanation on querying account information, see the [Get Info](get-account-info.md) section.
 
 :::
 
@@ -130,7 +130,7 @@ oasis-node consensus submit_tx \
 
 ## Query Both Accounts' Info
 
-Let's check both accounts' info, [first ours](transfer-tokens#query-our-accounts-info):
+Let's check both accounts' info, [first ours](transfer-tokens.md#query-our-accounts-info):
 
 ```
 General Account:
@@ -146,7 +146,7 @@ Escrow Account:
   ...
 ```
 
-and then the [destination's](transfer-tokens#query-destination-accounts-info):
+and then the [destination's](transfer-tokens.md#query-destination-accounts-info):
 
 ```
 General Account:

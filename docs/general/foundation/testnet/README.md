@@ -14,7 +14,7 @@ description: >-
 
 :::info
 
-On the Testnet, TEST tokens are in use -- if you need some to test your clients, nodes or paratimes, feel free to request them on [**#testnet** in the Community Slack](../../oasis-network/connect-with-us.md). Note that these are test-only tokens and account balances, as any other state, may be frequently reset.
+On the Testnet, TEST tokens are in use -- if you need some to test your clients, nodes or paratimes, feel free to use our [Testnet Faucet](https://faucet.testnet.oasis.dev). Note that these are test-only tokens and account balances, as any other state, may be frequently reset.
 
 :::
 

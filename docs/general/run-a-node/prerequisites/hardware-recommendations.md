@@ -1,46 +1,92 @@
 # Hardware Requirements
 
-:::info
+The Oasis Network is composed of multiple classes of nodes that participate in
+different committees.
 
-The hardware requirements listed on this page are the suggested **minimum requirements**. It might be possible to configure a system with less resources, but you run the risk of being underprovisioned and thereby prone to loss of stake.
-
-:::
-
-The Oasis Network is composed of multiple classes of nodes that participate in different committees. The majority of committees have common system configurations for the participant nodes.
-
-## Consensus Nodes <a id="suggested-minimum-configurations"></a>
-
-To run a non-validator or a validator consensus node, your system should meet the following minimum system requirements:
-
-* 2.0 GHz x86-64 CPU
+This page describes the **minimum** and **recommended** system hardware
+requirements for running different types of nodes on the Oasis Network.
 
 :::caution
 
-The CPU must have [AES-NI](https://en.wikipedia.org/wiki/AES_instruction_set) support.
+If you configure a system with less resources than the recommended values, you
+run the risk of being underprovisioned and causing proposer node timeouts.
+This could result in losing stake.
 
 :::
 
-* 4 GB ECC RAM
+## Consensus Nodes <a id="suggested-minimum-configurations"></a>
+
+To run a non-validator or a validator consensus node, your system should meet
+the following requirements:
+
+### CPU
+
+* Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
+* Recommended: 2.0 GHz+ x86-64 CPU with 2 cores or 2 such virtual CPUs with
+  [AES instruction set] and [AVX2] support
+
+:::caution
+
+The [AES instruction set] support is required by [Deoxys-II-256-128], a
+Misuse-Resistant Authenticated Encryption (MRAE) algorithm, which is used for
+encrypting ParaTime's state.
+
+:::
 
 :::info
 
-Ordinary node operation can work with 2 GB of RAM.
-
-However, at certain time points, it absolutely requires at least 4 GB of RAM. Examples of such more resource intensive time points are the initial state sync, BadgerDB migration when upgrading a node to Oasis Core 21.2.x, ...
-
-If you can dynamically change the amount of RAM a node is provisioned, then feel free to downscale/upscale it as you see fit.
+The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
+signature verification which in turn makes a node sync faster.
 
 :::
 
+[AES instruction set]: https://en.wikipedia.org/wiki/AES_instruction_set
+[Deoxys-II-256-128]: https://sites.google.com/view/deoxyscipher
+[AVX2]:
+  https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2
 
+### Memory
 
-* 100+ GB High Speed Storage
+* Minimum: 4 GB of ECC RAM
+* Recommended: 8 GB of ECC RAM
+
+:::info
+
+Ordinary node operation can work with less memory, e.g. 4 GB of RAM.
+
+However, at certain time points, the node will absolutely require more memory.
+Examples of such more resource intensive time points are the initial state sync,
+BadgerDB migration when upgrading a node to Oasis Core 21.2.x, generating
+storage checkpoints with BadgerDB, periodic BadgerDB compactions...
+
+If the system will not have enough memory, that will result in the Oasis node
+process being killed forcefully by the OOM process.
+Oasis node being killed forcefully could lead to BadgerDB state corruption
+and/or losing stake.
+
+:::
+
+### Storage
+
+* Minimum: 300+ GB of SSD or NVMe fast storage
+* Recommended: 500+ GB of SSD or NVMe fast storage
+
+:::caution
+
+Consensus state is stored in an embedded [BadgerDB](https://dgraph.io/docs/badger/)
+database which was [designed to run on SSDs](https://dgraph.io/docs/badger/design/).
+
+Hence, we **strongly discourage** trying to run a node that stores data
+**on classical HDDs**.
+
+:::
 
 :::info
 
 The network accumulates state over time. The speed at which the state grows depends on the network's usage.
 
-For example, the Mainnet accumulated over 80 GB of state in 5+ months between [Mainnet launch](../../mainnet/previous-upgrades/mainnet-upgrade.md) (Nov 18, 2020) and [Cobalt upgrade](../../mainnet/cobalt-upgrade.md) (Apr 28, 2021).
+For example, the Mainnet accumulated over 250 GB of state in ~11 months between
+the [Cobalt upgrade](../../mainnet/cobalt-upgrade.md) (Apr 28, 2021) and Mar 15, 2022.
 
 :::
 
@@ -60,22 +106,99 @@ To do that, set the **`consensus.tendermint.abci.prune.strategy`** and **`consen
 
 ## ParaTime Nodes
 
-To run a ParaTime node, your system should meet the following minimum system requirements:
+To run a ParaTime node, your system should meet the following requirements:
 
-* 2.0 GHz x86-64 CPU
+### CPU
 
-:::caution
-
-The CPU must have [AES-NI](https://en.wikipedia.org/wiki/AES_instruction_set) support.
-
-:::
+* Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
+* Recommended: 2.0 GHz+ x86-64 CPU with 2 cores or 2 such virtual CPUs with
+  [AES instruction set] and [AVX2] support
 
 :::caution
 
-If you want to be able to run ParaTimes which require the use of a Trusted Execution Environment (TEE), the CPU needs to support Intel SGX.
+The [AES instruction set] support is required by [Deoxys-II-256-128], a
+Misuse-Resistant Authenticated Encryption (MRAE) algorithm, which is used for
+encrypting ParaTime's state.
 
 :::
 
-* 8 GB ECC RAM
-* 100+ GB High Speed Storage
+:::info
 
+The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
+signature verification which in turn makes a node sync faster.
+
+:::
+
+[AES instruction set]: https://en.wikipedia.org/wiki/AES_instruction_set
+[Deoxys-II-256-128]: https://sites.google.com/view/deoxyscipher
+[AVX2]:
+  https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2
+
+:::info
+
+If you want to run ParaTimes which require the use of a Trusted Execution
+Environment (TEE), the CPU also needs to support [Intel SGX].
+
+:::
+
+[Intel SGX]:
+  https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
+
+### Memory
+
+* Minimum: 8 GB of ECC RAM
+* Recommended: 16 GB of ECC RAM
+
+:::info
+
+Ordinary node operation can work with less memory, e.g. 8 GB of RAM.
+
+However, at certain time points, the node will absolutely require more memory.
+Examples of such more resource intensive time points are the initial state sync,
+generating storage checkpoints with BadgerDB, periodic BadgerDB compactions...
+
+If the system will not have enough memory, that will result in the Oasis node
+process being killed forcefully by the OOM process.
+Oasis node being killed forcefully could lead to BadgerDB state corruption
+and/or losing stake.
+
+:::
+
+### Storage
+
+* Minimum: 500+ GB of SSD or NVMe fast storage
+* Recommended: 800+ GB of SSD or NVMe fast storage
+
+:::caution
+
+Consensus state is stored in an embedded [BadgerDB](https://dgraph.io/docs/badger/)
+database which was [designed to run on SSDs](https://dgraph.io/docs/badger/design/).
+
+Hence, we **strongly discourage** trying to run a node that stores data
+**on classical HDDs**.
+
+:::
+
+:::info
+
+The consensus layer and the ParaTimes accumulate state over time.
+The speed at which the state grows depends on the network's and ParaTimes' usage.
+
+For example, a node running the Emerald ParaTime on the Mainnet would currently
+(Mar 15, 2022)
+need to store:
+
+- over 250 GBs of consensus state accumulated in ~11 months since the
+[Cobalt upgrade](../../mainnet/cobalt-upgrade.md) (Apr 28, 2021).
+- over 125 GBs of Emerald ParaTime state accumulated in ~4 months since the
+[Emerald Mainnet launch](https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9) (Nov 18, 2021).
+
+:::
+
+:::info
+
+It is also possible to configure the Node to _not_ keep all the state from the genesis onward, reducing the amount of storage needed to keep the network's state.
+
+To do that, set the **`consensus.tendermint.abci.prune.strategy`** and **`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your [Node's configuration](../set-up-your-node/run-validator.md#configuring-the-oasis-node).
+
+:::

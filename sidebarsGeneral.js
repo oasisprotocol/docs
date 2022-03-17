@@ -96,6 +96,7 @@ const sidebars = {
             'run-a-node/maintenance-guides/handling-network-upgrades',
             'run-a-node/maintenance-guides/adding-or-removing-nodes',
             'run-a-node/maintenance-guides/refreshing-certificates',
+            'run-a-node/maintenance-guides/shutting-down-a-node',
           ]
         },
         'run-a-node/troubleshooting',

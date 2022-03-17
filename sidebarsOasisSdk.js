@@ -34,6 +34,7 @@ const sidebars = {
         'runtime/minimal-runtime',
         'runtime/modules',
         'runtime/reproducibility',
+        'runtime/transactions',
       ],
     },
     {

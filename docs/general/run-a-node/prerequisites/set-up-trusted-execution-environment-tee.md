@@ -241,13 +241,13 @@ If you want to avoid directly executing a shell script fetched the internet, you
 Install Rust nightly with:
 
 ```
-rustup install nightly
+rustup install nightly-2021-11-04
 ```
 
 ### Build and Install sgxs-tools
 
 ```bash
-cargo +nightly install sgxs-tools
+cargo +nightly-2021-11-04 install sgxs-tools
 ```
 
 ### Run `sgx-detect` Tool

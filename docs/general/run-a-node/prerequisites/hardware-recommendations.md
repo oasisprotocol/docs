@@ -73,8 +73,8 @@ and/or losing stake.
 
 :::caution
 
-Consensus state is stored in an embedded [BadgerDB](https://dgraph.io/docs/badger/)
-database which was [designed to run on SSDs](https://dgraph.io/docs/badger/design/).
+Consensus state is stored in an embedded [BadgerDB] database which was
+[designed to run on SSDs][badgerdb-ssds].
 
 Hence, we **strongly discourage** trying to run a node that stores data
 **on classical HDDs**.
@@ -83,26 +83,38 @@ Hence, we **strongly discourage** trying to run a node that stores data
 
 :::info
 
-The network accumulates state over time. The speed at which the state grows depends on the network's usage.
+The network accumulates state over time. The speed at which the state grows
+depends on the network's usage.
 
 For example, the Mainnet accumulated over 250 GB of state in ~11 months between
-the [Cobalt upgrade](../../mainnet/cobalt-upgrade.md) (Apr 28, 2021) and Mar 15, 2022.
+the [Cobalt upgrade] (Apr 28, 2021) and Mar 15, 2022.
 
 :::
 
 :::info
 
-Node doesn't need to keep the state from before the latest dump & restore upgrade (e.g. before the [Cobalt upgrade](../../mainnet/cobalt-upgrade.md)). Historical state can be archived separately.
+Node doesn't need to keep the state from before the latest dump & restore
+upgrade (e.g. before the [Cobalt upgrade]). Historical state can be archived
+separately.
 
 :::
 
 :::info
 
-It is also possible to configure the Node to _not_ keep all the state from the genesis onward, reducing the amount of storage needed to keep the network's state.
+It is also possible to configure the Node to _not_ keep all the state from the
+genesis onward, reducing the amount of storage needed to keep the network's
+state.
 
-To do that, set the **`consensus.tendermint.abci.prune.strategy`** and **`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your [Node's configuration](../set-up-your-node/run-validator.md#configuring-the-oasis-node).
+To do that, set the **`consensus.tendermint.abci.prune.strategy`** and
+**`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your
+[node's configuration].
 
 :::
+
+[BadgerDB]: https://dgraph.io/docs/badger/
+[badgerdb-ssds]: https://dgraph.io/docs/badger/design/
+[Cobalt upgrade]: ../../mainnet/cobalt-upgrade.md
+[node's configuration]: ../set-up-your-node/run-validator.md#configuring-the-oasis-node
 
 ## ParaTime Nodes
 
@@ -128,11 +140,6 @@ The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
 signature verification which in turn makes a node sync faster.
 
 :::
-
-[AES instruction set]: https://en.wikipedia.org/wiki/AES_instruction_set
-[Deoxys-II-256-128]: https://sites.google.com/view/deoxyscipher
-[AVX2]:
-  https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2
 
 :::info
 
@@ -171,8 +178,8 @@ and/or losing stake.
 
 :::caution
 
-Consensus state is stored in an embedded [BadgerDB](https://dgraph.io/docs/badger/)
-database which was [designed to run on SSDs](https://dgraph.io/docs/badger/design/).
+Consensus and ParaTime state is stored in an embedded [BadgerDB] database which
+was [designed to run on SSDs].
 
 Hence, we **strongly discourage** trying to run a node that stores data
 **on classical HDDs**.
@@ -189,16 +196,23 @@ For example, a node running the Emerald ParaTime on the Mainnet would currently
 need to store:
 
 - over 250 GBs of consensus state accumulated in ~11 months since the
-[Cobalt upgrade](../../mainnet/cobalt-upgrade.md) (Apr 28, 2021).
+[Cobalt upgrade] (Apr 28, 2021).
 - over 125 GBs of Emerald ParaTime state accumulated in ~4 months since the
-[Emerald Mainnet launch](https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9) (Nov 18, 2021).
+[Emerald Mainnet launch] (Nov 18, 2021).
 
 :::
 
 :::info
 
-It is also possible to configure the Node to _not_ keep all the state from the genesis onward, reducing the amount of storage needed to keep the network's state.
+It is also possible to configure the Node to _not_ keep all the state from the
+genesis onward, reducing the amount of storage needed to keep the network's
+state.
 
-To do that, set the **`consensus.tendermint.abci.prune.strategy`** and **`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your [Node's configuration](../set-up-your-node/run-validator.md#configuring-the-oasis-node).
+To do that, set the **`consensus.tendermint.abci.prune.strategy`** and
+**`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your
+[node's configuration].
 
 :::
+
+[Emerald Mainnet launch]:
+  https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9

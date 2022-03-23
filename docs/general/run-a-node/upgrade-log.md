@@ -219,7 +219,7 @@ At least **90%** of the votes need to be **yes** votes for a proposal to be acce
 
 :::
 
-This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](../mainnet/cobalt-upgrade.md).
+This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md).
 
 The Oasis Protocol Foundation has submitted an [upgrade governance proposal](/oasis-core/consensus/services/governance#submit-proposal) with the following contents:
 

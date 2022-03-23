@@ -113,7 +113,7 @@ To do that, set the **`consensus.tendermint.abci.prune.strategy`** and
 
 [BadgerDB]: https://dgraph.io/docs/badger/
 [badgerdb-ssds]: https://dgraph.io/docs/badger/design/
-[Cobalt upgrade]: ../../mainnet/cobalt-upgrade.md
+[Cobalt upgrade]: ../../mainnet/previous-upgrades/cobalt-upgrade.md
 [node's configuration]: ../set-up-your-node/run-validator.md#configuring-the-oasis-node
 
 ## ParaTime Nodes

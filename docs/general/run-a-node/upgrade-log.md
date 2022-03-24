@@ -6,6 +6,179 @@ description: >-
 
 # Upgrade Log
 
+## 2022-04-11 (9:00 UTC) - Damask Upgrade
+
+* **Upgrade height:** upgrade is scheduled to happen at epoch **13402**.
+
+:::info
+
+We expect the Mainnet network to reach this epoch at around 2022-04-11 9:00
+UTC.
+
+:::
+
+### Instructions - Voting
+
+:::caution
+
+**Voting for the upgrade proposal will end at epoch 13152. We expect the Mainnet
+network to reach this epoch at around 2022-03-31 21:00 UTC**.
+
+:::
+
+:::info
+
+At this time only entities which have active validator nodes scheduled in the
+validator set are eligible to vote for governance proposals.
+
+:::
+
+:::danger
+
+At least **75%** of the total **voting power** of the validator set needs to
+cast a vote on the upgrade proposal for the result to be valid.
+
+At least **90%** of the vote needs to be **yes** votes for a proposal to be
+accepted.
+
+:::
+
+The Oasis Protocol Foundation has submitted an [upgrade governance proposal]
+with the following contents:
+
+```yaml
+{
+   "v": 1,
+    "handler": "mainnet-upgrade-2022-04-11",
+    "target": {
+        "consensus_protocol": {
+            "major": 5
+        },
+        "runtime_host_protocol": {
+            "major": 5
+        },
+        "runtime_committee_protocol": {
+            "major": 4
+        }
+    },
+    "epoch": 13402
+}
+```
+
+To view the proposal yourself, you can run the following command on your online
+Oasis Node:
+
+```bash
+oasis-node governance list_proposals -a $ADDR
+```
+
+where `$ADDR` represents the path to the internal Oasis Node UNIX socket
+prefixed with `unix:` (e.g.`unix:/serverdir/node/internal.sock`).
+
+The output should look like:
+
+```yaml
+[
+  {
+    "id": 2,
+    "submitter": "oasis1qpydpeyjrneq20kh2jz2809lew6d9p64yymutlee",
+    "state": "active",
+    "deposit": "10000000000000",
+    "content": {
+      "upgrade": {
+        "v": 1,
+        "handler": "mainnet-upgrade-2022-04-11",
+        "target": {
+          "consensus_protocol": {
+            "major": 5
+          },
+          "runtime_host_protocol": {
+            "major": 5
+          },
+          "runtime_committee_protocol": {
+            "major": 4
+          }
+        },
+        "epoch": 13402
+      }
+    },
+    "created_at": 12984,
+    "closes_at": 13152
+  }
+]
+```
+
+Obtain [your entity's nonce] and store it in the `NONCE` variable. You can do
+that by running:
+
+```yaml
+ENTITY_DIR=<PATH-TO-YOUR-ENTITY>
+ADDRESS=$(oasis-node stake pubkey2address --public_key \
+  $(cat $ENTITY_DIR/entity.json | jq .id -r))
+NONCE=$(oasis-node stake account nonce --stake.account.address $ADDRESS -a $ADDR)
+```
+
+where `<PATH-TO-YOUR-ENTITY>` is the path to your entity's descriptor, e.g.
+`/serverdir/node/entity/`.
+
+To vote for the proposal, use the following command to generate a suitable
+transaction:
+
+```bash
+oasis-node governance gen_cast_vote \
+  "${TX_FLAGS[@]}" \
+  --vote.proposal.id 2 \
+  --vote yes \
+  --transaction.file tx_cast_vote.json \
+  --transaction.nonce $NONCE \
+  --transaction.fee.gas 2000 \
+  --transaction.fee.amount 2000
+```
+
+where `TX_FLAGS` refer to previously set base and signer flags as described in
+the [Oasis CLI Tools Setup] doc.
+
+:::caution
+
+If you use a Ledger-signer backed entity, you will need to install version 2.3.2
+of the Oasis App as described in [Installing Oasis App on Your Ledger Wallet].
+
+Note that the previous version of the Oasis App available through Ledger Live,
+version 1.8.2, doesn't support signing the `governance.CastVote` transaction
+type.
+
+:::
+
+To submit the generated transaction, copy `tx_cast_vote.json` to the online
+Oasis node and submit it from there:
+
+```bash
+oasis-node consensus submit_tx \
+  -a $ADDR \
+  --transaction.file tx_cast_vote.json
+```
+
+[upgrade governance proposal]:
+  /oasis-core/consensus/services/governance#submit-proposal
+[your entity's nonce]: ../manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce
+[Oasis CLI Tools Setup]: ../manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable
+[Installing Oasis App on Your Ledger Wallet]:
+  /oasis-core-ledger/usage/setup#installing-oasis-app-on-your-ledger-wallet
+
+### Instructions - Before upgrade
+
+_TBD_
+
+### Instructions - Upgrade day
+
+_TBD_
+
+### Additional notes
+
+Examine the [Change Log](
+https://github.com/oasisprotocol/oasis-core/blob/v22.0.2/CHANGELOG.md) of the
+22.0.2 (and 22.0) releases.
+
 ## 2021-08-31 (16:00 UTC) - Parameter Update
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **8049.**

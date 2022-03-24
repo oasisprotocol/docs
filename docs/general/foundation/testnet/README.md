@@ -73,7 +73,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v7.1.0-rc1#building)):
   * [7.1.0-rc1](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.1.0-rc1)
 * Emerald Web3 Gateway version:
-  * [2.0.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.0.0-rc1)
+  * [2.1.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0-rc1)
 
 :::tip
 

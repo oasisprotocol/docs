@@ -6,6 +6,75 @@ description: >-
 
 # Upgrade Log
 
+## 2022-04-04 Upgrade
+
+* **Upgrade height:** upgrade is scheduled to happen at epoch **15056**.
+
+:::info
+
+We expect the Testnet network to reach this epoch at around 2022-04-04 7:45 UTC.
+
+:::
+
+### Instructions
+
+* See [Before upgrade](upgrade-log.md#before-upgrade) section for required steps
+  to be done before upgrade.
+
+* (optional) Vote for the upgrade. On 2022-04-01, an upgrade proposal will be
+  proposed which (if accepted) will schedule the upgrade on epoch **15056**.
+  See the [Governance documentation](../../run-a-node/set-up-your-node/governance.md)
+  for details on voting for proposals.
+
+:::info
+
+The upgrade proposal contains the `"empty"` upgrade handler whose only purpose
+is allow specifying a no-op handler when submitting an upgrade proposal.
+
+:::
+
+:::caution
+
+For this upgrade, do NOT wipe state.
+
+:::
+
+* Once reaching the designated upgrade epoch, your node will stop and needs to
+  be upgraded to Oasis Core [22.1].
+  After your node is upgraded to Oasis Core 22.1, restart it and wait for more
+  than 2/3+ of nodes by stake to do the same and the network starts again.
+
+:::info
+
+The Testnet's genesis file and the genesis document's hash will remain the same.
+
+:::
+
+### Before upgrade
+
+This upgrade will upgrade **Oasis Core** to **version [22.1]** which **no longer
+allows running Oasis Node** (i.e. the `oasis-node` binary) **as root**
+(effective user ID of 0).
+
+Running network accessible services as the root user is extremely bad for
+system security as a general rule. While it would be "ok" if we could drop
+privileges, `syscall.AllThreadsSyscall` does not work if the binary uses `cgo`
+at all.
+
+Nothing in Oasis Node will ever require elevated privileges.
+Attempting to run the `oasis-node` process as the root user will now terminate
+immediately on startup.
+
+While there may be specific circumstances where it is safe to run network
+services with the effective user ID set to 0, the overwhelming majority of cases
+where this is done is a misconfiguration.
+
+If the previous behavior is required, the binary must be run in unsafe/debug
+mode (via the intentionally undocumented flag), and `debug.allow_root` must also
+be set.
+
+[22.1]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1
+
 ## 2022-03-03 Upgrade
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **14209.**

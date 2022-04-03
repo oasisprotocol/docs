@@ -50,7 +50,19 @@ The Testnet's genesis file and the genesis document's hash will remain the same.
 
 :::
 
-### Before upgrade
+* If the nodes are running any ParaTimes, make sure you upgrade to the versions
+  published on the [Testnet network parameters page](./README.md).
+
+:::caution
+
+ParaTime binaries for the Cipher ParaTime will be published at a later time due
+to the additional offline signing step. If you are running _multiple_ ParaTimes
+on the same node, you should _disable_ the Cipher ParaTime until the new version
+is published.
+
+:::
+
+### Before Upgrade
 
 This upgrade will upgrade **Oasis Core** to **version [22.1]** which **no longer
 allows running Oasis Node** (i.e. the `oasis-node` binary) **as root**

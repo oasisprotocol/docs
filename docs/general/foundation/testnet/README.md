@@ -35,7 +35,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1)
+  * [22.1.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.2)
 
 :::info
 
@@ -50,11 +50,11 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [22.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1)
+  * [22.1.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.2)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
-  * [2.2.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.2.0-testnet)
+  * [2.3.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.3.0-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 
@@ -67,11 +67,11 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [22.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1)
+  * [22.1.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.2)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.0.0-testnet#building)):
-  * [8.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.0.0-testnet)
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.1.0-testnet#building)):
+  * [8.1.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.1.0-testnet)
 * Emerald Web3 Gateway version:
   * [2.1.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0-rc1)
 
@@ -87,8 +87,8 @@ following with **both versions** listed:
 ```yaml
 runtime:
   paths:
-    - /path/to/emerald-paratime-7.1.0-rc1.orc
     - /path/to/emerald-paratime-8.0.0-testnet.orc
+    - /path/to/emerald-paratime-8.1.0-testnet.orc
 ```
 
 :::

@@ -68,15 +68,42 @@ Here's a task for you:
 
 As an additional exercise, you can also create an Oasis wallet using the BIP39 mnemonic from the step 1 above. You will notice that the imported account's base64-encoded private key in the account details screen is different from the one in step 7 above. That's because Oasis uses a different _derivation path_ than Ethereum.
 
-### How can I use my Oasis Wallet mnemonics in Ledger?
+### Which derivation path should I use on Ledger? ADR 0008 or Legacy? {#ledger-derivation-paths}
 
-Starting from Oasis app for Ledger v2.3.1 a standardized key derivation path as defined in [ADR 0008](/oasis-core/adr/0008-standard-account-key-generation) is supported. This means that you can copy the mnemonics keyphrase you use in the Oasis Wallet - Web or in the Chrome extension directly to your Ledger device. Ledger will then derive the same Oasis wallet address and can be used to sign transactions and send funds. Similarly, you can export your keyphrase from Ledger and use it the Oasis Wallets.
+To convert your mnemonic phrase into a private key for signing trasactions,
+each wallet (hardware or software) performs a *key derivation*. The Oasis
+Protocol Foundation standardized the key derivation for official Oasis wallets
+in a document called [ADR 0008] back in January 2021. However, the Ledger
+hardware wallet already supported signing transactions at that time using a
+custom (we now call it *legacy*) derivation path which is incompatible with
+the one defined in ADR 0008. Later, in Oasis app for Ledger v2.3.1 support for
+ADR 0008 was added so the wallet can request either derivation from the Ledger
+device.
 
-:::caution
+The key derivation path defined in ADR 0008 has the following advantages
+compared to the legacy one:
 
-Versions of Oasis app for Ledger prior to v2.3.1 used a non-standard key derivation path. Mnemonics could be imported to Ledger, but the derived wallet address and the private key would be different compared to the Oasis Wallets.
+- Derivation path is shorter which results in approximately twice as fast
+  key derivation (and transaction signing) without compromising security.
+- In case your Ledger device is broken or lost and you are unable to retrieve
+  a new one, you will be able to import your Ledger mnemonic and restore your
+  private key in any Oasis wallet which implements ADR 0008.
+
+For reasons above, we recommend the usage of ADR 0008. However, since there are
+no security considerations at stake, Oasis wallets will support legacy
+derivation on Ledger for the foreseeable future.
+
+:::danger
+
+If you happen to import your Ledger mnemonic to a software wallet, consider
+that mnemonic *potentially exposed/compromised*, i.e. not appropriate for a
+hardware wallet mnemonic anymore. If you use a new hardware wallet in the
+future, **never restore it from the mnemonic that was previously used by any
+software wallet!**
 
 :::
+
+[ADR 0008]: /oasis-core/adr/0008-standard-account-key-generation
 
 ### The wallet gives me _Invalid keyphrase_ error when importing my wallet from mnemonics. How do I solve it?
 

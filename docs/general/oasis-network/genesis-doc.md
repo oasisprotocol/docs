@@ -157,7 +157,7 @@ The following parameters control how delegations behave on the network:
 * **`staking.params.min_delegation`** The minimum amount of tokens one can delegate. The value is set to 100,000,000,000 base units, or 100 ROSE tokens.
 * **`staking.params.allow_escrow_messages`** Indicator whether to enable support for `AddEscrow` and `ReclaimEscrow` [runtime messages](/oasis-core/runtime/messages) . The value is set to _true_.
 
-#### Node & ParaTime Token Thresholds
+#### Node & ParaTime Token Thresholds {#staking-thresholds}
 
 There are several **`staking.params.thresholds`** parameters that specify the minimum number of tokens that need to be staked in order for a particular entity or a particular type of node to participate in the network.
 

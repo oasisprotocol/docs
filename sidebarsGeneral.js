@@ -195,6 +195,7 @@ const sidebars = {
       label: 'Mainnet',
       collapsible: false,
       items: [
+        'mainnet/damask-upgrade',
         {
           type: 'category',
           label: 'Previous Upgrades',

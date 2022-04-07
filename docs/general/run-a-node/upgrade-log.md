@@ -6,7 +6,7 @@ description: >-
 
 # Upgrade Log
 
-## 2022-04-11 (9:00 UTC) - Damask Upgrade
+## 2022-04-11 (9:00 UTC) - Damask Upgrade {#damask-upgrade}
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **13402**.
 

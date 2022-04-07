@@ -167,17 +167,214 @@ oasis-node consensus submit_tx \
 
 ### Instructions - Before upgrade
 
-_TBD_
+This upgrade will upgrade **Oasis Core** to the **22.1.x release series** which
+**no longer allow running Oasis Node** (i.e. the `oasis-node` binary)
+**as root** (effective user ID of 0).
+
+Running network accessible services as the root user is extremely bad for
+system security as a general rule. While it would be "ok" if we could drop
+privileges, `syscall.AllThreadsSyscall` does not work if the binary uses `cgo`
+at all.
+
+Nothing in Oasis Node will ever require elevated privileges.
+Attempting to run the `oasis-node` process as the root user will now terminate
+immediately on startup.
+
+While there may be specific circumstances where it is safe to run network
+services with the effective user ID set to 0, the overwhelming majority of cases
+where this is done is a misconfiguration.
+
+If the previous behavior is required, the binary must be run in unsafe/debug
+mode (via the intentionally undocumented flag), and `debug.allow_root` must also
+be set.
 
 ### Instructions - Upgrade day
 
-_TBD_
+Following steps should be performed on **2022-04-11** only after the network has
+reached the upgrade epoch and has halted:
+
+1. Download the genesis file published in the [Damask upgrade release].
+
+:::info
+
+Mainnet state at epoch **13402** will be exported and migrated to a 22.1.x
+compatible genesis file.
+
+Upgrade genesis file will be published on the above link soon after reaching the
+upgrade epoch.
+
+:::
+
+2. Verify the provided Damask upgrade genesis file by comparing it to network
+   state dump.
+
+   The state changes are described in the [Damask Upgrade] document.
+
+   See instructions in the [Handling Network Upgrades] guide.
+
+3. Replace the old genesis file with the new Damask upgrade genesis file.
+
+4. Ensure your node will remain stopped by disabling auto-starting via your
+   process manager (e.g., [systemd] or [Supervisor])
+
+5. Replace the old version of Oasis Node with version [22.1.2].
+
+6. [Wipe state].
+
+:::caution
+
+State of ParaTimes/runtimes is not affected by this upgrade and should NOT be
+wiped.
+
+:::
+
+:::caution
+
+We recommend **backing up the pre-Damask consensus state** so all the
+transactions and history are not permanently lost.
+
+Also, if you ever need to access that state in the future, you will be able to
+spin up an Oasis Node in archive mode and query the pre-Damask state.
+
+:::
+
+7. Perform any needed [configuration changes][damask-conf-changes] described
+  below.
+
+8. Start your node and re-enable auto-starting via your process manager.
+
+:::info
+
+For more detailed instructions, see the [Handling Network Upgrades] guide.
+
+:::
+
+[Damask Upgrade]: ../mainnet/damask-upgrade.md#state-changes
+[Damask upgrade release]:
+  https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
+[Handling Network Upgrades]: maintenance-guides/handling-network-upgrades.md#verify-genesis
+[22.1.2]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.2
+[Wipe state]: maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity
+[damask-conf-changes]: #damask-conf-changes
+[systemd]: https://systemd.io/
+[Supervisor]: http://supervisord.org/
+
+### Configuration Changes {#damask-conf-changes}
+
+:::info
+
+To see the full extent of the changes examine the [Change Log][changelog-22.1.2]:
+of the **Oasis Core 22.1.2**, in particular the [22.1][changelog-22.1] and
+[22.0][changelog-22.0] sections.
+
+:::
+
+If your node is currently configured to run a ParaTime, you need to perform some
+additional steps.
+
+The way ParaTime binaries are distributed has changed so that all required
+artifacts are contained in a single archive called the Oasis Runtime Container
+and have the `.orc` extension.
+
+::: info
+
+Links to updated ParaTime binaries will be published on the
+[Network Parameters][network-parameters-paratimes] page for their respective
+ParaTimes.
+
+:::
+
+The configuration is simplified as the `runtime.paths` now only needs to list
+all of the supported `.orc` files (see below for an example).
+
+Instead of separately configuring various roles for a node, there is now a
+single configuration flag called `runtime.mode` which enables the correct roles
+as needed. It should be set to one of the following values:
+
+  - `none` (runtime support is disabled, only consensus layer is enabled)
+  - `compute` (node is participating as a runtime compute node for all the
+    configured runtimes)
+  - `keymanager` (node is participating as a keymanager node)
+  - `client` (node is a stateful runtime client)
+  - `client-stateless` (node is a stateless runtime client and connects to
+    remote nodes for any state queries)
+
+Nodes that have so far been participating as compute nodes should set the mode
+to `compute` and nodes that have been participating as clients for querying
+and transaction submission should set it to `client`.
+
+The following configuration flags have been removed:
+
+- `runtime.supported` (existing `runtime.paths` is used instead)
+- `worker.p2p.enabled` (now automatically set based on runtime mode)
+- `worker.compute.enabled` (now set based on runtime mode)
+- `worker.keymanager.enabled` (now set based on runtime mode)
+- `worker.storage.enabled` (no longer needed)
+
+Also the `worker.client` option is no longer needed unless you are providing
+consensus layer RPC services.
+
+For example, if your _previous_ configuration looked like:
+
+```yaml
+runtime:
+  supported:
+    - "000000000000000000000000000000000000000000000000000000000000beef"
+
+  paths:
+    "000000000000000000000000000000000000000000000000000000000000beef": /path/to/runtime
+
+worker:
+  # ... other settings omitted ...
+
+  storage:
+    enabled: true
+
+  compute:
+    enabled: true
+
+  client:
+    port: 12345
+    addresses:
+      - "xx.yy.zz.vv:12345"
+
+  p2p:
+    enabled: true
+    port: 12346
+    addresses:
+      - "xx.yy.zz.vv:12346"
+```
+
+The _new_ configuration should look like:
+
+```yaml
+runtime:
+  mode: compute
+  paths:
+    - /path/to/runtime.orc
+
+worker:
+  # ... other settings omitted ...
+
+  p2p:
+    port: 12346
+    addresses:
+      - "xx.yy.zz.vv:12346"
+```
+
+[network-parameters-paratimes]: ../oasis-network/network-parameters.md#paratimes
 
 ### Additional notes
 
-Examine the [Change Log](
-https://github.com/oasisprotocol/oasis-core/blob/v22.0.2/CHANGELOG.md) of the
-22.0.2 (and 22.0) releases.
+Examine the [Change Log][changelog-22.1.2] of the 22.1.2 release, in particular
+the [22.1][changelog-22.1] and [22.0][changelog-22.0] sections.
+
+[changelog-22.1.2]:
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md
+[changelog-22.1]:
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md#221-2022-04-01
+[changelog-22.0]:
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md#220-2022-03-01
 
 ## 2021-08-31 (16:00 UTC) - Parameter Update
 

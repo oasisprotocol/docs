@@ -112,7 +112,7 @@ For the actual steps that node operators need to make on their nodes, see the
   https://github.com/oasisprotocol/community
 [upgrade-log-damask]: ../run-a-node/upgrade-log.md#damask-upgrade
 
-## Proposed State Changes
+## Proposed State Changes {#state-changes}
 
 The following parts of the genesis document will be updated:
 

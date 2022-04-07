@@ -63,7 +63,7 @@ However, for certain upgrades we use the **`oasis-node debug fix-genesis`** CLI 
 
 Other parts are updated manually, as described in each upgrade's Proposed State Changes section (e.g. [Cobalt upgrade's Proposed State Changes](../../mainnet/previous-upgrades/cobalt-upgrade.md#proposed-state-changes)).
 
-## Download and Verify the Provided Genesis File
+## Download and Verify the Provided Genesis File {#verify-genesis}
 
 Download the new genesis file linked in the [Network Parameters](../../oasis-network/network-parameters.md) and save it as `/serverdir/etc/genesis.json`.
 

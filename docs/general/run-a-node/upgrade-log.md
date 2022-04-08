@@ -217,7 +217,7 @@ upgrade epoch.
 4. Ensure your node will remain stopped by disabling auto-starting via your
    process manager (e.g., [systemd] or [Supervisor])
 
-5. Replace the old version of Oasis Node with version [22.1.2].
+5. Replace the old version of Oasis Node with version [22.1.3].
 
 6. [Wipe state].
 
@@ -253,7 +253,7 @@ For more detailed instructions, see the [Handling Network Upgrades] guide.
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]: maintenance-guides/handling-network-upgrades.md#verify-genesis
-[22.1.2]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.2
+[22.1.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3
 [Wipe state]: maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity
 [damask-conf-changes]: #damask-conf-changes
 [systemd]: https://systemd.io/
@@ -263,8 +263,8 @@ For more detailed instructions, see the [Handling Network Upgrades] guide.
 
 :::info
 
-To see the full extent of the changes examine the [Change Log][changelog-22.1.2]:
-of the **Oasis Core 22.1.2**, in particular the [22.1][changelog-22.1] and
+To see the full extent of the changes examine the [Change Log][changelog-22.1.3]:
+of the **Oasis Core 22.1.3**, in particular the [22.1][changelog-22.1] and
 [22.0][changelog-22.0] sections.
 
 :::
@@ -366,15 +366,15 @@ worker:
 
 ### Additional notes
 
-Examine the [Change Log][changelog-22.1.2] of the 22.1.2 release, in particular
+Examine the [Change Log][changelog-22.1.3] of the 22.1.3 release, in particular
 the [22.1][changelog-22.1] and [22.0][changelog-22.0] sections.
 
-[changelog-22.1.2]:
-  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md
+[changelog-22.1.3]:
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md
 [changelog-22.1]:
-  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md#221-2022-04-01
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md#221-2022-04-01
 [changelog-22.0]:
-  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md#220-2022-03-01
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md#220-2022-03-01
 
 ## 2021-08-31 (16:00 UTC) - Parameter Update
 

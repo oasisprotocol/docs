@@ -6,13 +6,13 @@ description: >-
 
 # Upgrade Log
 
-## 2022-04-11 (9:00 UTC) - Damask Upgrade {#damask-upgrade}
+## 2022-04-11 (8:30 UTC) - Damask Upgrade {#damask-upgrade}
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **13402**.
 
 :::info
 
-We expect the Mainnet network to reach this epoch at around 2022-04-11 9:00
+We expect the Mainnet network to reach this epoch at around 2022-04-11 8:30
 UTC.
 
 :::

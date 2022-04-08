@@ -276,7 +276,7 @@ The way ParaTime binaries are distributed has changed so that all required
 artifacts are contained in a single archive called the Oasis Runtime Container
 and have the `.orc` extension.
 
-::: info
+:::info
 
 Links to updated ParaTime binaries will be published on the
 [Network Parameters][network-parameters-paratimes] page for their respective

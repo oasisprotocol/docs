@@ -31,7 +31,7 @@ This section will be updated with more details as we get closer to the upgrade.
 
 Upgrading the Mainnet will require a coordinated upgrade of the Network. All nodes will need to configure a new genesis file that they can generate or verify independently and reset/archive any state from Mainnet. Once enough (representing 2/3+ of stake) nodes have taken this step, the upgraded network will start.
 
-For the actual steps that node operators need to make on their nodes, see the [Upgrade Log](../run-a-node/upgrade-log.md#2021-04-28-16-00-utc-cobalt-upgrade).
+For the actual steps that node operators need to make on their nodes, see the [Upgrade Log](../../run-a-node/upgrade-log.md#2021-04-28-16-00-utc-cobalt-upgrade).
 
 ## Proposed State Changes
 
@@ -39,7 +39,7 @@ The following parts of the genesis document will be updated:
 
 :::info
 
-For a more detailed explanation of the parameters below, see the [Genesis Document](../oasis-network/genesis-doc.md#parameters) docs.
+For a more detailed explanation of the parameters below, see the [Genesis Document](../../oasis-network/genesis-doc.md#parameters) docs.
 
 :::
 
@@ -66,13 +66,13 @@ The **`epochtime`**object will be removed since it became obsolete with the new 
     ```
 * **`registry.runtimes`** list contains the registered runtimes' descriptors. In the Cobalt upgrade, it will be migrated from a list of _signed_ runtime descriptors to a list of runtime descriptors. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
 * **`registry.suspended_runtimes`** list contains the suspended registered runtimes' descriptors. In the Cobalt upgrade, it will be migrated from a list of _signed_ suspended runtime descriptors to a list of suspended runtime descriptors. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
-* Inactive registered entities in **`registry.entities`** (and their corresponding nodes in **`registry.nodes`**) that don't pass the [minimum staking thresholds](../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds) will be removed. The removal will be done automatically with the `oasis-node debug fix-genesis` command.
+* Inactive registered entities in **`registry.entities`** (and their corresponding nodes in **`registry.nodes`**) that don't pass the [minimum staking thresholds](../../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds) will be removed. The removal will be done automatically with the `oasis-node debug fix-genesis` command.
 
 :::info
 
 Removing entities from **`registry.entities`** will effectively deregister them but the entities' accounts in **`staking.ledger`** will remain intact.
 
-Deregistered entities can always re-register by submitting the [entity registration transaction](../run-a-node/set-up-your-node/run-validator.md#generating-entity-registration-transaction) after the upgrade.
+Deregistered entities can always re-register by submitting the [entity registration transaction](../../run-a-node/set-up-your-node/run-validator.md#generating-entity-registration-transaction) after the upgrade.
 
 :::
 
@@ -143,7 +143,7 @@ The **`governance`** object contains parameters controlling the network's [on-ch
 
 ### Runtime State Root Migration
 
-Additionally, each runtime's state root will need to be updated for the [runtime storage migration](../run-a-node/upgrade-log.md#runtime-operators) that is performed during this upgrade.
+Additionally, each runtime's state root will need to be updated for the [runtime storage migration](../../run-a-node/upgrade-log.md#runtime-operators) that is performed during this upgrade.
 
 At this time, there is only one active runtime on the Mainnet, namely [Second State's Oasis Ethereum ParaTime](https://www.oasiseth.org) with ID (Base64-encoded) `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wM=`.
 
@@ -158,6 +158,6 @@ After completing the runtime storage migration, Second State will communicate th
 
 The Oasis team will be offering live video support during the Cobalt upgrade. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Cobalt upgrade.
+For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Cobalt upgrade.
 
-To follow the network, please use one of the many [community block explorers](../community-resources/community-made-resources.md#block-explorers-validator-leaderboards).
+To follow the network, please use one of the many [community block explorers](../../community-resources/community-made-resources.md#block-explorers-validator-leaderboards).

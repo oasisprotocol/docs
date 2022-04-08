@@ -195,7 +195,7 @@ const sidebars = {
       label: 'Mainnet',
       collapsible: false,
       items: [
-        'mainnet/cobalt-upgrade',
+        'mainnet/damask-upgrade',
         {
           type: 'category',
           label: 'Previous Upgrades',
@@ -204,6 +204,7 @@ const sidebars = {
             id: 'mainnet/previous-upgrades/README',
           },
           items: [
+            'mainnet/previous-upgrades/cobalt-upgrade',
             'mainnet/previous-upgrades/mainnet-upgrade',
           ],
         },

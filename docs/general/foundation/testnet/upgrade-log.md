@@ -62,6 +62,8 @@ is published.
 
 :::
 
+* If you are running a Rosetta gateway, upgrade it to version [2.2.0].
+
 ### Before Upgrade
 
 This upgrade will upgrade **Oasis Core** to **version [22.1]** which **no longer
@@ -86,6 +88,7 @@ mode (via the intentionally undocumented flag), and `debug.allow_root` must also
 be set.
 
 [22.1]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1
+[2.2.0]: https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.0
 
 ## 2022-03-03 Upgrade
 

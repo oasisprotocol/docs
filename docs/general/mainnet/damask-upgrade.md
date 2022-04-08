@@ -6,7 +6,7 @@ upgrade.
 :::caution
 
 The Damask upgrade on Mainnet is scheduled at epoch **13402** which will happen
-around **Apr 11, 2022 at 9:00 UTC**.
+around **Apr 11, 2022 at 8:30 UTC**.
 
 :::
 
@@ -134,7 +134,7 @@ For a more detailed explanation of the parameters below, see the
 
 * **`height`** will be set to the height of the Mainnet state dump + 1, _TBD_.
 
-* **`genesis_time`** will be set to`2022-04-11T10:00:00Z`.
+* **`genesis_time`** will be set to`2022-04-11T9:30:00Z`.
 
 * **`chain_id`** will be set to `oasis-3`.
 

@@ -6,13 +6,13 @@ description: >-
 
 # Upgrade Log
 
-## 2022-04-11 (9:00 UTC) - Damask Upgrade {#damask-upgrade}
+## 2022-04-11 (8:30 UTC) - Damask Upgrade {#damask-upgrade}
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **13402**.
 
 :::info
 
-We expect the Mainnet network to reach this epoch at around 2022-04-11 9:00
+We expect the Mainnet network to reach this epoch at around 2022-04-11 8:30
 UTC.
 
 :::
@@ -217,7 +217,7 @@ upgrade epoch.
 4. Ensure your node will remain stopped by disabling auto-starting via your
    process manager (e.g., [systemd] or [Supervisor])
 
-5. Replace the old version of Oasis Node with version [22.1.2].
+5. Replace the old version of Oasis Node with version [22.1.3].
 
 6. [Wipe state].
 
@@ -239,21 +239,39 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 :::
 
 7. Perform any needed [configuration changes][damask-conf-changes] described
-  below.
+   below.
 
-8. Start your node and re-enable auto-starting via your process manager.
+8. (only for ParaTime operators) Replace old versions of your ParaTime binaries
+   with the new [Oasis Runtime Containers (`.orc`)][orcs] introduced in the
+   Damask upgrade.
 
-:::info
+   For the official Oasis ParaTimes, use the following versions:
 
-For more detailed instructions, see the [Handling Network Upgrades] guide.
+   - Emerald ParaTime: [8.2.0][emerald-8.2.0]
+   - Cipher ParaTime: [1.1.0][cipher-1.1.0]
 
-:::
+9. (only Emerald Web3 Gateway operators) Replace old version of Emerald Web3
+   Gateway with version [2.1.0][emerald-gw-2.1.0].
+
+10. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
+    Gateway with version [2.2.0][rosetta-gw-2.2.0].
+
+11. Start your node and re-enable auto-starting via your process manager.
 
 [Damask Upgrade]: ../mainnet/damask-upgrade.md#state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]: maintenance-guides/handling-network-upgrades.md#verify-genesis
-[22.1.2]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.2
+[orcs]: https://github.com/oasisprotocol/oasis-core/issues/4469
+[22.1.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3
+[emerald-8.2.0]:
+  https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.2.0
+[cipher-1.1.0]:
+  https://github.com/oasisprotocol/cipher-paratime/releases/tag/v1.1.0
+[emerald-gw-2.1.0]:
+  https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0
+[rosetta-gw-2.2.0]:
+  https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.0
 [Wipe state]: maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity
 [damask-conf-changes]: #damask-conf-changes
 [systemd]: https://systemd.io/
@@ -263,8 +281,8 @@ For more detailed instructions, see the [Handling Network Upgrades] guide.
 
 :::info
 
-To see the full extent of the changes examine the [Change Log][changelog-22.1.2]:
-of the **Oasis Core 22.1.2**, in particular the [22.1][changelog-22.1] and
+To see the full extent of the changes examine the [Change Log][changelog-22.1.3]:
+of the **Oasis Core 22.1.3**, in particular the [22.1][changelog-22.1] and
 [22.0][changelog-22.0] sections.
 
 :::
@@ -276,7 +294,7 @@ The way ParaTime binaries are distributed has changed so that all required
 artifacts are contained in a single archive called the Oasis Runtime Container
 and have the `.orc` extension.
 
-::: info
+:::info
 
 Links to updated ParaTime binaries will be published on the
 [Network Parameters][network-parameters-paratimes] page for their respective
@@ -366,15 +384,15 @@ worker:
 
 ### Additional notes
 
-Examine the [Change Log][changelog-22.1.2] of the 22.1.2 release, in particular
+Examine the [Change Log][changelog-22.1.3] of the 22.1.3 release, in particular
 the [22.1][changelog-22.1] and [22.0][changelog-22.0] sections.
 
-[changelog-22.1.2]:
-  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md
+[changelog-22.1.3]:
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md
 [changelog-22.1]:
-  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md#221-2022-04-01
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md#221-2022-04-01
 [changelog-22.0]:
-  https://github.com/oasisprotocol/oasis-core/blob/v22.1.2/CHANGELOG.md#220-2022-03-01
+  https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md#220-2022-03-01
 
 ## 2021-08-31 (16:00 UTC) - Parameter Update
 

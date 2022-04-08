@@ -346,7 +346,7 @@ The [Oasis Core 21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag
 ### Instructions - Before Upgrade System Preparation
 
 * This upgrade will upgrade **Oasis Core** to version **21.2.8** which:
-  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../../run-a-node/prerequisites/system-configuration.md#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
+  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../../run-a-node/prerequisites/system-configuration.mdx#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
 * Stop your node, replace the old version of Oasis Node with version [21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) and restart your node.
 
 :::tip

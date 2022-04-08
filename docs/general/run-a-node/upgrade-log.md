@@ -184,9 +184,15 @@ While there may be specific circumstances where it is safe to run network
 services with the effective user ID set to 0, the overwhelming majority of cases
 where this is done is a misconfiguration.
 
+Please, follow our [Changing Your Setup to Run Oasis Services with Non-root
+System User][change-to-non-root] guide for steps-by-step instructions on how
+to update your system.
+
 If the previous behavior is required, the binary must be run in unsafe/debug
 mode (via the intentionally undocumented flag), and `debug.allow_root` must also
 be set.
+
+[change-to-non-root]: ./prerequisites/system-configuration.mdx#change-to-non-root
 
 ### Instructions - Upgrade day
 
@@ -542,7 +548,7 @@ oasis-node consensus submit_tx \
 
 * This upgrade will upgrade **Oasis Core** to version **21.2.8** which:
   * Upgrades the BadgerDB database backend from v2 to v3. See [**BadgerDB v2 to v3 Migration**](upgrade-log.md#badgerdb-v2-to-v3-migration) section for required steps to be done before upgrade.
-  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](prerequisites/system-configuration.md#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
+  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](prerequisites/system-configuration.mdx#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
 * Stop your node, replace the old version of Oasis Node with version [21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) and restart your node.
 
 :::tip

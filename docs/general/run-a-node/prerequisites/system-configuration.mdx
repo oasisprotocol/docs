@@ -1,0 +1,192 @@
+---
+description: >-
+  This page describes changes that should be made to the configuration of the
+  system where you are running the Oasis Node instance.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# System Configuration
+
+## File Descriptor Limit
+
+Make sure that the user under which you are running your Oasis Node has a high-enough file descriptor limit as the databases can have many files open and running out of file descriptors can lead to the node stopping unexpectedly.
+
+You can check the file descriptor limit by running the following as the same user that will run Oasis Node:
+
+```bash
+ulimit -n
+```
+
+If this number is lower than 102400 you should consider increasing it by updating your system configuration. You can configure _temporary_ limits by running:
+
+```bash
+ulimit -n 102400
+```
+
+Note that this limit only applies to any processes started from the same shell after the command was executed. If you want to make the change permanent, you have the following options.
+
+### System-wide Resource Limits Configuration File
+
+As `root`, create a file in `/etc/security/limits.d/99-oasis-node.conf` with content similar to the following example:
+
+```bash
+*        soft    nofile    102400
+*        hard    nofile    1048576
+```
+
+You can replace `*` with the name of the user that is running the Oasis Node in case you only want to change the limits for that particular user.
+
+:::caution
+
+In order for the changes to take effect a system restart may be required.
+
+:::
+
+### Systemd Service Configuration
+
+In case you are running your Oasis Node process via [systemd](https://systemd.io/), you can add the following directive under the `[Service]` section:
+
+```text
+LimitNOFILE=102400
+```
+
+### Docker
+
+If you are running Oasis Node via [Docker](https://www.docker.com/) you can pass the following option to `docker run` in order to increase the limit to desired values:
+
+```text
+--ulimit nofile=102400:1048576
+```
+
+## Running Oasis Services with Non-root System User {#non-root}
+
+:::caution
+
+Beginning with **Oasis Core 22.1.x release series** it is
+**no longer allowed to run Oasis Node** (i.e. the `oasis-node` binary)
+**as root** (effective user ID of 0).
+
+:::
+
+Running network accessible services as the root user is extremely bad for
+system security as a general rule. While it would be "ok" if we could drop
+privileges, `syscall.AllThreadsSyscall` does not work if the binary uses `cgo`
+at all.
+
+Nothing in Oasis Node will ever require elevated privileges.
+Attempting to run the `oasis-node` process as the root user will now terminate
+immediately on startup.
+
+While there may be specific circumstances where it is safe to run network
+services with the effective user ID set to 0, the overwhelming majority of cases
+where this is done is a misconfiguration.
+
+### Changing Your Setup to Run Oasis Services with Non-root System User {#change-to-non-root}
+
+:::info
+In these examples, we change the setup to run Oasis Services (e.g. Oasis Node)
+with a non-root system user named `oasis`.
+These instructions also assume that the node's datadir is `/serverdir/node`.
+
+Adjust these as appropriate to your setup.
+:::
+
+1. Create the `oasis` system user:
+
+<Tabs>
+<TabItem value="Ubuntu">
+
+As root, run:
+
+```bash
+adduser --system oasis --shell /usr/sbin/nologin
+```
+
+</TabItem>
+<TabItem value="Fedora">
+
+As root, run:
+```bash
+useradd -r -s /usr/sbin/nologin
+```
+
+</TabItem>
+
+<TabItem value="Ansible">
+
+Add the following task to your playbook:
+
+```yml
+- name: Create oasis user
+  user:
+    name: oasis
+    comment: Oasis Services user
+    system: yes
+    shell: /usr/sbin/nologin
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+
+Setting `oasis` user's Shell to `/usr/sbin/nologin` prevents (accidentally)
+logging-in as this user.
+
+:::
+
+2. Stop your Oasis Node.
+
+3. Transfer ownership of the datadir to the `oasis` user:
+
+```sh
+chown -R oasis /serverdir/node
+```
+
+See [Invalid Permissions] troubleshooting guide for more information.
+
+4. Update how you run Oasis Node:
+
+<Tabs>
+<TabItem value="systemd">
+
+Add a [`User` directive] to the Oasis service's systemd unit file:
+
+```conf
+...
+User=oasis
+...
+```
+
+</TabItem>
+<TabItem value="Docker">
+
+Add [`USER` instruction] to your Oasis service's Dockerfile:
+
+```conf
+...
+USER oasis
+...
+```
+</TabItem>
+
+<TabItem value="runit">
+
+Wrap the invocation in a [`chpst` command]:
+```sh
+chpst -u oasis oasis-node ...
+```
+</TabItem>
+</Tabs>
+
+5. Start your Oasis Node.
+
+[`User` directive]:
+  https://www.freedesktop.org/software/systemd/man/systemd.exec.html#User=
+[`User` instruction]:
+  https://docs.docker.com/engine/reference/builder/#user
+[`chpst` command]:
+  http://smarden.org/runit/chpst.8.html
+[Invalid Permissions]: ../troubleshooting.md#invalid-permissions

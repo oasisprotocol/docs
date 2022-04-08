@@ -184,9 +184,15 @@ While there may be specific circumstances where it is safe to run network
 services with the effective user ID set to 0, the overwhelming majority of cases
 where this is done is a misconfiguration.
 
+Please, follow our [Changing Your Setup to Run Oasis Services with Non-root
+System User][change-to-non-root] guide for steps-by-step instructions on how
+to update your system.
+
 If the previous behavior is required, the binary must be run in unsafe/debug
 mode (via the intentionally undocumented flag), and `debug.allow_root` must also
 be set.
+
+[change-to-non-root]: ./prerequisites/system-configuration.mdx#change-to-non-root
 
 ### Instructions - Upgrade day
 

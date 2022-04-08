@@ -4,6 +4,9 @@ description: >-
   system where you are running the Oasis Node instance.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # System Configuration
 
 ## File Descriptor Limit
@@ -57,3 +60,133 @@ If you are running Oasis Node via [Docker](https://www.docker.com/) you can pass
 --ulimit nofile=102400:1048576
 ```
 
+## Running Oasis Services with Non-root System User {#non-root}
+
+:::caution
+
+Beginning with **Oasis Core 22.1.x release series** it is
+**no longer allowed to run Oasis Node** (i.e. the `oasis-node` binary)
+**as root** (effective user ID of 0).
+
+:::
+
+Running network accessible services as the root user is extremely bad for
+system security as a general rule. While it would be "ok" if we could drop
+privileges, `syscall.AllThreadsSyscall` does not work if the binary uses `cgo`
+at all.
+
+Nothing in Oasis Node will ever require elevated privileges.
+Attempting to run the `oasis-node` process as the root user will now terminate
+immediately on startup.
+
+While there may be specific circumstances where it is safe to run network
+services with the effective user ID set to 0, the overwhelming majority of cases
+where this is done is a misconfiguration.
+
+### Changing Your Setup to Run Oasis Services with Non-root System User {#change-to-non-root}
+
+:::info
+In these examples, we change the setup to run Oasis Services (e.g. Oasis Node)
+with a non-root system user named `oasis`.
+These instructions also assume that the node's datadir is `/serverdir/node`.
+
+Adjust these as appropriate to your setup.
+:::
+
+1. Create the `oasis` system user:
+
+<Tabs>
+<TabItem value="Ubuntu">
+
+As root, run:
+
+```bash
+adduser --system oasis --shell /usr/sbin/nologin
+```
+
+</TabItem>
+<TabItem value="Fedora">
+
+As root, run:
+```bash
+useradd -r -s /usr/sbin/nologin
+```
+
+</TabItem>
+
+<TabItem value="Ansible">
+
+Add the following task to your playbook:
+
+```yml
+- name: Create oasis user
+  user:
+    name: oasis
+    comment: Oasis Services user
+    system: yes
+    shell: /usr/sbin/nologin
+```
+
+</TabItem>
+</Tabs>
+
+:::tip
+
+Setting `oasis` user's Shell to `/usr/sbin/nologin` prevents (accidentally)
+logging-in as this user.
+
+:::
+
+2. Stop your Oasis Node.
+
+3. Transfer ownership of the datadir to the `oasis` user:
+
+```sh
+chown -R oasis /serverdir/node
+```
+
+See [Invalid Permissions] troubleshooting guide for more information.
+
+4. Update how you run Oasis Node:
+
+<Tabs>
+<TabItem value="systemd">
+
+Add a [`User` directive] to the Oasis service's systemd unit file:
+
+```conf
+...
+User=oasis
+...
+```
+
+</TabItem>
+<TabItem value="Docker">
+
+Add [`USER` instruction] to your Oasis service's Dockerfile:
+
+```conf
+...
+USER oasis
+...
+```
+</TabItem>
+
+<TabItem value="runit">
+
+Wrap the invocation in a [`chpst` command]:
+```sh
+chpst -u oasis oasis-node ...
+```
+</TabItem>
+</Tabs>
+
+5. Start your Oasis Node.
+
+[`User` directive]:
+  https://www.freedesktop.org/software/systemd/man/systemd.exec.html#User=
+[`User` instruction]:
+  https://docs.docker.com/engine/reference/builder/#user
+[`chpst` command]:
+  http://smarden.org/runit/chpst.8.html
+[Invalid Permissions]: ../troubleshooting.md#invalid-permissions

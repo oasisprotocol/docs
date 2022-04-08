@@ -239,21 +239,39 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 :::
 
 7. Perform any needed [configuration changes][damask-conf-changes] described
-  below.
+   below.
 
-8. Start your node and re-enable auto-starting via your process manager.
+8. (only for ParaTime operators) Replace old versions of your ParaTime binaries
+   with the new [Oasis Runtime Containers (`.orc`)][orcs] introduced in the
+   Damask upgrade.
 
-:::info
+   For the official Oasis ParaTimes, use the following versions:
 
-For more detailed instructions, see the [Handling Network Upgrades] guide.
+   - Emerald ParaTime: [8.2.0][emerald-8.2.0]
+   - Cipher ParaTime: [1.1.0][cipher-1.1.0]
 
-:::
+9. (only Emerald Web3 Gateway operators) Replace old version of Emerald Web3
+   Gateway with version [2.1.0][emerald-gw-2.1.0].
+
+10. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
+    Gateway with version [2.2.0][rosetta-gw-2.2.0].
+
+11. Start your node and re-enable auto-starting via your process manager.
 
 [Damask Upgrade]: ../mainnet/damask-upgrade.md#state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]: maintenance-guides/handling-network-upgrades.md#verify-genesis
+[orcs]: https://github.com/oasisprotocol/oasis-core/issues/4469
 [22.1.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3
+[emerald-8.2.0]:
+  https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.2.0
+[cipher-1.1.0]:
+  https://github.com/oasisprotocol/cipher-paratime/releases/tag/v1.1.0
+[emerald-gw-2.1.0]:
+  https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0
+[rosetta-gw-2.2.0]:
+  https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.0
 [Wipe state]: maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity
 [damask-conf-changes]: #damask-conf-changes
 [systemd]: https://systemd.io/

@@ -163,6 +163,21 @@ For a more detailed explanation of the parameters below, see the
   },
   ```
 
+* **`registry.runtimes.[id=000000000000000000000000000000000000000000000000e199119c992377cb].deployments`**
+  specifies Cipher ParaTime's version and TEE identity on Mainnet.
+
+  It will be upgraded from version 1.0.0 to 1.1.0 and hence the configuration
+  needs to be manually updated to:
+
+  ```
+  "version": {
+    "major": 1,
+    "minor": 1
+  },
+  "valid_from": 0,
+  "tee": "oWhlbmNsYXZlc4GiaW1yX3NpZ25lclggQCXat+vaH77MTjY3YG4CEhTQ9BxtBCL9N4sqi4iBhFlqbXJfZW5jbGF2ZVggoiJgre0cDF5arUk9wh0X9eGWr5cHb8LY0A3/msmznHc="
+  ```
+
 * **`registry.suspended_runtimes`** list contains the suspended registered
   runtimes' descriptors. In this upgrade, all runtime descriptors for suspended
   runtimes will be migrated from version `2` to version `3`.

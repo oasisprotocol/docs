@@ -132,14 +132,15 @@ For a more detailed explanation of the parameters below, see the
 
 ### **General**
 
-* **`height`** will be set to the height of the Mainnet state dump + 1, _TBD_.
+* **`height`** will be set to the height of the Mainnet state dump + 1,
+  `8048956`.
 
-* **`genesis_time`** will be set to`2022-04-11T9:30:00Z`.
+* **`genesis_time`** will be set to`2022-04-11T09:30:00Z`.
 
 * **`chain_id`** will be set to `oasis-3`.
 
 * **`halt_epoch`** will be bumped by `10000` (a little more than a year) to
-  `23402`.
+  `23807`.
 
 ### **Registry**
 
@@ -153,13 +154,13 @@ For a more detailed explanation of the parameters below, see the
 * **`registry.runtimes.[id=000000000000000000000000000000000000000000000000e2eaa99fc008f87f].deployments.version`**
   specifies Emerald ParaTime's version on Mainnet.
 
-  It will be upgraded from version 7.1.0 to 8.1.0 and hence the configuration
+  It will be upgraded from version 7.1.0 to 8.2.0 and hence the configuration
   needs to be manually updated to:
 
   ```
   "version": {
     "major": 8,
-    "minor": 1
+    "minor": 2
   },
   ```
 
@@ -244,6 +245,9 @@ For a more detailed explanation of the parameters below, see the
 
 ### **Committee Scheduler**
 
+* **`scheduler.params.min_validators`** is the minimum size of the consensus
+  committee (i.e. the validator set). It will be increased from `15` to `30`.
+
 * **`scheduler.params.max_validators`** is the maximum size of the consensus
   committee (i.e. the validator set). It will be increased from `110` to`120`.
 
@@ -253,7 +257,7 @@ The **`beacon`** object contains parameters controlling the new
 [improved VRF-based random beacon][ADR 0010] introduced in the Damask upgrade.
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch
-  of Mainnet's state dump + 1, _TBD_.
+  of Mainnet's state dump + 1, `13402`.
 
 * **`beacon.params.backend`** configures the random beacon backend to use.
   It will be set to `"vrf"` indicating that the beacon implementing

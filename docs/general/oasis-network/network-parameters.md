@@ -8,8 +8,8 @@ description: >-
 
 These are the current parameters for the Mainnet:
 
-* [Genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2021-04-28/genesis.json):
-  * SHA256: `8ae33cffe67e3df1be392dddde332a73f207cede5992c93600b0ae65c22af2a2`
+* [Genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2022-04-11/genesis.json):
+  * SHA256: `bb379c0202cf82404d75a3ebc6466b0c3b98f32fac62111ee4736a59d2d3f266`
 
 :::info
 
@@ -18,7 +18,7 @@ Genesis file is signed by [network's current maintainers](https://github.com/oas
 :::
 
 * Genesis document's hash ([explanation](genesis-doc.md#genesis-file-vs-genesis-document)):
-  * `53852332637bacb61b91b6411ab4095168ba02a50be4c3f82448438826f23898`
+  * `b11b369e0da5bb230b220127f5e7b242d385ef8c6f54906243f30af63c815535`
 * Oasis seed node address:
   * `E27F6B7A350B4CC2B48A6CBE94B0A02B0DCB0BF3@35.199.49.168:26656`
 
@@ -29,7 +29,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [21.3.12](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.12)
+  * [22.1.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3)
 
 :::info
 
@@ -52,11 +52,11 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [21.3.12](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.12)
+  * [22.1.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime binary version:
-  * [1.0.0](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v1.0.0)
+  * [1.1.0](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v1.1.0)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
 
@@ -69,13 +69,13 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [21.3.12](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.12)
+  * [22.1.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v7.1.0#building)):
-  * [7.1.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.1.0)
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.2.0#building)):
+  * [8.2.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.2.0)
 * Emerald Web3 Gateway version:
-  * [1.6.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v1.6.0)
+  * [2.1.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0)
 
 :::info
 

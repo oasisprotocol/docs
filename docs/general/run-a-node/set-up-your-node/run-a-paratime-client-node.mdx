@@ -34,7 +34,7 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
 * Oasis Node binary installed and configured on your system.
 * The chosen top-level `/node/` working directory prepared. In addition to `etc` and `data` directories, also prepare the following directories:
   * `bin`: This will store binaries needed by Oasis Node for running the ParaTimes.
-  * `runtimes`: This will store the ParaTime binaries and their corresponding signatures (if they are running in a Trusted Execution Environment).
+  * `runtimes`: This will store the ParaTime bundles.
 
 :::tip
 
@@ -74,18 +74,17 @@ For example, running a ParaTime client node for an SGX-enabled ParaTime like Cip
 
 :::
 
-### The ParaTime Identifier and Binary
+### The ParaTime Bundle
 
-In order to run a ParaTime node you need to obtain the following pieces of information first, both of these need to come from a trusted source:
+In order to run a ParaTime node you need to obtain the ParaTime bundle that
+needs to come from a trusted source. The bundle (usually with an `.orc`
+extension that stands for Oasis Runtime Container) contains all the needed
+ParaTime binaries together with the identifier and version metadata to ease
+deployment.
 
-* [**The ParaTime Identifier**](/oasis-core/runtime/identifiers) is a 256-bit unique identifier of a ParaTime on the Oasis Network. It provides a unique identity to the ParaTime and together with the [genesis document's hash](/oasis-core/consensus/genesis#genesis-documents-hash) serves as a domain separation context for ParaTime transaction and cryptographic commitments.
-  
-  It is usually represented in hexadecimal form, for example:
-  `8000000000000000000000000000000000000000000000000000000000000000`
-
-* **The ParaTime Binary** contains the executable code that implements the ParaTime itself. It is executed in a sandboxed environment by Oasis Node and its format depends on whether the ParaTime is running in a Trusted Execution Environment (TEE) or not.
-
-  For ParaTime client nodes, one _does not_ need to run the SGXS binary, even for ParaTimes running in a TEE. ParaTime client node always runs the regular Linux executable (an [ELF binary](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format), usually without an extension).
+When the ParaTime is running in a Trusted Execution Environment (TEE) the bundle
+will also contain all the required artifacts (e.g. SGXS version of the binary
+and any enclave signatures).
 
 :::danger
 
@@ -97,13 +96,24 @@ Like the genesis document, make sure you obtain these from a trusted source.
 
 #### **Compiling the ParaTime Binary from Source Code**
 
-In case you decide to build the ParaTime binary from source yourself, make sure that you follow our [guidelines for deterministic compilation](/oasis-sdk/runtime/reproducibility) to ensure that you receive the exact same binary.
+In case you decide to build the ParaTime binary from source yourself, make sure
+that you follow our [guidelines for deterministic compilation](/oasis-sdk/runtime/reproducibility)
+to ensure that you receive the exact same binary.
 
 :::
 
-### Install ParaTime Binary
+### Install ParaTime Bundle
 
-For each ParaTime, you need to obtain its binary and install it to `runtimes` subdirectory of your node's working directory.
+For each ParaTime, you need to obtain its bundle and install it to the
+`runtimes` subdirectory of your node's working directory.
+
+:::info
+
+For example, for the [Cipher ParaTime](../../oasis-network/network-parameters.md#cipher-paratime),
+you would have to obtain the `cipher-paratime.orc` bundle and install it to
+`/node/runtimes/cipher-paratime.orc`.
+
+:::
 
 ### Install Bubblewrap Sandbox (at least version 0.3.3)
 
@@ -190,34 +200,18 @@ consensus:
         - "{{ seed_node_address }}"
 
 runtime:
-  supported:
-    # List of ParaTimes that the node should support.
-    - "{{ runtime_id }}"
-
+  mode: client
   paths:
-    # Paths to ParaTime non-SGX binaries for all of the supported ParaTimes.
-    "{{ runtime_id }}": {{ non-sgx_runtime_bin_path }}
-
-worker:
-
-  storage:
-    enabled: true
-    checkpoint_sync:
-      disabled: true
-  
-  p2p:
-    # External P2P configuration.
-    enabled: true
-
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    - "{{ runtime_orc_path }}"
 ```
 
 Before using this configuration you should collect the following information to replace  the  variables present in the configuration file:.
 
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
   * You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
-* `{{ runtime_id }}`: The [ParaTime identifier](run-a-paratime-node.mdx#the-paratime-identifier-and-binary).
-  * You can find the current Oasis-supported ParaTime identifiers in the [Network Paramers](../../foundation/testnet/README.md#paratimes).
-* `{{ non-sgx_runtime_bin_path }}`: Path to the [ParaTime's non-SGX binary](run-a-paratime-node.mdx#the-paratime-identifier-and-binary) of the form `/node/runtimes/foo-paratime`.
+* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](run-a-paratime-client-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+  * You can find the current Oasis-supported ParaTimes in the [Network Paramers](../../oasis-network/network-parameters.md#paratimes).
 
 ## Starting the Oasis Node
 

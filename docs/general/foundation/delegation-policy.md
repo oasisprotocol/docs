@@ -18,10 +18,12 @@ the network.
    rate.
 3. Ensure your entity’s website, social media and/or contact info in the
    [Oasis Metadata Registry] is up-to-date.
-4. Refrain from dishonest, fraudulent or malicious behavior.
-5. Participate in on-chain governance and network upgrades proposed by Oasis
+4. Do not use 'Oasis' in your entity name, and do not use any Oasis Foundation
+   logos or branding in your entity logo.
+5. Refrain from dishonest, fraudulent or malicious behavior.
+6. Participate in on-chain governance and network upgrades proposed by Oasis
    Foundation.
-6. Be available and coordinate with the node operator community in case of
+7. Be available and coordinate with the node operator community in case of
    unplanned network upgrades.
 
 If there is any violation of the above Code of Conduct, Oasis Foundation
@@ -36,12 +38,10 @@ reserves the right to revoke your entire delegation.
 4. Ensure your nodes are upgraded within 24 hours after an unplanned network
    upgrade.
 
-If any failure to meet the above Performance Requirements is not fixed within 3
-business days, Oasis Foundation reserves the right to revoke delegations.
-
-If you run into a complex technical issue that prevents your node from meeting
-the above Performance Requirements, please reach out to the Oasis team as soon
-as possible but no later than the 3 business day window.
+If any of the above Performance Requirements is not met, Oasis Foundation
+reserves the right to revoke delegations. If you run into a complex technical
+issue that prevents your node from meeting the above Performance Requirements,
+please reach out to the Oasis team as soon as possible.
 
 ## How to Earn Delegations?
 

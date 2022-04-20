@@ -36,6 +36,30 @@ To get started building on our Emerald ParaTime, you can use our public Web3 gat
   * Decimal: 42262
 * Block explorer: [https://explorer.emerald.oasis.dev](https://explorer.emerald.oasis.dev)
 
+<button
+  class="button button--primary margin-bottom--md"
+  onClick={() =>
+    window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [
+        {
+          chainId: '0xa516',
+          chainName: 'Emerald Paratime Mainnet',
+          nativeCurrency: {
+            name: 'Emerald Rose',
+            symbol: 'ROSE',
+            decimals: 18,
+          },
+          rpcUrls: ['https://emerald.oasis.dev', 'wss://emerald.oasis.dev/ws'],
+          blockExplorerUrls: ['https://explorer.emerald.oasis.dev'],
+        },
+      ],
+    })
+  }
+>
+  Click here to register Emerald Mainnet to your MetaMask or Brave Wallet
+</button>
+
 ### Testnet
 
 * RPC HTTP endpoint: `https://testnet.emerald.oasis.dev`
@@ -44,6 +68,30 @@ To get started building on our Emerald ParaTime, you can use our public Web3 gat
   * Hex: 0xa515
   * Decimal: 42261
 * Block explorer: [https://testnet.explorer.emerald.oasis.dev](https://testnet.explorer.emerald.oasis.dev)
+
+<button
+  class="button button--primary margin-bottom--md"
+  onClick={() =>
+    window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [
+        {
+          chainId: '0xa515',
+          chainName: 'Emerald Paratime Testnet',
+          nativeCurrency: {
+            name: 'TEST',
+            symbol: 'TEST',
+            decimals: 18,
+          },
+          rpcUrls: ['https://testnet.emerald.oasis.dev/', 'wss://testnet.emerald.oasis.dev/ws'],
+          blockExplorerUrls: ['https://testnet.explorer.emerald.oasis.dev'],
+        },
+      ],
+    })
+  }
+>
+  Click here to register Emerald Testnet to your MetaMask or Brave Wallet
+</button>
 
 
 ## See also

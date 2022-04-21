@@ -57,6 +57,27 @@ This section contains parameters for various ParaTimes known to be deployed on t
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
   * [2.3.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.3.0-testnet)
+  * [2.4.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.4.0-testnet)
+
+:::info
+
+When multiple runtime versions are listed, make sure to specify the paths to all
+of the bundles in your configuration. This ensures that any planned upgrade
+happens at the right time.
+
+For example, for the above Cipher ParaTime versions the configuration would look
+like the following (only showing the relevant options):
+
+```yaml
+runtime:
+  # ... other options omitted ...
+  paths:
+    - /path/to/cipher-paratime-2.3.0-testnet.orc
+    - /path/to/cipher-paratime-2.4.0-testnet.orc
+```
+
+:::
+
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 

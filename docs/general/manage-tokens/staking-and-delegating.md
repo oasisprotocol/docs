@@ -8,7 +8,7 @@ description: >-
 
 ## Rewards and Tokenomics
 
-Mining rewards vary over the course of the Network. In the first four years rewards will range between 20-2% over time. More [here](/oasis-network-primer/token-metrics-and-distribution#staking-incentives).
+Staking rewards vary over the course of the Network. In the first four years rewards will range between 20-2% over time. More [here](/oasis-network-primer/token-metrics-and-distribution#staking-incentives).
 
 ## How to Stake and Delegate
 

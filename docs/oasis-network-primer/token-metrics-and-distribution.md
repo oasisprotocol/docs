@@ -40,7 +40,9 @@ Please note that these percentages and allocations are subject to change as we f
 
 Not all tokens have been released publicly or will be released publicly by Mainnet launch. Due to release schedules and locks, only a fraction of the total existing token supply will be in circulation at the time of Mainnet. Approximately 1.5 billion tokens out of a fixed supply of 10 billion tokens in total will be in circulation immediately upon Mainnet. In addition, a portion of Foundation tokens that are not in the circulation supply at launch are staked on the network. Any staking rewards earned will go back into the network via future validator delegations, network feature development, and ecosystem grants.
 
-Tokens set aside for Staking Rewards will be disbursed in accordance with on-chain staking mechanisms, which are calculated based on how many blocks are produced, how many nodes are participating in staking, and how many tokens are staked etc. The remaining allocations will be disbursed according to the following release schedule:
+Tokens set aside for Staking Rewards will be disbursed in accordance with on-chain reward mechanisms which calculate rewards based on how many blocks are proposed by validator, how many blocks are signed by a
+validator, how many nodes are participating in staking, and how many tokens are staked etc.
+The remaining allocations will be disbursed according to the following release schedule:
 
 ![](<images/10-Year_Token_Circulation_Schedule.png>)
 

@@ -56,7 +56,7 @@ Between 2018 and 2020 Oasis has raised over $45 million from backers including:
 
 Given the Oasis Network’s founding vision to become a world-class, public, permissionless blockchain platform, the contributing team at Oasis has been focused on ensuring that setting up a node is as seamless as possible for all community members. To that end, we’ve put a lot of thought into making sure our staking conditions minimize barriers to entry and encourage meaningful engagement on the network. Some key parameters include:
 
-* **Number of validators to participate in the consensus committee (and receive staking rewards):** 110. Validators will be based on the stake weight on the network.
+* **Number of validators to participate in the consensus committee (and receive staking rewards):** 120. Validators will be based on the stake weight on the network.
 * **Minimum stake**: 100 tokens per entity
 * **Selection to the consensus committee**: Each entity can have at most one node elected to the consensus committee at a time.
 * **Staking rewards**: The network is targeted to reward stakers with rewards of between 2.0% to 20.0% depending on the length of time staked to provide staking services on the network.  In order to be eligible for staking rewards per epoch, a node would need to sign at least 75% of blocks in that epoch.
@@ -74,6 +74,8 @@ For more details, see its [Delegation Policy](/general/foundation/delegation-pol
 
 ## Change Log
 
+* **Apr 28, 2022:**
+  * Updated validator set to 120 as reflected in the Oasis Network 2022-04-11 Upgrade.
 * **Nov 10, 2021:**
   * Updated validator set to 110 as reflected in the Oasis Network 2021-08-31 Upgrade.
   * Added Circulating Supply title to the part talking about Oasis Network's circulating supply.

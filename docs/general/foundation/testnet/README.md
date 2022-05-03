@@ -56,8 +56,16 @@ This section contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
-  * [2.3.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.3.0-testnet)
   * [2.4.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.4.0-testnet)
+  * [2.5.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.5.0-testnet)
+
+:::info
+
+The release contains two bundles -- for deploying a ParaTime node you only need
+`cipher-paratime.orc`. The other bundle is for the key manager runtime and can
+be ignored unless you are deploying a key manager node.
+
+:::
 
 :::info
 
@@ -72,8 +80,8 @@ like the following (only showing the relevant options):
 runtime:
   # ... other options omitted ...
   paths:
-    - /path/to/cipher-paratime-2.3.0-testnet.orc
     - /path/to/cipher-paratime-2.4.0-testnet.orc
+    - /path/to/cipher-paratime-2.5.0-testnet.orc
 ```
 
 :::

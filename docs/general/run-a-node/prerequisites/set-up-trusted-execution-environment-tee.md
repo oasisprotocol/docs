@@ -2,25 +2,45 @@
 
 :::info
 
-In case the ParaTime you want to run does not require the use of a TEE (e.g. Intel SGX), you can skip setting up a TEE.
+In case the ParaTime you want to run does not require the use of a TEE (e.g.
+Intel SGX), you can skip setting up a TEE.
 
 :::
 
-If the ParaTime is configured to run in a TEE (currently only [Intel SGX](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html)), you must make sure that your system supports running SGX enclaves. This requires that your hardware has SGX support, that SGX support is enabled and that the additional driver and software components are properly installed and running.
+If the ParaTime is configured to run in a TEE (currently only [Intel SGX]), you
+must make sure that your system supports running SGX enclaves. This requires
+that your hardware has SGX support, that SGX support is enabled and that the
+additional driver and software components are properly installed and running.
+
+[Intel SGX]: https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
+
+## Ensure Clock Synchronization
+
+Due to additional sanity checks within runtime enclaves, you should ensure that
+the node's local clock is synchronized (e.g. using NTP). Otherwise you may
+experience unexpected runtime aborts.
 
 ## Install SGX Linux Driver
 
-Oasis Core currently only supports the legacy (out-of-tree) [Intel SGX Linux driver](https://github.com/intel/linux-sgx-driver).
-
 :::info
 
-Support for the new Intel SGX support in mainline Linux kernels since version 5.11 is being tracked in [oasis-core#3651](https://github.com/oasisprotocol/oasis-core/issues/3651).
+In case you are running Linux kernel version 5.11 or higher, the required SGX
+driver is already included and no additional installation is needed so you may
+skip this section.
 
 :::
 
+On older distributions see below for instructions on how to install the
+[legacy (out-of-tree) driver].
+
+[legacy (out-of-tree) driver]: https://github.com/intel/linux-sgx-driver
+
 ### Ubuntu 18.04/16.04
 
-A convenient way to install the SGX Linux driver on Ubuntu 18.04/16.04 systems is to use the [Fortanix](https://edp.fortanix.com/docs/installation/guide/)'s APT repository and its [DKMS](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support) package.
+A convenient way to install the SGX Linux driver on Ubuntu 18.04/16.04 systems
+is to use the [Fortanix](https://edp.fortanix.com/docs/installation/guide/)'s
+APT repository and its [DKMS](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support)
+package.
 
 First add Fortanix's APT repository to your system:
 
@@ -38,15 +58,19 @@ sudo apt install intel-sgx-dkms
 
 :::caution
 
-Some [Azure Confidential Computing instances](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal) have the [Intel SGX DCAP driver](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux) pre-installed.
+Some [Azure Confidential Computing instances](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)
+have the [Intel SGX DCAP driver](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
+pre-installed.
 
-To determine that, run `dmesg | grep -i sgx` and observe if a line like the following is shown:
+To determine that, run `dmesg | grep -i sgx` and observe if a line like the
+following is shown:
 
 ```
 [    4.991649] sgx: intel_sgx: Intel SGX DCAP Driver v1.33
 ```
 
-If that is the case, you need to blacklist the Intel SGX DCAP driver's module by running:
+If that is the case, you need to blacklist the Intel SGX DCAP driver's module by
+running:
 
 ```
 echo "blacklist intel_sgx" | sudo tee -a /etc/modprobe.d/blacklist-intel_sgx.conf >/dev/null
@@ -56,21 +80,32 @@ echo "blacklist intel_sgx" | sudo tee -a /etc/modprobe.d/blacklist-intel_sgx.con
 
 ### Fedora 34/33
 
-A convenient way to install the SGX Linux driver on Fedora 34/33 systems is to use the Oasis-provided [Fedora Package for the Legacy Intel SGX Linux Driver](https://github.com/oasisprotocol/sgx-driver-kmod).
+A convenient way to install the SGX Linux driver on Fedora 34/33 systems is to
+use the Oasis-provided [Fedora Package for the Legacy Intel SGX Linux Driver](https://github.com/oasisprotocol/sgx-driver-kmod).
 
 ### Other Distributions
 
-Go to [Intel SGX Downloads](https://01.org/intel-software-guard-extensions/downloads) page and find the latest "Intel SGX Linux Release" (_not_ "Intel SGX DCAP Release") and download the "Intel (R) SGX Installers" for your distribution. The package will have `driver` in the name (e.g., `sgx_linux_x64_driver_2.11.0_2d2b795.bin`).
+Go to [Intel SGX Downloads](https://01.org/intel-software-guard-extensions/downloads)
+page and find the latest "Intel SGX Linux Release" (_not_ "Intel SGX DCAP
+Release") and download the "Intel (R) SGX Installers" for your distribution. The
+package will have `driver` in the name (e.g., `sgx_linux_x64_driver_2.11.0_2d2b795.bin`).
 
 ### Verification
 
-After installing the driver and restarting your system, make sure that the `/dev/isgx` device exists.
+After installing the driver and restarting your system, make sure that the one
+of the SGX devices exists (the exact device name depends on which driver is
+being used):
+
+* `/dev/sgx_enclave` (since Linux kernel 5.11)
+* `/dev/isgx` (legacy driver)
 
 ## Ensure `/dev` is NOT Mounted with the `noexec` Option
 
-Newer Linux distributions usually mount `/dev` with the `noexec` mount option. If that is the case, it will prevent the enclave loader from mapping executable pages.
+Some Linux distributions mount `/dev` with the `noexec` mount option. If that is
+the case, it will prevent the enclave loader from mapping executable pages.
 
-Ensure your `/dev` (i.e. `devtmpfs`) is not mounted with the `noexec` option. To check that, use:
+Ensure your `/dev` (i.e. `devtmpfs`) is not mounted with the `noexec` option.
+To check that, use:
 
 ```
 cat /proc/mounts | grep devtmpfs
@@ -82,7 +117,8 @@ To temporarily remove the `noexec` mount option for `/dev`, run:
 sudo mount -o remount,exec /dev
 ```
 
-To permanently remove the `noexec` mount option for `/dev`, add the following to the system's `/etc/fstab` file:
+To permanently remove the `noexec` mount option for `/dev`, add the following to
+the system's `/etc/fstab` file:
 
 ```
 devtmpfs        /dev        devtmpfs    defaults,exec 0 0
@@ -90,19 +126,28 @@ devtmpfs        /dev        devtmpfs    defaults,exec 0 0
 
 :::info
 
-This is the recommended way to modify mount options for virtual (i.e. API) file system as described in [systemd's API File Systems](https://www.freedesktop.org/wiki/Software/systemd/APIFileSystems/) documentation.
+This is the recommended way to modify mount options for virtual (i.e. API) file
+system as described in [systemd's API File Systems](https://www.freedesktop.org/wiki/Software/systemd/APIFileSystems/)
+documentation.
 
 :::
 
 ## Install AESM Service
 
-To allow execution of SGX enclaves, several **Architectural Enclaves (AE)** are involved (i.e. Launch Enclave, Provisioning Enclave, Provisioning Certificate Enclave, Quoting Enclave, Platform Services Enclaves).
+To allow execution of SGX enclaves, several **Architectural Enclaves (AE)** are
+involved (i.e. Launch Enclave, Provisioning Enclave, Provisioning Certificate
+Enclave, Quoting Enclave, Platform Services Enclaves).
 
-Communication between application-spawned SGX enclaves and Intel-provided Architectural Enclaves is through **Application Enclave Service Manager (AESM)**. AESM runs as a daemon and provides a socket through which applications can facilitate various SGX services such as launch approval, remote attestation quote signing, etc.
+Communication between application-spawned SGX enclaves and Intel-provided
+Architectural Enclaves is through **Application Enclave Service Manager
+(AESM)**. AESM runs as a daemon and provides a socket through which applications
+can facilitate various SGX services such as launch approval, remote attestation
+quote signing, etc.
 
 ### Ubuntu 20.04/18.04/16.04
 
-A convenient way to install the AESM service on Ubuntu 20.04/18.04/16.04 systems is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
+A convenient way to install the AESM service on Ubuntu 20.04/18.04/16.04 systems
+is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
 
 First add Intel SGX APT repository to your system:
 
@@ -111,7 +156,8 @@ echo "deb https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) m
 curl -sSL "https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key" | sudo -E apt-key add -
 ```
 
-And then install the `sgx-aesm-service`,  `libsgx-aesm-launch-plugin` and `libsgx-aesm-epid-plugin` packages:
+And then install the `sgx-aesm-service`,  `libsgx-aesm-launch-plugin` and
+`libsgx-aesm-epid-plugin` packages:
 
 ```bash
 sudo apt update
@@ -126,35 +172,58 @@ sudo systemctl status aesmd.service
 
 ### Docker-enabled System
 
-An easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled system is to use [Fortanix's AESM container image](https://hub.docker.com/r/fortanix/aesmd/).
+An easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled
+system is to use [our AESM container image](https://hub.docker.com/r/oasisprotocol/aesmd/).
 
-Executing the following command should (always) pull the latest version of Fortanix's AESM Docker container, map the `/dev/isgx` device and `/var/run/aesmd` directory and ensure AESM is running in the background (also automatically started on boot):
+Executing the following command should (always) pull the latest version of our
+AESM Docker container, map the SGX devices and `/var/run/aesmd` directory and
+ensure AESM is running in the background (also automatically started on boot):
 
 ```bash
 docker run \
   --pull always \
   --detach \
   --restart always \
-  --device /dev/isgx \
+  --device /dev/sgx_enclave \
+  --device /dev/sgx_provision \
   --volume /var/run/aesmd:/var/run/aesmd \
   --name aesmd \
-  fortanix/aesmd
+  oasisprotocol/aesmd:master
 ```
+
+:::tip
+
+Make sure to use the correct devices based on your [kernel version](set-up-trusted-execution-environment-tee.md#verification).
+The example above assumes the use of the newer driver which uses two devices.
+For the legacy driver you need to specify `--device /dev/isgx` instead.
+
+:::
 
 ### Podman-enabled System
 
-Similarly to Docker-enabled systems, an easy way to install and run the AESM service on a [Podman](https://podman.io)-enabled system is to use [Fortanix's AESM container image](https://hub.docker.com/r/fortanix/aesmd/).
+Similarly to Docker-enabled systems, an easy way to install and run the AESM
+service on a [Podman](https://podman.io)-enabled system is to use
+[our AESM container image](https://hub.docker.com/r/oasisprotocol/aesmd/).
 
 First, create the container with:
 
 ```bash
 sudo podman create \
   --pull always \
-  --device /dev/isgx \
+  --device /dev/sgx_enclave \
+  --device /dev/sgx_provision \
   --volume /var/run/aesmd:/var/run/aesmd:Z \
   --name aesmd \
-  docker.io/fortanix/aesmd
+  docker.io/oasisprotocol/aesmd
 ```
+
+:::tip
+
+Make sure to use the correct devices based on your [kernel version](set-up-trusted-execution-environment-tee.md#verification).
+The example above assumes the use of the newer driver which uses two devices.
+For the legacy driver you need to specify `--device /dev/isgx` instead.
+
+:::
 
 Then generate the `container-aesmd.service` systemd unit file for it with:
 
@@ -185,13 +254,16 @@ sudo podman logs -t -f aesmd
 
 ## Check SGX Setup
 
-In order to make sure that your SGX setup is working, you can use the `sgx-detect` tool from the [sgxs-tools](https://lib.rs/crates/sgxs-tools) Rust package.
+In order to make sure that your SGX setup is working, you can use the
+`sgx-detect` tool from the [sgxs-tools](https://lib.rs/crates/sgxs-tools) Rust
+package.
 
 There are no pre-built packages for it, so you will need to compile it yourself.
 
 :::info
 
-sgxs-tools must be compiled with a nightly version of the Rust toolchain since they use the `#![feature]` macro.
+sgxs-tools must be compiled with a nightly version of the Rust toolchain since
+they use the `#![feature]` macro.
 
 :::
 
@@ -218,11 +290,13 @@ sudo apt install gcc protobuf-compiler pkg-config libssl-dev
 
 ### Install [Rust](https://www.rust-lang.org) Nightly
 
-We follow [Rust upstream's recommendation](https://www.rust-lang.org/tools/install) on using [rustup](https://rustup.rs) to install and manage Rust versions.
+We follow [Rust upstream's recommendation](https://www.rust-lang.org/tools/install)
+on using [rustup](https://rustup.rs) to install and manage Rust versions.
 
 :::caution
 
-rustup cannot be installed alongside a distribution packaged Rust version. You will need to remove it (if it's present) before you can start using rustup.
+rustup cannot be installed alongside a distribution packaged Rust version. You
+will need to remove it (if it's present) before you can start using rustup.
 
 :::
 
@@ -234,7 +308,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 :::tip
 
-If you want to avoid directly executing a shell script fetched the internet, you can also [download `rustup-init` executable for your platform](https://rust-lang.github.io/rustup/installation/other.html) and run it manually. This will run `rustup-init` which will download and install the latest stable version of Rust on your system.
+If you want to avoid directly executing a shell script fetched the internet, you
+can also [download `rustup-init` executable for your platform](https://rust-lang.github.io/rustup/installation/other.html)
+and run it manually. This will run `rustup-init` which will download and install
+the latest stable version of Rust on your system.
 
 :::
 
@@ -252,9 +329,11 @@ cargo +nightly-2021-11-04 install sgxs-tools
 
 ### Run `sgx-detect` Tool
 
-After the installation completes, run `sgx-detect` to make sure that everything is set up correctly.
+After the installation completes, run `sgx-detect` to make sure that everything
+is set up correctly.
 
-When everything works, you should get output similar to the following (some things depend on hardware features so your output may differ):
+When everything works, you should get output similar to the following (some
+things depend on hardware features so your output may differ):
 
 ```
 Detecting SGX, this may take a minute...
@@ -280,13 +359,16 @@ Detecting SGX, this may take a minute...
     ✔  Production mode (Intel whitelisted)
 ```
 
-The important part is the checkbox under _Able to launch enclaves_ in both _Debug mode_ and _Production mode (Intel whitelisted)_.
+The important part is the checkbox under _Able to launch enclaves_ in both
+_Debug mode_ and _Production mode (Intel whitelisted)_.
 
-In case you encounter errors, see the [list of common SGX installation issues](https://edp.fortanix.com/docs/installation/help/) for help.
+In case you encounter errors, see the [list of common SGX installation issues](https://edp.fortanix.com/docs/installation/help/)
+for help.
 
 ## Troubleshooting
 
-See  [the general troubleshooting section](../troubleshooting.md), before proceeding with ParaTime node-specific troubleshooting.
+See  [the general troubleshooting section](../troubleshooting.md), before
+proceeding with ParaTime node-specific troubleshooting.
 
 ### Missing `libsgx-aesm-epid-plugin`
 
@@ -296,7 +378,9 @@ If you are encountering the following error message in your node's logs:
 failed to initialize TEE: error while getting quote info from AESMD: aesm: error 30
 ```
 
-Ensure you have all required SGX driver libraries installed as listed in [Install SGX Linux Driver section](../set-up-your-node/run-a-paratime-node.mdx#install-sgx-linux-driver). Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
+Ensure you have all required SGX driver libraries installed as listed in
+[Install SGX Linux Driver section](../set-up-your-node/run-a-paratime-node.mdx#install-sgx-linux-driver).
+Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
 
 ### Unable to Launch Enclaves
 

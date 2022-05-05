@@ -36,6 +36,9 @@ Feel free to use other seed nodes besides the one provided here.
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
   * [22.1.6](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.6)
+  * To sync from genesis, you need to start with an earlier version first
+    ([read more][handling network upgrades]):
+    * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
   * [2.2.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.0)
 
@@ -44,6 +47,8 @@ Feel free to use other seed nodes besides the one provided here.
 The Oasis Node is part of the Oasis Core release.
 
 :::
+
+[handling network upgrades]: ../../run-a-node/maintenance-guides/handling-network-upgrades.md
 
 ## ParaTimes
 

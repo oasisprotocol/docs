@@ -400,7 +400,7 @@ the [22.1][changelog-22.1] and [22.0][changelog-22.0] sections.
 [changelog-22.0]:
   https://github.com/oasisprotocol/oasis-core/blob/v22.1.3/CHANGELOG.md#220-2022-03-01
 
-## 2021-08-31 (16:00 UTC) - Parameter Update
+## 2021-08-31 (16:00 UTC) - Parameter Update {#2021-08-31-upgrade}
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **8049.**
 
@@ -557,9 +557,9 @@ Since Oasis Core 21.2.8 is otherwise compatible with the current consensus layer
 
 :::
 
-:::caution
+:::caution This is not dump & restore upgrade
 
-For this upgrade, do NOT wipe state.
+For this upgrade, **do NOT wipe state**.
 
 :::
 
@@ -792,7 +792,7 @@ To do that, just open Ledger Live's Manager and it will prompt you to install ve
 
 :::
 
-## 2021-04-28 (16:00 UTC) - Cobalt Upgrade
+## 2021-04-28 (16:00 UTC) - Cobalt Upgrade {#cobalt-upgrade}
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **5046.**
 
@@ -910,7 +910,7 @@ Otherwise, external runtime clients wont be able to connect to any storage nodes
 
 :::
 
-## 2020-11-18 (16:00 UTC) - Mainnet
+## 2020-11-18 (16:00 UTC) - Mainnet {#mainnet-upgrade}
 
 * **Block height** when Mainnet Beta network stops: **702000.**
 
@@ -999,7 +999,7 @@ consensus:
     ...
 ```
 
-## 2020-10-01 - Mainnet Beta
+## 2020-10-01 - Mainnet Beta {#mainnet-beta-upgrade}
 
 ### Instructions
 
@@ -1020,7 +1020,7 @@ For more detailed instructions, see the [Handling Network Upgrades](maintenance-
 
 :::
 
-## 2020-09-22 - Mainnet Dry Run
+## 2020-09-22 - Mainnet Dry Run {#mainnet-dry-run}
 
 ### Instructions
 

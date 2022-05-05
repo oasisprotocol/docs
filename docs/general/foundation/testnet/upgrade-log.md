@@ -33,9 +33,11 @@ is allow specifying a no-op handler when submitting an upgrade proposal.
 
 :::
 
-:::caution
+:::caution This is not dump & restore upgrade
 
-For this upgrade, do NOT wipe state.
+For this upgrade, **do NOT wipe state**. The new Oasis Core version expects
+the synced state using Oasis Core 22.0.x all the way until the upgrade epoch.
+Read [Handling Network Upgrades] for more info.
 
 :::
 
@@ -63,6 +65,8 @@ is published.
 :::
 
 * If you are running a Rosetta gateway, upgrade it to version [2.2.0].
+
+[Handling Network Upgrades]: ../../run-a-node/maintenance-guides/handling-network-upgrades.md
 
 ### Before Upgrade
 
@@ -355,9 +359,9 @@ Since Oasis Core 21.2.8 is otherwise compatible with the current consensus layer
 
 :::
 
-:::caution
+:::caution This is not dump & restore upgrade
 
-For this upgrade, do NOT wipe state.
+For this upgrade, **do NOT wipe state**.
 
 :::
 
@@ -406,9 +410,9 @@ Since Oasis Core 21.2.4 is otherwise compatible with the current consensus layer
 
 :::
 
-:::caution
+:::caution This is not dump & restore upgrade
 
-For this upgrade, do NOT wipe state.
+For this upgrade, **do NOT wipe state**.
 
 :::
 

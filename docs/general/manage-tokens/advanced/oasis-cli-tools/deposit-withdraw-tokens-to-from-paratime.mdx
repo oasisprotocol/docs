@@ -118,7 +118,7 @@ Waiting for deposit result...
 Deposit succeeded.
 ```
 
-Currently, deposit transactions are free of charge, so we can avoid spending ROSE for the gas fee by adding the `--gas-price 0` parameter. Also, keep in mind that **deposit and withdrawal fees are always paid by your ParaTime accoun.** If it doesn't contain any ROSE, you are not able to cover the fees.
+Currently, deposit transactions are free of charge, so we can avoid spending ROSE for the gas fee by adding the `--gas-price 0` parameter. Also, keep in mind that **deposit and withdrawal fees are always paid by your ParaTime account.** If it doesn't contain any ROSE, you are not able to cover the fees.
 
 To deposit ROSE to a different ParaTime account, simply add the bech32-encoded `oasis1` address to the deposit command:
 
@@ -211,12 +211,6 @@ Transaction hash: bd587656e92515efb326614fda554b3ce1b7ec69768880bf21895424e06bdd
 Waiting for deposit result...
 Deposit succeeded.
 ```
-
-:::caution
-
-The current version of the Cipher ParaTime running on Mainnet does not support gas estimation yet. If oasis CLI returns the `Error: failed to estimate gas: invalid argument: missing field` message, try enforcing the gas limit to a reasonable size, for example by adding `--gas-limit 12000` flag.
-
-:::
 
 ## Withdraw
 

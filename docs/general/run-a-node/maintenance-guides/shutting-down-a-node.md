@@ -14,10 +14,10 @@ The graceful shutdown process involves the following steps:
 To have the node gracefully shutdown, run:
 
 ```bash
-# Request a graceful shutdown, and exit as soon as the request is issued.
+# Issue a graceful shutdown request.
 oasis-node control shutdown
 
-# Request a graceful shutdown, and wait for the node to terminate.
+# Issue a graceful shutdown request, and block until the node terminates.
 # Note: This can take up to a full epoch to complete.
 oasis-node control shutdown \
   --wait

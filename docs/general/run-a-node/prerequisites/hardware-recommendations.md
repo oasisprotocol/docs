@@ -1,42 +1,66 @@
 # Hardware Requirements
 
-The Oasis Network is composed of multiple classes of nodes that participate in
-different committees.
+The Oasis Network is composed of multiple classes of nodes and services such
+as:
+
+* Consensus validator or non-validator node
+* Emerald ParaTime compute or client node
+* Emerald Web3 gateway with PostgreSQL
+* Cipher ParaTime compute or client node
 
 This page describes the **minimum** and **recommended** system hardware
 requirements for running different types of nodes on the Oasis Network.
 
 :::caution
 
-If you configure a system with less resources than the recommended values, you
-run the risk of being underprovisioned and causing proposer node timeouts.
-This could result in losing stake.
+If you configure a system with slower resources than the recommended values, you
+run the risk of being underprovisioned, causing proposer node timeouts and
+synchronization delays. This could result in losing stake and not participating
+in committees.
+
+If you run out of memory or storage, the Oasis node process will be forcefully
+killed. This could lead to state corruption, losing stake and not participating
+in committees.
 
 :::
 
-## Consensus Nodes <a id="suggested-minimum-configurations"></a>
 
-To run a non-validator or a validator consensus node, your system should meet
-the following requirements:
+### CPU {#suggested-minimum-configurations}
 
-### CPU
+* Consensus validator or non-validator node:
+  * Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
+  * Recommended: 2.0 GHz x86-64 CPU with 2 cores/vCPUs with
+    [AES instruction set] and [AVX2] support
 
-* Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
-* Recommended: 2.0 GHz+ x86-64 CPU with 2 cores or 2 such virtual CPUs with
-  [AES instruction set] and [AVX2] support
+* Emerald ParaTime compute node and all ParaTime client nodes:
+  * Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
+  * Recommended: 2.0 GHz x86-64 CPU with 4 cores/vCPUs with
+    [AES instruction set] and [AVX2] support
 
-:::caution
+* Emerald Web3 gateway with PostgreSQL:
+  * Minimum: 2.0 GHz x86-64 CPU
+  * Recommended: 2.0 GHz x86-64 CPU with 2 cores/vCPUs
+
+* Cipher ParaTime compute node:
+  * Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] and [Intel SGX] support
+  * Recommended: 2.0 GHz x86-64 CPU with 2 cores/vCPUs with
+    [AES instruction set], [Intel SGX] and [AVX2] support
+
+:::info
+
+During regular workload your node will operate with the minimal CPU resources.
+However, if put under heavy load it might require more cores/vCPUs (e.g. an
+Emerald ParaTime client node behind a public Emerald Web3 gateway).
 
 The [AES instruction set] support is required by [Deoxys-II-256-128], a
 Misuse-Resistant Authenticated Encryption (MRAE) algorithm, which is used for
 encrypting ParaTime's state.
 
-:::
-
-:::info
-
 The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
 signature verification which in turn makes a node sync faster.
+
+The [Intel SGX] support is required if you want to run Paratime compute nodes
+that use a Trusted Execution Environment (TEE).
 
 :::
 
@@ -44,175 +68,128 @@ signature verification which in turn makes a node sync faster.
 [Deoxys-II-256-128]: https://sites.google.com/view/deoxyscipher
 [AVX2]:
   https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#Advanced_Vector_Extensions_2
+[Intel SGX]:
+  https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
+
 
 ### Memory
 
-* Minimum: 4 GB of ECC RAM
-* Recommended: 8 GB of ECC RAM
+* Consensus validator or non-validator node:
+  * Minimum: 4 GB of ECC RAM
+  * Recommended: 8 GB of ECC RAM
+
+* All ParaTime compute or client nodes:
+  * Minimum: 8 GB of ECC RAM
+  * Recommended: 16 GB of ECC RAM
+
+* Emerald Web3 gateway with PostgreSQL:
+  * Minimum: 4 GB of ECC RAM
+  * Recommended: 8 GB of ECC RAM
 
 :::info
 
-Ordinary node operation can work with less memory, e.g. 4 GB of RAM.
-
-However, at certain time points, the node will absolutely require more memory.
-Examples of such more resource intensive time points are the initial state sync,
-BadgerDB migration when upgrading a node to Oasis Core 21.2.x, generating
-storage checkpoints with BadgerDB, periodic BadgerDB compactions...
-
-If the system will not have enough memory, that will result in the Oasis node
-process being killed forcefully by the OOM process.
-Oasis node being killed forcefully could lead to BadgerDB state corruption
-and/or losing stake.
+During regular workload your node will operate with less than the minimum amount
+of memory. However, at certain time points, it will absolutely require more
+memory. Examples of such more resource intensive time points are the initial
+state sync, BadgerDB migration when upgrading a node to a new major version of
+the Oasis Core, generating storage checkpoints with BadgerDB, periodic BadgerDB
+compactions...
 
 :::
+
 
 ### Storage
 
-* Minimum: 300+ GB of SSD or NVMe fast storage
-* Recommended: 500+ GB of SSD or NVMe fast storage
+* Consensus validator or non-validator node:
+  * Minimum: 400 GB of SSD or NVMe fast storage
+  * Recommended: 700 GB of SSD or NVMe fast storage
+
+* Emerald ParaTime compute or client node (in addition to the consensus storage requirements):
+  * Minimum: 400 GB of SSD or NVMe fast storage
+  * Recommended: 700 GB of SSD or NVMe fast storage
+
+* Emerald Web3 gateway with PostgreSQL:
+  * Minimum: 300 GB of SSD or NVMe fast storage
+  * Recommended: 500 GB of SSD or NVMe fast storage
+
+* Cipher ParaTime compute or client node (in addition to the consensus storage requirements):
+  * Minimum: 200 GB of SSD or NVMe fast storage
+  * Recommended: 300 GB of SSD or NVMe fast storage
 
 :::caution
 
-Consensus state is stored in an embedded [BadgerDB] database which was
-[designed to run on SSDs][badgerdb-ssds].
-
-Hence, we **strongly discourage** trying to run a node that stores data
-**on classical HDDs**.
+Consensus and ParaTime state is stored in an embedded [BadgerDB] database which
+was [designed to run on SSDs][badgerdb-ssds]. Hence, we **strongly discourage**
+trying to run a node that stores data **on classical HDDs**.
 
 :::
 
 :::info
 
-The network accumulates state over time. The speed at which the state grows
-depends on the network's usage.
+The Consensus Layer and ParaTimes accumulate state over time. The speed at which
+the state grows depends on the number of transactions on the network and
+ParaTimes.
 
-For example, the Mainnet accumulated over 250 GB of state in ~11 months between
-the [Cobalt upgrade] (Apr 28, 2021) and Mar 15, 2022.
+For example, a consensus non-validator node on the Mainnet accumulated:
+
+* 280 GB of consensus state in ~1 year between Apr 28, 2021 and Apr 11, 2022 (since the [Cobalt upgrade])
+* 32 GB of consensus state in ~1 month since the [Damask upgrade]
+
+For example, an Emerald client node on the Mainnet additionally accumulated:
+
+* 260 GB of Emerald ParaTime state in ~5 months between Nov 18, 2021 and Apr 11, 2022 (since the [Emerald Mainnet launch])
+* 25 GB of Emerald ParaTime state in ~1 month since the [Damask upgrade]
+
+For example, an Emerald Web3 gateway with PostgreSQL encountered:
+
+* 210 GB of database growth in ~5 months between Nov 18, 2021 and Apr 11, 2022 (since the [Emerald Mainnet launch])
+
+:::
+
+:::tip
+
+Dump & restore upgrades (e.g. [Damask upgrade], [Cobalt upgrade]) include state
+wipes which will free the node storage. Historical state can be accessed by
+running a separate archive node.
 
 :::
 
 :::info
 
-Node doesn't need to keep the state from before the latest dump & restore
-upgrade (e.g. before the [Cobalt upgrade]). Historical state can be archived
-separately.
+You can configure your node _not to_ keep a complete state from the genesis
+onward. This will reduce the amount of storage required for the consensus and
+ParaTime state.
 
-:::
-
-:::info
-
-It is also possible to configure the Node to _not_ keep all the state from the
-genesis onward, reducing the amount of storage needed to keep the network's
-state.
-
-To do that, set the **`consensus.tendermint.abci.prune.strategy`** and
-**`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your
+To enable pruning of the consensus state set the
+`consensus.tendermint.abci.prune.strategy` and
+`consensus.tendermint.abci.prune.num_kept` parameters appropriately in your
 [node's configuration].
+
+To enable pruning of the ParaTime state set the
+`runtime.history.pruner.strategy` and `runtime.history.pruner.num_kept`
+parameters appropriately in your [node's configuration].
 
 :::
 
 [BadgerDB]: https://dgraph.io/docs/badger/
 [badgerdb-ssds]: https://dgraph.io/docs/badger/design/
 [Cobalt upgrade]: ../../mainnet/previous-upgrades/cobalt-upgrade.md
-[node's configuration]: ../set-up-your-node/run-validator.md#configuring-the-oasis-node
-
-## ParaTime Nodes
-
-To run a ParaTime node, your system should meet the following requirements:
-
-### CPU
-
-* Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
-* Recommended: 2.0 GHz+ x86-64 CPU with 2 cores or 2 such virtual CPUs with
-  [AES instruction set] and [AVX2] support
-
-:::caution
-
-The [AES instruction set] support is required by [Deoxys-II-256-128], a
-Misuse-Resistant Authenticated Encryption (MRAE) algorithm, which is used for
-encrypting ParaTime's state.
-
-:::
-
-:::info
-
-The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
-signature verification which in turn makes a node sync faster.
-
-:::
-
-:::info
-
-If you want to run ParaTimes which require the use of a Trusted Execution
-Environment (TEE), the CPU also needs to support [Intel SGX].
-
-:::
-
-[Intel SGX]:
-  https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
-
-### Memory
-
-* Minimum: 8 GB of ECC RAM
-* Recommended: 16 GB of ECC RAM
-
-:::info
-
-Ordinary node operation can work with less memory, e.g. 8 GB of RAM.
-
-However, at certain time points, the node will absolutely require more memory.
-Examples of such more resource intensive time points are the initial state sync,
-generating storage checkpoints with BadgerDB, periodic BadgerDB compactions...
-
-If the system will not have enough memory, that will result in the Oasis node
-process being killed forcefully by the OOM process.
-Oasis node being killed forcefully could lead to BadgerDB state corruption
-and/or losing stake.
-
-:::
-
-### Storage
-
-* Minimum: 500+ GB of SSD or NVMe fast storage
-* Recommended: 800+ GB of SSD or NVMe fast storage
-
-:::caution
-
-Consensus and ParaTime state is stored in an embedded [BadgerDB] database which
-was [designed to run on SSDs].
-
-Hence, we **strongly discourage** trying to run a node that stores data
-**on classical HDDs**.
-
-:::
-
-:::info
-
-The consensus layer and the ParaTimes accumulate state over time.
-The speed at which the state grows depends on the network's and ParaTimes' usage.
-
-For example, a node running the Emerald ParaTime on the Mainnet would currently
-(Mar 15, 2022)
-need to store:
-
-- over 250 GBs of consensus state accumulated in ~11 months since the
-[Cobalt upgrade] (Apr 28, 2021).
-- over 125 GBs of Emerald ParaTime state accumulated in ~4 months since the
-[Emerald Mainnet launch] (Nov 18, 2021).
-
-:::
-
-:::info
-
-It is also possible to configure the Node to _not_ keep all the state from the
-genesis onward, reducing the amount of storage needed to keep the network's
-state.
-
-To do that, set the **`consensus.tendermint.abci.prune.strategy`** and
-**`consensus.tendermint.abci.prune.num_kept`** parameters appropriately in your
-[node's configuration].
-
-:::
-
+[Damask upgrade]: ../../mainnet/damask-upgrade
 [Emerald Mainnet launch]:
   https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9
+[node's configuration]: ../set-up-your-node/run-validator.md#configuring-the-oasis-node
+
+
+### Network
+
+* Consensus validator node and Emerald ParaTime compute node:
+  * Minimum: 200 Mbps internet connection with low latency
+  * Recommended: 1 Gbps internet connection with low latency
+
+:::info
+
+During regular workload your node will receive much less network traffic.
+However, at certain time points when huge bursts of transactions arrive, you
+need to assure that it doesn't timeout.
+
+:::

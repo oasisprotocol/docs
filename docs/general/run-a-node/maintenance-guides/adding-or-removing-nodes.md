@@ -6,6 +6,14 @@ do so, you will need to have at least the following:
 * Access to a synced node
 * Access to your entity's private key
 
+:::tip
+
+If you just need to temporarily disable your node (e.g. to perform system
+updates), use [graceful shutdown] instead. This will assure you that your
+entity will not get penalized during node's downtime.
+
+:::
+
 ## Overview
 
 The process for adding/removing nodes is similar and has the following steps:
@@ -14,6 +22,8 @@ The process for adding/removing nodes is similar and has the following steps:
 2. Update your entity descriptor by adding/removing a node
 3. Generate a `register` transaction to update your entity registration on the
    network.
+
+[graceful shutdown]: shutting-down-a-node.md
 
 ## Retrieving Your Latest Entity Descriptor
 

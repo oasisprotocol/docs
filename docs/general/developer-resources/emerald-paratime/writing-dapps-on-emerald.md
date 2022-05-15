@@ -614,6 +614,434 @@ share them with us at [#dev-support on our Community Slack channel][slack-devsup
 [metamask]: ../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx#verifying-rose-balance-on-emerald-paratime
 [slack-devsupport]: https://oasiscommunity.slack.com/messages/dev-support
 
+## Create dApp on Emerald with Rust
+
+This tutorial assumes you have a working Rust development environment.
+
+### Setup for Rust
+
+In order to be able to compile smart contracts, first you must
+[install solc](https://docs.soliditylang.org/en/latest/installing-solidity.html#linux-packages).
+
+For the purpose of this tutorial, create a file called `Greeter.sol` with the following code:
+
+```js
+pragma solidity ^0.8.0;
+
+contract Greeter {
+    string private greeting;
+
+    constructor(string memory _greeting) {
+        greeting = _greeting;
+    }
+
+    function greet() public view returns (string memory) {
+        return greeting;
+    }
+
+    function setGreeting(string memory _greeting) public {
+        greeting = _greeting;
+    }
+}
+```
+
+The smart contract above can also be used in [the Go tutorial](#create-dapp-on-emerald-with-go).
+
+### Compile and deploy via Rust
+
+You will need to add the following dependencies to `Cargo.toml` in order to be able to compile
+and to deploy smart contracts:
+
+```
+[package]
+name = "sol-deploy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ethers = { git = "https://github.com/gakonst/ethers-rs/" }
+eyre = "0.6.8"
+serde_json = "1.0.81"
+hex = "0.4.3"
+tokio = { version = "1.17", features = [ "rt", "macros" ] }
+```
+
+The following `main.rs` will compile the solidity smart contract by calling `solc` in the backgroung.
+After that, it saves the ABI to a file so that it can be used later in order to call the contract.
+There is no need to save the bytecode to disk, as you can deploy it directly to Emerald.
+
+The script is expecting two environment variables: `EMERALD_IP` and `PRIVATE_KEY`. In case you don't
+specify `EMERALD_IP` it will default to `127.0.0.1` just in case you are
+[running a local server](#running-private-oasis-network-locally). The private key must be specified
+in order to get be able to deploy the contract.
+
+```ts
+use ethers::{contract::ContractFactory, prelude::*, solc::Solc};
+use eyre::Result;
+use std::{convert::TryFrom, fs::File, io::Write, sync::Arc, time::Duration};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // Load contract and compile. This requires the solc binary.
+    // In case your contract does not compile, check the errors with solc.
+    let contract_name = "Greeter";
+    let contract = "../solidity/Greeter.sol";
+    let contracts = Solc::default().compile_source(&contract)?;
+    let c = contracts.get(&contract, &contract_name).unwrap();
+    let abi = c.abi.unwrap().to_owned();
+    let bytecode = c.bytecode().unwrap().to_owned();
+
+    // save the ABI to a file in order to load it in the call script
+    let abi_json = serde_json::to_string_pretty(&abi)?;
+    let abi_json_file_path = "/path/to/Greeter.abi";
+    let mut abi_json_file_handler = File::create(abi_json_file_path)?;
+    write!(abi_json_file_handler, "{}", abi_json)?;
+
+    // set up emerald-related variables (blockchain url, wallet, client)
+    let emerald_ip = std::env::var("EMERALD_IP").unwrap_or_else(|_| "127.0.0.1".into());
+    let emerald_uri = format!("http://{}:8545", emerald_ip);
+    let private_key = std::env::var("PRIVATE_KEY").expect("PRIVATE_KEY env var is mandatory");
+    let private_key = private_key.trim_start_matches("0x");
+    let provider = Provider::<Http>::try_from(emerald_uri)?.interval(Duration::from_secs(7));
+    let chain_id = provider.get_chainid().await?.as_u64();
+    let wallet = private_key.parse::<LocalWallet>()?.with_chain_id(chain_id);
+    println!("wallet public address is {:?}", wallet.address());
+    let client = Arc::new(SignerMiddleware::new(provider, wallet));
+
+    // deploy the contract
+    let factory = ContractFactory::new(abi, bytecode, client);
+    let contract = factory
+        .deploy("HELLO FROM RUST!".to_string())?
+        .legacy()
+        .confirmations(0usize)
+        .send()
+        .await?;
+    println!("Contract address: {:?}", contract.address());
+
+    Ok(())
+}
+```
+
+In case you don't want to trigger `solc` from rust, you can also compile the bytecode directly
+from bash by running `solc --abi --bin -o . Greeter.sol` and after that loading the ABI and the bytecode
+from the files:
+
+```ts
+    let abi: Abi =
+        serde_json::from_str(&fs::read_to_string("/path/to/Greeter.abi").unwrap())?;
+    let bytecode_string = fs::read_to_string("/path/to/Greeter.bin")?;
+    let bytecode = hex::decode(bytecode_string)?;
+    let bytecode = ethers_core::types::Bytes::from(bytecode);
+```
+
+After deploying the contract you should get a contract address that looks like this:
+`0xe0b863149d323464ecbf09048410d8c19994047d`
+
+### Call smart contracts from Rust
+
+The `Cargo.toml` required to call the smart contract is almost the same. You just need
+`serde` instead of `hex`:
+
+```
+[package]
+name = "sol-call"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ethers = { git = "https://github.com/gakonst/ethers-rs/" }
+eyre = "0.6.8"
+serde_json = "1.0.81"
+serde = "1.0.137"
+tokio = { version = "1.17", features = [ "rt", "macros" ] }
+```
+
+In order to call the contract, you will need to load the ABI that you created earlier.
+You will still need the environment variable `PRIVATE_KEY` and in case your Emerald
+server is remote, you will also need to specify the `EMERALD_IP`. Apart from this, you 
+will now also need the `CONTRACT_ADDRESS` that you got during the deployment.
+
+```ts
+use ethers::prelude::*;
+use eyre::Result;
+use std::{convert::TryFrom, sync::Arc, time::Duration};
+
+abigen!(
+    Greeter,
+    "/path/to/Greeter.abi",
+    event_derives(serde::Deserialize, serde::Serialize)
+);
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // set up emerald-related variables (blockchain url, wallet, client)
+    let emerald_ip = std::env::var("EMERALD_IP").unwrap_or_else(|_| "127.0.0.1".into());
+    let emerald_uri = format!("http://{}:8545", emerald_ip);
+    let private_key = std::env::var("PRIVATE_KEY").expect("PRIVATE_KEY env var is mandatory");
+    let private_key = private_key.trim_start_matches("0x");
+    let provider = Provider::<Http>::try_from(emerald_uri)?.interval(Duration::from_secs(7));
+    let chain_id = provider.get_chainid().await?.as_u64();
+    let wallet = private_key.parse::<LocalWallet>()?.with_chain_id(chain_id);
+    let client = Arc::new(SignerMiddleware::new(provider, wallet));
+
+    // load the contract address that we got from the deploy script
+    let contract_address =
+        std::env::var("CONTRACT_ADDRESS").expect("CONTRACT_ADDRESS env var is mandatory");
+    let contract_address = contract_address.parse::<Address>()?;
+
+    // call the contract to get the greeting and also send a transaction to change the greeting
+    let greeter_contract = Greeter::new(contract_address, client.clone());
+    let greeting = greeter_contract.greet().call().await.unwrap();
+    println!("The initial greeting of the contract is: {}", greeting);
+    let result = greeter_contract
+        .set_greeting("THE GREETING GOT CHANGED FROM RUST!".to_owned())
+        .legacy()
+        .send()
+        .await?
+        .await?;
+    println!("The result of set_greeting is: {:?}", result);
+    let greeting = greeter_contract.greet().call().await.unwrap();
+    println!("The new greeting of the contract is: {}", greeting);
+
+    Ok(())
+}
+```
+
+Successfully running this script will give you the initial greeting in the contract, information
+about the transaction (when you change the greeting) and after that the new greeting.
+
+## Create dApp on Emerald with Go
+
+This tutorial assumes you have a working Go development environment.
+
+### Setup for Go
+
+Similar to the [Setup for Rust](#setup-for-rust), you will need the same Solidity smart contract
+and the `solc` binary/compiler. In the case of Go however, you must compile the contract using `solc` before starting
+to work with the contract from Go. You can do this by running `solc --abi --bin -o . Greeter.sol`
+in the same folder as the `Greeter.sol`.
+
+You will also need to install `abigen`. On `archlinux` this can be installed via `pacman -S go-ethereum`.
+You can also compile it manually by running:
+```sh
+$ git clone https://github.com/ethereum/go-ethereum
+$ cd go-ethereum
+$ go build ./cmd/abigen
+$ mv abigen /usr/local/bin/
+```
+
+Now you should be able to get your go package by using `abigen`:
+
+```
+$ abigen --bin=solidity/Greeter.bin --abi=solidity/Greeter.abi --pkg=greeter --out=go/pkg/greeter/greeter.go
+```
+
+As you probably noticed, most paths in the commands are relative and indicate a specific folder structure.
+This is because you will have to load the package in Go so you should aim for the following folder structure:
+```
+.
+├── go
+│   ├── app
+│   │   ├── call
+│   │   │   └── main.go
+│   │   └── deploy
+│   │       └── main.go
+│   ├── go.mod
+│   ├── go.sum
+│   └── pkg
+│       └── greeter
+│           └── greeter.go
+└── solidity
+    ├── Greeter.abi
+    ├── Greeter.bin
+    └── Greeter.sol
+```
+
+
+### Deploying smart contracts via Go
+
+Assuming you were able to compile the smart contract and you have prepared your folder structure,
+you should be able to use the code below to deploy `Greeter` to Emerald. Within your `go` folder,
+run `go mod init goemerald` so that you get your `go.mod` and the imports below work.
+
+In case you are [running a local server](#running-private-oasis-network-locally),
+you have to export the `EMERALD_IP` variable: `export EMERALD_IP=127.0.0.1`. 
+You must also export an environment variable `PRIVATE_KEY`, which is required
+to deploy the contract. You might have to remove the `0x` sufix from your key
+so that it gets parsed correctly by the script.
+
+The script for `app/deploy/main.go` is:
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	greeter "goemerald/pkg/greeter"
+)
+
+var privateKey = os.Getenv("PRIVATE_KEY")
+var emeraldIP = os.Getenv("EMERALD_IP")
+
+func init() {
+	if privateKey == "" || emeraldIP == "" {
+		fmt.Println(
+			"The following env variables are mandatory: PRIVATE_KEY EMERALD_IP",
+		)
+		os.Exit(1)
+	}
+}
+
+func main() {
+	client, err := ethclient.Dial("http://" + emeraldIP + ":8545")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	privateKey, err := crypto.HexToECDSA(privateKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	chainID, err := client.ChainID(context.Background())
+	if err != nil {
+		log.Fatalln("Could not get chain ID:", err)
+	}
+	auth, err := bind.NewKeyedTransactorWithChainID(privateKey, chainID)
+
+	address, tx, _, err := greeter.DeployGreeter(auth, client, "CONTRACT DEPLOYED USING GO!")
+	if err != nil {
+		log.Fatal("Could not deploy smart contract:", err)
+	}
+
+	fmt.Println("The transaction to deploy Greeter is:", tx.Hash().Hex())
+	fmt.Println("The address of the Greeter contract is:", address.Hex())
+}
+```
+
+You might have to run `go mod tidy` after creating the file so that you populate the imports.
+
+Running the deploy should generate an output similar to:
+```
+$ go run app/deploy/main.go
+The transaction to deploy Greeter is: 0x64595aaa4dd3a1b561d43ad60692a60597a9871c146fbb3101d060d1ad018d9a
+The address of the Greeter contract is: 0x01e5EA3e505c900e9526f2278F87F51521BC1435
+```
+
+### Call smart contracts from Go
+
+In order to call the contract, you will have to export the contract address you got at the
+previous step:
+```
+export CONTRACT_ADDRESS=0x01e5EA3e505c900e9526f2278F87F51521BC1435
+```
+
+The `app/call/main.go` script can be found below. This script will first call the contract to get
+existing greeting, will send a transaction to change the greeting, will wait 7 seconds for that
+transaction to get processed and after that it will get the greeting again.
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"time"
+
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	greeter "goemerald/pkg/greeter"
+)
+
+var contractAddress = os.Getenv("CONTRACT_ADDRESS")
+var privateKey = os.Getenv("PRIVATE_KEY")
+var emeraldIP = os.Getenv("EMERALD_IP")
+
+func init() {
+	if contractAddress == "" || privateKey == "" || emeraldIP == "" {
+		fmt.Println(
+			"The following env variables are mandatory: CONTRACT_ADDRESS PRIVATE_KEY EMERALD_IP",
+		)
+		os.Exit(1)
+	}
+}
+
+func main() {
+	client, err := ethclient.Dial("http://" + emeraldIP + ":8545")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	privateKey, err := crypto.HexToECDSA(privateKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	chainID, err := client.ChainID(context.Background())
+	if err != nil {
+		log.Fatalln("Could not get chain ID:", err)
+	}
+	auth, err := bind.NewKeyedTransactorWithChainID(privateKey, chainID)
+	contractInstance, err := greeter.NewGreeter(
+		common.HexToAddress(contractAddress),
+		client)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	output, err := contractInstance.Greet(&bind.CallOpts{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("The initial greeting of the contract is:", output)
+
+	tx, err := contractInstance.SetGreeting(auth,
+		"THE GREETING GOT CHANGED FROM GO!")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Emerald transactions take 6 seconds
+	time.Sleep(7 * time.Second)
+	receipt, err := client.TransactionReceipt(context.Background(), tx.Hash())
+	if err != nil {
+		log.Fatal("Could not retreive the receipt of the transaction: ", err)
+	}
+
+	receiptJSON, err := receipt.MarshalJSON()
+	if err != nil {
+		log.Fatal("Could not marshall receipt: ", err)
+	}
+	fmt.Println("Transaction receipt:", string(receiptJSON))
+
+	output, err = contractInstance.Greet(&bind.CallOpts{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("The new greeting of the contract is:", output)
+}
+```
+
+The output of this script should be similar to:
+```sh
+$ go run app/call/main.go
+The initial greeting of the contract is: CONTRACT DEPLOYED USING GO!
+Transaction receipt: {"root":"0x","status":"0x1","cumulativeGasUsed":"0x11618","logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","logs":[],"transactionHash":"0x48402146be24bdebe0f532fc687ebebce0ea332af525e588753bcda7db2a2329","contractAddress":"0x0000000000000000000000000000000000000000","gasUsed":"0x11618","blockHash":"0xb826704071301f8dc526f14242e2e3ac4e01121f2a7e69daef1425db4f03c7fc","blockNumber":"0xd7","transactionIndex":"0x0"}
+The new greeting of the contract is: THE GREETING GOT CHANGED FROM GO!
+```
+
 ## Troubleshooting
 
 ### Deployment of my contract timed out on Testnet or Mainnet

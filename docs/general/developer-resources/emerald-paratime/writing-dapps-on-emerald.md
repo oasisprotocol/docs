@@ -608,11 +608,11 @@ manually by 10% or 20%.
 
 Congratulations! Now you can start developing your own smart contracts on the
 Oasis Emerald blockchain! Should you have any questions, do not hesitate to
-share them with us at [#dev-support on our Community Slack channel][slack-devsupport].
+share them with us on the [#emerald-paratime Discord channel][discord].
 
 [Remix]: https://remix.ethereum.org
 [metamask]: ../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx#verifying-rose-balance-on-emerald-paratime
-[slack-devsupport]: https://oasiscommunity.slack.com/messages/dev-support
+[discord]: https://discord.gg/RwNTK8t
 
 ## Troubleshooting
 

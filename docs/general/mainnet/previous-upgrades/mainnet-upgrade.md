@@ -71,7 +71,7 @@ Mainnet will use [**Oasis Core 20.12.2**](https://github.com/oasisprotocol/oasis
 
 The Oasis team will be offering live video support during the launch of Mainnet. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet.
+For any additional support, please reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet.
 
 To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).[  
 ](https://app.gitbook.com/@oasisprotocol/s/general/~/drafts/-MYKBZ_9kr9NSXQSnUVI/contribute-to-the-network/contribution-guidelines/@merged)

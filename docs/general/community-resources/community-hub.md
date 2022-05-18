@@ -102,11 +102,10 @@ You can learn more about each validator by clicking on their name and going to t
 
 To stay up-to-date on the latest Oasis Network news, events, and programs, be sure to join our social media channels:
 
-* [Oasis Community Slack](https://join.slack.com/t/oasiscommunity/shared_invite/zt-rrfh9vlu-Sn_IWDI8oKw1SABI5caKMw)
+* [Discord](https://discord.gg/RwNTK8t)
+* [Twitter](https://twitter.com/OasisProtocol)
 * [Public Telegram channel](https://t.me/oasisprotocolcommunity) (for community discussions open to everyone)
 * [Telegram Announcement channel](https://t.me/oasisprotocolfoundation) (for one-way updates from the Oasis Foundation)
-* [Twitter](https://twitter.com/OasisProtocol)
-* [Discord](https://discord.gg/RwNTK8t)
 
 To connect with Oasis community members who live in your home region or speak your native language, check out our region-based community channels:
 

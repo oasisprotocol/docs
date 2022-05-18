@@ -13,10 +13,10 @@ We are proud of our diverse and talented community from all around the world. We
 
 ## Social Media Channels
 
-* [Public Slack channel](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg)
-* [Public Telegram channel](https://t.me/oasisprotocolcommunity)
-* [Twitter](https://twitter.com/OasisProtocol)
 * [Discord](https://discord.gg/RwNTK8t)
+* [Twitter](https://twitter.com/OasisProtocol)
+* [Public Telegram channel](https://t.me/oasisprotocolcommunity) (for community discussions open to everyone)
+* [Telegram Announcement channel](https://t.me/oasisprotocolfoundation) (for one-way updates from the Oasis Foundation)
 
 ## Developer Resources
 

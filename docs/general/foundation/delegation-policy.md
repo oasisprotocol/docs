@@ -50,7 +50,7 @@ please reach out to the Oasis team as soon as possible.
 - Operate Emerald and/or Cipher ParaTime nodes on Mainnet.
 - Operate validator and/or ParaTime nodes on Testnet
 - Participate in community discussion on the network’s future roadmap.
-- Actively participate in the Oasis Community Slack and Oasis Discord channels
+- Actively participate on the Oasis Network Community server on Discord
   and help answer questions from other community members.
 - Build or contribute to tools, services or DApps that benefit developers, node
   operators and/or the overall Oasis community.

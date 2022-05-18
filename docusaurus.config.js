@@ -109,7 +109,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg',
+            href: 'https://discord.gg/RwNTK8t',
             label: 'Support',
             position: 'left',
 	  },

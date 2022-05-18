@@ -127,10 +127,10 @@ The versatility of the ParaTime Layer allows the Oasis Network to expand and gro
 
 * [GitHub](https://github.com/oasisprotocol)
 * [Documentation](https://docs.oasis.dev)
-* [Slack](https://www.oasisprotocol.org/slack)
-* [Telegram](https://t.me/oasisprotocolcommunity)
-* [Medium ](https://medium.com/oasis-protocol-project)
+* [Discord](https://discord.gg/RwNTK8t)
 * [Twitter](https://twitter.com/OasisProtocol)
+* [Telegram](https://t.me/oasisprotocolcommunity)
+* [Medium](https://medium.com/oasis-protocol-project)
 
 ### Developer Tools
 

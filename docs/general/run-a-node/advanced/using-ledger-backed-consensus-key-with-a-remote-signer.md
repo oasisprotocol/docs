@@ -6,7 +6,7 @@ This guide will describe how you can set up your [_validator_ node](../set-up-yo
 
 These instructions are still a work-in-progress draft.
 
-Your feedback is welcome. Please, reach out via the [**#nodeoperators** Oasis Community Slack channel](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback.
+Your feedback is welcome. Please, reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](../../oasis-network/connect-with-us.md) with your questions, comments, and feedback.
 
 :::
 

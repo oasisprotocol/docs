@@ -1,81 +1,135 @@
 # Handling Network Upgrades
 
-:::caution
+Changes between the major consensus network versions are backward and forward
+breaking. You have to always run **a specific version of the Oasis Core to
+fetch and validate the blocks matching the specific consensus network version**.
 
-Following this guide when there is no network upgrade will result in you losing your place on the current network.
+There are two kinds of consensus network upgrades that can occur:
 
-:::
+- *Seamless upgrade*: on-chain upgrade without resetting the consensus state or
+  changing the genesis document (e.g. [Testnet upgrade 2022-04-04], [Mainnet
+  upgrade 2021-08-31]).
+- *Dump & restore upgrade*: requires wiping state and starting the upgraded
+  network from a fresh genesis document (e.g. [Mainnet upgrade 2022-04-11
+  (Damask)], [Testnet upgrade 2022-03-03]).
 
-The following guide should be used when the network has agreed to do a software upgrade.
+The specific Oasis Core version requirements also impact the way how you
+**initially sync your node with the network**:
+- If the last network upgrade was a dump & restore one, then your node will
+  complete the synchronization automatically by fetching and validating all
+  blocks following the state in the genesis document.
+- If the last network upgrade was a seamless one, you will first need to
+  download the older version of the Oasis Core to sync the initial blocks
+  and then sequentially perform seamless upgrade(s).
 
-## Stop the node at specific epoch
+For example, at time of writing this guide in order to sync your node from
+scratch on the [Testnet network][Testnet Parameters] you needed to do the
+following:
 
-Before an upgrade we will update the [Upgrade Log](../upgrade-log.md) to specify the epoch height at which the upgrade will take place. Additionally, an upgrade descriptor will be provided which can be used to instruct the node to shutdown and export state at the start of the upgrade epoch.
+- Download the genesis document and run Oasis Core 22.0.x which synced
+  blocks from epoch 14209 through (excluding) upgrade epoch 15056.
+- Wait until the node automatically stopped, then upgrade to Oasis Core
+  22.1.x which synced the blocks from epoch 15056 onwards.
 
-To submit the provided upgrade descriptor use the following command:
+The expected versions of the Oasis Core to sync your node from the latest
+genesis document on the Mainnet and Testnet are always published on the
+[Network Parameters] and [Testnet Parameters] pages respectively.
 
-```bash
-oasis-node control upgrade-binary \
- -a unix:/serverdir/node/internal.sock \
- <PATH-TO-UPGRADE-DESCRIPTOR.json>
+## Reaching Upgrade Epoch
+
+Once a [governance proposal] is accepted the node will automatically stop when
+reaching the **upgrade epoch** specified in the proposal. The node will
+write something like this in the log:
+
+```json
+{"caller":"mux.go:426","level":"debug","module":"abci-mux","msg":"dispatching halt hooks for upgrade","ts":"2022-05-06T13:11:41.721994647Z"}
 ```
 
-To verify that the upgrade descriptor has been received, grep your node's logs for "received upgrade descriptor" message, e.g.:
+and on the error output:
 
-> {"caller":"upgrade.go:60","epoch":5102,"level":"info","module":"upgrade","msg":"received upgrade descriptor, scheduling shutdown","name":"testnet-upgrade-2021-03-24","ts":"2021-03-24T09:56:52.944552808Z"}
-
-If for any reason you would need to cancel a scheduled pending upgrade, use the `cancel-upgrade` command.
-
-Node reaching the upgrade epoch will automatically export network state to a genesis file under the following path:`exports/genesis-<CHAIN-ID>-at-<DUMP-BLOCK-HEIGHT>.json`.
-
-## Manually exporting network state
-
-To dump the state of the network to a genesis file, run:
-
-```bash
-oasis-node genesis dump \
-  -a unix:/serverdir/node/internal.sock \
-  --genesis.file /serverdir/etc/genesis_dump.json \
-  --height <HEIGHT-TO-DUMP>
+```text
+panic: upgrade: reached upgrade epoch
 ```
 
-replacing `<HEIGHT-TO-DUMP>` with the block height we specified.
+The state of the network at the upgrade epoch height will be automatically
+exported into a genesis file located in
+`<NODE-DATADIR>/exports/genesis-<CHAIN_ID>-at-<UPGRADE_HEIGHT>.json`,
+where `CHAIN_ID` is the chain ID of the network and `LATEST_HEIGHT` is the
+height of the last consensus block before the upgrade epoch. This command,
+depending on the size of the state, may take some time to finish.
 
-:::caution
+:::tip
 
-You can only run the following command _after_ the `<HEIGHT-TO-DUMP>` block height has been reached on the network.
-
-To see the network's current height, run:
+While waiting for the network upgrade epoch, you can check the current height
+and epoch by running:
 
 ```bash
 oasis-node control status -a unix:/serverdir/node/internal.sock
 ```
 
-and observe the value of the `consensus.latest_height` key.
+and observe the value of the `consensus.latest_height` and
+`consensus.latest_epoch` fields respectively.
 
 :::
 
-## Patch Dumped State
+[governance proposal]: ../set-up-your-node/governance.md
 
-At the moment, we don't provide state patches.
+Once the upgrade epoch is reached, follow the instructions in the corresponding
+[upgrade log].
 
-However, for certain upgrades we use the **`oasis-node debug fix-genesis`** CLI command to automatically migrate/update some parts of the genesis file.
+[upgrade log]: ../upgrade-log.md
+[Network Parameters]: ../../oasis-network/network-parameters.md
+[Testnet Parameters]: ../../foundation/testnet/README.md
+[Testnet upgrade 2022-04-04]: ../../foundation/testnet/upgrade-log.md#2022-04-04-upgrade
+[Testnet upgrade 2022-03-03]: ../../foundation/testnet/upgrade-log.md#2022-03-03-upgrade
+[Testnet upgrade 2021-08-11]: ../../foundation/testnet/upgrade-log.md#2021-08-11-upgrade
+[Mainnet upgrade 2022-04-11 (Damask)]: ../../run-a-node/upgrade-log.md#damask-upgrade
+[Mainnet upgrade 2021-08-31]: ../../run-a-node/upgrade-log.md#2021-08-31-upgrade
+[Mainnet upgrade 2021-04-28 (Cobalt)]: ../../run-a-node/upgrade-log.md#cobalt-upgrade
 
-Other parts are updated manually, as described in each upgrade's Proposed State Changes section (e.g. [Cobalt upgrade's Proposed State Changes](../../mainnet/previous-upgrades/cobalt-upgrade.md#proposed-state-changes)).
+## Preparing New Genesis File and Wiping State
 
-## Download and Verify the Provided Genesis File {#verify-genesis}
+For dump & restore upgrades, the exported genesis file needs to be patched and
+verified accordingly. Then, we wipe the existing consensus state including the
+history of all transactions and let the node reload the state from the genesis
+file.
 
-Download the new genesis file linked in the [Network Parameters](../../oasis-network/network-parameters.md) and save it as `/serverdir/etc/genesis.json`.
+### Patching Dumped State
 
-Then compare the dumped state with the downloaded genesis file:
+First, let's run a built-in helper which migrates and updates parts of the
+genesis file which changed in the new version of Oasis Core. We will provide
+the dumped genesis file as the input and write the new version of the genesis
+file into `genesis_dump.json`.
+
+```bash
+oasis-node debug fix-genesis --genesis.file genesis-<CHAIN_ID>-at-<LATEST_HEIGHT>.json --genesis.new_file genesis_dump.json
+```
+
+Other parts of the genesis need to be updated manually, as described in each
+upgrade's *Proposed State Changes* section (e.g. [Damask upgrade's Proposed
+State Changes], [Cobalt upgrade's Proposed State Changes]).
+
+[Cobalt upgrade's Proposed State Changes]: ../../mainnet/previous-upgrades/cobalt-upgrade.md#proposed-state-changes
+[Damask upgrade's Proposed State Changes]: ../../mainnet/damask-upgrade.md#proposed-state-changes
+
+### Download and Verify the Provided Genesis File {#verify-genesis}
+
+In addition, download the new genesis file linked in the [Network Parameters]
+and save it as `/serverdir/etc/genesis.json`.
+
+Compare the dumped state with the downloaded genesis file:
 
 ```bash
 diff --unified=3 genesis_dump.json genesis.json
 ```
 
-### Example diff for Mainnet Beta to Mainnet network upgrade
+If you obtain the same result, then you have successfully verified the provided
+genesis file!
 
-Let's assume that the above `diff` command returns:
+#### Example diff for Mainnet Beta to Mainnet network upgrade
+
+Let's look at what `diff` returned before performing manual changes to the
+genesis file for the Mainnet network upgrade:
 
 ```diff
 --- genesis_dump.json    2020-11-16 17:49:46.864554271 +0100
@@ -158,57 +212,118 @@ Let's assume that the above `diff` command returns:
  }
 ```
 
-We can observe that the provided genesis file mostly updates some particular network parameters. In addition, some ROSE tokens were transferred from an account to the Common Pool. All other things remained unchanged.
+We can observe that the provided genesis file mostly updates some particular
+network parameters. In addition, some ROSE tokens were transferred from an
+account to the Common Pool. All other things remained unchanged.
 
 Let's break down the diff and explain what has changed.
 
 The following genesis file fields will always change on a network upgrade:
 
-* `chain_id`: A unique ID of the network.
+* `chain_id`: A unique ID of the network. Mainnet upgrades follow a pattern `oasis-1`, `oasis-2`, ...
 * `genesis_time`: Time from which the genesis file is valid.
-* `halt_epoch`: The epoch when the node will stop functioning. We set this to intentionally force an upgrade.
+* `halt_epoch`: The epoch when the node will stop functioning. We set this to
+  intentionally force an upgrade.
 
 The following fields were a particular change in this upgrade:
 
-* `staking.params.reward_schedule`: This field describes the staking reward model. It was changed to start at 20% (annualized) and range from 20% to 2% over the first 4 years of the network. For more details, see the updated [Token Metrics and Distribution](/oasis-network-primer/token-metrics-and-distribution) doc.
-* `staking.params.disable_transfers`: This field was removed to enable token transfers.
-* `staking.common_pool`: This field represents the Common Pool. Its balance was increased by 450M ROSE to fund increased staking rewards.
-* `staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`: This field corresponds to the Community and Ecosystem Wallet. Its `general.balance` was reduced by 450M ROSE and transferred to the Common Pool to fund increased staking rewards.
-* `extra_data`: This field can hold network's extra data, but is currently ignored everywhere. For this upgrade, we changed it back to the value in the Mainnet Beta genesis file to include the Oasis network's genesis quote: _”_[_Quis custodiet ipsos custodes?_](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_” \[submitted by Oasis Community Member Daniyar Borangaziyev\]._
+* `staking.params.reward_schedule`: This field describes the staking reward
+  model. It was changed to start at 20% (annualized) and range from 20% to 2%
+  over the first 4 years of the network. For more details, see the [Token
+  Metrics and Distribution] doc.
+* `staking.params.disable_transfers`: This field was removed to enable token
+  transfers.
+* `staking.common_pool`: This field represents the Common Pool. Its balance was
+  increased by 450M ROSE to fund increased staking rewards.
+* `staking.ledger.oasis1qrad7s7nqm4gvyzr8yt2rdk0ref489rn3vn400d6`: This field
+  corresponds to the Community and Ecosystem Wallet. Its `general.balance` was
+  reduced by 450M ROSE and transferred to the Common Pool to fund increased
+  staking rewards.
+* `extra_data`: This field can hold network's extra data, but is currently
+  ignored everywhere. For this upgrade, we changed it back to the value in the
+  Mainnet Beta genesis file to include the Oasis network's genesis quote:
+  _”_[_Quis custodiet ipsos custodes?_](https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F)_” \[submitted by Oasis Community Member Daniyar Borangaziyev\]._
 
 :::info
 
-The balances in the genesis file are enumerated in base units with 1 ROSE token equaling 10^9 (i.e. billion) base units. For more details, see the [Genesis Document](../../oasis-network/genesis-doc.md#parameters) docs.
+The balances in the genesis file are enumerated in base units with 1 ROSE token
+equaling 10^9 (i.e. billion) base units. For more details, see the
+[Genesis Document](../../oasis-network/genesis-doc.md#parameters).
 
 :::
 
-If you obtain the same result, then you have successfully verified the provided genesis file.
+[Token Metrics and Distribution]: /oasis-network-primer/token-metrics-and-distribution
 
-## Stop Your Node
-
-This will depend on your process manager. You should stop your [Oasis Node](../prerequisites/oasis-node.md) process however this is done for your setup.
-
-## Wipe State
+### Wiping State
 
 :::caution
 
-We do not suggest that you wipe _all_ state. You might lose node identities and keys if you do it this way.
+We do not suggest that you wipe _all_ state. You might lose node identities and
+keys if you do it this way.
 
 :::
 
-Before restarting your node you should wipe consensus state. The process for this is described in the [Wiping Node State](wiping-node-state.md#state-wipe-and-keep-node-identity) document.
+The process is described in the
+[Wiping Node State](wiping-node-state.md#state-wipe-and-keep-node-identity)
+document.
 
-## Update Configuration
+## Updating ParaTimes
 
-If the [Upgrade Log](../upgrade-log.md) provides instructions for updating your node's configuration, update the `/serverdir/etc/config.yml` file accordingly.
+If you are running a compute or a client ParaTime node, you will often need to
+upgrade the ParaTime. The required ParaTime versions are stored in the network
+registry. The command below queries the registry and extracts the version
+information for the Paratime
+`00000000000000000000000000000000000000000000000072c8215e60d5bca7`:
 
-## Upgrade Oasis Node
+```bash
+oasis-node registry runtime list -v -a unix:/serverdir/node/internal.sock \| 
+jq 'select(.id=="00000000000000000000000000000000000000000000000072c8215e60d5bca7") | .deployments'
+```
 
-Before starting your node again, make sure you upgrade your [Oasis Node](../prerequisites/oasis-node.md) binary to the current version specified in the [Network Parameters](../../oasis-network/network-parameters.md).
+At time of writing the Emerald ParaTime on Testnet has the following record:
+
+```
+[
+  {
+    "version": {
+      "major": 7,
+      "minor": 1
+    },
+    "valid_from": 14320
+  },
+  {
+    "version": {
+      "major": 8
+    },
+    "valid_from": 15056
+  }
+]
+```
+
+The record above specifies that after epoch 14320, Emerald version 7.1.0 is
+required and from epoch 15056, Emerald 8.0.0. If you are running a compute
+node, **the installed ParaTime version must match exactly the ParaTime version
+in the registry**! If you are running a client node, ParaTime state syncing
+will be performed regardless of the version installed.
+
+Oasis node supports configuring multiple versions of ParaTime bundles, for
+example: 
+
+```yaml
+runtime:
+  paths:
+    - /path/to/emerald-paratime-7.1.0-testnet.orc
+    - /path/to/emerald-paratime-8.0.0-testnet.orc
+```
+
+The node will then automatically run the correct version of the ParaTime as
+specified in the registry.
 
 ## Start Your Node
 
-This will depend on your process manager. If you don't have a process manager, you should use one. However, to start the node without a process manager you can start the [Oasis Node](../prerequisites/oasis-node.md) like so:
+This will depend on your process manager. If you don't have a process manager,
+you should use one. However, to start the node without a process manager you
+can start the [Oasis Node](../prerequisites/oasis-node.md) like this:
 
 ```bash
 oasis-node --config /serverdir/etc/config.yml
@@ -216,5 +331,6 @@ oasis-node --config /serverdir/etc/config.yml
 
 ## Clean Up
 
-After you're comfortable with your node deployment, you can clean up the `genesis_dump.json` file.
-
+After you're comfortable with your node deployment, you can remove the old
+Oasis Core version and the intermediate
+`genesis-<CHAIN_ID>-at-<LATEST_HEIGHT>.json` and `genesis_dump.json` files.

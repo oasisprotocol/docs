@@ -40,7 +40,7 @@ Feel free to use other seed nodes besides the one provided here.
     ([read more][handling network upgrades]):
     * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
-  * [2.2.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.0)
+  * [2.2.1](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.1)
 
 :::info
 
@@ -109,7 +109,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.1.0-testnet#building)):
   * [8.1.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.1.0-testnet)
 * Emerald Web3 Gateway version:
-  * [2.1.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0-rc1)
+  * [2.2.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.2.0)
 
 :::tip
 

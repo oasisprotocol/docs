@@ -183,11 +183,6 @@ const sidebars = {
         'contribute-to-the-network/run-a-paratime-node',
         'contribute-to-the-network/network-governance',
         'contribute-to-the-network/contribution-guidelines',
-        {
-          type: 'link',
-          label: 'Visit our GitHub',
-          href: 'https://github.com/oasisprotocol',
-        },
       ],
     },
     {
@@ -256,11 +251,6 @@ const sidebars = {
           type: 'link',
           label: 'Oasis SDK Documentation',
           href: '/oasis-sdk'
-        },
-        {
-          type: 'link',
-          label: 'GitHub',
-          href: 'https://github.com/oasisprotocol',
         },
       ],
     },

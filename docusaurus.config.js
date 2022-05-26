@@ -115,8 +115,9 @@ const config = {
 	  },
           {
             href: 'https://github.com/oasisprotocol',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },

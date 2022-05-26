@@ -37,3 +37,8 @@ html[data-theme='dark'] {
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.theme-doc-sidebar-menu {
+  font-size: 14px;
+}
+

@@ -607,10 +607,10 @@ Note that in order to be elected in the validator set you need to have enough st
 
 :::
 
-## Oasis Metadata Registry
-
 Congratulations, if you made it this far, you've properly connected your node 
 to the network and became a validator on the Oasis Network.
+
+## Oasis Metadata Registry
 
 For the final touch, you can add some metadata about your entity to the 
 [Metadata Registry]. The Metadata Registry is the same for the Mainnet and 

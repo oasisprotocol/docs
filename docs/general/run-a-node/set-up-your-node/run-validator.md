@@ -607,6 +607,17 @@ Note that in order to be elected in the validator set you need to have enough st
 
 :::
 
-## You're a Validator!
+Congratulations, if you made it this far, you've properly connected your node 
+to the network and became a validator on the Oasis Network.
 
-If you've made it this far, you've properly connected your node to the network and you're now a validator on the Oasis Network.
+## Oasis Metadata Registry
+
+For the final touch, you can add some metadata about your entity to the 
+[Metadata Registry]. The Metadata Registry is the same for the Mainnet and 
+the Testnet. The metadata consists of your entity name, email, Keybase handle, 
+Twitter handle, etc. This information is also used by third party applications. 
+For example [Oasis Scan] fetches your image from Keybase and uses it as the node 
+operator's avatar.
+
+[Metadata Registry]: https://github.com/oasisprotocol/metadata-registry
+[Oasis Scan]: https://www.oasisscan.com/validators

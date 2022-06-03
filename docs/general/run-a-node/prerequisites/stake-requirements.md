@@ -4,7 +4,7 @@ description: >-
   on the consensus layer of the Oasis Network.
 ---
 
-# Stake requirements
+# Stake Requirements
 
 ## Mainnet
 
@@ -60,4 +60,3 @@ the [Account Get Info] doc.
 [Account Get Info]: ../../manage-tokens/advanced/oasis-cli-tools/get-account-info.md
 
 :::
-

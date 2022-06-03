@@ -18,7 +18,7 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
 
 ### Stake requirements
 
-To become a validator on the Oasis Network, you need to have enough tokens staked in your escrow account. For more details, see the [Stake requirements](../../contribute-to-the-network/run-validator.md#stake-requirements) section of [Run a Validator Node](../../contribute-to-the-network/run-validator.md) doc.
+To become a validator on the Oasis Network, you need to have enough tokens staked in your escrow account. For more details, see the [Stake requirements](../prerequisites/stake-requirements).
 
 ### Systems
 

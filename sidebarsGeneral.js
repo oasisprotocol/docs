@@ -180,7 +180,6 @@ const sidebars = {
       label: 'Contribute to the Network',
       collapsible: false,
       items: [
-        'contribute-to-the-network/run-validator',
         'contribute-to-the-network/run-a-paratime-node',
         'contribute-to-the-network/network-governance',
         'contribute-to-the-network/contribution-guidelines',

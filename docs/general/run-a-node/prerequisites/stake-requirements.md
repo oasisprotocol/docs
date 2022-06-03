@@ -26,10 +26,10 @@ Currently, you are going to need:
 staking threshold].
 * 100 ROSE staked for your validator node's registration since that is the 
 [current validator node's staking threshold].
-* If you want to be part of the active validator set, you are going to need enough 
-ROSE staked. Currently this means you will have to be one of the top 120 entities 
-by stake. You can see how much you are going to need on the blockchain explorer 
-such as like [Oasis Scan].
+* If you want to be part of the active validator set, you will need enough 
+ROSE staked --  this means you will have to be one of the top 120 entities 
+by stake. You can check out current top 120 entities on the blockchain explorer 
+such as [Oasis Scan].
 
 
 [current entity's staking threshold]: ../../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds

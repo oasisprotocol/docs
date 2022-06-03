@@ -38,6 +38,22 @@ such as [Oasis Scan].
 
 :::info
 
+The size of the consensus committee (i.e. the validator set) is configured by 
+the [**max_validators** consensus parameter].
+
+[**max_validators** consensus parameter]: ../../oasis-network/genesis-doc.md#consensus
+
+:::
+
+## Testnet
+
+For the Testnet you are going to need TEST tokens. To receive TEST tokens please 
+use the [Oasis Network Testnet Faucet].
+
+[Oasis Network Testnet Faucet]: https://faucet.testnet.oasis.dev/
+
+:::info
+
 For more information about obtaining information on your entity's account, see 
 the [Account Get Info] doc.
 
@@ -45,11 +61,3 @@ the [Account Get Info] doc.
 
 :::
 
-:::info
-
-The size of the consensus committee (i.e. the validator set) is configured by 
-the [**max_validators** consensus parameter].
-
-[**max_validators** consensus parameter]: ../../oasis-network/genesis-doc.md#consensus
-
-:::

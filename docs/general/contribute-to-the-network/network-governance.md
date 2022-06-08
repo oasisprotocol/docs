@@ -24,7 +24,7 @@ In order for the community to balance distributed ownership and participation wi
 
 Moving forward, our proposed process for reviewing and approving major protocol updates is:
 
-* **Proposals** for features and roadmap updates can come from anyone in the community in the form of issues ([for minor features](network-governance.md#minor-feature-requests)) or [Architectural Decision Records](/oasis-core/adr) (ADRs, [for major features](network-governance.md#major-feature-requests)).
+* **Proposals** for features and roadmap updates can come from anyone in the community in the form of issues ([for minor features](network-governance.md#minor-feature-requests)) or [Architectural Decision Records](/adrs) (ADRs, [for major features](network-governance.md#major-feature-requests)).
 * **Review and discussion of the proposals.** Decisions about the future of the project are made through discussion with all members of the community, from the newest user to the most experienced. All non-sensitive project management discussion takes place in the Oasis Protocol GitHub via issues ([for minor features](network-governance.md#minor-feature-requests)) and ADRs ([for major features](network-governance.md#major-feature-requests)).
 * **Decision making process.** In order to ensure that the project is not bogged down by endless discussion and continual voting, the project operates a policy of lazy consensus. This allows the majority of decisions to be made without resorting to a formal vote.
 
@@ -42,7 +42,7 @@ If the feature is small - a change to a single piece of functionality, or an add
 
 ### Major Feature Requests
 
-If the feature is more complicated, involves protocol changes, or has potential safety or performance implications, then consider [proposing an Architectural Decision Record (ADR)](/oasis-core/adr) and submit it as a pull request to the Oasis Core repository. This will allow a structured review and commenting of the proposed changes. You should aim to get the ADR accepted and merged before starting on implementation. Please keep in mind that the project's committers still have the final word on what is accepted into the project.
+If the feature is more complicated, involves protocol changes, or has potential safety or performance implications, then consider [proposing an Architectural Decision Record (ADR)](/adrs) and submit it as a pull request to the Oasis Core repository. This will allow a structured review and commenting of the proposed changes. You should aim to get the ADR accepted and merged before starting on implementation. Please keep in mind that the project's committers still have the final word on what is accepted into the project.
 
 :::info
 

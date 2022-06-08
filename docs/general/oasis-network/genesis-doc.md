@@ -66,7 +66,7 @@ It is important to note that this value alone doesn't dictate the version of an 
 
 :::caution
 
-The **`epochtime`**section will be removed in the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md) since it became obsolete with the new [improved random beacon](/oasis-core/adr/0007-improved-random-beacon). It will be replaced with the new **`beacon`** section described [below](../mainnet/previous-upgrades/cobalt-upgrade.md#beacon).
+The **`epochtime`**section will be removed in the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md) since it became obsolete with the new [improved random beacon](/adrs/0007-improved-random-beacon). It will be replaced with the new **`beacon`** section described [below](../mainnet/previous-upgrades/cobalt-upgrade.md#beacon).
 
 :::
 
@@ -125,7 +125,7 @@ For example, a staking transfer transaction of size 230 bytes would have a total
 The **`roothash`** object contains parameters related to the [Root Hash service](/oasis-core/consensus/services/roothash) and a minimal state related to the runtimes.
 
 * **`roothash.params.max_runtime_messages` ** The global limit on the number of [messages](/oasis-core/runtime/messages) that can be emitted in each round by the runtime. The value is set to 256.
-* **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/oasis-core/adr/0005-runtime-compute-slashing). The value is set to 100.
+* **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/adrs/0005-runtime-compute-slashing). The value is set to 100.
 
 ### Staking
 
@@ -208,11 +208,11 @@ The **`scheduler`** object contains parameters controlling how various committee
 The **`beacon`** object contains parameters controlling the network's random beacon.
 
 * **`beacon.base`** Network's starting epoch. When a network is upgraded, its epoch is retained. For example, for the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md) the epoch of the Mainnet state dump was bumped by 1 from 5,046 to 5,047.
-* **`beacon.params.backend`** The random beacon backend to use. The value is set to "pvss" indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/oasis-core/adr/0007-improved-random-beacon) should be used.
+* **`beacon.params.backend`** The random beacon backend to use. The value is set to "pvss" indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/adrs/0007-improved-random-beacon) should be used.
 
 #### PVSS Beacon
 
-These parameters control the behavior of the new [improved random beacon](/oasis-core/adr/0007-improved-random-beacon) introduced in the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md):
+These parameters control the behavior of the new [improved random beacon](/adrs/0007-improved-random-beacon) introduced in the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md):
 
 * **`beacon.params.pvss_parameters.participants`** The number of participants to be selected for each beacon generation protocol round. The value is set to 20.
 * **`beacon.params.pvss_parameters.threshold`** The minimum number of participants which must successfully contribute entropy for the final output to be considered valid. The value is set to 10.

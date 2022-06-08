@@ -65,10 +65,10 @@ discussed in the
 This upgrade marks an important milestone for the Oasis Network, as it sets the
 foundation for unlocking the network's full capabilities.
 
-[ADR 0010]: https://docs.oasis.dev/oasis-core/adr/0010-vrf-elections/
-[ADR 0013]: https://docs.oasis.dev/oasis-core/adr/0013-runtime-upgrades/
-[ADR 0011]: https://docs.oasis.dev/oasis-core/adr/0011-incoming-runtime-messages
-[ADR 0012]: https://docs.oasis.dev/oasis-core/adr/0012-runtime-message-results
+[ADR 0010]: /adrs/0010-vrf-elections
+[ADR 0013]: /adrs/0013-runtime-upgrades
+[ADR 0011]: /adrs/0011-incoming-runtime-messages
+[ADR 0012]: /adrs/0012-runtime-message-results
 [slack-validator-increase]:
   https://oasiscommunity.slack.com/archives/CMUSJCRFA/p1647881564057319?thread_ts=1647448573.197229&cid=CMUSJCRFA
 
@@ -354,7 +354,7 @@ as well.
 [genesis-doc]: ../oasis-network/genesis-doc.md#parameters
 [minimum staking thresholds]: ../oasis-network/genesis-doc.md#staking-thresholds
 [oasis-core-4308]: https://github.com/oasisprotocol/oasis-core/pull/4308
-[pvss-beacon]: /oasis-core/adr/0007-improved-random-beacon
+[pvss-beacon]: /adrs/0007-improved-random-beacon
 [Mainnet genesis file]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18
 [mainnet-quote]: https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F

@@ -58,7 +58,6 @@ const config = {
         showLastUpdateTime: true,
         routeBasePath: 'oasis-core',
         sidebarPath: require.resolve('./sidebarsOasisCore.js'),
-        numberPrefixParser: false,
       },
     ],
     [
@@ -81,6 +80,18 @@ const config = {
         showLastUpdateTime: true,
         routeBasePath: 'oasis-core-ledger',
         sidebarPath: require.resolve('./sidebarsOasisCoreLedger.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'adrs',
+        path: 'external/adrs',
+        breadcrumbs: false,
+        showLastUpdateTime: true,
+        routeBasePath: 'adrs',
+        sidebarPath: require.resolve('./sidebarsAdrs.js'),
+        numberPrefixParser: false,
       },
     ],
   ],

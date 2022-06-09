@@ -10,3 +10,6 @@
 	path = external/oasis-core-ledger
 	url = https://github.com/oasisprotocol/oasis-core-ledger
 	branch = stable/1.2.x
+[submodule "external/adrs"]
+	path = external/adrs
+	url = https://github.com/oasisprotocol/adrs

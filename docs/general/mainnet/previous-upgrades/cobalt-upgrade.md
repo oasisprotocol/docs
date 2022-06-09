@@ -52,7 +52,7 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
 
 ### **Epoch Time**
 
-The **`epochtime`**object will be removed since it became obsolete with the new [improved random beacon](/oasis-core/adr/0007-improved-random-beacon). It will be replaced with the new **`beacon`** object described [below](cobalt-upgrade.md#random-beacon).
+The **`epochtime`**object will be removed since it became obsolete with the new [improved random beacon](/adrs/0007-improved-random-beacon). It will be replaced with the new **`beacon`** object described [below](cobalt-upgrade.md#random-beacon).
 
 ### **Registry**
 
@@ -81,7 +81,7 @@ Deregistered entities can always re-register by submitting the [entity registrat
 ### **Root Hash**
 
 * **`roothash.params.max_runtime_messages` ** is a new parameter that specifies the global limit on the number of [messages](/oasis-core/runtime/messages) that can be emitted in each round by the runtime. It will be set to `256`.
-* **`roothash.params.max_evidence_age`** is a new parameter that specifies the maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/oasis-core/adr/0005-runtime-compute-slashing). It will be set to `100`.
+* **`roothash.params.max_evidence_age`** is a new parameter that specifies the maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/adrs/0005-runtime-compute-slashing). It will be set to `100`.
 
 ### **Staking**
 
@@ -97,10 +97,10 @@ Deregistered entities can always re-register by submitting the [entity registrat
 
 ### **Random Beacon**
 
-The **`beacon`** object contains parameters controlling the new [improved random beacon](/oasis-core/adr/0007-improved-random-beacon) introduced in the Cobalt upgrade.
+The **`beacon`** object contains parameters controlling the new [improved random beacon](/adrs/0007-improved-random-beacon) introduced in the Cobalt upgrade.
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch of Mainnet's state dump + 1, i.e. `5047`.
-* **`beacon.params.backend`** configures the random beacon backend to use. It will be set to `"pvss"` indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/oasis-core/adr/0007-improved-random-beacon) should be used.
+* **`beacon.params.backend`** configures the random beacon backend to use. It will be set to `"pvss"` indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/adrs/0007-improved-random-beacon) should be used.
 * **`beacon.params.pvss_parameters.participants`** is the number of participants to be selected for each beacon generation protocol round. It will be set to `20`.
 * **`beacon.params.pvss_parameters.threshold`** is the minimum number of participants which must successfully contribute entropy for the final output to be considered valid. It will be set to `10`.
 * **`beacon.params.pvss_parameters.commit_interval`** is the duration of the Commit phase (in blocks). It will be set to `400`.

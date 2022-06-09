@@ -252,6 +252,11 @@ const sidebars = {
           label: 'Oasis SDK Documentation',
           href: '/oasis-sdk'
         },
+        {
+          type: 'link',
+          label: 'Oasis ADRs',
+          href: '/adrs'
+        },
       ],
     },
     {

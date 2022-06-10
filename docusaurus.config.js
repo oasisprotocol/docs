@@ -94,6 +94,19 @@ const config = {
         numberPrefixParser: false,
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/adrs')) {
+            return [
+              existingPath.replace('/adrs', '/oasis-core/adr'),
+            ];
+          }
+          return undefined;
+        },
+      },
+    ],
   ],
   themes: [
     [

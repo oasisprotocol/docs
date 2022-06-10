@@ -1,0 +1,12 @@
+{
+  "concurrency": 1,
+  "recurse": true,
+  "skip": ["https://support.ledger.com/hc/en-us/articles/", "https://www.coinbase.com", "https://oasis.fish/leaderboard/"],
+  "verbosity": "error",
+  "timeout": 0,
+  "markdown": false,
+  "retry": true,
+  "retryErrors": true,
+  "retryErrorsCount": 3,
+  "retryErrorsJitter": 5
+}

@@ -145,7 +145,7 @@ The **`governance`** object contains parameters controlling the network's [on-ch
 
 Additionally, each runtime's state root will need to be updated for the [runtime storage migration](../../run-a-node/upgrade-log.md#runtime-operators) that is performed during this upgrade.
 
-At this time, there is only one active runtime on the Mainnet, namely [Second State's Oasis Ethereum ParaTime](https://www.oasiseth.org) with ID (Base64-encoded) `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wM=`.
+At this time, there is only one active runtime on the Mainnet, namely Second State's Oasis Ethereum ParaTime with ID (Base64-encoded) `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wM=`.
 
 After completing the runtime storage migration, Second State will communicate the new state root of their runtime and the genesis document needs to be updated as follows:
 

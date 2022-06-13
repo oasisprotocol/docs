@@ -22,12 +22,16 @@ ROSE staked --  this means you will have to be one of the top 120 entities
 by stake. You can check out current top 120 entities on the blockchain explorer 
 such as [Oasis Scan].
 
+For more information about obtaining information on your entity's account, see 
+the [Account Get Info] doc.
+
 Staking thresholds may change in the future. Read [Common staking info] chapter,
 to learn how to check the current network thresholds directly from the 
 `oasis-node`.
 
 [staking thresholds]: ../../oasis-network/genesis-doc.md#staking-thresholds
 [Oasis Scan]: https://www.oasisscan.com/validators
+[Account Get Info]: ../../manage-tokens/advanced/oasis-cli-tools/get-account-info.md
 [Common staking info]: ../../manage-tokens/advanced/oasis-cli-tools/common-staking-info.md
 
 :::info
@@ -57,13 +61,3 @@ more tokens please contact us at our official [Discord #testnet channel]
 
 [faucet-testnet]: https://faucet.testnet.oasis.dev/
 [discord-testnet]: https://discord.com/channels/748635004384313474/960599828662976522
-
-
-:::info
-
-For more information about obtaining information on your entity's account, see 
-the [Account Get Info] doc.
-
-[Account Get Info]: ../../manage-tokens/advanced/oasis-cli-tools/get-account-info.md
-
-:::

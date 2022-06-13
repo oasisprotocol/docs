@@ -45,6 +45,7 @@ const sidebars = {
           },
           items: [
               'run-a-node/prerequisites/hardware-recommendations',
+              'run-a-node/prerequisites/stake-requirements',
               'run-a-node/prerequisites/oasis-node',
               'run-a-node/prerequisites/system-configuration',
               'run-a-node/prerequisites/set-up-trusted-execution-environment-tee',

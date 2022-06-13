@@ -11,6 +11,25 @@ description: >-
 To become a validator on the Oasis Network, you will need to have enough 
 tokens staked in your escrow account.  
 
+Currently, you are going to need:
+
+* 100 ROSE staked for your entity's registration since that is the 
+[staking thresholds].
+* 100 ROSE staked for your validator node's registration since that is the 
+[staking thresholds].
+* If you want to be part of the active validator set, you will need enough 
+ROSE staked --  this means you will have to be one of the top 120 entities 
+by stake. You can check out current top 120 entities on the blockchain explorer 
+such as [Oasis Scan].
+
+Staking thresholds may change in the future. Read [Common staking info] chapter,
+to learn how to check the current network thresholds directly from the 
+`oasis-node`.
+
+[staking thresholds]: ../../oasis-network/genesis-doc.md#staking-thresholds
+[Oasis Scan]: https://www.oasisscan.com/validators
+[Common staking info]: ../../manage-tokens/advanced/oasis-cli-tools/common-staking-info.md
+
 :::info
 
 To determine if you are eligible to receive a delegation from the Oasis Protocol 
@@ -19,22 +38,6 @@ Foundation, see the [Delegation Policy] document.
 [Delegation Policy]: ../../foundation/delegation-policy.md
 
 :::
-
-Currently, you are going to need:
-
-* 100 ROSE staked for your entity's registration since that is the [current entity's 
-staking threshold].
-* 100 ROSE staked for your validator node's registration since that is the 
-[current validator node's staking threshold].
-* If you want to be part of the active validator set, you will need enough 
-ROSE staked --  this means you will have to be one of the top 120 entities 
-by stake. You can check out current top 120 entities on the blockchain explorer 
-such as [Oasis Scan].
-
-
-[current entity's staking threshold]: ../../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds
-[current validator node's staking threshold]: ../../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds
-[Oasis Scan]: https://www.oasisscan.com/validators
 
 :::info
 
@@ -47,10 +50,14 @@ the [**max_validators** consensus parameter].
 
 ## Testnet
 
-For the Testnet you are going to need TEST tokens. To receive TEST tokens please 
-use the [Oasis Network Testnet Faucet].
+For the Testnet you are going to need TEST tokens. You can receive a limited 
+number of TEST by using our [Oasis Network Testnet Faucet][faucet-testnet]. For 
+more tokens please contact us at our official [Discord #testnet channel]
+[discord-testnet].
 
-[Oasis Network Testnet Faucet]: https://faucet.testnet.oasis.dev/
+[faucet-testnet]: https://faucet.testnet.oasis.dev/
+[discord-testnet]: https://discord.com/channels/748635004384313474/960599828662976522
+
 
 :::info
 

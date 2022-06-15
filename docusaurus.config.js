@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Oasis Network Documentation',
   tagline: '',
-  url: 'https://docs.oasis.dev',
+  url: process.env.URL ?? 'https://docs.oasis.dev',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
 

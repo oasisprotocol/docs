@@ -1,5 +1,9 @@
 # Oasis Docs
 
+![CI tests status](https://github.com/oasisprotocol/docs/actions/workflows/ci-test.yml/badge.svg)
+![CI links status](https://github.com/oasisprotocol/docs/actions/workflows/ci-links.yml/badge.svg)
+![Deployment status](https://github.com/oasisprotocol/docs/actions/workflows/deploy-main.yml/badge.svg)
+
 This repository contains Oasis Docs deployed at <https://docs.oasis.dev/>.
 
 They are built using [Docusaurus 2](https://docusaurus.io/), a modern static

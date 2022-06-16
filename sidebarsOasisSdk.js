@@ -13,12 +13,9 @@ const sidebars = {
       label: 'Smart Contracts',
       collapsible: false,
       items: [
-        {
-          type: 'doc',
-          id: 'contract/getting-started',
-          label: 'Build a Smart Contract',
-        },
+        'contract/getting-started',
         'contract/hello-world',
+        'contract/confidential-smart-contract',
       ],
     },
     {
@@ -26,11 +23,7 @@ const sidebars = {
       label: 'Runtimes',
       collapsible: false,
       items: [
-        {
-          type: 'doc',
-          id: 'runtime/getting-started',
-          label: 'Build a Runtime',
-        },
+        'runtime/getting-started',
         'runtime/minimal-runtime',
         'runtime/modules',
         'runtime/reproducibility',

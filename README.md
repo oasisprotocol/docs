@@ -27,8 +27,8 @@ To start the local development server, use:
 yarn start
 ```
 
-This command will start a local development server and open your browser at
-<http://localhost:3000/>.
+This command will start a local development server. Open your browser at
+<http://localhost:3000/> to load the site.
 
 Most changes will be reflected live without having to restart the server.
 

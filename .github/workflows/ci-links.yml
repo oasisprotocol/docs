@@ -1,0 +1,34 @@
+name: Broken links check
+
+on:
+  schedule:
+    # Check for broken links every day at 7:00 AM.
+    - cron:  '0 7 * * *'
+
+jobs:
+  blc:
+    name: Broken links check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: yarn
+      - name: Build
+        env:
+          # Docs will be served on localhost. Rewrite the host URL.
+          URL: http://localhost:3000
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+      - name: Serve
+        run: |
+          yarn serve &
+      - name: Check links
+        run: |
+          yarn blc

@@ -1,4 +1,5 @@
-name: Broken links check
+# NOTE: This name appears in GitHub's Checks API and in workflow's status badge.
+name: ci-links
 
 on:
   schedule:
@@ -6,8 +7,9 @@ on:
     - cron:  '0 7 * * *'
 
 jobs:
-  blc:
-    name: Broken links check
+  links:
+    # NOTE: This name appears in GitHub's Checks API.
+    name: links
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

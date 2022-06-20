@@ -1,12 +1,14 @@
-name: Deploy to GitHub Pages
+# NOTE: This name appears in GitHub's Checks API and in workflow's status badge.
+name: deploy-main
 
 on:
   push:
     branches: [main]
 
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+  deploy-main:
+    # NOTE: This name appears in GitHub's Checks API.
+    name: deploy-main
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +22,6 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -1,12 +1,14 @@
-name: Test deployment
+# NOTE: This name appears in GitHub's Checks API and in workflow's status badge.
+name: ci-test
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  test-deploy:
-    name: Test deployment
+  ci-test:
+    # NOTE: This name appears in GitHub's Checks API.
+    name: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +18,7 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
-      - name: Test build
+      - name: Build
         run: |
           yarn install --frozen-lockfile
           yarn build

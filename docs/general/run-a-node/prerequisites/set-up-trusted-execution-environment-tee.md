@@ -330,7 +330,18 @@ cargo +nightly-2021-11-04 install sgxs-tools
 ### Run `sgx-detect` Tool
 
 After the installation completes, run `sgx-detect` to make sure that everything
-is set up correctly.
+is set up correctly:
+
+```
+sudo $(which sgx-detect)
+```
+
+:::tip
+
+If you don't run the `sgx-detect` tool as `root`, it might not have the
+necessary permissions to access the SGX kernel device.
+
+:::
 
 When everything works, you should get output similar to the following (some
 things depend on hardware features so your output may differ):
@@ -382,6 +393,42 @@ Ensure you have all required SGX driver libraries installed as listed in
 [Install SGX Linux Driver section](../set-up-your-node/run-a-paratime-node.mdx#install-sgx-linux-driver).
 Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
 
+### Permission Denied When Accessing SGX Kernel Device
+
+If running `sgx-detect --verbose` reports:
+
+```
+🕮  SGX system software > SGX kernel device
+Permission denied while opening the SGX device (/dev/sgx/enclave, /dev/sgx or
+/dev/isgx). Make sure you have the necessary permissions to create SGX enclaves.
+If you are running in a container, make sure the device permissions are
+correctly set on the container.
+
+debug: Error opening device: Permission denied (os error 13)
+debug: cause: Permission denied (os error 13)
+```
+
+Ensure you are running the `sgx-detect` tool as `root` via:
+
+```
+sudo $(which sgx-detect) --verbose
+```
+
+### Error Opening SGX Kernel Device
+
+If running `sgx-detect --verbose` reports:
+
+```
+🕮  SGX system software > SGX kernel device
+The SGX device (/dev/sgx/enclave, /dev/sgx or /dev/isgx) could not be opened:
+"/dev" mounted with `noexec` option.
+
+debug: Error opening device: "/dev" mounted with `noexec` option
+debug: cause: "/dev" mounted with `noexec` option
+```
+
+Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option][dev-noexec].
+
 ### Unable to Launch Enclaves
 
 If running `sgx-detect --verbose` reports:
@@ -396,4 +443,6 @@ debug: cause: Failed to map enclave into memory.
 debug: cause: Operation not permitted (os error 1)
 ```
 
-Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option](set-up-trusted-execution-environment-tee.md#ensure-dev-is-not-mounted-with-the-noexec-option).
+Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option][dev-noexec].
+
+[dev-noexec]: #ensure-dev-is-not-mounted-with-the-noexec-option

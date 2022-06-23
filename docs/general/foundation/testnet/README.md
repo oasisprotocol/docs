@@ -108,23 +108,25 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.1.0-testnet#building)):
   * [8.1.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.1.0-testnet)
+  * [9.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v9.0.0-testnet)
 * Emerald Web3 Gateway version:
-  * [2.2.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.2.0)
+  * [3.0.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0-rc1)
 
-:::tip
+:::info
 
-When upgrading the ParaTime version, make sure to just _add_ the path to the
-bundle for the new version while also _keeping the old one_. This ensures that
-the upgrade process happens at the right time.
+When multiple runtime versions are listed, make sure to specify the paths to all
+of the bundles in your configuration. This ensures that any planned upgrade
+happens at the right time.
 
-For example the new configuration after the recent upgrade would look like the
-following with **both versions** listed:
+For example, for the above Emerald ParaTime versions the configuration would
+look like the following (only showing the relevant options):
 
 ```yaml
 runtime:
+  # ... other options omitted ...
   paths:
-    - /path/to/emerald-paratime-8.0.0-testnet.orc
     - /path/to/emerald-paratime-8.1.0-testnet.orc
+    - /path/to/emerald-paratime-9.0.0-testnet.orc
 ```
 
 :::

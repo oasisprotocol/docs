@@ -106,9 +106,8 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.1.0-testnet#building)):
-  * [8.1.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.1.0-testnet)
-  * [9.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v9.0.0-testnet)
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v9.0.1-testnet#building)):
+  * [9.0.1-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v9.0.1-testnet)
 * Emerald Web3 Gateway version:
   * [3.0.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0-rc1)
 
@@ -125,8 +124,7 @@ look like the following (only showing the relevant options):
 runtime:
   # ... other options omitted ...
   paths:
-    - /path/to/emerald-paratime-8.1.0-testnet.orc
-    - /path/to/emerald-paratime-9.0.0-testnet.orc
+    - /path/to/emerald-paratime-9.0.1-testnet.orc
 ```
 
 :::

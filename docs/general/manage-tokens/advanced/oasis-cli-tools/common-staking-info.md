@@ -77,7 +77,7 @@ ParaTime, the entity for which the node is registered would need to satisfy the 
 * Entity registration staking threshold (currently 100 tokens),
 * Validator node staking threshold (currently 100 tokens),
 * Compute node staking threshold (currently 100 tokens),
-* Emerald-specific staking threshold (currently 1,000,000 tokens),
+* Emerald-specific staking threshold (currently 5,000,000 tokens),
 
-All together, there would need to be at least 1,000,300 tokens staked in your
+All together, there would need to be at least 5,000,300 tokens staked in your
 entity's escrow account.

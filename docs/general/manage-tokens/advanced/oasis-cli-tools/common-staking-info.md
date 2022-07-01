@@ -63,7 +63,7 @@ additional staking requirements:
   ...
   "staking": {
     "thresholds": {
-      "node-compute": "1000000000000000"
+      "node-compute": "5000000000000000"
     },
     "min_in_message_fee": "0"
   },

@@ -4,6 +4,8 @@ description: >-
   Network.
 ---
 
+import Image from '@theme/IdealImage';
+
 # Web
 
 ## How to use the Oasis Wallet - Web
@@ -16,7 +18,7 @@ You can access the [Oasis Wallet - Web](https://github.com/oasisprotocol/oasis-w
 
 If you do not currently have an existing Oasis wallet address, you can create a new wallet address directly from the Oasis Wallet's home screen. Click on the “Create wallet” button.
 
-![](<../../images/wallet/web/01_home.png>)
+<Image alt="Create a New Wallet" img={require('./../../images/wallet/web/01_home.png')} />
 
 The next page contains information about your mnemonic (an ordered list of words representing your keyphrase), which you will need in order to retrieve your wallet later. Review the information on this page very carefully. Save your mnemonic in the right order in a secure location.
 
@@ -34,7 +36,7 @@ Never share your mnemonic (i.e. keyphrase). Anyone with your mnemonic can access
 
 After you’ve saved your mnemonic, click the “I saved my keyphrase” checkbox and then click on the “Open my wallet” button.
 
-![](<../../images/wallet/web/02_this_is_your_mnemonic.png>)
+<Image alt="Create a New Wallet" img={require('./../../images/wallet/web/02_this_is_your_mnemonic.png')} />
 
 Next, you will need to confirm your mnemonic by filling in some missing words. You can enter the missing word for each respective box, by clicking on the appropriate word from the list of words presented below. Be sure to enter all of the missing words in the right order.
 
@@ -46,17 +48,17 @@ After you correctly enter all of the missing words, you will be taken to your Oa
 
 If you already have an existing Oasis wallet address, you can open it in the web wallet by clicking the “Open wallet” button on the home screen.
 
-![](<../../images/wallet/web/01_home.png>)
+<Image alt="Access an Existing Wallet" img={require('./../../images/wallet/web/01_home.png')} />
 
 Next, you should select whether you want to open your wallet via a mnemonic, a private key, or a Ledger hardware wallet. Select the respective button corresponding to the retrieval method you want to use.
 
-![](<../../images/wallet/web/04_how_to_open_your_wallet.png>)
+<Image alt="Access an Existing Wallet" img={require('./../../images/wallet/web/04_how_to_open_your_wallet.png')} />
 
 #### Open Wallet via Mnemonic
 
 In the _Enter your keyphrase_ field, enter each word of your mnemonic separated by a space. Afterwards, hit the "Open my wallet" button.
 
-![](<../../images/wallet/web/05.1_open_with_mnemonics.png>)
+<Image alt="Open Wallet via Mnemonic" img={require('./../../images/wallet/web/05.1_open_with_mnemonics.png')} />
 
 :::info
 
@@ -74,7 +76,7 @@ Oasis Wallet mnemonics are incompatible with BitPie mnemonics. Check our [FAQ](.
 
 Paste your Base64-encoded Ed25519 private key in the _Enter your private key_ field and then click on the "Open my wallet" button.
 
-![](<../../images/wallet/web/05.2_open_with_private_key.png>)
+<Image alt="Open Wallet via Private Key" img={require('./../../images/wallet/web/05.2_open_with_private_key.png')} />
 
 :::info
 
@@ -113,17 +115,17 @@ After you complete the instructions, you will be taken to your Oasis Wallet home
 
 If you are in night mode, you can click on the sun icon near the lower left corner of the screen to switch to light mode.
 
-![](<../../images/wallet/web/06_toogle_between_light_and_dark_mode.png>)
+<Image alt="Toggle between light mode and dark mode" img={require('./../../images/wallet/web/06_toogle_between_light_and_dark_mode.png')} />
 
 If you are in light mode, you can click on the moon icon near the lower left corner of the screen to switch to dark mode.
 
-![](<../../images/wallet/web/07_light_mode.png>)
+<Image alt="Light mode" img={require('./../../images/wallet/web/07_light_mode.png')} />
 
 ### **Select a language for the web wallet interface**
 
 To select a language, you can click the globe icon near the lower left corner of the screen. Currently, you can select either English or French.
 
-![](<../../images/wallet/web/08_select_language.png>)
+<Image alt="Select a language" img={require('./../../images/wallet/web/08_select_language.png')} />
 
 ## **Share your feedback with us**
 

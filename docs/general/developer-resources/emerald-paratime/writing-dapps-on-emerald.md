@@ -2,6 +2,8 @@
 description: How to write and deploy a dApp to Oasis Emerald
 ---
 
+import Image from '@theme/IdealImage';
+
 # Writing dApps on Emerald
 
 This tutorial will show you how to set up dApp development environment for
@@ -307,9 +309,9 @@ explorer ([Mainnet][mainnet-explorer], [Testnet][testnet-explorer]). This tool
 indexes all Emerald accounts, blocks, transactions and even offers a neat user
 interface for browsing ETH-specifics like the ERC20 tokens and the ERC721 NFTs.
 
-![Emerald Block Explorer showing the latest transactions](../../images/emerald/block_explorer1.png)
+<Image alt="Emerald Block Explorer showing the latest transactions" img={require('./../../images/emerald/block_explorer1.png')} />
 
-![Emerald Block Explorer showing our account 0x90adE3B7065fa715c7a150313877dF1d33e777D5 used for deploying the smart contract](../../images/emerald/block_explorer2.png)
+<Image alt="Emerald Block Explorer showing our account 0x90adE3B7065fa715c7a150313877dF1d33e777D5 used for deploying the smart contract" img={require('./../../images/emerald/block_explorer2.png')} />
 
 Finally, by selecting the `emerald_mainnet` network and the corresponding
 private key, we can deploy the contract on the Mainnet:
@@ -581,9 +583,9 @@ When you open Remix for the first time, it automatically creates an example
 project. Let's open one of the contracts and compile it in the "Solidity
 compiler" tab.
 
-![The initial example project in Remix - Ethereum IDE](../../images/emerald/remix1.png)
+<Image alt="The initial example project in Remix - Ethereum IDE" img={require('./../../images/emerald/remix1.png')} />
 
-![Solidity compiler tab](../../images/emerald/remix2.png)
+<Image alt="Solidity compiler tab" img={require('./../../images/emerald/remix2.png')} />
 
 Next, in the "Deploy and Run Transactions" tab, select the "Injected Web3"
 environment. A MetaMask popup will appear and you will have to connect one or
@@ -591,12 +593,12 @@ more accounts with Remix. Once the connection succeeds, click on the "Deploy"
 button. The MetaMask popup appears again and you will have to review the
 transaction, the gas options and finally confirm the transaction.
 
-![Metamask transaction confirmation](../../images/emerald/remix3.png)
+<Image alt="Metamask transaction confirmation" img={require('./../../images/emerald/remix3.png')} />
 
 If everything goes well, your transaction will be deployed using the selected
 account in the MetaMask and the corresponding Emerald Network.
 
-![Successful contract deployment on Emerald Testnet with Remix](../../images/emerald/remix4.png)
+<Image alt="Successful contract deployment on Emerald Testnet with Remix" img={require('./../../images/emerald/remix4.png')} />
 
 :::info
 
@@ -638,7 +640,7 @@ transaction being included in the block.
 If you are using Testnet or Mainnet, try to debug your transaction by finding
 it on the Emerald block explorer ([Mainnet][mainnet-explorer], [Testnet][testnet-explorer]):
 
-![Emerald block explorer showing a failed transaction](../../images/emerald/oasisscan1.png)
+<Image alt="Emerald block explorer showing a failed transaction" img={require('./../../images/emerald/oasisscan1.png')} />
 
 In some cases, the transaction result on Emerald block explorer might be stuck
 at `Error: (Awaiting internal transactions for reason)`. In this case or in
@@ -649,7 +651,7 @@ some introspection into ParaTime transactions as well. Once you find your
 failed Emerald transaction, the `Status` field should contain a more verbose
 error description, for example:
 
-![Oasis Scan showing the Out of gas error for a transaction on Emerald](../../images/emerald/oasisscan2.png)
+<Image alt="Oasis Scan showing the Out of gas error for a transaction on Emerald" img={require('./../../images/emerald/oasisscan2.png')} />
 
 [mainnet-explorer]: https://explorer.emerald.oasis.dev
 [testnet-explorer]: https://testnet.explorer.emerald.oasis.dev

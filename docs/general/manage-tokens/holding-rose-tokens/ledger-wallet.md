@@ -1,3 +1,5 @@
+import Image from '@theme/IdealImage';
+
 # Self-Custody With Ledger Hardware Wallet
 
 This is a general documentation that will help users setup [Ledger] hadware
@@ -13,13 +15,13 @@ open and access wallet with one or multiple accounts via our official
 install [Oasis app] on your Ledger wallet via [Ledger Live]'s Manager. You need
 to connect your Ledger to your device and unlock it with your PIN code first.
 
-![Unlock ledger](<../../images/wallet/ledger/1_unlock_ledger.png>)
+<Image alt="Unlock ledger" img={require('./../../images/wallet/ledger/1_unlock_ledger.png')} />
 
 2. Currently, you will have to enable _Developer mode_ by going to _Settings →
 Experimental features_ → enable _Developer mode_ toggle, to be able to find
 the Oasis app in Ledger Live's Manager.
 
-![Ledger Live -> Experimental features -> Developer Mode](<../../images/wallet/ledger/2_ledger_live_experimental_developer_mode.png>)
+<Image alt="Ledger Live -> Experimental features -> Developer Mode" img={require('./../../images/wallet/ledger/2_ledger_live_experimental_developer_mode.png')} />
 
 :::caution
 
@@ -39,13 +41,13 @@ Follow Ledger's instructions for updating the firmware on your Ledger wallet:
 Ledger Manager on your Ledger device first, then you will be able to click App
 catalog and search for _Oasis_:
 
-![Allow Ledger Manager](<../../images/wallet/ledger/3_allow_ledger_manager.png>)
-![Search app in catalog..](<../../images/wallet/ledger/4_search_apps.png>)
+<Image alt="Allow Ledger Manager" img={require('./../../images/wallet/ledger/3_allow_ledger_manager.png')} />
+<Image alt="Search app in catalog.." img={require('./../../images/wallet/ledger/4_search_apps.png')} />
 
 
 4. Install _Oasis_ app
 
-![Install Oasis app](<../../images/wallet/ledger/6_search_results_oasis_install.png>)
+<Image alt="Install Oasis app" img={require('./../../images/wallet/ledger/6_search_results_oasis_install.png')} />
 
 :::info
 
@@ -82,13 +84,13 @@ features of the Oasis Wallets, please read the [Oasis Wallets] doc.
 1. Navigate to [wallet.oasisprotocol.org] and click on the _Open wallet_ button.
 Then, click on _Ledger_ when asked how to open your wallet.
 
-![Oasis Wallet - Web -> Open wallet -> Ledger](<../../images/wallet/ledger/7_oasis_wallet_web_open_ledger.png>)
+<Image alt="Oasis Wallet - Web -> Open wallet -> Ledger" img={require('./../../images/wallet/ledger/7_oasis_wallet_web_open_ledger.png')} />
 
 2. In the next step, click on the _Select accounts to open_ button. Your
 browser will open a pop-up window where you will have to select your Ledger
 device. Finally, click on _Connect_.
 
-![Oasis Wallet - Web -> Select Ledger device and Connect](<../../images/wallet/ledger/8b_oasis_wallet_web_select_ledger_device_connect.png>)
+<Image alt="Oasis Wallet - Web -> Select Ledger device and Connect" img={require('./../../images/wallet/ledger/8b_oasis_wallet_web_select_ledger_device_connect.png')} />
 
 :::caution
 
@@ -102,19 +104,19 @@ perform this and subsequent steps.
 where you can choose to open one or more `oasis1` accounts derived from the seed
 stored on your Ledger.
 
-![Oasis Wallet - Web -> Select one or more accounts](<../../images/wallet/ledger/9_oasis_wallet_web_select_accounts_to_open.png>)
+<Image alt="Oasis Wallet - Web -> Select one or more accounts" img={require('./../../images/wallet/ledger/9_oasis_wallet_web_select_accounts_to_open.png')} />
 
 4. The account from your Ledger device is now opened. If you import multiple
 accounts, you can switch between them by clicking on the account address in
 the top-right corner.
 Our demo account is empty.
 
-![Oasis Wallet - Web -> Selected accounts are opened](<../../images/wallet/ledger/10_oasis_wallet_web_opene_ledger_account.png>)
+<Image alt="Oasis Wallet - Web -> Selected accounts are opened" img={require('./../../images/wallet/ledger/10_oasis_wallet_web_opene_ledger_account.png')} />
 
 5. Now you can use your Ledger to receive, send or delegate ROSE.
 In this example, we have received 111 ROSE to our Ledger account.
 
-![Oasis Wallet - Web -> Exploring transactions](<../../images/wallet/ledger/11_oasis_wallet_web_received_rose_on_ledger_account.png>)
+<Image alt="Oasis Wallet - Web -> Exploring transactions" img={require('./../../images/wallet/ledger/11_oasis_wallet_web_received_rose_on_ledger_account.png')} />
 
 ### Using Oasis CLI Tools
 

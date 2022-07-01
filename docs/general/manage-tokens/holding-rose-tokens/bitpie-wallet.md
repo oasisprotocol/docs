@@ -5,6 +5,8 @@ description: >-
   transfer ROSE tokens on the Oasis Mainnet.
 ---
 
+import Image from '@theme/IdealImage';
+
 # Bitpie Mobile Wallet
 
 ## What is Bitpie?
@@ -54,7 +56,7 @@ Never share your mnemonic (i.e. seed). Anyone with your mnemonic can access your
 
 After you have written down or stored the 12 words of your mnemonic, click on the 'Backup finished & go to verify" button.
 
-![](<../../images/wallet/bitpie/screen2.png>)
+<Image alt="Generate Your Oasis Wallet Address" img={require('./../../images/wallet/bitpie/screen2.png')} />
 
 On the next screen, refer to your written down or stored seed and tap the words in the appropriate order to verify your account.
 
@@ -64,7 +66,7 @@ After setting up your pin, you may see some tutorial captions appear on screen. 
 
 Next you should see a screen like the one below, showing your assets for BTC or another network. Click on the "BTC System" (or other network) button with the drop down arrow on the top left corner of the screen to go to the list of crypto assets supported by Bitpie.
 
-![](<../../images/wallet/bitpie/screen3.png>)
+<Image alt="Generate Your Oasis Wallet Address" img={require('./../../images/wallet/bitpie/screen3.png')} />
 
 On the screen displaying the list of supported cryptocurrency assets, scroll down until you find ROSE, labelled with the blue "O" logo and the words "ROSE (Oasis ROSE)."
 
@@ -72,7 +74,7 @@ Next, you should see a screen like the one below, labelled "ROSE System" in the 
 
 To view your newly generated Oasis wallet address, lick on the "Receive" button. You should then see a screen displaying a QR CODE and your Oasis wallet address, which is an alphanumeric string beginning with "oasis".
 
-![](<../../images/wallet/bitpie/screen4.png>)
+<Image alt="Generate Your Oasis Wallet Address" img={require('./../../images/wallet/bitpie/screen4.png')} />
 
 Congratulations! You have generated your very own Oasis wallet address. You can share this Oasis wallet address publicly to receive ROSE tokens from others, and you can use your Bitpie Wallet to transfer your ROSE tokens to others as well.
 

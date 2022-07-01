@@ -4,6 +4,8 @@ description: >-
   Solidity smart contract on Emerald.
 ---
 
+import Image from '@theme/IdealImage';
+
 # Integrating BAND oracle smart contract
 
 ### What is the Band Protocol?
@@ -25,7 +27,7 @@ contracts. You can read more about the specific details of the protocol
 
 4. Enter the Emerald Testnet Band reference data aggregator contract address (`0x61704EFB8b8120c03C210cAC5f5193BF8c80852a`) to the `DemoOracle` constructor and deploy the contract. You can access the reference data aggregator contract on mainnet at `0xDA7a001b254CD22e46d3eAB04d937489c93174C3`.
 
-![environment](../../images/emerald/band_deploy_demooracle_smartcontact.png)
+<Image alt="DemoOracle" img={require('./../../images/emerald/band_deploy_demooracle_smartcontact.png')} />
 
 An interface to interact with the contract will appear in the bottom left corner of Remix.
 
@@ -33,7 +35,7 @@ An interface to interact with the contract will appear in the bottom left corner
 
 Clicking the `getPrice` button will return the current price of WBTC in USD. This function calls `getReferenceData(string memory _base, string memory _quote)` on the Band reference data contract, passing "WBTC" and "USD", indicating WBTC as the base and USD as the quote. The rate returned is base/quote multiplied by 1e18.
 
-![environment](../../images/emerald/band_get_rates.png)
+<Image alt="Get Rates" img={require('./../../images/emerald/band_get_rates.png')} />
 
 Note that the `DemoOracle` contract only returns the latest rate, but the reference contract also returns values of the last time the base and quote references were updated.
 

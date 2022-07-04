@@ -160,6 +160,26 @@ User=oasis
 ...
 ```
 
+Below can be found a simple systemd unit file for `oasis-node` that can be used
+as a starting point.
+
+```conf
+[Unit]
+Description=Oasis Node
+After=network.target
+
+[Service]
+Type=simple
+User=oasis
+WorkingDirectory=/serverdir/node
+ExecStart=/serverdir/bin/oasis-node --config /serverdir/etc/config.yml
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=1024000
+
+[Install]
+WantedBy=multi-user.target
+```
 </TabItem>
 <TabItem value="Docker">
 

@@ -75,7 +75,7 @@ to generate the private & public key pairs for your accounts.
 
 This is a simpler option since it allows you to connect to your Ledger wallet
 via a web application or a browser extension.
-	
+
 In the example below we will use Oasis Wallet - Web. To learn more about other
 features of the Oasis Wallets, please read the [Oasis Wallets] doc.
 

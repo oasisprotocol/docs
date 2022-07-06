@@ -26,7 +26,7 @@ If you have an iOS device, visit [the App Store](https://apps.apple.com/us/app/b
 
 ![](../../images/wallet/bitpie/playstore.png)
 
-If you have an Android device, [visit the Google Play Store](https://play.google.com/store/apps/details?id=com.bitpie), and clicke "Install" to download the Bitpie app.
+If you have an Android device, [visit the Google Play Store](https://play.google.com/store/apps/details?id=com.bitpie), and click "Install" to download the Bitpie app.
 
 ![](../../images/wallet/bitpie/google_play.png)
 

@@ -29,7 +29,7 @@ const config = {
           sidebarPath: require.resolve('./sidebarsGeneral.js'),
           editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
         },
-	    blog: false,
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -99,9 +99,7 @@ const config = {
       {
         createRedirects(existingPath) {
           if (existingPath.includes('/adrs')) {
-            return [
-              existingPath.replace('/adrs', '/oasis-core/adr'),
-            ];
+            return [existingPath.replace('/adrs', '/oasis-core/adr')];
           }
           return undefined;
         },
@@ -110,10 +108,10 @@ const config = {
   ],
   themes: [
     [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
+      require.resolve('@easyops-cn/docusaurus-search-local'),
       {
-	indexBlog: false,
-        docsRouteBasePath: "/",
+        indexBlog: false,
+        docsRouteBasePath: '/',
       },
     ],
   ],
@@ -136,7 +134,7 @@ const config = {
             href: 'https://discord.gg/RwNTK8t',
             label: 'Support',
             position: 'left',
-	  },
+          },
           {
             href: 'https://github.com/oasisprotocol',
             position: 'right',
@@ -147,7 +145,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-	copyright: `Copyright © ${new Date().getFullYear()} Oasis Protocol Foundation. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Oasis Protocol Foundation. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

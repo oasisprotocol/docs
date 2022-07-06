@@ -20,11 +20,11 @@ To transfer (i.e. bridge and wrap) your ETH and ERC20 tokens, follow this guide.
 
 First, get your assets ready in your MetaMask to be transferred over to Oasis. Then navigate to the [Wormhole Bridge](https://wormholebridge.com)'s website and click on _Transfer Tokens_ to open the [Wormhole Bridge Transfer](https://wormholebridge.com/#/transfer) application.
 
-![Wormhole Bridge](<../images/manage-tokens/wormhole/index.png>)
+![Wormhole Bridge](../images/manage-tokens/wormhole/index.png)
 
 **Step 1 (Source)** is to point _Source_ to the network from where you want to transfer your tokens to **Ethereum** and set the _Target_ to **Oasis**. Then click _Connect_ to connect your wallet with the Wormhole Bridge.
 
-![Connect your wallet](<../images/manage-tokens/wormhole/connect_wallet.png>)
+![Connect your wallet](../images/manage-tokens/wormhole/connect_wallet.png)
 
 ### Transfer Assets to Oasis
 
@@ -70,15 +70,15 @@ If you use a Ledger hardware wallet backed Ethereum account, you will need to en
 
 You will have to wait for the confirmations on Ethereum before redeeming your new wETH tokens in Oasis Emerald.
 
-![Wait for Ethereum confirmations](<../images/manage-tokens/wormhole/send_tokens.png>)
+![Wait for Ethereum confirmations](../images/manage-tokens/wormhole/send_tokens.png)
 
 Now you are ready to redeem your tokens on the Oasis Emerald. Confirm the wallet approval in your MetaMask.
 
-![Confirm Redeeming your wETH](<../images/manage-tokens/wormhole/redeem_tokens.png>)
+![Confirm Redeeming your wETH](../images/manage-tokens/wormhole/redeem_tokens.png)
 
 Congratulations! You just bridged your first ETH (your chosen asset) to wETH on Oasis Emerald.
 
-![ETH to wETH bridging completed](<../images/manage-tokens/wormhole/redeem_tokens2.png>)
+![ETH to wETH bridging completed](../images/manage-tokens/wormhole/redeem_tokens2.png)
 
 :::info
 
@@ -90,7 +90,7 @@ We suggest that you add the new contract address for wETH (your newly wrapped as
 
 Now you can start using that wrapped assets across new Oasis dApps like the first DEX build on Emerald - [YuzuSwap](https://yuzu-swap.com), where you can swap, provide liquidity and farm YUZU rewards.
 
-![Start using wrapped assets on Oasis](<../images/manage-tokens/wormhole/yuzuswap.png>)
+![Start using wrapped assets on Oasis](../images/manage-tokens/wormhole/yuzuswap.png)
 
 :::info
 

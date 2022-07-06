@@ -46,11 +46,11 @@ If you happen to send your tokens to the validator instead of staking them, try 
 
 * Use the [Oasis Scan block explorer](https://www.oasisscan.com) and verify your Staking (Escrow) by entering your `oasis1` wallet address. Check the "Amount" column in the "Escrow Active" section to see all your active ROSE delegations.
 
-![Account details of entered oasis1 address in Oasis Scan](<../images/manage-tokens/oasisscan_account_details.png>)
+![Account details of entered oasis1 address in Oasis Scan](../images/manage-tokens/oasisscan_account_details.png)
 
 * Alternatively, you can use the [Oasis Web Wallet](https://wallet.oasisprotocol.org), to verify the status of your delegations.
 
-![Account details of searched oasis1 address in Official Web Wallet](<../images/wallet/web/active_delegations.png>)
+![Account details of searched oasis1 address in Official Web Wallet](../images/wallet/web/active_delegations.png)
 
 :::info
 

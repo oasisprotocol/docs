@@ -58,7 +58,7 @@ results. You need to use the standard _Oasis_ app.
 app and use both buttons to open the app. A message _"Pending Ledger review"_
 will appear which you confirm by holding both buttons. Your Ledger device is ready
 when you will see _"Oasis Ready"_ message.
-![Oasis Ready](<../../images/wallet/ledger/6b_ledger_oasis_ready.png>)
+![Oasis Ready](<../../images/wallet/ledger/6b_ledger_oasis_ready.jpg>)
 
 :::caution
 
@@ -75,7 +75,7 @@ to generate the private & public key pairs for your accounts.
 
 This is a simpler option since it allows you to connect to your Ledger wallet
 via a web application or a browser extension.
-	
+
 In the example below we will use Oasis Wallet - Web. To learn more about other
 features of the Oasis Wallets, please read the [Oasis Wallets] doc.
 

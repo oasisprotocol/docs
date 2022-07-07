@@ -142,7 +142,7 @@ The Oasis Network has an expanding set of development and network tools made by 
 
 The Oasis Network has a thriving and rapidly growing ecosystem consisting of industry-leading app developers, blockchain infrastructure teams, node operators, universities, and more. We are proud to highlight some of our key partners and community members in the chart below:
 
-![](images/ecosystem-network-01.jpeg)
+![](images/ecosystem-network-01.jpg)
 
 ### The DeFi Ecosystem
 

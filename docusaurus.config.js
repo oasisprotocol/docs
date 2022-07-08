@@ -29,7 +29,7 @@ const config = {
           sidebarPath: require.resolve('./sidebarsGeneral.js'),
           editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
         },
-	    blog: false,
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -39,7 +39,8 @@ const config = {
   plugins: [
     [
       '@docusaurus/plugin-content-docs',
-      {
+      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
+      ({
         id: 'oasis-network-primer',
         path: 'docs/oasis-network-primer',
         breadcrumbs: false,
@@ -47,44 +48,48 @@ const config = {
         routeBasePath: 'oasis-network-primer',
         sidebarPath: require.resolve('./sidebarsOasisNetworkPrimer.js'),
         editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
-      },
+      }),
     ],
     [
       '@docusaurus/plugin-content-docs',
-      {
+      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
+      ({
         id: 'oasis-core',
         path: 'external/oasis-core/docs',
         breadcrumbs: false,
         showLastUpdateTime: true,
         routeBasePath: 'oasis-core',
         sidebarPath: require.resolve('./sidebarsOasisCore.js'),
-      },
+      }),
     ],
     [
       '@docusaurus/plugin-content-docs',
-      {
+      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
+      ({
         id: 'oasis-sdk',
         path: 'external/oasis-sdk/docs',
         breadcrumbs: false,
         showLastUpdateTime: true,
         routeBasePath: 'oasis-sdk',
         sidebarPath: require.resolve('./sidebarsOasisSdk.js'),
-      },
+      }),
     ],
     [
       '@docusaurus/plugin-content-docs',
-      {
+      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
+      ({
         id: 'oasis-core-ledger',
         path: 'external/oasis-core-ledger/docs',
         breadcrumbs: false,
         showLastUpdateTime: true,
         routeBasePath: 'oasis-core-ledger',
         sidebarPath: require.resolve('./sidebarsOasisCoreLedger.js'),
-      },
+      }),
     ],
     [
       '@docusaurus/plugin-content-docs',
-      {
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
         id: 'adrs',
         path: 'external/adrs',
         breadcrumbs: false,
@@ -92,28 +97,27 @@ const config = {
         routeBasePath: 'adrs',
         sidebarPath: require.resolve('./sidebarsAdrs.js'),
         numberPrefixParser: false,
-      },
+      }),
     ],
     [
       '@docusaurus/plugin-client-redirects',
-      {
+      /** @type {import('@docusaurus/plugin-client-redirects').PluginOptions} */
+      ({
         createRedirects(existingPath) {
           if (existingPath.includes('/adrs')) {
-            return [
-              existingPath.replace('/adrs', '/oasis-core/adr'),
-            ];
+            return [existingPath.replace('/adrs', '/oasis-core/adr')];
           }
           return undefined;
         },
-      },
+      }),
     ],
   ],
   themes: [
     [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
+      require.resolve('@easyops-cn/docusaurus-search-local'),
       {
-	indexBlog: false,
-        docsRouteBasePath: "/",
+        indexBlog: false,
+        docsRouteBasePath: '/',
       },
     ],
   ],
@@ -136,7 +140,7 @@ const config = {
             href: 'https://discord.gg/RwNTK8t',
             label: 'Support',
             position: 'left',
-	  },
+          },
           {
             href: 'https://github.com/oasisprotocol',
             position: 'right',
@@ -147,7 +151,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-	copyright: `Copyright © ${new Date().getFullYear()} Oasis Protocol Foundation. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Oasis Protocol Foundation. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

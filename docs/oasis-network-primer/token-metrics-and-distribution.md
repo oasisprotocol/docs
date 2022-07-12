@@ -20,7 +20,7 @@ Please note that these percentages and allocations are subject to change as we f
 
 :::
 
-![Token Distribution pie chart](<images/Token_Distribution.png>)
+![Token Distribution pie chart](images/token_distribution_final.svg)
 
 ### Token Distribution Glossary
 
@@ -44,7 +44,9 @@ Tokens set aside for Staking Rewards will be disbursed in accordance with on-cha
 validator, how many nodes are participating in staking, and how many tokens are staked etc.
 The remaining allocations will be disbursed according to the following release schedule:
 
-![Circulation Schedule](<images/10-Year_Token_Circulation_Schedule.png>)
+![Circulation Schedule](images/token_distribution_schedule.svg)
+
+Alternative formats: [CSV](/oasis-network-primer/token_distribution.csv), [OpenDocument](/oasis-network-primer/token_distribution.ods)
 
 ## Fundraising History
 
@@ -64,7 +66,9 @@ Given the Oasis Network’s founding vision to become a world-class, public, per
 * **Unbonding period**: The network will have a \~14 day unbonding period. During this time, staked tokens are at risk of getting slashed for double-signing and do not accrue rewards during this time.
 * **Consensus voting power**: The current voting power mechanism is stake-weighted. This means that the consensus voting power of a validator is proportional to its stake. In this model, the network will require signatures by validators representing +2/3 of the total stake of the committee to sign a block. Note that in Tendermint, a validator's opportunities to propose a block in the round-robin block proposer order are also proportional to its voting power.
 
-![Rewards Schedule, approximated from block height of network.](<images/token_rewards.png>)
+![Rewards Schedule, approximated from block height of network.](images/staking_rewards.svg)
+
+Alternative formats: [CSV](/oasis-network-primer/staking_rewards.csv), [OpenDocument](/oasis-network-primer/staking_rewards.ods)
 
 ## Delegation Policy
 

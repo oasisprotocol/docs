@@ -149,7 +149,7 @@ Hence, the escrow account's active balance decreased for 401.353137954 tokens an
 
 :::caution
 
-While the number of debonding shares currently equals the number of base units that are currently subject to debonding and hence, the amount of tokens we can except to reclaim after debonding period is over is a little over 401 tokens, there is no guarantee that this stays the same until the end of the debonding period. Any slashing (e.g. for double signing) could change shares' price.
+While the number of debonding shares currently equals the number of base units that are currently subject to debonding and hence, the amount of tokens we can expect to reclaim after debonding period is over is a little over 401 tokens, there is no guarantee that this stays the same until the end of the debonding period. Any slashing (e.g. for double signing) could change shares' price.
 
 :::
 

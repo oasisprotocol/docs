@@ -74,10 +74,32 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v8.2.0#building)):
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v9.0.1#building)):
   * [8.2.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v8.2.0)
+  * [9.0.1](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v9.0.1)
+
+:::info
+
+When multiple runtime versions are listed, make sure to specify the paths to all
+of the bundles in your configuration. This ensures that any planned upgrade
+happens at the right time.
+
+For example, for the above Emerald ParaTime versions the configuration would
+look like the following (only showing the relevant options):
+
+```yaml
+runtime:
+  # ... other options omitted ...
+  paths:
+    - /path/to/emerald-paratime-8.2.0.orc
+    - /path/to/emerald-paratime-9.0.1.orc
+```
+
+:::
+
 * Emerald Web3 Gateway version:
-  * [2.2.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.2.0)
+  * [2.2.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.2.0) (for Emerald 8.2.0 and earlier)
+  * [3.0.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0) (for Emerald 9.0.1 and later)
 
 :::info
 

@@ -164,7 +164,7 @@ Escrow Account:
 
 We can observe that:
 
-* Our general balance decreased for 170.000002 tokens. The 0.000002 token corresponds to the fee that we specified we will pay for this transaction.
+* Our general balance decreased by 170.000002 tokens. The 0.000002 token corresponds to the fee that we specified we will pay for this transaction.
 * Our account's nonce increased to 8.
-* Destination account's general balance increased for 170 tokens.
+* Destination account's general balance increased by 170 tokens.
 

@@ -116,16 +116,16 @@ Escrow Account:
 
 We can observe that:
 
-* Our general account's balance decreased for 0.000002 token. This corresponds to the fee
+* Our general account's balance decreased by 0.000002 token. This corresponds to the fee
 
   that we specified we will pay for this transaction.
 
 * Our account's nonce increased to 10.
-* Our escrow account's active number of shares decreased for 357 billion shares
+* Our escrow account's active number of shares decreased by 357 billion shares
 
   to 9,828,014,125,910.
 
-* Our escrow account's active balance decreased for 401.353137954 tokens and
+* Our escrow account's active balance decreased by 401.353137954 tokens and
 
   is now 11049.031678686 tokens.
 
@@ -145,7 +145,7 @@ In our case, the current token price (i.e. `tokens_per_share`) is 11450.38481664
 
 For 357 billion shares, the amount of tokens that will be reclaimed is thus 357 * 10^9 * 1.124238481664054 * 10^-9 which is 401.35313795406726 tokens (rounded to 401.353137954 tokens).
 
-Hence, the escrow account's active balance decreased for 401.353137954 tokens and the debonding balance increased for the same amount.
+Hence, the escrow account's active balance decreased by 401.353137954 tokens and the debonding balance increased by the same amount.
 
 :::caution
 

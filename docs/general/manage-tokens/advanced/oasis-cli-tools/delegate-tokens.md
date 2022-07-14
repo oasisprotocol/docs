@@ -132,9 +132,9 @@ Escrow Account:
 
 We can observe that:
 
-* Our general account's balance decreased for 208.000002 tokens. The 0.000002 token corresponds to the fee that we specified we will pay for this transaction.
+* Our general account's balance decreased by 208.000002 tokens. The 0.000002 token corresponds to the fee that we specified we will pay for this transaction.
 * Our account's nonce increased to 9.
-* Our escrow account's active balance increased for 208 tokens.
+* Our escrow account's active balance increased by 208 tokens.
 * The total number of shares in our escrow account's active part
 
   increased from 10,000,000,000,000 to 10,185,014,125,910.
@@ -151,5 +151,5 @@ In our case, the current share price (i.e. `shares_per_token`) is 10,000,000,000
 
 For 208 tokens, the amount of newly issued shares is thus 208 * 889,490,989.9542729 which is 185,014,125,910.48877 shares (rounded to 185,014,125,910 shares).
 
-Hence, the escrow account's total number of shares increased for 185,014,125,910 shares.
+Hence, the escrow account's total number of shares increased by 185,014,125,910 shares.
 

@@ -80,26 +80,31 @@ const TokenDistributionChart = () => {
       title: {
         text: '10-Year Token Circulation Schedule',
         font: {
-            size: 20,
+          size: 20,
         },
         yref: 'container',
         y: 0.95,
       },
       xaxis: {
         tickangle: -45,
-        nticks: 30,
+        // Show every 6th tick. Every 3rd is an actual data point, but that's too dense for mobile.
+        dtick: 6,
       },
       yaxis: {
         title: 'Tokens in Circulation',
         fixedrange: true,
       },
       autosize: true,
+      margin: {
+        t: 120,
+        r: 0,
+      },
       legend: {
         orientation: "h",
         x: 0.5,
         xanchor: 'center',
-        y: 1.0,
-        yanchor: 'bottom',
+        y: 1.15,
+        yanchor: 'top',
       },
       hoverlabel: {
         namelength: 30,

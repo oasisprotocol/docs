@@ -36,7 +36,7 @@ If you are not able to find the Bitpie app in your respective app marketplace or
 
 After you have successfully installed the Bitpie app on your device, open it to get started with generating your Oasis wallet address. Click on the "Create a New Wallet" button. This will take you to a Security Instruction page -- make sure you read through the content of that page, and click the "Got it. Next." button.
 
-![](<../../images/wallet/bitpie/screen1.png>)
+![](../../images/wallet/bitpie/screen1.png)
 
 You will be shown 12 words that will serve as the seed or mnemonic that you can use to recover your account at a later point. Make sure you write down or store these 12 words in a secure location in the same order that they are displayed on the screen.
 
@@ -54,7 +54,7 @@ Never share your mnemonic (i.e. seed). Anyone with your mnemonic can access your
 
 After you have written down or stored the 12 words of your mnemonic, click on the 'Backup finished & go to verify" button.
 
-![](<../../images/wallet/bitpie/screen2.png>)
+![](../../images/wallet/bitpie/screen2.png)
 
 On the next screen, refer to your written down or stored seed and tap the words in the appropriate order to verify your account.
 
@@ -64,7 +64,7 @@ After setting up your pin, you may see some tutorial captions appear on screen. 
 
 Next you should see a screen like the one below, showing your assets for BTC or another network. Click on the "BTC System" (or other network) button with the drop down arrow on the top left corner of the screen to go to the list of crypto assets supported by Bitpie.
 
-![](<../../images/wallet/bitpie/screen3.png>)
+![](../../images/wallet/bitpie/screen3.png)
 
 On the screen displaying the list of supported cryptocurrency assets, scroll down until you find ROSE, labelled with the blue "O" logo and the words "ROSE (Oasis ROSE)."
 
@@ -72,7 +72,7 @@ Next, you should see a screen like the one below, labelled "ROSE System" in the 
 
 To view your newly generated Oasis wallet address, lick on the "Receive" button. You should then see a screen displaying a QR CODE and your Oasis wallet address, which is an alphanumeric string beginning with "oasis".
 
-![](<../../images/wallet/bitpie/screen4.png>)
+![](../../images/wallet/bitpie/screen4.png)
 
 Congratulations! You have generated your very own Oasis wallet address. You can share this Oasis wallet address publicly to receive ROSE tokens from others, and you can use your Bitpie Wallet to transfer your ROSE tokens to others as well.
 
@@ -82,11 +82,11 @@ After you've successfully installed the Bitpie Wallet app on your device and gen
 
 To transfer ROSE tokens, make sure you are under the "ROSE System" in the "Wallet" tab. If you are not in the "ROSE System" interface, you need to click on the button on the top left corner of the screen and scroll through the list of supported cryptocurrency assets to select "ROSE".
 
-![](<../../images/wallet/bitpie/screen_transfer1.png>)
+![](../../images/wallet/bitpie/screen_transfer1.png)
 
 On the "ROSE System" interface, click on the "Transfer" button. This takes you to the "ROSE Transfer" screen. You need to enter a valid Oasis wallet address, which you can do manually, or by scanning a QR code with your device's camera. You can set the transfer amount in ROSE, as well as add an off-chain memo message for your own reference. After you have added all of the necessary information for your transfer, click on the "OK" button to proceed.
 
-![](<../../images/wallet/bitpie/screen_transfer2.png>)
+![](../../images/wallet/bitpie/screen_transfer2.png)
 
 :::info
 

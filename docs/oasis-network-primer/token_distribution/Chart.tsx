@@ -1,5 +1,7 @@
 import React from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import { useColorMode } from '@docusaurus/theme-common';
+import plotlyPyDark from '@site/src/plotly-py-templates/plotly_dark.json';
 import FallbackSvg from './fallback.svg';
 
 import type { PlotlyDataLayoutConfig } from 'plotly.js-basic-dist';
@@ -20,6 +22,8 @@ const formatMonthOffsets = (monthOffsets: number[]) => {
 };
 
 const TokenDistributionChart = () => {
+  const { colorMode } = useColorMode();
+
   const chart: PlotlyDataLayoutConfig = {
     data: [
       {
@@ -65,6 +69,11 @@ const TokenDistributionChart = () => {
     ],
 
     layout: {
+      template: colorMode === 'dark' ? plotlyPyDark : undefined,
+      paper_bgcolor: colorMode === 'dark' ? '#1b1b1d' : undefined, // Match --ifm-background-color
+      plot_bgcolor: colorMode === 'dark' ? '#1b1b1d' : undefined, // Match --ifm-background-color
+
+
       title: {
         text: '10-Year Token Circulation Schedule',
         font: {

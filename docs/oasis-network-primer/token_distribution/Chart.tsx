@@ -13,9 +13,12 @@ const cumulativeSum = (values: number[]) => {
   return values.map(value => acc += value);
 };
 
+/**
+ * Offset from 2020-11-18
+ */
 const formatMonthOffsets = (monthOffsets: number[]) => {
   return monthOffsets.map(monthOffset => {
-    const date = new Date('2020-11-18');
+    const date = new Date(2020, 10 /* zero-based */, 18);
     date.setMonth(date.getMonth() + monthOffset);
     return date.toLocaleDateString(undefined, { dateStyle: 'short' });
   });

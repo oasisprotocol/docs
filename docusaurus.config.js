@@ -107,6 +107,10 @@ const config = {
           if (existingPath.includes('/adrs')) {
             return [existingPath.replace('/adrs', '/oasis-core/adr')];
           }
+          const roseToEvm = '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime';
+          if (existingPath.includes(roseToEvm)) {
+            return [existingPath.replace(roseToEvm, roseToEvm.replace('evm', 'emerald'))];
+          }
           return undefined;
         },
       }),

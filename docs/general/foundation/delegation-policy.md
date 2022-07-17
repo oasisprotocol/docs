@@ -50,7 +50,7 @@ please reach out to the Oasis team as soon as possible.
 - Participate in community discussion on the network’s future roadmap.
 - Actively participate on the Oasis Network Community server on Discord
   and help answer questions from other community members.
-- Build or contribute to tools, services or DApps that benefit developers, node
+- Build or contribute to tools, services or dapps that benefit developers, node
   operators and/or the overall Oasis community.
 - Contribute code to Oasis projects.
 - Find and report issues related to any of the network protocols and/or their

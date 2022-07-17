@@ -1,11 +1,11 @@
-# Writing dApps on Emerald
+# Writing dapps on Emerald
 
-This tutorial will show you how to set up dApp development environment for
-Emerald to be able to write and deploy dApps on Oasis Emerald.
+This tutorial will show you how to set up dapp development environment for
+Emerald to be able to write and deploy dapps on Oasis Emerald.
 
 We will walk you through the Hardhat and Truffle configuration and -
 for those who prefer a simpler web-only interface - the Remix IDE.
-Oasis Emerald exposes an EVM-compatible interface so writing dApps isn't much
+Oasis Emerald exposes an EVM-compatible interface so writing dapps isn't much
 different compared to the original Ethereum Network!
 
 ## Oasis Consensus Layer and Emerald ParaTime
@@ -24,7 +24,7 @@ hex-encoded addresses (e.g. `0x90adE3B7065fa715c7a150313877dF1d33e777D5`). The
 underlying algorithm for signing the transactions is [Ed25519] on the Consensus
 layer and both [Ed25519] and [ECDSA] in Emerald. The Ed25519 scheme is used
 mostly by the Emerald compute nodes for managing their computation rewards. For
-signing your dApp-related transactions on Emerald you will probably want to use
+signing your dapp-related transactions on Emerald you will probably want to use
 ECDSA since this is the de facto scheme supported by Ethereum wallets and
 libraries.
 
@@ -37,7 +37,7 @@ account to Emerald. Consult the [How to transfer ROSE into Emerald ParaTime]
 [overview]: ../../oasis-network/overview.md
 [Ed25519]: https://en.wikipedia.org/wiki/EdDSA#Ed25519
 [ECDSA]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
-[how-to-deposit-rose]: ../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx
+[how-to-deposit-rose]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 
 ## Testnet and Mainnet
@@ -78,7 +78,7 @@ ParaTime.
 
 ## Running Private Oasis Network Locally
 
-For convenient development and testing of your dApps the Oasis team prepared
+For convenient development and testing of your dapps the Oasis team prepared
 the [oasisprotocol/emerald-dev][emerald-dev] Docker image which brings you a complete Oasis
 stack to your desktop. This network is isolated from the Mainnet or Testnet and
 consists of:
@@ -129,7 +129,7 @@ WARNING: Emerald is running in ephemeral mode. The chain state will be lost afte
 Listening on http://localhost:8545 and ws://localhost:8546
 ```
 
-Those familiar with local dApp environments will find the output above similar
+Those familiar with local dapp environments will find the output above similar
 to `geth --dev` or `ganache-cli` commands or the `geth-dev-assistant` npm
 package. [emerald-dev] will spin up a private Oasis Network locally, generate
 and populate test accounts and make the following Web3 endpoints available for
@@ -159,10 +159,10 @@ will be lost after you quit the Docker container!
 
 [emerald-dev]: https://hub.docker.com/r/oasisprotocol/emerald-dev
 
-## Create dApp on Emerald with Hardhat
+## Create dapp on Emerald with Hardhat
 
-Let's begin writing our dApp with Hardhat. We will lay out a base for a modern
-dApp including TypeScript bindings for tests and later for the frontend
+Let's begin writing our dapp with Hardhat. We will lay out a base for a modern
+dapp including TypeScript bindings for tests and later for the frontend
 application.
 
 First, make sure you installed [Node.js] and that you have `npm` and `npx`
@@ -175,7 +175,7 @@ npx hardhat init
 Select the `Create an advanced sample project that uses TypeScript` option and
 enter the root directory for your project. You can leave other options as
 default. After a while Hardhat will finish downloading the dependencies and
-create a simple greeter dApp.
+create a simple greeter dapp.
 
 To compile, deploy and test the smart contract of your sample project locally,
 move to your project directory and type:
@@ -321,7 +321,7 @@ Greeter deployed to: 0x6e8e9e0DBCa4EF4a65eBCBe4032e7C2a6fb7C623
 [Node.js]: https://nodejs.org
 [ethers.js]: https://docs.ethers.io/v5/
 
-## Create dApp on Emerald with Truffle
+## Create dapp on Emerald with Truffle
 
 Truffle and its accompanying [web3.js] library is another popular smart
 contract deployment tool. Let's follow [the official Truffle's quickstart
@@ -563,7 +563,7 @@ In the output above, the MetaCoin contract has been successfully deployed to
 [web3.js]: https://web3js.readthedocs.io/en/v1.5.2/
 [truffle-quickstart]: https://trufflesuite.com/docs/truffle/quickstart.html
 
-## Create dApp on Emerald with Remix - Ethereum IDE
+## Create dapp on Emerald with Remix - Ethereum IDE
 
 [Remix] is a popular web IDE for swift development, deployment and testing
 smart contracts on the Ethereum Network. We will use it in combination with
@@ -609,7 +609,7 @@ Oasis Emerald blockchain! Should you have any questions, do not hesitate to
 share them with us on the [#emerald-paratime Discord channel][discord].
 
 [Remix]: https://remix.ethereum.org
-[metamask]: ../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx#verifying-rose-balance-on-emerald-paratime
+[metamask]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx#verifying-rose-balance-on-emerald-paratime
 [discord]: https://discord.gg/RwNTK8t
 
 ## Troubleshooting

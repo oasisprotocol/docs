@@ -52,7 +52,7 @@ Apply to become an Oasis Ambassador [here](https://oasisfoundation.typeform.com/
 
 The ROSE Bloom Grants program is the best way to receive funding for your project on the Oasis Network. Designed to help foster the growth of the Oasis ecosystem, the ROSE Bloom Grants program will help kickstart the development of projects in a range of key focus areas.
 
-Proposals will be eligible to receive anywhere from $5k — $50k USD in ROSE tokens, and will be evaluated on the relevance to the success of the network, the technical design of the project, the overall quality of the team, and more. If you’ve got a great idea for improving the Oasis Network or are inspired to build a new DeFi protocol, DApp, or privacy-first product, we’d love to hear about it!
+Proposals will be eligible to receive anywhere from $5k — $50k USD in ROSE tokens, and will be evaluated on the relevance to the success of the network, the technical design of the project, the overall quality of the team, and more. If you’ve got a great idea for improving the Oasis Network or are inspired to build a new DeFi protocol, dapp, or privacy-first product, we’d love to hear about it!
 
 Submit a proposal [here](https://oasisfoundation.typeform.com/to/HtYql2aN) and we’ll review.
 

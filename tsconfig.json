@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@site/*": ["./*"]
+    },
+  },
+}

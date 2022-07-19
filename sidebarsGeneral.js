@@ -62,6 +62,7 @@ const sidebars = {
             'run-a-node/set-up-your-node/run-validator',
             'run-a-node/set-up-your-node/run-non-validator',
             'run-a-node/set-up-your-node/run-seed-node',
+            'run-a-node/set-up-your-node/run-archive-node',
             'run-a-node/set-up-your-node/run-a-paratime-node',
             'run-a-node/set-up-your-node/run-a-paratime-client-node',
             'run-a-node/set-up-your-node/run-an-ias-proxy',

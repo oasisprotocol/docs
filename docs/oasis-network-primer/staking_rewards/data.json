@@ -1,0 +1,1782 @@
+[
+  {
+    "untilEpoch": 1170,
+    "scale": 2081
+  },
+  {
+    "untilEpoch": 4842,
+    "scale": 2081
+  },
+  {
+    "untilEpoch": 4866,
+    "scale": 2080
+  },
+  {
+    "untilEpoch": 4890,
+    "scale": 2079
+  },
+  {
+    "untilEpoch": 4914,
+    "scale": 2078
+  },
+  {
+    "untilEpoch": 4938,
+    "scale": 2076
+  },
+  {
+    "untilEpoch": 4962,
+    "scale": 2075
+  },
+  {
+    "untilEpoch": 4986,
+    "scale": 2073
+  },
+  {
+    "untilEpoch": 5010,
+    "scale": 2071
+  },
+  {
+    "untilEpoch": 5034,
+    "scale": 2069
+  },
+  {
+    "untilEpoch": 5058,
+    "scale": 2067
+  },
+  {
+    "untilEpoch": 5082,
+    "scale": 2065
+  },
+  {
+    "untilEpoch": 5106,
+    "scale": 2063
+  },
+  {
+    "untilEpoch": 5130,
+    "scale": 2060
+  },
+  {
+    "untilEpoch": 5154,
+    "scale": 2057
+  },
+  {
+    "untilEpoch": 5178,
+    "scale": 2054
+  },
+  {
+    "untilEpoch": 5202,
+    "scale": 2050
+  },
+  {
+    "untilEpoch": 5226,
+    "scale": 2046
+  },
+  {
+    "untilEpoch": 5250,
+    "scale": 2041
+  },
+  {
+    "untilEpoch": 5274,
+    "scale": 2036
+  },
+  {
+    "untilEpoch": 5298,
+    "scale": 2030
+  },
+  {
+    "untilEpoch": 5322,
+    "scale": 2024
+  },
+  {
+    "untilEpoch": 5346,
+    "scale": 2017
+  },
+  {
+    "untilEpoch": 5370,
+    "scale": 2008
+  },
+  {
+    "untilEpoch": 5394,
+    "scale": 1999
+  },
+  {
+    "untilEpoch": 5418,
+    "scale": 1988
+  },
+  {
+    "untilEpoch": 5442,
+    "scale": 1975
+  },
+  {
+    "untilEpoch": 5466,
+    "scale": 1961
+  },
+  {
+    "untilEpoch": 5490,
+    "scale": 1945
+  },
+  {
+    "untilEpoch": 5514,
+    "scale": 1927
+  },
+  {
+    "untilEpoch": 5538,
+    "scale": 1909
+  },
+  {
+    "untilEpoch": 5562,
+    "scale": 1889
+  },
+  {
+    "untilEpoch": 5586,
+    "scale": 1870
+  },
+  {
+    "untilEpoch": 5610,
+    "scale": 1851
+  },
+  {
+    "untilEpoch": 5634,
+    "scale": 1834
+  },
+  {
+    "untilEpoch": 5658,
+    "scale": 1818
+  },
+  {
+    "untilEpoch": 5682,
+    "scale": 1803
+  },
+  {
+    "untilEpoch": 5706,
+    "scale": 1791
+  },
+  {
+    "untilEpoch": 5730,
+    "scale": 1779
+  },
+  {
+    "untilEpoch": 5754,
+    "scale": 1769
+  },
+  {
+    "untilEpoch": 5778,
+    "scale": 1761
+  },
+  {
+    "untilEpoch": 5802,
+    "scale": 1753
+  },
+  {
+    "untilEpoch": 5826,
+    "scale": 1747
+  },
+  {
+    "untilEpoch": 5850,
+    "scale": 1741
+  },
+  {
+    "untilEpoch": 5874,
+    "scale": 1736
+  },
+  {
+    "untilEpoch": 5898,
+    "scale": 1731
+  },
+  {
+    "untilEpoch": 5922,
+    "scale": 1727
+  },
+  {
+    "untilEpoch": 5946,
+    "scale": 1723
+  },
+  {
+    "untilEpoch": 5970,
+    "scale": 1720
+  },
+  {
+    "untilEpoch": 5994,
+    "scale": 1717
+  },
+  {
+    "untilEpoch": 6018,
+    "scale": 1714
+  },
+  {
+    "untilEpoch": 6042,
+    "scale": 1711
+  },
+  {
+    "untilEpoch": 6066,
+    "scale": 1709
+  },
+  {
+    "untilEpoch": 6090,
+    "scale": 1707
+  },
+  {
+    "untilEpoch": 6114,
+    "scale": 1705
+  },
+  {
+    "untilEpoch": 6138,
+    "scale": 1703
+  },
+  {
+    "untilEpoch": 6162,
+    "scale": 1701
+  },
+  {
+    "untilEpoch": 6186,
+    "scale": 1700
+  },
+  {
+    "untilEpoch": 6210,
+    "scale": 1698
+  },
+  {
+    "untilEpoch": 6234,
+    "scale": 1697
+  },
+  {
+    "untilEpoch": 6258,
+    "scale": 1696
+  },
+  {
+    "untilEpoch": 9234,
+    "scale": 1694
+  },
+  {
+    "untilEpoch": 9258,
+    "scale": 1693
+  },
+  {
+    "untilEpoch": 9282,
+    "scale": 1692
+  },
+  {
+    "untilEpoch": 9306,
+    "scale": 1690
+  },
+  {
+    "untilEpoch": 9330,
+    "scale": 1689
+  },
+  {
+    "untilEpoch": 9354,
+    "scale": 1687
+  },
+  {
+    "untilEpoch": 9378,
+    "scale": 1686
+  },
+  {
+    "untilEpoch": 9402,
+    "scale": 1684
+  },
+  {
+    "untilEpoch": 9426,
+    "scale": 1682
+  },
+  {
+    "untilEpoch": 9450,
+    "scale": 1680
+  },
+  {
+    "untilEpoch": 9474,
+    "scale": 1677
+  },
+  {
+    "untilEpoch": 9498,
+    "scale": 1675
+  },
+  {
+    "untilEpoch": 9522,
+    "scale": 1672
+  },
+  {
+    "untilEpoch": 9546,
+    "scale": 1669
+  },
+  {
+    "untilEpoch": 9570,
+    "scale": 1666
+  },
+  {
+    "untilEpoch": 9594,
+    "scale": 1662
+  },
+  {
+    "untilEpoch": 9618,
+    "scale": 1658
+  },
+  {
+    "untilEpoch": 9642,
+    "scale": 1653
+  },
+  {
+    "untilEpoch": 9666,
+    "scale": 1648
+  },
+  {
+    "untilEpoch": 9690,
+    "scale": 1642
+  },
+  {
+    "untilEpoch": 9714,
+    "scale": 1635
+  },
+  {
+    "untilEpoch": 9738,
+    "scale": 1627
+  },
+  {
+    "untilEpoch": 9762,
+    "scale": 1619
+  },
+  {
+    "untilEpoch": 9786,
+    "scale": 1609
+  },
+  {
+    "untilEpoch": 9810,
+    "scale": 1597
+  },
+  {
+    "untilEpoch": 9834,
+    "scale": 1584
+  },
+  {
+    "untilEpoch": 9858,
+    "scale": 1570
+  },
+  {
+    "untilEpoch": 9882,
+    "scale": 1553
+  },
+  {
+    "untilEpoch": 9906,
+    "scale": 1535
+  },
+  {
+    "untilEpoch": 9930,
+    "scale": 1516
+  },
+  {
+    "untilEpoch": 9954,
+    "scale": 1496
+  },
+  {
+    "untilEpoch": 9978,
+    "scale": 1476
+  },
+  {
+    "untilEpoch": 10002,
+    "scale": 1456
+  },
+  {
+    "untilEpoch": 10026,
+    "scale": 1438
+  },
+  {
+    "untilEpoch": 10050,
+    "scale": 1422
+  },
+  {
+    "untilEpoch": 10074,
+    "scale": 1407
+  },
+  {
+    "untilEpoch": 10098,
+    "scale": 1393
+  },
+  {
+    "untilEpoch": 10122,
+    "scale": 1382
+  },
+  {
+    "untilEpoch": 10146,
+    "scale": 1372
+  },
+  {
+    "untilEpoch": 10170,
+    "scale": 1363
+  },
+  {
+    "untilEpoch": 10194,
+    "scale": 1355
+  },
+  {
+    "untilEpoch": 10218,
+    "scale": 1348
+  },
+  {
+    "untilEpoch": 10242,
+    "scale": 1342
+  },
+  {
+    "untilEpoch": 10266,
+    "scale": 1336
+  },
+  {
+    "untilEpoch": 10290,
+    "scale": 1332
+  },
+  {
+    "untilEpoch": 10314,
+    "scale": 1327
+  },
+  {
+    "untilEpoch": 10338,
+    "scale": 1323
+  },
+  {
+    "untilEpoch": 10362,
+    "scale": 1320
+  },
+  {
+    "untilEpoch": 10386,
+    "scale": 1317
+  },
+  {
+    "untilEpoch": 10410,
+    "scale": 1314
+  },
+  {
+    "untilEpoch": 10434,
+    "scale": 1311
+  },
+  {
+    "untilEpoch": 10458,
+    "scale": 1309
+  },
+  {
+    "untilEpoch": 10482,
+    "scale": 1307
+  },
+  {
+    "untilEpoch": 10506,
+    "scale": 1305
+  },
+  {
+    "untilEpoch": 10530,
+    "scale": 1303
+  },
+  {
+    "untilEpoch": 10554,
+    "scale": 1301
+  },
+  {
+    "untilEpoch": 10578,
+    "scale": 1299
+  },
+  {
+    "untilEpoch": 10602,
+    "scale": 1298
+  },
+  {
+    "untilEpoch": 10626,
+    "scale": 1296
+  },
+  {
+    "untilEpoch": 10650,
+    "scale": 1295
+  },
+  {
+    "untilEpoch": 13602,
+    "scale": 1294
+  },
+  {
+    "untilEpoch": 13626,
+    "scale": 1293
+  },
+  {
+    "untilEpoch": 13674,
+    "scale": 1292
+  },
+  {
+    "untilEpoch": 13698,
+    "scale": 1291
+  },
+  {
+    "untilEpoch": 13722,
+    "scale": 1290
+  },
+  {
+    "untilEpoch": 13746,
+    "scale": 1289
+  },
+  {
+    "untilEpoch": 13770,
+    "scale": 1288
+  },
+  {
+    "untilEpoch": 13794,
+    "scale": 1287
+  },
+  {
+    "untilEpoch": 13818,
+    "scale": 1286
+  },
+  {
+    "untilEpoch": 13842,
+    "scale": 1285
+  },
+  {
+    "untilEpoch": 13866,
+    "scale": 1284
+  },
+  {
+    "untilEpoch": 13890,
+    "scale": 1282
+  },
+  {
+    "untilEpoch": 13914,
+    "scale": 1281
+  },
+  {
+    "untilEpoch": 13938,
+    "scale": 1279
+  },
+  {
+    "untilEpoch": 13962,
+    "scale": 1277
+  },
+  {
+    "untilEpoch": 13986,
+    "scale": 1275
+  },
+  {
+    "untilEpoch": 14010,
+    "scale": 1272
+  },
+  {
+    "untilEpoch": 14034,
+    "scale": 1270
+  },
+  {
+    "untilEpoch": 14058,
+    "scale": 1267
+  },
+  {
+    "untilEpoch": 14082,
+    "scale": 1263
+  },
+  {
+    "untilEpoch": 14106,
+    "scale": 1259
+  },
+  {
+    "untilEpoch": 14130,
+    "scale": 1255
+  },
+  {
+    "untilEpoch": 14154,
+    "scale": 1249
+  },
+  {
+    "untilEpoch": 14178,
+    "scale": 1244
+  },
+  {
+    "untilEpoch": 14202,
+    "scale": 1237
+  },
+  {
+    "untilEpoch": 14226,
+    "scale": 1229
+  },
+  {
+    "untilEpoch": 14250,
+    "scale": 1221
+  },
+  {
+    "untilEpoch": 14274,
+    "scale": 1212
+  },
+  {
+    "untilEpoch": 14298,
+    "scale": 1202
+  },
+  {
+    "untilEpoch": 14322,
+    "scale": 1191
+  },
+  {
+    "untilEpoch": 14346,
+    "scale": 1181
+  },
+  {
+    "untilEpoch": 14370,
+    "scale": 1171
+  },
+  {
+    "untilEpoch": 14394,
+    "scale": 1162
+  },
+  {
+    "untilEpoch": 14418,
+    "scale": 1153
+  },
+  {
+    "untilEpoch": 14442,
+    "scale": 1146
+  },
+  {
+    "untilEpoch": 14466,
+    "scale": 1139
+  },
+  {
+    "untilEpoch": 14490,
+    "scale": 1133
+  },
+  {
+    "untilEpoch": 14514,
+    "scale": 1128
+  },
+  {
+    "untilEpoch": 14538,
+    "scale": 1123
+  },
+  {
+    "untilEpoch": 14562,
+    "scale": 1119
+  },
+  {
+    "untilEpoch": 14586,
+    "scale": 1116
+  },
+  {
+    "untilEpoch": 14610,
+    "scale": 1113
+  },
+  {
+    "untilEpoch": 14634,
+    "scale": 1110
+  },
+  {
+    "untilEpoch": 14658,
+    "scale": 1107
+  },
+  {
+    "untilEpoch": 14682,
+    "scale": 1105
+  },
+  {
+    "untilEpoch": 14706,
+    "scale": 1103
+  },
+  {
+    "untilEpoch": 14730,
+    "scale": 1101
+  },
+  {
+    "untilEpoch": 14754,
+    "scale": 1100
+  },
+  {
+    "untilEpoch": 14778,
+    "scale": 1098
+  },
+  {
+    "untilEpoch": 14802,
+    "scale": 1097
+  },
+  {
+    "untilEpoch": 14826,
+    "scale": 1096
+  },
+  {
+    "untilEpoch": 14850,
+    "scale": 1095
+  },
+  {
+    "untilEpoch": 14874,
+    "scale": 1094
+  },
+  {
+    "untilEpoch": 14898,
+    "scale": 1093
+  },
+  {
+    "untilEpoch": 14922,
+    "scale": 1092
+  },
+  {
+    "untilEpoch": 14946,
+    "scale": 1091
+  },
+  {
+    "untilEpoch": 14970,
+    "scale": 1090
+  },
+  {
+    "untilEpoch": 15018,
+    "scale": 1089
+  },
+  {
+    "untilEpoch": 17994,
+    "scale": 1088
+  },
+  {
+    "untilEpoch": 18018,
+    "scale": 1087
+  },
+  {
+    "untilEpoch": 18042,
+    "scale": 1085
+  },
+  {
+    "untilEpoch": 18066,
+    "scale": 1084
+  },
+  {
+    "untilEpoch": 18090,
+    "scale": 1082
+  },
+  {
+    "untilEpoch": 18114,
+    "scale": 1081
+  },
+  {
+    "untilEpoch": 18138,
+    "scale": 1079
+  },
+  {
+    "untilEpoch": 18162,
+    "scale": 1077
+  },
+  {
+    "untilEpoch": 18186,
+    "scale": 1075
+  },
+  {
+    "untilEpoch": 18210,
+    "scale": 1073
+  },
+  {
+    "untilEpoch": 18234,
+    "scale": 1070
+  },
+  {
+    "untilEpoch": 18258,
+    "scale": 1067
+  },
+  {
+    "untilEpoch": 18282,
+    "scale": 1065
+  },
+  {
+    "untilEpoch": 18306,
+    "scale": 1061
+  },
+  {
+    "untilEpoch": 18330,
+    "scale": 1058
+  },
+  {
+    "untilEpoch": 18354,
+    "scale": 1054
+  },
+  {
+    "untilEpoch": 18378,
+    "scale": 1049
+  },
+  {
+    "untilEpoch": 18402,
+    "scale": 1044
+  },
+  {
+    "untilEpoch": 18426,
+    "scale": 1039
+  },
+  {
+    "untilEpoch": 18450,
+    "scale": 1033
+  },
+  {
+    "untilEpoch": 18474,
+    "scale": 1025
+  },
+  {
+    "untilEpoch": 18498,
+    "scale": 1017
+  },
+  {
+    "untilEpoch": 18522,
+    "scale": 1008
+  },
+  {
+    "untilEpoch": 18546,
+    "scale": 998
+  },
+  {
+    "untilEpoch": 18570,
+    "scale": 986
+  },
+  {
+    "untilEpoch": 18594,
+    "scale": 972
+  },
+  {
+    "untilEpoch": 18618,
+    "scale": 956
+  },
+  {
+    "untilEpoch": 18642,
+    "scale": 939
+  },
+  {
+    "untilEpoch": 18666,
+    "scale": 920
+  },
+  {
+    "untilEpoch": 18690,
+    "scale": 900
+  },
+  {
+    "untilEpoch": 18714,
+    "scale": 879
+  },
+  {
+    "untilEpoch": 18738,
+    "scale": 857
+  },
+  {
+    "untilEpoch": 18762,
+    "scale": 837
+  },
+  {
+    "untilEpoch": 18786,
+    "scale": 818
+  },
+  {
+    "untilEpoch": 18810,
+    "scale": 800
+  },
+  {
+    "untilEpoch": 18834,
+    "scale": 784
+  },
+  {
+    "untilEpoch": 18858,
+    "scale": 770
+  },
+  {
+    "untilEpoch": 18882,
+    "scale": 758
+  },
+  {
+    "untilEpoch": 18906,
+    "scale": 747
+  },
+  {
+    "untilEpoch": 18930,
+    "scale": 738
+  },
+  {
+    "untilEpoch": 18954,
+    "scale": 730
+  },
+  {
+    "untilEpoch": 18978,
+    "scale": 722
+  },
+  {
+    "untilEpoch": 19002,
+    "scale": 716
+  },
+  {
+    "untilEpoch": 19026,
+    "scale": 710
+  },
+  {
+    "untilEpoch": 19050,
+    "scale": 705
+  },
+  {
+    "untilEpoch": 19074,
+    "scale": 701
+  },
+  {
+    "untilEpoch": 19098,
+    "scale": 697
+  },
+  {
+    "untilEpoch": 19122,
+    "scale": 693
+  },
+  {
+    "untilEpoch": 19146,
+    "scale": 689
+  },
+  {
+    "untilEpoch": 19170,
+    "scale": 686
+  },
+  {
+    "untilEpoch": 19194,
+    "scale": 684
+  },
+  {
+    "untilEpoch": 19218,
+    "scale": 681
+  },
+  {
+    "untilEpoch": 19242,
+    "scale": 679
+  },
+  {
+    "untilEpoch": 19266,
+    "scale": 677
+  },
+  {
+    "untilEpoch": 19290,
+    "scale": 675
+  },
+  {
+    "untilEpoch": 19314,
+    "scale": 673
+  },
+  {
+    "untilEpoch": 19338,
+    "scale": 671
+  },
+  {
+    "untilEpoch": 19362,
+    "scale": 669
+  },
+  {
+    "untilEpoch": 19386,
+    "scale": 668
+  },
+  {
+    "untilEpoch": 19410,
+    "scale": 666
+  },
+  {
+    "untilEpoch": 22386,
+    "scale": 665
+  },
+  {
+    "untilEpoch": 22410,
+    "scale": 664
+  },
+  {
+    "untilEpoch": 22434,
+    "scale": 663
+  },
+  {
+    "untilEpoch": 22458,
+    "scale": 662
+  },
+  {
+    "untilEpoch": 22482,
+    "scale": 661
+  },
+  {
+    "untilEpoch": 22506,
+    "scale": 660
+  },
+  {
+    "untilEpoch": 22530,
+    "scale": 659
+  },
+  {
+    "untilEpoch": 22554,
+    "scale": 658
+  },
+  {
+    "untilEpoch": 22578,
+    "scale": 657
+  },
+  {
+    "untilEpoch": 22602,
+    "scale": 656
+  },
+  {
+    "untilEpoch": 22626,
+    "scale": 655
+  },
+  {
+    "untilEpoch": 22650,
+    "scale": 653
+  },
+  {
+    "untilEpoch": 22674,
+    "scale": 651
+  },
+  {
+    "untilEpoch": 22698,
+    "scale": 649
+  },
+  {
+    "untilEpoch": 22722,
+    "scale": 647
+  },
+  {
+    "untilEpoch": 22746,
+    "scale": 645
+  },
+  {
+    "untilEpoch": 22770,
+    "scale": 643
+  },
+  {
+    "untilEpoch": 22794,
+    "scale": 640
+  },
+  {
+    "untilEpoch": 22818,
+    "scale": 636
+  },
+  {
+    "untilEpoch": 22842,
+    "scale": 633
+  },
+  {
+    "untilEpoch": 22866,
+    "scale": 629
+  },
+  {
+    "untilEpoch": 22890,
+    "scale": 624
+  },
+  {
+    "untilEpoch": 22914,
+    "scale": 618
+  },
+  {
+    "untilEpoch": 22938,
+    "scale": 612
+  },
+  {
+    "untilEpoch": 22962,
+    "scale": 605
+  },
+  {
+    "untilEpoch": 22986,
+    "scale": 597
+  },
+  {
+    "untilEpoch": 23010,
+    "scale": 588
+  },
+  {
+    "untilEpoch": 23034,
+    "scale": 578
+  },
+  {
+    "untilEpoch": 23058,
+    "scale": 568
+  },
+  {
+    "untilEpoch": 23082,
+    "scale": 557
+  },
+  {
+    "untilEpoch": 23106,
+    "scale": 546
+  },
+  {
+    "untilEpoch": 23130,
+    "scale": 536
+  },
+  {
+    "untilEpoch": 23154,
+    "scale": 526
+  },
+  {
+    "untilEpoch": 23178,
+    "scale": 517
+  },
+  {
+    "untilEpoch": 23202,
+    "scale": 509
+  },
+  {
+    "untilEpoch": 23226,
+    "scale": 502
+  },
+  {
+    "untilEpoch": 23250,
+    "scale": 495
+  },
+  {
+    "untilEpoch": 23274,
+    "scale": 490
+  },
+  {
+    "untilEpoch": 23298,
+    "scale": 485
+  },
+  {
+    "untilEpoch": 23322,
+    "scale": 481
+  },
+  {
+    "untilEpoch": 23346,
+    "scale": 477
+  },
+  {
+    "untilEpoch": 23370,
+    "scale": 474
+  },
+  {
+    "untilEpoch": 23394,
+    "scale": 471
+  },
+  {
+    "untilEpoch": 23418,
+    "scale": 468
+  },
+  {
+    "untilEpoch": 23442,
+    "scale": 466
+  },
+  {
+    "untilEpoch": 23466,
+    "scale": 464
+  },
+  {
+    "untilEpoch": 23490,
+    "scale": 462
+  },
+  {
+    "untilEpoch": 23514,
+    "scale": 460
+  },
+  {
+    "untilEpoch": 23538,
+    "scale": 459
+  },
+  {
+    "untilEpoch": 23562,
+    "scale": 457
+  },
+  {
+    "untilEpoch": 23586,
+    "scale": 456
+  },
+  {
+    "untilEpoch": 23610,
+    "scale": 455
+  },
+  {
+    "untilEpoch": 23634,
+    "scale": 454
+  },
+  {
+    "untilEpoch": 23658,
+    "scale": 453
+  },
+  {
+    "untilEpoch": 23682,
+    "scale": 452
+  },
+  {
+    "untilEpoch": 23706,
+    "scale": 451
+  },
+  {
+    "untilEpoch": 23730,
+    "scale": 450
+  },
+  {
+    "untilEpoch": 23754,
+    "scale": 449
+  },
+  {
+    "untilEpoch": 26754,
+    "scale": 448
+  },
+  {
+    "untilEpoch": 26802,
+    "scale": 447
+  },
+  {
+    "untilEpoch": 26826,
+    "scale": 446
+  },
+  {
+    "untilEpoch": 26874,
+    "scale": 445
+  },
+  {
+    "untilEpoch": 26898,
+    "scale": 444
+  },
+  {
+    "untilEpoch": 26946,
+    "scale": 443
+  },
+  {
+    "untilEpoch": 26970,
+    "scale": 442
+  },
+  {
+    "untilEpoch": 26994,
+    "scale": 441
+  },
+  {
+    "untilEpoch": 27018,
+    "scale": 440
+  },
+  {
+    "untilEpoch": 27042,
+    "scale": 438
+  },
+  {
+    "untilEpoch": 27066,
+    "scale": 437
+  },
+  {
+    "untilEpoch": 27090,
+    "scale": 436
+  },
+  {
+    "untilEpoch": 27114,
+    "scale": 434
+  },
+  {
+    "untilEpoch": 27138,
+    "scale": 432
+  },
+  {
+    "untilEpoch": 27162,
+    "scale": 430
+  },
+  {
+    "untilEpoch": 27186,
+    "scale": 428
+  },
+  {
+    "untilEpoch": 27210,
+    "scale": 426
+  },
+  {
+    "untilEpoch": 27234,
+    "scale": 423
+  },
+  {
+    "untilEpoch": 27258,
+    "scale": 420
+  },
+  {
+    "untilEpoch": 27282,
+    "scale": 416
+  },
+  {
+    "untilEpoch": 27306,
+    "scale": 412
+  },
+  {
+    "untilEpoch": 27330,
+    "scale": 407
+  },
+  {
+    "untilEpoch": 27354,
+    "scale": 402
+  },
+  {
+    "untilEpoch": 27378,
+    "scale": 396
+  },
+  {
+    "untilEpoch": 27402,
+    "scale": 389
+  },
+  {
+    "untilEpoch": 27426,
+    "scale": 381
+  },
+  {
+    "untilEpoch": 27450,
+    "scale": 373
+  },
+  {
+    "untilEpoch": 27474,
+    "scale": 365
+  },
+  {
+    "untilEpoch": 27498,
+    "scale": 357
+  },
+  {
+    "untilEpoch": 27522,
+    "scale": 349
+  },
+  {
+    "untilEpoch": 27546,
+    "scale": 341
+  },
+  {
+    "untilEpoch": 27570,
+    "scale": 334
+  },
+  {
+    "untilEpoch": 27594,
+    "scale": 328
+  },
+  {
+    "untilEpoch": 27618,
+    "scale": 323
+  },
+  {
+    "untilEpoch": 27642,
+    "scale": 318
+  },
+  {
+    "untilEpoch": 27666,
+    "scale": 314
+  },
+  {
+    "untilEpoch": 27690,
+    "scale": 310
+  },
+  {
+    "untilEpoch": 27714,
+    "scale": 307
+  },
+  {
+    "untilEpoch": 27738,
+    "scale": 304
+  },
+  {
+    "untilEpoch": 27762,
+    "scale": 302
+  },
+  {
+    "untilEpoch": 27786,
+    "scale": 299
+  },
+  {
+    "untilEpoch": 27810,
+    "scale": 297
+  },
+  {
+    "untilEpoch": 27834,
+    "scale": 296
+  },
+  {
+    "untilEpoch": 27858,
+    "scale": 294
+  },
+  {
+    "untilEpoch": 27882,
+    "scale": 293
+  },
+  {
+    "untilEpoch": 27906,
+    "scale": 291
+  },
+  {
+    "untilEpoch": 27930,
+    "scale": 290
+  },
+  {
+    "untilEpoch": 27954,
+    "scale": 289
+  },
+  {
+    "untilEpoch": 27978,
+    "scale": 288
+  },
+  {
+    "untilEpoch": 28002,
+    "scale": 287
+  },
+  {
+    "untilEpoch": 28050,
+    "scale": 286
+  },
+  {
+    "untilEpoch": 28074,
+    "scale": 285
+  },
+  {
+    "untilEpoch": 28122,
+    "scale": 284
+  },
+  {
+    "untilEpoch": 28146,
+    "scale": 283
+  },
+  {
+    "untilEpoch": 31170,
+    "scale": 282
+  },
+  {
+    "untilEpoch": 31266,
+    "scale": 281
+  },
+  {
+    "untilEpoch": 31338,
+    "scale": 280
+  },
+  {
+    "untilEpoch": 31410,
+    "scale": 279
+  },
+  {
+    "untilEpoch": 31458,
+    "scale": 278
+  },
+  {
+    "untilEpoch": 31506,
+    "scale": 277
+  },
+  {
+    "untilEpoch": 31530,
+    "scale": 276
+  },
+  {
+    "untilEpoch": 31554,
+    "scale": 275
+  },
+  {
+    "untilEpoch": 31602,
+    "scale": 274
+  },
+  {
+    "untilEpoch": 31626,
+    "scale": 272
+  },
+  {
+    "untilEpoch": 31650,
+    "scale": 271
+  },
+  {
+    "untilEpoch": 31674,
+    "scale": 270
+  },
+  {
+    "untilEpoch": 31698,
+    "scale": 268
+  },
+  {
+    "untilEpoch": 31722,
+    "scale": 266
+  },
+  {
+    "untilEpoch": 31746,
+    "scale": 264
+  },
+  {
+    "untilEpoch": 31770,
+    "scale": 262
+  },
+  {
+    "untilEpoch": 31794,
+    "scale": 259
+  },
+  {
+    "untilEpoch": 31818,
+    "scale": 257
+  },
+  {
+    "untilEpoch": 31842,
+    "scale": 254
+  },
+  {
+    "untilEpoch": 31866,
+    "scale": 251
+  },
+  {
+    "untilEpoch": 31890,
+    "scale": 249
+  },
+  {
+    "untilEpoch": 31914,
+    "scale": 246
+  },
+  {
+    "untilEpoch": 31938,
+    "scale": 244
+  },
+  {
+    "untilEpoch": 31962,
+    "scale": 242
+  },
+  {
+    "untilEpoch": 31986,
+    "scale": 240
+  },
+  {
+    "untilEpoch": 32010,
+    "scale": 238
+  },
+  {
+    "untilEpoch": 32034,
+    "scale": 237
+  },
+  {
+    "untilEpoch": 32058,
+    "scale": 236
+  },
+  {
+    "untilEpoch": 32106,
+    "scale": 234
+  },
+  {
+    "untilEpoch": 32130,
+    "scale": 233
+  },
+  {
+    "untilEpoch": 32154,
+    "scale": 232
+  },
+  {
+    "untilEpoch": 32202,
+    "scale": 231
+  },
+  {
+    "untilEpoch": 32250,
+    "scale": 230
+  },
+  {
+    "untilEpoch": 32298,
+    "scale": 229
+  },
+  {
+    "untilEpoch": 32394,
+    "scale": 228
+  },
+  {
+    "untilEpoch": 32490,
+    "scale": 227
+  },
+  {
+    "untilEpoch": 35514,
+    "scale": 226
+  },
+  {
+    "untilEpoch": 35562,
+    "scale": 225
+  },
+  {
+    "untilEpoch": 35586,
+    "scale": 224
+  },
+  {
+    "untilEpoch": 35610,
+    "scale": 223
+  },
+  {
+    "untilEpoch": 35634,
+    "scale": 222
+  },
+  {
+    "untilEpoch": 35658,
+    "scale": 221
+  },
+  {
+    "untilEpoch": 35682,
+    "scale": 220
+  },
+  {
+    "untilEpoch": 35706,
+    "scale": 219
+  },
+  {
+    "untilEpoch": 35730,
+    "scale": 218
+  },
+  {
+    "untilEpoch": 35754,
+    "scale": 216
+  },
+  {
+    "untilEpoch": 35778,
+    "scale": 215
+  },
+  {
+    "untilEpoch": 35802,
+    "scale": 213
+  },
+  {
+    "untilEpoch": 35826,
+    "scale": 212
+  },
+  {
+    "untilEpoch": 35850,
+    "scale": 210
+  },
+  {
+    "untilEpoch": 35874,
+    "scale": 208
+  },
+  {
+    "untilEpoch": 35898,
+    "scale": 205
+  },
+  {
+    "untilEpoch": 35922,
+    "scale": 203
+  },
+  {
+    "untilEpoch": 35946,
+    "scale": 200
+  },
+  {
+    "untilEpoch": 35970,
+    "scale": 196
+  },
+  {
+    "untilEpoch": 35994,
+    "scale": 192
+  },
+  {
+    "untilEpoch": 36018,
+    "scale": 188
+  },
+  {
+    "untilEpoch": 36042,
+    "scale": 183
+  },
+  {
+    "untilEpoch": 36066,
+    "scale": 177
+  },
+  {
+    "untilEpoch": 36090,
+    "scale": 171
+  },
+  {
+    "untilEpoch": 36114,
+    "scale": 164
+  },
+  {
+    "untilEpoch": 36138,
+    "scale": 155
+  },
+  {
+    "untilEpoch": 36162,
+    "scale": 146
+  },
+  {
+    "untilEpoch": 36186,
+    "scale": 136
+  },
+  {
+    "untilEpoch": 36210,
+    "scale": 125
+  },
+  {
+    "untilEpoch": 36234,
+    "scale": 114
+  },
+  {
+    "untilEpoch": 36258,
+    "scale": 102
+  },
+  {
+    "untilEpoch": 36282,
+    "scale": 91
+  },
+  {
+    "untilEpoch": 36306,
+    "scale": 81
+  },
+  {
+    "untilEpoch": 36330,
+    "scale": 72
+  },
+  {
+    "untilEpoch": 36354,
+    "scale": 63
+  },
+  {
+    "untilEpoch": 36378,
+    "scale": 56
+  },
+  {
+    "untilEpoch": 36402,
+    "scale": 49
+  },
+  {
+    "untilEpoch": 36426,
+    "scale": 44
+  },
+  {
+    "untilEpoch": 36450,
+    "scale": 39
+  },
+  {
+    "untilEpoch": 36474,
+    "scale": 34
+  },
+  {
+    "untilEpoch": 36498,
+    "scale": 30
+  },
+  {
+    "untilEpoch": 36522,
+    "scale": 27
+  },
+  {
+    "untilEpoch": 36546,
+    "scale": 24
+  },
+  {
+    "untilEpoch": 36570,
+    "scale": 21
+  },
+  {
+    "untilEpoch": 36594,
+    "scale": 19
+  },
+  {
+    "untilEpoch": 36618,
+    "scale": 17
+  },
+  {
+    "untilEpoch": 36642,
+    "scale": 15
+  },
+  {
+    "untilEpoch": 36666,
+    "scale": 13
+  },
+  {
+    "untilEpoch": 36690,
+    "scale": 11
+  },
+  {
+    "untilEpoch": 36714,
+    "scale": 10
+  },
+  {
+    "untilEpoch": 36738,
+    "scale": 8
+  },
+  {
+    "untilEpoch": 36762,
+    "scale": 7
+  },
+  {
+    "untilEpoch": 36786,
+    "scale": 6
+  },
+  {
+    "untilEpoch": 36810,
+    "scale": 5
+  },
+  {
+    "untilEpoch": 36834,
+    "scale": 4
+  },
+  {
+    "untilEpoch": 36858,
+    "scale": 3
+  },
+  {
+    "untilEpoch": 36882,
+    "scale": 2
+  },
+  {
+    "untilEpoch": 36930,
+    "scale": 1
+  }
+]

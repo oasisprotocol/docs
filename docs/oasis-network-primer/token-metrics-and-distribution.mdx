@@ -1,4 +1,5 @@
 import TokenDistributionChart from './token_distribution/Chart.tsx';
+import StakingRewardsChart from './staking_rewards/Chart.tsx';
 
 # Token Metrics and Distribution
 
@@ -68,7 +69,9 @@ Given the Oasis Network’s founding vision to become a world-class, public, per
 * **Unbonding period**: The network will have a \~14 day unbonding period. During this time, staked tokens are at risk of getting slashed for double-signing and do not accrue rewards during this time.
 * **Consensus voting power**: The current voting power mechanism is stake-weighted. This means that the consensus voting power of a validator is proportional to its stake. In this model, the network will require signatures by validators representing +2/3 of the total stake of the committee to sign a block. Note that in Tendermint, a validator's opportunities to propose a block in the round-robin block proposer order are also proportional to its voting power.
 
-![Rewards Schedule, approximated from block height of network.](images/token_rewards.png)
+<StakingRewardsChart />
+
+Alternative formats: [CSV](./staking_rewards/data.csv)
 
 ## Delegation Policy
 

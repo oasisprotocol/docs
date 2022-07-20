@@ -116,6 +116,46 @@ In this example, we have received 111 ROSE to our Ledger account.
 
 ![Oasis Wallet - Web -> Exploring transactions](../../images/wallet/ledger/11_oasis_wallet_web_received_rose_on_ledger_account.png)
 
+### Receive ROSE
+
+Once you have successfully opened your Oasis account from Ledger, 
+you can start receiving ROSE by sharing your account address.
+
+You can simply copy your opened account address or scan QR code.
+
+![Oasis Wallet - Web -> Ledger -> Receive ROSE Account address](../../images/wallet/ledger/12_oasis_wallet_web_account_address.png)
+
+### Send ROSE
+
+To send your ROSE from your Oasis Ledger account to another Oasis consensus 
+address, you have to follow these steps:
+
+1. Enter destination consensus address into Recipient field, Enter amount
+of ROSE you want to send and Click on Send button.
+
+![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/13_oasis_wallet_web_send_rose.png)
+
+2. Then a pop-up window will appear where you need to Confirm transaction.
+
+:::caution
+
+Keep in mind that you also need to Confirm transaction on your Ledger device.
+
+:::
+
+![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/14_oasis_wallet_web_send_confirm_tx.png)
+
+3. On your Ledger device navigate to screen where you will see APPROVE message. 
+Then use two buttons to approve your transaction.
+
+![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/15_oasis_wallet_web_send_confirm_tx_ledger.png)
+
+4. You can verify if ROSE were successfully sent by checking latest transactions
+or opening receiving account.
+
+![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/16_oasis_wallet_web_send_verify_balance.png)
+
+
 ### Using Oasis CLI Tools
 
 This is the most powerful option that allows performing not just token-related

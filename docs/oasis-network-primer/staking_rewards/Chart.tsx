@@ -6,9 +6,23 @@ import type { PlotlyDataLayoutConfig } from 'plotly.js-basic-dist';
 
 import data from './data.json';
 
-const offsetFrom = { epoch: 15835, date: '2022-07-20T16:11:11.000Z' };
+const knownOffsets = {
+  beta: { epoch: 0, date: '2020-10-01T16:00:00Z' },
+  mainnet: { epoch: 1170, date: '2020-11-18T16:00:00.000Z' },
+  recent: { epoch: 15835, date: '2022-07-20T16:11:11.000Z' },
 
-const estimatedEpochsPerHour = 1;
+  // epoch from https://oasismonitor.com/block/4000000
+  // time from https://www.oasisscan.com/blocks/4000000
+  block4M: { epoch: 6664, date: '2021-07-05T04:42:51.000Z' },
+  block5M: { epoch: 8328, date: '2021-09-12T03:57:19.000Z' },
+  block6M: { epoch: 9992, date: '2021-11-19T23:18:41.000Z' },
+  block7M: { epoch: 11656, date: '2022-01-28T05:06:25.000Z' },
+  block8M: { epoch: 13320, date: '2022-04-07T22:49:44.000Z' },
+  block9M: { epoch: 14987, date: '2022-06-15T16:22:57.000Z' },
+};
+const offsetFrom = knownOffsets.recent;
+
+const estimatedEpochsPerHour = (knownOffsets.recent.epoch - knownOffsets.mainnet.epoch) / ((new Date(knownOffsets.recent.date).getTime() - new Date(knownOffsets.mainnet.date).getTime()) / 1000 / 60 / 60);
 const estimatedEpochsPerYear = 365 * 24 * estimatedEpochsPerHour;
 
 // https://github.com/oasisprotocol/oasis-core/blob/d8e352b/go/staking/api/rewards.go#L22
@@ -84,3 +98,25 @@ const StakingRewardsChart = () => {
 };
 
 export default StakingRewardsChart;
+
+function testEstimatedEpochDates() {
+  const diffHoursFormatter = new Intl.NumberFormat(undefined, {
+    style: 'unit',
+    unit: 'hour',
+    unitDisplay: 'long',
+    signDisplay: 'always',
+    maximumFractionDigits: 1,
+  });
+
+  console.info('DEV: estimatedEpochsPerHour', estimatedEpochsPerHour);
+  console.info(
+    'DEV: diff between estimateEpochDates and known dates',
+    Object.entries(knownOffsets).map(([epochName, {epoch, date}]) => {
+      const estimatedTime = new Date(estimateEpochDates([epoch])[0]).getTime();
+      const indexedTime = new Date(date).getTime();
+      const diffHours = (indexedTime - estimatedTime) / 1000 / 60 / 60;
+      return `at ${epochName} (${epoch}): ${diffHoursFormatter.format(diffHours)}`;
+    })
+  );
+}
+if (process.env.NODE_ENV === 'development') testEstimatedEpochDates();

@@ -14,12 +14,25 @@ const cumulativeSum = (values: number[]) => {
 /**
  * Offset from 2020-11-18
  */
+const offsetToDate = (monthOffset: number) => {
+  const date = new Date(2020, 10 /* zero-based */, 18);
+  date.setMonth(date.getMonth() + monthOffset);
+  return date;
+};
+
 const formatMonthOffsets = (monthOffsets: number[]) => {
   return monthOffsets.map(monthOffset => {
-    const date = new Date(2020, 10 /* zero-based */, 18);
-    date.setMonth(date.getMonth() + monthOffset);
-    return date.toLocaleDateString(undefined, { dateStyle: 'short' });
+    return offsetToDate(monthOffset).toLocaleDateString(undefined, { dateStyle: 'short' });
   });
+};
+
+const currentOffset = (monthOffsets: number[]) => {
+  const nextOffset = monthOffsets.findIndex(monthOffset => {
+    return offsetToDate(monthOffset).getTime() > new Date().getTime();
+  });
+  if (nextOffset - 1 < 0) return '';
+  const previousOffset = monthOffsets[nextOffset - 1];
+  return offsetToDate(previousOffset).toLocaleDateString(undefined, { dateStyle: 'short' });
 };
 
 const TokenDistributionChart = () => {
@@ -65,6 +78,15 @@ const TokenDistributionChart = () => {
         stackgroup: 'one',
         marker: {color: 'orange'},
       },
+      {
+        x: [currentOffset(data.months), currentOffset(data.months)],
+        y: [0, 8000000000],
+        mode: 'lines',
+        name: 'Today',
+        marker: {color: 'gray'},
+        hoverinfo: 'none',
+        showlegend: false,
+      },
     ],
 
     layout: {
@@ -84,6 +106,7 @@ const TokenDistributionChart = () => {
       yaxis: {
         title: 'Tokens in Circulation',
         fixedrange: true,
+        rangemode: 'nonnegative',
       },
       margin: {
         t: 120,

@@ -59,6 +59,15 @@ const StakingRewardsChart = () => {
         text: data.map(d => `<i>Reward per epoch: ${d.scale * 100 / rewardAmountDenominator}%<br>Epoch: ${d.untilEpoch}</i>`),
         hoverinfo: 'all',
       },
+      {
+        x: [new Date().toISOString(), new Date().toISOString()],
+        y: [0, 0.205],
+        mode: 'lines',
+        name: 'Today',
+        marker: {color: 'gray'},
+        hoverinfo: 'none',
+        showlegend: false,
+      },
     ],
 
     layout: {
@@ -79,6 +88,7 @@ const StakingRewardsChart = () => {
         tickformat: '0%',
         hoverformat: '.3%',
         dtick: 0.02,
+        rangemode: 'nonnegative',
       },
       margin: {
         r: 0,

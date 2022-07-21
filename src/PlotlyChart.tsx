@@ -41,9 +41,6 @@ const PlotlyChart = (props: {
       >
         {() => {
           const PlotlyBasic: typeof import('plotly.js-basic-dist') = require('plotly.js-basic-dist');
-          // To generate fallback.svg:
-          // PlotlyBasic.downloadImage(chart, { filename: 'fallback', format:'svg', width: 960, height: 600 })
-
           const createPlotlyComponent: typeof import('react-plotly.js/factory').default = require('react-plotly.js/factory').default;
           const Plot = createPlotlyComponent(PlotlyBasic);
 

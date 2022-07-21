@@ -129,6 +129,13 @@ const TokenDistributionChart = () => {
     },
   };
 
+  // To generate fallback.svg:
+  // chart.data = chart.data.filter(d => d.name !== 'Today');
+  // chart.layout!.xaxis!.tickangle = -90;
+  // chart.layout!.xaxis!.dtick = 3;
+  // const PlotlyBasic: typeof import('plotly.js-basic-dist') = require('plotly.js-basic-dist');
+  // PlotlyBasic.downloadImage(chart, { filename: 'fallback', format:'svg', width: 960, height: 600 });
+
   return <PlotlyChart label="Circulation Schedule" chart={chart} fallbackSvg={FallbackSvg} />;
 };
 

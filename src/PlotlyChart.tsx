@@ -7,7 +7,7 @@ import type { PlotlyDataLayoutConfig } from 'plotly.js-basic-dist';
 
 const PlotlyChart = (props: {
     chart: PlotlyDataLayoutConfig,
-    fallbackSvg: ComponentType<SVGProps<SVGSVGElement>>,
+    fallbackSvg: string,
     label: string,
   }) => {
 
@@ -29,14 +29,12 @@ const PlotlyChart = (props: {
     },
   };
 
-  const FallbackSvg = props.fallbackSvg
-
   return (
     <div>
       <BrowserOnly
         fallback={
           <div>
-            <FallbackSvg aria-label={props.label} style={{ width: '100%' }} className="text--center"></FallbackSvg>
+            <img alt={props.label} style={{ width: '100%' }} className="text--center" src={props.fallbackSvg} />
             <p className="text--center"><i>Enable javascript to see interactive chart</i></p>
           </div>
         }

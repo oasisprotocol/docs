@@ -1,6 +1,6 @@
 import React from 'react';
 import PlotlyChart from '@site/src/PlotlyChart';
-import FallbackSvg from './fallback.svg';
+import FallbackSvg from '!!file-loader!./fallback.svg';
 
 import type { PlotlyDataLayoutConfig } from 'plotly.js-basic-dist';
 

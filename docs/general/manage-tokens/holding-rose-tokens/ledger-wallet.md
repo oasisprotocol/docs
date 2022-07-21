@@ -143,17 +143,17 @@ Keep in mind that you also need to Confirm transaction on your Ledger device.
 
 :::
 
-![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/14_oasis_wallet_web_send_confirm_tx.png)
+![Oasis Wallet - Web -> Ledger -> Confirm TX](../../images/wallet/ledger/14_oasis_wallet_web_send_confirm_tx.png)
 
 3. On your Ledger device navigate to screen where you will see APPROVE message. 
 Then use two buttons to approve your transaction.
 
-![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/15_oasis_wallet_web_send_confirm_tx_ledger.png)
+![Oasis Wallet - Web -> Ledger -> Approve TX](../../images/wallet/ledger/15_oasis_wallet_web_send_confirm_tx_ledger.jpg)
 
 4. You can verify if ROSE were successfully sent by checking latest transactions
 or opening receiving account.
 
-![Oasis Wallet - Web -> Ledger -> Send ROSE](../../images/wallet/ledger/16_oasis_wallet_web_send_verify_balance.png)
+![Oasis Wallet - Web -> Ledger -> Verify Balance](../../images/wallet/ledger/16_oasis_wallet_web_send_verify_balance.png)
 
 
 ### Using Oasis CLI Tools

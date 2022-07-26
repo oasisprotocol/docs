@@ -1,10 +1,7 @@
----
-description: >-
-  These are the current parameters for the Testnet, a test-only network for
-  testing out upcoming features and changes to the protocol.
----
-
 # The Testnet
+
+These are the current parameters for the Testnet, a test-only network for
+testing out upcoming features and changes to the protocol.
 
 :::danger
 

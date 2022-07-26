@@ -1,10 +1,8 @@
----
-description: >-
-  Guide on bringing your assets, i.e. ETH, USDC, USDT, from Ethereum, BSC,
-  Polygon or Avalanche to Emerald ParaTime using the Wormhole token bridge.
----
-
 # How to Transfer ETH/ERC20 to Emerald ParaTime
+
+This guide will walk you through bringing your assets, i.e. ETH, USDC, USDT,
+from Ethereum, BSC, Polygon or Avalanche networks to the Emerald ParaTime using
+the Wormhole token bridge.
 
 ## About
 

@@ -1,10 +1,7 @@
----
-description: >-
-  Oasis Foundation-managed official non-custodial browser extension wallet for
-  the Oasis Network.
----
-
 # Browser Extension
+
+Oasis Foundation-managed official non-custodial browser extension wallet for the
+Oasis Network.
 
 ## **How to use the Oasis Wallet - Browser Extension**
 

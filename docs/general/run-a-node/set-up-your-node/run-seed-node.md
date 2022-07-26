@@ -1,7 +1,3 @@
----
-description: This page describes how to run a seed node on the Oasis Network.
----
-
 # Run a Seed Node
 
 This guide will cover setting up a seed node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.

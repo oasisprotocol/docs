@@ -1,9 +1,3 @@
----
-description: >-
-  This page describes how to run an Intel Attestation Service (IAS) Proxy node
-  on the Oasis Network.
----
-
 # Run an IAS Proxy
 
 This guide will cover setting up an [Intel Attestation Service (IAS)](https://software.intel.com/content/www/us/en/develop/download/intel-sgx-intel-epid-provisioning-and-attestation-services.html) Proxy node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
@@ -83,6 +77,6 @@ The TLS public key required for connecting to the IAS Proxy is located in the co
 --ias.proxy.address <IAS_PROXY_PUBLIC_KEY>@<EXTERNAL_IP>:8650
 ```
 
-[  
+[
 ](/general/run-a-node/set-up-your-node/run-non-validator)
 

@@ -1,7 +1,3 @@
----
-description: An overview of Oasis Network Architecture and Key Technological Benefits
----
-
 # Overview of the Oasis Network
 
 The Oasis Network is a Layer 1 decentralized blockchain network designed to be uniquely scalable, privacy-first and versatile.

@@ -1,10 +1,8 @@
----
-description: >-
-  Staking and Delegation on the Oasis Network is a wonderful way to hold your
-  ROSE tokens. A few key resources to get started!
----
-
 # Staking and Delegating
+
+Staking and Delegation on the Oasis Network is a wonderful way to hold your ROSE
+tokens.
+Here are a few key resources to get started!
 
 ## Rewards and Tokenomics
 

@@ -1,8 +1,6 @@
----
-description: This document provides an overview of the Oasis Network's genesis document.
----
-
 # Genesis Document
+
+This document provides an overview of the Oasis Network's genesis document.
 
 ## What is a Genesis Document?
 

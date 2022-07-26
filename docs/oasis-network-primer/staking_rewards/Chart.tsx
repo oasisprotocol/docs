@@ -25,6 +25,8 @@ const offsetFrom = knownOffsets.recent;
 const estimatedEpochsPerHour = (knownOffsets.recent.epoch - knownOffsets.mainnet.epoch) / ((new Date(knownOffsets.recent.date).getTime() - new Date(knownOffsets.mainnet.date).getTime()) / 1000 / 60 / 60);
 const estimatedEpochsPerYear = 365 * 24 * estimatedEpochsPerHour;
 
+// From genesis "reward_factor_epoch_signed": "1"
+const rewardFactorEpochSigned = 1;
 // https://github.com/oasisprotocol/oasis-core/blob/d8e352b/go/staking/api/rewards.go#L22
 const rewardAmountDenominator = 100_000_000;
 
@@ -40,9 +42,10 @@ const estimateEpochDates = (epochOffsets: number[]) => {
 const estimateAPY = (scaleRewards: number[]) => {
   return scaleRewards
     .map(scale => {
-      const rewardPerEpoch = scale / rewardAmountDenominator;
-      const yearlyCompoundedRate = (1 + rewardPerEpoch)**estimatedEpochsPerYear;
-      return yearlyCompoundedRate - 1;
+      const rewardPerEpoch = scale * rewardFactorEpochSigned / rewardAmountDenominator;
+      // Better numerical precision than yearlyCompoundedRate = (1 + rewardPerEpoch)**estimatedEpochsPerYear - 1
+      const yearlyCompoundedRate = Math.expm1(Math.log1p(rewardPerEpoch) * estimatedEpochsPerYear)
+      return yearlyCompoundedRate;
     });
 };
 
@@ -56,7 +59,10 @@ const StakingRewardsChart = () => {
         mode: 'lines',
         name: 'Annualized rewards',
         marker: {color: '#4285F4'},
-        text: data.map(d => `<i>Reward per epoch: ${d.scale * 100 / rewardAmountDenominator}%<br>Epoch: ${d.untilEpoch}</i>`),
+        text: data.map(d => {
+          const percentPerEpoch = 100 * d.scale * rewardFactorEpochSigned / rewardAmountDenominator;
+          return `<i>Reward per epoch: ${percentPerEpoch}%<br>Epoch: ${d.untilEpoch}</i>`;
+        }),
         hoverinfo: 'all',
       },
       {

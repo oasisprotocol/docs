@@ -1,11 +1,8 @@
----
-description: >-
-  This page provides an overview of how you can set up your Bitpie Wallet and
-  then use it to generate an Oasis wallet address as well as receive and
-  transfer ROSE tokens on the Oasis Mainnet.
----
-
 # Bitpie Mobile Wallet
+
+This guide will teach you how to set up your Bitpie Wallet and use it to
+generate an Oasis wallet address as well as receive and transfer ROSE tokens on
+the Oasis Mainnet.
 
 ## What is Bitpie?
 

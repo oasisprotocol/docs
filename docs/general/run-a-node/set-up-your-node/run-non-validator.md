@@ -1,7 +1,3 @@
----
-description: This page describes how to run a non-validator node on the Oasis Network.
----
-
 # Run a Non-validator Node
 
 :::info

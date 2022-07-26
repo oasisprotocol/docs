@@ -1,10 +1,7 @@
----
-description: >-
-  How to query the Band Protocol reference data smart contract from another
-  Solidity smart contract on Emerald.
----
-
 # Integrating BAND oracle smart contract
+
+This guide will explain how to query the Band Protocol reference data smart
+contract from another Solidity smart contract on Emerald.
 
 ### What is the Band Protocol?
 

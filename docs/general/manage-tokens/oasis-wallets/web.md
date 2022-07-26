@@ -1,10 +1,7 @@
----
-description: >-
-  Oasis Foundation-managed official non-custodial web wallet for the Oasis
-  Network.
----
-
 # Web
+
+Oasis Foundation-managed official non-custodial web wallet for the Oasis
+Network.
 
 ## How to use the Oasis Wallet - Web
 

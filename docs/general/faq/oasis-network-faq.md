@@ -1,11 +1,11 @@
----
-description: >-
-  We'll use this page to answer some of the most frequently asked questions we
-  receive about the Oasis Network. This page will constantly be updated with new
-  questions and responses.
----
-
 # Oasis Network FAQ
+
+This page tries to answer some of the most frequently asked questions about the
+Oasis Network.
+
+:::info
+This page will constantly be updated with new questions and responses.
+:::
 
 ## **Overview**
 

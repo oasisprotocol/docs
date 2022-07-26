@@ -1,9 +1,3 @@
----
-description: >-
-  This page provides an overview of the token delivery and KYC process for
-  anyone receiving ROSE tokens from the Oasis Foundation.
----
-
 # Token Delivery & KYC Guide
 
 If you're visiting this page, you may have recently earned ROSE tokens via the Community Cup program, the Ambassador Rewards program, or a recent hackathon. Congratulations!

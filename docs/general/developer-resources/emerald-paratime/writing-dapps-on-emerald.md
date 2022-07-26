@@ -1,13 +1,11 @@
----
-description: How to write and deploy a dApp to Oasis Emerald
----
-
 # Writing dApps on Emerald
 
 This tutorial will show you how to set up dApp development environment for
-Emerald. We will walk you through the Hardhat and Truffle configuration and -
-for those who prefer a simpler web-only interface - the Remix IDE. Oasis
-Emerald exposes an EVM-compatible interface so writing dApps isn't much
+Emerald to be able to write and deploy dApps on Oasis Emerald.
+
+We will walk you through the Hardhat and Truffle configuration and -
+for those who prefer a simpler web-only interface - the Remix IDE.
+Oasis Emerald exposes an EVM-compatible interface so writing dApps isn't much
 different compared to the original Ethereum Network!
 
 ## Oasis Consensus Layer and Emerald ParaTime

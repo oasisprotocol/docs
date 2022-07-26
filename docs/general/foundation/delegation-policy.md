@@ -1,13 +1,11 @@
----
-description: This page describe the Oasis Protocol Foundation's Delegation Policy.
----
-
 # Delegation Policy
 
 Oasis Protocol Foundation delegates ROSE tokens to node operators based on their
 participation in the Oasis Mainnet, Testnet and ParaTimes on the network,
 node reliability and performance, community engagement and overall support of
 the network.
+
+This page describes the Oasis Protocol Foundation's Delegation Policy.
 
 ## Requirements for Receiving Delegations
 

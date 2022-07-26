@@ -1,11 +1,8 @@
----
-description: >-
-  This page serves as a hub for Oasis community members, featuring info about
-  upcoming events and initiatives, ways to get involved with the community and
-  earn ROSE tokens, and many other resources.
----
-
 # Community Hub
+
+This page serves as a hub for Oasis community members, featuring info about
+upcoming events and initiatives, ways to get involved with the community and
+earn ROSE tokens, and many other resources.
 
 ## 🎉 Welcome to the Oasis Community
 

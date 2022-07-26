@@ -1,10 +1,7 @@
----
-description: >-
-  This documents answers frequently asked questions about Oasis Wallets and 3rd
-  party wallets & custody providers
----
-
 # Frequently Asked Questions
+
+This documents answers frequently asked questions about Oasis Wallets and 3rd
+party wallets & custody providers supporting ROSE tokens.
 
 ### How can I transfer ROSE tokens from my [BitPie wallet](holding-rose-tokens/bitpie-wallet.md) to my Oasis Wallet?
 

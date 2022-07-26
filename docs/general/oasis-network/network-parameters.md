@@ -1,10 +1,7 @@
----
-description: >-
-  This page is meant to be kept up to date with the information from the
-  currently released network.
----
-
 # Network Parameters
+
+This page provides up to date information for the currently running Oasis
+Network.
 
 These are the current parameters for the Mainnet:
 

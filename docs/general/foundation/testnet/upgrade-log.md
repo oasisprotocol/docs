@@ -1,10 +1,10 @@
----
-description: >-
-  For each upgrade of the Testnet network, we will track important changes for
-  node operators' deployments.
----
-
 # Upgrade Log
+
+
+For each upgrade of the Testnet network, we are tracking important changes for
+node operators' deployments.
+
+They are enumerated and explained in this document.
 
 ## 2022-04-04 Upgrade
 

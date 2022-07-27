@@ -1,8 +1,6 @@
 import React from 'react';
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import { useColorMode } from '@docusaurus/theme-common';
-import plotlyPyDark from '@site/src/plotly-py-templates/plotly_dark.json';
-import FallbackSvg from './fallback.svg';
+import PlotlyChart from '@site/src/PlotlyChart';
+import FallbackSvg from '!!file-loader!./fallback.svg';
 
 import type { PlotlyDataLayoutConfig } from 'plotly.js-basic-dist';
 
@@ -16,17 +14,28 @@ const cumulativeSum = (values: number[]) => {
 /**
  * Offset from 2020-11-18
  */
+const offsetToDate = (monthOffset: number) => {
+  const date = new Date(2020, 10 /* zero-based */, 18);
+  date.setMonth(date.getMonth() + monthOffset);
+  return date;
+};
+
 const formatMonthOffsets = (monthOffsets: number[]) => {
   return monthOffsets.map(monthOffset => {
-    const date = new Date(2020, 10 /* zero-based */, 18);
-    date.setMonth(date.getMonth() + monthOffset);
-    return date.toLocaleDateString(undefined, { dateStyle: 'short' });
+    return offsetToDate(monthOffset).toLocaleDateString(undefined, { dateStyle: 'short' });
   });
 };
 
-const TokenDistributionChart = () => {
-  const { colorMode } = useColorMode();
+const currentOffset = (monthOffsets: number[]) => {
+  const nextOffset = monthOffsets.findIndex(monthOffset => {
+    return offsetToDate(monthOffset).getTime() > new Date().getTime();
+  });
+  if (nextOffset - 1 < 0) return '';
+  const previousOffset = monthOffsets[nextOffset - 1];
+  return offsetToDate(previousOffset).toLocaleDateString(undefined, { dateStyle: 'short' });
+};
 
+const TokenDistributionChart = () => {
   const chart: PlotlyDataLayoutConfig = {
     data: [
       {
@@ -69,14 +78,18 @@ const TokenDistributionChart = () => {
         stackgroup: 'one',
         marker: {color: 'orange'},
       },
+      {
+        x: [currentOffset(data.months), currentOffset(data.months)],
+        y: [0, 8000000000],
+        mode: 'lines',
+        name: 'Today',
+        marker: {color: 'gray'},
+        hoverinfo: 'none',
+        showlegend: false,
+      },
     ],
 
     layout: {
-      template: colorMode === 'dark' ? plotlyPyDark : undefined,
-      paper_bgcolor: colorMode === 'dark' ? '#1b1b1d' : undefined, // Match --ifm-background-color
-      plot_bgcolor: colorMode === 'dark' ? '#1b1b1d' : undefined, // Match --ifm-background-color
-
-
       title: {
         text: '10-Year Token Circulation Schedule',
         font: {
@@ -93,8 +106,8 @@ const TokenDistributionChart = () => {
       yaxis: {
         title: 'Tokens in Circulation',
         fixedrange: true,
+        rangemode: 'nonnegative',
       },
-      autosize: true,
       margin: {
         t: 120,
         r: 0,
@@ -113,43 +126,17 @@ const TokenDistributionChart = () => {
     },
 
     config: {
-      showLink: true,
-      plotlyServerURL: 'https://chart-studio.plotly.com',
     },
   };
 
-  return (
-    <div>
-      <BrowserOnly
-        fallback={
-          <div>
-            <FallbackSvg aria-label='Circulation Schedule' style={{ width: '100%' }} className="text--center" ></FallbackSvg>
-            <p className="text--center"><i>Enable javascript to see interactive chart</i></p>
-          </div>
-        }
-      >
-        {() => {
-          const PlotlyBasic: typeof import('plotly.js-basic-dist') = require('plotly.js-basic-dist');
-          // To generate fallback.svg:
-          // PlotlyBasic.downloadImage(chart, { filename: 'fallback', format:'svg', width: 960, height: 600 })
+  // To generate fallback.svg:
+  // chart.data = chart.data.filter(d => d.name !== 'Today');
+  // chart.layout!.xaxis!.tickangle = -90;
+  // chart.layout!.xaxis!.dtick = 3;
+  // const PlotlyBasic: typeof import('plotly.js-basic-dist') = require('plotly.js-basic-dist');
+  // PlotlyBasic.downloadImage(chart, { filename: 'fallback', format:'svg', width: 960, height: 600 });
 
-          const createPlotlyComponent: typeof import('react-plotly.js/factory').default = require('react-plotly.js/factory').default;
-          const Plot = createPlotlyComponent(PlotlyBasic);
-
-          return (
-            <Plot
-              data={chart.data}
-              layout={chart.layout!}
-              config={chart.config!}
-              useResizeHandler={true}
-              style={{ width: '100%', height: '600px' }}
-            />
-          );
-        }}
-      </BrowserOnly>
-      <p></p>
-    </div>
-  );
+  return <PlotlyChart label="Circulation Schedule" chart={chart} fallbackSvg={FallbackSvg} />;
 };
 
 export default TokenDistributionChart;

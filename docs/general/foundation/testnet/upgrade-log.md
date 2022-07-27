@@ -302,8 +302,8 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
     "scale": "1229"
   }
   ```
-  For example, this element specifies that the staking reward is 12.29% until
-  epoch `14226`.
+  For example, this element specifies that the staking reward is 0.001229% per
+  epoch until epoch `14226`.
   It will be set to the same schedule that is currently on used on the Mainnet.
 
 ### **Random Beacon**

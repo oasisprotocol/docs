@@ -66,11 +66,11 @@
     "stakingRewards": "Staking Rewards"
   },
   "colors": {
-    "coreContributors": "blue",
-    "backers": "red",
-    "foundation": "gold",
-    "communityAndEcosystem": "green",
-    "strategicPartnersAndReserve": "orange",
+    "coreContributors": "#4f78ee",
+    "backers": "#f04a3c",
+    "foundation": "#fbc339",
+    "communityAndEcosystem": "#00ab5b",
+    "strategicPartnersAndReserve": "#ff7426",
     "stakingRewards": "#36bbc5"
   }
 }

@@ -53,6 +53,7 @@ const FinalDistributionPieChart = () => {
         font: {
           size: 20,
         },
+        x: 0.05,
         yref: 'container',
         y: 0.95,
       },

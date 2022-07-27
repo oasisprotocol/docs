@@ -9,6 +9,7 @@ const PlotlyChart = (props: {
     chart: PlotlyDataLayoutConfig,
     fallbackSvg: string,
     label: string,
+    height?: number
   }) => {
 
   const { colorMode } = useColorMode();
@@ -50,7 +51,7 @@ const PlotlyChart = (props: {
               layout={chart.layout!}
               config={chart.config!}
               useResizeHandler={true}
-              style={{ width: '100%', height: '600px' }}
+              style={{ width: '100%', height: props.height ?? '600px' }}
             />
           );
         }}

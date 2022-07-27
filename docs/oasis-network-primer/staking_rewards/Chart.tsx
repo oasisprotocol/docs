@@ -49,7 +49,7 @@ const StakingRewardsChart = () => {
 
     layout: {
       title: {
-        text: 'Rewards Schedule, approximated from block height of network',
+        text: 'Staking Rewards Schedule (time estimated from epoch interval)',
         font: {
           size: 20,
         },
@@ -60,7 +60,7 @@ const StakingRewardsChart = () => {
         tickangle: -45,
       },
       yaxis: {
-        title: 'Rewards',
+        title: 'Estimated Annualized Rewards',
         fixedrange: true,
         tickformat: '0%',
         hoverformat: '.3%',
@@ -80,7 +80,7 @@ const StakingRewardsChart = () => {
     },
   };
 
-  return <PlotlyChart label="Rewards Schedule, approximated from block height of network" chart={chart} fallbackSvg={FallbackSvg} />;
+  return <PlotlyChart label="Staking Rewards Schedule (time estimated from epoch interval)" chart={chart} fallbackSvg={FallbackSvg} />;
 };
 
 export default StakingRewardsChart;

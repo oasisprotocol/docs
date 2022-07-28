@@ -125,3 +125,23 @@ runtime:
 ```
 
 :::
+
+### Sapphire ParaTime
+
+* Oasis Core version:
+  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+* Runtime identifier:
+  * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
+* Runtime binary version:
+  * [0.1.1-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.1.1-testnet)
+* Web3 Gateway version:
+  * [3.0.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0-rc1)
+
+* IAS proxy address:
+  * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
+
+:::tip
+
+Feel free to use other IAS proxies besides the one provided here or [run your own](../../run-a-node/set-up-your-node/run-an-ias-proxy.md).
+
+:::

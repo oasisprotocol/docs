@@ -6,9 +6,9 @@ the Wormhole token bridge.
 
 ## About
 
-[Emerald](../developer-resources/emerald-paratime/README.mdx) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dApp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
+[Emerald](../developer-resources/emerald-paratime/README.mdx) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dapp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
 
-To transfer your ROSE tokens into Emerald, follow [How to Transfer ROSE into Emerald ParaTime](how-to-transfer-rose-into-emerald-paratime.mdx).
+To transfer your ROSE tokens into Emerald, follow [How to Transfer ROSE into an EVM ParaTime](how-to-transfer-rose-into-evm-paratime.mdx).
 
 To transfer (i.e. bridge and wrap) your ETH and ERC20 tokens, follow this guide. It will show you how to use [Wormhole Bridge](https://wormholebridge.com) to seamlessly transfer your tokens from Ethereum, Solana, Avalanche, BSC, Terra or Polygon to the Oasis Network.
 
@@ -86,7 +86,7 @@ We suggest that you add the new contract address for wETH (your newly wrapped as
 
 ## Using Wrapped Assets on Oasis
 
-Now you can start using that wrapped assets across new Oasis dApps like the first DEX build on Emerald - [YuzuSwap](https://yuzu-swap.com), where you can swap, provide liquidity and farm YUZU rewards.
+Now you can start using that wrapped assets across new Oasis dapps like the first DEX build on Emerald - [YuzuSwap](https://yuzu-swap.com), where you can swap, provide liquidity and farm YUZU rewards.
 
 ![Start using wrapped assets on Oasis](../images/manage-tokens/wormhole/yuzuswap.png)
 

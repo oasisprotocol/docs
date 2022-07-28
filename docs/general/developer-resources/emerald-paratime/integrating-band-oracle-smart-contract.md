@@ -16,7 +16,7 @@ contracts. You can read more about the specific details of the protocol
 2. Compile the contract with compiler version `0.6.11`.
 3. Switch to the Deploy tab of Remix.
    1. Select "Injected Web3" in the Environment dropdown in the top left to connect Metamask.
-   2. Make sure that Metamask is connected to the Emerald (Testnet/Mainnet) network. You can read about adding Emerald network to Metamask [here](../../manage-tokens/how-to-transfer-rose-into-emerald-paratime.mdx#metamask).
+   2. Make sure that Metamask is connected to the Emerald (Testnet/Mainnet) network. You can read about adding Emerald network to Metamask [here](../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx#metamask).
 
 ![Setting up the environment in Remix](../../images/emerald/band_demooracle_smartcontract.png)
 

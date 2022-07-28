@@ -138,7 +138,7 @@ const sidebars = {
             'manage-tokens/holding-rose-tokens/ledger-wallet',
           ]
         },
-        'manage-tokens/how-to-transfer-rose-into-emerald-paratime',
+        'manage-tokens/how-to-transfer-rose-into-evm-paratime',
         'manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime',
         'manage-tokens/faq',
         {
@@ -242,6 +242,17 @@ const sidebars = {
           items: [
             'developer-resources/emerald-paratime/writing-dapps-on-emerald',
             'developer-resources/emerald-paratime/integrating-band-oracle-smart-contract',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Sapphire ParaTime',
+          link: {
+            type: 'doc',
+            id: 'developer-resources/sapphire-paratime/README',
+          },
+          items: [
+            'developer-resources/sapphire-paratime/writing-dapps-on-sapphire',
           ],
         },
         {

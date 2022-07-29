@@ -136,7 +136,6 @@ runtime:
   * [0.1.1-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.1.1-testnet)
 * Web3 Gateway version:
   * [3.0.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0)
-
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 

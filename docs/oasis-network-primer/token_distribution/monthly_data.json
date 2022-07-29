@@ -56,5 +56,21 @@
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0
-  ]
+  ],
+  "labels": {
+    "coreContributors": "Core Contributors",
+    "backers": "Backers",
+    "foundation": "Foundation Endowment",
+    "communityAndEcosystem": "Community & Ecosystem",
+    "strategicPartnersAndReserve": "Strategic Partners & Reserve",
+    "stakingRewards": "Staking Rewards"
+  },
+  "colors": {
+    "coreContributors": "#4f78ee",
+    "backers": "#f04a3c",
+    "foundation": "#fbc339",
+    "communityAndEcosystem": "#00ab5b",
+    "strategicPartnersAndReserve": "#ff7426",
+    "stakingRewards": "#36bbc5"
+  }
 }

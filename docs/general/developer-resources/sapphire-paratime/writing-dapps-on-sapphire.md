@@ -79,7 +79,7 @@ but we think that you'll like them:
   defeating most of the utility of block explorers, however.
 * The `from` address using of calls is derived from a signature attached to the call.
   Unsigned calls have their sender set to the zero address. This allows contract authors
-  to write getters that release secrets to authenticated callers, but without without
+  to write getters that release secrets to authenticated callers, but without
   requiring a transaction to be posted on-chain.
 
 In addition to confidentiality, you get a few extra benefits including the ability to generate private
@@ -138,7 +138,7 @@ signed. If you want to avoid signature popups in the user's wallet, just set the
 
 The Sapphire state model is like Ethereum's except for all state being encrypted
 and not accessible to anyone except the contract. The contract, executing in an
-active (attested) Oasis compute node is the only entity that can request its its
+active (attested) Oasis compute node is the only entity that can request its
 state encryption key from the Oasis key manager. Both the keys and values of the
 items stored in state are encrypted, but the size of either is *not* hidden. You
 app may need to pad state items to a constant length, or use other obfuscation.

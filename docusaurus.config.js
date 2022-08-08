@@ -136,25 +136,43 @@ const config = {
         },
         items: [
           {
-            href: 'https://oasisprotocol.org/',
-            label: 'Home',
-            position: 'left',
-          },
-          {
-            href: 'https://discord.gg/RwNTK8t',
-            label: 'Support',
-            position: 'left',
-          },
-          {
             href: 'https://github.com/oasisprotocol',
             position: 'right',
             className: 'header-github-link',
+            title: 'GitHub repository',
             'aria-label': 'GitHub repository',
+          },
+          {
+            href: 'https://oasisprotocol.org/',
+            position: 'right',
+            className: 'header-www-link',
+            title: 'Oasis Protocol Foundation website',
+            'aria-label': 'Oasis Protocol Foundation website',
           },
         ],
       },
       footer: {
         style: 'dark',
+        links: [
+          {
+            title: 'Support',
+            items: [
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/pJdWeVtmHT',
+              },
+            ],
+          },
+          {
+            title: 'Watch us',
+            items: [
+              {
+                label: 'Youtube',
+                href: 'https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ',
+              },
+            ],
+          },
+        ],
         copyright: `Copyright © ${new Date().getFullYear()} Oasis Protocol Foundation. Built with Docusaurus.`,
       },
       prism: {

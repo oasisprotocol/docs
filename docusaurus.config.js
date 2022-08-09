@@ -136,6 +136,30 @@ const config = {
         },
         items: [
           {
+            label: 'General',
+            type: 'doc',
+            position: 'left',
+            docId: 'README',
+          },
+          {
+            label: 'Node Operators',
+            to: '/general/run-a-node/node-operator-overview',
+            activeBaseRegex: '/general/run-a-node/',
+            position: 'left',
+          },
+          {
+            label: 'Developers', // dApps, ParaTimes
+            to: '/general/developer-resources/overview',
+            activeBaseRegex: '/general/developer-resources/',
+            position: 'left',
+          },
+          {
+            label: 'Core', // oasis-core, ADRs
+            to: '/oasis-core/',
+            position: 'left',
+            activeBaseRegex: `/oasis-core/`,
+          },
+          {
             href: 'https://github.com/oasisprotocol',
             position: 'right',
             className: 'header-github-link',

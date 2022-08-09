@@ -24,7 +24,7 @@ Anchorage is an advanced digital asset platform, with a solution designed to mee
 
 * **Delegation options:** Anchorage allows delegation to any validator running a node on the Oasis Network.
 * **Min holding:** Minimum custody requirements. Suitable for larger token holders.
-* **Sign up:** Please sign up [here](https://web.anchorage.com/anchorage-oasis).
+* **Sign up:** Please sign up [here](https://www.anchorage.com/get-started/).
 
 ### [Finoa](https://finoa.io)
 

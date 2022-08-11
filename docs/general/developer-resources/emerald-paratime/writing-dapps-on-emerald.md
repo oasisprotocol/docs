@@ -610,7 +610,7 @@ share them with us on the [#emerald-paratime Discord channel][discord].
 
 [Remix]: https://remix.ethereum.org
 [metamask]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx#verifying-rose-balance-on-emerald-paratime
-[discord]: https://discord.gg/RwNTK8t
+[discord]: https://discord.gg/pJdWeVtmHT
 
 ## Troubleshooting
 

@@ -13,7 +13,7 @@ We are proud of our diverse and talented community from all around the world. We
 
 ## Social Media Channels
 
-* [Discord](https://discord.gg/RwNTK8t)
+* [Discord](https://discord.gg/pJdWeVtmHT)
 * [Twitter](https://twitter.com/OasisProtocol)
 * [Public Telegram channel](https://t.me/oasisprotocolcommunity) (for community discussions open to everyone)
 * [Telegram Announcement channel](https://t.me/oasisprotocolfoundation) (for one-way updates from the Oasis Foundation)

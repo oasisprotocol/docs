@@ -4,7 +4,7 @@
 
 :::info
 
-If you have a general question on how to use and deploy our software, please read our [Run a Node](../run-a-node/node-operator-overview.mdx) section or join our [community Discord](https://discord.gg/pJdWeVtmHT).
+If you have a general question on how to use and deploy our software, please read our [Run a Node](/operators/) section or join our [community Discord](https://discord.gg/pJdWeVtmHT).
 
 All community members are welcome and encouraged to commit code, documentation and enhancement proposals to the platform. Contribution guidelines can be found [here](contribution-guidelines.md).
 

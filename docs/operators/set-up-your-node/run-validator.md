@@ -56,7 +56,7 @@ mkdir -m700 -p {entity,node}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
+The latest genesis file can be found in [Network Parameters](/general/oasis-network/network-parameters). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
 
 ```bash
 GENESIS_FILE_PATH=/localhostdir/genesis.json
@@ -246,7 +246,7 @@ We will also need to have the public entity artifacts from the `/localhostdir` p
 
 #### Copying the Genesis File to the server
 
-The latest Genesis file can be found in the [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
+The latest Genesis file can be found in the [Network Parameters](/general/oasis-network/network-parameters). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
 
 #### Configuring the Oasis Node
 
@@ -264,7 +264,7 @@ If you are using a [Sentry Node](sentry-node-architecture.md), you should use th
 
 *   `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-    You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
+    You can find the current Oasis Seed Node address in the [Network Parameters](/general/oasis-network/network-parameters).
 
 To use this configuration, save it in the `/serverdir/etc/config.yml` file and pass it to the `oasis-node` command as an argument to the `--config` flag.
 
@@ -412,7 +412,7 @@ This step is not necessary if your entity was fully staked at genesis.
 
 :::caution
 
-If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../manage-tokens/advanced/oasis-cli-tools/get-account-info.md).
+If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](/general/manage-tokens/advanced/oasis-cli-tools/get-account-info).
 
 :::
 
@@ -465,7 +465,7 @@ Before generating the escrow transaction, you need to set the following environm
     For this guide, we will use `/localhostdir/signed-escrow.tx`.
 *   `ACCOUNT_ADDRESS`: Your staking account address.
 
-    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../manage-tokens/advanced/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
+    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](/general/manage-tokens/advanced/oasis-cli-tools/address#obtain-account-address-from-entitys-id).
 
 Then execute the following command:
 
@@ -486,7 +486,7 @@ oasis-node stake account gen_escrow \
 
 The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Amber Network as each unit value used to track the account balance is 1x10^-9 tokens.
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](/general/manage-tokens/advanced/oasis-cli-tools/setup#common-transaction-flags) for details.
 
 :::
 
@@ -521,7 +521,7 @@ oasis-node registry entity gen_register \
 
 :::info
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](/general/manage-tokens/advanced/oasis-cli-tools/setup#common-transaction-flags) for details.
 
 :::
 

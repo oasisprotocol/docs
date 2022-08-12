@@ -11,9 +11,9 @@ Hence, it needs a set of distributed node operators that run different nodes (in
 
 ## Technical setup
 
-Make sure your system meets the [Hardware](../run-a-node/prerequisites/hardware-recommendations.md) prerequisites and has [Oasis Node](../run-a-node/prerequisites/oasis-node.md) installed.
+Make sure your system meets the [Hardware](/operators/prerequisites/hardware-recommendations) prerequisites and has [Oasis Node](/operators/prerequisites/oasis-node) installed.
 
-Then proceed by following the [Run a Validator Node](../run-a-node/set-up-your-node/run-validator.md) guide to:
+Then proceed by following the [Run a Validator Node](/operators/set-up-your-node/run-validator) guide to:
 
 * Create your entity.
 * Initialize and configure your node.

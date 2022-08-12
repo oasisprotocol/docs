@@ -78,14 +78,14 @@ Once the upgrade epoch is reached, follow the instructions in the corresponding
 [upgrade log].
 
 [upgrade log]: ../upgrade-log.md
-[Network Parameters]: ../../oasis-network/network-parameters.md
-[Testnet Parameters]: ../../foundation/testnet/README.md
-[Testnet upgrade 2022-04-04]: ../../foundation/testnet/upgrade-log.md#2022-04-04-upgrade
-[Testnet upgrade 2022-03-03]: ../../foundation/testnet/upgrade-log.md#2022-03-03-upgrade
-[Testnet upgrade 2021-08-11]: ../../foundation/testnet/upgrade-log.md#2021-08-11-upgrade
-[Mainnet upgrade 2022-04-11 (Damask)]: ../../run-a-node/upgrade-log.md#damask-upgrade
-[Mainnet upgrade 2021-08-31]: ../../run-a-node/upgrade-log.md#2021-08-31-upgrade
-[Mainnet upgrade 2021-04-28 (Cobalt)]: ../../run-a-node/upgrade-log.md#cobalt-upgrade
+[Network Parameters]: /general/oasis-network/network-parameters
+[Testnet Parameters]: /general/foundation/testnet/
+[Testnet upgrade 2022-04-04]: /general/foundation/testnet/upgrade-log#2022-04-04-upgrade
+[Testnet upgrade 2022-03-03]: /general/foundation/testnet/upgrade-log#2022-03-03-upgrade
+[Testnet upgrade 2021-08-11]: /general/foundation/testnet/upgrade-log#2021-08-11-upgrade
+[Mainnet upgrade 2022-04-11 (Damask)]: ../upgrade-log.md#damask-upgrade
+[Mainnet upgrade 2021-08-31]: ../upgrade-log.md#2021-08-31-upgrade
+[Mainnet upgrade 2021-04-28 (Cobalt)]: ../upgrade-log.md#cobalt-upgrade
 
 ## Preparing New Genesis File and Wiping State
 
@@ -109,8 +109,8 @@ Other parts of the genesis need to be updated manually, as described in each
 upgrade's *Proposed State Changes* section (e.g. [Damask upgrade's Proposed
 State Changes], [Cobalt upgrade's Proposed State Changes]).
 
-[Cobalt upgrade's Proposed State Changes]: ../../mainnet/previous-upgrades/cobalt-upgrade.md#proposed-state-changes
-[Damask upgrade's Proposed State Changes]: ../../mainnet/damask-upgrade.md#proposed-state-changes
+[Cobalt upgrade's Proposed State Changes]: /general/mainnet/previous-upgrades/cobalt-upgrade#proposed-state-changes
+[Damask upgrade's Proposed State Changes]: /general/mainnet/damask-upgrade#proposed-state-changes
 
 ### Download and Verify the Provided Genesis File {#verify-genesis}
 
@@ -248,7 +248,7 @@ The following fields were a particular change in this upgrade:
 
 The balances in the genesis file are enumerated in base units with 1 ROSE token
 equaling 10^9 (i.e. billion) base units. For more details, see the
-[Genesis Document](../../oasis-network/genesis-doc.md#parameters).
+[Genesis Document](/general/oasis-network/genesis-doc#parameters).
 
 :::
 

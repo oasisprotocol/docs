@@ -61,7 +61,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../run-a-node/set-up-your-node/run-an-ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or [run your own](/operators/set-up-your-node/run-an-ias-proxy).
 
 :::
 

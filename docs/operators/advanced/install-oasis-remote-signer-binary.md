@@ -26,7 +26,7 @@ We suggest that you build Oasis Remote Signer from source yourself for a product
 
 :::
 
-For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](../../oasis-network/network-parameters.md) page.
+For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](/general/oasis-network/network-parameters) page.
 
 ## Building From Source
 
@@ -38,7 +38,7 @@ See [Oasis Core's Build Environment Setup and Building](/oasis-core/development-
 
 The code in the [`master` branch](https://github.com/oasisprotocol/oasis-core/tree/master/) might be incompatible with the code used by other nodes in the Mainnet.
 
-Make sure to use the version specified in the [Network Parameters](../../oasis-network/network-parameters.md).
+Make sure to use the version specified in the [Network Parameters](/general/oasis-network/network-parameters).
 
 :::
 

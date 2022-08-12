@@ -159,8 +159,8 @@ oasis-node consensus submit_tx \
 
 [upgrade governance proposal]:
   /oasis-core/consensus/services/governance#submit-proposal
-[your entity's nonce]: ../manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce
-[Oasis CLI Tools Setup]: ../manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable
+[your entity's nonce]: /general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce#get-your-entitys-nonce
+[Oasis CLI Tools Setup]: /general/manage-tokens/advanced/oasis-cli-tools/setup#storing-base-and-signer-flags-in-an-environment-variable
 [Installing Oasis App on Your Ledger Wallet]:
   /oasis-core-ledger/usage/setup#installing-oasis-app-on-your-ledger-wallet
 
@@ -263,7 +263,7 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 
 11. Start your node and re-enable auto-starting via your process manager.
 
-[Damask Upgrade]: ../mainnet/damask-upgrade.md#state-changes
+[Damask Upgrade]: /general/mainnet/damask-upgrade#state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]: maintenance-guides/handling-network-upgrades.md#verify-genesis
@@ -385,7 +385,7 @@ worker:
       - "xx.yy.zz.vv:12346"
 ```
 
-[network-parameters-paratimes]: ../oasis-network/network-parameters.md#paratimes
+[network-parameters-paratimes]: /general/oasis-network/network-parameters#paratimes
 
 ### Additional notes
 
@@ -439,7 +439,7 @@ At least **90%** of the votes need to be **yes** votes for a proposal to be acce
 
 :::
 
-This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md).
+This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](/general/mainnet/previous-upgrades/cobalt-upgrade).
 
 The Oasis Protocol Foundation has submitted an [upgrade governance proposal](/oasis-core/consensus/services/governance#submit-proposal) with the following contents:
 
@@ -503,7 +503,7 @@ The output should look like:
 ]
 ```
 
-Obtain [your entity's nonce](../manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce) and store it in the `NONCE` variable. You can do that by running:
+Obtain [your entity's nonce](/general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce#get-your-entitys-nonce) and store it in the `NONCE` variable. You can do that by running:
 
 ```yaml
 ENTITY_DIR=<PATH-TO-YOUR-ENTITY>
@@ -527,7 +527,7 @@ oasis-node governance gen_cast_vote \
   --transaction.fee.amount 2000
 ```
 
-where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](../manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable) doc.
+where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](/general/manage-tokens/advanced/oasis-cli-tools/setup#storing-base-and-signer-flags-in-an-environment-variable) doc.
 
 :::caution
 

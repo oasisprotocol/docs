@@ -4,7 +4,7 @@ This guide will cover setting up an [Intel Attestation Service (IAS)](https://so
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/README.mdx) section and have the Oasis Node binary installed on your system. The IAS Proxy connects to an Oasis Node, so make sure you have a running node first. For more details, see the instructions on how to [Run a Non-validator Node](/general/run-a-node/set-up-your-node/run-non-validator#configuration).
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/README.mdx) section and have the Oasis Node binary installed on your system. The IAS Proxy connects to an Oasis Node, so make sure you have a running node first. For more details, see the instructions on how to [Run a Non-validator Node](run-non-validator.md#configuration).
 
 ### Obtaining IAS Service Provider ID (SPID) and API Key
 
@@ -77,6 +77,4 @@ The TLS public key required for connecting to the IAS Proxy is located in the co
 --ias.proxy.address <IAS_PROXY_PUBLIC_KEY>@<EXTERNAL_IP>:8650
 ```
 
-[
-](/general/run-a-node/set-up-your-node/run-non-validator)
 

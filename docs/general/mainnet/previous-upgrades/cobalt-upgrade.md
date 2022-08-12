@@ -31,7 +31,7 @@ This section will be updated with more details as we get closer to the upgrade.
 
 Upgrading the Mainnet will require a coordinated upgrade of the Network. All nodes will need to configure a new genesis file that they can generate or verify independently and reset/archive any state from Mainnet. Once enough (representing 2/3+ of stake) nodes have taken this step, the upgraded network will start.
 
-For the actual steps that node operators need to make on their nodes, see the [Upgrade Log](../../run-a-node/upgrade-log.md#2021-04-28-16-00-utc-cobalt-upgrade).
+For the actual steps that node operators need to make on their nodes, see the [Upgrade Log](/operators/upgrade-log#2021-04-28-16-00-utc-cobalt-upgrade).
 
 ## Proposed State Changes
 
@@ -72,7 +72,7 @@ The **`epochtime`**object will be removed since it became obsolete with the new 
 
 Removing entities from **`registry.entities`** will effectively deregister them but the entities' accounts in **`staking.ledger`** will remain intact.
 
-Deregistered entities can always re-register by submitting the [entity registration transaction](../../run-a-node/set-up-your-node/run-validator.md#generating-entity-registration-transaction) after the upgrade.
+Deregistered entities can always re-register by submitting the [entity registration transaction](/operators/set-up-your-node/run-validator#generating-entity-registration-transaction) after the upgrade.
 
 :::
 
@@ -143,7 +143,7 @@ The **`governance`** object contains parameters controlling the network's [on-ch
 
 ### Runtime State Root Migration
 
-Additionally, each runtime's state root will need to be updated for the [runtime storage migration](../../run-a-node/upgrade-log.md#runtime-operators) that is performed during this upgrade.
+Additionally, each runtime's state root will need to be updated for the [runtime storage migration](/operators/upgrade-log#runtime-operators) that is performed during this upgrade.
 
 At this time, there is only one active runtime on the Mainnet, namely Second State's Oasis Ethereum ParaTime with ID (Base64-encoded) `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wM=`.
 

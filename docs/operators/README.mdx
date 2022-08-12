@@ -3,43 +3,43 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Overview
 
-The following documentation is intended to assist any individual or 
-organization in participating in the Oasis network as a node operator. To join 
-the network we recommend you first try running a node on the Testnet. The 
-Testnet is a playground where you can learn and experiment without the risk 
-of losing real tokens. 
+The following documentation is intended to assist any individual or
+organization in participating in the Oasis network as a node operator. To join
+the network we recommend you first try running a node on the Testnet. The
+Testnet is a playground where you can learn and experiment without the risk
+of losing real tokens.
 
-[Oasis Network] consists of the Consensus Layer and ParaTimes. Consensus and 
+[Oasis Network] consists of the Consensus Layer and ParaTimes. Consensus and
 ParaTime nodes can be operated by anyone.
 
 :::info
 
-Consensus Layer is a decentralised set of 120 validator nodes that are a 
-backbone of the Oasis Network. The current validator set size is determined by 
-governance - the network started with 80 nodes in the validator set in 2020 and 
-has expanded to 120 nodes over the past few network upgrades. Current node 
+Consensus Layer is a decentralised set of 120 validator nodes that are a
+backbone of the Oasis Network. The current validator set size is determined by
+governance - the network started with 80 nodes in the validator set in 2020 and
+has expanded to 120 nodes over the past few network upgrades. Current node
 operators can be seen on a block explorer such as [Oasis Scan].
 
 :::
 
 :::info
 
-Operating a ParaTime Node on the Mainnet requires the participation of node 
-operators who have the validator node in the active validator set. ParaTimes 
-have their own reward system, participation requirements and structure. As a 
+Operating a ParaTime Node on the Mainnet requires the participation of node
+operators who have the validator node in the active validator set. ParaTimes
+have their own reward system, participation requirements and structure. As a
 node operator you can participate in any number of ParaTimes.
 
 :::
 
 If you have any questions about running a node you can find us on [Discord].
 
-[Oasis Network]: ../oasis-network/overview.md
+[Oasis Network]: /general/oasis-network/overview
 [Oasis Scan]: https://www.oasisscan.com/validators
 [Discord]: https://discord.gg/pJdWeVtmHT
 
 ## Set Up Your Node overview
 
-To run a **Validator node**, make sure your system meets the [Hardware] and the 
+To run a **Validator node**, make sure your system meets the [Hardware] and the
 [System] prerequisites and has [Oasis Node] installed.
 
 Then proceed by following the [Run a Validator Node] guide to:
@@ -54,8 +54,8 @@ set up a [Trusted Execution Environment (TEE)], if you want to run confidential
 ParaTimes. After that, proceed to the [Run a ParaTime node].
 
 Finally, if you are building a service on top of the Oasis Network, we suggest
-that you set up your own **[Non-validator node]** and (optionally) a 
-**[ParaTime client node]**, so that your service do not depend on any third 
+that you set up your own **[Non-validator node]** and (optionally) a
+**[ParaTime client node]**, so that your service do not depend on any third
 party endpoints which are often behind a traffic limiter.
 
 [Hardware]: ./prerequisites/hardware-recommendations.md
@@ -69,9 +69,9 @@ party endpoints which are often behind a traffic limiter.
 
 ## Quick Navigation
 
-<DocCardList items={[
-    findSidebarItem('/general/run-a-node/prerequisites'),
-    findSidebarItem('run-a-node/upgrade-log'),
-    findSidebarItem('run-a-node/set-up-your-node/run-validator'),
-    findSidebarItem('run-a-node/set-up-your-node/run-non-validator'),
+<DocCardList items={[ // TODO
+//    findSidebarItem('prerequisites'),
+//    findSidebarItem('upgrade-log'),
+//    findSidebarItem('set-up-your-node/run-validator'),
+//    findSidebarItem('set-up-your-node/run-non-validator'),
 ]} />

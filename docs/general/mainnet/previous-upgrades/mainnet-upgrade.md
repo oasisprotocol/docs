@@ -61,7 +61,7 @@ See the updated [Network Parameters](../../oasis-network/network-parameters.md) 
 
 :::info
 
-For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](../../run-a-node/maintenance-guides/handling-network-upgrades.md#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
+For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](/operators/maintenance-guides/handling-network-upgrades#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
 
 :::
 

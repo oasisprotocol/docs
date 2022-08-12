@@ -54,6 +54,19 @@ const config = {
       '@docusaurus/plugin-content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
       ({
+        id: 'operators',
+        path: 'docs/operators',
+        breadcrumbs: false,
+        showLastUpdateTime: true,
+        routeBasePath: 'operators',
+        sidebarPath: require.resolve('./sidebarsOperators.js'),
+        editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
+      }),
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
+      ({
         id: 'oasis-core',
         path: 'external/oasis-core/docs',
         breadcrumbs: false,
@@ -103,9 +116,18 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       /** @type {import('@docusaurus/plugin-client-redirects').PluginOptions} */
       ({
+        redirects: [
+          {
+            to: '/operators/',
+            from: '/general/run-a-node/node-operator-overview',
+          },
+        ],
         createRedirects(existingPath) {
           if (existingPath.includes('/adrs')) {
             return [existingPath.replace('/adrs', '/oasis-core/adr')];
+          }
+          if (existingPath.includes('/operators')) {
+            return [existingPath.replace('/operators', '/general/run-a-node')];
           }
           const roseToEvm = '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime';
           if (existingPath.includes(roseToEvm)) {
@@ -143,8 +165,8 @@ const config = {
           },
           {
             label: 'Node Operators',
-            to: '/general/run-a-node/node-operator-overview',
-            activeBaseRegex: '/general/run-a-node/',
+            to: '/operators/',
+            activeBaseRegex: '/operators/',
             position: 'left',
           },
           {

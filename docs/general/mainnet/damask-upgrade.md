@@ -110,7 +110,7 @@ For the actual steps that node operators need to make on their nodes, see the
   https://github.com/oasisprotocol/community/discussions/30
 [Oasis Community Forum on GitHub]:
   https://github.com/oasisprotocol/community
-[upgrade-log-damask]: ../run-a-node/upgrade-log.md#damask-upgrade
+[upgrade-log-damask]: /operators/upgrade-log#damask-upgrade
 
 ## Proposed State Changes {#state-changes}
 

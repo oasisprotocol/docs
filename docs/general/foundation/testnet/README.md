@@ -45,7 +45,7 @@ The Oasis Node is part of the Oasis Core release.
 
 :::
 
-[handling network upgrades]: ../../run-a-node/maintenance-guides/handling-network-upgrades.md
+[handling network upgrades]: /operators/maintenance-guides/handling-network-upgrades
 
 ## ParaTimes
 
@@ -93,7 +93,7 @@ runtime:
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../../run-a-node/set-up-your-node/run-an-ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or [run your own](/operators/set-up-your-node/run-an-ias-proxy).
 
 :::
 
@@ -141,6 +141,6 @@ runtime:
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../../run-a-node/set-up-your-node/run-an-ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or [run your own](/operators/set-up-your-node/run-an-ias-proxy).
 
 :::

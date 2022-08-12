@@ -29,7 +29,7 @@ mkdir -m700 -p /node/{etc,data}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](../../oasis-network/network-parameters.md). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
+The latest genesis file can be found in [Network Parameters](/general/oasis-network/network-parameters). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
 
 ## Configuration
 
@@ -68,7 +68,7 @@ Before using this configuration you should collect the following information to 
 
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-  You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
+  You can find the current Oasis Seed Node address in the [Network Parameters](/general/oasis-network/network-parameters).
 
 ## Starting the Oasis Node
 

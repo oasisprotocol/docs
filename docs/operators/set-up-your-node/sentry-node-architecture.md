@@ -33,7 +33,7 @@ An example of full `YAML` configuration of a sentry node is below.
 Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
 
 * `{{ external_address }}`: This is the external IP on which sentry node will be reachable.
-* `{{ seed_node_address }}`: This the seed node address of the form `ID@IP:port`. You can find the current Oasis Seed Node address in the [Network Parameters](../../oasis-network/network-parameters.md).
+* `{{ seed_node_address }}`: This the seed node address of the form `ID@IP:port`. You can find the current Oasis Seed Node address in the [Network Parameters](/general/oasis-network/network-parameters).
 * `{{ validator_tendermint_id }}`: This is the Tendermint ID (address) of the Oasis validator node that will be protected by the sentry node. This address can be obtained by running:
 
   ```bash

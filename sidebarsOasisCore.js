@@ -139,6 +139,11 @@ const sidebars = {
         },
       ],
     },
+    {
+      type: 'link',
+      label: 'Oasis ADRs',
+      href: '/adrs'
+    },
   ],
 };
 

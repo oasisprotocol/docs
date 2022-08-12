@@ -21,7 +21,7 @@ We are proud of our diverse and talented community from all around the world. We
 ## Developer Resources
 
 * [Github](https://github.com/oasisprotocol/)
-* See [Developer Resources](../developer-resources/overview.mdx) section
+* See [Developer Resources](/developers/) section
 
 ## Get Involved
 

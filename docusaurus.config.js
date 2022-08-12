@@ -37,6 +37,18 @@ const config = {
     ],
   ],
   plugins: [
+    function (context, options) {
+      return {
+        name: 'webpack-configuration-plugin',
+        configureWebpack(config, isServer, utils) {
+          return {
+            resolve: {
+              symlinks: false,
+            }
+          };
+        }
+      };
+    },
     [
       '@docusaurus/plugin-content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
@@ -67,24 +79,25 @@ const config = {
       '@docusaurus/plugin-content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
       ({
-        id: 'oasis-core',
-        path: 'external/oasis-core/docs',
+        id: 'developers',
+        path: 'docs/developers',
         breadcrumbs: false,
         showLastUpdateTime: true,
-        routeBasePath: 'oasis-core',
-        sidebarPath: require.resolve('./sidebarsOasisCore.js'),
+        routeBasePath: 'developers',
+        sidebarPath: require.resolve('./sidebarsDevelopers.js'),
+        editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
       }),
     ],
     [
       '@docusaurus/plugin-content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
       ({
-        id: 'oasis-sdk',
-        path: 'external/oasis-sdk/docs',
+        id: 'oasis-core',
+        path: 'external/oasis-core/docs',
         breadcrumbs: false,
         showLastUpdateTime: true,
-        routeBasePath: 'oasis-sdk',
-        sidebarPath: require.resolve('./sidebarsOasisSdk.js'),
+        routeBasePath: 'oasis-core',
+        sidebarPath: require.resolve('./sidebarsOasisCore.js'),
       }),
     ],
     [
@@ -129,6 +142,9 @@ const config = {
           if (existingPath.includes('/operators')) {
             return [existingPath.replace('/operators', '/general/run-a-node')];
           }
+          if (existingPath.includes('/developers')) {
+            return [existingPath.replace('/developers', '/general/developer-resources').replace('/developers/sdk', '/oasis-sdk')];
+          }
           const roseToEvm = '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime';
           if (existingPath.includes(roseToEvm)) {
             return [existingPath.replace(roseToEvm, roseToEvm.replace('evm', 'emerald'))];
@@ -171,8 +187,8 @@ const config = {
           },
           {
             label: 'Developers', // dApps, ParaTimes
-            to: '/general/developer-resources/overview',
-            activeBaseRegex: '/general/developer-resources/',
+            to: '/developers/',
+            activeBaseRegex: '/developers/',
             position: 'left',
           },
           {

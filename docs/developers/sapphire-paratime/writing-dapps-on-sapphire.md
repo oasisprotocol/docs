@@ -34,8 +34,8 @@ account to Sapphire. Consult the [How to transfer ROSE into an EVM ParaTime]
 [how-to-deposit-rose] chapter to learn more.
 
 
-[overview chapter]: ../../oasis-network/overview.md
-[how-to-deposit-rose]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
+[overview chapter]: /general/oasis-network/overview
+[how-to-deposit-rose]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 
 ## Testnet and Mainnet
@@ -61,8 +61,8 @@ ParaTime.
 
 :::
 
-[network-parameters]: ../../oasis-network/network-parameters.md
-[Testnet]: ../../foundation/testnet/README.md
+[network-parameters]: /general/oasis-network/network-parameters
+[Testnet]: /general/foundation/testnet/
 
 ## Sapphire vs Ethereum
 
@@ -97,7 +97,7 @@ but it's made simple by our compatibility library, (coming soon).
 There are compatibility layers in other languages, which may be found in [the repo].
 
 
-[deposited into Sapphire]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
+[deposited into Sapphire]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime
 [the repo]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/clients
 
 ## Writing Secure dapps
@@ -115,7 +115,7 @@ Sapphire is programmable using any language that targets the EVM, such as Solidi
 and Vyper. If you prefer to use an Ethereum framework like Hardhat or Truffle, you
 can also use those with Sapphire; all you need to do is set your Web3 gateway URL.
 You can find the details of the Oasis Sapphire Web3 gateway
-[here](/general/developer-resources/sapphire-paratime#web3-gateway).
+[here](/developers/sapphire-paratime#web3-gateway).
 
 
 ### Transactions & Calls

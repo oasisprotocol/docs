@@ -34,10 +34,10 @@ account to Emerald. Consult the [How to transfer ROSE into Emerald ParaTime]
 [how-to-deposit-rose] chapter to learn more.
 
 
-[overview]: ../../oasis-network/overview.md
+[overview]: /general/oasis-network/overview
 [Ed25519]: https://en.wikipedia.org/wiki/EdDSA#Ed25519
 [ECDSA]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
-[how-to-deposit-rose]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
+[how-to-deposit-rose]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 
 ## Testnet and Mainnet
@@ -71,8 +71,8 @@ ParaTime.
 
 :::
 
-[network-parameters]: ../../oasis-network/network-parameters.md
-[Testnet]: ../../foundation/testnet/README.md
+[network-parameters]: /general/oasis-network/network-parameters
+[Testnet]: /general/foundation/testnet/
 [Emerald Mainnet]: ./README.mdx#mainnet
 [Emerald Testnet]: ./README.mdx#testnet
 
@@ -305,9 +305,9 @@ explorer ([Mainnet][mainnet-explorer], [Testnet][testnet-explorer]). This tool
 indexes all Emerald accounts, blocks, transactions and even offers a neat user
 interface for browsing ETH-specifics like the ERC20 tokens and the ERC721 NFTs.
 
-![Emerald Block Explorer showing the latest transactions](../../images/emerald/block_explorer1.png)
+![Emerald Block Explorer showing the latest transactions](../images/emerald/block_explorer1.png)
 
-![Emerald Block Explorer showing our account 0x90adE3B7065fa715c7a150313877dF1d33e777D5 used for deploying the smart contract](../../images/emerald/block_explorer2.png)
+![Emerald Block Explorer showing our account 0x90adE3B7065fa715c7a150313877dF1d33e777D5 used for deploying the smart contract](../images/emerald/block_explorer2.png)
 
 Finally, by selecting the `emerald_mainnet` network and the corresponding
 private key, we can deploy the contract on the Mainnet:
@@ -579,9 +579,9 @@ When you open Remix for the first time, it automatically creates an example
 project. Let's open one of the contracts and compile it in the "Solidity
 compiler" tab.
 
-![The initial example project in Remix - Ethereum IDE](../../images/emerald/remix1.png)
+![The initial example project in Remix - Ethereum IDE](../images/emerald/remix1.png)
 
-![Solidity compiler tab](../../images/emerald/remix2.png)
+![Solidity compiler tab](../images/emerald/remix2.png)
 
 Next, in the "Deploy and Run Transactions" tab, select the "Injected Web3"
 environment. A MetaMask popup will appear and you will have to connect one or
@@ -589,12 +589,12 @@ more accounts with Remix. Once the connection succeeds, click on the "Deploy"
 button. The MetaMask popup appears again and you will have to review the
 transaction, the gas options and finally confirm the transaction.
 
-![Metamask transaction confirmation](../../images/emerald/remix3.png)
+![Metamask transaction confirmation](../images/emerald/remix3.png)
 
 If everything goes well, your transaction will be deployed using the selected
 account in the MetaMask and the corresponding Emerald Network.
 
-![Successful contract deployment on Emerald Testnet with Remix](../../images/emerald/remix4.png)
+![Successful contract deployment on Emerald Testnet with Remix](../images/emerald/remix4.png)
 
 :::info
 
@@ -609,7 +609,7 @@ Oasis Emerald blockchain! Should you have any questions, do not hesitate to
 share them with us on the [#emerald-paratime Discord channel][discord].
 
 [Remix]: https://remix.ethereum.org
-[metamask]: ../../manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx#verifying-rose-balance-on-emerald-paratime
+[metamask]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime#verifying-rose-balance-on-emerald-paratime
 [discord]: https://discord.gg/pJdWeVtmHT
 
 ## Troubleshooting
@@ -636,7 +636,7 @@ transaction being included in the block.
 If you are using Testnet or Mainnet, try to debug your transaction by finding
 it on the Emerald block explorer ([Mainnet][mainnet-explorer], [Testnet][testnet-explorer]):
 
-![Emerald block explorer showing a failed transaction](../../images/emerald/oasisscan1.png)
+![Emerald block explorer showing a failed transaction](../images/emerald/oasisscan1.png)
 
 In some cases, the transaction result on Emerald block explorer might be stuck
 at `Error: (Awaiting internal transactions for reason)`. In this case or in
@@ -647,7 +647,7 @@ some introspection into ParaTime transactions as well. Once you find your
 failed Emerald transaction, the `Status` field should contain a more verbose
 error description, for example:
 
-![Oasis Scan showing the Out of gas error for a transaction on Emerald](../../images/emerald/oasisscan2.png)
+![Oasis Scan showing the Out of gas error for a transaction on Emerald](../images/emerald/oasisscan2.png)
 
 [mainnet-explorer]: https://explorer.emerald.oasis.dev
 [testnet-explorer]: https://testnet.explorer.emerald.oasis.dev

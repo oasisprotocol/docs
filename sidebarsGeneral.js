@@ -153,52 +153,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Developer Resources',
-      collapsible: false,
-      items: [
-        'developer-resources/overview',
-        {
-          type: 'category',
-          label: 'Emerald ParaTime',
-          link: {
-            type: 'doc',
-            id: 'developer-resources/emerald-paratime/README',
-          },
-          items: [
-            'developer-resources/emerald-paratime/writing-dapps-on-emerald',
-            'developer-resources/emerald-paratime/integrating-band-oracle-smart-contract',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Sapphire ParaTime',
-          link: {
-            type: 'doc',
-            id: 'developer-resources/sapphire-paratime/README',
-          },
-          items: [
-            'developer-resources/sapphire-paratime/writing-dapps-on-sapphire',
-          ],
-        },
-        {
-          type: 'link',
-          label: 'Oasis Core Documentation',
-          href: '/oasis-core'
-        },
-        {
-          type: 'link',
-          label: 'Oasis SDK Documentation',
-          href: '/oasis-sdk'
-        },
-        {
-          type: 'link',
-          label: 'Oasis ADRs',
-          href: '/adrs'
-        },
-      ],
-    },
-    {
-      type: 'category',
       label: 'Community Resources',
       collapsible: false,
       items: [

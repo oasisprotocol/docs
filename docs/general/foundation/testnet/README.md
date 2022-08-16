@@ -133,7 +133,7 @@ runtime:
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
-  * [0.1.1-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.1.1-testnet)
+  * [0.1.3-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.1.3-testnet)
 * Web3 Gateway version:
   * [3.0.0](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0)
 * IAS proxy address:

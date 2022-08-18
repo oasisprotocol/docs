@@ -141,6 +141,10 @@ const config = {
             to: '/operators/',
             from: '/general/run-a-node/node-operator-overview',
           },
+          {
+            to: '/general/oasis-network/faq',
+            from: '/general/faq/oasis-network-faq',
+          }
         ],
         createRedirects(existingPath) {
           // #119 Add /oasis-core/adr/* -> /adrs/* redirection

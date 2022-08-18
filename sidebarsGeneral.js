@@ -8,8 +8,11 @@ const sidebars = {
       type: 'category',
       label: 'Oasis Network',
       collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'oasis-network/overview',
+      },
       items: [
-        'oasis-network/overview',
         'oasis-network/network-parameters',
         'oasis-network/genesis-doc',
         {
@@ -28,14 +31,18 @@ const sidebars = {
           href: 'https://oasisprotocol.org/papers',
         },
         'oasis-network/connect-with-us',
+        'oasis-network/faq',
       ],
     },
     {
       type: 'category',
       label: 'Manage your Tokens',
       collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'manage-tokens/overview',
+      },
       items: [
-        'manage-tokens/overview',
         'manage-tokens/terminology',
         'manage-tokens/staking-and-delegating',
         {
@@ -122,8 +129,9 @@ const sidebars = {
           type: 'category',
           label: 'Previous Upgrades',
           link: {
-            type: 'doc',
-            id: 'mainnet/previous-upgrades/README',
+            type: 'generated-index',
+              description: "This section provides documentation on previous upgrades of Oasis Network's Mainnet.",
+              slug: 'mainnet/previous-upgrades',
           },
           items: [
             'mainnet/previous-upgrades/cobalt-upgrade',
@@ -160,14 +168,6 @@ const sidebars = {
         'community-resources/community-made-resources',
         'community-resources/token-delivery-and-kyc',
 
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Frequently Asked Questions',
-      collapsible: false,
-      items: [
-        'faq/oasis-network-faq',
       ],
     },
   ],

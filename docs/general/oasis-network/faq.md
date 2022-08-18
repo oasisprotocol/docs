@@ -1,10 +1,12 @@
-# Oasis Network FAQ
+# Frequently Asked Questions
 
 This page tries to answer some of the most frequently asked questions about the
 Oasis Network.
 
 :::info
+
 This page will constantly be updated with new questions and responses.
+
 :::
 
 ## **Overview**

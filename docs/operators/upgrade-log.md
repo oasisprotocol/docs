@@ -157,8 +157,7 @@ oasis-node consensus submit_tx \
   --transaction.file tx_cast_vote.json
 ```
 
-[upgrade governance proposal]:
-  /oasis-core/consensus/services/governance#submit-proposal
+[upgrade governance proposal]: /core/consensus/services/governance#submit-proposal
 [your entity's nonce]: /general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce#get-your-entitys-nonce
 [Oasis CLI Tools Setup]: /general/manage-tokens/advanced/oasis-cli-tools/setup#storing-base-and-signer-flags-in-an-environment-variable
 [Installing Oasis App on Your Ledger Wallet]:
@@ -441,7 +440,7 @@ At least **90%** of the votes need to be **yes** votes for a proposal to be acce
 
 This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](/general/mainnet/previous-upgrades/cobalt-upgrade).
 
-The Oasis Protocol Foundation has submitted an [upgrade governance proposal](/oasis-core/consensus/services/governance#submit-proposal) with the following contents:
+The Oasis Protocol Foundation has submitted an [upgrade governance proposal](/core/consensus/services/governance#submit-proposal) with the following contents:
 
 ```yaml
 {
@@ -938,7 +937,7 @@ We expect the Mainnet Beta network to reach this block height at around 2020-11-
 
 :::info
 
-This time, we recommend dumping the network state with the upgraded Oasis Node binary so that the genesis file will be in the [canonical form](/oasis-core/consensus/genesis#canonical-form).
+This time, we recommend dumping the network state with the upgraded Oasis Node binary so that the genesis file will be in the [canonical form](/core/consensus/genesis#canonical-form).
 
 The canonical form will make it easier to compare the obtained genesis file with the one provided by us.
 

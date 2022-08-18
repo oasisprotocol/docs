@@ -24,7 +24,7 @@ For convenience, we provide binaries that have been built by the Oasis Protocol 
 
 Although highly suggested, building from source is currently beyond the scope of this documentation.
 
-See [Oasis Core's Build Environment Setup and Building](/oasis-core/development-setup/build-environment-setup-and-building) documentation for more details.
+See [Oasis Core's Build Environment Setup and Building](/core/development-setup/build-environment-setup-and-building) documentation for more details.
 
 :::danger
 

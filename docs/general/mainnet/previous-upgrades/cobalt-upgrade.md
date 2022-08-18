@@ -56,7 +56,7 @@ The **`epochtime`**object will be removed since it became obsolete with the new 
 
 ### **Registry**
 
-*   **`registry.params.enable_runtime_governance_models` ** is a new parameter that specifies the set of [runtime governance models](/oasis-core/consensus/services/registry#runtimes) that are allowed to be used when creating/updating registrations. It will be set to:
+*   **`registry.params.enable_runtime_governance_models` ** is a new parameter that specifies the set of [runtime governance models](/core/consensus/services/registry#runtimes) that are allowed to be used when creating/updating registrations. It will be set to:
 
     ```
     {
@@ -76,17 +76,17 @@ Deregistered entities can always re-register by submitting the [entity registrat
 
 :::
 
-* **`registry.node_statuses`** object contains the registered nodes' statuses. In the Cobalt upgrade, each node's status will get a new parameter: **`election_eligible_after`**. This parameter specifies at which epoch a node is eligible to be [scheduled into various committees](/oasis-core/consensus/services/scheduler). All nodes will have the parameter set to `0` which means they are immediately eligible. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`registry.node_statuses`** object contains the registered nodes' statuses. In the Cobalt upgrade, each node's status will get a new parameter: **`election_eligible_after`**. This parameter specifies at which epoch a node is eligible to be [scheduled into various committees](/core/consensus/services/scheduler). All nodes will have the parameter set to `0` which means they are immediately eligible. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
 
 ### **Root Hash**
 
-* **`roothash.params.max_runtime_messages` ** is a new parameter that specifies the global limit on the number of [messages](/oasis-core/runtime/messages) that can be emitted in each round by the runtime. It will be set to `256`.
+* **`roothash.params.max_runtime_messages` ** is a new parameter that specifies the global limit on the number of [messages](/core/runtime/messages) that can be emitted in each round by the runtime. It will be set to `256`.
 * **`roothash.params.max_evidence_age`** is a new parameter that specifies the maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/adrs/0005-runtime-compute-slashing). It will be set to `100`.
 
 ### **Staking**
 
 * **`staking.governance_deposits` ** are the tokens collected from governance proposal deposits. The initial balance will be set to `"0"`.
-* **`staking.params.allow_escrow_messages`** is a new parameter indicating whether to enable support for the newly added `AddEscrow` and `ReclaimEscrow` [runtime messages](/oasis-core/runtime/messages) . It will be set to`true`.
+* **`staking.params.allow_escrow_messages`** is a new parameter indicating whether to enable support for the newly added `AddEscrow` and `ReclaimEscrow` [runtime messages](/core/runtime/messages) . It will be set to`true`.
 * **`staking.params.slashing.0`** will be renamed to **`staking.params.slashing.consensus-equivocation`**.
 * **`staking.params.slashing.consensus-light-client-attack.amount`** is a new parameter controlling how much to slash for light client attack. It will be set to `"100000000000"` (i.e. 100,000,000,000 base units, or 100 ROSE tokens).
 * **`staking.params.slashing.consensus-light-client-attack.freeze_interval` ** is a new parameter controlling the duration (in epochs) for which a node that has been slashed for light client attack is “frozen,” or barred from participating in the network's consensus committee. It will be set to `18446744073709551615` (i.e. the maximum value for a 64-bit unsigned integer) which means that any node slashed for light client attack will be, in effect, permanently banned from the network.
@@ -109,7 +109,7 @@ The **`beacon`** object contains parameters controlling the new [improved random
 
 ### **Governance**
 
-The **`governance`** object contains parameters controlling the network's [on-chain governance](/oasis-core/consensus/services/governance) introduced in the Cobalt upgrade**.**
+The **`governance`** object contains parameters controlling the network's [on-chain governance](/core/consensus/services/governance) introduced in the Cobalt upgrade**.**
 
 * **`governance.params.min_proposal_deposit`** is the amount of tokens (in base units) that are deposited when creating a new proposal. It will be set to  `"10000000000000"` (i.e. 10,000,000,000,000 base units, or 10,000 ROSE tokens).
 * **`governance.params.voting_period`** is the number of epochs after which the voting for a proposal is closed and the votes are tallied. It will be set to `168`, which is expected to be approximately 7 days.

@@ -10,11 +10,11 @@ The state defined in the network's genesis document contains all the necessary i
 
 :::info
 
-For a more in-depth explanation of the genesis document, see the [Genesis Document](/oasis-core/consensus/genesis) part of Oasis Core's developer documentation.
+For a more in-depth explanation of the genesis document, see the [Genesis Document](/core/consensus/genesis) part of Oasis Core's developer documentation.
 
 :::
 
-The important thing to note is that the genesis document is used to compute the [genesis document's hash](/oasis-core/consensus/genesis#genesis-documents-hash). This hash is used to verify for which network a given transaction is intended for.
+The important thing to note is that the genesis document is used to compute the [genesis document's hash](/core/consensus/genesis#genesis-documents-hash). This hash is used to verify for which network a given transaction is intended for.
 
 ### Genesis File vs. Genesis Document
 
@@ -56,7 +56,7 @@ The **`chain_id`** is a human-readable version identifier for a network.
 
 :::caution
 
-It is important to note that this value alone doesn't dictate the version of an Oasis network. Rather, the hash of the whole genesis document, i.e. the [genesis document's hash](/oasis-core/consensus/genesis#genesis-documents-hash), is the network's unique identifier.
+It is important to note that this value alone doesn't dictate the version of an Oasis network. Rather, the hash of the whole genesis document, i.e. the [genesis document's hash](/core/consensus/genesis#genesis-documents-hash), is the network's unique identifier.
 
 :::
 
@@ -75,7 +75,7 @@ The **`epochtime.params.interval`** specifies the number of blocks in an _epoch_
 Within the **`registry`** object, there are a broad range of parameters that specify the initial set of node operators and their corresponding initial node statuses.
 
 * **`registry.params.max_node_expiration`** The maximum duration (in epochs) that node registrations last. The starting value is set to 2 in order to ensure that a node is continuously online, since the node’s registration would expire each time 2 epochs pass, requiring the node to re-register.
-* **`registry.params.enable_runtime_governance_models` ** The set of [runtime governance models](/oasis-core/consensus/services/registry#runtimes) that are allowed to be used when creating/updating registrations. It is set to `{"entity": true, "runtime": true}` which means a runtime can choose between **entity governance** and **runtime-defined governance**.
+* **`registry.params.enable_runtime_governance_models` ** The set of [runtime governance models](/core/consensus/services/registry#runtimes) that are allowed to be used when creating/updating registrations. It is set to `{"entity": true, "runtime": true}` which means a runtime can choose between **entity governance** and **runtime-defined governance**.
 * **`registry.entities`** The entity registrations for initial node operators, including public key and signature information.
 * **`registry.runtimes`** The runtime registrations for initial node operators. Each item describes a runtime's operational parameters, including its identifier, kind, admission policy, committee scheduling, storage, governance model, etc. For a full description of the runtime descriptor see the [`Runtime` structure](https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go/registry/api?tab=doc#Runtime) documentation.
 * **`registry.suspended_runtimes`** The suspended runtime registrations for initial node operators. Each item describes a suspended runtime's operational parameters, including its identifier, kind, admission policy, committee scheduling, storage, governance model, etc. For a full description of the runtime descriptor see the [`Runtime` structure](https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go/registry/api?tab=doc#Runtime) documentation.
@@ -120,9 +120,9 @@ For example, a staking transfer transaction of size 230 bytes would have a total
 
 ### Root Hash
 
-The **`roothash`** object contains parameters related to the [Root Hash service](/oasis-core/consensus/services/roothash) and a minimal state related to the runtimes.
+The **`roothash`** object contains parameters related to the [Root Hash service](/core/consensus/services/roothash) and a minimal state related to the runtimes.
 
-* **`roothash.params.max_runtime_messages` ** The global limit on the number of [messages](/oasis-core/runtime/messages) that can be emitted in each round by the runtime. The value is set to 256.
+* **`roothash.params.max_runtime_messages` ** The global limit on the number of [messages](/core/runtime/messages) that can be emitted in each round by the runtime. The value is set to 256.
 * **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/adrs/0005-runtime-compute-slashing). The value is set to 100.
 
 ### Staking
@@ -153,7 +153,7 @@ The following parameters control how delegations behave on the network:
 
 * **`staking.params.debonding_interval`** The period of time (in epochs) that must pass before staked or delegated tokens that are requested to be withdrawn are returned to the account's general balance. The value is set to 336 epochs, which is expected to be approximately 14 days.
 * **`staking.params.min_delegation`** The minimum amount of tokens one can delegate. The value is set to 100,000,000,000 base units, or 100 ROSE tokens.
-* **`staking.params.allow_escrow_messages`** Indicator whether to enable support for `AddEscrow` and `ReclaimEscrow` [runtime messages](/oasis-core/runtime/messages) . The value is set to _true_.
+* **`staking.params.allow_escrow_messages`** Indicator whether to enable support for `AddEscrow` and `ReclaimEscrow` [runtime messages](/core/runtime/messages) . The value is set to _true_.
 
 #### Node & ParaTime Token Thresholds {#staking-thresholds}
 
@@ -195,7 +195,7 @@ These parameters specify key values for the network's slashing mechanism:
 
 ### Committee Scheduler
 
-The **`scheduler`** object contains parameters controlling how various committees (validator, compute, key manager) are periodically [scheduled](/oasis-core/consensus/services/roothash).
+The **`scheduler`** object contains parameters controlling how various committees (validator, compute, key manager) are periodically [scheduled](/core/consensus/services/roothash).
 
 * **`scheduler.params.min_validators`** The minimum size for the consensus committee. The value is set to 15 validators.
 * **`scheduler.params.max_validators`** The maximum size for the consensus committee. The value is set to 100 validators.
@@ -220,7 +220,7 @@ These parameters control the behavior of the new [improved random beacon](/adrs/
 
 ### **Governance**
 
-The **`governance`** object contains parameters controlling the network's [on-chain governance](/oasis-core/consensus/services/governance) introduced in the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md):
+The **`governance`** object contains parameters controlling the network's [on-chain governance](/core/consensus/services/governance) introduced in the [Cobalt upgrade](../mainnet/previous-upgrades/cobalt-upgrade.md):
 
 * **`governance.params.min_proposal_deposit`** The amount of tokens (in base units) that are deposited when creating a new proposal. The value is set to 10,000,000,000,000 base units, or 10,000 ROSE tokens.
 * **`governance.params.voting_period`** The number of epochs after which the voting for a proposal is closed and the votes are tallied. The value is set to 168, which is expected to be approximately 7 days.

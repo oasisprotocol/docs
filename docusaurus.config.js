@@ -92,12 +92,12 @@ const config = {
       '@docusaurus/plugin-content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
       ({
-        id: 'oasis-core',
-        path: 'external/oasis-core/docs',
+        id: 'core',
+        path: 'docs/core',
         breadcrumbs: false,
         showLastUpdateTime: true,
-        routeBasePath: 'oasis-core',
-        sidebarPath: require.resolve('./sidebarsOasisCore.js'),
+        routeBasePath: 'core',
+        sidebarPath: require.resolve('./sidebarsCore.js'),
       }),
     ],
     [
@@ -105,7 +105,7 @@ const config = {
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
       ({
         id: 'oasis-core-ledger',
-        path: 'external/oasis-core-ledger/docs',
+        path: 'docs/oasis-core-ledger',
         breadcrumbs: false,
         showLastUpdateTime: true,
         routeBasePath: 'oasis-core-ledger',
@@ -161,6 +161,9 @@ const config = {
           if (existingPath.includes('/developers')) {
             return [existingPath.replace('/developers', '/general/developer-resources')];
           }
+          if (existingPath.includes('/core')) {
+            return [existingPath.replace('/core', '/oasis-core')];
+          }
           return undefined;
         },
       }),
@@ -205,9 +208,9 @@ const config = {
           },
           {
             label: 'Core', // oasis-core, ADRs
-            to: '/oasis-core/',
+            to: '/core/',
             position: 'left',
-            activeBaseRegex: `/oasis-core/`,
+            activeBaseRegex: `/core/`,
           },
           {
             href: 'https://github.com/oasisprotocol',

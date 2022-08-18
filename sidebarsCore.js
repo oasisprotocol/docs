@@ -141,7 +141,12 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Oasis ADRs',
+      label: 'Oasis Core Ledger',
+      href: '/oasis-core-ledger'
+    },
+    {
+      type: 'link',
+      label: 'ADRs',
       href: '/adrs'
     },
   ],

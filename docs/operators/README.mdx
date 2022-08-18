@@ -1,5 +1,5 @@
 import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+import {newItem} from '@site/src/sidebarUtils';
 
 # Overview
 
@@ -69,9 +69,9 @@ party endpoints which are often behind a traffic limiter.
 
 ## Quick Navigation
 
-<DocCardList items={[ // TODO
-//    findSidebarItem('prerequisites'),
-//    findSidebarItem('upgrade-log'),
-//    findSidebarItem('set-up-your-node/run-validator'),
-//    findSidebarItem('set-up-your-node/run-non-validator'),
+<DocCardList items={[
+    newItem('Prerequisites', '/operators/prerequisites'),
+    newItem('Upgrade Log', '/operators/upgrade-log'),
+    newItem('Run a Validator Node', '/operators/set-up-your-node/run-validator'),
+    newItem('Run a Non-validator Node', '/operators/set-up-your-node/run-non-validator'),
 ]} />

@@ -1,29 +1,53 @@
 import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+import {findGeneralSidebarItem, newItem} from '@site/src/sidebarUtils';
 
 # Getting Started
 
-Welcome to the Oasis Network documentation!
-
 ## General Resources
 
+These guides provide overview of the Oasis Network and introduce basic tools
+for you to get started.
+
 <DocCardList items={[
-    findSidebarItem('oasis-network/overview'),
-    findSidebarItem('Manage your Tokens'),
-    findSidebarItem('community-resources/community-made-resources'),
+    findGeneralSidebarItem('oasis-network/overview'),
+    findGeneralSidebarItem('Manage your Tokens'),
+    findGeneralSidebarItem('community-resources/community-hub'),
 ]} />
 
-## Node Operator Resources
+## Node Operators
+
+If you want to run your own Oasis node, the following section will provide you
+with guides on how to set up your node, let it be a validator node, perhaps
+running a ParaTime or just a simple client node for your server to submit
+transactions and perform queries on the network.
 
 <DocCardList items={[
-//    findSidebarItem('/operators'),
+    newItem('Node Operators Guide', '/operators/'),
 ]} />
 
-## Developer Resources
+## Developers
 
-This section contains links to various developer resources related to the implementation of the Oasis Network.
+This section is focused on developers building applications on top of the Oasis
+Network. Smart contract developers will be interested in the EVM-compatible
+Emerald and confidential Sapphire ParaTimes. For maximum security and
+confidentiality, the Oasis team designed a novel Cipher ParaTime executing Wasm
+smart contracts and allows you to develop smart contracts in Rust using the
+Oasis SDK. Finally, developers can learn how to build their own ParaTime
+running on the Oasis Network.
 
 <DocCardList items={[
-//    findSidebarItem('/oasis-core'), //TODO
-//    findSidebarItem('/oasis-sdk') //TODO
+    newItem('Developer Resources', '/developers/'),
+    newItem('Emerald ParaTime Guide', '/developers/emerald-paratime/'),
+    newItem('Sapphire ParaTime Guide', '/developers/sapphire-paratime/'),
+    newItem('Smart Contracts for Cipher ParaTime', '/developers/sdk/contract/getting-started'),
+    newItem('Building your own ParaTime', '/developers/sdk/runtime/getting-started'),
+]} />
+
+## Oasis Core Contributors
+
+Whether you want to contribute your code to the core components of the Oasis
+Network or just learn more about the Oasis core, this is the place for you.
+
+<DocCardList items={[
+    newItem('Oasis Core Guide', '/oasis-core'),
 ]} />

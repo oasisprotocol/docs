@@ -18,8 +18,11 @@ function reindex(sidebarItems) {
     }
 }
 
-// Finds sidebar item object from the given document id, href or label.
-export function findSidebarItem(docId) {
+/**
+ * Finds sidebar item object in the general sidebar given the document id, href
+ * or label.
+ */
+export function findGeneralSidebarItem(docId) {
     const sidebar = useDocsSidebar();
     if (!sidebar) {
         throw new Error('Unexpected: cant find current sidebar in context');
@@ -29,7 +32,24 @@ export function findSidebarItem(docId) {
         reindex(sidebar.items);
     }
     if (globalThis.sidebarItemsMap[docId] === undefined) {
+        console.log('Registered sidebar items:');
+        console.log(globalThis.sidebarItemsMap);
         throw new Error('Unexpected: document with id '+docId+' does not exist.');
     }
     return globalThis.sidebarItemsMap[docId];
+}
+
+/**
+ * Returns link to external plugin-content-docs module for the given href and label.
+ *
+ * @param label DocCard label
+ * @param href Link
+ * @returns {import('@docusaurus/plugin-content-docs').PropSidebarItemLink}
+ */
+export function newItem(label, href) {
+    return {
+      type: 'link',
+      label: label,
+      href: href,
+    };
 }

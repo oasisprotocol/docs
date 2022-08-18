@@ -1,11 +1,20 @@
 import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+import {newItem} from '@site/src/sidebarUtils';
 
 # Overview
 
-This section contains links to various developer resources related to the implementation of the Oasis Network.
+This section contains developer resources related to the implementation of the Oasis Network.
+
+## Smart Contracts for EVM-compatible ParaTimes
 
 <DocCardList items={[
-//    findSidebarItem('/developers/emerald-paratime'), // TODO
-//    findSidebarItem('/developers/sapphire-paratime'), // TODO
+    newItem('Emerald ParaTime Guide', '/developers/emerald-paratime/'),
+    newItem('Sapphire ParaTime Guide', '/developers/sapphire-paratime/'),
+]} />
+
+## Oasis SDK
+
+<DocCardList items={[
+    newItem('Smart Contracts for Cipher ParaTime', '/developers/sdk/contract/getting-started'),
+    newItem('Building your own ParaTime', '/developers/sdk/runtime/getting-started'),
 ]} />

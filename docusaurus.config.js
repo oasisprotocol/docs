@@ -131,24 +131,31 @@ const config = {
       /** @type {import('@docusaurus/plugin-client-redirects').PluginOptions} */
       ({
         redirects: [
+          // #171 Add sapphire docs
+          {
+            to: '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime',
+            from: '/general/manage-tokens/how-to-transfer-rose-into-emerald-paratime',
+          },
+          // #200 Restructure docs
           {
             to: '/operators/',
             from: '/general/run-a-node/node-operator-overview',
           },
         ],
         createRedirects(existingPath) {
+          // #119 Add /oasis-core/adr/* -> /adrs/* redirection
           if (existingPath.includes('/adrs')) {
             return [existingPath.replace('/adrs', '/oasis-core/adr')];
           }
+          // #200 Restructure docs
           if (existingPath.includes('/operators')) {
             return [existingPath.replace('/operators', '/general/run-a-node')];
           }
-          if (existingPath.includes('/developers')) {
-            return [existingPath.replace('/developers', '/general/developer-resources').replace('/developers/sdk', '/oasis-sdk')];
+          if (existingPath.includes('/developers/sdk')) {
+            return [existingPath.replace('/developers/sdk', '/oasis-sdk')];
           }
-          const roseToEvm = '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime';
-          if (existingPath.includes(roseToEvm)) {
-            return [existingPath.replace(roseToEvm, roseToEvm.replace('evm', 'emerald'))];
+          if (existingPath.includes('/developers')) {
+            return [existingPath.replace('/developers', '/general/developer-resources')];
           }
           return undefined;
         },

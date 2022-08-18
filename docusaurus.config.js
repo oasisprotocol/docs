@@ -117,7 +117,8 @@ const config = {
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
       ({
         id: 'adrs',
-        path: 'external/adrs',
+        path: 'docs/adrs',
+        exclude: ['README.md', '0000-architectural-decision-records.md', 'template.md'],
         breadcrumbs: false,
         showLastUpdateTime: true,
         routeBasePath: 'adrs',

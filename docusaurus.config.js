@@ -4,6 +4,8 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const crossRepoLinksPlugin = require('./src/remark/cross-repo-links');
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Oasis Network Documentation',
@@ -25,6 +27,7 @@ const config = {
           path: 'docs/general',
           breadcrumbs: false,
           showLastUpdateTime: true,
+          remarkPlugins: [crossRepoLinksPlugin],
           routeBasePath: 'general',
           sidebarPath: require.resolve('./sidebarsGeneral.js'),
           editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
@@ -57,6 +60,7 @@ const config = {
         path: 'docs/oasis-network-primer',
         breadcrumbs: false,
         showLastUpdateTime: true,
+        remarkPlugins: [crossRepoLinksPlugin],
         routeBasePath: 'oasis-network-primer',
         sidebarPath: require.resolve('./sidebarsOasisNetworkPrimer.js'),
         editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
@@ -70,6 +74,7 @@ const config = {
         path: 'docs/operators',
         breadcrumbs: false,
         showLastUpdateTime: true,
+        remarkPlugins: [crossRepoLinksPlugin],
         routeBasePath: 'operators',
         sidebarPath: require.resolve('./sidebarsOperators.js'),
         editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
@@ -83,6 +88,7 @@ const config = {
         path: 'docs/developers',
         breadcrumbs: false,
         showLastUpdateTime: true,
+        remarkPlugins: [crossRepoLinksPlugin],
         routeBasePath: 'developers',
         sidebarPath: require.resolve('./sidebarsDevelopers.js'),
         editUrl: 'https://github.com/oasisprotocol/docs.oasis.dev/edit/main',
@@ -96,6 +102,7 @@ const config = {
         path: 'docs/core',
         breadcrumbs: false,
         showLastUpdateTime: true,
+        remarkPlugins: [crossRepoLinksPlugin],
         routeBasePath: 'core',
         sidebarPath: require.resolve('./sidebarsCore.js'),
       }),
@@ -108,6 +115,7 @@ const config = {
         path: 'docs/oasis-core-ledger',
         breadcrumbs: false,
         showLastUpdateTime: true,
+        remarkPlugins: [crossRepoLinksPlugin],
         routeBasePath: 'oasis-core-ledger',
         sidebarPath: require.resolve('./sidebarsOasisCoreLedger.js'),
       }),
@@ -121,6 +129,7 @@ const config = {
         exclude: ['README.md', '0000-architectural-decision-records.md', 'template.md'],
         breadcrumbs: false,
         showLastUpdateTime: true,
+        remarkPlugins: [crossRepoLinksPlugin],
         routeBasePath: 'adrs',
         sidebarPath: require.resolve('./sidebarsAdrs.js'),
         numberPrefixParser: false,

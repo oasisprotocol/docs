@@ -1,16 +1,10 @@
-# Oasis Network Primer
-
-:::caution
-
-Information contained in this document is subject to change. This document is intended to provide a high level, up-to-date overview of key information related to the Oasis Network and the network’s ROSE tokens. For more information, please check out our website at [**www.oasisprotocol.org**](https://www.oasisprotocol.org)
-
-:::
+# Why Oasis?
 
 ## Network Overview
 
 Designed for the next generation of blockchain, the Oasis Network is the first privacy-enabled blockchain platform built to scale for open finance, a responsible data economy, and web 3. Combined with its high throughput and secure architecture, the Oasis Network will power private, scalable DeFi, revolutionizing Open Finance and expanding it beyond traders and early adopters to a mass market. Its unique privacy features will not only redefine DeFi and Web 3 but also create a new type of digital asset called Tokenized Data. This will enable users to take control of the data they generate and earn rewards for staking it with applications, creating the first-ever responsible data economy.
 
-![](images/timeline_on_Oasis_primer.png)
+![Oasis Timeline](../images/oasis-network/timeline.png)
 
 ### Why the Oasis Network?
 
@@ -42,7 +36,7 @@ Designed for the next generation of blockchain, the Oasis Network is the first p
 
 ### Scalable, Private DeFi
 
-![Scalable, Private DeFi](images/network_features.png)
+![Scalable, Private DeFi](../images/oasis-network/features.png)
 
 The DeFi market is still in its infancy, with trillions of dollars in existing financial markets ready to enter the space. The expansion of DeFi is limited by a lack of privacy, security, and high fees. The result is an overloaded and expensive system that’s impossible to scale.
 
@@ -50,11 +44,11 @@ The Oasis Network is ideal for DeFi applications due to its scalability, instant
 
 The Oasis Network is designed to support confidential smart contracts that keep data private while being processed. By providing end-to-end data confidentiality on Blockchain, the Oasis Network unlocks new and exciting use cases in DeFi. From under-collateralized lending to preventing front/back running, the Oasis Network can help expand DeFi beyond traders and early adopters to a mainstream market.
 
-![Oasis Network in lending market](images/lending_market.png)
+![Oasis Network in lending market](../images/oasis-network/lending_market.png)
 
 The network’s cutting-edge scalability features can help unblock DeFi as it works today, fixing the high-transaction fees and slow throughput currently plaguing other Layer 1 networks. Combined, Oasis’ unique ability to provide scalable, private DeFi is expected to make it the leading platform for unlocking the next generation of DeFi markets and use cases.
 
-![Comparison of networks](images/compare_networks.png)
+![Comparison of networks](../images/oasis-network/compare_networks.png)
 
 ### Data Tokenization & A Responsible Data Economy
 
@@ -62,7 +56,7 @@ The Oasis Network’s combination of confidential computing and blockchain enabl
 
 With Tokenized Data, the Oasis Network can power the next generation of privacy-first applications and unlock a new responsible data society. Data providers on the Oasis Network can put their Tokenized Data to use. They can earn rewards by staking their data with apps that want to analyze it or control how their most sensitive information is consumed by the services they use.
 
-![Data tokenization on the Oasis](images/data_tokenization.png)
+![Data tokenization on the Oasis](../images/oasis-network/data_tokenization.png)
 
 Many projects have already begun building apps that leverage data tokenization on the Oasis. Here are just a few examples:
 
@@ -84,7 +78,7 @@ Nebula Genomics wants to differentiate their product from other competitors by g
 
 :::
 
-![Projects and Partners](images/partners.png)
+![Projects and Partners](../images/oasis-network/partners.png)
 
 ## Technology Overview
 
@@ -97,7 +91,7 @@ The Oasis Network is a Layer 1, proof-of-stake, decentralized network. It has tw
 
 The Oasis Network’s impressive scalability is achieved through a cutting-edge set of features that provide faster transaction speeds and higher throughput than other networks. The top-tier performance of the network is largely due to its separation of compute and consensus operations into the Consensus Layer and ParaTime Layer. This separation allows multiple ParaTimes to process transactions in parallel, meaning complex workloads processed on one ParaTime won’t slow down faster, simpler transactions on another. Plus, the network’s sophisticated discrepancy detection makes Oasis more efficient than sharding and parachains, requiring a smaller replication factor for the same level of security.
 
-![Scalability](images/paratimes.png)
+![Scalability](../images/architecture/technology_scalability.svg)
 
 ### Privacy-First
 
@@ -105,36 +99,13 @@ The Oasis Network designed Cipher, the first-ever confidential ParaTime with sup
 
 Confidentiality unlocks a range of new use cases on blockchain. Personal or sensitive data, such as identity documents, social security numbers, bank statements, financial and credit records, health information, internet usage data, IoT data like fitness records and location data could all be used by apps on the Oasis Network, all the while protecting the user’s privacy. Connecting all these data sources is something even today you wouldn’t even dream of doing, especially not on an existing public Layer 1 blockchain. With Oasis, confidentiality and data tokenization together will give people the ability to securely, privately share their data, turning the data they create every day into income-generating assets.
 
-![Secure enclave](images/secure_enclave.png)
+![Secure enclave](../images/oasis-network/secure_enclave.png)
 
 ### Versatility
 
 Designed to support the next generation of blockchain applications, the Oasis Network is incredibly versatile, agile, and customizable. Namely, each ParaTime can be developed in isolation to meet the needs of a specific application. ParaTime committees can be made large or small, open or closed, allowing for faster or more secure execution depending on the requirements of a particular use case. Nodes can be required to have specific hardware, such as Secure Enclaves on a confidential ParaTime. Each ParaTime can similarly run different Runtime VMs (ParaTime Engines), such as EVM backwards compatible engine, Rust-based smart contract language, or a Data tokenization engine. Finally, to support enterprise and developer use cases, ParaTimes can be made Permissioned or Permissionless, allowing consortiums to have their own closed ParaTime, or communities to have full decentralized open ParaTimes.
 
-The versatility of the ParaTime Layer allows the Oasis Network to expand and grow to address a broad set of new and exciting use cases while still maintaining the same core ledger and consensus layer.\
-
-
-## Resources
-
-### Research Papers
-
-* [Digital Stewardship Research Paper](https://docsend.com/view/en2guc7dm6qksaa7)
-* [Oasis Blockchain Platform Research Paper](https://docsend.com/view/aq86q2pckrut2yvq)
-* [Confidential Compute Research Paper](https://docsend.com/view/3aznduk)
-* [Shades of Finality Paper](https://arxiv.org/abs/2201.07920)
-
-### Documentation and Support
-
-* [GitHub](https://github.com/oasisprotocol)
-* [Documentation](/)
-* [Discord](https://discord.gg/pJdWeVtmHT)
-* [Twitter](https://twitter.com/OasisProtocol)
-* [Telegram](https://t.me/oasisprotocolcommunity)
-* [Medium](https://medium.com/oasis-protocol-project)
-
-### Developer Tools
-
-The Oasis Network has an expanding set of development and network tools made by our community.You can find them all [here](/general/community-resources/community-made-resources).
+The versatility of the ParaTime Layer allows the Oasis Network to expand and grow to address a broad set of new and exciting use cases while still maintaining the same core ledger and consensus layer.
 
 ## Traction and Adoption
 
@@ -142,13 +113,13 @@ The Oasis Network has an expanding set of development and network tools made by 
 
 The Oasis Network has a thriving and rapidly growing ecosystem consisting of industry-leading app developers, blockchain infrastructure teams, node operators, universities, and more. We are proud to highlight some of our key partners and community members in the chart below:
 
-![The Oasis Ecosystem](images/ecosystem-network-01.jpg)
+![The Oasis Ecosystem](../images/oasis-network/ecosystem.jpg)
 
 ### The DeFi Ecosystem
 
 Emerald, The EVM Compatible Paratime is now live on mainnet, and developers are releasing new projects all the time. Here we highlight some of the recent DeFi projects building on the network:
 
-![The DeFi Ecosystem](images/DeFi-Part--Twitter-size.jpg)
+![The DeFi Ecosystem](../images/oasis-network/ecosystem-defi.jpg)
 
 ### The $200m Ecosystem Fund
 
@@ -185,11 +156,11 @@ Ambassadors are also growing strong communities worldwide, including Bangladesh,
 
 The Oasis Network also has the **largest University Program of any Layer-1 blockchain** with over 25 top university departments, blockchain clubs, and others across 5 continents. Members of the program run nodes, build apps and more. Participating universities and university student organizations include Blockchain at Berkeley, Tsinghua University’s Student Association of Digital Finance, Cambridge University’s Blockchain Society, and many more.
 
-![Oasis University Program](images/Uni_Map_updated.png)
+![Oasis University Program](../images/oasis-network/uni_map.png)
 
 ### Contributing Team
 
-![Some of the many places contributing team members come from](images/team_logos.png)
+![Some of the many places contributing team members come from](../images/oasis-network/team_logos.png)
 
 The Oasis Team is made up of world-leading researchers, security experts, and privacy advocates — all working together to build a platform for a responsible data economy.
 
@@ -220,4 +191,4 @@ Over 200 articles have been written since the company came out of stealth mode. 
 
 Articles about the Oasis Network have focused on a variety of topics and span across both mainstream and crypto press:
 
-![Press](images/press-logos.png)
+![Press](../images/oasis-network/press_logos.png)

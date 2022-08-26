@@ -15,16 +15,8 @@ const sidebars = {
       items: [
         'oasis-network/network-parameters',
         'oasis-network/genesis-doc',
-        {
-          type: 'link',
-          label: 'Why Oasis?',
-          href: '/oasis-network-primer/',
-        },
-        {
-          type: 'link',
-          label: 'ROSE Token Metrics',
-          href: '/oasis-network-primer/token-metrics-and-distribution/',
-        },
+        'oasis-network/why-oasis',
+        'oasis-network/token-metrics-and-distribution',
         {
           type: 'link',
           label: 'Papers',

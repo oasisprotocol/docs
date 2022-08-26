@@ -57,20 +57,6 @@ const config = {
       '@docusaurus/plugin-content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
       ({
-        id: 'oasis-network-primer',
-        path: 'docs/oasis-network-primer',
-        breadcrumbs: false,
-        showLastUpdateTime: true,
-        remarkPlugins: [crossRepoLinksPlugin],
-        routeBasePath: 'oasis-network-primer',
-        sidebarPath: require.resolve('./sidebarsOasisNetworkPrimer.js'),
-        editUrl: editUrlFunction,
-      }),
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
-      ({
         id: 'operators',
         path: 'docs/operators',
         breadcrumbs: false,
@@ -157,7 +143,15 @@ const config = {
           {
             to: '/general/oasis-network/faq',
             from: '/general/faq/oasis-network-faq',
-          }
+          },
+          {
+            to: '/general/oasis-network/why-oasis',
+            from: '/oasis-network-primer/',
+          },
+          {
+            to: '/general/oasis-network/token-metrics-and-distribution',
+            from: '/oasis-network-primer/token-metrics-and-distribution',
+          },
         ],
         createRedirects(existingPath) {
           // #119 Add /oasis-core/adr/* -> /adrs/* redirection

@@ -13,7 +13,6 @@ const sidebars = {
         id: 'oasis-network/overview',
       },
       items: [
-        'oasis-network/network-parameters',
         'oasis-network/genesis-doc',
         'oasis-network/why-oasis',
         'oasis-network/token-metrics-and-distribution',
@@ -109,46 +108,7 @@ const sidebars = {
         'contribute-to-the-network/run-a-paratime-node',
         'contribute-to-the-network/network-governance',
         'contribute-to-the-network/contribution-guidelines',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Mainnet',
-      collapsible: false,
-      items: [
-        'mainnet/damask-upgrade',
-        {
-          type: 'category',
-          label: 'Previous Upgrades',
-          link: {
-            type: 'generated-index',
-              description: "This section provides documentation on previous upgrades of Oasis Network's Mainnet.",
-              slug: 'mainnet/previous-upgrades',
-          },
-          items: [
-            'mainnet/previous-upgrades/cobalt-upgrade',
-            'mainnet/previous-upgrades/mainnet-upgrade',
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Oasis Protocol Foundation',
-      collapsible: false,
-      items: [
-        {
-          type: 'category',
-          label: 'The Testnet',
-          link: {
-            type: 'doc',
-            id: 'foundation/testnet/README',
-          },
-          items: [
-            'foundation/testnet/upgrade-log',
-          ],
-        },
-        'foundation/delegation-policy'
+        'contribute-to-the-network/delegation-policy'
       ],
     },
     {

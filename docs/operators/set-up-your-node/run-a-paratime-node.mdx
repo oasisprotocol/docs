@@ -216,7 +216,7 @@ in the consensus layer will not work and will be rejected by the network.
 
 For ParaTimes running inside [Intel SGX Trusted Execution Environment](run-a-paratime-node.mdx#setting-up-trusted-execution-environment-tee), you will need to install the Oasis Core Runtime Loader.
 
-The Oasis Core Runtime Loader binary (`oasis-core-runtime-loader`) is part of Oasis Core binary releases, so make sure you download the appropriate version specified the [Network Parameters](/general/oasis-network/network-parameters) page.
+The Oasis Core Runtime Loader binary (`oasis-core-runtime-loader`) is part of Oasis Core binary releases, so make sure you download the appropriate version specified the [Network Parameters](../mainnet/README.md) page.
 
 Install it to `bin` subdirectory of your node's working directory, e.g. `/node/bin/oasis-core-runtime-loader`.
 
@@ -227,7 +227,7 @@ For each ParaTime, you need to obtain its bundle and install it to the
 
 :::info
 
-For example, for the [Cipher ParaTime](/general/oasis-network/network-parameters#cipher-paratime),
+For example, for the [Cipher ParaTime](../mainnet/README.md#cipher-paratime),
 you would have to obtain the `cipher-paratime.orc` bundle and install it to
 `/node/runtimes/cipher-paratime.orc`.
 
@@ -366,11 +366,11 @@ Before using this configuration you should collect the following information to 
 
 * `{{ external_address }}`: The external IP you used when registering this node.
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
-  * You can find the current Oasis Seed Node address in the [Network Parameters](/general/oasis-network/network-parameters).
+  * You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
 * `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](run-a-paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
-  * You can find the current Oasis-supported ParaTimes in the [Network Paramers](/general/oasis-network/network-parameters#paratimes).
+  * You can find the current Oasis-supported ParaTimes in the [Network Paramers](../mainnet/README.md#paratimes).
 * `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
-  * You can find the current Oasis IAS proxy address in the [Network Parameters](/general/oasis-network/network-parameters).
+  * You can find the current Oasis IAS proxy address in the [Network Parameters](../mainnet/README.md#cipher-paratime).
   * If you want, you can also [run your own IAS proxy](run-an-ias-proxy.md).
 
 :::caution

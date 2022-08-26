@@ -18,7 +18,7 @@ Here are some examples of Oasis Node CLI commands that need a connection to an o
 
 ## Local commands
 
-The following commands are intended to be run on your local machine and only need access to the [network's current genesis file](../../../oasis-network/network-parameters.md) and your signer's private key:
+The following commands are intended to be run on your local machine and only need access to the [network's current genesis file](/operators/mainnet) and your signer's private key:
 
 * `oasis-node stake account gen_transfer`
 * `oasis-node stake account gen_escrow`

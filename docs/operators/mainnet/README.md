@@ -1,7 +1,4 @@
-# Network Parameters
-
-This page provides up to date information for the currently running Oasis
-Network.
+# The Mainnet
 
 These are the current parameters for the Mainnet:
 
@@ -14,7 +11,7 @@ Genesis file is signed by [network's current maintainers](https://github.com/oas
 
 :::
 
-* Genesis document's hash ([explanation](genesis-doc.md#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](/general/oasis-network/genesis-doc#genesis-file-vs-genesis-document)):
   * `b11b369e0da5bb230b220127f5e7b242d385ef8c6f54906243f30af63c815535`
 * Oasis seed node address:
   * `E27F6B7A350B4CC2B48A6CBE94B0A02B0DCB0BF3@35.199.49.168:26656`
@@ -42,7 +39,7 @@ Do not use a newer version of Oasis Core since it likely contains changes that a
 
 :::
 
-If you want to join our Testnet, see the [Testnet](../foundation/testnet/README.md) docs for the current Testnet parameters.
+If you want to join our Testnet, see the [Testnet](../testnet/README.md) docs for the current Testnet parameters.
 
 ## ParaTimes
 

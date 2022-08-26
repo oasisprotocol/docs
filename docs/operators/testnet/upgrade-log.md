@@ -236,7 +236,7 @@ The following parts of the genesis document will be updated:
 
 :::info
 
-For a more detailed explanation of the parameters below, see the [Genesis Document](../../oasis-network/genesis-doc.md#parameters) docs.
+For a more detailed explanation of the parameters below, see the [Genesis Document](/general/oasis-network/genesis-doc#parameters) docs.
 
 :::
 
@@ -261,7 +261,7 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
   command.
 * Inactive registered entities in **`registry.entities`** (and their
   corresponding nodes in **`registry.nodes`**) that don't pass the
-  [minimum staking thresholds](../../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds) will be removed.
+  [minimum staking thresholds](/general/oasis-network/genesis-doc#node-and-paratime-token-thresholds) will be removed.
   The removal will be done automatically with the `oasis-node debug fix-genesis`
   command.
 

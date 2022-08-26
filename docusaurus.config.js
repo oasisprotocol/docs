@@ -141,6 +141,10 @@ const config = {
             from: '/general/run-a-node/node-operator-overview',
           },
           {
+            to: '/general/contribute-to-the-network/delegation-policy',
+            from: '/general/foundation/delegation-policy'
+          },
+          {
             to: '/general/oasis-network/faq',
             from: '/general/faq/oasis-network-faq',
           },
@@ -152,6 +156,21 @@ const config = {
             to: '/general/oasis-network/token-metrics-and-distribution',
             from: '/oasis-network-primer/token-metrics-and-distribution',
           },
+          {
+            to: '/operators/mainnet/',
+            from: '/general/oasis-network/network-parameters'
+          },
+          {
+            to: '/operators/mainnet/upgrade-log',
+            from: '/general/run-a-node/upgrade-log'
+          },
+          {
+            to: '/operators/testnet/',
+            from: '/general/foundation/testnet/'
+          },          {
+            to: '/operators/testnet/upgrade-log',
+            from: '/general/foundation/testnet/upgrade-log'
+          },
         ],
         createRedirects(existingPath) {
           // #119 Add /oasis-core/adr/* -> /adrs/* redirection
@@ -159,6 +178,18 @@ const config = {
             return [existingPath.replace('/adrs', '/oasis-core/adr')];
           }
           // #200 Restructure docs
+          if (existingPath.includes('/operators/mainnet')) {
+            return [existingPath.replace('/operators/mainnet', '/general/mainnet')];
+          }
+          if (existingPath.includes('/operators/set-up-your-node/advanced')) {
+            return [existingPath.replace('/operators/set-up-your-node/advanced', '/general/run-a-node/advanced')];
+          }
+          if (existingPath.includes('/operators/set-up-your-node/prerequisites')) {
+            return [existingPath.replace('/operators/set-up-your-node/prerequisites', '/general/run-a-node/prerequisites')];
+          }
+          if (existingPath.includes('/operators/set-up-your-node/maintenance')) {
+            return [existingPath.replace('/operators/set-up-your-node/maintenance', '/general/run-a-node/maintenance-guides')];
+          }
           if (existingPath.includes('/operators')) {
             return [existingPath.replace('/operators', '/general/run-a-node')];
           }

@@ -44,6 +44,6 @@ The size of the consensus committee (i.e. the validator set) is configured by th
 
 :::info
 
-To determine if you are eligible to receive a delegation from the Oasis Protocol Foundation, see the [Delegation Policy](../foundation/delegation-policy.md) document.
+To determine if you are eligible to receive a delegation from the Oasis Protocol Foundation, see the [Delegation Policy](delegation-policy.md) document.
 
 :::

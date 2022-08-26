@@ -63,7 +63,7 @@ You need to provide publicly exposed gRPC endpoints for **at least 2 different c
 
 :::danger
 
-You need to **delete any existing node state** (if it exists), otherwise state sync will be skipped. To do that, follow the [Wiping Node State](../maintenance-guides/wiping-node-state.md#state-wipe-and-keep-node-identity) instructions.
+You need to **delete any existing node state** (if it exists), otherwise state sync will be skipped. To do that, follow the [Wiping Node State](../maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity) instructions.
 
 If existing node state is found and state sync is skipped, you will see something like the following in your node's logs:
 

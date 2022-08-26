@@ -71,8 +71,8 @@ ParaTime.
 
 :::
 
-[network-parameters]: /general/oasis-network/network-parameters
-[Testnet]: /general/foundation/testnet/
+[network-parameters]: /operators/mainnet
+[Testnet]: /operators/testnet
 [Emerald Mainnet]: ./README.mdx#mainnet
 [Emerald Testnet]: ./README.mdx#testnet
 

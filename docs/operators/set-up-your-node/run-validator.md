@@ -56,7 +56,7 @@ mkdir -m700 -p {entity,node}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](/general/oasis-network/network-parameters). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
+The latest genesis file can be found in [Network Parameters](../mainnet/README.md). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
 
 ```bash
 GENESIS_FILE_PATH=/localhostdir/genesis.json
@@ -246,7 +246,7 @@ We will also need to have the public entity artifacts from the `/localhostdir` p
 
 #### Copying the Genesis File to the server
 
-The latest Genesis file can be found in the [Network Parameters](/general/oasis-network/network-parameters). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
+The latest Genesis file can be found in the [Network Parameters](../mainnet/README.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
 
 #### Configuring the Oasis Node
 
@@ -264,7 +264,7 @@ If you are using a [Sentry Node](sentry-node-architecture.md), you should use th
 
 *   `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-    You can find the current Oasis Seed Node address in the [Network Parameters](/general/oasis-network/network-parameters).
+    You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
 
 To use this configuration, save it in the `/serverdir/etc/config.yml` file and pass it to the `oasis-node` command as an argument to the `--config` flag.
 

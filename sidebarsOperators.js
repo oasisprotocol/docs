@@ -6,19 +6,41 @@ const sidebars = {
     'README',
     {
       type: 'category',
-      label: 'Prerequisites',
+      label: 'Mainnet',
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'prerequisites/README',
+        id: 'mainnet/README',
       },
       items: [
-        'prerequisites/hardware-recommendations',
-        'prerequisites/stake-requirements',
-        'prerequisites/oasis-node',
-        'prerequisites/system-configuration',
-        'prerequisites/set-up-trusted-execution-environment-tee',
-      ]
+        'mainnet/damask-upgrade',
+        {
+          type: 'category',
+          label: 'Previous Upgrades',
+          link: {
+            type: 'generated-index',
+            description: "This section provides documentation on previous upgrades of Oasis Network's Mainnet.",
+            slug: 'mainnet/previous-upgrades',
+          },
+          items: [
+            'mainnet/previous-upgrades/cobalt-upgrade',
+            'mainnet/previous-upgrades/mainnet-upgrade',
+          ],
+        },
+        'mainnet/upgrade-log',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Testnet',
+      collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'testnet/README',
+      },
+      items: [
+        'testnet/upgrade-log',
+      ],
     },
     {
       type: 'category',
@@ -29,6 +51,21 @@ const sidebars = {
         id: 'set-up-your-node/README',
       },
       items: [
+        {
+          type: 'category',
+          label: 'Prerequisites',
+          link: {
+            type: 'doc',
+            id: 'set-up-your-node/prerequisites/README',
+          },
+          items: [
+            'set-up-your-node/prerequisites/hardware-recommendations',
+            'set-up-your-node/prerequisites/stake-requirements',
+            'set-up-your-node/prerequisites/oasis-node',
+            'set-up-your-node/prerequisites/system-configuration',
+            'set-up-your-node/prerequisites/set-up-trusted-execution-environment-tee',
+          ]
+        },
         'set-up-your-node/run-validator',
         'set-up-your-node/run-non-validator',
         'set-up-your-node/run-seed-node',
@@ -40,41 +77,38 @@ const sidebars = {
         'set-up-your-node/amend-commission-schedule',
         'set-up-your-node/governance',
         'set-up-your-node/sentry-node-architecture',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Advanced',
-      collapsible: false,
-      link: {
-        type: 'doc',
-        id: 'advanced/README',
-      },
-      items: [
-        'advanced/sync-node-using-state-sync',
-        'advanced/copy-state-from-one-node-to-the-other',
-        'advanced/install-oasis-remote-signer-binary',
-        'advanced/using-ledger-backed-consensus-key-with-a-remote-signer',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Node Maintenance',
-      collapsible: false,
-      link: {
-        type: 'doc',
-        id: 'maintenance-guides/README',
-      },
-      items: [
-        'maintenance-guides/wiping-node-state',
-        'maintenance-guides/handling-network-upgrades',
-        'maintenance-guides/adding-or-removing-nodes',
-        'maintenance-guides/refreshing-certificates',
-        'maintenance-guides/shutting-down-a-node',
+        {
+          type: 'category',
+          label: 'Maintenance',
+          link: {
+            type: 'doc',
+            id: 'set-up-your-node/maintenance/README',
+          },
+          items: [
+            'set-up-your-node/maintenance/wiping-node-state',
+            'set-up-your-node/maintenance/handling-network-upgrades',
+            'set-up-your-node/maintenance/adding-or-removing-nodes',
+            'set-up-your-node/maintenance/refreshing-certificates',
+            'set-up-your-node/maintenance/shutting-down-a-node',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Advanced',
+          link: {
+            type: 'doc',
+            id: 'set-up-your-node/advanced/README',
+          },
+          items: [
+            'set-up-your-node/advanced/sync-node-using-state-sync',
+            'set-up-your-node/advanced/copy-state-from-one-node-to-the-other',
+            'set-up-your-node/advanced/install-oasis-remote-signer-binary',
+            'set-up-your-node/advanced/using-ledger-backed-consensus-key-with-a-remote-signer',
+          ]
+        },
       ]
     },
     'troubleshooting',
-    'upgrade-log',
   ],
 };
 

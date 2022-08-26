@@ -190,7 +190,7 @@ If the previous behavior is required, the binary must be run in unsafe/debug
 mode (via the intentionally undocumented flag), and `debug.allow_root` must also
 be set.
 
-[change-to-non-root]: ./prerequisites/system-configuration.mdx#change-to-non-root
+[change-to-non-root]: ../prerequisites/system-configuration.mdx#change-to-non-root
 
 ### Instructions - Upgrade day
 
@@ -384,7 +384,7 @@ worker:
       - "xx.yy.zz.vv:12346"
 ```
 
-[network-parameters-paratimes]: /general/oasis-network/network-parameters#paratimes
+[network-parameters-paratimes]: README.md#paratimes
 
 ### Additional notes
 

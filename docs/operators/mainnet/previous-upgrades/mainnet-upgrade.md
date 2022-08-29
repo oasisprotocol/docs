@@ -61,7 +61,7 @@ See the updated [Network Parameters](../README.md) for the published Mainnet gen
 
 :::info
 
-For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](/operators/maintenance-guides/handling-network-upgrades#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
+For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](/operators/set-up-your-node/maintenance/handling-network-upgrades#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
 
 :::
 

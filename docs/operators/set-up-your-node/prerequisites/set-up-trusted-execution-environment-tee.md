@@ -390,7 +390,7 @@ failed to initialize TEE: error while getting quote info from AESMD: aesm: error
 ```
 
 Ensure you have all required SGX driver libraries installed as listed in
-[Install SGX Linux Driver section](../set-up-your-node/run-a-paratime-node.mdx#install-sgx-linux-driver).
+[Install SGX Linux Driver section](../run-a-paratime-node.mdx#install-sgx-linux-driver).
 Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
 
 ### Permission Denied When Accessing SGX Kernel Device

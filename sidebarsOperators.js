@@ -47,16 +47,18 @@ const sidebars = {
       label: 'Set Up Your Node',
       collapsible: false,
       link: {
-        type: 'doc',
-        id: 'set-up-your-node/README',
+        type: 'generated-index',
+        description: "This section provides documentation on how to set up an Oasis Node running on your computer.",
+        slug: 'set-up-your-node',
       },
       items: [
         {
           type: 'category',
           label: 'Prerequisites',
           link: {
-            type: 'doc',
-            id: 'set-up-your-node/prerequisites/README',
+            type: 'generated-index',
+            description: "This sections lists hardware and software prerequisites for running an Oasis node.",
+            slug: 'set-up-your-node/prerequisites',
           },
           items: [
             'set-up-your-node/prerequisites/hardware-recommendations',
@@ -81,8 +83,9 @@ const sidebars = {
           type: 'category',
           label: 'Maintenance',
           link: {
-            type: 'doc',
-            id: 'set-up-your-node/maintenance/README',
+            type: 'generated-index',
+            description: "This section provides documentation on how to maintain your Oasis node setup over long run.",
+            slug: 'set-up-your-node/maintenance',
           },
           items: [
             'set-up-your-node/maintenance/wiping-node-state',
@@ -96,8 +99,9 @@ const sidebars = {
           type: 'category',
           label: 'Advanced',
           link: {
-            type: 'doc',
-            id: 'set-up-your-node/advanced/README',
+            type: 'generated-index',
+            description: "This section provides documentation on advanced usages of the Oasis node.",
+            slug: 'set-up-your-node/advanced',
           },
           items: [
             'set-up-your-node/advanced/sync-node-using-state-sync',
@@ -106,9 +110,9 @@ const sidebars = {
             'set-up-your-node/advanced/using-ledger-backed-consensus-key-with-a-remote-signer',
           ]
         },
+        'set-up-your-node/troubleshooting',
       ]
     },
-    'troubleshooting',
   ],
 };
 

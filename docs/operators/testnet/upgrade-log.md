@@ -66,7 +66,7 @@ is published.
 
 * If you are running a Rosetta gateway, upgrade it to version [2.2.0].
 
-[Handling Network Upgrades]: /operators/maintenance-guides/handling-network-upgrades
+[Handling Network Upgrades]: ../set-up-your-node/maintenance/handling-network-upgrades.md
 
 ### Before Upgrade
 
@@ -131,7 +131,7 @@ link soon after reaching the upgrade epoch.
 * Replace the old genesis file with the new Testnet genesis file.
   The [state changes](#state-changes) are described and explained below.
 * Replace the old version of Oasis Node with version [22.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0).
-* [Wipe state](/operators/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* [Wipe state](../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Perform any needed [configuration changes](#configuration-changes) described below.
 * Start your node.
 
@@ -350,7 +350,7 @@ The [Oasis Core 21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag
 ### Instructions - Before Upgrade System Preparation
 
 * This upgrade will upgrade **Oasis Core** to version **21.2.8** which:
-  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](/operators/prerequisites/system-configuration#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
+  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](/operators/set-up-your-node/prerequisites/system-configuration#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
 * Stop your node, replace the old version of Oasis Node with version [21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) and restart your node.
 
 :::tip
@@ -529,7 +529,7 @@ Testnet state at epoch **5662** will be exported and migrated to a 21.1.x compat
 
 * Replace the old genesis file with the new Testnet genesis file.
 * Replace the old version of Oasis Node with version [21.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.1).
-* [Wipe state](/operators/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* [Wipe state](../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Start your node.
 
 ### Before upgrade
@@ -585,7 +585,7 @@ We expect the Testnet network to reach this epoch at around 2021-03-24 11:30 UTC
 
 ### Instructions
 
-*   (optional) To ensure your node will stop at epoch **5128** [submit the following upgrade descriptor](/operators/maintenance-guides/handling-network-upgrades#stop-the-node-at-specific-epoch) at any time before the upgrade:
+*   (optional) To ensure your node will stop at epoch **5128** [submit the following upgrade descriptor](../set-up-your-node/maintenance/handling-network-upgrades.md#stop-the-node-at-specific-epoch) at any time before the upgrade:
 
     ```
     {
@@ -603,17 +603,17 @@ Testnet state at epoch **5128** will be exported and migrated to a 21.0.x compat
 
 :::
 
-* (optional) Verify the provided Testnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](/operators/maintenance-guides/handling-network-upgrades#download-and-verify-the-provided-genesis-file) guide.
+* (optional) Verify the provided Testnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
 * Replace the old genesis file with the new Testnet genesis file.
 * Stop your node (if you haven't stopped it already by submitting the upgrade descriptor).
 * Replace the old version of Oasis Node with version [21.0.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.0.1).
 * Update your node's configuration or perform any additional needed steps as per [Additional Steps](./README.md#additional-steps) below.
-* [Wipe state](/operators/maintenance-guides/wiping-node-state#state-wipe-and-keep-node-identity).
+* [Wipe state](../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Start your node.
 
 :::info
 
-For more detailed instructions, see the [Handling Network Upgrades](/operators/maintenance-guides/handling-network-upgrades) guide.
+For more detailed instructions, see the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md) guide.
 
 :::
 

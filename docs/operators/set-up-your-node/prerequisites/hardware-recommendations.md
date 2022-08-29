@@ -173,11 +173,11 @@ parameters appropriately in your [node's configuration].
 
 [BadgerDB]: https://dgraph.io/docs/badger/
 [badgerdb-ssds]: https://dgraph.io/docs/badger/design/
-[Cobalt upgrade]: /general/mainnet/previous-upgrades/cobalt-upgrade
-[Damask upgrade]: /general/mainnet/damask-upgrade
+[Cobalt upgrade]: ../../mainnet/previous-upgrades/cobalt-upgrade.md
+[Damask upgrade]: ../../mainnet/damask-upgrade.md
 [Emerald Mainnet launch]:
   https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9
-[node's configuration]: ../set-up-your-node/run-validator.md#configuring-the-oasis-node
+[node's configuration]: ../run-validator.md#configuring-the-oasis-node
 
 
 ### Network

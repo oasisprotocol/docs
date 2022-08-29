@@ -4,7 +4,7 @@ This guide will cover setting up a seed node for the Oasis Network. This guide a
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites Guide](../prerequisites/oasis-node.md) and understand how to use the `oasis-node` binary.
+Before following this guide, make sure you've followed the [Prerequisites Guide](prerequisites/oasis-node.md) and understand how to use the `oasis-node` binary.
 
 ### Creating a Working Directory
 

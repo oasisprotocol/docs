@@ -45,7 +45,7 @@ The Oasis Node is part of the Oasis Core release.
 
 :::
 
-[handling network upgrades]: /operators/maintenance-guides/handling-network-upgrades
+[handling network upgrades]: /operators/set-up-your-node/maintenance/handling-network-upgrades
 
 ## ParaTimes
 

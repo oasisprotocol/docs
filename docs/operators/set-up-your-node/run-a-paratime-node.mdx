@@ -33,7 +33,7 @@ This guide will cover setting up your ParaTime compute node for the Oasis Networ
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/README.mdx) and [Run a Non-validator Node](run-non-validator.md) sections and have:
+Before following this guide, make sure you've followed the [Prerequisites](prerequisites) and [Run a Non-validator Node](run-non-validator.md) sections and have:
 
 * Oasis Node binary installed and configured on your system.
 * The chosen top-level `/node/` working directory prepared. In addition to `etc` and `data` directories, also prepare the following directories:
@@ -58,7 +58,7 @@ Reading the rest of the [validator node setup instructions](run-validator.md) ma
 
 :::info
 
-To speed up bootstraping your new node, we recommend [copying node's state from your existing node](../advanced/copy-state-from-one-node-to-the-other.md) or [syncing it using state sync](../advanced/sync-node-using-state-sync.md).
+To speed up bootstraping your new node, we recommend [copying node's state from your existing node](advanced/copy-state-from-one-node-to-the-other.md) or [syncing it using state sync](advanced/sync-node-using-state-sync.md).
 
 :::
 
@@ -293,7 +293,7 @@ Ubuntu 18.04 LTS (and earlier) provide overly-old `bubblewrap`. Follow _Other Di
 
 ### Setting up Trusted Execution Environment (TEE)
 
-If a ParaTime requires the use of a TEE, then make sure you set up TEE as instructed in the [Set up Trusted Execution Environment (TEE)](../prerequisites/set-up-trusted-execution-environment-tee.md) doc.
+If a ParaTime requires the use of a TEE, then make sure you set up TEE as instructed in the [Set up Trusted Execution Environment (TEE)](prerequisites/set-up-trusted-execution-environment-tee.md) doc.
 
 ## Configuration
 
@@ -398,7 +398,7 @@ oasis-node control status -a unix:/node/data/internal.sock
 
 ## Troubleshooting
 
-See the general [Node troubleshooting](../troubleshooting.md) and [Set up TEE troubleshooting](../prerequisites/set-up-trusted-execution-environment-tee.md#troubleshooting) sections before proceeding with ParaTime node-specific troubleshooting.
+See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troubleshooting](prerequisites/set-up-trusted-execution-environment-tee.md#troubleshooting) sections before proceeding with ParaTime node-specific troubleshooting.
 
 ### Too Old Bubblewrap Version
 

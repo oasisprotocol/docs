@@ -165,6 +165,10 @@ const config = {
             from: '/general/run-a-node/upgrade-log'
           },
           {
+            to: '/operators/set-up-your-node/troubleshooting',
+            from: '/general/run-a-node/troubleshooting'
+          },
+          {
             to: '/operators/testnet/',
             from: '/general/foundation/testnet/'
           },          {

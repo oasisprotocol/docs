@@ -34,7 +34,7 @@ account to Emerald. Consult the [How to transfer ROSE into Emerald ParaTime]
 [how-to-deposit-rose] chapter to learn more.
 
 
-[overview]: /general/oasis-network/overview
+[overview]: /general/oasis-network/
 [Ed25519]: https://en.wikipedia.org/wiki/EdDSA#Ed25519
 [ECDSA]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
 [how-to-deposit-rose]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime

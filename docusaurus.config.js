@@ -149,6 +149,14 @@ const config = {
             from: '/general/faq/oasis-network-faq',
           },
           {
+            to: '/general/manage-tokens/',
+            from: '/general/manage-tokens/overview',
+          },
+          {
+            to: '/general/oasis-network/',
+            from: '/general/oasis-network/overview',
+          },
+          {
             to: '/general/oasis-network/why-oasis',
             from: '/oasis-network-primer/',
           },

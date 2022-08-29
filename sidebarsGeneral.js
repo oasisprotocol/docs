@@ -10,7 +10,7 @@ const sidebars = {
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'oasis-network/overview',
+        id: 'oasis-network/README',
       },
       items: [
         'oasis-network/genesis-doc',
@@ -31,7 +31,7 @@ const sidebars = {
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'manage-tokens/overview',
+        id: 'manage-tokens/README',
       },
       items: [
         'manage-tokens/terminology',

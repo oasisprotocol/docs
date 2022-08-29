@@ -34,7 +34,7 @@ account to Sapphire. Consult the [How to transfer ROSE into an EVM ParaTime]
 [how-to-deposit-rose] chapter to learn more.
 
 
-[overview chapter]: /general/oasis-network/overview
+[overview chapter]: /general/oasis-network/
 [how-to-deposit-rose]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 

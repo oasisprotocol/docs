@@ -39,7 +39,7 @@ The following parts of the genesis document will be updated:
 
 :::info
 
-For a more detailed explanation of the parameters below, see the [Genesis Document](/general/oasis-network/genesis-doc#parameters) docs.
+For a more detailed explanation of the parameters below, see the [Genesis Document](../../../general/oasis-network/genesis-doc.md#parameters) docs.
 
 :::
 
@@ -52,11 +52,11 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
 
 ### **Epoch Time**
 
-The **`epochtime`**object will be removed since it became obsolete with the new [improved random beacon](/adrs/0007-improved-random-beacon). It will be replaced with the new **`beacon`** object described [below](cobalt-upgrade.md#random-beacon).
+The **`epochtime`**object will be removed since it became obsolete with the new [improved random beacon](../../../adrs/0007-improved-random-beacon.md). It will be replaced with the new **`beacon`** object described [below](cobalt-upgrade.md#random-beacon).
 
 ### **Registry**
 
-*   **`registry.params.enable_runtime_governance_models` ** is a new parameter that specifies the set of [runtime governance models](/core/consensus/services/registry#runtimes) that are allowed to be used when creating/updating registrations. It will be set to:
+*   **`registry.params.enable_runtime_governance_models` ** is a new parameter that specifies the set of [runtime governance models](../../../core/consensus/services/registry.md#runtimes) that are allowed to be used when creating/updating registrations. It will be set to:
 
     ```
     {
@@ -66,7 +66,7 @@ The **`epochtime`**object will be removed since it became obsolete with the new 
     ```
 * **`registry.runtimes`** list contains the registered runtimes' descriptors. In the Cobalt upgrade, it will be migrated from a list of _signed_ runtime descriptors to a list of runtime descriptors. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
 * **`registry.suspended_runtimes`** list contains the suspended registered runtimes' descriptors. In the Cobalt upgrade, it will be migrated from a list of _signed_ suspended runtime descriptors to a list of suspended runtime descriptors. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
-* Inactive registered entities in **`registry.entities`** (and their corresponding nodes in **`registry.nodes`**) that don't pass the [minimum staking thresholds](/general/oasis-network/genesis-doc#node-and-paratime-token-thresholds) will be removed. The removal will be done automatically with the `oasis-node debug fix-genesis` command.
+* Inactive registered entities in **`registry.entities`** (and their corresponding nodes in **`registry.nodes`**) that don't pass the [minimum staking thresholds](../../../general/oasis-network/genesis-doc.md#node-and-paratime-token-thresholds) will be removed. The removal will be done automatically with the `oasis-node debug fix-genesis` command.
 
 :::info
 
@@ -76,17 +76,17 @@ Deregistered entities can always re-register by submitting the [entity registrat
 
 :::
 
-* **`registry.node_statuses`** object contains the registered nodes' statuses. In the Cobalt upgrade, each node's status will get a new parameter: **`election_eligible_after`**. This parameter specifies at which epoch a node is eligible to be [scheduled into various committees](/core/consensus/services/scheduler). All nodes will have the parameter set to `0` which means they are immediately eligible. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
+* **`registry.node_statuses`** object contains the registered nodes' statuses. In the Cobalt upgrade, each node's status will get a new parameter: **`election_eligible_after`**. This parameter specifies at which epoch a node is eligible to be [scheduled into various committees](../../../core/consensus/services/scheduler.md). All nodes will have the parameter set to `0` which means they are immediately eligible. The migration will be done automatically with the `oasis-node debug fix-genesis` command.
 
 ### **Root Hash**
 
-* **`roothash.params.max_runtime_messages` ** is a new parameter that specifies the global limit on the number of [messages](/core/runtime/messages) that can be emitted in each round by the runtime. It will be set to `256`.
-* **`roothash.params.max_evidence_age`** is a new parameter that specifies the maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/adrs/0005-runtime-compute-slashing). It will be set to `100`.
+* **`roothash.params.max_runtime_messages` ** is a new parameter that specifies the global limit on the number of [messages](../../../core/runtime/messages.md) that can be emitted in each round by the runtime. It will be set to `256`.
+* **`roothash.params.max_evidence_age`** is a new parameter that specifies the maximum age (in the number of rounds) of submitted evidence for [compute node slashing](../../../adrs/0005-runtime-compute-slashing.md). It will be set to `100`.
 
 ### **Staking**
 
 * **`staking.governance_deposits` ** are the tokens collected from governance proposal deposits. The initial balance will be set to `"0"`.
-* **`staking.params.allow_escrow_messages`** is a new parameter indicating whether to enable support for the newly added `AddEscrow` and `ReclaimEscrow` [runtime messages](/core/runtime/messages) . It will be set to`true`.
+* **`staking.params.allow_escrow_messages`** is a new parameter indicating whether to enable support for the newly added `AddEscrow` and `ReclaimEscrow` [runtime messages](../../../core/runtime/messages.md) . It will be set to`true`.
 * **`staking.params.slashing.0`** will be renamed to **`staking.params.slashing.consensus-equivocation`**.
 * **`staking.params.slashing.consensus-light-client-attack.amount`** is a new parameter controlling how much to slash for light client attack. It will be set to `"100000000000"` (i.e. 100,000,000,000 base units, or 100 ROSE tokens).
 * **`staking.params.slashing.consensus-light-client-attack.freeze_interval` ** is a new parameter controlling the duration (in epochs) for which a node that has been slashed for light client attack is “frozen,” or barred from participating in the network's consensus committee. It will be set to `18446744073709551615` (i.e. the maximum value for a 64-bit unsigned integer) which means that any node slashed for light client attack will be, in effect, permanently banned from the network.
@@ -97,10 +97,10 @@ Deregistered entities can always re-register by submitting the [entity registrat
 
 ### **Random Beacon**
 
-The **`beacon`** object contains parameters controlling the new [improved random beacon](/adrs/0007-improved-random-beacon) introduced in the Cobalt upgrade.
+The **`beacon`** object contains parameters controlling the new [improved random beacon](../../../adrs/0007-improved-random-beacon.md) introduced in the Cobalt upgrade.
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch of Mainnet's state dump + 1, i.e. `5047`.
-* **`beacon.params.backend`** configures the random beacon backend to use. It will be set to `"pvss"` indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/adrs/0007-improved-random-beacon) should be used.
+* **`beacon.params.backend`** configures the random beacon backend to use. It will be set to `"pvss"` indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](../../../adrs/0007-improved-random-beacon.md) should be used.
 * **`beacon.params.pvss_parameters.participants`** is the number of participants to be selected for each beacon generation protocol round. It will be set to `20`.
 * **`beacon.params.pvss_parameters.threshold`** is the minimum number of participants which must successfully contribute entropy for the final output to be considered valid. It will be set to `10`.
 * **`beacon.params.pvss_parameters.commit_interval`** is the duration of the Commit phase (in blocks). It will be set to `400`.
@@ -109,7 +109,7 @@ The **`beacon`** object contains parameters controlling the new [improved random
 
 ### **Governance**
 
-The **`governance`** object contains parameters controlling the network's [on-chain governance](/core/consensus/services/governance) introduced in the Cobalt upgrade**.**
+The **`governance`** object contains parameters controlling the network's [on-chain governance](../../../core/consensus/services/governance.md) introduced in the Cobalt upgrade**.**
 
 * **`governance.params.min_proposal_deposit`** is the amount of tokens (in base units) that are deposited when creating a new proposal. It will be set to  `"10000000000000"` (i.e. 10,000,000,000,000 base units, or 10,000 ROSE tokens).
 * **`governance.params.voting_period`** is the number of epochs after which the voting for a proposal is closed and the votes are tallied. It will be set to `168`, which is expected to be approximately 7 days.
@@ -158,6 +158,6 @@ After completing the runtime storage migration, Second State will communicate th
 
 The Oasis team will be offering live video support during the Cobalt upgrade. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](/general/oasis-network/connect-with-us) with your questions, comments, and feedback related to Cobalt upgrade.
+For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../../../general/oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Cobalt upgrade.
 
-To follow the network, please use one of the many [community block explorers](/general/community-resources/community-made-resources#block-explorers-validator-leaderboards).
+To follow the network, please use one of the many [community block explorers](../../../general/community-resources/community-made-resources.md#block-explorers-validator-leaderboards).

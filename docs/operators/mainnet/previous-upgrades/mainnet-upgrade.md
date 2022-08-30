@@ -19,11 +19,11 @@ In order to transition from Mainnet Beta to Mainnet, community members have coll
   * _Throughout Mainnet Beta there have been between 75 and 77 active validators on the network._
 * [x] There are NO Oasis Protocol Foundation or Oasis Labs nodes serving as validators.
 * [x] At least one block explorer exists to track network stability, transactions, and validator activity.
-  * _There is much more. See_ [_Block Explorers & Validator Leaderboards_](/general/community-resources/community-made-resources#block-explorers-validator-leaderboards) _part of our docs._
+  * _There is much more. See_ [_Block Explorers & Validator Leaderboards_](../../../general/community-resources/community-made-resources.md#block-explorers-validator-leaderboards) _part of our docs._
 * [x] At least one qualified custodian supports the native ROSE token.
-  * _Currently, Anchorage and Finoa support the ROSE token. See_ [_Custody Providers_](/general/manage-tokens/holding-rose-tokens/custody-providers) _part of our docs._
+  * _Currently, Anchorage and Finoa support the ROSE token. See_ [_Custody Providers_](../../../general/manage-tokens/holding-rose-tokens/custody-providers.md) _part of our docs._
 * [x] At least one web wallet or hardware wallet supports native ROSE token.
-  * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_Mobile Wallets_](/general/manage-tokens/holding-rose-tokens/bitpie-wallet) _and_ [_Web Wallets_](/general/manage-tokens/oasis-wallets/) _parts of our docs._
+  * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_Mobile Wallets_](../../../general/manage-tokens/holding-rose-tokens/bitpie-wallet.md) _and_ [_Web Wallets_](../../../general/manage-tokens/oasis-wallets/README.mdx) _parts of our docs._
 
 ## Mechanics of Upgrading to Mainnet
 
@@ -33,7 +33,7 @@ Upgrading from Mainnet Beta to Mainnet will require a coordinated upgrade of the
 
 The Mainnet genesis file is intended to be as close as possible to the state of the Mainnet Beta network at the time of upgrade. That includes retaining validator token balances, retaining genesis file wallet allocations, and block height at time of the snapshot.
 
-In addition, after receiving additional feedback from the community, the Oasis Protocol Foundation has proposed to increase the staking rewards model. In the new proposed model staking rewards will start at 20% (annualized) and range from 20% to 2% over the first 4 years of the network (see more in updated [Token Metrics and Distribution](/oasis-network-primer/token-metrics-and-distribution) doc).
+In addition, after receiving additional feedback from the community, the Oasis Protocol Foundation has proposed to increase the staking rewards model. In the new proposed model staking rewards will start at 20% (annualized) and range from 20% to 2% over the first 4 years of the network (see more in updated [Token Metrics and Distribution](../../../general/oasis-network/token-metrics-and-distribution.mdx) doc).
 
 :::info
 
@@ -61,7 +61,7 @@ See the updated [Network Parameters](../README.md) for the published Mainnet gen
 
 :::info
 
-For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](/operators/set-up-your-node/maintenance/handling-network-upgrades#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
+For more detailed instructions how to verify the provided Mainnet genesis file by comparing it to network state dump, see the [Handling Network Upgrades](../../set-up-your-node/maintenance/handling-network-upgrades.md#example-diff-for-mainnet-beta-to-mainnet-network-upgrade) guide.
 
 :::
 
@@ -71,7 +71,7 @@ Mainnet will use [**Oasis Core 20.12.2**](https://github.com/oasisprotocol/oasis
 
 The Oasis team will be offering live video support during the launch of Mainnet. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](/general/oasis-network/connect-with-us) with your questions, comments, and feedback related to Mainnet.
+For any additional support, please reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](../../../general/oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet.
 
 To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).[  
 ](https://app.gitbook.com/@oasisprotocol/s/general/~/drafts/-MYKBZ_9kr9NSXQSnUVI/contribute-to-the-network/contribution-guidelines/@merged)

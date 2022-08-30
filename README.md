@@ -105,9 +105,9 @@ sidebar structure inside their `sidebars.js` file.
 Markdown files hosted by this repository should:
 
 - reference markdown files in the same component by a relative path e.g.
-  `../../howto-use-wallet.md`.
-- reference markdown files in other components by absolute link e.g.
-  `/node-operators/running-your-own-node`
+  `../howto-use-wallet.md`.
+- reference markdown files in other components by a relative link e.g.
+  `../../operators/set-up-your-node.md`
 
 Markdown files hosted by other Oasis repositories should:
 
@@ -123,12 +123,10 @@ preprocessor (remark plugin).
 
 ### DocCards
 
-DocCards are an attractive elements used mostly in the introductory
-chapters and *See also* sections. Apart from the built-in docusaurus
+DocCards are attractive elements used mostly in the introductory
+chapters and *See also* sections Apart from the built-in docusaurus
 `useCurrentSidebarCategory().items` helper, you can also use the
-`findGeneralSidebarItem()` helper to reference arbitrary page or category
-inside the `general` component or `newItem()` to create a link to a page
-in any other component or to an external page.
+`findSidebarItem()` helper passing the href of the target page.
 
 `DocCardList` will show one or two DocCards per row while a single `DocCard`
 will span horizontally over the whole site resembling page links in gitbook.  

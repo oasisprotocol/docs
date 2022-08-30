@@ -3,18 +3,18 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   developers: [
-    'README',
+    'developers/README',
     {
       type: 'category',
       label: 'Emerald ParaTime',
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'emerald-paratime/README',
+        id: 'developers/emerald-paratime/README',
       },
       items: [
-        'emerald-paratime/writing-dapps-on-emerald',
-        'emerald-paratime/integrating-band-oracle-smart-contract',
+        'developers/emerald-paratime/writing-dapps-on-emerald',
+        'developers/emerald-paratime/integrating-band-oracle-smart-contract',
       ],
     },
     {
@@ -23,10 +23,10 @@ const sidebars = {
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'sapphire-paratime/README',
+        id: 'developers/sapphire-paratime/README',
       },
       items: [
-        'sapphire-paratime/writing-dapps-on-sapphire',
+        'developers/sapphire-paratime/writing-dapps-on-sapphire',
       ],
     },
     {
@@ -35,7 +35,7 @@ const sidebars = {
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'sdk/index',
+        id: 'developers/sdk/README',
       },
       items: [
         {
@@ -43,9 +43,9 @@ const sidebars = {
           label: 'Smart Contracts',
           collapsible: false,
           items: [
-            'sdk/contract/getting-started',
-            'sdk/contract/hello-world',
-            'sdk/contract/confidential-smart-contract',
+            'developers/sdk/contract/README',
+            'developers/sdk/contract/hello-world',
+            'developers/sdk/contract/confidential-smart-contract',
           ],
         },
         {
@@ -53,10 +53,10 @@ const sidebars = {
           label: 'Runtimes',
           collapsible: false,
           items: [
-            'sdk/runtime/getting-started',
-            'sdk/runtime/minimal-runtime',
-            'sdk/runtime/modules',
-            'sdk/runtime/reproducibility',
+            'developers/sdk/runtime/README',
+            'developers/sdk/runtime/minimal-runtime',
+            'developers/sdk/runtime/modules',
+            'developers/sdk/runtime/reproducibility',
           ],
         },
         {

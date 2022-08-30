@@ -157,11 +157,11 @@ oasis-node consensus submit_tx \
   --transaction.file tx_cast_vote.json
 ```
 
-[upgrade governance proposal]: /core/consensus/services/governance#submit-proposal
-[your entity's nonce]: /general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce#get-your-entitys-nonce
-[Oasis CLI Tools Setup]: /general/manage-tokens/advanced/oasis-cli-tools/setup#storing-base-and-signer-flags-in-an-environment-variable
+[upgrade governance proposal]: ../../core/consensus/services/governance.md#submit-proposal
+[your entity's nonce]: ../../general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce
+[Oasis CLI Tools Setup]: ../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable
 [Installing Oasis App on Your Ledger Wallet]:
-  /oasis-core-ledger/usage/setup#installing-oasis-app-on-your-ledger-wallet
+  ../../oasis-core-ledger/usage/setup#installing-oasis-app-on-your-ledger-wallet
 
 ### Instructions - Before upgrade
 
@@ -262,7 +262,7 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 
 11. Start your node and re-enable auto-starting via your process manager.
 
-[Damask Upgrade]: /general/mainnet/damask-upgrade#state-changes
+[Damask Upgrade]: damask-upgrade.md#state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]: ../set-up-your-node/maintenance/handling-network-upgrades.md#verify-genesis
@@ -438,9 +438,9 @@ At least **90%** of the votes need to be **yes** votes for a proposal to be acce
 
 :::
 
-This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](/general/mainnet/previous-upgrades/cobalt-upgrade).
+This upgrade will be the first upgrade that will use the new on-chain governance service introduced in the [Cobalt Upgrade](previous-upgrades/cobalt-upgrade.md).
 
-The Oasis Protocol Foundation has submitted an [upgrade governance proposal](/core/consensus/services/governance#submit-proposal) with the following contents:
+The Oasis Protocol Foundation has submitted an [upgrade governance proposal](../../core/consensus/services/governance.md#submit-proposal) with the following contents:
 
 ```yaml
 {
@@ -502,7 +502,7 @@ The output should look like:
 ]
 ```
 
-Obtain [your entity's nonce](/general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce#get-your-entitys-nonce) and store it in the `NONCE` variable. You can do that by running:
+Obtain [your entity's nonce](../../general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce) and store it in the `NONCE` variable. You can do that by running:
 
 ```yaml
 ENTITY_DIR=<PATH-TO-YOUR-ENTITY>
@@ -526,7 +526,7 @@ oasis-node governance gen_cast_vote \
   --transaction.fee.amount 2000
 ```
 
-where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](/general/manage-tokens/advanced/oasis-cli-tools/setup#storing-base-and-signer-flags-in-an-environment-variable) doc.
+where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable) doc.
 
 :::caution
 
@@ -937,7 +937,7 @@ We expect the Mainnet Beta network to reach this block height at around 2020-11-
 
 :::info
 
-This time, we recommend dumping the network state with the upgraded Oasis Node binary so that the genesis file will be in the [canonical form](/core/consensus/genesis#canonical-form).
+This time, we recommend dumping the network state with the upgraded Oasis Node binary so that the genesis file will be in the [canonical form](../../core/consensus/genesis.md#canonical-form).
 
 The canonical form will make it easier to compare the obtained genesis file with the one provided by us.
 

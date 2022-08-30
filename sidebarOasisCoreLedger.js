@@ -6,18 +6,18 @@ const sidebars = {
     {
       type: 'doc',
       label: 'Introduction to Oasis Core Ledger',
-      id: 'README',
+      id: 'oasis-core-ledger/README',
     },
     {
       type: 'category',
       label: 'Usage',
       collapsible: false,
       items: [
-        'usage/setup',
-        'usage/address',
-        'usage/entity',
-        'usage/transactions',
-        'usage/wallets',
+        'oasis-core-ledger/usage/setup',
+        'oasis-core-ledger/usage/address',
+        'oasis-core-ledger/usage/entity',
+        'oasis-core-ledger/usage/transactions',
+        'oasis-core-ledger/usage/wallets',
       ],
     },
     {
@@ -25,8 +25,8 @@ const sidebars = {
       label: 'Processes',
       collapsible: false,
       items: [
-        'versioning',
-        'release-process',
+        'oasis-core-ledger/versioning',
+        'oasis-core-ledger/release-process',
       ],
     },
   ],

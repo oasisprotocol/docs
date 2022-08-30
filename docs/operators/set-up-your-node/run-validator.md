@@ -66,15 +66,15 @@ This will be needed later when generating transactions.
 
 ### Initializing an Entity
 
-An entity is critical to operating nodes on the network as it controls the stake attached to a given individual or organization on the network. We highly recommend using an HSM or [Ledger](/oasis-core-ledger) device to protect your entity private key.
+An entity is critical to operating nodes on the network as it controls the stake attached to a given individual or organization on the network. We highly recommend using an HSM or [Ledger](../../oasis-core-ledger) device to protect your entity private key.
 
 #### Using a Ledger-based Signer
 
 The Ledger-based signer stores your private keys on your Ledger wallet. It is implemented as an Oasis Core signer plugin.
 
-You will need to set it up as described in the [Setup](/oasis-core-ledger/usage/setup) section of our [Oasis Core Ledger docs](/oasis-core-ledger).
+You will need to set it up as described in the [Setup](../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../oasis-core-ledger).
 
-As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](/oasis-core-ledger/usage/entity) section of our [Oasis Core Ledger docs](/oasis-core-ledger).
+As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](../../oasis-core-ledger/usage/entity.md) section of our [Oasis Core Ledger docs](../../oasis-core-ledger).
 
 This will create 1 file in `/localhostdir/entity`:
 
@@ -412,7 +412,7 @@ This step is not necessary if your entity was fully staked at genesis.
 
 :::caution
 
-If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](/general/manage-tokens/advanced/oasis-cli-tools/get-account-info).
+If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md).
 
 :::
 
@@ -465,7 +465,7 @@ Before generating the escrow transaction, you need to set the following environm
     For this guide, we will use `/localhostdir/signed-escrow.tx`.
 *   `ACCOUNT_ADDRESS`: Your staking account address.
 
-    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](/general/manage-tokens/advanced/oasis-cli-tools/address#obtain-account-address-from-entitys-id).
+    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../general/manage-tokens/advanced/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
 
 Then execute the following command:
 
@@ -486,7 +486,7 @@ oasis-node stake account gen_escrow \
 
 The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Amber Network as each unit value used to track the account balance is 1x10^-9 tokens.
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](/general/manage-tokens/advanced/oasis-cli-tools/setup#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
 
 :::
 
@@ -521,7 +521,7 @@ oasis-node registry entity gen_register \
 
 :::info
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](/general/manage-tokens/advanced/oasis-cli-tools/setup#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
 
 :::
 

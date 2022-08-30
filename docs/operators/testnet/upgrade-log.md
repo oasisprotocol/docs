@@ -23,7 +23,7 @@ We expect the Testnet network to reach this epoch at around 2022-04-04 7:45 UTC.
 
 * (optional) Vote for the upgrade. On 2022-04-01, an upgrade proposal will be
   proposed which (if accepted) will schedule the upgrade on epoch **15056**.
-  See the [Governance documentation](/operators/set-up-your-node/governance)
+  See the [Governance documentation](../set-up-your-node/governance.md)
   for details on voting for proposals.
 
 :::info
@@ -106,7 +106,7 @@ We expect the Testnet network to reach this epoch at around 2022-03-03 12:45 UTC
 
 ### Instructions
 
-* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](/operators/set-up-your-node/governance) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](../set-up-your-node/governance.md) for details on voting for proposals.
 
 :::caution
 
@@ -236,7 +236,7 @@ The following parts of the genesis document will be updated:
 
 :::info
 
-For a more detailed explanation of the parameters below, see the [Genesis Document](/general/oasis-network/genesis-doc#parameters) docs.
+For a more detailed explanation of the parameters below, see the [Genesis Document] docs.
 
 :::
 
@@ -261,7 +261,7 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
   command.
 * Inactive registered entities in **`registry.entities`** (and their
   corresponding nodes in **`registry.nodes`**) that don't pass the
-  [minimum staking thresholds](/general/oasis-network/genesis-doc#node-and-paratime-token-thresholds) will be removed.
+  [minimum staking thresholds] will be removed.
   The removal will be done automatically with the `oasis-node debug fix-genesis`
   command.
 
@@ -327,7 +327,8 @@ _TODO_
   increased from `10000` to `100000` to improve nodes' performance since
   computing checkpoints is I/O intensive.
 
-
+[Genesis Document]: ../../general/oasis-network/genesis-doc.md#parameters
+[minimum staking thresholds]: ../../general/oasis-network/genesis-doc.md#node-and-paratime-token-thresholds
 
 ## 2021-08-11 Upgrade
 
@@ -350,7 +351,7 @@ The [Oasis Core 21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag
 ### Instructions - Before Upgrade System Preparation
 
 * This upgrade will upgrade **Oasis Core** to version **21.2.8** which:
-  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](/operators/set-up-your-node/prerequisites/system-configuration#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
+  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../set-up-your-node/prerequisites/system-configuration.mdx#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
 * Stop your node, replace the old version of Oasis Node with version [21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) and restart your node.
 
 :::tip
@@ -394,7 +395,7 @@ We expect the Testnet network to reach this epoch at around 2021-06-23 14:30 UTC
 ### Instructions
 
 * See [Before upgrade](upgrade-log.md#before-upgrade) section for required steps to be done before upgrade.
-* (optional) Vote for the upgrade. On 2021-06-21, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **7553.** See the [Governance documentation](/operators/set-up-your-node/governance) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2021-06-21, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **7553.** See the [Governance documentation](../set-up-your-node/governance.md) for details on voting for proposals.
 
 :::info
 
@@ -509,7 +510,7 @@ We expect the Testnet network to reach this epoch at around 2021-04-13 12:00 UTC
 ### Instructions
 
 * Runtime operators see [Before upgrade](upgrade-log.md#before-upgrade) section for required steps to be done before upgrade.
-* (optional) Vote for the upgrade. On 2021-04-12 an upgrade proposal will be proposed which (if accepted) will schedule a network shutdown on epoch **5662.** See the [Governance documentation](/operators/set-up-your-node/governance) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2021-04-12 an upgrade proposal will be proposed which (if accepted) will schedule a network shutdown on epoch **5662.** See the [Governance documentation](../set-up-your-node/governance.md) for details on voting for proposals.
 
 :::caution
 

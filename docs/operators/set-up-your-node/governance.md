@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](/general/manage-tokens/advanced/oasis-cli-tools/prerequisites) and [Setup](/general/manage-tokens/advanced/oasis-cli-tools/setup) sections of the _Use Your Tokens_ docs.
+This example assumes you have read and followed the instructions in the [Prerequisites](../../general/manage-tokens/advanced/oasis-cli-tools/prerequisites) and [Setup](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md) sections of the _Use Your Tokens_ docs.
 
 :::
 

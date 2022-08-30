@@ -2,7 +2,7 @@
 
 :::info
 
-This example assumes you have read and followed the instructions in the [Prerequisites](/general/manage-tokens/advanced/oasis-cli-tools/prerequisites) and [Setup](/general/manage-tokens/advanced/oasis-cli-tools/setup) sections of the _Use Your Tokens_ docs.
+This example assumes you have read and followed the instructions in the [Prerequisites](../../general/manage-tokens/advanced/oasis-cli-tools/prerequisites.md) and [Setup](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md) sections of the _Use Your Tokens_ docs.
 
 :::
 
@@ -56,7 +56,7 @@ oasis-node stake account info \
 
 :::info
 
-For a detailed explanation on querying account information, see the [Get Info](/general/manage-tokens/advanced/oasis-cli-tools/get-account-info) section of the _Use Your Tokens_ docs.
+For a detailed explanation on querying account information, see the [Get Info](../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md) section of the _Use Your Tokens_ docs.
 
 :::
 
@@ -166,7 +166,7 @@ We can observe that:
 
 :::info
 
-For more information on how commissions work in general, see the [Commission](/general/manage-tokens/terminology#commission) explanation in the _Use Your Tokens_ docs.
+For more information on how commissions work in general, see the [Commission](../../general/manage-tokens/terminology.md#commission) explanation in the _Use Your Tokens_ docs.
 
 :::
 

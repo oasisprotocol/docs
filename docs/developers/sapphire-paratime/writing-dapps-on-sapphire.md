@@ -34,8 +34,8 @@ account to Sapphire. Consult the [How to transfer ROSE into an EVM ParaTime]
 [how-to-deposit-rose] chapter to learn more.
 
 
-[overview chapter]: /general/oasis-network/
-[how-to-deposit-rose]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime
+[overview chapter]: ../../general/oasis-network/README.mdx
+[how-to-deposit-rose]: ../../general/manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 
 ## Testnet and Mainnet
@@ -61,8 +61,8 @@ ParaTime.
 
 :::
 
-[network-parameters]: /general/oasis-network/network-parameters
-[Testnet]: /general/foundation/testnet/
+[network-parameters]: ../../operators/mainnet/README.md
+[Testnet]: ../../operators/testnet/README.md
 
 ## Sapphire vs Ethereum
 
@@ -97,7 +97,7 @@ but it's made simple by our compatibility library, (coming soon).
 There are compatibility layers in other languages, which may be found in [the repo].
 
 
-[deposited into Sapphire]: /general/manage-tokens/how-to-transfer-rose-into-evm-paratime
+[deposited into Sapphire]: ../../general/manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
 [the repo]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/clients
 
 ## Writing Secure dapps

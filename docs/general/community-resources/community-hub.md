@@ -12,8 +12,8 @@ Whether you're a blockchain enthusiast, a software developer, or someone who is 
 
 Check out these resources to learn the basics of the Oasis Network:
 
-* [Oasis Network Primer](/oasis-network-primer/)
-* [Token Distribution Schedule](/oasis-network-primer/token-metrics-and-distribution)
+* [Oasis Network Primer](../oasis-network/why-oasis.md)
+* [Token Distribution Schedule](../oasis-network/token-metrics-and-distribution.mdx)
 * [Oasis Network Blog](https://medium.com/oasis-protocol-project)
 
 ## 🌹 Get Involved & Earn ROSE Tokens

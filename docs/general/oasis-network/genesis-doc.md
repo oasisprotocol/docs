@@ -6,15 +6,15 @@ This document provides an overview of the Oasis Network's genesis document.
 
 A genesis document contains a set of parameters that outline the initial state of an Oasis network.
 
-The state defined in the network's genesis document contains all the necessary information for launching that particular network (i.e. Mainnet, [Testnet](/operators/testnet)), including initial token allocations, network parameters, and more.
+The state defined in the network's genesis document contains all the necessary information for launching that particular network (i.e. Mainnet, [Testnet](../../operators/testnet/README.md)), including initial token allocations, network parameters, and more.
 
 :::info
 
-For a more in-depth explanation of the genesis document, see the [Genesis Document](/core/consensus/genesis) part of Oasis Core's developer documentation.
+For a more in-depth explanation of the genesis document, see the [Genesis Document](../../core/consensus/genesis.md) part of Oasis Core's developer documentation.
 
 :::
 
-The important thing to note is that the genesis document is used to compute the [genesis document's hash](/core/consensus/genesis#genesis-documents-hash). This hash is used to verify for which network a given transaction is intended for.
+The important thing to note is that the genesis document is used to compute the [genesis document's hash](../../core/consensus/genesis.md#genesis-documents-hash). This hash is used to verify for which network a given transaction is intended for.
 
 ### Genesis File vs. Genesis Document
 
@@ -24,7 +24,7 @@ When Oasis Node loads a genesis file, it converts it to a genesis document.
 
 :::info
 
-Up to date information about the current genesis file and the current genesis document's hash can be found on the [Network Parameters](/operators/mainnet) page.
+Up to date information about the current genesis file and the current genesis document's hash can be found on the [Network Parameters](../../operators/mainnet/README.md) page.
 
 :::
 
@@ -34,7 +34,7 @@ This sections explains some of the key parameters of the genesis document.
 
 :::caution
 
-The concrete parameter values in the following sections pertain to the Mainnet. Other Oasis networks (e.g. [Testnet](/operators/testnet)) might use different values.
+The concrete parameter values in the following sections pertain to the Mainnet. Other Oasis networks (e.g. [Testnet](../../operators/testnet/README.md)) might use different values.
 
 :::
 
@@ -48,7 +48,7 @@ The **`staking.token_value_exponent`** parameter defines the token value's base-
 
 ### Height, Genesis Time and Chain ID
 
-The **`height`** parameter specifies the network's initial block height. When a network is upgraded, its height is retained. For example, for the [Cobalt upgrade](/operators/mainnet/previous-upgrades/cobalt-upgrade) the height of the Mainnet state dump was bumped by 1 from 3,027,600 to 3,027,601.
+The **`height`** parameter specifies the network's initial block height. When a network is upgraded, its height is retained. For example, for the [Cobalt upgrade](../../operators/mainnet/previous-upgrades/cobalt-upgrade.md) the height of the Mainnet state dump was bumped by 1 from 3,027,600 to 3,027,601.
 
 The **`genesis_time`** parameter is an ISO8601 UTC timestamp that specifies when the network is officially going to launch. At the time of genesis, validators are expected to come online and start participating in the consensus process for operating the network. The network starts once validators representing more than 2/3 of stake in the initial consensus committee are online.
 
@@ -56,7 +56,7 @@ The **`chain_id`** is a human-readable version identifier for a network.
 
 :::caution
 
-It is important to note that this value alone doesn't dictate the version of an Oasis network. Rather, the hash of the whole genesis document, i.e. the [genesis document's hash](/core/consensus/genesis#genesis-documents-hash), is the network's unique identifier.
+It is important to note that this value alone doesn't dictate the version of an Oasis network. Rather, the hash of the whole genesis document, i.e. the [genesis document's hash](../../core/consensus/genesis.md#genesis-documents-hash), is the network's unique identifier.
 
 :::
 
@@ -64,7 +64,7 @@ It is important to note that this value alone doesn't dictate the version of an 
 
 :::caution
 
-The **`epochtime`**section will be removed in the [Cobalt upgrade](/operators/mainnet/previous-upgrades/cobalt-upgrade) since it became obsolete with the new [improved random beacon](/adrs/0007-improved-random-beacon). It will be replaced with the new **`beacon`** section described [below](/operators/mainnet/previous-upgrades/cobalt-upgrade#beacon).
+The **`epochtime`**section will be removed in the [Cobalt upgrade](../../operators/mainnet/previous-upgrades/cobalt-upgrade.md) since it became obsolete with the new [improved random beacon](../../adrs/0007-improved-random-beacon.md). It will be replaced with the new **`beacon`** section described [below](../../operators/mainnet/previous-upgrades/cobalt-upgrade.md#beacon).
 
 :::
 
@@ -75,7 +75,7 @@ The **`epochtime.params.interval`** specifies the number of blocks in an _epoch_
 Within the **`registry`** object, there are a broad range of parameters that specify the initial set of node operators and their corresponding initial node statuses.
 
 * **`registry.params.max_node_expiration`** The maximum duration (in epochs) that node registrations last. The starting value is set to 2 in order to ensure that a node is continuously online, since the node’s registration would expire each time 2 epochs pass, requiring the node to re-register.
-* **`registry.params.enable_runtime_governance_models` ** The set of [runtime governance models](/core/consensus/services/registry#runtimes) that are allowed to be used when creating/updating registrations. It is set to `{"entity": true, "runtime": true}` which means a runtime can choose between **entity governance** and **runtime-defined governance**.
+* **`registry.params.enable_runtime_governance_models` ** The set of [runtime governance models](../../core/consensus/services/registry.md#runtimes) that are allowed to be used when creating/updating registrations. It is set to `{"entity": true, "runtime": true}` which means a runtime can choose between **entity governance** and **runtime-defined governance**.
 * **`registry.entities`** The entity registrations for initial node operators, including public key and signature information.
 * **`registry.runtimes`** The runtime registrations for initial node operators. Each item describes a runtime's operational parameters, including its identifier, kind, admission policy, committee scheduling, storage, governance model, etc. For a full description of the runtime descriptor see the [`Runtime` structure](https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go/registry/api?tab=doc#Runtime) documentation.
 * **`registry.suspended_runtimes`** The suspended runtime registrations for initial node operators. Each item describes a suspended runtime's operational parameters, including its identifier, kind, admission policy, committee scheduling, storage, governance model, etc. For a full description of the runtime descriptor see the [`Runtime` structure](https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go/registry/api?tab=doc#Runtime) documentation.
@@ -120,10 +120,10 @@ For example, a staking transfer transaction of size 230 bytes would have a total
 
 ### Root Hash
 
-The **`roothash`** object contains parameters related to the [Root Hash service](/core/consensus/services/roothash) and a minimal state related to the runtimes.
+The **`roothash`** object contains parameters related to the [Root Hash service](../../core/consensus/services/roothash.md) and a minimal state related to the runtimes.
 
-* **`roothash.params.max_runtime_messages` ** The global limit on the number of [messages](/core/runtime/messages) that can be emitted in each round by the runtime. The value is set to 256.
-* **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](/adrs/0005-runtime-compute-slashing). The value is set to 100.
+* **`roothash.params.max_runtime_messages` ** The global limit on the number of [messages](../../core/runtime/messages.md) that can be emitted in each round by the runtime. The value is set to 256.
+* **`roothash.params.max_evidence_age`** The maximum age (in the number of rounds) of submitted evidence for [compute node slashing](../../adrs/0005-runtime-compute-slashing.md). The value is set to 100.
 
 ### Staking
 
@@ -153,7 +153,7 @@ The following parameters control how delegations behave on the network:
 
 * **`staking.params.debonding_interval`** The period of time (in epochs) that must pass before staked or delegated tokens that are requested to be withdrawn are returned to the account's general balance. The value is set to 336 epochs, which is expected to be approximately 14 days.
 * **`staking.params.min_delegation`** The minimum amount of tokens one can delegate. The value is set to 100,000,000,000 base units, or 100 ROSE tokens.
-* **`staking.params.allow_escrow_messages`** Indicator whether to enable support for `AddEscrow` and `ReclaimEscrow` [runtime messages](/core/runtime/messages) . The value is set to _true_.
+* **`staking.params.allow_escrow_messages`** Indicator whether to enable support for `AddEscrow` and `ReclaimEscrow` [runtime messages](../../core/runtime/messages.md) . The value is set to _true_.
 
 #### Node & ParaTime Token Thresholds {#staking-thresholds}
 
@@ -167,7 +167,7 @@ The **`staking.params.thresholds`** parameters also specify the minimum threshol
 
 The following parameters control the staking rewards on the network:
 
-* **`staking.params.reward_schedule`** The staking reward schedule, indicating how the staking reward rate changes over time, defined at an epoch-by-epoch granular basis. The reward schedule uses a tapering formula with higher rewards being paid out at earlier epochs and then gradually decreasing over time. For more details, see the [Staking Incentives](/oasis-network-primer/token-metrics-and-distribution#staking-incentives) doc.
+* **`staking.params.reward_schedule`** The staking reward schedule, indicating how the staking reward rate changes over time, defined at an epoch-by-epoch granular basis. The reward schedule uses a tapering formula with higher rewards being paid out at earlier epochs and then gradually decreasing over time. For more details, see the [Staking Incentives](token-metrics-and-distribution.mdx#staking-incentives) doc.
 * **`staking.params.signing_reward_threshold_numerator`** and **`staking.params.signing_reward_threshold_denominator`** These parameters define the proportion of blocks that a validator must sign during each epoch to receive staking rewards. The set fraction of 3/4 means that a validator must maintain an uptime of at least 75% blocks during an epoch in order to receive staking rewards for that period.
 * **`staking.params.fee_split_weight_propose`** The block proposer's share of transaction fees. The value is set to 2.
 * **`staking.params.fee_split_weight_next_propose`** The next block proposer's share of transaction fees. The value is set to 1.
@@ -195,7 +195,7 @@ These parameters specify key values for the network's slashing mechanism:
 
 ### Committee Scheduler
 
-The **`scheduler`** object contains parameters controlling how various committees (validator, compute, key manager) are periodically [scheduled](/core/consensus/services/roothash).
+The **`scheduler`** object contains parameters controlling how various committees (validator, compute, key manager) are periodically [scheduled](../../core/consensus/services/roothash.md).
 
 * **`scheduler.params.min_validators`** The minimum size for the consensus committee. The value is set to 15 validators.
 * **`scheduler.params.max_validators`** The maximum size for the consensus committee. The value is set to 100 validators.
@@ -205,12 +205,12 @@ The **`scheduler`** object contains parameters controlling how various committee
 
 The **`beacon`** object contains parameters controlling the network's random beacon.
 
-* **`beacon.base`** Network's starting epoch. When a network is upgraded, its epoch is retained. For example, for the [Cobalt upgrade](/operators/mainnet/previous-upgrades/cobalt-upgrade) the epoch of the Mainnet state dump was bumped by 1 from 5,046 to 5,047.
-* **`beacon.params.backend`** The random beacon backend to use. The value is set to "pvss" indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](/adrs/0007-improved-random-beacon) should be used.
+* **`beacon.base`** Network's starting epoch. When a network is upgraded, its epoch is retained. For example, for the [Cobalt upgrade](../../operators/mainnet/previous-upgrades/cobalt-upgrade.md) the epoch of the Mainnet state dump was bumped by 1 from 5,046 to 5,047.
+* **`beacon.params.backend`** The random beacon backend to use. The value is set to "pvss" indicating that the beacon implementing a [PVSS (publicly verifiable secret sharing) scheme](../../adrs/0007-improved-random-beacon.md) should be used.
 
 #### PVSS Beacon
 
-These parameters control the behavior of the new [improved random beacon](/adrs/0007-improved-random-beacon) introduced in the [Cobalt upgrade](/operators/mainnet/previous-upgrades/cobalt-upgrade):
+These parameters control the behavior of the new [improved random beacon](../../adrs/0007-improved-random-beacon.md) introduced in the [Cobalt upgrade](../../operators/mainnet/previous-upgrades/cobalt-upgrade.md):
 
 * **`beacon.params.pvss_parameters.participants`** The number of participants to be selected for each beacon generation protocol round. The value is set to 20.
 * **`beacon.params.pvss_parameters.threshold`** The minimum number of participants which must successfully contribute entropy for the final output to be considered valid. The value is set to 10.
@@ -220,7 +220,7 @@ These parameters control the behavior of the new [improved random beacon](/adrs/
 
 ### **Governance**
 
-The **`governance`** object contains parameters controlling the network's [on-chain governance](/core/consensus/services/governance) introduced in the [Cobalt upgrade](/operators/mainnet/previous-upgrades/cobalt-upgrade):
+The **`governance`** object contains parameters controlling the network's [on-chain governance](../../core/consensus/services/governance.md) introduced in the [Cobalt upgrade](../../operators/mainnet/previous-upgrades/cobalt-upgrade.md):
 
 * **`governance.params.min_proposal_deposit`** The amount of tokens (in base units) that are deposited when creating a new proposal. The value is set to 10,000,000,000,000 base units, or 10,000 ROSE tokens.
 * **`governance.params.voting_period`** The number of epochs after which the voting for a proposal is closed and the votes are tallied. The value is set to 168, which is expected to be approximately 7 days.

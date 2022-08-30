@@ -11,7 +11,9 @@ import {useDocsSidebar} from "@docusaurus/theme-common";
  */
 function reindex(sidebarItems) {
     for (const item of sidebarItems) {
-        globalThis.sidebarItemsMap[item.docId ?? (item.href ? item.href.replace(/\/$/g, '') : item.label)] = item;
+        // Trim-off leading and trailing slash.
+        const key = (item.docId ?? (item.href ?? item.label)).replace(/^\/|\/$/g, '');
+        globalThis.sidebarItemsMap[key.trimStart()] = item;
         if (item.type === 'category') {
             reindex(item.items)
         }

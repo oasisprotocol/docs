@@ -25,13 +25,15 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path: 'docs/general',
           breadcrumbs: false,
-          showLastUpdateTime: true,
-          remarkPlugins: [crossRepoLinksPlugin],
-          routeBasePath: 'general',
-          sidebarPath: require.resolve('./sidebarsGeneral.js'),
           editUrl: editUrlFunction,
+          exclude: ['adrs/README.md', 'adrs/0000-architectural-decision-records.md', 'adrs/template.md'],
+          numberPrefixParser: false,
+          path: 'docs',
+          remarkPlugins: [crossRepoLinksPlugin],
+          routeBasePath: '/',
+          showLastUpdateTime: true,
+          sidebarPath: require.resolve('./sidebars.js'),
         },
         blog: false,
         theme: {
@@ -54,78 +56,6 @@ const config = {
       };
     },
     [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
-      ({
-        id: 'operators',
-        path: 'docs/operators',
-        breadcrumbs: false,
-        showLastUpdateTime: true,
-        remarkPlugins: [crossRepoLinksPlugin],
-        routeBasePath: 'operators',
-        sidebarPath: require.resolve('./sidebarsOperators.js'),
-        editUrl: editUrlFunction,
-      }),
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
-      ({
-        id: 'developers',
-        path: 'docs/developers',
-        breadcrumbs: false,
-        showLastUpdateTime: true,
-        remarkPlugins: [crossRepoLinksPlugin],
-        routeBasePath: 'developers',
-        sidebarPath: require.resolve('./sidebarsDevelopers.js'),
-        editUrl: editUrlFunction,
-      }),
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
-      ({
-        id: 'core',
-        path: 'docs/core',
-        breadcrumbs: false,
-        showLastUpdateTime: true,
-        remarkPlugins: [crossRepoLinksPlugin],
-        routeBasePath: 'core',
-        sidebarPath: require.resolve('./sidebarsCore.js'),
-        editUrl: editUrlFunction,
-      }),
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').PluginOptions} */
-      ({
-        id: 'oasis-core-ledger',
-        path: 'docs/oasis-core-ledger',
-        breadcrumbs: false,
-        showLastUpdateTime: true,
-        remarkPlugins: [crossRepoLinksPlugin],
-        routeBasePath: 'oasis-core-ledger',
-        sidebarPath: require.resolve('./sidebarsOasisCoreLedger.js'),
-        editUrl: editUrlFunction,
-      }),
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').Options} */
-      ({
-        id: 'adrs',
-        path: 'docs/adrs',
-        exclude: ['README.md', '0000-architectural-decision-records.md', 'template.md'],
-        breadcrumbs: false,
-        showLastUpdateTime: true,
-        remarkPlugins: [crossRepoLinksPlugin],
-        routeBasePath: 'adrs',
-        sidebarPath: require.resolve('./sidebarsAdrs.js'),
-        numberPrefixParser: false,
-        editUrl: editUrlFunction,
-      }),
-    ],
-    [
       '@docusaurus/plugin-client-redirects',
       /** @type {import('@docusaurus/plugin-client-redirects').PluginOptions} */
       ({
@@ -137,8 +67,8 @@ const config = {
           },
           // #200 Restructure docs
           {
-            to: '/operators/',
-            from: '/general/run-a-node/node-operator-overview',
+            to: '/core/development-setup/',
+            from: ['/oasis-core/development-setup/build-environment-setup-and-building', '/oasis-core/development-setup/running-tests-and-development-networks']
           },
           {
             to: '/general/contribute-to-the-network/delegation-policy',
@@ -163,6 +93,10 @@ const config = {
           {
             to: '/general/oasis-network/token-metrics-and-distribution',
             from: '/oasis-network-primer/token-metrics-and-distribution',
+          },
+          {
+            to: '/operators/',
+            from: '/general/run-a-node/node-operator-overview',
           },
           {
             to: '/operators/mainnet/',
@@ -240,9 +174,9 @@ const config = {
         items: [
           {
             label: 'General',
-            type: 'doc',
+            to: '/general/',
+            activeBaseRegex: '/general/',
             position: 'left',
-            docId: 'README',
           },
           {
             label: 'Node Operators',

@@ -6,7 +6,7 @@ This guide will describe how you can set up your [_validator_ node](../run-valid
 
 These instructions are still a work-in-progress draft.
 
-Your feedback is welcome. Please, reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](/general/oasis-network/connect-with-us) with your questions, comments, and feedback.
+Your feedback is welcome. Please, reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](../../../general/oasis-network/connect-with-us.md) with your questions, comments, and feedback.
 
 :::
 
@@ -22,7 +22,7 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
 
 Also make sure you've followed the [Install Oasis Remote Signer Binary](install-oasis-remote-signer-binary.md) section and have the Oasis Remote Signer binary installed on your remote signer system where your Ledger wallet will be connected.
 
-Finally, you need to do steps described in the [Setup](/oasis-core-ledger/usage/setup) section of our [Oasis Core Ledger docs](/oasis-core-ledger). Make sure you also install the _**OasisVal**_** app** on your Ledger wallet.
+Finally, you need to do steps described in the [Setup](../../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger). Make sure you also install the _**OasisVal**_** app** on your Ledger wallet.
 
 ## Set Up Remote Signer System
 

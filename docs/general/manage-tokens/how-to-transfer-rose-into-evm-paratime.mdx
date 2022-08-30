@@ -16,7 +16,7 @@ Currently, there are two such ParaTimes: [Emerald](/developers/emerald-paratime/
 An EVM-compatible ParaTime hosts EVM accounts in its own independent chain state, which means
 that ROSE held at the consensus layer is not the same as the EVM paratime's token. Fortunately,
 you can easily swap between the two by making _deposits_ and _withdrawals_.
-These procedures are described in detail in [ADR 0003](/adrs/0003-consensus-runtime-token-transfer).
+These procedures are described in detail in [ADR 0003](../../adrs/0003-consensus-runtime-token-transfer.md).
 
 The _deposit_ procedure will first approve the ParaTime to access your specified amount of ROSE. Then, a `Deposit` transaction will be executed inside the ParaTime and tokens will be transferred from your consensus layer account to the ParaTime. If that transaction succeeds, the ParaTime will update the state of your provided EVM account to reflect the deposit of tokens. Emerald and Sapphire will both give you 1 e/sROSE for each consensus ROSE, although other ParaTimes may implement different rules.
 
@@ -130,7 +130,7 @@ If you want to transfer ROSE to an exchange and you currently have them deposite
 
 :::info
 
-Advanced users (e.g. those running Emerald or Sapphire ParaTime [compute nodes](/operators/set-up-your-node/run-a-paratime-node)) may need to withdraw ROSE stored in their `oasis1` account. Oasis Wallet Browser Extension does not support such withdrawals. Read the [Oasis CLI Deposit/Withdraw Tokens to/from ParaTime chapter](advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime.mdx) to learn how to use Oasis CLI instead.
+Advanced users (e.g. those running Emerald or Sapphire ParaTime [compute nodes](../../operators/set-up-your-node/run-a-paratime-node.mdx)) may need to withdraw ROSE stored in their `oasis1` account. Oasis Wallet Browser Extension does not support such withdrawals. Read the [Oasis CLI Deposit/Withdraw Tokens to/from ParaTime chapter](advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime.mdx) to learn how to use Oasis CLI instead.
 
 :::
 

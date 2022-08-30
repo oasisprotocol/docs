@@ -248,11 +248,11 @@ The following fields were a particular change in this upgrade:
 
 The balances in the genesis file are enumerated in base units with 1 ROSE token
 equaling 10^9 (i.e. billion) base units. For more details, see the
-[Genesis Document](/general/oasis-network/genesis-doc#parameters).
+[Genesis Document](../../../general/oasis-network/genesis-doc.md#parameters).
 
 :::
 
-[Token Metrics and Distribution]: /oasis-network-primer/token-metrics-and-distribution
+[Token Metrics and Distribution]: ../../../general/oasis-network/token-metrics-and-distribution.mdx
 
 ### Wiping State
 

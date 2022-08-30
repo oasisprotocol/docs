@@ -11,7 +11,7 @@ Genesis file is signed by [network's current maintainers](https://github.com/oas
 
 :::
 
-* Genesis document's hash ([explanation](/general/oasis-network/genesis-doc#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](../../general/oasis-network/genesis-doc.md#genesis-file-vs-genesis-document)):
   * `b11b369e0da5bb230b220127f5e7b242d385ef8c6f54906243f30af63c815535`
 * Oasis seed node address:
   * `E27F6B7A350B4CC2B48A6CBE94B0A02B0DCB0BF3@35.199.49.168:26656`
@@ -58,7 +58,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](/operators/set-up-your-node/run-an-ias-proxy).
+Feel free to use other IAS proxies besides the one provided here or [run your own](../../operators/set-up-your-node/run-an-ias-proxy.md).
 
 :::
 

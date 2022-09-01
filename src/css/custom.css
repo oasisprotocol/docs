@@ -78,6 +78,14 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   no-repeat;
 }
 
+/* Add vertical spacing between the individual DocCards outside of DocCardList
+   component. */
+.markdown > a.card {
+	margin-bottom: 32px;
+}
+
+
+/* Reduce the font size to make the sidebar more appealing. */
 .theme-doc-sidebar-menu {
   font-size: 14px;
 }

@@ -100,14 +100,21 @@ While all markdown files inside `docs` are compiled, not all files may be
 reachable via sidebars directly. Each top-level component defines own
 sidebar structure inside their `sidebars.js` file.
 
+### index.md, README.md, overview.md, getting-started.md
+
+Please use `README.md` as the filename for introductory category chapter.
+
+Introductory chapters should not have a separate entry in the sidebar, but
+should be accessible by clicking on the category link directly.
+
 ### Referencing documents between the components
 
 Markdown files hosted by this repository should:
 
-- reference markdown files in the same component by a relative path e.g.
+- reference markdown files in the same or any other component by a relative
+  path e.g.
   `../howto-use-wallet.md`.
-- reference markdown files in other components by a relative link e.g.
-  `../../operators/set-up-your-node.md`
+  `../../../operators/set-up-your-node.md`
 
 Markdown files hosted by other Oasis repositories should:
 

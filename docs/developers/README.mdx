@@ -1,5 +1,5 @@
 import DocCardList from '@theme/DocCardList';
-import {newItem} from '@site/src/sidebarUtils';
+import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Overview
 
@@ -8,13 +8,13 @@ This section contains developer resources related to the implementation of the O
 ## Smart Contracts for EVM-compatible ParaTimes
 
 <DocCardList items={[
-    newItem('Emerald ParaTime Guide', '/developers/emerald-paratime/'),
-    newItem('Sapphire ParaTime Guide', '/developers/sapphire-paratime/'),
+    findSidebarItem('/developers/emerald-paratime/'),
+    findSidebarItem('/developers/sapphire-paratime/'),
 ]} />
 
 ## Oasis SDK
 
 <DocCardList items={[
-    newItem('Smart Contracts for Cipher ParaTime', '/developers/sdk/contract/'),
-    newItem('Building your own ParaTime', '/developers/sdk/runtime/'),
+    findSidebarItem('/developers/sdk/contract/'),
+    findSidebarItem('/developers/sdk/runtime/'),
 ]} />

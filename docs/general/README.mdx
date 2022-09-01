@@ -1,5 +1,5 @@
 import DocCardList from '@theme/DocCardList';
-import {findGeneralSidebarItem, newItem} from '@site/src/sidebarUtils';
+import {findSidebarItem, newItem} from '@site/src/sidebarUtils';
 
 # Getting Started
 
@@ -9,9 +9,9 @@ These guides provide overview of the Oasis Network and introduce basic tools
 for you to get started.
 
 <DocCardList items={[
-    findGeneralSidebarItem('general/oasis-network'),
-    findGeneralSidebarItem('general/manage-tokens'),
-    findGeneralSidebarItem('general/community-resources/community-hub'),
+    findSidebarItem('/general/oasis-network/'),
+    findSidebarItem('/general/manage-tokens/'),
+    findSidebarItem('/general/community-resources/community-hub'),
 ]} />
 
 ## Node Operators
@@ -22,7 +22,7 @@ running a ParaTime or just a simple client node for your server to submit
 transactions and perform queries on the network.
 
 <DocCardList items={[
-    newItem('Node Operators Guide', '/operators/'),
+    findSidebarItem('/operators/'),
 ]} />
 
 ## Developers
@@ -36,11 +36,11 @@ Oasis SDK. Finally, developers can learn how to build their own ParaTime
 running on the Oasis Network.
 
 <DocCardList items={[
-    newItem('Developer Resources', '/developers/'),
-    newItem('Emerald ParaTime Guide', '/developers/emerald-paratime/'),
-    newItem('Sapphire ParaTime Guide', '/developers/sapphire-paratime/'),
-    newItem('Smart Contracts for Cipher ParaTime', '/developers/sdk/contract/'),
-    newItem('Building your own ParaTime', '/developers/sdk/runtime/'),
+    findSidebarItem('/developers/'),
+    findSidebarItem('/developers/emerald-paratime/'),
+    findSidebarItem('/developers/sapphire-paratime/'),
+    findSidebarItem('/developers/sdk/contract/'),
+    findSidebarItem('/developers/sdk/runtime/'),
 ]} />
 
 ## Oasis Core Contributors
@@ -49,5 +49,5 @@ Whether you want to contribute your code to the core components of the Oasis
 Network or just learn more about the Oasis core, this is the place for you.
 
 <DocCardList items={[
-    newItem('Oasis Core Guide', '/core'),
+    findSidebarItem('/core/'),
 ]} />

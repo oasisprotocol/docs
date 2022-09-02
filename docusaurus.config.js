@@ -60,10 +60,12 @@ const config = {
       /** @type {import('@docusaurus/plugin-client-redirects').PluginOptions} */
       ({
         redirects: [
-          // #171 Add sapphire docs
           {
-            to: '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime',
-            from: '/general/manage-tokens/how-to-transfer-rose-into-emerald-paratime',
+            to: '/general/manage-tokens/how-to-transfer-rose-into-paratime',
+            from: [
+              '/general/manage-tokens/how-to-transfer-rose-into-emerald-paratime', // #171 Add sapphire docs
+              '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime', // #200 Restructure docs
+            ],
           },
           // #200 Restructure docs
           {
@@ -176,11 +178,14 @@ const config = {
           if (existingPath.includes('/operators/run-your-node/maintenance')) {
             return [existingPath.replace('/operators/run-your-node/maintenance', '/general/run-a-node/maintenance-guides')];
           }
+          if (existingPath.includes('/developers/emerald')) {
+            return [existingPath.replace('/developers/emerald', '/general/developer-resources/emerald-paratime')];
+          }
+          if (existingPath.includes('/developers/sapphire')) {
+            return [existingPath.replace('/developers/sapphire', '/general/developer-resources/sapphire-paratime')];
+          }
           if (existingPath.includes('/developers/sdk')) {
             return [existingPath.replace('/developers/sdk', '/oasis-sdk')];
-          }
-          if (existingPath.includes('/developers')) {
-            return [existingPath.replace('/developers', '/general/developer-resources')];
           }
           if (existingPath.includes('/core')) {
             return [existingPath.replace('/core', '/oasis-core')];

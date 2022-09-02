@@ -60,7 +60,7 @@ const sidebars = {
             'general/manage-tokens/holding-rose-tokens/ledger-wallet',
           ]
         },
-        'general/manage-tokens/how-to-transfer-rose-into-evm-paratime',
+        'general/manage-tokens/how-to-transfer-rose-into-paratime',
         'general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime',
         'general/manage-tokens/faq',
         {

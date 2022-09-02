@@ -14,7 +14,7 @@ your contract to a non-confidential EVM network (e.g., Ropsten, Emerald).
 
 [Hardhat tutorial]: https://hardhat.org/tutorial
 [Solidity docs]: https://docs.soliditylang.org/en/v0.8.15/solidity-by-example.html
-[Emerald dapp tutorial]: ../emerald-paratime/writing-dapps-on-emerald.md
+[Emerald dapp tutorial]: ../emerald/writing-dapps-on-emerald.md
 
 ## Oasis Consensus Layer and Sapphire ParaTime
 
@@ -35,7 +35,7 @@ account to Sapphire. Consult the [How to transfer ROSE into an EVM ParaTime]
 
 
 [overview chapter]: ../../general/oasis-network/README.mdx
-[how-to-deposit-rose]: ../../general/manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
+[how-to-deposit-rose]: ../../general/manage-tokens/how-to-transfer-rose-into-paratime.mdx
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 
 ## Testnet and Mainnet
@@ -97,7 +97,7 @@ but it's made simple by our compatibility library, (coming soon).
 There are compatibility layers in other languages, which may be found in [the repo].
 
 
-[deposited into Sapphire]: ../../general/manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
+[deposited into Sapphire]: ../../general/manage-tokens/how-to-transfer-rose-into-paratime.mdx
 [the repo]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/clients
 
 ## Writing Secure dapps
@@ -115,7 +115,7 @@ Sapphire is programmable using any language that targets the EVM, such as Solidi
 and Vyper. If you prefer to use an Ethereum framework like Hardhat or Truffle, you
 can also use those with Sapphire; all you need to do is set your Web3 gateway URL.
 You can find the details of the Oasis Sapphire Web3 gateway
-[here](/developers/sapphire-paratime#web3-gateway).
+[here](/developers/sapphire#web3-gateway).
 
 
 ### Transactions & Calls

@@ -105,6 +105,6 @@ the Oasis Core node's status output).
 
 :::info
 
-Check the [Emerald ParaTime page](/developers/emerald-paratime/#web3-gateway) on how to access the public Web3 gateway.
+Check the [Emerald ParaTime page](/developers/emerald/#web3-gateway) on how to access the public Web3 gateway.
 
 :::

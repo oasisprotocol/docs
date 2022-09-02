@@ -37,7 +37,7 @@ account to Emerald. Consult the [How to transfer ROSE into Emerald ParaTime]
 [overview]: ../../general/oasis-network/README.mdx
 [Ed25519]: https://en.wikipedia.org/wiki/EdDSA#Ed25519
 [ECDSA]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
-[how-to-deposit-rose]: ../../general/manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx
+[how-to-deposit-rose]: ../../general/manage-tokens/how-to-transfer-rose-into-paratime.mdx
 [Testnet faucet]: https://faucet.testnet.oasis.dev/
 
 ## Testnet and Mainnet
@@ -609,7 +609,7 @@ Oasis Emerald blockchain! Should you have any questions, do not hesitate to
 share them with us on the [#emerald-paratime Discord channel][discord].
 
 [Remix]: https://remix.ethereum.org
-[metamask]: ../../general/manage-tokens/how-to-transfer-rose-into-evm-paratime.mdx#verifying-rose-balance-on-emerald-paratime
+[metamask]: ../../general/manage-tokens/how-to-transfer-rose-into-paratime.mdx#verifying-rose-balance-on-paratime
 [discord]: https://discord.gg/pJdWeVtmHT
 
 ## Troubleshooting

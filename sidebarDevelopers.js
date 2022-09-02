@@ -7,28 +7,27 @@ const sidebars = {
     {
       type: 'category',
       label: 'Emerald ParaTime',
-      collapsible: false,
       link: {
         type: 'doc',
-        id: 'developers/emerald-paratime/README',
+        id: 'developers/emerald/README',
       },
       items: [
-        'developers/emerald-paratime/writing-dapps-on-emerald',
-        'developers/emerald-paratime/integrating-band-oracle-smart-contract',
+        'developers/emerald/writing-dapps-on-emerald',
+        'developers/emerald/integrating-band-oracle-smart-contract',
       ],
     },
     {
       type: 'category',
       label: 'Sapphire ParaTime',
-      collapsible: false,
       link: {
         type: 'doc',
-        id: 'developers/sapphire-paratime/README',
+        id: 'developers/sapphire/README',
       },
       items: [
-        'developers/sapphire-paratime/writing-dapps-on-sapphire',
+        'developers/sapphire/writing-dapps-on-sapphire',
       ],
     },
+    'developers/cipher/README',
     {
       type: 'category',
       label: 'Oasis SDK',
@@ -40,50 +39,53 @@ const sidebars = {
       items: [
         {
           type: 'category',
-          label: 'Smart Contracts',
-          collapsible: false,
-          items: [
-            'developers/sdk/contract/README',
-            'developers/sdk/contract/hello-world',
-            'developers/sdk/contract/confidential-smart-contract',
-          ],
-        },
-        {
-          type: 'category',
           label: 'Runtimes',
-          collapsible: false,
+          link: {
+            type: 'generated-index',
+            slug: 'developers/sdk/runtime',
+          },
           items: [
-            'developers/sdk/runtime/README',
+            'developers/sdk/runtime/prerequisites',
             'developers/sdk/runtime/minimal-runtime',
             'developers/sdk/runtime/modules',
             'developers/sdk/runtime/reproducibility',
+            {
+              type: 'link',
+              label: 'Rust API',
+              href: 'https://api.docs.oasis.dev/oasis-sdk/oasis_runtime_sdk',
+            },
           ],
         },
         {
           type: 'category',
-          label: 'Reference',
-          collapsible: false,
+          label: 'Smart Contracts',
+          link: {
+            type: 'generated-index',
+            slug: 'developers/sdk/contract',
+          },
+          items: [
+            'developers/sdk/contract/prerequisites',
+            'developers/sdk/contract/hello-world',
+            'developers/sdk/contract/confidential-smart-contract',
+            {
+              type: 'link',
+              label: 'Rust API',
+              href: 'https://api.docs.oasis.dev/oasis-sdk/oasis_contract_sdk',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Client',
+          link: {
+            type: 'generated-index',
+            slug: 'developers/sdk/client',
+          },
           items: [
             {
               type: 'link',
-              label: 'Runtime SDK',
-              href: 'https://api.docs.oasis.dev/oasis-sdk/oasis_runtime_sdk',
-            },
-            {
-              type: 'link',
-              label: 'Contract SDK',
-              href: 'https://api.docs.oasis.dev/oasis-sdk/oasis_contract_sdk',
-            },
-            {
-              type: 'category',
-              label: 'Client SDK',
-              items: [
-                {
-                  type: 'link',
-                  label: 'Go',
-                  href: 'https://pkg.go.dev/github.com/oasisprotocol/oasis-sdk/client-sdk/go/client',
-                }
-              ]
+              label: 'Go API',
+              href: 'https://pkg.go.dev/github.com/oasisprotocol/oasis-sdk/client-sdk/go/client',
             }
           ],
         },

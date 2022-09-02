@@ -1,0 +1,51 @@
+import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
+# Cipher ParaTime
+
+The Cipher ParaTime is a Confidential ParaTime for executing Wasm smart contracts.
+
+As the officially supported ParaTime by the Oasis Protocol Foundation, Cipher
+allows for:
+
+* Flexibility — Developer can define which data to store in a public
+  and which data in the (more expensive) confidential storage
+* Security — Rust language primarily used for writing Wasm smart contracts is
+  known for its strict memory management and was developed specifically to
+  avoid memory leaks
+* Scalability — increased throughput of transactions
+* Low-cost — 99%+ lower fees than Ethereum
+* Cross-chain bridge to enable cross-chain interoperability (upcoming)
+
+If you're looking for EVM-compatible ParaTimes, check out the
+[Emerald](../emerald/README.mdx) and the confidential
+[Sapphire](../sapphire/README.mdx) paratimes.
+
+## Smart Contracts Development
+
+The Cipher ParaTime implements the [Oasis Contract SDK] API. To learn how to
+write a confidential smart contract in Rust and deploy it on the Oasis Cipher
+ParaTime, read the related Oasis Contract SDK chapters:
+
+<DocCard item={
+    findSidebarItem('/developers/sdk/contract/prerequisites')
+} />
+
+<DocCard item={
+    findSidebarItem('/developers/sdk/contract/hello-world')
+} />
+
+<DocCard item={
+    findSidebarItem('/developers/sdk/contract/confidential-smart-contract')
+} />
+
+## See also
+
+<DocCardList items={[
+    findSidebarItem('/general/manage-tokens/how-to-transfer-rose-into-paratime'),
+    findSidebarItem('/developers/emerald/'),
+    findSidebarItem('/developers/sapphire/')
+]} />
+
+[Oasis Contract SDK]: ../sdk/README.md#contract-sdk

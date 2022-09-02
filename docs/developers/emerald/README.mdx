@@ -1,4 +1,4 @@
-import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Emerald ParaTime
@@ -14,9 +14,9 @@ As the official EVM compatible ParaTime on the Oasis Network, Emerald allows for
 * Cross-chain bridge to enable cross-chain interoperability (upcoming)
 
 If you're looking for EVM, but with confidentiality,
-check out the [Sapphire ParaTime](../sapphire-paratime/README.mdx).
+check out the [Sapphire ParaTime](../sapphire/README.mdx).
 
-## ParaTime Incentives <a href="#1b5b" id="1b5b"></a>
+## ParaTime Incentives
 
 Emerald is fully decentralized with node operators distributed globally, and Oasis ROSE will be the native token used for gas fees.
 
@@ -99,6 +99,8 @@ To get started building on our Emerald ParaTime, you can use our public Web3 gat
 
 ## See also
 
-<DocCard item={
-    findSidebarItem('/general/manage-tokens/how-to-transfer-rose-into-evm-paratime')
-} />
+<DocCardList items={[
+    findSidebarItem('/general/manage-tokens/how-to-transfer-rose-into-paratime'),
+    findSidebarItem('/developers/sapphire/'),
+    findSidebarItem('/developers/cipher/')
+]} />

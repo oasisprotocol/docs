@@ -1,20 +1,28 @@
+import DocCard from '@theme/DocCard';
 import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Overview
 
-This section contains developer resources related to the implementation of the Oasis Network.
+This chapter contains developer resources related to the implementation of
+dapps and ParaTimes (also referred as *runtimes*) on the Oasis Network.
 
-## Smart Contracts for EVM-compatible ParaTimes
+## Smart Contracts for ParaTimes
+
+Each ParaTime has its unique features and requires specific development
+environment for writing dapps. Read the related sections below to learn more.
 
 <DocCardList items={[
-    findSidebarItem('/developers/emerald-paratime/'),
-    findSidebarItem('/developers/sapphire-paratime/'),
+    findSidebarItem('/developers/emerald/'),
+    findSidebarItem('/developers/sapphire/'),
+    findSidebarItem('/developers/cipher/'),
 ]} />
 
 ## Oasis SDK
 
-<DocCardList items={[
-    findSidebarItem('/developers/sdk/contract/'),
-    findSidebarItem('/developers/sdk/runtime/'),
-]} />
+The Oasis SDK comprises fundamentals for developing and deploying ParaTimes and
+Wasm smart contracts with enabled confidentiality.
+
+<DocCard item={
+    findSidebarItem('/developers/sdk/')
+} />

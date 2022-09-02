@@ -26,7 +26,7 @@ Staking thresholds may change in the future. Read [Common staking info] chapter,
 to learn how to check the current network thresholds directly from the
 `oasis-node`.
 
-[staking thresholds]: ../../../general/oasis-network/genesis-doc.md#staking-thresholds
+[staking thresholds]: ../genesis-doc.md#staking-thresholds
 [Oasis Scan]: https://www.oasisscan.com/validators
 [Account Get Info]: ../../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md
 [Common staking info]: ../../../general/manage-tokens/advanced/oasis-cli-tools/common-staking-info.md
@@ -45,7 +45,7 @@ Foundation, see the [Delegation Policy] document.
 The size of the consensus committee (i.e. the validator set) is configured by
 the [**max_validators** consensus parameter].
 
-[**max_validators** consensus parameter]: ../../../general/oasis-network/genesis-doc.md#consensus
+[**max_validators** consensus parameter]: ../genesis-doc.md#consensus
 
 :::
 

@@ -107,7 +107,47 @@ const config = {
             from: '/general/run-a-node/upgrade-log'
           },
           {
-            to: '/operators/set-up-your-node/troubleshooting',
+            to: '/operators/run-your-node/archive-node',
+            from: '/general/set-up-your-node/run-archive-node'
+          },
+          {
+            to: '/operators/run-your-node/ias-proxy',
+            from: '/general/set-up-your-node/run-an-ias-proxy'
+          },
+          {
+            to: '/operators/run-your-node/non-validator-node',
+            from: '/general/set-up-your-node/run-non-validator'
+          },
+          {
+            to: '/operators/run-your-node/paratime-client-node',
+            from: '/general/set-up-your-node/run-a-paratime-client-node'
+          },
+          {
+            to: '/operators/run-your-node/paratime-node',
+            from: '/general/set-up-your-node/run-a-paratime-node'
+          },
+          {
+            to: '/operators/run-your-node/seed-node',
+            from: '/general/set-up-your-node/run-seed-node'
+          },
+          {
+            to: '/operators/run-your-node/sentry-node',
+            from: '/general/set-up-your-node/sentry-node-architecture'
+          },
+          {
+            to: '/operators/run-your-node/validator-node/',
+            from: ['/general/set-up-your-node/run-validator', '/general/set-up-your-node/creating-an-entity-package']
+          },
+          {
+            to: '/operators/run-your-node/validator-node/amend-commission-schedule',
+            from: '/general/set-up-your-node/amend-commission-schedule'
+          },
+          {
+            to: '/operators/run-your-node/validator-node/governance',
+            from: '/general/set-up-your-node/governance'
+          },
+          {
+            to: '/operators/run-your-node/troubleshooting',
             from: '/general/run-a-node/troubleshooting'
           },
           {
@@ -127,17 +167,14 @@ const config = {
           if (existingPath.includes('/operators/mainnet')) {
             return [existingPath.replace('/operators/mainnet', '/general/mainnet')];
           }
-          if (existingPath.includes('/operators/set-up-your-node/advanced')) {
-            return [existingPath.replace('/operators/set-up-your-node/advanced', '/general/run-a-node/advanced')];
+          if (existingPath.includes('/operators/run-your-node/advanced')) {
+            return [existingPath.replace('/operators/run-your-node/advanced', '/general/run-a-node/advanced')];
           }
-          if (existingPath.includes('/operators/set-up-your-node/prerequisites')) {
-            return [existingPath.replace('/operators/set-up-your-node/prerequisites', '/general/run-a-node/prerequisites')];
+          if (existingPath.includes('/operators/run-your-node/prerequisites')) {
+            return [existingPath.replace('/operators/run-your-node/prerequisites', '/general/run-a-node/prerequisites')];
           }
-          if (existingPath.includes('/operators/set-up-your-node/maintenance')) {
-            return [existingPath.replace('/operators/set-up-your-node/maintenance', '/general/run-a-node/maintenance-guides')];
-          }
-          if (existingPath.includes('/operators')) {
-            return [existingPath.replace('/operators', '/general/run-a-node')];
+          if (existingPath.includes('/operators/run-your-node/maintenance')) {
+            return [existingPath.replace('/operators/run-your-node/maintenance', '/general/run-a-node/maintenance-guides')];
           }
           if (existingPath.includes('/developers/sdk')) {
             return [existingPath.replace('/developers/sdk', '/oasis-sdk')];

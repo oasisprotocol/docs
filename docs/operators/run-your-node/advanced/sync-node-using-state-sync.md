@@ -1,6 +1,6 @@
 # Using State Sync for Quick Bootstraping
 
-The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a [validator node](../run-validator.md) or a [non-validator node](../run-non-validator.md)) by using [Tendermint's Light Client protocol](https://docs.tendermint.com/v0.35/tendermint-core/light-client.html). It allows one to initialize a node from a trusted height, its corresponding block's header and a trusted validator set (given in the [genesis document](../../../general/oasis-network/genesis-doc.md)). It does so by securely updating the node's trusted state by requesting and verifying a minimal set of data from the network's full nodes.
+The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a [validator node](../validator-node/README.md) or a [non-validator node](../non-validator-node.md)) by using [Tendermint's Light Client protocol](https://docs.tendermint.com/v0.35/tendermint-core/light-client.html). It allows one to initialize a node from a trusted height, its corresponding block's header and a trusted validator set (given in the [genesis document](../genesis-doc.md)). It does so by securely updating the node's trusted state by requesting and verifying a minimal set of data from the network's full nodes.
 
 :::info
 

@@ -58,7 +58,7 @@ We can observe that:
 
 ### Commission Schedule
 
-An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../../../operators/set-up-your-node/amend-commission-schedule.md) documentation.
+An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../../../operators/run-your-node/validator-node/amend-commission-schedule.md) documentation.
 
 ### Stake Accumulator
 

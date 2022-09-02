@@ -190,7 +190,7 @@ If the previous behavior is required, the binary must be run in unsafe/debug
 mode (via the intentionally undocumented flag), and `debug.allow_root` must also
 be set.
 
-[change-to-non-root]: ../set-up-your-node/prerequisites/system-configuration.mdx#change-to-non-root
+[change-to-non-root]: ../run-your-node/prerequisites/system-configuration.mdx#change-to-non-root
 
 ### Instructions - Upgrade day
 
@@ -265,7 +265,8 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 [Damask Upgrade]: damask-upgrade.md#state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
-[Handling Network Upgrades]: ../set-up-your-node/maintenance/handling-network-upgrades.md#verify-genesis
+[Handling Network Upgrades]:
+  ../run-your-node/maintenance/handling-network-upgrades#verify-genesis
 [orcs]: https://github.com/oasisprotocol/oasis-core/issues/4469
 [22.1.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.3
 [emerald-8.2.0]:
@@ -276,7 +277,8 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
   https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v2.1.0
 [rosetta-gw-2.2.0]:
   https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.0
-[Wipe state]: ../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
+[Wipe state]:
+  ../run-your-node/maintenance/wiping-node-state#state-wipe-and-keep-node-identity
 [damask-conf-changes]: #damask-conf-changes
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
@@ -546,7 +548,7 @@ oasis-node consensus submit_tx \
 
 * This upgrade will upgrade **Oasis Core** to version **21.2.8** which:
   * Upgrades the BadgerDB database backend from v2 to v3. See [**BadgerDB v2 to v3 Migration**](upgrade-log.md#badgerdb-v2-to-v3-migration) section for required steps to be done before upgrade.
-  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../set-up-your-node/prerequisites/system-configuration.mdx#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
+  * Has a check that makes sure the **file descriptor limit** is set to an appropriately high value (at least 50000). While previous versions only warned in case the limit was set too low, this version will refuse to start. Follow the [File Descriptor Limit](../run-your-node/prerequisites/system-configuration.mdx#file-descriptor-limit) documentation page for details on how to increase the limit on your system.
 * Stop your node, replace the old version of Oasis Node with version [21.2.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.2.8) and restart your node.
 
 :::tip
@@ -811,7 +813,7 @@ Version **20.12.7** is backwards compatible with other **20.12.x** releases, so 
 
 :::
 
-*   To ensure your node will stop at epoch **5046** [submit the following upgrade descriptor](../set-up-your-node/maintenance/handling-network-upgrades.md#stop-the-node-at-specific-epoch) at any time before the upgrade:
+*   To ensure your node will stop at epoch **5046** [submit the following upgrade descriptor](../run-your-node/maintenance/handling-network-upgrades.md#stop-the-node-at-specific-epoch) at any time before the upgrade:
 
     ```
     {
@@ -877,16 +879,16 @@ Mainnet state at epoch **5046** will be exported and migrated to a 21.1.x compat
 
 :::
 
-* Verify the provided Cobalt upgrade genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
+* Verify the provided Cobalt upgrade genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
 * Replace the old genesis file with the new Cobalt upgrade genesis file.
 * Stop your node (if you haven't stopped it already by submitting the upgrade descriptor).
 * Replace the old version of Oasis Node with version [21.1.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.1.1).
-* [Wipe state](../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
+* [Wipe state](../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Start your node.
 
 :::info
 
-For more detailed instructions, see the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md) guide.
+For more detailed instructions, see the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md) guide.
 
 :::
 
@@ -924,14 +926,14 @@ We expect the Mainnet Beta network to reach this block height at around 2020-11-
 
 ### Instructions
 
-* Download [Oasis Node](../set-up-your-node/prerequisites/oasis-node.md) version [20.12.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.2), while continuing to run version 20.10.x.
+* Download [Oasis Node](../run-your-node/prerequisites/oasis-node.md) version [20.12.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.2), while continuing to run version 20.10.x.
 * (optional) Use Oasis Node version 20.12.2 to dump network state at the specified block height. It will connect to the running version 20.10.x node.
 * Download the Mainnet genesis file published in the [2020-11-18 release](https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18).
-* (optional) Verify the provided Mainnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
+* (optional) Verify the provided Mainnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
 * Replace the old Mainnet Beta genesis file with the Mainnet genesis file.
 * Stop your node.
 * Remove the old 20.10.x version of Oasis Node.
-* [Wipe state](../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
+* [Wipe state](../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Update your node's configuration per instructions in [Configuration changes](upgrade-log.md#configuration-changes) below.
 * Start your node.
 
@@ -945,7 +947,7 @@ The canonical form will make it easier to compare the obtained genesis file with
 
 :::info
 
-For more detailed instructions, see the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md) guide.
+For more detailed instructions, see the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md) guide.
 
 :::
 
@@ -1002,7 +1004,7 @@ consensus:
 ### Instructions
 
 * Stop your node.
-* [Wipe state](../set-up-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
+* [Wipe state](../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Replace the old genesis file with the Mainnet Beta genesis file published in the [2020-10-01 release](https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-10-01).
 * Start your node.
 
@@ -1014,7 +1016,7 @@ You should keep using Oasis Core version 20.10.
 
 :::info
 
-For more detailed instructions, see the [Handling Network Upgrades](../set-up-your-node/maintenance/handling-network-upgrades.md) guide.
+For more detailed instructions, see the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md) guide.
 
 :::
 

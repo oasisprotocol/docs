@@ -11,9 +11,9 @@ Hence, it needs a set of distributed node operators that run different nodes (in
 
 ## Technical setup
 
-Make sure your system meets the [Hardware](../../operators/set-up-your-node/prerequisites/hardware-recommendations.md) prerequisites and has [Oasis Node](../../operators/set-up-your-node/prerequisites/oasis-node.md) installed.
+Make sure your system meets the [Hardware](../../operators/run-your-node/prerequisites/hardware-recommendations.md) prerequisites and has [Oasis Node](../../operators/run-your-node/prerequisites/oasis-node.md) installed.
 
-Then proceed by following the [Run a Validator Node](../../operators/set-up-your-node/run-validator.md) guide to:
+Then proceed by following the [Run a Validator Node](../../operators/run-your-node/validator-node/README.md) guide to:
 
 * Create your entity.
 * Initialize and configure your node.
@@ -32,13 +32,13 @@ For more information about obtaining information on your entity's account, see t
 
 Currently, you should have:
 
-* 100 ROSE staked for your entity's registration since that is the [current entity's staking threshold](../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds).
-* 100 ROSE staked for your validator node's registration since that is the [current validator node's staking threshold](../oasis-network/genesis-doc.md#node-and-paratime-token-thresholds).
+* 100 ROSE staked for your entity's registration since that is the [current entity's staking threshold](../../operators/run-your-node/genesis-doc.md#node-and-paratime-token-thresholds).
+* 100 ROSE staked for your validator node's registration since that is the [current validator node's staking threshold](../../operators/run-your-node/genesis-doc.md#node-and-paratime-token-thresholds).
 * Enough ROSE staked to be in the top 120 entities (by stake) so your validator will be elected into the consensus committee.
 
 :::info
 
-The size of the consensus committee (i.e. the validator set) is configured by the [**max_validators** consensus parameter](../oasis-network/genesis-doc.md#consensus).
+The size of the consensus committee (i.e. the validator set) is configured by the [**max_validators** consensus parameter](../../operators/run-your-node/genesis-doc.md#consensus).
 
 :::
 

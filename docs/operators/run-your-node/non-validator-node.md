@@ -1,8 +1,8 @@
-# Run a Non-validator Node
+# Non-validator Node
 
 :::info
 
-These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](run-validator.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](run-a-paratime-node.mdx).
+These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node/README.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](paratime-node.mdx).
 
 :::
 

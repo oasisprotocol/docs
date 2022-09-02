@@ -1,9 +1,5 @@
 # Genesis Document
 
-This document provides an overview of the Oasis Network's genesis document.
-
-## What is a Genesis Document?
-
 A genesis document contains a set of parameters that outline the initial state of an Oasis network.
 
 The state defined in the network's genesis document contains all the necessary information for launching that particular network (i.e. Mainnet, [Testnet](../../operators/testnet/README.md)), including initial token allocations, network parameters, and more.
@@ -16,7 +12,7 @@ For a more in-depth explanation of the genesis document, see the [Genesis Docume
 
 The important thing to note is that the genesis document is used to compute the [genesis document's hash](../../core/consensus/genesis.md#genesis-documents-hash). This hash is used to verify for which network a given transaction is intended for.
 
-### Genesis File vs. Genesis Document
+## Genesis File vs. Genesis Document
 
 A genesis file is a JSON file corresponding to a serialized genesis document. As such, it is more convenient for distribution and sharing.
 
@@ -167,7 +163,7 @@ The **`staking.params.thresholds`** parameters also specify the minimum threshol
 
 The following parameters control the staking rewards on the network:
 
-* **`staking.params.reward_schedule`** The staking reward schedule, indicating how the staking reward rate changes over time, defined at an epoch-by-epoch granular basis. The reward schedule uses a tapering formula with higher rewards being paid out at earlier epochs and then gradually decreasing over time. For more details, see the [Staking Incentives](token-metrics-and-distribution.mdx#staking-incentives) doc.
+* **`staking.params.reward_schedule`** The staking reward schedule, indicating how the staking reward rate changes over time, defined at an epoch-by-epoch granular basis. The reward schedule uses a tapering formula with higher rewards being paid out at earlier epochs and then gradually decreasing over time. For more details, see the [Staking Incentives](../../general/oasis-network/token-metrics-and-distribution.mdx#staking-incentives) doc.
 * **`staking.params.signing_reward_threshold_numerator`** and **`staking.params.signing_reward_threshold_denominator`** These parameters define the proportion of blocks that a validator must sign during each epoch to receive staking rewards. The set fraction of 3/4 means that a validator must maintain an uptime of at least 75% blocks during an epoch in order to receive staking rewards for that period.
 * **`staking.params.fee_split_weight_propose`** The block proposer's share of transaction fees. The value is set to 2.
 * **`staking.params.fee_split_weight_next_propose`** The next block proposer's share of transaction fees. The value is set to 1.

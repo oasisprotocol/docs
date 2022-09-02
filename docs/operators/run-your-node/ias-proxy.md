@@ -1,10 +1,10 @@
-# Run an IAS Proxy
+# IAS Proxy
 
 This guide will cover setting up an [Intel Attestation Service (IAS)](https://software.intel.com/content/www/us/en/develop/download/intel-sgx-intel-epid-provisioning-and-attestation-services.html) Proxy node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](prerequisites) section and have the Oasis Node binary installed on your system. The IAS Proxy connects to an Oasis Node, so make sure you have a running node first. For more details, see the instructions on how to [Run a Non-validator Node](run-non-validator.md#configuration).
+Before following this guide, make sure you've followed the [Prerequisites](prerequisites) section and have the Oasis Node binary installed on your system. The IAS Proxy connects to an Oasis Node, so make sure you have a running node first. For more details, see the instructions on how to [Run a Non-validator Node](non-validator-node.md#configuration).
 
 ### Obtaining IAS Service Provider ID (SPID) and API Key
 
@@ -71,7 +71,7 @@ The TLS public key required for connecting to the IAS Proxy is located in the co
 
 ### Share IAS Proxy address <a id="share-seed-node-address"></a>
 
-[ParaTime nodes](run-a-paratime-node.mdx) can now use your IAS Proxy by specifying it in configuration, e.g.:
+[ParaTime nodes](paratime-node.mdx) can now use your IAS Proxy by specifying it in configuration, e.g.:
 
 ```text
 --ias.proxy.address <IAS_PROXY_PUBLIC_KEY>@<EXTERNAL_IP>:8650

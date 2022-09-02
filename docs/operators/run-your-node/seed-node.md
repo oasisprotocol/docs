@@ -1,4 +1,4 @@
-# Run a Seed Node
+# Seed Node
 
 This guide will cover setting up a seed node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
 

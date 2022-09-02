@@ -72,7 +72,7 @@ and observe the value of the `consensus.latest_height` and
 
 :::
 
-[governance proposal]: ../governance.md
+[governance proposal]: ../validator-node/governance.md
 
 Once the upgrade epoch is reached, follow the instructions in the corresponding
 [upgrade log].
@@ -248,7 +248,7 @@ The following fields were a particular change in this upgrade:
 
 The balances in the genesis file are enumerated in base units with 1 ROSE token
 equaling 10^9 (i.e. billion) base units. For more details, see the
-[Genesis Document](../../../general/oasis-network/genesis-doc.md#parameters).
+[Genesis Document](../genesis-doc.md#parameters).
 
 :::
 

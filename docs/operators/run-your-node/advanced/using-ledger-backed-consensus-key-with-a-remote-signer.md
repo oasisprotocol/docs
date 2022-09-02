@@ -1,6 +1,6 @@
 # Using Ledger-backed Consensus Key with a Remote Signer
 
-This guide will describe how you can set up your [_validator_ node](../run-validator.md) with a detached consensus key stored on a [Ledger](https://www.ledger.com) wallet connected via [Oasis Core's Remote Signer](https://github.com/oasisprotocol/oasis-core/tree/master/go/oasis-remote-signer).
+This guide will describe how you can set up your [_validator_ node](../validator-node/README.md) with a detached consensus key stored on a [Ledger](https://www.ledger.com) wallet connected via [Oasis Core's Remote Signer](https://github.com/oasisprotocol/oasis-core/tree/master/go/oasis-remote-signer).
 
 :::caution
 
@@ -106,7 +106,7 @@ For the Oasis node system to be able to connect to the Oasis Remote Signer on th
 
 ## Set Up Oasis Node System
 
-For setting up your Oasis Node system, follow the [Run a Validator Node](../run-validator.md) docs.
+For setting up your Oasis Node system, follow the [Run a Validator Node](../validator-node/README.md) docs.
 
 :::info
 
@@ -116,7 +116,7 @@ Make sure you've copied the remote signer's certificate and remote signer's clie
 
 ### Initialize Oasis Node
 
-When [initializing your Oasis node](../run-validator.md#initializing-a-node), you need to pass appropriate `--signer.*` flags to configure the composite and remote signers. For example:
+When [initializing your Oasis node](../validator-node/README.md#initializing-a-node), you need to pass appropriate `--signer.*` flags to configure the composite and remote signers. For example:
 
 ```
 ENTITY_DIR=<YOUR-ENTITY-DIR>
@@ -146,7 +146,7 @@ The resulting directory only has `consensus_pub.pem` and no `consensus.pem` sinc
 
 ### Configure Oasis Node
 
-When [configuring your Oasis Node](../run-validator.md#configuring-the-oasis-node), you need to add the appropriate `signer` section to configure the composite and remote signers. For example:
+When [configuring your Oasis Node](../validator-node/README.md#configuring-the-oasis-node), you need to add the appropriate `signer` section to configure the composite and remote signers. For example:
 
 ```yaml
 # Signer.

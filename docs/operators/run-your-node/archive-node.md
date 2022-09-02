@@ -2,7 +2,7 @@
 description: This page describes how to run an archive node on the Oasis Network.
 ---
 
-# Run an Archive Node
+# Archive Node
 
 :::info
 

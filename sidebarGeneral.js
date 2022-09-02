@@ -13,7 +13,6 @@ const sidebars = {
         id: 'general/oasis-network/README',
       },
       items: [
-        'general/oasis-network/genesis-doc',
         'general/oasis-network/why-oasis',
         'general/oasis-network/token-metrics-and-distribution',
         {

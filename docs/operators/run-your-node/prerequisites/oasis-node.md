@@ -42,7 +42,7 @@ To install the `oasis-node` binary for all users of the system, copy it to `/usr
 
 ## Running ParaTimes
 
-If you intend to [run a ParaTime node](../run-a-paratime-node.mdx) you will need to additionally install the following software packages:
+If you intend to [run a ParaTime node](../paratime-node.mdx) you will need to additionally install the following software packages:
 
 * [Bubblewrap](https://github.com/projectatomic/bubblewrap) 0.4.1+, needed for creating process sandboxes.
 

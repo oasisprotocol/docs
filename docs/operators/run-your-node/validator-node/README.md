@@ -1,8 +1,8 @@
-# Run a Validator Node
+# Validator Node
 
 :::info
 
-These instructions are for setting up a _validator_ node. If you want to run a _non-validator_ node instead, see the [instructions on running a non-validator node](run-non-validator.md). Similarly, if you want to run a ParaTime node instead, see the [instructions on running a ParaTime node](run-a-paratime-node.mdx).
+These instructions are for setting up a _validator_ node. If you want to run a _non-validator_ node instead, see the [instructions on running a non-validator node](../non-validator-node.md). Similarly, if you want to run a ParaTime node instead, see the [instructions on running a ParaTime node](../paratime-node.mdx).
 
 :::
 
@@ -10,11 +10,11 @@ This guide will cover setting up your validator node for the Oasis Network. This
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](prerequisites) section and have the Oasis Node binary installed on your systems.
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) section and have the Oasis Node binary installed on your systems.
 
 ### Stake requirements
 
-To become a validator on the Oasis Network, you need to have enough tokens staked in your escrow account. For more details, see the [Stake requirements](prerequisites/stake-requirements.md).
+To become a validator on the Oasis Network, you need to have enough tokens staked in your escrow account. For more details, see the [Stake requirements](../prerequisites/stake-requirements.md).
 
 ### Systems
 
@@ -56,7 +56,7 @@ mkdir -m700 -p {entity,node}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](../mainnet/README.md). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
+The latest genesis file can be found in [Network Parameters](../../mainnet/README.md). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
 
 ```bash
 GENESIS_FILE_PATH=/localhostdir/genesis.json
@@ -66,15 +66,15 @@ This will be needed later when generating transactions.
 
 ### Initializing an Entity
 
-An entity is critical to operating nodes on the network as it controls the stake attached to a given individual or organization on the network. We highly recommend using an HSM or [Ledger](../../oasis-core-ledger) device to protect your entity private key.
+An entity is critical to operating nodes on the network as it controls the stake attached to a given individual or organization on the network. We highly recommend using an HSM or [Ledger](../../../oasis-core-ledger) device to protect your entity private key.
 
 #### Using a Ledger-based Signer
 
 The Ledger-based signer stores your private keys on your Ledger wallet. It is implemented as an Oasis Core signer plugin.
 
-You will need to set it up as described in the [Setup](../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../oasis-core-ledger).
+You will need to set it up as described in the [Setup](../../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
 
-As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](../../oasis-core-ledger/usage/entity.md) section of our [Oasis Core Ledger docs](../../oasis-core-ledger).
+As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](../../../oasis-core-ledger/usage/entity.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
 
 This will create 1 file in `/localhostdir/entity`:
 
@@ -82,7 +82,7 @@ This will create 1 file in `/localhostdir/entity`:
 
 :::info
 
-There will be no signed entity descriptor, i.e. `entity_genesis.json`, created yet. It will get created when you'll update the entity descriptor with your signed node descriptor as described in the [Adding the Node to the Entity Descriptor](run-validator.md#adding-the-node-to-the-entity-descriptor) section.
+There will be no signed entity descriptor, i.e. `entity_genesis.json`, created yet. It will get created when you'll update the entity descriptor with your signed node descriptor as described in the [Adding the Node to the Entity Descriptor](#adding-the-node-to-the-entity-descriptor) section.
 
 :::
 
@@ -213,7 +213,7 @@ mkdir -m700 -p /serverdir/{etc,node,node/entity}
 
 #### Copying the Node Artifacts from `/localhostdir`
 
-In order for the node registration to work properly, as defined in `/localhostdir/entity.json`, you must copy the node's artifacts you generated in the [Initializing a Node](run-validator.md#initializing-a-node) section. To do so, upload the following files from `/localhostdir/node` to `/serverdir/node` over a secure channel (e.g. SSH):
+In order for the node registration to work properly, as defined in `/localhostdir/entity.json`, you must copy the node's artifacts you generated in the [Initializing a Node](#initializing-a-node) section. To do so, upload the following files from `/localhostdir/node` to `/serverdir/node` over a secure channel (e.g. SSH):
 
 * `consensus.pem`
 * `consensus_pub.pem`
@@ -234,7 +234,7 @@ chmod -R 600 /serverdir/node/*.pem
 
 :::caution
 
-You may have noticed that some of these files were listed as **DO NOT SHARE** in the [Initializing a Node](run-validator.md#initializing-a-node) section.
+You may have noticed that some of these files were listed as **DO NOT SHARE** in the [Initializing a Node](#initializing-a-node) section.
 
 In the future, these keys should be generated and referenced from an HSM. However, until HSM support is implemented, these keys should be kept as secure as possible on the `server`.
 
@@ -246,7 +246,7 @@ We will also need to have the public entity artifacts from the `/localhostdir` p
 
 #### Copying the Genesis File to the server
 
-The latest Genesis file can be found in the [Network Parameters](../mainnet/README.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
+The latest Genesis file can be found in the [Network Parameters](../../mainnet/README.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
 
 #### Configuring the Oasis Node
 
@@ -258,13 +258,13 @@ Before using this configuration you should collect the following information to 
 
 :::info
 
-If you are using a [Sentry Node](sentry-node-architecture.md), you should use the public IP of that machine.
+If you are using a [Sentry Node](../sentry-node.md), you should use the public IP of that machine.
 
 :::
 
 *   `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-    You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
+    You can find the current Oasis Seed Node address in the [Network Parameters](../../mainnet/README.md).
 
 To use this configuration, save it in the `/serverdir/etc/config.yml` file and pass it to the `oasis-node` command as an argument to the `--config` flag.
 
@@ -412,7 +412,7 @@ This step is not necessary if your entity was fully staked at genesis.
 
 :::caution
 
-If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md).
+If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md).
 
 :::
 
@@ -465,7 +465,7 @@ Before generating the escrow transaction, you need to set the following environm
     For this guide, we will use `/localhostdir/signed-escrow.tx`.
 *   `ACCOUNT_ADDRESS`: Your staking account address.
 
-    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../general/manage-tokens/advanced/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
+    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../../general/manage-tokens/advanced/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
 
 Then execute the following command:
 
@@ -486,7 +486,7 @@ oasis-node stake account gen_escrow \
 
 The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Amber Network as each unit value used to track the account balance is 1x10^-9 tokens.
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
 
 :::
 
@@ -521,7 +521,7 @@ oasis-node registry entity gen_register \
 
 :::info
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
 
 :::
 

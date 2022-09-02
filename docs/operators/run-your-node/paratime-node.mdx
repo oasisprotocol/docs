@@ -1,11 +1,11 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Run a ParaTime Node
+# ParaTime Node
 
 :::info
 
-These instructions are for setting up a _ParaTime_ node which participates in one or more ParaTime compute committees. If you want to run a _ParaTime client_ node instead, see the [instructions for running a ParaTime client node](run-a-paratime-client-node.mdx). If you want to run a _validator_ node instead, see the [instructions for running a validator node](run-validator.md). Similarly, if you want to run a non-validator node instead, see the [instructions for running a non-validator node](run-non-validator.md).
+These instructions are for setting up a _ParaTime_ node which participates in one or more ParaTime compute committees. If you want to run a _ParaTime client_ node instead, see the [instructions for running a ParaTime client node](paratime-client-node.mdx). If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node/README.md). Similarly, if you want to run a non-validator node instead, see the [instructions for running a non-validator node](non-validator-node.md).
 
 :::
 
@@ -33,7 +33,7 @@ This guide will cover setting up your ParaTime compute node for the Oasis Networ
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](prerequisites) and [Run a Non-validator Node](run-non-validator.md) sections and have:
+Before following this guide, make sure you've followed the [Prerequisites](prerequisites) and [Run a Non-validator Node](non-validator-node.md) sections and have:
 
 * Oasis Node binary installed and configured on your system.
 * The chosen top-level `/node/` working directory prepared. In addition to `etc` and `data` directories, also prepare the following directories:
@@ -52,7 +52,7 @@ Just make sure to use the correct working directory path in the instructions bel
 
 :::tip
 
-Reading the rest of the [validator node setup instructions](run-validator.md) may also be useful.
+Reading the rest of the [validator node setup instructions](validator-node/README.md) may also be useful.
 
 :::
 
@@ -116,7 +116,7 @@ change in the future.
 
 ### Register a New Entity or Update Your Entity Registration
 
-If you don't have an entity yet, create a new one by following the [Creating Your Entity](run-validator.md#creating-your-entity) instructions.
+If you don't have an entity yet, create a new one by following the [Creating Your Entity](validator-node/README.md#creating-your-entity) instructions.
 
 :::danger
 
@@ -124,7 +124,7 @@ Everything in this section should be done on the `localhost` as there are sensit
 
 :::
 
-If you will be running the ParaTime on a new Oasis Node, initialize a new node by following the [Initializing a Node](run-validator.md#initializing-a-node) instructions.
+If you will be running the ParaTime on a new Oasis Node, initialize a new node by following the [Initializing a Node](validator-node/README.md#initializing-a-node) instructions.
 
 Then update your entity descriptor by enumerating paths to all your node's descriptors (existing and new ones) in the `--entity.node.descriptor` flag. For example:
 
@@ -159,17 +159,17 @@ For example:
 
 :::
 
-Then generate and submit the new/updated entity descriptor via the entity registration transaction by following the [Generating Entity Registration Transaction](run-validator.md#generating-entity-registration-transaction) instructions.
+Then generate and submit the new/updated entity descriptor via the entity registration transaction by following the [Generating Entity Registration Transaction](validator-node/README.md#generating-entity-registration-transaction) instructions.
 
 :::caution
 
-Make sure your entity descriptor (i.e. `entity.json`) is copied to your online server and saved as `/node/entity/entity.json` to ensure the [node's configuration](run-a-paratime-node.mdx#configuration) will find it.
+Make sure your entity descriptor (i.e. `entity.json`) is copied to your online server and saved as `/node/entity/entity.json` to ensure the [node's configuration](paratime-node.mdx#configuration) will find it.
 
 :::
 
 :::tip
 
-You will [configure the node](run-a-paratime-node.mdx#configuration) to automatically register for the roles it has enabled (i.e. storage and compute roles) via the `worker.registration.entity` configuration flag.
+You will [configure the node](paratime-node.mdx#configuration) to automatically register for the roles it has enabled (i.e. storage and compute roles) via the `worker.registration.entity` configuration flag.
 
 No manual node registration is necessary.
 
@@ -214,7 +214,7 @@ in the consensus layer will not work and will be rejected by the network.
 
 ### Install Oasis Core Runtime Loader
 
-For ParaTimes running inside [Intel SGX Trusted Execution Environment](run-a-paratime-node.mdx#setting-up-trusted-execution-environment-tee), you will need to install the Oasis Core Runtime Loader.
+For ParaTimes running inside [Intel SGX Trusted Execution Environment](paratime-node.mdx#setting-up-trusted-execution-environment-tee), you will need to install the Oasis Core Runtime Loader.
 
 The Oasis Core Runtime Loader binary (`oasis-core-runtime-loader`) is part of Oasis Core binary releases, so make sure you download the appropriate version specified the [Network Parameters](../mainnet/README.md) page.
 
@@ -367,11 +367,11 @@ Before using this configuration you should collect the following information to 
 * `{{ external_address }}`: The external IP you used when registering this node.
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
   * You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
-* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](run-a-paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
   * You can find the current Oasis-supported ParaTimes in the [Network Paramers](../mainnet/README.md#paratimes).
 * `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
   * You can find the current Oasis IAS proxy address in the [Network Parameters](../mainnet/README.md#cipher-paratime).
-  * If you want, you can also [run your own IAS proxy](run-an-ias-proxy.md).
+  * If you want, you can also [run your own IAS proxy](ias-proxy.md).
 
 :::caution
 
@@ -402,8 +402,8 @@ See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troub
 
 ### Too Old Bubblewrap Version
 
-Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. Previous versions of this guide did not explicitly mention the required version. For details see the [Install Bubblewrap Sandbox](run-a-paratime-node.mdx#install-bubblewrap-sandbox-at-least-version-0-3-3) section.
+Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. Previous versions of this guide did not explicitly mention the required version. For details see the [Install Bubblewrap Sandbox](paratime-node.mdx#install-bubblewrap-sandbox-at-least-version-0-3-3) section.
 
 ### Stake Requirement
 
-Double check your node entity satisfies the staking requirements for a ParaTime node. For details see the [Stake Requirements](run-a-paratime-node.mdx#stake-requirements) section.
+Double check your node entity satisfies the staking requirements for a ParaTime node. For details see the [Stake Requirements](paratime-node.mdx#stake-requirements) section.

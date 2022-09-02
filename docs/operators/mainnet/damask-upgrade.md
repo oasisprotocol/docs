@@ -351,8 +351,8 @@ as well.
   }
   ```
 
-[genesis-doc]: ../../general/oasis-network/genesis-doc.md#parameters
-[minimum staking thresholds]: ../../general/oasis-network/genesis-doc.md#staking-thresholds
+[genesis-doc]: ../run-your-node/genesis-doc.md#parameters
+[minimum staking thresholds]: ../run-your-node/genesis-doc.md#staking-thresholds
 [oasis-core-4308]: https://github.com/oasisprotocol/oasis-core/pull/4308
 [pvss-beacon]: ../../adrs/0007-improved-random-beacon.md
 [Mainnet genesis file]:

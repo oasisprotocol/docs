@@ -1,4 +1,4 @@
-# The Testnet
+# Testnet
 
 These are the current parameters for the Testnet, a test-only network for
 testing out upcoming features and changes to the protocol.
@@ -20,7 +20,7 @@ This page is meant to be kept up to date with the information from the currently
 * Latest Testnet version: **2022-03-03**
 * [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2022-03-03/genesis.json):
   * SHA256: `4c3d271253d2a324816de3b9a048261b674471e7d4f9a02995a769489bd41984`
-* Genesis document's hash ([explanation](../../general/oasis-network/genesis-doc.md#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](../run-your-node/genesis-doc.md#genesis-file-vs-genesis-document)):
   * `50304f98ddb656620ea817cc1446c401752a05a249b36c9b90dba4616829977a`
 * Oasis seed node address:
   * `05EAC99BB37F6DAAD4B13386FF5E087ACBDDC450@34.86.165.6:26656`
@@ -45,7 +45,7 @@ The Oasis Node is part of the Oasis Core release.
 
 :::
 
-[handling network upgrades]: ../set-up-your-node/maintenance/handling-network-upgrades.md
+[handling network upgrades]: ../run-your-node/maintenance/handling-network-upgrades.md
 
 ## ParaTimes
 
@@ -93,7 +93,7 @@ runtime:
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../set-up-your-node/run-an-ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
 
 :::
 
@@ -141,6 +141,6 @@ runtime:
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../set-up-your-node/run-an-ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
 
 :::

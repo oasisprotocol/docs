@@ -72,7 +72,7 @@ Currently, we provide two options for signing transactions:
     You will need to set it up as described in our [Oasis Core Ledger](../../../../oasis-core-ledger/usage/transactions.md) docs.
 *   **File-based signer.**
 
-    You will need to create your Entity as described in [Running a Node on the Network](../../../../operators/set-up-your-node/run-validator.md#creating-your-entity) docs and set the following flags:
+    You will need to create your Entity as described in [Running a Node on the Network](../../../../operators/run-your-node/validator-node/README.md#creating-your-entity) docs and set the following flags:
 
     * `--signer.backend file`: Specifies use of the file signer.
 

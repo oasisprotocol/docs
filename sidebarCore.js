@@ -13,22 +13,47 @@ const sidebars = {
       label: 'Development Setup',
       collapsible: false,
       link: {
-        type: 'doc',
-        id: 'core/development-setup/README',
+        type: 'generated-index',
+        description: 'This section provides information on how to compile and configure complete Oasis Network stack locally in order for you to start exploring and contributing to the Oasis Core.',
+        slug: 'core/development-setup',
       },
       items: [
-        'core/development-setup/prerequisites',
-        'core/development-setup/building',
-        'core/development-setup/running-tests',
-        'core/development-setup/oasis-net-runner',
-        'core/development-setup/single-validator-node-network',
-        'core/development-setup/deploying-a-runtime',
+        {
+          type: 'category',
+          label: 'Build Environment Setup and Building',
+          link: {
+            type: 'generated-index',
+            slug: 'core/development-setup/build-environment-setup-and-building',
+          },
+          items: [
+            'core/development-setup/prerequisites',
+            'core/development-setup/building',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Running Tests and Development Networks',
+          link: {
+            type: 'generated-index',
+            slug: 'core/development-setup/running-tests-and-development-networks',
+          },
+          items: [
+            'core/development-setup/running-tests',
+            'core/development-setup/oasis-net-runner',
+            'core/development-setup/single-validator-node-network',
+            'core/development-setup/deploying-a-runtime',
+          ],
+        },
       ],
     },
     {
       type: 'category',
       label: 'High-Level Components',
       collapsible: false,
+      link: {
+        type: 'generated-index',
+        slug: 'core/high-level-components',
+      },
       items: [
         {
           type: 'category',
@@ -44,7 +69,6 @@ const sidebars = {
               label: 'Services',
               link: {
                 type: 'generated-index',
-                title: 'Services',
                 slug: 'core/consensus/services',
               },
               items: [
@@ -78,6 +102,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Oasis Node',
+          link: {
+            type: 'generated-index',
+            slug: 'core/oasis-node',
+          },
           items: [
             'core/oasis-node/rpc',
             'core/oasis-node/metrics',
@@ -94,6 +122,10 @@ const sidebars = {
       type: 'category',
       label: 'Common Functionality',
       collapsible: false,
+      link: {
+        type: 'generated-index',
+        slug: 'core/common-functionality',
+      },
       items: [
         'core/encoding',
         'core/crypto',
@@ -111,6 +143,10 @@ const sidebars = {
       type: 'category',
       label: 'Processes',
       collapsible: false,
+      link: {
+        type: 'generated-index',
+        slug: 'core/processes',
+      },
       items: [
         'core/release-process',
         'core/versioning',

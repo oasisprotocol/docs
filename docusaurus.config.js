@@ -69,10 +69,6 @@ const config = {
           },
           // #200 Restructure docs
           {
-            to: '/core/development-setup/',
-            from: ['/oasis-core/development-setup/build-environment-setup-and-building', '/oasis-core/development-setup/running-tests-and-development-networks']
-          },
-          {
             to: '/general/contribute-to-the-network/delegation-policy',
             from: '/general/foundation/delegation-policy'
           },

@@ -8,7 +8,6 @@ const sidebars = {
       label: 'Architectural Decision Records',
       link: {
         type: 'generated-index',
-        title: 'Architectural Decision Records',
         description: "This page contains a list of accepted Oasis ADRs. To see the currently discussed ADRs or to open a new ADR, visit the official oasisprotocol/adrs repository on github.com.",
         slug: '/adrs',
       },

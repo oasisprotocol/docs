@@ -19,11 +19,13 @@ In order to transition from Mainnet Beta to Mainnet, community members have coll
   * _Throughout Mainnet Beta there have been between 75 and 77 active validators on the network._
 * [x] There are NO Oasis Protocol Foundation or Oasis Labs nodes serving as validators.
 * [x] At least one block explorer exists to track network stability, transactions, and validator activity.
-  * _There is much more. See_ [_Block Explorers & Validator Leaderboards_](../../../general/community-resources/community-made-resources.md#block-explorers-validator-leaderboards) _part of our docs._
+  * _There is much more. See_ [_Block Explorers & Validator Leaderboards_][archived - block explorers] _part of our docs._
 * [x] At least one qualified custodian supports the native ROSE token.
   * _Currently, Anchorage and Finoa support the ROSE token. See_ [_Custody Providers_](../../../general/manage-tokens/holding-rose-tokens/custody-providers.md) _part of our docs._
 * [x] At least one web wallet or hardware wallet supports native ROSE token.
   * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_Mobile Wallets_](../../../general/manage-tokens/holding-rose-tokens/bitpie-wallet.md) _and_ [_Web Wallets_](../../../general/manage-tokens/oasis-wallets/README.mdx) _parts of our docs._
+
+[archived - block explorers]: https://github.com/oasisprotocol/docs/blob/0aeeb93a6e7c9001925923661e4eb3340ec4fb4b/docs/general/community-resources/community-made-resources.md#block-explorers--validator-leaderboards-block-explorers-validator-leaderboards
 
 ## Mechanics of Upgrading to Mainnet
 
@@ -71,7 +73,7 @@ Mainnet will use [**Oasis Core 20.12.2**](https://github.com/oasisprotocol/oasis
 
 The Oasis team will be offering live video support during the launch of Mainnet. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](../../../general/oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Mainnet.
+For any additional support, please reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](https://oasisprotocol.org/community) with your questions, comments, and feedback related to Mainnet.
 
 To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).[  
 ](https://app.gitbook.com/@oasisprotocol/s/general/~/drafts/-MYKBZ_9kr9NSXQSnUVI/contribute-to-the-network/contribution-guidelines/@merged)

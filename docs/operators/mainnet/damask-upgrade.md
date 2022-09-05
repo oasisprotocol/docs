@@ -370,7 +370,7 @@ For any additional support, please reach out via the
 your questions, comments, and feedback related to Damask upgrade.
 
 To follow the network, please use one of the many
-[community block explorers][block-explorers].
+[community block explorers][archived - block explorers].
 
-[node-operators-slack]: ../../general/oasis-network/connect-with-us.md
-[block-explorers]: ../../general/community-resources/community-made-resources.md#block-explorers-validator-leaderboards
+[node-operators-slack]: https://oasisprotocol.org/community
+[archived - block explorers]: https://github.com/oasisprotocol/docs/blob/0aeeb93a6e7c9001925923661e4eb3340ec4fb4b/docs/general/community-resources/community-made-resources.md#block-explorers--validator-leaderboards-block-explorers-validator-leaderboards

@@ -158,6 +158,8 @@ After completing the runtime storage migration, Second State will communicate th
 
 The Oasis team will be offering live video support during the Cobalt upgrade. Video call link and calendar details will be shared with node operators via email and Slack.
 
-For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](../../../general/oasis-network/connect-with-us.md) with your questions, comments, and feedback related to Cobalt upgrade.
+For any additional support, please reach out via the [**#nodeoperators** Oasis Community Slack channel](https://oasisprotocol.org/community) with your questions, comments, and feedback related to Cobalt upgrade.
 
-To follow the network, please use one of the many [community block explorers](../../../general/community-resources/community-made-resources.md#block-explorers-validator-leaderboards).
+To follow the network, please use one of the many [community block explorers][archived - block explorers].
+
+[archived - block explorers]: https://github.com/oasisprotocol/docs/blob/0aeeb93a6e7c9001925923661e4eb3340ec4fb4b/docs/general/community-resources/community-made-resources.md#block-explorers--validator-leaderboards-block-explorers-validator-leaderboards

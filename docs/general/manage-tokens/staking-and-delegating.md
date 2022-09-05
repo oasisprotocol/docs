@@ -60,4 +60,4 @@ You don't need to open your wallet, you can just search your `oasis1` address.
 
 ### Run your own Node
 
-If you're interested in running your own node and become a validator you can get started [here](../../operators/README.mdx). Be sure to [join the **#node-operators** channel on Discord and sign up for the node operator mailing list](../oasis-network/connect-with-us.md#social-media-channels)!
+If you're interested in running your own node and become a validator you can get started [here](../../operators/README.mdx). Be sure to [join the **#node-operators** channel on Discord and sign up for the node operator mailing list](https://oasisprotocol.org/community)!

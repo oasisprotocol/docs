@@ -159,6 +159,14 @@ const config = {
             to: '/operators/testnet/upgrade-log',
             from: '/general/foundation/testnet/upgrade-log'
           },
+          {
+            to: '/general/contribute-to-the-network/token-delivery-and-kyc',
+            from: '/general/community-resources/token-delivery-and-kyc'
+          },
+          {
+            to: '/general/oasis-network/',
+            from: ['/general/community-resources/community-hub', '/general/community-resources/community-made-resources', '/general/oasis-network/connect-with-us']
+          }
         ],
         createRedirects(existingPath) {
           // #119 Add /oasis-core/adr/* -> /adrs/* redirection

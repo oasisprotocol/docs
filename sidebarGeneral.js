@@ -51,8 +51,9 @@ const sidebars = {
           type: 'category',
           label: '3rd Party Custody & Wallets',
           link: {
-            type: 'doc',
-            id: 'general/manage-tokens/holding-rose-tokens/README',
+            type: 'generated-index',
+            description: "This document provides an overview of 3rd party custody and wallet solutions supported by the Oasis Network for managing ROSE tokens.",
+            slug: 'general/manage-tokens/holding-rose-tokens',
           },
           items: [
             'general/manage-tokens/holding-rose-tokens/custody-providers',

@@ -131,11 +131,12 @@ preprocessor (remark plugin).
 ### DocCards
 
 DocCards are attractive elements used mostly in the introductory
-chapters and *See also* sections Apart from the built-in docusaurus
-`useCurrentSidebarCategory().items` helper, you can also use the
-`findSidebarItem()` helper passing the href of the target page.
+chapters and *See also* sections. Apart from the built-in docusaurus
+`<DocCardList />` helper which prints all items in the current category, you
+can also list specific items by calling `findSidebarItem()` helper passing the
+href of the target page.
 
-`DocCardList` will show one or two DocCards per row while a single `DocCard`
+`DocCardList` will show two DocCards per row while the `DocCard` component
 will span horizontally over the whole site resembling page links in gitbook.  
 
 ### Backward compatibility

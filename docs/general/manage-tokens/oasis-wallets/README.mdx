@@ -1,5 +1,6 @@
+import DocCard from '@theme/DocCard';
 import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Oasis Wallets
 
@@ -33,8 +34,8 @@ The Oasis Wallets currently support the following features:
 * Staking and receiving staking rewards
 * Easily switching between different Oasis Wallets that use the same [ADR 0008](../../../adrs/0008-standard-account-key-generation.md) standard account key generation process
 
-## Frequently Asked Questions
+<DocCardList />
 
-This has moved to a separate [FAQ section](../faq.md).
+## See also
 
-<DocCardList items={useCurrentSidebarCategory().items} />
+<DocCard item={findSidebarItem('/general/manage-tokens/faq')} />

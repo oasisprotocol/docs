@@ -74,7 +74,7 @@ Both Oasis Wallets also support connecting to your Ledger-backed ROSE wallet.
 
 :::
 
-If you need more options, take a look our [3rd Party Custody & Wallets](../manage-tokens/holding-rose-tokens/README.md) guide.
+If you need more options, take a look our [3rd Party Custody & Wallets](../manage-tokens/holding-rose-tokens) guide.
 
 ## 💰 Delegate Your ROSE Tokens & Earn Staking Rewards
 
@@ -82,7 +82,7 @@ Did you know you grow your ROSE holdings over time, while also contributing to t
 
 Anyone who has ROSE tokens can delegate their tokens to a validator and start earning a slice of that validator's staking rewards, based on how many ROSE tokens are delegated.
 
-You can use one of the official [Oasis Wallets](../manage-tokens/oasis-wallets/README.mdx) to delegate your ROSE tokens to validators. Additionally, [3rd party custody providers and wallets](../manage-tokens/holding-rose-tokens/README.md) also offer you the option of delegating your ROSE tokens.
+You can use one of the official [Oasis Wallets](../manage-tokens/oasis-wallets/README.mdx) to delegate your ROSE tokens to validators. Additionally, [3rd party custody providers and wallets](../manage-tokens/holding-rose-tokens) also offer you the option of delegating your ROSE tokens.
 
 You can review the list of active Oasis Network validators via the [Oasis Scan](https://www.oasisscan.com/validators) or [Oasis Monitor](https://oasismonitor.com/validators) block explorers or use the built-in facilities of your wallet. You're welcome to delegate your ROSE tokens to any of the active validators.
 

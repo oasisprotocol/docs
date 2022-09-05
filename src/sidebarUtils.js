@@ -1,5 +1,5 @@
 // @ts-check
-import {useDocsVersion} from "@docusaurus/theme-common";
+import {useDocsVersion} from "@docusaurus/theme-common/internal";
 
 /**
  * Builds an index of href => sidebar item.
@@ -21,8 +21,7 @@ function reindex(sidebarItems) {
 }
 
 /**
- * Finds sidebar item object in the general sidebar given the document id, href
- * or label.
+ * Finds sidebar item object in the sidebars given the item's href.
  */
 export function findSidebarItem(href) {
     const docsVersion = useDocsVersion();

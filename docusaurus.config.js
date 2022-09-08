@@ -80,25 +80,37 @@ const config = {
         },
         items: [
           {
-            label: 'General',
+            label: 'Use Oasis',
             to: '/general/',
             activeBaseRegex: '/general/',
             position: 'left',
           },
           {
-            label: 'Node Operators',
-            to: '/operators/',
-            activeBaseRegex: '/operators/',
+            label: 'Get Involved',
+            to: '/get-involved/',
+            position: 'left',
+            activeBaseRegex: `/get-involved/`,
+          },
+          {
+            label: 'Run Node',
+            to: '/node/',
+            activeBaseRegex: '/node/',
             position: 'left',
           },
           {
-            label: 'Developers', // dApps, ParaTimes
-            to: '/developers/',
-            activeBaseRegex: '/developers/',
+            label: 'Create dapp',
+            to: '/dapp/',
+            activeBaseRegex: '/dapp/',
             position: 'left',
           },
           {
-            label: 'Core', // oasis-core, ADRs
+            label: 'Build ParaTime',
+            to: '/paratime/',
+            activeBaseRegex: '/paratime/',
+            position: 'left',
+          },
+          {
+            label: 'Develop Core',
             to: '/core/',
             position: 'left',
             activeBaseRegex: `/core/`,

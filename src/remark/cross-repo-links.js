@@ -1,6 +1,7 @@
 const visit = require('unist-util-visit');
 
-const oasisSdkRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/(.*)\.mdx?(#.*)?/;
+const oasisSdkContractRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/contract\/(.*)\.mdx?(#.*)?/;
+const oasisSdkRuntimeRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/runtime\/(.*)\.mdx?(#.*)?/;
 const oasisCoreRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-core\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
 const oasisCoreLedgerRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-core-ledger\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
 const adrsRegex = /https:\/\/github\.com\/oasisprotocol\/adrs\/blob\/main\/(.*)\.mdx?(#.*)?/;
@@ -14,16 +15,18 @@ module.exports = function (options) {
      * repos with relative website links depending on the specific component.
      *
      * Examples:
-     * https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/runtime/getting-started.md ->
-     *   /developers/sdk/runtime/getting-started
+     * https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/runtime/prerequisites.md ->
+     *   /paratime/prerequisites
      * https://github.com/oasisprotocol/oasis-core/blob/master/docs/runtime/index.md ->
      *   /core/runtime/
-     * https://github.com/oasisprotocol/docs/blob/main/docs/general/oasis-network/genesis-doc.md#committee-scheduler ->
-     *   /general/oasis-network/genesis-doc#committee-scheduler
+     * https://github.com/oasisprotocol/docs/blob/main/docs/node/genesis-doc.md#committee-scheduler ->
+     *   /node/genesis-doc#committee-scheduler
      */
     function visitor(node) {
-        if (oasisSdkRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkRegex, '/developers/sdk/$1$2');
+        if (oasisSdkContractRegex.test(node.url)) {
+            node.url = node.url.replace(oasisSdkContractRegex, '/dapp/cipher/$1$2');
+        } else if (oasisSdkRuntimeRegex.test(node.url)) {
+            node.url = node.url.replace(oasisSdkRuntimeRegex, '/paratime/$1$2');
         } else if (oasisCoreRegex.test(node.url)) {
             node.url = node.url.replace(oasisCoreRegex, '/core/$1$2');
         } else if (oasisCoreLedgerRegex.test(node.url)) {
@@ -36,7 +39,7 @@ module.exports = function (options) {
             return;
         }
 
-        // Trim trailing "index" and "README" in URLs.
+        // Trim trailing "index" or "README" in URLs.
         node.url = node.url.replace(indexReadmeRegex, '$2');
     }
 

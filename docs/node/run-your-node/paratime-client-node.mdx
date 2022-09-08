@@ -1,0 +1,226 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ParaTime Client Node
+
+:::info
+
+These instructions are for setting up a _ParaTime client_ node which only observes ParaTime activity and can submit transactions. If you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](paratime-node.mdx). Similarly, if you want to run a _validator_ or a _non-validator_ node instead, see the [instructions for running a validator node](validator-node/README.md) or [instructions for running a non-validator node](non-validator-node.md).
+
+:::
+
+:::tip
+
+If you are looking for some concrete ParaTimes that you can run, see [the list of ParaTimes and their parameters](../../get-involved/run-node/paratime-node.mdx).
+
+:::
+
+:::tip
+
+Oasis Core refers to ParaTimes as runtimes internally, so all configuration options will have runtime in their name.
+
+:::
+
+This guide will cover setting up your ParaTime client node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+
+## Prerequisites
+
+Before following this guide, make sure you've followed the [Prerequisites](prerequisites) and [Run a Non-validator Node](non-validator-node.md) sections and have:
+
+* Oasis Node binary installed and configured on your system.
+* The chosen top-level `/node/` working directory prepared. In addition to `etc` and `data` directories, also prepare the following directories:
+  * `bin`: This will store binaries needed by Oasis Node for running the ParaTimes.
+  * `runtimes`: This will store the ParaTime bundles.
+
+:::tip
+
+Feel free to name your working directory as you wish, e.g. `/srv/oasis/`.
+
+Just make sure to use the correct working directory path in the instructions below.
+
+:::
+
+* Genesis file copied to `/node/etc/genesis.json`.
+
+:::tip
+
+Reading the rest of the [ParaTime node setup instructions](paratime-node.mdx) may also be useful.
+
+:::
+
+:::info
+
+To speed up bootstraping your new node, we recommend [copying node's state from your existing node](advanced/copy-state-from-one-node-to-the-other.md) or [syncing it using state sync](advanced/sync-node-using-state-sync.md).
+
+:::
+
+:::tip
+
+Running a ParaTime client node doesn't require registering an entity or its nodes.
+
+It also doesn't require having any stake.
+
+:::
+
+:::tip
+
+Running a client node for a ParaTime that runs in a Trusted Execution Environment (TEE) doesn't require having the same  TEE available on the ParaTime client node.
+
+For example, running a ParaTime client node for an SGX-enabled ParaTime like Cipher doesn't require having SGX on the ParaTime client node.
+
+:::
+
+### The ParaTime Bundle
+
+In order to run a ParaTime node you need to obtain the ParaTime bundle that
+needs to come from a trusted source. The bundle (usually with an `.orc`
+extension that stands for Oasis Runtime Container) contains all the needed
+ParaTime binaries together with the identifier and version metadata to ease
+deployment.
+
+When the ParaTime is running in a Trusted Execution Environment (TEE) the bundle
+will also contain all the required artifacts (e.g. SGXS version of the binary
+and any enclave signatures).
+
+:::danger
+
+Like the genesis document, make sure you obtain these from a trusted source.
+
+:::
+
+:::caution
+
+#### **Compiling the ParaTime Binary from Source Code**
+
+In case you decide to build the ParaTime binary from source yourself, make sure
+that you follow our [guidelines for deterministic compilation](../../paratime/reproducibility)
+to ensure that you receive the exact same binary.
+
+:::
+
+### Install ParaTime Bundle
+
+For each ParaTime, you need to obtain its bundle and install it to the
+`runtimes` subdirectory of your node's working directory.
+
+:::info
+
+For example, for the [Cipher ParaTime](../mainnet/README.md#cipher-paratime),
+you would have to obtain the `cipher-paratime.orc` bundle and install it to
+`/node/runtimes/cipher-paratime.orc`.
+
+:::
+
+### Install Bubblewrap Sandbox (at least version 0.3.3)
+
+ParaTime client nodes execute ParaTime binaries inside a sandboxed environment provided by [Bubblewrap](https://github.com/containers/bubblewrap). In order to install it, please follow these instructions, depending on your distribution:
+
+<Tabs>
+<TabItem value="Ubuntu 18.10+">
+
+```bash
+sudo apt install bubblewrap
+```
+
+</TabItem>
+<TabItem value="Fedora">
+
+```bash
+sudo dnf install bubblewrap
+```
+
+</TabItem>
+<TabItem value="other" label="Other Distributions">
+On other systems, you can download the latest [source release provided by the Bubblewrap project](https://github.com/containers/bubblewrap/releases) and build it yourself.
+
+Make sure you have the necessary development tools installed on your system and the `libcap` development headers. On Ubuntu, you can install them with:
+
+```bash
+sudo apt install build-essential libcap-dev
+```
+
+After obtaining the Bubblewrap source tarball, e.g. [bubblewrap-0.4.1.tar.xz](https://github.com/containers/bubblewrap/releases/download/v0.4.1/bubblewrap-0.4.1.tar.xz), run:
+
+```bash
+tar -xf bubblewrap-0.4.1.tar.xz
+cd bubblewrap-0.4.1
+./configure --prefix=/usr
+make
+sudo make install
+```
+
+:::caution
+
+Note that Oasis Node expects Bubblewrap to be installed under `/usr/bin/bwrap` by default.
+
+:::
+
+</TabItem>
+</Tabs>
+
+Ensure you have a new enough version by running:
+
+```
+bwrap --version
+```
+
+:::caution
+
+Ubuntu 18.04 LTS (and earlier) provide overly-old `bubblewrap`. Follow _Other Distributions_ section on those systems.
+
+:::
+
+## Configuration
+
+In order to configure the ParaTime client node, create the `/node/etc/config.yml` file with the following content:
+
+```yaml
+datadir: /node/data
+
+log:
+  level:
+    default: info
+    tendermint: info
+    tendermint/context: error
+  format: JSON
+
+genesis:
+  file: /node/etc/genesis.json
+
+consensus:
+  tendermint:
+    p2p:
+      # List of seed nodes to connect to.
+      # NOTE: You can add additional seed nodes to this list if you want.
+      seed:
+        - "{{ seed_node_address }}"
+
+runtime:
+  mode: client
+  paths:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    - "{{ runtime_orc_path }}"
+```
+
+Before using this configuration you should collect the following information to replace  the  variables present in the configuration file:.
+
+* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+  * You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
+* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+  * You can find the current Oasis-supported ParaTimes in the [Network Paramers](../mainnet/README.md#paratimes).
+
+## Starting the Oasis Node
+
+You can start the node by running the following command:
+
+```bash
+oasis-node --config /node/etc/config.yml
+```
+
+## Checking Node Status
+
+To ensure that your node is properly connected with the network, you can run the following command after the node has started:
+
+```bash
+oasis-node control status -a unix:/node/data/internal.sock
+```

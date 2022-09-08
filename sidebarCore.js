@@ -5,7 +5,7 @@ const sidebars = {
   oasisCore: [
     {
       type: 'doc',
-      label: 'Introduction to Oasis Core',
+      label: 'Overview',
       id: 'core/README',
     },
     {

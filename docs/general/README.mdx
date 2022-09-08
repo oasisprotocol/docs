@@ -1,54 +1,12 @@
 import DocCardList from '@theme/DocCardList';
-import {findSidebarItem, newItem} from '@site/src/sidebarUtils';
+import {findSidebarItem} from '@site/src/sidebarUtils';
 
-# Getting Started
+# Overview
 
-## General Resources
-
-These guides provide overview of the Oasis Network and introduce basic tools
-for you to get started.
+This chapter provides general overview of the Oasis Network and introduces
+basic tools for you to get started.
 
 <DocCardList items={[
     findSidebarItem('/general/oasis-network/'),
     findSidebarItem('/general/manage-tokens/'),
-    findSidebarItem('/general/contribute-to-the-network'),
-]} />
-
-## Node Operators
-
-If you want to run your own Oasis node, the following section will provide you
-with guides on how to set up your node, let it be a validator node, perhaps
-running a ParaTime or just a simple client node for your server to submit
-transactions and perform queries on the network.
-
-<DocCardList items={[
-    findSidebarItem('/operators/'),
-]} />
-
-## Developers
-
-This section is focused on developers building applications on top of the Oasis
-Network. Smart contract developers will be interested in the EVM-compatible
-Emerald and confidential Sapphire ParaTimes. For maximum security and
-confidentiality, the Oasis team designed a novel Cipher ParaTime executing Wasm
-smart contracts and allows you to develop smart contracts in Rust using the
-Oasis SDK. Finally, developers can learn how to build their own ParaTime
-running on the Oasis Network.
-
-<DocCardList items={[
-    findSidebarItem('/developers/'),
-    findSidebarItem('/developers/emerald/'),
-    findSidebarItem('/developers/sapphire/'),
-    findSidebarItem('/developers/cipher/'),
-    findSidebarItem('/developers/sdk/contract'),
-    findSidebarItem('/developers/sdk/runtime'),
-]} />
-
-## Oasis Core Contributors
-
-Whether you want to contribute your code to the core components of the Oasis
-Network or just learn more about the Oasis core, this is the place for you.
-
-<DocCardList items={[
-    findSidebarItem('/core/'),
 ]} />

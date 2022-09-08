@@ -6,7 +6,7 @@ the Wormhole token bridge.
 
 ## About
 
-[Emerald](/developers/emerald/) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dapp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
+[Emerald](/dapp/emerald/) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dapp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
 
 To transfer your ROSE tokens into Emerald, follow [How to Transfer ROSE into a ParaTime](how-to-transfer-rose-into-paratime.mdx).
 
@@ -92,6 +92,6 @@ Now you can start using that wrapped assets across new Oasis dapps like the firs
 
 :::info
 
-Make sure that your MetaMask is connected to the Emerald Mainnet network. You can find network parameters [here](/developers/emerald#web3-gateway).
+Make sure that your MetaMask is connected to the Emerald Mainnet network. You can find network parameters [here](/dapp/emerald#web3-gateway).
 
 :::

@@ -98,23 +98,6 @@ const sidebars = {
         },
       ],
     },
-    {
-      type: 'category',
-      label: 'Contribute to the Network',
-      collapsible: false,
-      link: {
-        type: 'generated-index',
-        slug: 'general/contribute-to-the-network',
-      },
-      items: [
-        'general/contribute-to-the-network/run-validator',
-        'general/contribute-to-the-network/run-a-paratime-node',
-        'general/contribute-to-the-network/network-governance',
-        'general/contribute-to-the-network/contribution-guidelines',
-        'general/contribute-to-the-network/delegation-policy',
-        'general/contribute-to-the-network/token-delivery-and-kyc'
-      ],
-    },
   ],
 };
 

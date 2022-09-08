@@ -1,0 +1,409 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ParaTime Node
+
+:::info
+
+These instructions are for setting up a _ParaTime_ node which participates in one or more ParaTime compute committees. If you want to run a _ParaTime client_ node instead, see the [instructions for running a ParaTime client node](paratime-client-node.mdx). If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node/README.md). Similarly, if you want to run a non-validator node instead, see the [instructions for running a non-validator node](non-validator-node.md).
+
+:::
+
+:::caution
+
+For a production setup, we recommend running the ParaTime compute/storage node separately from the validator node (if you run one).
+
+Running ParaTime and validator nodes as separate Oasis nodes will prevent configuration mistakes and/or (security) issues affecting one node type from affecting the other one.
+
+:::
+
+:::tip
+
+If you are looking for some concrete ParaTimes that you can run, see [the list of ParaTimes and their parameters](../../get-involved/run-node/paratime-node.mdx).
+
+:::
+
+:::tip
+
+Oasis Core refers to ParaTimes as runtimes internally, so all configuration options will have runtime in their name.
+
+:::
+
+This guide will cover setting up your ParaTime compute node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+
+## Prerequisites
+
+Before following this guide, make sure you've followed the [Prerequisites](prerequisites) and [Run a Non-validator Node](non-validator-node.md) sections and have:
+
+* Oasis Node binary installed and configured on your system.
+* The chosen top-level `/node/` working directory prepared. In addition to `etc` and `data` directories, also prepare the following directories:
+  * `bin`: This will store binaries needed by Oasis Node for running the ParaTimes.
+  * `runtimes`: This will store the ParaTime bundles.
+
+:::tip
+
+Feel free to name your working directory as you wish, e.g. `/srv/oasis/`.
+
+Just make sure to use the correct working directory path in the instructions below.
+
+:::
+
+* Genesis file copied to `/node/etc/genesis.json`.
+
+:::tip
+
+Reading the rest of the [validator node setup instructions](validator-node/README.md) may also be useful.
+
+:::
+
+:::info
+
+To speed up bootstraping your new node, we recommend [copying node's state from your existing node](advanced/copy-state-from-one-node-to-the-other.md) or [syncing it using state sync](advanced/sync-node-using-state-sync.md).
+
+:::
+
+### Stake Requirements
+
+To be able to register as a ParaTime node on the Oasis Network, you need to
+have enough tokens staked in your entity's escrow account.
+
+Current minimum staking requirements for a specific ParaTime are listed on the
+Contribute to the Network section - [Run a ParaTime Node] page. Should you want
+to check the staking requirements for other node roles and registered ParaTimes
+manually, use the Oasis CLI tools as described in [Common Staking Info].
+
+Finally, to stake the tokens, use our [Oasis CLI tools]. If everything was set
+up correctly, you should see something like below when running [Oasis Node
+Stake Account Info] command for your entity's account (this is an example for
+the Testnet):
+
+```bash
+Balance:
+  Total: 0.0 TEST
+  Available: 0.0 TEST
+
+Active Delegations to this Account:
+  Total: 20000.0 TEST (20000000000000 shares)
+  Delegations:
+    - From:   oasis1qrwdwxutpyr9d2m84zh55rzcf99aw0hkts7myvv9
+      Amount: 20000.0 TEST (20000000000000 shares)
+
+Stake Accumulator:
+  Claims:
+    - Name: registry.RegisterEntity
+      Staking Thresholds:
+        - Global: entity
+    - Name: registry.RegisterNode.HG5TB3dbY8gtYBBw/R/cHfPaOpe0vT7W1wu/2rtpk/A=
+      Staking Thresholds:
+        - Global: node-compute
+      Staking Thresholds:
+        - Global: node-storage
+
+Nonce: 1
+```
+
+:::caution
+
+The stake requirements may differ from ParaTime to ParaTime and are subject to
+change in the future.
+
+:::
+
+[Run a ParaTime Node]: ../../get-involved/run-node/paratime-node.mdx
+[Common Staking Info]: ../../general/manage-tokens/advanced/oasis-cli-tools/common-staking-info.md
+[Oasis CLI tools]: ../../general/manage-tokens/advanced/oasis-cli-tools/delegate-tokens.md
+[Oasis Node Stake Account Info]: ../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md
+
+### Register a New Entity or Update Your Entity Registration
+
+If you don't have an entity yet, create a new one by following the [Creating Your Entity](validator-node/README.md#creating-your-entity) instructions.
+
+:::danger
+
+Everything in this section should be done on the `localhost` as there are sensitive items that will be created.
+
+:::
+
+If you will be running the ParaTime on a new Oasis Node, initialize a new node by following the [Initializing a Node](validator-node/README.md#initializing-a-node) instructions.
+
+Then update your entity descriptor by enumerating paths to all your node's descriptors (existing and new ones) in the `--entity.node.descriptor` flag. For example:
+
+```bash
+oasis-node registry entity update \
+    ... various signer flags ... \
+    --entity.node.descriptor /localhost/node1/node_genesis.json,/localhost/node2/node_genesis.json
+```
+
+:::info
+
+To confirm all nodes are added to your entity descriptor, run:
+
+```bash
+cat <PATH-TO-entity.json>
+```
+
+and ensure you see all your nodes' IDs under the `"nodes"` list.
+
+For example:
+
+```bash
+{
+  "v": 2,
+  "id": "QTg+ZjubD/36egwByAIGC6lMVBKgqo7xnZPgHVoIKzc=",
+  "nodes": [
+    "yT1h8/eN0VInQxn3YKcHxvSgGcsjsTSYmdTLZZMBTWI=",
+    "HG5TB3dbY8gtYBBw/R/cHfPaOpe0vT7W1wu/2rtpk/A="
+  ]
+}
+```
+
+:::
+
+Then generate and submit the new/updated entity descriptor via the entity registration transaction by following the [Generating Entity Registration Transaction](validator-node/README.md#generating-entity-registration-transaction) instructions.
+
+:::caution
+
+Make sure your entity descriptor (i.e. `entity.json`) is copied to your online server and saved as `/node/entity/entity.json` to ensure the [node's configuration](paratime-node.mdx#configuration) will find it.
+
+:::
+
+:::tip
+
+You will [configure the node](paratime-node.mdx#configuration) to automatically register for the roles it has enabled (i.e. storage and compute roles) via the `worker.registration.entity` configuration flag.
+
+No manual node registration is necessary.
+
+:::
+
+:::info
+
+ParaTime rewards for running the compute node will be sent to your entity address **inside the ParaTime**. To access the rewards on the consensus layer, you will need to withdraw them first. Read the [Deposit/Withdraw Tokens to/from ParaTime](../../general/manage-tokens/advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime.mdx) chapter to learn more.
+
+:::
+
+### The ParaTime Bundle
+
+In order to run a ParaTime node you need to obtain the ParaTime bundle that
+needs to come from a trusted source. The bundle (usually with an `.orc`
+extension that stands for Oasis Runtime Container) contains all the needed
+ParaTime binaries together with the identifier and version metadata to ease
+deployment.
+
+When the ParaTime is running in a Trusted Execution Environment (TEE) the bundle
+will also contain all the required artifacts (e.g. SGXS version of the binary
+and any enclave signatures).
+
+:::danger
+
+Like the genesis document, make sure you obtain these from a trusted source.
+
+:::
+
+:::caution
+
+#### **Compiling the ParaTime Binary from Source Code**
+
+In case you decide to build the ParaTime binary from source yourself, make sure
+that you follow our [guidelines for deterministic compilation](../../paratime/reproducibility.md)
+to ensure that you receive the exact same binary.
+
+When the ParaTime is running in a TEE, a different binary to what is registered
+in the consensus layer will not work and will be rejected by the network.
+
+:::
+
+### Install Oasis Core Runtime Loader
+
+For ParaTimes running inside [Intel SGX Trusted Execution Environment](paratime-node.mdx#setting-up-trusted-execution-environment-tee), you will need to install the Oasis Core Runtime Loader.
+
+The Oasis Core Runtime Loader binary (`oasis-core-runtime-loader`) is part of Oasis Core binary releases, so make sure you download the appropriate version specified the [Network Parameters](../mainnet/README.md) page.
+
+Install it to `bin` subdirectory of your node's working directory, e.g. `/node/bin/oasis-core-runtime-loader`.
+
+### Install ParaTime Bundle
+
+For each ParaTime, you need to obtain its bundle and install it to the
+`runtimes` subdirectory of your node's working directory.
+
+:::info
+
+For example, for the [Cipher ParaTime](../mainnet/README.md#cipher-paratime),
+you would have to obtain the `cipher-paratime.orc` bundle and install it to
+`/node/runtimes/cipher-paratime.orc`.
+
+:::
+
+### Install Bubblewrap Sandbox (at least version 0.3.3)
+
+ParaTime compute nodes execute ParaTime binaries inside a sandboxed environment provided by [Bubblewrap](https://github.com/containers/bubblewrap). In order to install it, please follow these instructions, depending on your distribution:
+
+<Tabs>
+<TabItem value="Ubuntu 18.10+">
+
+```bash
+sudo apt install bubblewrap
+```
+
+</TabItem>
+<TabItem value="Fedora">
+
+```bash
+sudo dnf install bubblewrap
+```
+
+</TabItem>
+<TabItem value="Other Distributions">
+On other systems, you can download the latest [source release provided by the Bubblewrap project](https://github.com/containers/bubblewrap/releases) and build it yourself.
+
+Make sure you have the necessary development tools installed on your system and the `libcap` development headers. On Ubuntu, you can install them with:
+
+```bash
+sudo apt install build-essential libcap-dev
+```
+
+After obtaining the Bubblewrap source tarball, e.g. [bubblewrap-0.4.1.tar.xz](https://github.com/containers/bubblewrap/releases/download/v0.4.1/bubblewrap-0.4.1.tar.xz), run:
+
+```bash
+tar -xf bubblewrap-0.4.1.tar.xz
+cd bubblewrap-0.4.1
+./configure --prefix=/usr
+make
+sudo make install
+```
+
+:::caution
+
+Note that Oasis Node expects Bubblewrap to be installed under `/usr/bin/bwrap` by default.
+
+:::
+</TabItem>
+</Tabs>
+
+Ensure you have a new enough version by running:
+
+```
+bwrap --version
+```
+
+:::caution
+
+Ubuntu 18.04 LTS (and earlier) provide overly-old `bubblewrap`. Follow _Other Distributions_ section on those systems.
+
+:::
+
+### Setting up Trusted Execution Environment (TEE)
+
+If a ParaTime requires the use of a TEE, then make sure you set up TEE as instructed in the [Set up Trusted Execution Environment (TEE)](prerequisites/set-up-trusted-execution-environment-tee.md) doc.
+
+## Configuration
+
+In order to configure the node create the `/node/etc/config.yml` file with the following content:
+
+```yaml
+datadir: /node/data
+
+log:
+  level:
+    default: info
+    tendermint: info
+    tendermint/context: error
+  format: JSON
+
+genesis:
+  file: /node/etc/genesis.json
+
+consensus:
+  tendermint:
+    core:
+      listen_address: tcp://0.0.0.0:26656
+
+      # The external IP that is used when registering this node to the network.
+      # NOTE: If you are using the Sentry node setup, this option should be
+      # omitted.
+      external_address: tcp://{{ external_address }}:26656
+
+    p2p:
+      # List of seed nodes to connect to.
+      # NOTE: You can add additional seed nodes to this list if you want.
+      seed:
+        - "{{ seed_node_address }}"
+
+runtime:
+  mode: compute
+  paths:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    - "{{ runtime_orc_path }}"
+
+  # The following section is required for ParaTimes which are running inside the
+  # Intel SGX Trusted Execution Environment.
+  sgx:
+    loader: /node/bin/oasis-core-runtime-loader
+
+worker:
+  registration:
+    # In order for the node to register itself, the entity.json of the entity
+    # used to provision the node must be available on the node.
+    entity: /node/entity/entity.json
+
+  p2p:
+    # External P2P configuration.
+    port: 30002
+    addresses:
+      # The external IP that is used when registering this node to the network.
+      - "{{ external_address }}:30002"
+
+# The following section is required for ParaTimes which are running inside the
+# Intel SGX Trusted Execution Environment.
+ias:
+  proxy:
+    address:
+      # List of IAS proxies to connect to.
+      # NOTE: You can add additional IAS proxies to this list if you want.
+      - "{{ ias_proxy_address }}"
+```
+
+Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
+
+* `{{ external_address }}`: The external IP you used when registering this node.
+* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+  * You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
+* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+  * You can find the current Oasis-supported ParaTimes in the [Network Paramers](../mainnet/README.md#paratimes).
+* `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
+  * You can find the current Oasis IAS proxy address in the [Network Parameters](../mainnet/README.md#cipher-paratime).
+  * If you want, you can also [run your own IAS proxy](ias-proxy.md).
+
+:::caution
+
+Make sure the `worker.p2p.port` (default: `9200`) port is exposed and publicly
+accessible on the internet (for `TCP` traffic).
+
+:::
+
+## Starting the Oasis Node
+
+You can start the node by running the following command:
+
+```bash
+oasis-node --config /node/etc/config.yml
+```
+
+## Checking Node Status
+
+To ensure that your node is properly connected with the network, you can run the following command after the node has started:
+
+```bash
+oasis-node control status -a unix:/node/data/internal.sock
+```
+
+## Troubleshooting
+
+See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troubleshooting](prerequisites/set-up-trusted-execution-environment-tee.md#troubleshooting) sections before proceeding with ParaTime node-specific troubleshooting.
+
+### Too Old Bubblewrap Version
+
+Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. Previous versions of this guide did not explicitly mention the required version. For details see the [Install Bubblewrap Sandbox](paratime-node.mdx#install-bubblewrap-sandbox-at-least-version-0-3-3) section.
+
+### Stake Requirement
+
+Double check your node entity satisfies the staking requirements for a ParaTime node. For details see the [Stake Requirements](paratime-node.mdx#stake-requirements) section.

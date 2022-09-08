@@ -13,7 +13,7 @@ Currently, the only supported and documented way to use your tokens is by utiliz
 
 ## Oasis Node CLI
 
-To setup Oasis Node CLI, follow the [Oasis Node documentation](../../../../operators/run-your-node/prerequisites/oasis-node.md).
+To setup Oasis Node CLI, follow the [Oasis Node documentation](../../../../node/run-your-node/prerequisites/oasis-node.md).
 
 ## Ledger-based signer
 

@@ -7,7 +7,7 @@ party wallets & custody providers supporting ROSE tokens.
 
 :::caution
 
-BitPie wallet doesn't use the standardized account key generation process specified in [ADR 0008](/adrs/0008-standard-account-key-generation). Consequently, your **Bitpie wallet's mnemonic phrase will not open the same account in Oasis Wallet**.
+BitPie wallet doesn't use the standardized account key generation process specified in [ADR 0008](../../adrs/0008-standard-account-key-generation.md). Consequently, your **Bitpie wallet's mnemonic phrase will not open the same account in Oasis Wallet**.
 
 :::
 
@@ -18,7 +18,7 @@ If your tokens are staked/delegated, then you need to debond them first which wi
 **Alternatively** however, if you do not want to transfer the tokens over the network, you can export the private key from your BitPie wallet and import it in Oasis Wallet in 2 steps:
 
 1. [Export your BitPie wallet's Oasis account private key](faq.md#how-can-i-export-my-bitpie-wallets-oasis-account-private-key)
-2. [Open your Oasis wallet via exported private key in Oasis Wallet - Web](/general/manage-tokens/oasis-wallets/web#open-wallet-via-private-key)
+2. [Open your Oasis wallet via exported private key in Oasis Wallet - Web](../../general/manage-tokens/oasis-wallets/web.md#open-wallet-via-private-key)
 
 ### How can I export my [BitPie wallet](holding-rose-tokens/bitpie-wallet.md)'s Oasis account private key?
 
@@ -36,7 +36,7 @@ Finally, your account's private key will be shown to you encoded in Base64 forma
 
 ### Chromium under Ubuntu does not recognize my Ledger device. What is the problem?
 
-First check that you added the Ledger udev device descriptors as mentioned in the [Linux installation guide](https://support.ledger.com/hc/en-us/articles/4404389606417-Download-and-install-Ledger-Live). Next, check that your Ledger wallet is recognized by the [Oasis Core Ledger tool](/oasis-core-ledger/usage/address). You should see something like this:
+First check that you added the Ledger udev device descriptors as mentioned in the [Linux installation guide](https://support.ledger.com/hc/en-us/articles/4404389606417-Download-and-install-Ledger-Live). Next, check that your Ledger wallet is recognized by the [Oasis Core Ledger tool](../../oasis-core-ledger/usage/address.md). You should see something like this:
 
 ```bash
 $ oasis-core-ledger show_address
@@ -116,7 +116,7 @@ If you checked all of the above and the keyphrase still cannot be imported, plea
 
 First, check your wallet address. If the address equals the one that you expected your funds on, then the key derivation from mnemonics worked correctly. Make sure you have a working internet connection so that the wallet can fetch the latest balance. Then check that the correct network (Mainnet or Testnet) is selected. These are completely separated networks and although the wallet address can be the same, the transactions and consequently the balances may differ. Finally, there might be a temporary problem with the [Oasis Monitor service](https://oasismonitor.com) itself which observes the network and indexes transactions. Oasis Wallets rely on that service and once it is back up and running, you should be able to see the correct balance.
 
-If your wallet address is different than the one you used to transfer your funds to, then you used one of the wallets that don't implement the standardized key derivation path defined in [ADR 0008](/adrs/0008-standard-account-key-generation). If you were using the BitPie wallet see [this question](faq.md#how-can-i-export-my-bitpie-wallets-oasis-account-private-key). Ledger hardware wallet users should refer to [this question](faq.md#how-can-i-use-my-oasis-wallet-mnemonics-in-ledger).
+If your wallet address is different than the one you used to transfer your funds to, then you used one of the wallets that don't implement the standardized key derivation path defined in [ADR 0008](../../adrs/0008-standard-account-key-generation.md). If you were using the BitPie wallet see [this question](faq.md#how-can-i-export-my-bitpie-wallets-oasis-account-private-key). Ledger hardware wallet users should refer to [this question](faq.md#how-can-i-use-my-oasis-wallet-mnemonics-in-ledger).
 
 If you still cannot access your funds, please contact Oasis support.
 
@@ -132,4 +132,4 @@ Sending ROSE is different than staking it! With the staking transaction you **le
 
 ### I withdrew ROSE from Emerald to an exchange (Binance, KuCoin), but my deposit is not there. What should I do?
 
-Withdrawals from Emerald are slightly different from regular `staking.Transfer` transactions used to send ROSE on the consensus layer. If you withdrew your ROSE directly to an exchange and you were not funded there, contact the exchange support and provide them the link to your account on the [Oasis Scan](https://www.oasisscan.com) where they can verify all transactions. To learn more about this issue, read the [How to Transfer ROSE to Emerald chapter](how-to-transfer-rose-into-evm-paratime.mdx).
+Withdrawals from Emerald are slightly different from regular `staking.Transfer` transactions used to send ROSE on the consensus layer. If you withdrew your ROSE directly to an exchange and you were not funded there, contact the exchange support and provide them the link to your account on the [Oasis Scan](https://www.oasisscan.com) where they can verify all transactions. To learn more about this issue, read the [How to Transfer ROSE to ParaTime section](how-to-transfer-rose-into-paratime.mdx).

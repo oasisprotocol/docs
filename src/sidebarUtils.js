@@ -1,35 +1,49 @@
 // @ts-check
-import {useDocsSidebar} from "@docusaurus/theme-common";
+import {useDocsVersion} from "@docusaurus/theme-common/internal";
 
 /**
- * Builds an index of document id => sidebar item.
- * If the item is external link, href is used as document id.
- * For category item with associated document, trailing slashes are trimmed.
- * For category item without associated document, the label is taken as document id.
+ * Builds an index of href => sidebar item.
+ * Indexed sidebar items are doc, category (with defined link) and link.
  *
  *  @param {import('@docusaurus/plugin-content-docs').PropSidebar} sidebarItems
  */
 function reindex(sidebarItems) {
     for (const item of sidebarItems) {
-        globalThis.sidebarItemsMap[item.docId ?? (item.href ? item.href.replace(/\/$/g, '') : item.label)] = item;
+        const key = item.href;
+        if (key && globalThis.sidebarItemsMap[key] === undefined) {
+            globalThis.sidebarItemsMap[key] = item;
+        }
+
         if (item.type === 'category') {
             reindex(item.items)
         }
     }
 }
 
-// Finds sidebar item object from the given document id, href or label.
-export function findSidebarItem(docId) {
-    const sidebar = useDocsSidebar();
-    if (!sidebar) {
-        throw new Error('Unexpected: cant find current sidebar in context');
+/**
+ * Finds sidebar item object in the sidebars given the item's href.
+ */
+export function findSidebarItem(href) {
+    const docsVersion = useDocsVersion();
+
+    if (!docsVersion) {
+        throw new Error('Unexpected: cant find docsVersion in current context');
     }
+
+    // Build the index on the first sidebar call.
     if (globalThis.sidebarItemsMap === undefined) {
         globalThis.sidebarItemsMap = {};
-        reindex(sidebar.items);
+        for (const s in docsVersion.docsSidebars) {
+            reindex(docsVersion.docsSidebars[s]);
+        }
     }
-    if (globalThis.sidebarItemsMap[docId] === undefined) {
-        throw new Error('Unexpected: document with id '+docId+' does not exist.');
+
+    // Throw error, if the sidebar item is still not found.
+    if (globalThis.sidebarItemsMap[href] === undefined) {
+        console.log('Registered sidebar items:');
+        console.log(globalThis.sidebarItemsMap);
+        throw new Error('Unexpected: sidebar item with href '+href+' does not exist.');
     }
-    return globalThis.sidebarItemsMap[docId];
+
+    return globalThis.sidebarItemsMap[href];
 }

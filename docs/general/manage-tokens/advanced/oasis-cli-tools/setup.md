@@ -18,7 +18,7 @@ Here are some examples of Oasis Node CLI commands that need a connection to an o
 
 ## Local commands
 
-The following commands are intended to be run on your local machine and only need access to the [network's current genesis file](../../../oasis-network/network-parameters.md) and your signer's private key:
+The following commands are intended to be run on your local machine and only need access to the [network's current genesis file](../../../../node/mainnet/README.md) and your signer's private key:
 
 * `oasis-node stake account gen_transfer`
 * `oasis-node stake account gen_escrow`
@@ -69,10 +69,10 @@ Currently, we provide two options for signing transactions:
 
 *   **Ledger-based signer.**
 
-    You will need to set it up as described in our [Oasis Core Ledger](/oasis-core-ledger/usage/transactions) docs.
+    You will need to set it up as described in our [Oasis Core Ledger](../../../../oasis-core-ledger/usage/transactions.md) docs.
 *   **File-based signer.**
 
-    You will need to create your Entity as described in [Running a Node on the Network](../../../run-a-node/set-up-your-node/run-validator.md#creating-your-entity) docs and set the following flags:
+    You will need to create your Entity as described in [Running a Node on the Network](../../../../node/run-your-node/validator-node/README.md#creating-your-entity) docs and set the following flags:
 
     * `--signer.backend file`: Specifies use of the file signer.
 

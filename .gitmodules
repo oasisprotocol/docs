@@ -1,14 +1,12 @@
 [submodule "external/oasis-core"]
 	path = external/oasis-core
 	url = https://github.com/oasisprotocol/oasis-core
-	branch = stable/22.1.x
 [submodule "external/oasis-sdk"]
 	path = external/oasis-sdk
 	url = https://github.com/oasisprotocol/oasis-sdk
 [submodule "external/oasis-core-ledger"]
 	path = external/oasis-core-ledger
 	url = https://github.com/oasisprotocol/oasis-core-ledger
-	branch = stable/1.2.x
 [submodule "external/adrs"]
 	path = external/adrs
 	url = https://github.com/oasisprotocol/adrs

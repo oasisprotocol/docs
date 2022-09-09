@@ -6,7 +6,7 @@ Here are a few key resources to get started!
 
 ## Rewards and Tokenomics
 
-Staking rewards vary over the course of the Network. In the first four years rewards will range between 20-2% over time. More [here](/oasis-network-primer/token-metrics-and-distribution#staking-incentives).
+Staking rewards vary over the course of the Network. In the first four years rewards will range between 20-2% over time. More [here](../oasis-network/token-metrics-and-distribution.mdx#staking-incentives).
 
 ## How to Stake and Delegate
 
@@ -30,7 +30,7 @@ Some validators prefer anonymity and they do not list their name or any contact 
 
 :::
 
-You can stop staking and reclaim your tokens at any time. This can be done with a CLI tool or any of the wallets mentioned above. After sending the corresponding `staking.ReclaimEscrow` transaction, your tokens will, to ensure the network security and robustness, enter the **debonding period** defined in the [genesis](../oasis-network/network-parameters.md) document. Currently, this period is 336 epochs (around 14 days) and no staking rewards are earned for the duration of this period. Afterwards your ROSE will be free to use.
+You can stop staking and reclaim your tokens at any time. This can be done with a CLI tool or any of the wallets mentioned above. After sending the corresponding `staking.ReclaimEscrow` transaction, your tokens will, to ensure the network security and robustness, enter the **debonding period** defined in the current [genesis](../../node/mainnet/README.md) document. Currently, this period is 336 epochs (around 14 days) and no staking rewards are earned for the duration of this period. Afterwards your ROSE will be free to use.
 
 :::danger
 
@@ -60,4 +60,4 @@ You don't need to open your wallet, you can just search your `oasis1` address.
 
 ### Run your own Node
 
-If you're interested in running your own node and become a validator you can get started [here](../run-a-node/node-operator-overview.mdx). Be sure to [join the **#node-operators** channel on Discord and sign up for the node operator mailing list](../oasis-network/connect-with-us.md#social-media-channels)!
+If you're interested in running your own node and become a validator you can get started [here](../../node/README.mdx). Be sure to [join the **#node-operators** channel on Discord and sign up for the node operator mailing list](../../get-involved/README.md)!

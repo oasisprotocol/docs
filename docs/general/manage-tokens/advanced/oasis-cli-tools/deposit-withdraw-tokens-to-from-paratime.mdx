@@ -15,7 +15,7 @@ At time of writing, no precompiled `oasis` binaries are available. You will need
 
 :::info
 
-This chapter describes the command line interface for depositing and withdrawing ROSE which is tailored toward advanced users such as node operators. If you are interested in the end-user wallets with a graphical user interface, consult the [How to Transfer ROSE into an EVM ParaTime](../../how-to-transfer-rose-into-evm-paratime.mdx) chapter.
+This chapter describes the command line interface for depositing and withdrawing ROSE which is tailored toward advanced users such as node operators. If you are interested in the end-user wallets with a graphical user interface, consult the [How to Transfer ROSE into a ParaTime](../../how-to-transfer-rose-into-paratime.mdx) chapter.
 
 :::
 
@@ -29,12 +29,6 @@ oasis wallet import <SOME_WALLET_NAME>
 
 Follow the interactive instructions that will guide you through the import procedure. If this is the first time you are running `oasis`, the imported wallet will become your default wallet and transactions will be signed with the key stored in this wallet, if not otherwise specified with the `--wallet` parameter.
 
-:::info
-
-At time of writing, Oasis CLI supports importing ed25519 keypairs only. If you need to perform token transfers and withdrawals with Ethereum keypair, use the official [Oasis Wallet Browser Extension](../../how-to-transfer-rose-into-evm-paratime.mdx) instead.
-
-:::
-
 ## Configure Allowance
 
 In order to deposit ROSE to a ParaTime, you will first need to grant the ParaTime access to your Oasis account on the consensus layer. The following command allows Emerald to access up to 100 ROSE stored on your Oasis account which you will deposit afterwards:
@@ -42,7 +36,7 @@ In order to deposit ROSE to a ParaTime, you will first need to grant the ParaTim
 ```
 $ oasis accounts allow paratime:emerald 100
 Unlock your wallet.
-? Passphrase: 
+? Passphrase:
 You are about to sign the following transaction:
 Method: staking.Allow
 Body:
@@ -75,9 +69,9 @@ By default the Oasis CLI will execute transactions on Emerald ParaTime deployed 
 After setting up the allowance policy, we can execute the deposit transaction. The following command will deposit 100 ROSE from your consensus account to your ParaTime account.
 
 ```
-$ oasis accounts deposit 100 --gas-price 0 
+$ oasis accounts deposit 100 --gas-price 0
 Unlock your wallet.
-? Passphrase: 
+? Passphrase:
 You are about to sign the following transaction:
 {
   "v": 1,
@@ -125,7 +119,7 @@ To deposit ROSE to a different ParaTime account, simply add the bech32-encoded `
 ```
 $ oasis accounts deposit 100 oasis1qpxhsf7xnm007csw2acaa7mta2krzpwex5c90qu6 --gas-price 0
 Unlock your wallet.
-? Passphrase: 
+? Passphrase:
 You are about to sign the following transaction:
 {
   "v": 1,
@@ -171,7 +165,7 @@ Also, Ethereum hex-encoded addresses are supported which are common in Emerald P
 ```
 $ oasis accounts deposit 100 0x90adE3B7065fa715c7a150313877dF1d33e777D5 --gas-price 0
 Unlock your wallet.
-? Passphrase: 
+? Passphrase:
 You are about to sign the following transaction:
 {
   "v": 1,
@@ -219,7 +213,7 @@ To withdraw 100 ROSE from your ParaTime account to the same account on the conse
 ```
 $ oasis accounts withdraw 100
 Unlock your wallet.
-? Passphrase: 
+? Passphrase:
 You are about to sign the following transaction:
 {
   "v": 1,
@@ -267,7 +261,7 @@ You can specify a custom Oasis address which you want to withdraw your ROSE to b
 ```
 $ oasis accounts withdraw 100 oasis1qpxhsf7xnm007csw2acaa7mta2krzpwex5c90qu6
 Unlock your wallet.
-? Passphrase: 
+? Passphrase:
 You are about to sign the following transaction:
 {
   "v": 1,
@@ -311,5 +305,5 @@ Withdraw succeeded.
 ## See also
 
 <DocCard item={
-    findSidebarItem('manage-tokens/how-to-transfer-rose-into-evm-paratime')
+    findSidebarItem('/general/manage-tokens/how-to-transfer-rose-into-paratime')
 } />

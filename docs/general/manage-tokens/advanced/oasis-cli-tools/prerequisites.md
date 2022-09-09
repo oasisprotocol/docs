@@ -6,14 +6,14 @@ This sections lists the prerequisites for using your tokens.
 
 Currently, the only supported and documented way to use your tokens is by utilizing the Oasis Node CLI in combination with:
 
-* [Ledger-based signer](/oasis-core-ledger), or
+* [Ledger-based signer](../../../../oasis-core-ledger/README.md), or
 * file-based signer.
 
 :::
 
 ## Oasis Node CLI
 
-To setup Oasis Node CLI, follow the [Oasis Node documentation](../../../run-a-node/prerequisites/oasis-node.md).
+To setup Oasis Node CLI, follow the [Oasis Node documentation](../../../../node/run-your-node/prerequisites/oasis-node.md).
 
 ## Ledger-based signer
 
@@ -23,7 +23,7 @@ This is only needed if you will use the [Ledger wallet](../../holding-rose-token
 
 :::
 
-To use the Ledger-based signer in combination with Oasis Node CLI, follow the [Setup](/oasis-core-ledger/usage/setup) guide in our [Oasis Core Ledger](/oasis-core-ledger/) docs.
+To use the Ledger-based signer in combination with Oasis Node CLI, follow the [Setup](../../../../oasis-core-ledger/usage/setup.md) guide in our [Oasis Core Ledger](../../../../oasis-core-ledger/README.md) docs.
 
 ## File-based signer
 

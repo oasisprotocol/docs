@@ -58,7 +58,7 @@ We can observe that:
 
 ### Commission Schedule
 
-An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../../run-a-node/set-up-your-node/amend-commission-schedule.md) documentation.
+An entity can also charge commission for tokens that are delegated to it. It would defined the commission schedule **rate steps** and the commission schedule **rate bound steps**. For more details, see the [Amend Commission Schedule](../../../../node/run-your-node/validator-node/amend-commission-schedule.md) documentation.
 
 ### Stake Accumulator
 
@@ -80,4 +80,4 @@ We can observe that the stake accumulator currently has two claims:
 
   In addition to the global thresholds, each runtime the node is registering for may define their own thresholds. In case the node is registering for multiple runtimes, it needs to satisfy the sum of thresholds of all the runtimes it is registering for.
 
-  For more details, see [Oasis Core Developer Docs on registering a node](/oasis-core/consensus/services/registry#register-node).
+  For more details, see [Oasis Core Developer Docs on registering a node](../../../../core/consensus/services/registry.md#register-node).

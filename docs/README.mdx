@@ -1,0 +1,67 @@
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
+# Getting Started
+
+## Use Oasis
+
+These guides provide general overview of the Oasis Network and introduce basic
+tools for you to get started.
+
+<DocCardList items={[
+    findSidebarItem('/general/oasis-network/'),
+    findSidebarItem('/general/manage-tokens/'),
+]} />
+
+## Get Involved
+
+Contains information on official channels to get in touch with the Oasis Network
+developers and how to contribute to the network.
+
+<DocCardList items={[
+    findSidebarItem('/get-involved/'),
+    findSidebarItem('https://oasisrose.garden'),
+    findSidebarItem('/get-involved/run-node'),
+    findSidebarItem('/get-involved/oasis-core'),
+]} />
+
+## Run your own Node
+
+If you want to run your own Oasis node, the following section will provide you
+with guides on the current Mainnet and Testnet network parameters and how to
+set up your node, let it be a validator node, perhaps running a ParaTime or
+just a simple client node for your server to submit transactions and perform
+queries on the network.
+
+<DocCardList items={[
+    findSidebarItem('/node/'),
+    findSidebarItem('/node/mainnet/'),
+    findSidebarItem('/node/testnet/'),
+    findSidebarItem('/node/run-your-node'),
+]} />
+
+## dapp and ParaTime Developers
+
+These two sections are focused on developers building applications on top of
+the Oasis Network. Smart contract developers will be interested in the
+EVM-compatible Emerald and confidential Sapphire ParaTimes. For maximum
+security and confidentiality, the Oasis team designed a novel Cipher ParaTime
+executing Wasm smart contracts and which allows you to develop smart contracts
+in Rust using the Oasis Contract SDK. Finally, developers can learn how to
+build their own ParaTime running on the Oasis Network.
+
+<DocCardList items={[
+    findSidebarItem('/dapp/emerald/'),
+    findSidebarItem('/dapp/sapphire/'),
+    findSidebarItem('/dapp/cipher/'),
+    findSidebarItem('/paratime/'),
+]} />
+
+## Oasis Core Contributors
+
+Whether you want to contribute your code to the core components of the Oasis
+Network or just learn more about the Oasis core, this is the place for you.
+
+<DocCardList items={[
+    findSidebarItem('/core/'),
+]} />

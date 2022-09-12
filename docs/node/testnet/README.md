@@ -144,3 +144,20 @@ runtime:
 Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
 
 :::
+
+### Key Manager ParaTime
+
+* Oasis Core version:
+  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+* Runtime identifier:
+  * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
+* Runtime binary version:
+  * [0.2.0-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.2.0-testnet)
+* IAS proxy address:
+  * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
+
+:::tip
+
+Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
+
+:::

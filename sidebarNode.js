@@ -86,6 +86,7 @@ const sidebars = {
         'node/run-your-node/archive-node',
         'node/run-your-node/paratime-node',
         'node/run-your-node/paratime-client-node',
+        'node/run-your-node/keymanager-node',
         'node/run-your-node/ias-proxy',
         'node/run-your-node/sentry-node',
         {

@@ -11,7 +11,7 @@ const sidebars = {
     {
       type: 'link',
       label: 'Rust API',
-      href: 'https://api.docs.oasis.dev/oasis-sdk/oasis_runtime_sdk',
+      href: 'https://api.docs.oasis.io/oasis-sdk/oasis_runtime_sdk',
     },
   ],
 };

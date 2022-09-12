@@ -11,7 +11,7 @@ const crossRepoLinksPlugin = require('./src/remark/cross-repo-links');
 const config = {
   title: 'Oasis Network Documentation',
   tagline: '',
-  url: process.env.URL ?? 'https://docs.oasis.dev',
+  url: process.env.URL ?? 'https://docs.oasis.io',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
 

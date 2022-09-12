@@ -1,5 +1,5 @@
 ---
-description: Guide to creating secure dapps on Sapphire
+description: Guide to creating secure dApps on Sapphire
 ---
 
 # Guide
@@ -7,14 +7,14 @@ description: Guide to creating secure dapps on Sapphire
 This page mainly describes the differences between Sapphire and Ethereum
 since there are a number of excellent tutorials on developing for Ethereum.
 If you don't know where to begin, the [Hardhat tutorial], [Solidity docs], and
-[Emerald dapp tutorial] are great places to start. You can continue following
+[Emerald dApp tutorial] are great places to start. You can continue following
 this guide once you've set up your development environment and have deployed
 your contract to a non-confidential EVM network (e.g., Ropsten, Emerald).
 
 
 [Hardhat tutorial]: https://hardhat.org/tutorial
 [Solidity docs]: https://docs.soliditylang.org/en/v0.8.15/solidity-by-example.html
-[Emerald dapp tutorial]: ../emerald/writing-dapps-on-emerald.md
+[Emerald dApp tutorial]: ../emerald/writing-dapps-on-emerald.md
 
 ## Oasis Consensus Layer and Sapphire ParaTime
 
@@ -83,7 +83,7 @@ but we think that you'll like them:
   requiring a transaction to be posted on-chain.
 
 In addition to confidentiality, you get a few extra benefits including the ability to generate private
-entropy, and make signatures on-chain. An example of a dapp that uses both is a HSM contract
+entropy, and make signatures on-chain. An example of a dApp that uses both is a HSM contract
 that generates an Ethereum wallet and signs transactions sent to it via transactions.
 
 Otherwise Sapphire is like Emerald, which is like a fast, cheap Ethereum.
@@ -91,7 +91,7 @@ Otherwise Sapphire is like Emerald, which is like a fast, cheap Ethereum.
 ## Integrating Sapphire
 
 Once ROSE tokens are [deposited into Sapphire], it should be painless for users to begin
-using dapps. To achieve this ideal user experience, we have to modify the dapp a little,
+using dApps. To achieve this ideal user experience, we have to modify the dApp a little,
 but it's made simple by our compatibility library, [@oasisprotocol/sapphire-paratime].
 
 There are compatibility layers in other languages, which may be found in [the repo].
@@ -101,7 +101,7 @@ There are compatibility layers in other languages, which may be found in [the re
 [@oasisprotocol/sapphire-paratime]: https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime
 [the repo]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/clients
 
-## Writing Secure dapps
+## Writing Secure dApps
 
 ### Wallets
 

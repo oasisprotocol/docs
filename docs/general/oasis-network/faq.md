@@ -25,7 +25,7 @@ Designed for the next generation of blockchain, the Oasis Network is the first p
 
 **Top-Tier Team:** The Oasis Team is made up of top talent from around the world with backgrounds from Apple, Google, Amazon, Goldman Sachs, UC Berkeley, Carnegie Mellon, Stanford, Harvard and more — all committed to growing and expanding the impact of the Oasis Network.
 
-### **Is the Oasis Protocol Foundation still taking grant applications for projects that are building new dapps?**
+### **Is the Oasis Protocol Foundation still taking grant applications for projects that are building new dApps?**
 
 Yes! We are still taking grant applications. You can apply any time [here](https://medium.com/oasis-protocol-project/oasis-foundation-grant-wishlist-3ad73b723d7).
 
@@ -68,7 +68,7 @@ Storage on the Oasis Network is determined by each ParaTime. There is a clear se
 
 ### **Does the Oasis Network have a vision for DeFi? Is it different from the mainstream view of DeFi?**
 
-The first generation of DeFi dapps has provided the market with a huge number of protocols and primitives that are meant to serve as the foundation for the specific components of a new financial system. Despite the current focus on short-term returns, we at Oasis believe the goal of DeFi applications should be to give rise to a new financial system that removes subjectivity, bias, and inefficiencies by leveraging programmable parameters instead of status, wealth, and geography. Oasis aims to support the next wave of DeFi applications by offering better privacy and scalability features than other Layer 1 networks.
+The first generation of DeFi dApps has provided the market with a huge number of protocols and primitives that are meant to serve as the foundation for the specific components of a new financial system. Despite the current focus on short-term returns, we at Oasis believe the goal of DeFi applications should be to give rise to a new financial system that removes subjectivity, bias, and inefficiencies by leveraging programmable parameters instead of status, wealth, and geography. Oasis aims to support the next wave of DeFi applications by offering better privacy and scalability features than other Layer 1 networks.
 
 ### **I’ve seen Oasis use both the terms “Open Finance” and “DeFi”? What’s the difference?**
 

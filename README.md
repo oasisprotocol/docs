@@ -86,7 +86,7 @@ link checker in `package.json`._
 ### Documentation structure
 
 `docs` folder contains markdown files of the documentation. Each subfolder
-represents one of the top-level chapter (general, node, dapp, paratime, core
+represents one of the top-level chapter (general, node, dApp, paratime, core
 etc.).
 
 Some top-level chapter may contain markdown files or folders hosted and

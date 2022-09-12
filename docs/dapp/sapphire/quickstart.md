@@ -5,7 +5,7 @@
 </p>
 
 In this tutorial, you'll port an Eth project in under 10 minutes, and then go on
-to deploy a unique dapp that requires confidentiality to work.
+to deploy a unique dApp that requires confidentiality to work.
 By the end of the tutorial, you should feel comfortable setting up your Eth
 development environment to target Sapphire, and know how and when to use
 confidentiality.
@@ -233,7 +233,7 @@ index 0cd9d36..7db7cf8 100644
 This `wrap` function takes any kind of provider or signer you've got and turn
 it into one that works with Sapphire and confidentiality.
 For the most part, wrapping your signer/provider is the most you'll need to do
-to get your dapp running on Sapphire, but that's not a complete story since an
+to get your dApp running on Sapphire, but that's not a complete story since an
 unmodified contract may leak state through normal operation.
 
 And now for the moment we've all been waiting for:
@@ -265,14 +265,14 @@ something end-users need to think too much about.
 
 [@oasisprotocol/sapphire-paratime]: https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime
 
-## Create a Sapphire-Native dapp
+## Create a Sapphire-Native dApp
 
 Porting an existing Eth app is cool, and can already provide benefits like
 protecting against MEV.
 However, starting from scratch with confidentiality in mind can unlock some
-really novel dapps and provide a [higher level of security].
+really novel dApps and provide a [higher level of security].
 
-One simple-but-useful dapp that takes advantage of confidentiality is a
+One simple-but-useful dApp that takes advantage of confidentiality is a
 [dead person's switch] that reveals a secret (let's say the encryption key to a
 data trove) if the operator fails to re-up before too long.
 Let's make it happen!
@@ -378,7 +378,7 @@ PRIVATE_KEY="0x..." pnpm hardhat run scripts/run-vigil.ts --network sapphire
 ```
 
 And if you see something like the following, you'll know you're well on the road
-to deploying confidential dapps on Sapphire.
+to deploying confidential dApps on Sapphire.
 
 ```
 Vigil deployed to: 0x74dC4879B152FDD1DDe834E9ba187b3e14f462f1

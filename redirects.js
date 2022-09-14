@@ -51,6 +51,14 @@ const redirectsOptions = {
             to: '/dapp/cipher/',
             from: '/oasis-sdk/contract/getting-started',
         },
+	{
+            to: '/dapp/sapphire/',
+            from: '/general/developer-resources/sapphire-paratime',
+	},
+	{
+            to: '/dapp/sapphire/quickstart',
+            from: ['/general/developer-resources/sapphire-paratime/writing-dapps-on-sapphire', '/dapp/sapphire/writing-dapps-on-sapphire'], // #218 Add sapphire tutorial
+	},
         {
             to: '/general/oasis-network/faq',
             from: '/general/faq/oasis-network-faq',
@@ -164,9 +172,6 @@ const redirectsOptions = {
         }
         if (existingPath.includes('/dapp/emerald')) {
             return [existingPath.replace('/dapp/emerald', '/general/developer-resources/emerald-paratime')];
-        }
-        if (existingPath.includes('/dapp/sapphire')) {
-            return [existingPath.replace('/dapp/sapphire', '/general/developer-resources/sapphire-paratime')];
         }
         if (existingPath.includes('/dapp/cipher')) {
             return [existingPath.replace('/dapp/cipher', '/oasis-sdk/contract')];

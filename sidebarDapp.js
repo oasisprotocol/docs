@@ -24,7 +24,8 @@ const sidebars = {
         id: 'dapp/sapphire/README',
       },
       items: [
-        'dapp/sapphire/writing-dapps-on-sapphire',
+        'dapp/sapphire/quickstart',
+        'dapp/sapphire/guide',
       ],
     },
     {

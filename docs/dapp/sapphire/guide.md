@@ -1,8 +1,8 @@
 ---
-description: Considerations for creating dapps on Sapphire
+description: Guide to creating secure dapps on Sapphire
 ---
 
-# Creating dapps for Sapphire
+# Guide
 
 This page mainly describes the differences between Sapphire and Ethereum
 since there are a number of excellent tutorials on developing for Ethereum.
@@ -92,12 +92,13 @@ Otherwise Sapphire is like Emerald, which is like a fast, cheap Ethereum.
 
 Once ROSE tokens are [deposited into Sapphire], it should be painless for users to begin
 using dapps. To achieve this ideal user experience, we have to modify the dapp a little,
-but it's made simple by our compatibility library, (coming soon).
+but it's made simple by our compatibility library, [@oasisprotocol/sapphire-paratime].
 
 There are compatibility layers in other languages, which may be found in [the repo].
 
 
 [deposited into Sapphire]: ../../general/manage-tokens/how-to-transfer-rose-into-paratime.mdx
+[@oasisprotocol/sapphire-paratime]: https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime
 [the repo]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/clients
 
 ## Writing Secure dapps
@@ -120,9 +121,9 @@ You can find the details of the Oasis Sapphire Web3 gateway
 
 ### Transactions & Calls
 
-Transactions and calls must be encrypted and signed for maximum security. You can
-use the (coming soon) JS package to make your life easy. It'll
-handle cryptography and signing for you.
+Transactions and calls must be encrypted and signed for maximum security.
+You can use the [@oasisprotocol/sapphire-paratime] JS package to make your life
+easy. It'll handle cryptography and signing for you.
 
 You should be aware that taking actions based on the value of private data may
 leak the private data through side channels like time spent and gas use. If you

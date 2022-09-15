@@ -392,13 +392,11 @@ The secret ingredient is brussels sprouts
 
 ## All done!
 
-Congratulations, you made it through the Sapphire tutorial.
-Thanks for coming!
-
-If you have any more questions, please check out the [guide] or the
-[Discord community].
+Congratulations, you made it through the Sapphire tutorial! If you have any
+questions, please check out the [guide] and join the discussion on the
+[#sapphire-paratime Discord channel][social-media].
 
 Best of luck on your future forays into confidentiality!
 
-[Discord community]: ../../get-involved/README.md
+[social-media]: ../../get-involved/README.md#social-media-channels
 [guide]: guide.md

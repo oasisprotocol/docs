@@ -98,7 +98,7 @@ const config = {
             position: 'left',
           },
           {
-            label: 'Create dapp',
+            label: 'Create dApp',
             to: '/dapp/',
             activeBaseRegex: '/dapp/',
             position: 'left',

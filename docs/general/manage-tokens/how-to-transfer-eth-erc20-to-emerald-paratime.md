@@ -6,7 +6,7 @@ the Wormhole token bridge.
 
 ## About
 
-[Emerald](/dapp/emerald/) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dapp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
+[Emerald](/dapp/emerald/) is an Oasis ParaTime providing an Ethereum-compatible blockchain for the Oasis Network. If you want to use any dApp for DEX, NFT and similar built on Emerald, you will have to transfer your assets into the Emerald ParaTime.
 
 To transfer your ROSE tokens into Emerald, follow [How to Transfer ROSE into a ParaTime](how-to-transfer-rose-into-paratime.mdx).
 
@@ -86,7 +86,7 @@ We suggest that you add the new contract address for wETH (your newly wrapped as
 
 ## Using Wrapped Assets on Oasis
 
-Now you can start using that wrapped assets across new Oasis dapps like the first DEX build on Emerald - [YuzuSwap](https://yuzu-swap.com), where you can swap, provide liquidity and farm YUZU rewards.
+Now you can start using that wrapped assets across new Oasis dApps like the first DEX build on Emerald - [YuzuSwap](https://yuzu-swap.com), where you can swap, provide liquidity and farm YUZU rewards.
 
 ![Start using wrapped assets on Oasis](../images/manage-tokens/wormhole/yuzuswap.png)
 

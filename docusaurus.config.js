@@ -4,8 +4,9 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const editUrlFunction = require('./src/editUrl.js')
+const editUrlFunction = require('./src/editUrl.js').editLinkUrl
 const crossRepoLinksPlugin = require('./src/remark/cross-repo-links');
+const codeBlockSnippetsPlugin = require('./src/remark/code-block-snippets').plugin;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -30,6 +31,7 @@ const config = {
           exclude: ['adrs/README.md', 'adrs/0000-architectural-decision-records.md', 'adrs/template.md'],
           numberPrefixParser: false,
           path: 'docs',
+          beforeDefaultRemarkPlugins: [codeBlockSnippetsPlugin],
           remarkPlugins: [crossRepoLinksPlugin],
           routeBasePath: '/',
           showLastUpdateTime: true,

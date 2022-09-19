@@ -143,6 +143,31 @@ will span horizontally over the whole site resembling page links in gitbook.
 Please fill the `description:` frontmanner for chapters which are referenced in
 the DocCards.
 
+### Code snippets from files
+
+You can make code blocks show a code stored in external files, by using the
+`code` literal as the first word inside the image alt field. For example:
+
+```markdown
+![code](../../examples/somefile.go)
+```
+
+`code-block-snippets` remark plugin will replace the image syntax above with
+the code block syntax and import the referenced file.
+
+Additionally, you can specify the language, code title and lines of code or the
+region name:
+
+```markdown
+![code go](../../examples/somefile.go "Some external file")
+![code go](../../examples/somefile.go#L14 "Line 14 in the file")
+![code go](../../examples/somefile.go#L14-L16 "Lines 14-16 in the file")
+![code go](../../examples/somefile.go#some-region "Some external file region")
+```
+
+To define the region in the referenced file put `#region some-region-name` and
+`#endregion some-region-name` as a comment line.
+
 ### Backward compatibility
 
 When you move, rename or delete previously published content, make sure that

@@ -99,9 +99,11 @@ While all markdown files inside `docs` are compiled, not all files may be
 reachable via sidebars directly. Each top-level chapter defines own
 sidebar structure inside their `sidebarChapterName.js` file.
 
+Nouns, adjectives and verbs in section titles should be capitalized.
+
 ### index.md, README.md, overview.md
 
-Please use `README.md` as the filename for introductory category chapter.
+Please use `README.md` as the filename for introductory chapters.
 
 Introductory chapters should not have a separate entry in the sidebar, but
 should be accessible by clicking on the category link directly.
@@ -138,6 +140,9 @@ the href of the target page.
 `DocCardList` will show two DocCards per row while the `DocCard` component
 will span horizontally over the whole site resembling page links in gitbook.
 
+Please fill the `description:` frontmanner for chapters which are referenced in
+the DocCards.
+
 ### Backward compatibility
 
 When you move, rename or delete previously published content, make sure that
@@ -146,3 +151,32 @@ up redirects in `redirects.js` accordingly and leave the pull request
 number in the comment which added this redirection for future reference, if
 major rewrite is to happen and the developers would need more context around
 the redirection.
+
+## Vocabulary
+
+The following is a consistent case-sensitive collection of Oasis-related terms
+and their usage:
+
+- c10l
+  Check out the c10l-hello-world folder for the confidential version of the
+  original example.
+- c13y
+  EVM with added c13y.
+- Cipher
+- Emerald
+- dApp
+  Emerald supports writing dApps. DApp is a modern distributed application.
+- key manager
+- key manager node
+- Mainnet
+- Testnet
+- ParaTime
+- ROSE
+  Please send 10.00000000 ROSE to the address above.
+- runtime
+- Sapphire
+- TEST
+  Please send 10.00000000 TEST to the address above.
+- validator
+- validator node
+

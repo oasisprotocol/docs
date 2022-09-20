@@ -23,7 +23,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
   * [2.2.1](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.1)
 
@@ -48,7 +48,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime binary version:
@@ -65,7 +65,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v9.0.1#building)):

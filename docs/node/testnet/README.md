@@ -58,36 +58,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
-  * [2.4.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.4.0-testnet)
   * [2.5.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.5.0-testnet)
-
-:::info
-
-The release contains two bundles -- for deploying a ParaTime node you only need
-`cipher-paratime.orc`. The other bundle is for the key manager runtime and can
-be ignored unless you are deploying a key manager node.
-
-:::
-
-:::info
-
-When multiple runtime versions are listed, make sure to specify the paths to all
-of the bundles in your configuration. This ensures that any planned upgrade
-happens at the right time.
-
-For example, for the above Cipher ParaTime versions the configuration would look
-like the following (only showing the relevant options):
-
-```yaml
-runtime:
-  # ... other options omitted ...
-  paths:
-    - /path/to/cipher-paratime-2.4.0-testnet.orc
-    - /path/to/cipher-paratime-2.5.0-testnet.orc
-```
-
-:::
-
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 
@@ -107,24 +78,6 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [9.0.1-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v9.0.1-testnet)
 * Emerald Web3 Gateway version:
   * [3.0.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0-rc1)
-
-:::info
-
-When multiple runtime versions are listed, make sure to specify the paths to all
-of the bundles in your configuration. This ensures that any planned upgrade
-happens at the right time.
-
-For example, for the above Emerald ParaTime versions the configuration would
-look like the following (only showing the relevant options):
-
-```yaml
-runtime:
-  # ... other options omitted ...
-  paths:
-    - /path/to/emerald-paratime-9.0.1-testnet.orc
-```
-
-:::
 
 ### Sapphire ParaTime
 

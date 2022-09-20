@@ -133,7 +133,7 @@ module.exports = async function (callback) {
 };
 ```
 
-Save it to `scripts/exercise-contract.js`.
+Save it to `scripts/exercise.contract.js`.
 We'll use it in just a bit.
 
 Next, you can run the following and see the contract being deployed.
@@ -239,6 +239,7 @@ unmodified contract may leak state through normal operation.
 And now for the moment we've all been waiting for:
 
 ```
+> PRIVATE_KEY="0x..." truffle migrate --network sapphire
 > PRIVATE_KEY="0x..." truffle exec --network sapphire scripts/exercise.contract.js
 
 Sent some coins in 0x6dc6774addf4c5c68a9b2c6b5e5634263e734d321f84012ab1b4cbe237fbe7c2.

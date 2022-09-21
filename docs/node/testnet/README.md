@@ -32,7 +32,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
   * To sync from genesis, you need to start with an earlier version first
     ([read more][handling network upgrades]):
     * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
@@ -54,40 +54,11 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
-  * [2.4.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.4.0-testnet)
   * [2.5.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.5.0-testnet)
-
-:::info
-
-The release contains two bundles -- for deploying a ParaTime node you only need
-`cipher-paratime.orc`. The other bundle is for the key manager runtime and can
-be ignored unless you are deploying a key manager node.
-
-:::
-
-:::info
-
-When multiple runtime versions are listed, make sure to specify the paths to all
-of the bundles in your configuration. This ensures that any planned upgrade
-happens at the right time.
-
-For example, for the above Cipher ParaTime versions the configuration would look
-like the following (only showing the relevant options):
-
-```yaml
-runtime:
-  # ... other options omitted ...
-  paths:
-    - /path/to/cipher-paratime-2.4.0-testnet.orc
-    - /path/to/cipher-paratime-2.5.0-testnet.orc
-```
-
-:::
-
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 
@@ -100,7 +71,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v9.0.1-testnet#building)):
@@ -108,28 +79,10 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Emerald Web3 Gateway version:
   * [3.0.0-rc1](https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v3.0.0-rc1)
 
-:::info
-
-When multiple runtime versions are listed, make sure to specify the paths to all
-of the bundles in your configuration. This ensures that any planned upgrade
-happens at the right time.
-
-For example, for the above Emerald ParaTime versions the configuration would
-look like the following (only showing the relevant options):
-
-```yaml
-runtime:
-  # ... other options omitted ...
-  paths:
-    - /path/to/emerald-paratime-9.0.1-testnet.orc
-```
-
-:::
-
 ### Sapphire ParaTime
 
 * Oasis Core version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
@@ -148,7 +101,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Key Manager ParaTime
 
 * Oasis Core version:
-  * [22.1.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.7)
+  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime binary version:

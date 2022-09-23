@@ -126,7 +126,7 @@ trying to run a node that stores data **on classical HDDs**.
 
 :::info
 
-The Consensus Layer and ParaTimes accumulate state over time. The speed at which
+The consensus layer and ParaTimes accumulate state over time. The speed at which
 the state grows depends on the number of transactions on the network and
 ParaTimes.
 

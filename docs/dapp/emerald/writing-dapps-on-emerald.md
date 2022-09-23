@@ -10,7 +10,7 @@ different compared to the original Ethereum Network!
 
 ## Oasis Consensus Layer and Emerald ParaTime
 
-Oasis Network consists of the Consensus layer and a number of Layer 2 chains
+Oasis Network consists of the consensus layer and a number of Layer 2 chains
 called the ParaTimes (to learn more, check the [Oasis Network Overview]
 [overview] chapter). Emerald is a ParaTime which implements the Ethereum
 Virtual Machine (EVM).

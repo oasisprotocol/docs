@@ -1,11 +1,11 @@
 # Consensus Validator Node
 
 This guide provides an overview of the technical setup and stake requirements to
-become a validator on the Consensus layer of the Oasis Network.
+become a validator on the consensus layer of the Oasis Network.
 
 ## About Oasis Network
 
-[Oasis Network](../../general/oasis-network/README.mdx)'s Consensus Layer is a decentralised set of validator nodes that maintain a proof-of-stake blockchain.
+[Oasis Network](../../general/oasis-network/README.mdx)'s consensus Layer is a decentralised set of validator nodes that maintain a proof-of-stake blockchain.
 
 Hence, it needs a set of distributed node operators that run different nodes (including validator nodes).
 

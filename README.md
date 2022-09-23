@@ -163,6 +163,8 @@ and their usage:
 - c13y
   EVM with added c13y.
 - Cipher
+- consensus layer
+  The consensus layer makes sure that the ParaTimes tick.
 - Emerald
 - dApp
   Emerald supports writing dApps. DApp is a modern distributed application.
@@ -170,7 +172,11 @@ and their usage:
 - key manager node
 - Mainnet
 - Testnet
+- Oasis Core
 - ParaTime
+  Each ParaTime stores its own state separate from the consensus state.
+- ParaTime layer
+  The ParaTime layer supports up to a thousand runtimes running in parallel.
 - ROSE
   Please send 10.00000000 ROSE to the address above.
 - runtime

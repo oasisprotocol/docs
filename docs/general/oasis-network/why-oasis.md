@@ -20,9 +20,9 @@ Designed for the next generation of blockchain, the Oasis Network is the first p
 
 ### Technology Highlights
 
-* **Separates consensus and execution into two layers**, the Consensus Layer and The ParaTime Layer, for better scalability and increased versatility.
+* **Separates consensus and execution into two layers**, the consensus layer and The ParaTime layer, for better scalability and increased versatility.
 * Separation of consensus and execution allows **multiple ParaTimes to process transactions in parallel**, meaning complex workloads processed on one ParaTime won’t slow down faster, simpler transactions on another.
-* **The ParaTime Layer is entirely decentralized, allowing anyone to develop and build their own ParaTime.** Each ParaTime can be developed in isolation to meet the needs of a specific application, such as confidential compute, open or closed committees, and more.
+* **The ParaTime layer is entirely decentralized, allowing anyone to develop and build their own ParaTime.** Each ParaTime can be developed in isolation to meet the needs of a specific application, such as confidential compute, open or closed committees, and more.
 * The network’s sophisticated discrepancy detection makes **Oasis more efficient than sharding and parachains**, requiring a smaller replication factor for the same level of security.
 * **The network has broad support for confidential computing technology.** The Oasis Eth/WASI Runtime is an open-source example of a confidential ParaTime that uses secure enclaves to keep data private while being processed.
 * **There are 3 ParaTimes built by the Oasis core team already on the network.**
@@ -82,14 +82,14 @@ Nebula Genomics wants to differentiate their product from other competitors by g
 
 ## Technology Overview
 
-The Oasis Network is a Layer 1, proof-of-stake, decentralized network. It has two main components, the Consensus Layer and the ParaTime Layer.
+The Oasis Network is a Layer 1, proof-of-stake, decentralized network. It has two main components, the consensus layer and the ParaTime layer.
 
-1. The **Consensus Layer** is a scalable, high-throughput, secure, proof-of-stake consensus run by a decentralized set of validator nodes.
-2. The **ParaTime Layer** hosts many parallel runtimes (ParaTimes), each representing a replicated compute environment with shared state.
+1. The **consensus layer** is a scalable, high-throughput, secure, proof-of-stake consensus run by a decentralized set of validator nodes.
+2. The **ParaTime layer** hosts many parallel runtimes (ParaTimes), each representing a replicated compute environment with shared state.
 
 ### Scalability
 
-The Oasis Network’s impressive scalability is achieved through a cutting-edge set of features that provide faster transaction speeds and higher throughput than other networks. The top-tier performance of the network is largely due to its separation of compute and consensus operations into the Consensus Layer and ParaTime Layer. This separation allows multiple ParaTimes to process transactions in parallel, meaning complex workloads processed on one ParaTime won’t slow down faster, simpler transactions on another. Plus, the network’s sophisticated discrepancy detection makes Oasis more efficient than sharding and parachains, requiring a smaller replication factor for the same level of security.
+The Oasis Network’s impressive scalability is achieved through a cutting-edge set of features that provide faster transaction speeds and higher throughput than other networks. The top-tier performance of the network is largely due to its separation of compute and consensus operations into the consensus layer and ParaTime layer. This separation allows multiple ParaTimes to process transactions in parallel, meaning complex workloads processed on one ParaTime won’t slow down faster, simpler transactions on another. Plus, the network’s sophisticated discrepancy detection makes Oasis more efficient than sharding and parachains, requiring a smaller replication factor for the same level of security.
 
 ![Scalability](../images/architecture/technology_scalability.svg)
 
@@ -105,7 +105,7 @@ Confidentiality unlocks a range of new use cases on blockchain. Personal or sens
 
 Designed to support the next generation of blockchain applications, the Oasis Network is incredibly versatile, agile, and customizable. Namely, each ParaTime can be developed in isolation to meet the needs of a specific application. ParaTime committees can be made large or small, open or closed, allowing for faster or more secure execution depending on the requirements of a particular use case. Nodes can be required to have specific hardware, such as Secure Enclaves on a confidential ParaTime. Each ParaTime can similarly run different Runtime VMs (ParaTime Engines), such as EVM backwards compatible engine, Rust-based smart contract language, or a Data tokenization engine. Finally, to support enterprise and developer use cases, ParaTimes can be made Permissioned or Permissionless, allowing consortiums to have their own closed ParaTime, or communities to have full decentralized open ParaTimes.
 
-The versatility of the ParaTime Layer allows the Oasis Network to expand and grow to address a broad set of new and exciting use cases while still maintaining the same core ledger and consensus layer.
+The versatility of the ParaTime layer allows the Oasis Network to expand and grow to address a broad set of new and exciting use cases while still maintaining the same core ledger and consensus layer.
 
 ## Traction and Adoption
 

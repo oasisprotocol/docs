@@ -37,10 +37,10 @@ The Oasis Network is a Layer 1 blockchain protocol using a BFT, proof-of-stake c
 
 ### **What does the Oasis Network’s architecture look like?**
 
-The Oasis Network is a Layer 1, proof-of-stake, decentralized network. It has two main components, the Consensus Layer and the ParaTime Layer.
+The Oasis Network is a Layer 1, proof-of-stake, decentralized network. It has two main components, the consensus layer and the ParaTime layer.
 
-1. The **Consensus Layer** is a scalable, high-throughput, secure, proof-of-stake consensus run by a decentralized set of validator nodes.
-2. The **ParaTime Layer** hosts many parallel runtimes (ParaTimes), each representing a replicated compute environment with shared state.
+1. The **consensus layer** is a scalable, high-throughput, secure, proof-of-stake consensus run by a decentralized set of validator nodes.
+2. The **ParaTime layer** hosts many parallel runtimes (ParaTimes), each representing a replicated compute environment with shared state.
 
 ![Paratime Communication](../images/architecture/consensus_paratime_communication.png)
 
@@ -96,7 +96,7 @@ The network’s cutting-edge scalable features can help unblock DeFi as it works
 
 ### **How will the Oasis Network’s token be used in the network when it launches?**
 
-The ROSE token will be used for transaction fees, staking, and delegation at the Consensus Layer.
+The ROSE token will be used for transaction fees, staking, and delegation at the consensus layer.
 
 ## **Privacy**
 

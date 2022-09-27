@@ -3,10 +3,10 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const gitModules = {
-    'external/adrs/': 'https://github.com/oasisprotocol/adrs/edit/main',
-    'external/oasis-core/': 'https://github.com/oasisprotocol/oasis-core/edit/master',
-    'external/oasis-core-ledger/': 'https://github.com/oasisprotocol/oasis-core-ledger/edit/master',
-    'external/oasis-sdk/': 'https://github.com/oasisprotocol/oasis-sdk/edit/main',
+    'external/adrs/': 'https://github.com/oasisprotocol/adrs/{mode}/main/',
+    'external/oasis-core/': 'https://github.com/oasisprotocol/oasis-core/{mode}/master/',
+    'external/oasis-core-ledger/': 'https://github.com/oasisprotocol/oasis-core-ledger/{mode}/master/',
+    'external/oasis-sdk/': 'https://github.com/oasisprotocol/oasis-sdk/{mode}/main/',
 };
 
 /**
@@ -15,20 +15,32 @@ const gitModules = {
  * @type {import('@docusaurus/plugin-content-docs').EditUrlFunction}
  */
 function editLinkUrl(params) {
-    // Resolve symlink, if needed.
     const relFilepath = path.join(params.versionDocsDirPath, params.docPath);
-    const p = fs.realpathSync(relFilepath);
+    return linkUrl(relFilepath, 'edit');
+}
 
+/**
+ * Generates cross-repo view URL link (e.g. for viewing example sources).
+ */
+function viewLinkUrl(relFilePath) {
+    return linkUrl(relFilePath, 'blob');
+}
+
+function linkUrl(filename, mode) {
+    // Resolve composed paths and symlinks, if needed.
+    filename = fs.realpathSync(filename);
+
+    // Obtain relative filename to project root.
+    filename = path.relative(process.cwd(), filename)
     for (const r in gitModules) {
-        const regex = new RegExp( `.*${r}(.*)`);
-        if (regex.test(p)) {
+        if (filename.startsWith(r)) {
             // Extract relative filename inside the git submodule.
-            const file = regex.exec(p)[1];
-            return `${gitModules[r]}/${file}`;
+            return filename.replace(r, gitModules[r]).replace("{mode}", mode);
         }
     }
 
-    return `https://github.com/oasisprotocol/docs/edit/main/${relFilepath}`;
+    return `https://github.com/oasisprotocol/docs/{mode}/main/${filename}`.replace("{mode}", mode);
+
 }
 
-module.exports = editLinkUrl;
+module.exports = {editLinkUrl, viewLinkUrl};

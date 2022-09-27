@@ -9,11 +9,14 @@ const codeBlockSnippets = require('./code-block-snippets');
 // #endregion test-region
 
 test('basic', () => {
-    node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/code-block-snippets.test.js',
-        title: 'Some title',
+    let node = {
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.js',
+            title: 'Some title',
+        }],
     };
 
     codeBlockSnippets.visitor(node);
@@ -26,10 +29,13 @@ test('basic', () => {
 
 test('line-number', () => {
     let node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/code-block-snippets.test.js#L3',
-        title: 'Some title',
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.js#L3',
+            title: 'Some title',
+        }],
     };
 
     codeBlockSnippets.visitor(node);
@@ -42,10 +48,13 @@ test('line-number', () => {
 
 test('line-numbers', () => {
     let node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/code-block-snippets.test.js#L2-L4',
-        title: 'Some title',
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.js#L2-L4',
+            title: 'Some title',
+        }],
     };
 
     codeBlockSnippets.visitor(node);
@@ -58,10 +67,13 @@ test('line-numbers', () => {
 
 test('region', () => {
     let node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/code-block-snippets.test.js#test-region',
-        title: 'Some title',
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.js#test-region',
+            title: 'Some title',
+        }],
     };
 
     codeBlockSnippets.visitor(node);
@@ -75,10 +87,13 @@ test('region', () => {
 
 test('invalid-file', () => {
     let node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/foobar.js',
-        title: 'Some title',
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/foobar.js',
+            title: 'Some title',
+        }],
     };
 
     expect(() => {codeBlockSnippets.visitor(node)}).toThrow('ENOENT: no such file or directory, open \'src/remark/foobar.js\'');
@@ -86,10 +101,13 @@ test('invalid-file', () => {
 
 test('invalid-region', () => {
     let node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/code-block-snippets.test.js#some-nonexistent-region',
-        title: 'Some title',
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.js#some-nonexistent-region',
+            title: 'Some title',
+        }],
     };
 
     expect(() => {codeBlockSnippets.visitor(node)}).toThrow(ReferenceError);
@@ -97,11 +115,44 @@ test('invalid-region', () => {
 
 test('invalid-line-numbers', () => {
     let node = {
-        type: 'image',
-        alt: 'code js',
-        url: 'src/remark/code-block-snippets.test.js#L2-L400',
-        title: 'Some title',
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.js#L2-L400',
+            title: 'Some title',
+        }],
     };
 
     expect(() => {codeBlockSnippets.visitor(node)}).toThrow(ReferenceError);
+});
+
+test('code-in-separate-paragraph', () => {
+    let node = {
+        type: 'paragraph',
+        children: [{
+                type: 'image',
+                alt: 'code js',
+                url: 'src/remark/code-block-snippets.test.js',
+                title: 'Some title',
+        }],
+    };
+
+    const textNode = {
+        type: 'text',
+        value: 'some-text',
+    };
+
+    node.children.push(textNode);
+    codeBlockSnippets.visitor(node);
+    expect(node.type).toBe('paragraph');
+    node.children.pop();
+
+    node.children = [textNode, ...node.children];
+    codeBlockSnippets.visitor(node);
+    expect(node.type).toBe('paragraph');
+
+    node.children.push(textNode);
+    codeBlockSnippets.visitor(node);
+    expect(node.type).toBe('paragraph');
 });

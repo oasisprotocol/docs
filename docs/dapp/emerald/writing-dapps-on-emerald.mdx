@@ -1,3 +1,6 @@
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
 # Writing dApps on Emerald
 
 This tutorial will show you how to set up dApp development environment for
@@ -648,6 +651,12 @@ failed Emerald transaction, the `Status` field should contain a more verbose
 error description, for example:
 
 ![Oasis Scan showing the Out of gas error for a transaction on Emerald](../images/emerald/oasisscan2.png)
+
+## See also
+
+<DocCard item={findSidebarItem('/node/run-your-node/paratime-client-node')} />
+<DocCard item={findSidebarItem('/node/web3')} />
+
 
 [mainnet-explorer]: https://explorer.emerald.oasis.dev
 [testnet-explorer]: https://testnet.explorer.emerald.oasis.dev

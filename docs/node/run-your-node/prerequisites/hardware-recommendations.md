@@ -5,8 +5,14 @@ as:
 
 * Consensus validator or non-validator node
 * Emerald ParaTime compute or client node
-* Emerald Web3 gateway with PostgreSQL
 * Cipher ParaTime compute or client node
+
+:::info
+
+Hardware requirements for running the Oasis Web3 gateway can be found
+[here](../../web3.md#hardware).
+
+:::
 
 This page describes the **minimum** and **recommended** system hardware
 requirements for running different types of nodes on the Oasis Network.
@@ -24,7 +30,6 @@ in committees.
 
 :::
 
-
 ### CPU {#suggested-minimum-configurations}
 
 * Consensus validator or non-validator node:
@@ -36,10 +41,6 @@ in committees.
   * Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] support
   * Recommended: 2.0 GHz x86-64 CPU with 4 cores/vCPUs with
     [AES instruction set] and [AVX2] support
-
-* Emerald Web3 gateway with PostgreSQL:
-  * Minimum: 2.0 GHz x86-64 CPU
-  * Recommended: 2.0 GHz x86-64 CPU with 2 cores/vCPUs
 
 * Cipher ParaTime compute node:
   * Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] and [Intel SGX] support
@@ -82,10 +83,6 @@ that use a Trusted Execution Environment (TEE).
   * Minimum: 8 GB of ECC RAM
   * Recommended: 16 GB of ECC RAM
 
-* Emerald Web3 gateway with PostgreSQL:
-  * Minimum: 4 GB of ECC RAM
-  * Recommended: 8 GB of ECC RAM
-
 :::info
 
 During regular workload your node will operate with less than the minimum amount
@@ -97,7 +94,6 @@ compactions...
 
 :::
 
-
 ### Storage
 
 * Consensus validator or non-validator node:
@@ -107,10 +103,6 @@ compactions...
 * Emerald ParaTime compute or client node (in addition to the consensus storage requirements):
   * Minimum: 400 GB of SSD or NVMe fast storage
   * Recommended: 700 GB of SSD or NVMe fast storage
-
-* Emerald Web3 gateway with PostgreSQL:
-  * Minimum: 300 GB of SSD or NVMe fast storage
-  * Recommended: 500 GB of SSD or NVMe fast storage
 
 * Cipher ParaTime compute or client node (in addition to the consensus storage requirements):
   * Minimum: 200 GB of SSD or NVMe fast storage
@@ -139,10 +131,6 @@ For example, an Emerald client node on the Mainnet additionally accumulated:
 
 * 260 GB of Emerald ParaTime state in ~5 months between Nov 18, 2021 and Apr 11, 2022 (since the [Emerald Mainnet launch])
 * 25 GB of Emerald ParaTime state in ~1 month since the [Damask upgrade]
-
-For example, an Emerald Web3 gateway with PostgreSQL encountered:
-
-* 210 GB of database growth in ~5 months between Nov 18, 2021 and Apr 11, 2022 (since the [Emerald Mainnet launch])
 
 :::
 

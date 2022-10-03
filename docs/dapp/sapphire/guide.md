@@ -166,24 +166,3 @@ obviously problematic if you're writing a confidential token. What you can
 do instead is fork that contract and remove the offending emissions.
 
 :::
-
-
-### Precompiles
-
-Sapphire provides a few extra precompiled contracts that you may find useful.
-:::note
-
-Some of these may not be available for use initially, but all are coming soon.
-
-:::
-
-* `0x010000000000000000000000000000000000000000`  
-  `randomBytes(uint256 numWords) returns (bytes)`  
-  Generates cryptographically secure bytes. Reverts if there is not enough entropy.
-* `0x010000000000000000000000000000000000000001`  
-  `k256Sign(bytes32 key, bytes32 dataHash) returns (bytes32 r, bytes32 s, bytes32 v)`  
-  Signs the provided data hash using the provided secp256k1 private key.
-* `0x010000000000000000000000000000000000000002`  
-  `deoxysii256Encrypt(bytes32 key, bytes data) returns (bytes)`  
-  Encrypts the provided data using Deoxys-II with provided (random uniform) key
-  returning `nonce || ciphertext || tag`.

@@ -2,7 +2,7 @@
 description: Additional Sapphire precompiles for encryption and confidentiality
 ---
 
-# Precompiles Available on Sapphire
+# Precompiles
 
 In addition to the standard EVM precompiles, Sapphire provides three
 further cryptography-related ones to make some operations easier and

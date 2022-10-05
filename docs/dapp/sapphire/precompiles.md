@@ -6,7 +6,7 @@ description: Additional Sapphire precompiles for encryption and confidentiality
 
 In addition to the standard EVM precompiles, Sapphire provides three
 further cryptography-related ones to make some operations easier and
-cheaper to perform: x25519 key derivation, and DeoxysII-based encryption
+cheaper to perform: x25519 key derivation, and Deoxys-II-based encryption
 and decryption.
 
 These can be called in the same way as other precompiles by dispatching
@@ -39,7 +39,7 @@ function deriveSymmetricKey(bytes32 keyPublic, bytes32 keyPrivate) private view 
 }
 ```
 
-## DeoxysII Encryption
+## Deoxys-II Encryption
 
 ### Overview
 

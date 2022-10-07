@@ -20,7 +20,7 @@ yarn
 Checkout all Git submodules with:
 
 ```
-git submodule update --init
+git submodule update --init --recursive
 ```
 
 ## Local Development

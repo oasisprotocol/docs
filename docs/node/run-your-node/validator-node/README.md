@@ -484,7 +484,7 @@ oasis-node stake account gen_escrow \
 
 :::info
 
-The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Amber Network as each unit value used to track the account balance is 1x10^-9 tokens.
+The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Oasis consensus layer as each unit value used to track the account balance is 1x10^-9 tokens.
 
 The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
 

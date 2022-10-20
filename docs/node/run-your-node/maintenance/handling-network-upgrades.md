@@ -29,7 +29,7 @@ following:
 - Download the genesis document and run Oasis Core 22.0.x which synced
   blocks from epoch 14209 through (excluding) upgrade epoch 15056.
 - Wait until the node automatically stopped, then upgrade to Oasis Core
-  22.1.x which synced the blocks from epoch 15056 onwards.
+  22.2.x which synced the blocks from epoch 15056 onwards.
 
 The expected versions of the Oasis Core to sync your node from the latest
 genesis document on the Mainnet and Testnet are always published on the

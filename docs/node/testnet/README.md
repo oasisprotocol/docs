@@ -32,7 +32,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2)
   * To sync from genesis, you need to start with an earlier version first
     ([read more][handling network upgrades]):
     * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
@@ -54,7 +54,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
@@ -71,7 +71,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v9.0.1-testnet#building)):
@@ -82,7 +82,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Sapphire ParaTime
 
 * Oasis Core version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
@@ -101,7 +101,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Key Manager ParaTime
 
 * Oasis Core version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime binary version:

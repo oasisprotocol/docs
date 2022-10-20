@@ -124,4 +124,4 @@ To select a language, you can click the globe icon near the lower left corner of
 
 ## **Share your feedback with us**
 
-If you have any questions or issues using the [Oasis Wallet - Web](https://github.com/oasisprotocol/oasis-wallet-web/), you can [submit a Github issue](https://github.com/oasisprotocol/oasis-wallet-web/issues) and the dev team will take a look. You can also connect with us to share your feedback via [Discord](https://discord.gg/pJdWeVtmHT) or [Telegram](https://t.me/oasisprotocolcommunity).
+If you have any questions or issues using the [Oasis Wallet - Web](https://github.com/oasisprotocol/oasis-wallet-web/), you can [submit a GitHub issue](https://github.com/oasisprotocol/oasis-wallet-web/issues) and the dev team will take a look. You can also connect with us to share your feedback via [Discord](https://discord.gg/pJdWeVtmHT) or [Telegram](https://t.me/oasisprotocolcommunity).

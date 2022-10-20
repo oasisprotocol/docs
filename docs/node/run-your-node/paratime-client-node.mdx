@@ -1,3 +1,5 @@
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -224,3 +226,7 @@ To ensure that your node is properly connected with the network, you can run the
 ```bash
 oasis-node control status -a unix:/node/data/internal.sock
 ```
+
+## See also
+
+<DocCard item={findSidebarItem('/node/web3')} />

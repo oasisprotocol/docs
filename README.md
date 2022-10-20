@@ -210,4 +210,6 @@ and their usage:
   Please send 10.00000000 TEST to the address above.
 - validator
 - validator node
-
+- Web3 gateway
+  We strongly suggest that you set up your own Web3 gateway for your Sapphire
+  endpoint.

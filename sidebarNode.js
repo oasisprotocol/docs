@@ -123,6 +123,11 @@ const sidebars = {
         'node/run-your-node/troubleshooting',
       ]
     },
+    {
+      type: 'doc',
+      label: 'Web3 Gateway',
+      id: 'node/web3',
+    },
   ],
 };
 

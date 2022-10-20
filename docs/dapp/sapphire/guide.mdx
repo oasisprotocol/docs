@@ -2,6 +2,9 @@
 description: Guide to creating secure dApps on Sapphire
 ---
 
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
 # Guide
 
 This page mainly describes the differences between Sapphire and Ethereum
@@ -14,7 +17,7 @@ your contract to a non-confidential EVM network (e.g., Ropsten, Emerald).
 
 [Hardhat tutorial]: https://hardhat.org/tutorial
 [Solidity docs]: https://docs.soliditylang.org/en/v0.8.15/solidity-by-example.html
-[Emerald dApp tutorial]: ../emerald/writing-dapps-on-emerald.md
+[Emerald dApp tutorial]: ../emerald/writing-dapps-on-emerald.mdx
 
 ## Oasis Consensus Layer and Sapphire ParaTime
 
@@ -166,3 +169,8 @@ obviously problematic if you're writing a confidential token. What you can
 do instead is fork that contract and remove the offending emissions.
 
 :::
+
+## See also
+
+<DocCard item={findSidebarItem('/node/run-your-node/paratime-client-node')} />
+<DocCard item={findSidebarItem('/node/web3')} />

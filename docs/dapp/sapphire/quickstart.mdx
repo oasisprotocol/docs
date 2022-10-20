@@ -1,3 +1,6 @@
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
 # Quickstart
 
 <p style={{width: '100%'}}>
@@ -278,7 +281,7 @@ One simple-but-useful dApp that takes advantage of confidentiality is a
 data trove) if the operator fails to re-up before too long.
 Let's make it happen!
 
-[higher level of security]: guide.md#writing-secure-dapps
+[higher level of security]: guide.mdx#writing-secure-dapps
 [dead person's switch]: https://en.wikipedia.org/wiki/Dead_man's_switch
 
 ### Init a new Hardhat project
@@ -399,5 +402,10 @@ questions, please check out the [guide] and join the discussion on the
 
 Best of luck on your future forays into confidentiality!
 
+## See also
+
+<DocCard item={findSidebarItem('/node/run-your-node/paratime-client-node')} />
+<DocCard item={findSidebarItem('/node/web3')} />
+
 [social-media]: ../../get-involved/README.md#social-media-channels
-[guide]: guide.md
+[guide]: guide.mdx

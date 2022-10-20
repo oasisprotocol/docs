@@ -70,5 +70,9 @@ Output should report `archive` consensus mode status:
   // other fields omitted ...
   "consensus": {
     "mode": "archive",
-}
+    // ...
 ```
+
+## See also
+
+[Archive Web3 Gateway](../web3.md#archive-web3-gateway)

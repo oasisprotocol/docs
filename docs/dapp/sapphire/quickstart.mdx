@@ -312,7 +312,7 @@ index 414e974..49c95f9 100644
 +      chainId: 0x5aff,
 +      url: "https://testnet.sapphire.oasis.dev",
 +      accounts: [
-+        process.env.PRIVATE_KEY ?? Buffer.alloc(0, 32).toString("hex"),
++        process.env.PRIVATE_KEY ?? Buffer.alloc(32).toString("hex"),
 +      ],
 +    },
 +  },

@@ -89,6 +89,109 @@ function encrypt(bytes32 key, bytes32 nonce, bytes memory text, bytes memory add
 }
 ```
 
+## Public/Private Key Pair Generation
+
+### Overview
+
+* Precompile address: `0x0100000000000000000000000000000000000005`
+* Parameters: `uint method, bytes seed`
+* Return value: `bytes public_key, bytes private_key`
+* Gas cost: method-dependent base cost, see below
+
+Available methods:
+* `0`, `1`, `2` - ed25519 (gas cost 35,000),
+* `3`, `4`, `5` - secp256k1 (gas cost 110,000)
+
+:::note
+
+The specific values for the method (i.e. `0`, `1` and `2`, and `3`, `4`
+and `5`) overlap for the purposes of key generation but have distinct
+meanings when signing and verifying; see below for details.
+
+:::
+
+### Example
+
+Using the Sapphire library:
+
+```solidity
+bytes memory seed = hex"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+bytes memory publicKey;
+bytes memory privateKey;
+(publicKey, privateKey) = Sapphire.generateKeyPair(0, seed);
+```
+
+## Message Signing
+
+### Overview
+
+* Precompile address: `0x0100000000000000000000000000000000000006`
+* Parameters: `uint method, bytes private_key, bytes context_or_digest, bytes message`
+* Gas cost: see below for the method-dependent base cost, plus 8 per byte of context and message except digest.
+
+Available methods:
+* `0` - ed25519/Oasis (gas cost 75,000),
+* `1` - ed25519/Pure (gas cost 75,000),
+* `2` - ed25519/Prehashed SHA-512 (gas cost 75,000),
+* `3` - secp256k1/Oasis (gas cost 150,000),
+* `4` - secp256k1/Prehashed Keccak-256 (gas cost 150,000),
+* `5` - secp256k1/Prehashed SHA-256 (gas cost 150,000)
+
+Both `Oasis` methods require a context parameter for domain separation
+as well as a message parameter containing the message to be signed
+within the given domain. The context parameter is ignored for
+`ed25519/Pure`.
+
+For the prehashed methods, give the digest bytes as the
+`context_or_digest` parameter and leave the message parameter empty. In
+all three cases, the digest length does not count towards the gas cost.
+
+### Example
+
+Using the Sapphire library:
+
+```solidity
+bytes memory publicKey = ...;
+bytes memory privateKey = ...;
+bytes memory signature = Sapphire.signMessageWithContext(0, privateKey, "message context", "message to sign");
+```
+
+## Signature Verification
+
+### Overview
+
+* Precompile address: `0x0100000000000000000000000000000000000007`
+* Parameters: `uint method, bytes public_key, bytes context_or_digest, bytes message, bytes signature`
+* Gas cost: see below for the method-dependent base cost, plus 8 per byte of context and message.
+
+Available methods:
+* `0` - ed25519/Oasis (gas cost 110,000),
+* `1` - ed25519/Pure (gas cost 110,000),
+* `2` - ed25519/Prehashed SHA-512 (gas cost 110,000),
+* `3` - secp256k1/Oasis (gas cost 210,000),
+* `4` - secp256k1/Prehashed Keccak-256 (gas cost 210,000),
+* `5` - secp256k1/Prehashed SHA-256 (gas cost 210,000)
+
+Both `Oasis` methods require a context parameter for domain separation
+as well as a message parameter containing the message to verify the
+signature against within the given domain. The context parameter is
+ignored for `ed25519/Pure`.
+
+For the prehashed methods, give the digest bytes as the
+`context_or_digest` parameter and leave the message parameter empty. In
+all three cases, the digest length does not count towards the gas cost.
+
+### Example
+
+Using the Sapphire library:
+
+```solidity
+bytes memory publicKey = ...;
+bytes memory privateKey = ...;
+bytes memory signature = ...;
+bool result = Sapphire.verifySignatureWithContext(0, publicKey, signature, "message context", "message to check");
+```
+
 ## Library
 
 The examples above show how to call the precompiles directly. For a more

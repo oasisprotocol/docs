@@ -99,6 +99,25 @@ being used):
 * `/dev/sgx_enclave` (since Linux kernel 5.11)
 * `/dev/isgx` (legacy driver)
 
+## Ensure Proper SGX Device Permissions
+
+Make sure that the user that is running the Oasis Node binary has access to the
+SGX device (e.g. `/dev/sgx_enclave`). This can usually be achieved by adding
+the user into the right group, for example in case the permissions of the SGX
+device are as follows:
+
+```
+crw-rw---- 1 root sgx 10, 125 Oct 28 09:28 /dev/sgx_enclave
+```
+
+and the user running Oasis Node is `oasis`, you can do:
+
+```bash
+sudo adduser oasis sgx
+```
+
+Failure to do so may result in permission denied errors during runtime startup.
+
 ## Ensure `/dev` is NOT Mounted with the `noexec` Option
 
 Some Linux distributions mount `/dev` with the `noexec` mount option. If that is

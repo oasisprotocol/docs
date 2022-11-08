@@ -37,7 +37,7 @@ Feel free to use other seed nodes besides the one provided here.
     ([read more][handling network upgrades]):
     * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
-  * [2.2.1](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.1)
+  * [2.3.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.3.0)
 
 :::info
 

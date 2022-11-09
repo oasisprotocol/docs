@@ -309,11 +309,11 @@ index 414e974..49c95f9 100644
 +  networks: {
 +    sapphire: {
 +      // This is Testnet! If you want Mainnet, add a new network config item.
-+      chainId: 0x5aff,
 +      url: "https://testnet.sapphire.oasis.dev",
-+      accounts: [
-+        process.env.PRIVATE_KEY ?? Buffer.alloc(32).toString("hex"),
-+      ],
++      accounts: process.env.PRIVATE_KEY
++        ? [process.env.PRIVATE_KEY]
++        : [],
++      chainId: 0x5aff,
 +    },
 +  },
  };
@@ -402,10 +402,21 @@ questions, please check out the [guide] and join the discussion on the
 
 Best of luck on your future forays into confidentiality!
 
+:::info Example
+
+Visit the Sapphire ParaTime repository to download the final [Truffle]
+[truffle-example] and [Hardhat][hardhat-example] examples of this
+quickstart.
+
+:::
+
 ## See also
 
+<DocCard item={findSidebarItem('/dapp/sapphire/browser')} />
 <DocCard item={findSidebarItem('/node/run-your-node/paratime-client-node')} />
 <DocCard item={findSidebarItem('/node/web3')} />
 
 [social-media]: ../../get-involved/README.md#social-media-channels
 [guide]: guide.mdx
+[truffle-example]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/truffle
+[hardhat-example]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/hardhat

@@ -26,6 +26,7 @@ const sidebars = {
       items: [
         'dapp/sapphire/quickstart',
         'dapp/sapphire/guide',
+        'dapp/sapphire/browser',
         'dapp/sapphire/precompiles',
       ],
     },

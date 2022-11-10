@@ -6022,11 +6022,6 @@ json5@^2.1.2, json5@^2.2.1:
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
   integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
 
-jsonexport@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/jsonexport/-/jsonexport-3.2.0.tgz#e5b4905ea1f6c8f8e0f62e4ceb26e4a31f1c93a8"
-  integrity sha512-GbO9ugb0YTZatPd/hqCGR0FSwbr82H6OzG04yzdrG7XOe4QZ0jhQ+kOsB29zqkzoYJLmLxbbrFiuwbQu891XnQ==
-
 jsonfile@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
@@ -6094,22 +6089,21 @@ linkify-it@^3.0.1:
   dependencies:
     uc.micro "^1.0.1"
 
-linkinator@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/linkinator/-/linkinator-3.1.0.tgz#403999203d61acfcc592c3f7fd60332bdce4f423"
-  integrity sha512-ikQtLZ0JtY2JQXGZlzHID9Y87R4Zxe4TPAtFTem9T2UxQqXr0Ab8z9fse+apHEaD2l+WIX8f/P0IMODBMHhPWw==
+linkinator@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/linkinator/-/linkinator-4.1.0.tgz#c14dc55d421dbb143ded674e1bd0220bb1a80afd"
+  integrity sha512-TfTn2zJXNXBKd815aDoqSFbUnOlvhw5ZkvJ3LzbSOkzcYsamoJg+9wLTtqQfkeAJ/kTsosiNf8nzTpySx1DZPA==
   dependencies:
     chalk "^5.0.0"
     escape-html "^1.0.3"
     gaxios "^5.0.0"
     glob "^8.0.1"
     htmlparser2 "^8.0.1"
-    jsonexport "^3.2.0"
     marked "^4.0.3"
     meow "^10.1.1"
     mime "^3.0.0"
     server-destroy "^1.0.1"
-    update-notifier "^5.1.0"
+    srcset "^5.0.0"
 
 loader-runner@^4.2.0:
   version "4.3.0"
@@ -8285,6 +8279,11 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
+
+srcset@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/srcset/-/srcset-5.0.0.tgz#9df6c3961b5b44a02532ce6ae4544832609e2e3f"
+  integrity sha512-SqEZaAEhe0A6ETEa9O1IhSPC7MdvehZtCnTR0AftXk3QhY2UNgb+NApFOUPZILXk/YTDfFxMTNJOBpzrJsEdIA==
 
 stable@^0.1.8:
   version "0.1.8"

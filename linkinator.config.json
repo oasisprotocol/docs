@@ -1,7 +1,13 @@
 {
   "concurrency": 1,
   "recurse": true,
-  "skip": ["https://support.ledger.com/hc/en-us/articles/", "https://www.coinbase.com", "https://oasis.fish/leaderboard/"],
+  "skip": [
+    "oasis.fish",
+    "support.ledger.com",
+    "www.coinbase.com",
+    "www.coinspeaker.com",
+    "www.linkedin.com"
+  ],
   "verbosity": "error",
   "timeout": 0,
   "markdown": false,

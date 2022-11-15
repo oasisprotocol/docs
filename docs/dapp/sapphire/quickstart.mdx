@@ -201,7 +201,7 @@ We're going to add confidentiality to this starter project in exactly two lines
 of code.
 
 You'll need to grab the Sapphire compatibility library
-([@oasisprotocol/sapphire-paratime]), so make that happen by issuing
+([`@oasisprotocol/sapphire-paratime`]), so make that happen by issuing
 
 ```sh
 pnpm add -D @oasisprotocol/sapphire-paratime # npm also works
@@ -267,7 +267,7 @@ the MKVS; it can tell _that_ a storage slot was written, but not which one
 All in all, you can see that confidentiality is in effect, but it's not
 something end-users need to think too much about.
 
-[@oasisprotocol/sapphire-paratime]: https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime
+[`@oasisprotocol/sapphire-paratime`]: https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime
 
 ## Create a Sapphire-Native dApp
 
@@ -290,7 +290,14 @@ We're going to use Hardhat this time because it's very convenient to use.
 
 1. Make & enter a new directory
 2. `npx hardhat` then create a TypeScript project.
-3. Install `@nomicfoundation/hardhat-toolbox` and its peer dependencies.
+3. Add [`@oasisprotocol/sapphire-hardhat`] as dependency:
+
+  ```sh
+  pnpm add -D @oasisprotocol/sapphire-hardhat
+  ```
+
+4. Install `@nomicfoundation/hardhat-toolbox`, TypeScript and other peer
+   dependencies required by HardHat.
 
 ### Add the Sapphire Testnet to Hardhat
 
@@ -302,10 +309,13 @@ diff --git a/hardhat.config.ts b/hardhat.config.ts
 index 414e974..49c95f9 100644
 --- a/hardhat.config.ts
 +++ b/hardhat.config.ts
-@@ -3,6 +3,15 @@ import "@nomicfoundation/hardhat-toolbox";
+@@ -1,8 +1,19 @@
+ import { HardhatUserConfig } from "hardhat/config";
++import '@oasisprotocol/sapphire-hardhat';
+ import "@nomicfoundation/hardhat-toolbox";
 
  const config: HardhatUserConfig = {
-   solidity: "0.8.9",
+   solidity: "0.8.17",
 +  networks: {
 +    sapphire: {
 +      // This is Testnet! If you want Mainnet, add a new network config item.
@@ -320,6 +330,11 @@ index 414e974..49c95f9 100644
 
  export default config;
 ```
+
+By importing `@oasisprotocol/sapphire-hardhat` at the top of the config file,
+any network config entry corresponding to the Sapphire's chain ID will
+automatically be wrapped with Sapphire specifics for encrypting and signing the
+transactions.
 
 ### Get the Contract
 
@@ -365,11 +380,6 @@ You can even write tests against the Hardhat network and use Hardhat plugins.
 
 And to wrap things up, we'll put `Vigil` through its paces.
 First, let's see what's actually going on.
-
-At the top of the file, we have our favorite import,
-[`@oasisprotocol/sapphire-paratime`].
-Unlike for Truffle, we have to "manually" wrap the signer since the Hardhat
-config only takes a private key. We do that at the top of `main`.
 
 After deploying the contract, we can create a secret, check that it's not
 readable, wait a bit, and then check that it has become readable.
@@ -420,3 +430,4 @@ quickstart.
 [guide]: guide.mdx
 [truffle-example]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/truffle
 [hardhat-example]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/hardhat
+[`@oasisprotocol/sapphire-hardhat`]: https://www.npmjs.com/package/@oasisprotocol/sapphire-hardhat

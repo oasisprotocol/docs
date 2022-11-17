@@ -177,6 +177,25 @@ number in the comment which added this redirection for future reference, if
 major rewrite is to happen and the developers would need more context around
 the redirection.
 
+### Diagrams
+
+There are three kinds of image assets currently used in the docs.
+
+1. Screenshots, photos, non-technical figures go into `images/` folder of the
+   respected top-level chapter.
+2. [Mermaid](https://mermaid-js.github.io) diagrams (preferred tool for
+   sequence diagrams, flowcharts and other technical material) live in
+   `diagrams/` folder of the respected top-level chapter. Diagram sources
+   reside in the .mmd files. To generate .svg which can be used in the
+   markdown run `yarn diagrams`. Both .svg and .mmd files should be stored in
+   git. CI will check that they are always in sync.
+3. Other diagrams which cannot be designed with Mermaid are drawn in
+   [diagrams.net](https://diagrams.net) and then stored locally inside
+   `images/` folder along other images. When exporting the diagram, don't
+   forget to tick the "Include a copy of my diagram" checkbox so that the
+   diagram source will be stored along in the .svg file so you will
+   be able to edit it in the future.
+
 ## Vocabulary
 
 The following is a consistent case-sensitive collection of Oasis-related terms

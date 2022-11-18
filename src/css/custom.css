@@ -89,3 +89,8 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .theme-doc-sidebar-menu {
   font-size: 14px;
 }
+
+/* Hack to make .svg and .png diagrams readable in dark theme */
+html[data-theme='dark'] main img {
+  background-color: #fff;
+}

@@ -337,13 +337,13 @@ the latest stable version of Rust on your system.
 Install Rust nightly with:
 
 ```
-rustup install nightly-2021-11-04
+rustup install nightly-2022-08-22
 ```
 
 ### Build and Install sgxs-tools
 
 ```bash
-cargo +nightly-2021-11-04 install sgxs-tools
+cargo +nightly-2022-08-22 install sgxs-tools
 ```
 
 ### Run `sgx-detect` Tool

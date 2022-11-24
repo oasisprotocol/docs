@@ -163,9 +163,9 @@ Architectural Enclaves is through **Application Enclave Service Manager
 can facilitate various SGX services such as launch approval, remote attestation
 quote signing, etc.
 
-### Ubuntu 20.04/18.04/16.04
+### Ubuntu 22.04/20.04/18.04
 
-A convenient way to install the AESM service on Ubuntu 20.04/18.04/16.04 systems
+A convenient way to install the AESM service on Ubuntu 22.04/20.04/18.04 systems
 is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
 
 First add Intel SGX APT repository to your system:
@@ -337,13 +337,13 @@ the latest stable version of Rust on your system.
 Install Rust nightly with:
 
 ```
-rustup install nightly-2021-11-04
+rustup install nightly-2022-08-22
 ```
 
 ### Build and Install sgxs-tools
 
 ```bash
-cargo +nightly-2021-11-04 install sgxs-tools
+cargo +nightly-2022-08-22 install sgxs-tools
 ```
 
 ### Run `sgx-detect` Tool

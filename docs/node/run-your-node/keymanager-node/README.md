@@ -2,7 +2,7 @@
 
 :::info
 
-These instructions are for setting up a _key manager_ node. Key manager nodes run a special runtime that provides confidentiality to other ParaTimes. If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node/README.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](paratime-node.mdx).
+These instructions are for setting up a _key manager_ node. Key manager nodes run a special runtime that provides confidentiality to other ParaTimes. If you want to run a _validator_ node instead, see the [instructions for running a validator node](../validator-node/README.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](../paratime-node.mdx).
 
 :::
 
@@ -16,7 +16,7 @@ This guide will cover setting up your key manager node for the Oasis Network. Th
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](prerequisites) and [Run a Non-validator Node](non-validator-node.md) sections and have:
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites) and [Run a Non-validator Node](../non-validator-node.md) sections and have:
 
 * Oasis Node binary installed on your system and a dedicated non-root user that will run your Oasis Node.
 * The chosen top-level `/node/` working directory prepared (feel free to name it as you wish, e.g. `/srv/oasis/`) with:
@@ -24,22 +24,22 @@ Before following this guide, make sure you've followed the [Prerequisites](prere
   * `data`: This will store the data directory needed by Oasis Node, including your node identity and the blockchain state. The directory permissions should be `rwx------`.
   * `bin`: This will store binaries needed by Oasis Node for running the ParaTimes.
   * `runtimes`: This will store the ParaTime bundles.
-* Downloaded or compiled the correct versions of everything according to [Mainnet Network Parameters](../mainnet/README.md):
+* Downloaded or compiled the correct versions of everything according to [Mainnet Network Parameters](../../mainnet/README.md):
   * The genesis file copied to `/node/etc/genesis.json`.
   * The binaries needed by Oasis Node for running the ParaTimes copied to `/node/bin/`.
   * The key manager ParaTime bundle (`.orc` extension) copied to `/node/runtimes/`.
-* Initialized a new node and updated your entity registration by following the [Register a New Entity or Update Your Entity Registration](paratime-node.mdx#register-a-new-entity-or-update-your-entity-registration) instructions.
+* Initialized a new node and updated your entity registration by following the [Register a New Entity or Update Your Entity Registration](../paratime-node.mdx#register-a-new-entity-or-update-your-entity-registration) instructions.
   * The entity descriptor file copied to `/node/etc/entity.json`.
 
 :::tip
 
-Reading the rest of the [validator node setup instructions](validator-node/README.md) and [ParaTime node setup instructions](paratime-node.mdx) may also be useful.
+Reading the rest of the [validator node setup instructions](../validator-node/README.md) and [ParaTime node setup instructions](../paratime-node.mdx) may also be useful.
 
 :::
 
 ### Setting up Trusted Execution Environment (TEE)
 
-The key manager ParaTime requires the use of a TEE. See the [Set up Trusted Execution Environment (TEE)](prerequisites/set-up-trusted-execution-environment-tee.md) doc for instructions on how to set it up before proceeding.
+The key manager ParaTime requires the use of a TEE. See the [Set up Trusted Execution Environment (TEE)](../prerequisites/set-up-trusted-execution-environment-tee.md) doc for instructions on how to set it up before proceeding.
 
 ## Configuration
 
@@ -116,14 +116,14 @@ Before using this configuration you should collect the following information to 
 
 * `{{ external_address }}`: The external IP you used when registering this node.
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
-  * You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
-* `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
-  * You can find the current Oasis-supported key manager ParaTime in the [Mainnet Network Paramers](../mainnet/README.md#paratimes).
+  * You can find the current Oasis Seed Node address in the [Network Parameters](../../mainnet/README.md).
+* `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](../paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+  * You can find the current Oasis-supported key manager ParaTime in the [Mainnet Network Paramers](../../mainnet/README.md#paratimes).
 * `{{ keymanager_runtime_id }}`: Runtime identified for the key manager ParaTime.
-  * You can find the current Oasis-supported key manager ParaTime identifiers in the [Mainnet Network Paramers](../mainnet/README.md#paratimes).
+  * You can find the current Oasis-supported key manager ParaTime identifiers in the [Mainnet Network Paramers](../../mainnet/README.md#paratimes).
 * `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
-  * You can find the current Oasis IAS proxy address in the [Mainnet Network Parameters](../mainnet/README.md#cipher-paratime).
-  * If you want, you can also [run your own IAS proxy](ias-proxy.md).
+  * You can find the current Oasis IAS proxy address in the [Mainnet Network Parameters](../../mainnet/README.md#cipher-paratime).
+  * If you want, you can also [run your own IAS proxy](../ias-proxy.md).
 
 :::caution
 

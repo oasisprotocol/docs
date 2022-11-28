@@ -86,7 +86,16 @@ const sidebars = {
         'node/run-your-node/archive-node',
         'node/run-your-node/paratime-node',
         'node/run-your-node/paratime-client-node',
-        'node/run-your-node/keymanager-node',
+        {
+          type: 'category',
+          label: 'Key Manager Node',
+          link: {
+            type: 'doc',
+            id: 'node/run-your-node/keymanager-node/README',
+          },
+          items: [
+          ],
+        },
         'node/run-your-node/ias-proxy',
         'node/run-your-node/sentry-node',
         {

@@ -94,6 +94,7 @@ const sidebars = {
             id: 'node/run-your-node/keymanager-node/README',
           },
           items: [
+            'node/run-your-node/keymanager-node/signing-key-manager-policy',
           ],
         },
         'node/run-your-node/ias-proxy',

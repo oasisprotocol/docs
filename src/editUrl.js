@@ -4,7 +4,7 @@ const path = require('path');
 
 const gitModules = {
     'external/adrs/': 'https://github.com/oasisprotocol/adrs/{mode}/main/',
-    'external/oasis-core/': 'https://github.com/oasisprotocol/oasis-core/{mode}/master/',
+    'external/oasis-core/': 'https://github.com/oasisprotocol/oasis-core/{mode}/stable/22.2.x/',
     'external/oasis-core-ledger/': 'https://github.com/oasisprotocol/oasis-core-ledger/{mode}/master/',
     'external/oasis-sdk/': 'https://github.com/oasisprotocol/oasis-sdk/{mode}/main/',
 };

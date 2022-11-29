@@ -123,11 +123,10 @@ You can find the details of the Oasis Sapphire Web3 gateway
 
 ### Transactions & Calls
 
-The figure below illustrates the flow of a confidential smart contract
-*transaction* executed on the Sapphire ParaTime. Nodes that are running
-trusted enclaves are marked with 🔒.
+![Client, Key Manager, Compute Node diagram](../../general/images/architecture/client-km-compute.svg)
 
-![Confidential Smart Contract Transaction Flow on Sapphire](../diagrams/c10l-smart-contract-tx.mmd.svg)
+The figure above illustrates the flow of a confidential smart contract
+*transaction* executed on the Sapphire ParaTime.
 
 Transactions and calls must be encrypted and signed for maximum security.
 You can use the [@oasisprotocol/sapphire-paratime] JS package to make your life
@@ -138,14 +137,12 @@ leak the private data through side channels like time spent and gas use. If you
 need to branch on private data, you should in most cases ensure that both
 branches exhibit similar time/gas and storage patterns.
 
-The next figure illustrates the flow of a confidential smart contract *call* on
-Sapphire. `msg.sender` will be zeroed for calls that are not signed. If you
-want to use `msg.sender` for access control, the call **must be signed**. On
-the other hand, to avoid annoying signature popups in the user's wallet for
-calls that do not need to be signed, set the `from` address to all zeros. The
-JS library will do this for you.
-
-![Confidential Smart Contract Call Flow on Sapphire](../diagrams/c10l-smart-contract-call.mmd.svg)
+You can also make confidential smart contract *calls* on Sapphire. If you
+use `msg.sender` for access control in your contract, the call **must be
+signed**, otherwise `msg.sender` will be zeroed. On the other hand, set the
+`from` address to all zeros, if you want to avoid annoying signature popups in
+the user's wallet for calls that do not need to be signed. The JS library will
+do this for you.
 
 :::note
 
@@ -153,6 +150,24 @@ Inside the smart contract code, there is no way of knowing whether the
 client's call data were originally encrypted or not.
 
 :::
+
+<details>
+  <summary>Detailed confidential smart contract transaction flow on Sapphire</summary>
+  <div>
+    <img src={
+      require('!!file-loader!../diagrams/c10l-smart-contract-tx.mmd.svg').default
+    } />
+  </div>
+</details>
+
+<details>
+  <summary>Detailed confidential smart contract call flow on Sapphire</summary>
+  <div>
+    <img src={
+      require('!!file-loader!../diagrams/c10l-smart-contract-call.mmd.svg').default
+    } />
+  </div>
+</details>
 
 ### Contract State
 

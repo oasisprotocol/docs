@@ -1,16 +1,24 @@
-import DocCardList from '@theme/DocCardList';
+---
+description: Home of the Oasis dApp developer resources
+---
+
+import DocCard from '@theme/DocCard';
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Overview
 
-This chapter contains developer resources related to the implementation of
-dApps on the Oasis Network.
+![Oasis architectural design including ParaTime and consensus layers](../general/images/architecture/technology_scalability.svg)
 
-Each ParaTime has its unique features and requires specific development
-environment for writing dApps. Read the related sections below to learn more.
+The [Oasis architecture] is designed to have a simple, robust consensus layer
+on top which connects handful of ParaTimes executing smart contracts.
+DApp developers may choose among those ParaTimes depending on whether they
+require confidentiality and/or EVM-compatibility.
 
-<DocCardList items={[
-    findSidebarItem('/dapp/emerald/'),
-    findSidebarItem('/dapp/sapphire/'),
-    findSidebarItem('/dapp/cipher/'),
-]} />
+Learn more by exploring the ParaTimes below!
+
+|                      | EVM-compatible                                        | Oasis Wasm                                          |
+|---------------------:|-------------------------------------------------------|-----------------------------------------------------|
+| **Confidential**     | <DocCard item={findSidebarItem('/dapp/sapphire/')} /> | <DocCard item={findSidebarItem('/dapp/cipher/')} /> |
+| **Non-Confidential** | <DocCard item={findSidebarItem('/dapp/emerald/')} />  |                                                     |
+
+[Oasis architecture]: ../general/oasis-network/README.mdx

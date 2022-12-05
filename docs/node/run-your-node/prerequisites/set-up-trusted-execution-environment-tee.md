@@ -17,8 +17,8 @@ additional driver and software components are properly installed and running.
 ## Ensure Clock Synchronization
 
 Due to additional sanity checks within runtime enclaves, you should ensure that
-the node's local clock is synchronized (e.g. using NTP). Otherwise you may
-experience unexpected runtime aborts.
+the node's local clock is synchronized (e.g. using NTP). If it is off by more
+than half a second you may experience unexpected runtime aborts.
 
 ## Install SGX Linux Driver
 

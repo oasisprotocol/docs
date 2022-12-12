@@ -60,7 +60,7 @@ Click ‘Receive’ on the Account page, and you’ll get the QR code as well as
 
 1. Plug your Ledger device into your computer and log into the Oasis app on-device
 
-![Oasis App Ready on Ledger Nano S connected to your device](../../images/wallet/ledger/oasis_app_running.jpg)
+![Oasis App Ready on Ledger Nano S connected to your device](../../images/wallet/ledger/ledger_oasis_ready.jpg)
 
 2. Open the Oasis Chrome Extension Wallet and click the account icon on the top right
 

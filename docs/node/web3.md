@@ -45,7 +45,7 @@ First, follow the
 [Oasis ParaTime client node](run-your-node/paratime-client-node.mdx)
 guide on how to configure the Oasis client node with one or more ParaTimes.
 Always use the exact combination of the Oasis node/ParaTime versions as
-published on the network parameters page for either [Mainnet] or [Testnet]. 
+published on the network parameters page for either [Mainnet] or [Testnet].
 
 Apart from the transactions that happen on-chain and produce some effects,
 there are also a number of read-only queries implemented in the Oasis protocol
@@ -179,7 +179,7 @@ DATABASE__PASSWORD=your_password_here
 To start the Web3 gateway invoke:
 
 ```shell
-./emerald-web3-gateway --config gateway.yml
+./oasis-web3-gateway --config gateway.yml
 ```
 
 The Web3 gateway will connect to your Oasis node and start indexing available
@@ -192,12 +192,12 @@ Web3 gateway, migration scripts will automatically be applied upon startup.
 If you want to migrate the database separately, run:
 
 ```shell
-./emerald-web3-gateway migrate-db --config gateway.yml
+./oasis-web3-gateway migrate-db --config gateway.yml
 ```
 
 :::caution
 
-Above, we are invoking the `emerald-web3-gateway` process directly from the
+Above, we are invoking the `oasis-web3-gateway` process directly from the
 shell, so you can quickly start using it. If you are setting up a production
 environment, you should [configure the Web3 gateway as a system service][system
 service] and register it in the service manager for your platform.
@@ -243,10 +243,10 @@ If you encounter database or hardware issues, you may need to wipe the
 database and reindex all blocks. First, run the `truncate-db` subcommand:
 
 ```bash
-emerald-web3-gateway truncate-db --config gateway.yml --unsafe
+oasis-web3-gateway truncate-db --config gateway.yml --unsafe
 ```
 
-Then, execute the `emerald-web3-gateway` normally to start reindexing the
+Then, execute the `oasis-web3-gateway` normally to start reindexing the
 blocks.
 
 :::danger
@@ -261,11 +261,11 @@ extended downtime while the Web3 Gateway is reindexing the blocks.
   https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9
 [emerald-mainnet]: ../dapp/emerald/README.mdx#mainnet
 [emerald-testnet]: ../dapp/emerald/README.mdx#testnet
-[github-releases]: https://github.com/oasisprotocol/emerald-web3-gateway/releases
+[github-releases]: https://github.com/oasisprotocol/oasis-web3-gateway/releases
 [Mainnet]: mainnet/README.md
 [mainnet-emerald]: mainnet/README.md#emerald-paratime
 [Oasis archive node]: run-your-node/archive-node.md
-[README.md]: https://github.com/oasisprotocol/emerald-web3-gateway/blob/main/README.md#building-and-testing
+[README.md]: https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/README.md#building-and-testing
 [Sapphire]: ../dapp/sapphire/README.mdx
 [sapphire-testnet]: ../dapp/sapphire/README.mdx#testnet
 [system service]: run-your-node/prerequisites/system-configuration.mdx#non-root

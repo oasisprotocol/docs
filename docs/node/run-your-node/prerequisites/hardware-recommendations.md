@@ -76,7 +76,7 @@ that use a Trusted Execution Environment (TEE).
 ### Memory
 
 * Consensus validator or non-validator node:
-  * Minimum: 4 GB of ECC RAM
+  * Minimum: 6 GB of ECC RAM
   * Recommended: 8 GB of ECC RAM
 
 * All ParaTime compute or client nodes:

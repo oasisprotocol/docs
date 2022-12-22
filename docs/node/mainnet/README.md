@@ -48,11 +48,11 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime binary version:
-  * [1.1.0](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v1.1.0)
+  * [2.6.1](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.1)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
 
@@ -65,7 +65,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v9.0.1#building)):
@@ -76,5 +76,41 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 :::info
 
 Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access the public Web3 gateway.
+
+:::
+
+### Sapphire ParaTime
+
+* Oasis Core version:
+  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+* Runtime identifier:
+  * `000000000000000000000000000000000000000000000000f80306c9858e7279`
+* Runtime binary version:
+  * [0.3.0](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.3.0)
+* Oasis Web3 Gateway version:
+  * [3.2.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.2.0)
+* IAS proxy address:
+  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
+
+:::tip
+
+Feel free to use other IAS proxies besides the one provided here or [run your own](../../node/run-your-node/ias-proxy.md).
+
+:::
+
+### Key Manager ParaTime
+
+* Oasis Core version:
+  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+* Runtime identifier:
+  * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
+* Runtime binary version:
+  * [0.3.2](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.2)
+* IAS proxy address:
+  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
+
+:::tip
+
+Feel free to use other IAS proxies besides the one provided here or [run your own](../../node/run-your-node/ias-proxy.md).
 
 :::

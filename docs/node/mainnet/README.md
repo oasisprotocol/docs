@@ -23,9 +23,9 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.1.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.1.11)
+  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
-  * [2.2.1](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.2.1)
+  * [2.3.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.3.0)
 
 :::info
 

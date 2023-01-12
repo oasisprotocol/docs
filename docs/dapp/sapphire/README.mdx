@@ -26,6 +26,39 @@ fine-grained confidentiality, check out the
 To get started building on our Sapphire ParaTime, you can use our public Web3
 gateway, fully compatible with Ethereum's Web3 gateway.
 
+### Mainnet
+
+* RPC HTTP endpoint: `https://sapphire.oasis.io`
+* RPC WebSockets endpoint: `wss://sapphire.oasis.io/ws`
+* Chain ID:
+  * Hex: 0x5afe
+  * Decimal: 23294
+* Block explorer: [https://explorer.sapphire.oasis.io](https://explorer.sapphire.oasis.io)
+
+<button
+  class="button button--primary margin-bottom--md"
+  onClick={() =>
+    window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [
+        {
+          chainId: '0x5afe',
+          chainName: 'Sapphire ParaTime Mainnet',
+          nativeCurrency: {
+            name: 'ROSE',
+            symbol: 'ROSE',
+            decimals: 18,
+          },
+          rpcUrls: ['https://sapphire.oasis.io/', 'wss://sapphire.oasis.io/ws'],
+          blockExplorerUrls: ['https://explorer.sapphire.oasis.io'],
+        },
+      ],
+    })
+  }
+>
+  Click here to register Sapphire Mainnet to your MetaMask or Brave Wallet
+</button>
+
 ### Testnet
 
 * RPC HTTP endpoint: `https://testnet.sapphire.oasis.dev`
@@ -58,7 +91,6 @@ gateway, fully compatible with Ethereum's Web3 gateway.
 >
   Click here to register Sapphire Testnet to your MetaMask or Brave Wallet
 </button>
-
 
 ## See also
 

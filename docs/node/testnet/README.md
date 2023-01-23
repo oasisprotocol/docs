@@ -32,7 +32,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+  * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
   * To sync from genesis, you need to start with an earlier version first
     ([read more][handling network upgrades]):
     * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
@@ -54,11 +54,12 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher ParaTime
 
 * Oasis Core version:
-  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+  * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
   * [2.6.1-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.1-testnet)
+  * [2.6.2-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 
@@ -71,7 +72,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald ParaTime
 
 * Oasis Core version:
-  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+  * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0-testnet#building)):
@@ -82,11 +83,12 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Sapphire ParaTime
 
 * Oasis Core version:
-  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+  * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
   * [0.3.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.3.0-testnet)
+  * [0.3.1-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.3.1-testnet)
 * Web3 Gateway version:
   * [3.2.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.2.0)
 * IAS proxy address:
@@ -101,11 +103,12 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Key Manager ParaTime
 
 * Oasis Core version:
-  * [22.2.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.3)
+  * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime binary version:
   * [0.3.2-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.2-testnet)
+  * [0.3.3-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.3-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 

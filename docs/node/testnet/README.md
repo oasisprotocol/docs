@@ -51,7 +51,7 @@ The Oasis Node is part of the Oasis Core release.
 
 This section contains parameters for various ParaTimes known to be deployed on the Testnet. Similar to the Testnet, these may be subject to frequent version upgrades and/or state resets.
 
-### Cipher ParaTime
+### Cipher
 
 * Oasis Core version:
   * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
@@ -69,7 +69,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 
 :::
 
-### Emerald ParaTime
+### Emerald
 
 * Oasis Core version:
   * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
@@ -80,7 +80,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Web3 Gateway version:
   * [3.2.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.2.0)
 
-### Sapphire ParaTime
+### Sapphire
 
 * Oasis Core version:
   * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)
@@ -100,7 +100,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 
 :::
 
-### Key Manager ParaTime
+### Key Manager
 
 * Oasis Core version:
   * [22.2.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.5)

@@ -23,7 +23,7 @@ This page is meant to be kept up to date with the information from the currently
 * Genesis document's hash ([explanation](../genesis-doc.md#genesis-file-vs-genesis-document)):
   * `50304f98ddb656620ea817cc1446c401752a05a249b36c9b90dba4616829977a`
 * Oasis seed node address:
-  * `05EAC99BB37F6DAAD4B13386FF5E087ACBDDC450@34.86.165.6:26656`
+  * `53572F689E5BACDD3C6527E6594EC49C8F3093F6@34.86.165.6:26656`
 
 :::tip
 

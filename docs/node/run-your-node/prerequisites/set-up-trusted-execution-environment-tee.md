@@ -14,6 +14,25 @@ additional driver and software components are properly installed and running.
 
 [Intel SGX]: https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
 
+## BIOS Configuration
+To set up a TEE (Intel SGX), you need to configure BIOS. First, **update BIOS 
+to the latest version with the latest microcode**. Then proceed with BIOS 
+configuration. Note that not all settings may apply to your BIOS. In that case, 
+configure only the relevant ones. Please set the BIOS settings as follows:
+
+- **SGX**: ENABLE
+- **Hyperthreading**: DISABLE
+- **Intel SpeedStep**: DISABLE
+- **SecureBoot**: DISABLE
+- **All Internal Graphics**: DISABLE
+- **Turbo Mode**: DISABLE
+- **CPU AES**: ENABLE
+
+To test if your settings are correct, you may use the [attestation tool] for 
+testing remote attestation against Intel SGX's development server.
+
+[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool
+
 ## Ensure Clock Synchronization
 
 Due to additional sanity checks within runtime enclaves, you should ensure that

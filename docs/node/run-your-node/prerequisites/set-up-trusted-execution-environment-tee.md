@@ -25,16 +25,16 @@ set the BIOS settings as follows:
 - **SGX**: ENABLE
 - **Hyper-Threading**: DISABLE
 - **Intel SpeedStep**: DISABLE
-- **SecureBoot**: DISABLE  `// Not necessary for recent kernels`
+- **SecureBoot**: DISABLE  (not necessary for recent kernels)
 - **All Internal Graphics**: DISABLE
 - **Turbo Mode**: DISABLE
 - **CPU AES**: ENABLE
 
-To test if your settings are correct, you may use the [attestation toll] 
+To test if your settings are correct, you may use the [attestation tool] 
 ([binary]) for testing remote attestation against Intel SGX's 
 development server.
 
-[attestation toll]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
+[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
 [binary]: https://github.com/oasisprotocol/tools/releases
 
 ## Ensure Clock Synchronization

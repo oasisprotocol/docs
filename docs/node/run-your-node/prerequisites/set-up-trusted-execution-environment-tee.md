@@ -14,6 +14,29 @@ additional driver and software components are properly installed and running.
 
 [Intel SGX]: https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
 
+## BIOS Configuration
+
+To enable Intel SGX on your hardware, you also need to configure the BIOS. 
+First, **update the BIOS to the latest version with the latest microcode** and 
+then proceed with BIOS configuration as shown below. Note that some settings may 
+not apply to your BIOS. In that case, configure only the relevant ones. Please 
+set the BIOS settings as follows:
+
+- **SGX**: ENABLE
+- **Hyper-Threading**: DISABLE
+- **Intel SpeedStep**: DISABLE
+- **SecureBoot**: DISABLE  (not necessary for recent kernels)
+- **All Internal Graphics**: DISABLE
+- **Turbo Mode**: DISABLE
+- **CPU AES**: ENABLE
+
+To test if your settings are correct, you may use the [attestation tool] 
+([binary]) for testing remote attestation against Intel SGX's 
+development server.
+
+[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
+[binary]: https://github.com/oasisprotocol/tools/releases
+
 ## Ensure Clock Synchronization
 
 Due to additional sanity checks within runtime enclaves, you should ensure that

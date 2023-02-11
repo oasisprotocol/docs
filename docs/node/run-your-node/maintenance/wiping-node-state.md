@@ -58,5 +58,5 @@ This is likely not what you want to do. This is destructive and might result in 
 A full state wipe will also mean that you'll need to generate a new node identity (or copy the old one).
 
 1. Stop the `oasis-node` server process (this will depend on your own deployment setup)
-2. Remove the the `/serverdir/node` directory.
+2. Remove the `/serverdir/node` directory.
 3. Redeploy your node. You'll need to copy your Node artifacts or create brand new ones.

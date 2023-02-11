@@ -177,7 +177,7 @@ The following parameters control how commission rates and bounds can be defined 
 
 * **`staking.params.commision_schedule_rules.rate_change_interval`** The time interval (in epochs) at which rate changes can be specified in a commission schedule. The value is set to 1 indicating that the commission rate can change on every epoch.
 * **`staking.params.commision_schedule_rules.rate_bound_lead`** The minimum lead time (in epochs) needed for changes to commission rate bounds. This is set to protect the delegators from unexpected changes in an operator's commission rates. The value is set to 336, which is expected to be approximately 14 days.
-* **`staking.params.commision_schedule_rules.max_rate_steps`** The maximum number of rate step changes in a commission schedule.The value is set to 10, indicating that the commission schedule can have a maximum of 10 rate steps.
+* **`staking.params.commision_schedule_rules.max_rate_steps`** The maximum number of rate step changes in a commission schedule. The value is set to 10, indicating that the commission schedule can have a maximum of 10 rate steps.
 * **`staking.params.commision_schedule_rules.max_bound_steps`** The maximum number of commission rate bound step changes in the commission schedule. The value is set to 10, indicating that the commission schedule can have a maximum of 10 rate bound steps.
 
 #### Slashing
@@ -233,7 +233,7 @@ The **`governance`** object contains parameters controlling the network's [on-ch
 The following parameters are used to define key values for the network's consensus protocol:
 
 * **`consensus.backend`** Defines the backend consensus protocol. The value is set to "tendermint" indicating that the [Tendermint Core](https://github.com/tendermint/tendermint) BFT protocol is used.
-* **`consensus.params.timeout_commit`** Specifies how long to wait (in nanoseconds) after committing a block before starting a new block height (this affects the block interval). The value is set to to 5,000,000,000 nanoseconds, or 5 seconds.
+* **`consensus.params.timeout_commit`** Specifies how long to wait (in nanoseconds) after committing a block before starting a new block height (this affects the block interval). The value is set to 5,000,000,000 nanoseconds, or 5 seconds.
 * **`consensus.params.max_tx_size`** Maximum size (in bytes) for consensus-layer transactions. The value is set to 32,768 bytes, or 32 kB.
 * **`consensus.params.max_block_size`** Maximum block size (in bytes). The value is set to 22,020,096 bytes, or 22 MB.
 * **`consensus.params.max_block_gas`** Maximum block gas. The value is set to 0, which specifies an unlimited amount of gas.

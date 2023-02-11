@@ -249,7 +249,7 @@ For a more detailed explanation of the parameters below, see the
   committee (i.e. the validator set). It will be increased from `15` to `30`.
 
 * **`scheduler.params.max_validators`** is the maximum size of the consensus
-  committee (i.e. the validator set). It will be increased from `110` to`120`.
+  committee (i.e. the validator set). It will be increased from `110` to `120`.
 
 ### **Random Beacon**
 

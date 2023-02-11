@@ -29,7 +29,7 @@ The process for adding/removing nodes is similar and has the following steps:
 
 To ensure that we do not update your entity descriptor (`entity.json`)
 incorrectly we should get the latest entity descriptor state. For this
-operation, you will need to know your the base64 encoding of your entity's
+operation, you will need to know the base64 encoding of your entity's
 public key.
 
 On your server run this command:
@@ -89,7 +89,7 @@ In the above entity descriptor 2 nodes are attached to the entity:
 1. A node with an identity `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=`
 2. A node with an identity `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=`
 
-To remove the the Node `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=` you would
+To remove the Node `BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=` you would
 remove it from the array in the `nodes` field, like so:
 
 ```javascript

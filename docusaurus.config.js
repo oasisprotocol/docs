@@ -160,7 +160,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust', 'toml'],
+        additionalLanguages: ['rust', 'toml', 'solidity'],
       },
       colorMode: {
         respectPrefersColorScheme: true,

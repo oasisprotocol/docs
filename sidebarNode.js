@@ -95,6 +95,7 @@ const sidebars = {
           },
           items: [
             'node/run-your-node/keymanager-node/signing-key-manager-policy',
+            'node/run-your-node/keymanager-node/key-manager-upgrade',
           ],
         },
         'node/run-your-node/ias-proxy',

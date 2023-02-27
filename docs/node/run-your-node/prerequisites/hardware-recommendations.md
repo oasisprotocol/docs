@@ -4,6 +4,7 @@ The Oasis Network is composed of multiple classes of nodes and services such
 as:
 
 * Consensus validator or non-validator node
+* Sapphire ParaTime compute or client node
 * Emerald ParaTime compute or client node
 * Cipher ParaTime compute or client node
 
@@ -15,7 +16,9 @@ Hardware requirements for running the Oasis Web3 gateway can be found
 :::
 
 This page describes the **minimum** and **recommended** system hardware
-requirements for running different types of nodes on the Oasis Network.
+requirements for running different types of nodes on the Oasis Network. If you
+are running more than one ParaTime on a single node, you will require more
+resources.
 
 :::caution
 
@@ -42,7 +45,7 @@ in committees.
   * Recommended: 2.0 GHz x86-64 CPU with 4 cores/vCPUs with
     [AES instruction set] and [AVX2] support
 
-* Cipher ParaTime compute node:
+* Sapphire and Cipher ParaTime compute node:
   * Minimum: 2.0 GHz x86-64 CPU with [AES instruction set] and [Intel SGX] support
   * Recommended: 2.0 GHz x86-64 CPU with 2 cores/vCPUs with
     [AES instruction set], [Intel SGX] and [AVX2] support
@@ -104,7 +107,7 @@ compactions...
   * Minimum: 400 GB of SSD or NVMe fast storage
   * Recommended: 700 GB of SSD or NVMe fast storage
 
-* Cipher ParaTime compute or client node (in addition to the consensus storage requirements):
+* Sapphire and Cipher ParaTime compute or client node (in addition to the consensus storage requirements):
   * Minimum: 200 GB of SSD or NVMe fast storage
   * Recommended: 300 GB of SSD or NVMe fast storage
 
@@ -170,7 +173,7 @@ parameters appropriately in your [node's configuration].
 
 ### Network
 
-* Consensus validator node and Emerald ParaTime compute node:
+* Consensus validator node and all ParaTime compute nodes:
   * Minimum: 200 Mbps internet connection with low latency
   * Recommended: 1 Gbps internet connection with low latency
 

@@ -43,15 +43,20 @@ account to Sapphire. Consult the [How to transfer ROSE into an EVM ParaTime]
 
 ## Testnet and Mainnet
 
-The Sapphire ParaTime is currently deployed on Testnet, with Mainnet deployment planned for later in 2022.
-The Testnet should be considered unstable software and may have its state wiped at any
-time. As the name implies, only use the Testnet for testing unless you're testing how angry
-your users get when state is wiped.
+Sapphire is deployed on both Testnet and Mainnet. The Testnet should be
+considered unstable software and may have its state wiped at any time. As
+the name implies, only use the Testnet for testing unless you're testing how
+angry your users get when state is wiped.
 
 :::danger Never deploy production services on Testnet
 
 Because Testnet state can be wiped in the future, you should **never** deploy a
 production service on the Testnet! Just don't do it!
+
+Also note that while the Testnet does use actual TEEs, due to experimental
+software and different security parameters, **confidentiality of Sapphire on the
+Testnet is not guaranteed** -- all transactions and state published on the
+Sapphire Testnet should be considered public.
 
 :::
 
@@ -69,7 +74,7 @@ ParaTime.
 
 ## Sapphire vs Ethereum
 
-The Sapphire ParaTime is generally compatible with Ethereum, the EVM, and all of the
+Sapphire is generally compatible with Ethereum, the EVM, and all of the
 user and developer tooling that you already use. There are a few breaking changes,
 but we think that you'll like them:
 

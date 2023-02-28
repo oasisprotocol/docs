@@ -7,6 +7,12 @@ testing out upcoming features and changes to the protocol.
 
 **The Testnet may be subject to frequent version upgrades and state resets.**
 
+Also note that while the Testnet does use actual TEEs, due to experimental
+software and different security parameters, **confidentiality of confidential
+ParaTimes on the Testnet is not guaranteed** -- all transactions and state
+published on the Testnet should be considered public even when stored inside
+confidential ParaTimes.
+
 :::
 
 :::info

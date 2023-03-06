@@ -404,7 +404,22 @@ See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troub
 
 ### Too Old Bubblewrap Version
 
-Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. Previous versions of this guide did not explicitly mention the required version. For details see the [Install Bubblewrap Sandbox](paratime-node.mdx#install-bubblewrap-sandbox-at-least-version-0-3-3) section.
+Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. For details see the [Install Bubblewrap Sandbox](paratime-node.mdx#install-bubblewrap-sandbox-at-least-version-0-3-3) section.
+
+### Bubblewrap Sandbox Fails to Start
+
+If the environment in which you are running the ParaTime node applies too restricted Seccomp or AppArmor profiles, the Bubblewrap sandbox that isolates each runtime may fail to start. In the logs you will see how the runtime attempts to restart, but fails with an `bwrap` error, like:
+
+```json
+{"level":"warn","module":"runtime","msg":"bwrap: Failed to mount tmpfs: Permission denied","runtime_id":"000000000000000000000000000000000000000000000000f80306c9858e7279","runtime_name":"sapphire-paratime","ts":"2023-03-06T10:08:51.983330021Z"}
+```
+
+In case of `bwrap` issues you need to adjust your Seccomp or AppArmor profiles to support Bubblewrap sandboxes. In Docker you can set or disable Seccomp and AppArmor profiles with parameters:
+
+```
+  --security-opt apparmor=unconfined \
+  --security-opt seccomp=unconfined \
+```
 
 ### Stake Requirement
 

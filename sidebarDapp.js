@@ -28,6 +28,7 @@ const sidebars = {
         'dapp/sapphire/guide',
         'dapp/sapphire/browser',
         'dapp/sapphire/precompiles',
+        'dapp/sapphire/addresses',
       ],
     },
     {

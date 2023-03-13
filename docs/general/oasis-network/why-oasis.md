@@ -128,7 +128,7 @@ If you want to build on Oasis, you can read more about the Ecosystem Fund [here]
 
 ### Grants & DevAccelerator
 
-The Oasis Foundation has been working with many talented dev teams via our [Grants program](https://oasisprotocol.org/ecosystem-grants) and [DevAccelerator program](https://oasisprotocol.org/dev-accelerator) to build new applications and integrations on top of the Oasis Network. These include:
+The Oasis Foundation has been working with many talented dev teams via our [Grants program](https://oasisprotocol.org/ecosystem#grantsprogram) to build new applications and integrations on top of the Oasis Network. These include:
 
 * [Anthem (by Chorus One)](https://anthem.chorus.one)
 * [Alethea.ai](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-alethea-ai-aac8f854e436): A marketplace for AI-generated media

@@ -185,6 +185,14 @@ app may need to pad state items to a constant length, or use other obfuscation.
 Observers may also be able to infer computation based on storage access patterns,
 so you might need to obfuscate that, too.
 
+:::danger Contract state leaks a fine-grained access pattern
+
+Contract state is backed by an encrypted key-value store. However, the trace of 
+encrypted records is leaked to the compute node. As a concrete example, an ERC-20 
+token transfer would leak which encrypted record is for the sender's account 
+balance and which is for the receiver's account balance. Such a token would be
+traceable from sender address to receiver address.
+
 Contract state may be made available to third parties through logs/events, or
 explicit getters.
 

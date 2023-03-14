@@ -14,7 +14,7 @@ The Oasis Network is supported by an amazing community of validators and infrast
 
 ### Tools to use for Staking and Delegation
 
-In addition to using the [Oasis CLI](advanced/oasis-cli-tools/README.md) for generating the `staking.AddEscrow` transaction, there is a number of wallets and custodians that support staking and delegation on the Oasis Network. Those include:
+In addition to using the [Oasis CLI](cli/README.md) for generating the `staking.AddEscrow` transaction, there are a number of wallets and custodians that support staking and delegation on the Oasis Network. Those include:
 
 * [Oasis Wallet - Web](oasis-wallets/web.md)
 * [Oasis Wallet - Browser Extension](oasis-wallets/browser-extension.md)

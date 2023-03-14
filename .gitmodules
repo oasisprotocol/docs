@@ -11,3 +11,6 @@
 [submodule "external/adrs"]
 	path = external/adrs
 	url = https://github.com/oasisprotocol/adrs
+[submodule "external/cli"]
+	path = external/cli
+	url = https://github.com/oasisprotocol/cli

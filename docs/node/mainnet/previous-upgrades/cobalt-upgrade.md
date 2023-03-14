@@ -72,7 +72,7 @@ The **`epochtime`**object will be removed since it became obsolete with the new 
 
 Removing entities from **`registry.entities`** will effectively deregister them but the entities' accounts in **`staking.ledger`** will remain intact.
 
-Deregistered entities can always re-register by submitting the [entity registration transaction](../../run-your-node/validator-node/README.md#generating-entity-registration-transaction) after the upgrade.
+Deregistered entities can always re-register by submitting the [entity registration transaction](../../run-your-node/validator-node.mdx#generating-entity-registration-transaction) after the upgrade.
 
 :::
 

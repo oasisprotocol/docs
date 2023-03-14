@@ -117,7 +117,7 @@ Markdown files hosted by this repository should:
   `../howto-use-wallet.md`.
   `../../../operators/set-up-your-node.md`
 
-Markdown files hosted by other Oasis repositories should:
+Symlinked Markdown files hosted by other Oasis repositories should:
 
 - reference markdown files in the same repository by a relative path e.g.
   `../howto-write-contract.md`.

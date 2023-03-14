@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-These instructions are for setting up a _ParaTime_ node which participates in one or more ParaTime compute committees. If you want to run a _ParaTime client_ node instead, see the [instructions for running a ParaTime client node](paratime-client-node.mdx). If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node/README.md). Similarly, if you want to run a non-validator node instead, see the [instructions for running a non-validator node](non-validator-node.md).
+These instructions are for setting up a _ParaTime_ node which participates in one or more ParaTime compute committees. If you want to run a _ParaTime client_ node instead, see the [instructions for running a ParaTime client node](paratime-client-node.mdx). If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node.mdx). Similarly, if you want to run a non-validator node instead, see the [instructions for running a non-validator node](non-validator-node.md).
 
 :::
 
@@ -54,7 +54,7 @@ Just make sure to use the correct working directory path in the instructions bel
 
 :::tip
 
-Reading the rest of the [validator node setup instructions](validator-node/README.md) may also be useful.
+Reading the rest of the [validator node setup instructions](validator-node.mdx) may also be useful.
 
 :::
 
@@ -112,13 +112,13 @@ change in the future.
 :::
 
 [Run a ParaTime Node]: ../../get-involved/run-node/paratime-node.mdx
-[Common Staking Info]: ../../general/manage-tokens/advanced/oasis-cli-tools/common-staking-info.md
-[Oasis CLI tools]: ../../general/manage-tokens/advanced/oasis-cli-tools/delegate-tokens.md
-[Oasis Node Stake Account Info]: ../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md
+[Common Staking Info]: ../../general/manage-tokens/cli/network.md#show-native-token
+[Oasis CLI tools]: ../../general/manage-tokens/cli/account.md#delegate
+[Oasis Node Stake Account Info]: ../../general/manage-tokens/cli/account.md#show
 
 ### Register a New Entity or Update Your Entity Registration
 
-If you don't have an entity yet, create a new one by following the [Creating Your Entity](validator-node/README.md#creating-your-entity) instructions.
+If you don't have an entity yet, create a new one by following the [Creating Your Entity](validator-node.mdx#creating-your-entity) instructions.
 
 :::danger
 
@@ -126,7 +126,7 @@ Everything in this section should be done on the `localhost` as there are sensit
 
 :::
 
-If you will be running the ParaTime on a new Oasis Node, initialize a new node by following the [Initializing a Node](validator-node/README.md#initializing-a-node) instructions.
+If you will be running the ParaTime on a new Oasis Node, initialize a new node by following the [Initializing a Node](validator-node.mdx#initializing-a-node) instructions.
 
 Then update your entity descriptor by enumerating paths to all your node's descriptors (existing and new ones) in the `--entity.node.descriptor` flag. For example:
 
@@ -161,7 +161,7 @@ For example:
 
 :::
 
-Then generate and submit the new/updated entity descriptor via the entity registration transaction by following the [Generating Entity Registration Transaction](validator-node/README.md#generating-entity-registration-transaction) instructions.
+Then generate and submit the new/updated entity descriptor via the entity registration transaction by following the [Generating Entity Registration Transaction](validator-node.mdx#generating-entity-registration-transaction) instructions.
 
 :::caution
 
@@ -179,7 +179,7 @@ No manual node registration is necessary.
 
 :::info
 
-ParaTime rewards for running the compute node will be sent to your entity address **inside the ParaTime**. To access the rewards on the consensus layer, you will need to withdraw them first. Read the [Deposit/Withdraw Tokens to/from ParaTime](../../general/manage-tokens/advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime.mdx) chapter to learn more.
+ParaTime rewards for running the compute node will be sent to your entity address **inside the ParaTime**. To access the rewards on the consensus layer, you will need to withdraw them first. Read the [Deposit/Withdraw Tokens to/from ParaTime](../../general/manage-tokens/cli/account.md) chapter to learn more.
 
 :::
 

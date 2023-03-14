@@ -22,14 +22,13 @@ such as [Oasis Scan].
 For more information about obtaining information on your entity's account, see
 the [Account Get Info] doc.
 
-Staking thresholds may change in the future. Read [Common staking info] chapter,
-to learn how to check the current network thresholds directly from the
-`oasis-node`.
+Staking thresholds may change in the future. Read the
+[native token information] to see the current values used by the network.
 
 [staking thresholds]: ../../genesis-doc.md#staking-thresholds
 [Oasis Scan]: https://www.oasisscan.com/validators
-[Account Get Info]: ../../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md
-[Common staking info]: ../../../general/manage-tokens/advanced/oasis-cli-tools/common-staking-info.md
+[Account Get Info]: ../../../general/manage-tokens/cli/account.md#show
+[native token information]: ../../../general/manage-tokens/cli/network.md#show-native-token
 
 :::info
 

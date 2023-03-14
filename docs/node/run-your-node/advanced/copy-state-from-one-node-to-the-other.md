@@ -10,7 +10,7 @@ Another way to speed up bootstraping an Oasis Node is to sync the node using [St
 
 :::
 
-To bootstrap a new Oasis Node by copying state from a synced Oasis Node, first set up your new Oasis Node as a [Validator Node](../validator-node/README.md), a [Non-validator Node](../non-validator-node.md) or a [ParaTime Node](../paratime-node.mdx).
+To bootstrap a new Oasis Node by copying state from a synced Oasis Node, first set up your new Oasis Node as a [Validator Node](../validator-node.mdx), a [Non-validator Node](../non-validator-node.md) or a [ParaTime Node](../paratime-node.mdx).
 
 :::caution
 

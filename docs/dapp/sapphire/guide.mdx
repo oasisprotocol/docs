@@ -209,7 +209,7 @@ do instead is fork that contract and remove the offending emissions.
 ## Running a Private Oasis Network Locally
 
 For convenient development and testing of your dApps the Oasis team prepared
-the [oasisprotocol/sapphire-dev][sapphire-dev] Docker image which brings you a
+the [ghcr.io/oasisprotocol/sapphire-dev][sapphire-dev] Docker image which brings you a
 complete Oasis stack to your desktop. The Localnet Sapphire instance **mimics
 confidential transactions**, but it does not run in a trusted execution
 environment nor does it require Intel's SGX on your computer. The network is
@@ -226,7 +226,7 @@ isolated from the Mainnet or Testnet and consists of:
 To run the image, execute:
 
 ```sh
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/sapphire-dev
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/sapphire-dev
 ```
 
 After a while, the tool will show you something like this:
@@ -280,8 +280,8 @@ or to populate just a single wallet, use `-to` flag and pass the mnemonics or
 the wallet address. For example
 
 ```sh
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/sapphire-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/sapphire-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/sapphire-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/sapphire-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
 ```
 
 :::
@@ -293,7 +293,7 @@ will be lost after you quit the Docker container!
 
 :::
 
-[sapphire-dev]: https://hub.docker.com/r/oasisprotocol/sapphire-dev
+[sapphire-dev]: https://github.com/oasisprotocol/oasis-web3-gateway/pkgs/container/sapphire-dev
 
 ## See also
 

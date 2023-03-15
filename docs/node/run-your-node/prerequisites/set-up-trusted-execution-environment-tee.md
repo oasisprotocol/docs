@@ -215,7 +215,7 @@ sudo systemctl status aesmd.service
 ### Docker-enabled System
 
 An easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled
-system is to use [our AESM container image](https://hub.docker.com/r/oasisprotocol/aesmd/).
+system is to use [our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
 
 Executing the following command should (always) pull the latest version of our
 AESM Docker container, map the SGX devices and `/var/run/aesmd` directory and
@@ -230,7 +230,7 @@ docker run \
   --device /dev/sgx_provision \
   --volume /var/run/aesmd:/var/run/aesmd \
   --name aesmd \
-  oasisprotocol/aesmd:master
+  ghcr.io/oasisprotocol/aesmd:master
 ```
 
 :::tip
@@ -245,7 +245,7 @@ For the legacy driver you need to specify `--device /dev/isgx` instead.
 
 Similarly to Docker-enabled systems, an easy way to install and run the AESM
 service on a [Podman](https://podman.io)-enabled system is to use
-[our AESM container image](https://hub.docker.com/r/oasisprotocol/aesmd/).
+[our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
 
 First, create the container with:
 
@@ -256,7 +256,7 @@ sudo podman create \
   --device /dev/sgx_provision \
   --volume /var/run/aesmd:/var/run/aesmd:Z \
   --name aesmd \
-  docker.io/oasisprotocol/aesmd
+  ghcr.io/oasisprotocol/aesmd:master
 ```
 
 :::tip

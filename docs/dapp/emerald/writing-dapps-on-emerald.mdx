@@ -82,7 +82,7 @@ ParaTime.
 ## Running a Private Oasis Network Locally
 
 For convenient development and testing of your dApps the Oasis team prepared
-the [oasisprotocol/emerald-dev][emerald-dev] Docker image which brings you a complete Oasis
+the [ghcr.io/oasisprotocol/emerald-dev][emerald-dev] Docker image which brings you a complete Oasis
 stack to your desktop. This network is isolated from the Mainnet or Testnet and
 consists of:
 
@@ -96,7 +96,7 @@ consists of:
 To run the image, execute:
 
 ```sh
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/emerald-dev
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-dev
 ```
 
 After a while, the tool will show you something like this:
@@ -150,8 +150,8 @@ or to populate just a single wallet, use `-to` flag and pass the mnemonics or
 the wallet address. For example
 
 ```sh
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/emerald-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/emerald-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
 ```
 
 :::
@@ -163,7 +163,7 @@ will be lost after you quit the Docker container!
 
 :::
 
-[emerald-dev]: https://hub.docker.com/r/oasisprotocol/emerald-dev
+[emerald-dev]: https://github.com/oasisprotocol/oasis-web3-gateway/pkgs/container/emerald-dev
 
 ## Create dApp on Emerald with Hardhat
 

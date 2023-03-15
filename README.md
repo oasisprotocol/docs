@@ -227,6 +227,7 @@ and their usage:
 - Sapphire
 - TEST
   Please send 10.00000000 TEST to the address above.
+- trusted execution environment
 - validator
 - validator node
 - Web3 gateway

@@ -64,7 +64,7 @@ The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
 signature verification which in turn makes a node sync faster.
 
 The [Intel SGX] support is required if you want to run Paratime compute nodes
-that use a Trusted Execution Environment (TEE).
+that use a trusted execution environment (TEE).
 
 :::
 

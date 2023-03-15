@@ -1,29 +1,49 @@
 # Validator Node
 
-:::info
-
-These instructions are for setting up a _validator_ node. If you want to run a _non-validator_ node instead, see the [instructions on running a non-validator node](../non-validator-node.md). Similarly, if you want to run a ParaTime node instead, see the [instructions on running a ParaTime node](../paratime-node.mdx).
-
-:::
-
-This guide will cover setting up your validator node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+This guide will walk you through the process of setting up your **validator node** 
+for the Oasis Network on either the Mainnet or the Testnet. It is designed for 
+individuals who have a basic understanding of command line tools. 
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites/) section and have the Oasis Node binary installed on your systems.
+Before proceeding with this guide, ensure that you have completed the steps 
+outlined in the [Prerequisites] section so that:
+* your system meets the [hardware requirements],
+* you have the [Oasis Node binary] installed on your systems,
+* you understand what are [Stake requirements] to become a validator on the
+ Oasis Network.
 
-### Stake requirements
+[Prerequisites]: ../prerequisites/
+[hardware requirements]: ../prerequisites/hardware-recommendations.md
+[Oasis Node binary]: ../prerequisites/oasis-node.md
+[Stake requirements]: ../prerequisites/stake-requirements.md
 
-To become a validator on the Oasis Network, you need to have enough tokens staked in your escrow account. For more details, see the [Stake requirements](../prerequisites/stake-requirements.md).
+## Physical Machines
 
-### Systems
+You will be using two separate physical machines for deployment: your local
+system, referred to as `localhost`, and a remote `server` which will function
+ as an Oasis node. The reason for this is to ensure protection of the keys used
+ to setup your node.
 
-This guide assumes that you have two different physical machines that you will use for deployment. These machines are the following:
+**Localhost:** On the localhost, you will [create your entity] which is
+essential for deploying nodes on the network. To ensure the security of these
+private keys, we strongly recommend to isolate the localhost from any network or
+internet connectivity. Once the keys have been generated, it is highly
+recommended to use [Hardware Security Modules (HSM)] for secure storage
+such as the [Ledger wallet].
 
-* Your local system, henceforth called the `localhost`.
-* A remote system to run as an Oasis node, henceforth called the `server`.
+[Hardware Security Modules (HSM)]:
+  https://en.wikipedia.org/wiki/Hardware_security_module
+[Ledger wallet]:
+  ../../../general/manage-tokens/holding-rose-tokens/ledger-wallet
 
-The reason for this is to ensure protection of the keys used to setup your node. Use of HSMs to store keys is highly recommended.
+**Server:** After the entity has been created, proceed to [set up the server in
+ order to start the Oasis node]. The server needs to meet the hardware 
+ requirements and have an acces to the internet.
+
+[create your entity]: #creating-your-entity
+[set up the server in order to start the Oasis node]:
+  ./#running-an-oasis-node-on-the-server
 
 ## Creating Your Entity
 

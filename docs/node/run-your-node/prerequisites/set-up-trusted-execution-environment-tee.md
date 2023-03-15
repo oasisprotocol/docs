@@ -302,13 +302,6 @@ package.
 
 There are no pre-built packages for it, so you will need to compile it yourself.
 
-:::info
-
-sgxs-tools must be compiled with a nightly version of the Rust toolchain since
-they use the `#![feature]` macro.
-
-:::
-
 ### Install Dependencies
 
 Make sure you have the following installed on your system:
@@ -330,7 +323,7 @@ On Ubuntu, you can install all the above with:
 sudo apt install gcc protobuf-compiler pkg-config libssl-dev
 ```
 
-### Install [Rust](https://www.rust-lang.org) Nightly
+### Install [Rust](https://www.rust-lang.org)
 
 We follow [Rust upstream's recommendation](https://www.rust-lang.org/tools/install)
 on using [rustup](https://rustup.rs) to install and manage Rust versions.
@@ -357,16 +350,10 @@ the latest stable version of Rust on your system.
 
 :::
 
-Install Rust nightly with:
-
-```
-rustup install nightly-2022-08-22
-```
-
 ### Build and Install sgxs-tools
 
 ```bash
-cargo +nightly-2022-08-22 install sgxs-tools
+cargo install sgxs-tools
 ```
 
 ### Run `sgx-detect` Tool

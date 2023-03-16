@@ -191,7 +191,8 @@ Contract state is backed by an encrypted key-value store. However, the trace of
 encrypted records is leaked to the compute node. As a concrete example, an ERC-20 
 token transfer would leak which encrypted record is for the sender's account 
 balance and which is for the receiver's account balance. Such a token would be
-traceable from sender address to receiver address.
+traceable from sender address to receiver address. Obfuscating the storage access
+patterns may be done by using an ORAM implementation.
 
 :::
 

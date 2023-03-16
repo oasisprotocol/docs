@@ -217,6 +217,95 @@ do instead is fork that contract and remove the offending emissions.
 
 :::
 
+## Running a Private Oasis Network Locally
+
+For convenient development and testing of your dApps the Oasis team prepared
+the [ghcr.io/oasisprotocol/sapphire-dev][sapphire-dev] Docker image which brings you a
+complete Oasis stack to your desktop. The Localnet Sapphire instance **mimics
+confidential transactions**, but it does not run in a trusted execution
+environment nor does it require Intel's SGX on your computer. The network is
+isolated from the Mainnet or Testnet and consists of:
+
+- single Oasis validator node with 1-second block time and 30-second epoch,
+- single Oasis client node,
+- three compute nodes running Oasis Sapphire,
+- single key manager node,
+- PostgreSQL instance,
+- Oasis Web3 gateway with transaction indexer and enabled Oasis RPCs,
+- helper script which populates initial test accounts for you.
+
+To run the image, execute:
+
+```sh
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/sapphire-dev
+```
+
+After a while, the tool will show you something like this:
+
+```
+sapphire-dev 2023-02-28-git84730b2 (oasis-core: 22.2.6, sapphire-paratime: 0.4.0, oasis-web3-gateway: 3.2.0-git84730b2)
+
+Starting oasis-net-runner with sapphire...
+Starting postgresql...
+Starting oasis-web3-gateway...
+Bootstrapping network and populating account(s) (this might take a minute)...
+
+Available Accounts
+==================
+(0) 0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2 (100 ROSE)
+(1) 0x903a7dce5a26a3f4DE2d157606c2191740Bc4BC9 (100 ROSE)
+(2) 0xF149ad5CBFfD92ba84F5784106f6Cb071A32a1b8 (100 ROSE)
+(3) 0x2315F40C1122400Df55483743B051D2997ef0a62 (100 ROSE)
+(4) 0xf6FdcacbA93A428A07d27dacEf1fBF25E2C65B0F (100 ROSE)
+
+Private Keys
+==================
+(0) 0x160f52faa5c0aecfa26c793424a04d53cbf23dcad5901ce15b50c2e85b9d6ca7
+(1) 0x0ba685723b47d8e744b1b70a9bea9d4d968f60205385ae9de99865174c1af110
+(2) 0xfa990cf0c22af455d2734c879a2a844ff99bd779b400bb0e2919758d1be284b5
+(3) 0x3bf225ef73b1b56b03ceec8bb4dfb4830b662b073b312beb7e7fec3159b1bb4f
+(4) 0xad0dd7ceb896fd5f5ddc76d56e54ee6d5c2a3ffeac7714d3ef544d3d6262512c
+
+HD Wallet
+==================
+Mnemonic:       bench remain brave curve frozen verify dream margin alarm world repair innocent
+Base HD Path:   m/44'/60'/0'/0/%d
+
+WARNING: The chain is running in ephemeral mode. State will be lost after restart!
+
+Listening on http://localhost:8545 and ws://localhost:8546
+```
+
+Those familiar with local dApp environments will find the output above similar
+to `geth --dev` or `ganache-cli` commands or the `geth-dev-assistant` npm
+package. [sapphire-dev] will spin up a private Oasis Network locally, generate
+and populate test accounts and make the following Web3 endpoints available for
+you to use:
+- `http://localhost:8545`
+- `ws://localhost:8546`
+
+:::tip
+
+If you prefer using the same mnemonics each time (e.g. for testing purposes)
+or to populate just a single wallet, use `-to` flag and pass the mnemonics or
+the wallet address. For example
+
+```sh
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/sapphire-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/sapphire-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
+```
+
+:::
+
+:::danger
+
+[sapphire-dev] runs in ephemeral mode. Any smart contract and wallet balance
+will be lost after you quit the Docker container!
+
+:::
+
+[sapphire-dev]: https://github.com/oasisprotocol/oasis-web3-gateway/pkgs/container/sapphire-dev
+
 ## See also
 
 <DocCard item={findSidebarItem('/node/run-your-node/paratime-client-node')} />

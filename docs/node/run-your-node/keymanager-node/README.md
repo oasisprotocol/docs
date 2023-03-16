@@ -39,7 +39,7 @@ Reading the rest of the [validator node setup instructions](../validator-node/RE
 
 ### Setting up Trusted Execution Environment (TEE)
 
-The key manager ParaTime requires the use of a TEE. See the [Set up Trusted Execution Environment (TEE)](../prerequisites/set-up-trusted-execution-environment-tee.md) doc for instructions on how to set it up before proceeding.
+The key manager ParaTime requires the use of a TEE. See the [Set up trusted execution environment](../prerequisites/set-up-trusted-execution-environment-tee.md) doc for instructions on how to set it up before proceeding.
 
 ## Configuration
 

@@ -79,32 +79,35 @@ ParaTime.
 [Emerald Mainnet]: ./README.mdx#mainnet
 [Emerald Testnet]: ./README.mdx#testnet
 
-## Running Private Oasis Network Locally
+## Running a Private Oasis Network Locally
 
 For convenient development and testing of your dApps the Oasis team prepared
-the [oasisprotocol/emerald-dev][emerald-dev] Docker image which brings you a complete Oasis
+the [ghcr.io/oasisprotocol/emerald-dev][emerald-dev] Docker image which brings you a complete Oasis
 stack to your desktop. This network is isolated from the Mainnet or Testnet and
 consists of:
-- single Oasis validator node with 1-second block time,
-- three Oasis compute nodes running Emerald ParaTime,
-- Emerald Web3 gateway with transaction indexer,
+
+- single Oasis validator node with 1-second block time and 30-second epoch,
+- single Oasis client node,
+- three compute nodes running Oasis Emerald,
+- PostgreSQL instance,
+- Oasis Web3 gateway with transaction indexer,
 - helper script which populates initial test accounts for you.
 
 To run the image, execute:
 
 ```sh
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/emerald-dev
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-dev
 ```
 
 After a while, the tool will show you something like this:
 
 ```
-emerald-dev 2022-03-11-git38da200 (oasis-core: 22.0, emerald-paratime: 7.1.0-rc1, emerald-web3-gateway: 2.0.0-rc1-git38da200)
+emerald-dev 2023-02-28-git84730b2 (oasis-core: 22.2.6, emerald-paratime: 10.0.0, oasis-web3-gateway: 3.2.0-git84730b2)
 
-Starting oasis-net-runner with Emerald ParaTime...
+Starting oasis-net-runner with emerald...
 Starting postgresql...
-Starting emerald-web3-gateway...
-Populating account(s) (this might take a moment)...
+Starting oasis-web3-gateway...
+Bootstrapping network and populating account(s) (this might take a minute)...
 
 Available Accounts
 ==================
@@ -127,7 +130,7 @@ HD Wallet
 Mnemonic:       bench remain brave curve frozen verify dream margin alarm world repair innocent
 Base HD Path:   m/44'/60'/0'/0/%d
 
-WARNING: Emerald is running in ephemeral mode. The chain state will be lost after you quit!
+WARNING: The chain is running in ephemeral mode. State will be lost after restart!
 
 Listening on http://localhost:8545 and ws://localhost:8546
 ```
@@ -147,8 +150,8 @@ or to populate just a single wallet, use `-to` flag and pass the mnemonics or
 the wallet address. For example
 
 ```sh
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/emerald-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
-docker run -it -p8545:8545 -p8546:8546 oasisprotocol/emerald-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-dev -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
+docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-dev -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2"
 ```
 
 :::
@@ -160,7 +163,7 @@ will be lost after you quit the Docker container!
 
 :::
 
-[emerald-dev]: https://hub.docker.com/r/oasisprotocol/emerald-dev
+[emerald-dev]: https://github.com/oasisprotocol/oasis-web3-gateway/pkgs/container/emerald-dev
 
 ## Create dApp on Emerald with Hardhat
 

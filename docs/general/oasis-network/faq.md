@@ -102,7 +102,7 @@ The ROSE token will be used for transaction fees, staking, and delegation at the
 
 ### **How does the Oasis Network achieve privacy and confidentiality? Is it through homomorphic encryption?**
 
-There are many ways to achieve confidentiality. Using Trusted Execution Environments (TEEs) is one way. This is what we do. In effect, we provide end-to-end confidentiality for transactions where state and payload are encrypted at rest, in motion, and, more importantly, in compute. homomorphic encryption is another technique for confidentiality. At this time, anyone can build a ParaTime on the Oasis Network that uses homomorphic encryption to provide confidentiality. We are not prescriptive about what approach developers should take.
+There are many ways to achieve confidentiality. Using a trusted execution environments (TEEs) is one way. This is what we do. In effect, we provide end-to-end confidentiality for transactions where state and payload are encrypted at rest, in motion, and, more importantly, in compute. homomorphic encryption is another technique for confidentiality. At this time, anyone can build a ParaTime on the Oasis Network that uses homomorphic encryption to provide confidentiality. We are not prescriptive about what approach developers should take.
 
 Something worth noting is that privacy and confidentiality are not equivalent. Privacy implies confidentiality but not the other way around. For privacy, there are techniques such as differential privacy that can be implemented.
 

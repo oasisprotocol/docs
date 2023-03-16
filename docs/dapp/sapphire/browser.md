@@ -25,7 +25,7 @@ key of the account holding some [TEST tokens]:
 ```
 pnpm install
 pnpm add -D @oasisprotocol/sapphire-paratime
-PRIVATE_KEY="0x..." pnpm hardhat run scripts/deploy.js --network sapphire
+PRIVATE_KEY="0x..." pnpm hardhat run scripts/deploy.js --network sapphire_testnet
 ```
 
 This will compile the contract and deploy it on the Testnet. In addition

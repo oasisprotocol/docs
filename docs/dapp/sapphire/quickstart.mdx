@@ -74,7 +74,7 @@ index 68d534c..15c671d 100644
      //   chain_id: 5
      // }
 +    // This is Testnet! If you want Mainnet, add a new network config item.
-+    emerald: {
++    emerald_testnet: {
 +      provider: () =>
 +        new HDWalletProvider([process.env.PRIVATE_KEY], "https://testnet.emerald.oasis.dev"),
 +      network_id: 0xa515,
@@ -142,7 +142,7 @@ We'll use it in just a bit.
 Next, you can run the following and see the contract being deployed.
 
 ```sh
-PRIVATE_KEY="0x..." truffle migrate --network emerald
+PRIVATE_KEY="0x..." truffle migrate --network emerald_testnet
 ```
 
 Everything should be succeeding so far.
@@ -150,7 +150,7 @@ Everything should be succeeding so far.
 Finally, run this line and observe some output.
 
 ```
-> PRIVATE_KEY="0x..." truffle exec --network emerald scripts/exercise.contract.js`
+> PRIVATE_KEY="0x..." truffle exec --network emerald_testnet scripts/exercise.contract.js`
 
 Sent some coins in 0xf415ab586ef1c6c61b84b3bd803ae322f375d1d3164aa8ac13c9ae83c698a002
 A Transfer(0x56e5F834F88F9f7631E9d6a43254e173478cE06a, 0x56e5F834F88F9f7631E9d6a43254e173478cE06a, 42) was emitted.
@@ -184,7 +184,7 @@ index 7af2f42..0cd9d36 100644
        network_id: 0xa515,
      },
 +    // This is Testnet! If you want Mainnet, add a new network config item.
-+    sapphire: {
++    sapphire_testnet: {
 +      provider: () =>
 +        new HDWalletProvider([process.env.PRIVATE_KEY], "https://testnet.sapphire.oasis.dev"),
 +      network_id: 0x5aff,
@@ -224,7 +224,7 @@ index 0cd9d36..7db7cf8 100644
 +++ b/truffle-config.js
 @@ -60,7 +60,7 @@ module.exports = {
      },
-     sapphire: {
+     sapphire_testnet: {
        provider: () =>
 -        new HDWalletProvider([process.env.PRIVATE_KEY], "https://testnet.sapphire.oasis.dev"),
 +        sapphire.wrap(new HDWalletProvider([process.env.PRIVATE_KEY], "https://testnet.sapphire.oasis.dev")),
@@ -242,8 +242,8 @@ unmodified contract may leak state through normal operation.
 And now for the moment we've all been waiting for:
 
 ```
-> PRIVATE_KEY="0x..." truffle migrate --network sapphire
-> PRIVATE_KEY="0x..." truffle exec --network sapphire scripts/exercise.contract.js
+> PRIVATE_KEY="0x..." truffle migrate --network sapphire_testnet
+> PRIVATE_KEY="0x..." truffle exec --network sapphire_testnet scripts/exercise.contract.js
 
 Sent some coins in 0x6dc6774addf4c5c68a9b2c6b5e5634263e734d321f84012ab1b4cbe237fbe7c2.
 A Transfer(0x56e5F834F88F9f7631E9d6a43254e173478cE06a, 0x56e5F834F88F9f7631E9d6a43254e173478cE06a, 42) was emitted.
@@ -317,7 +317,7 @@ index 414e974..49c95f9 100644
  const config: HardhatUserConfig = {
    solidity: "0.8.17",
 +  networks: {
-+    sapphire: {
++    sapphire_testnet: {
 +      // This is Testnet! If you want Mainnet, add a new network config item.
 +      url: "https://testnet.sapphire.oasis.dev",
 +      accounts: process.env.PRIVATE_KEY
@@ -388,7 +388,7 @@ Pretty cool if you ask me!
 Anyway, make it happen by running
 
 ```sh
-PRIVATE_KEY="0x..." pnpm hardhat run scripts/run-vigil.ts --network sapphire
+PRIVATE_KEY="0x..." pnpm hardhat run scripts/run-vigil.ts --network sapphire_testnet
 ```
 
 And if you see something like the following, you'll know you're well on the road

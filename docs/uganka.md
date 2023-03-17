@@ -37,75 +37,20 @@ vidika varnosti in kriptografske rešitve so cenjene vrline. 🤓
 
 4. Pametna pogodba uganke počiva na verigi
    [Oasis Sapphire Testnet][oasis-explorer-testnet], in sicer na naslovu
-   `0xTODO`. `Riddle.sol` izgleda takole:
+   `0xb344EC101a024d3674c51bd9b6af1a3175108564`. ABI pogodbe je naslednji:
 
 ```solidity
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
-
-contract Riddle {
-    string constant errInvalidCoupon = "Invalid coupon";
-    string constant errWrongAnswer = "Wrong answer";
-
-    // List of questions.
-    string[] _questions;
-    // List of answers.
-    string[] _answers;
-    // Coupon -> Private key mapping.
-    mapping(string => string) _coupons;
-
-    // Statistics.
-    uint _numLookups;
-    uint _numAnswers;
-    uint _numCorrectAnswers;
-
-    constructor(string[] memory questions, string[] memory answers, string[] memory couponCodes, string[] memory couponKeys) payable {
-        require(questions.length == answers.length, "List of questions must match list of answers.");
-        require(couponCodes.length == couponKeys.length, "Coupon codes must match coupon keys.");
-
-        _questions = questions;
-        _answers = answers;
-        for (uint i=0; i<couponCodes.length; i++) {
-            _coupons[couponCodes[i]] = couponKeys[i];
-        }
-    }
-
-    // Return question for given coupon.
-    function getQuestion(string memory coupon) external returns (string memory) {
-        require(bytes(_coupons[coupon]).length != 0, errInvalidCoupon);
-        _numLookups++;
-
-        return _questions[computeQuestionIndex(coupon)];
-    }
-
-    // Check the answer to the question for given coupon.
-    function submitAnswer(string memory coupon, string memory answer) external returns (string memory) {
-        require(bytes(_coupons[coupon]).length != 0, errInvalidCoupon);
-        _numAnswers++;
-        require(keccak256(bytes(_answers[computeQuestionIndex(coupon)])) == keccak256(bytes(answer)), errWrongAnswer);
-        _numCorrectAnswers++;
-
-        return string.concat("Congratulations, your answer is correct! Use this private key to access reward on Oasis Sapphire Mainnet: ", _coupons[coupon]);
-    }
-
-    // Compute the index of the question for given coupon.
-    function computeQuestionIndex(string memory coupon) private view returns (uint) {
-        return uint(keccak256(bytes(coupon))) % _questions.length;
-    }
-
-    // Return statistics.
-    // NB: This can include duplicate queries and answers!
-    function getStatistics() external view returns (uint, uint, uint) {
-        return (_numLookups, _numAnswers, _numCorrectAnswers);
-    }
-}
+function getQuestion(string memory coupon) external view returns (string memory)
+function submitAnswer(string memory coupon, string memory answer) external
+function claimReward(string memory coupon) external view returns (string memory)
 ```
 
 5. Tvoja naloga je, da s pomočjo osvojenih orodij napišeš skripto, ki
-   komunicira s pametno pogodbo uganke. Najprej s *tajno transakcijo* do
+   komunicira s pametno pogodbo uganke. Najprej s *tajnim klicem* do
    `getQuestion()` poizvedi za vprašanjem, vezanem na tvoj
-   kupon z letaka. Nato sestavi odgovor in ga s tajno transakcijo do
-   `submitAnswer()` pošlji nazaj. Če bo odgovor pravilen, se ti razkrije
+   kupon z letaka. Nato sestavi odgovor in ga s *tajno transakcijo* do
+   `submitAnswer()` pošlji nazaj. Če je odgovor pravilen, boš v naslednjem
+   potrjenem bloku lahko s *tajnim klicem* do `claimReward()` pridobil
    zasebni ključ do čisto pravcatih kovančkov ROSE na verigi
    [Oasis Sapphire Mainnet][oasis-explorer]. 🎉
 

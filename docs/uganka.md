@@ -37,7 +37,7 @@ vidika varnosti in kriptografske rešitve so cenjene vrline. 🤓
 
 4. Pametna pogodba uganke počiva na verigi
    [Oasis Sapphire Testnet][oasis-explorer-testnet], in sicer na naslovu
-   `0xb344EC101a024d3674c51bd9b6af1a3175108564`. ABI pogodbe je naslednji:
+   `0x4874c1EC02c122Dfb29C994264dFCC4aD9FA8b96`. ABI pogodbe je naslednji:
 
 ```solidity
 function getQuestion(string memory coupon) external view returns (string memory)

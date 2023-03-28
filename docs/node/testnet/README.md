@@ -92,7 +92,6 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
-  * [0.4.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.4.0-testnet)
   * [0.5.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.5.0-testnet)
 * Web3 Gateway version:
   * [3.2.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.2.0)

@@ -45,32 +45,44 @@ such as the [Ledger wallet].
 [set up the server in order to start the Oasis node]:
   ./#running-an-oasis-node-on-the-server
 
-## Creating Your Entity
+## Creating Your Entity on the `localhost`
 
 :::danger
 
-Everything in this section should be done on the `localhost` as there are sensitive items that will be created.
+Everything in this section should be done on the `localhost` as there are
+sensitive items that will be created.
 
 :::
 
+During the entity initialization process, you will generate essential components
+such as keys and other crucial artifacts that are necessary for the deployment
+of nodes on the network. This guide has been designed with a particular file
+structure in mind. Nonetheless, feel free to reorganize and rename directories
+as needed to accommodate your preferences.
+
 ### Creating a Working Directory
 
-During this entity initialization process, we will create keys and other important artifacts that are necessary for the deployment of nodes on the network. It is important that you save and protect the generated artifacts in this directory if you intend to use them to register your entity and nodes.
-
-Inside `/localhostdir` you should create the following directories:
-
-*   `entity`: This will store your entity. The private contents in this directory are safest if used on a machine kept disconnected from the internet.
-
-    The directory's permissions should be `rwx------`
-*   `node`: This will store a node we are calling "node". The name is not important. It simply represents one of your nodes. You can rename it to whatever you wish. The private contents of this directory will be used on the node itself.
-
-    You should initialize this information on a system with access to the entity's private key.
-
-    The directory permissions should be `rwx------`
-
-To create the directory structure, use the following command:
+Begin by creating a directory named `/localhostdir`. This location will be used
+to store generated artifacts. It is important that you securely store the
+generated artifacts.
 
 ```bash
+mkdir /localhostdir
+```
+
+Within the `/localhostdir`, create the following subdirectories and set their
+permissions to `rwx------`:
+
+*   `entity`: This will store your entity. The private contents in this
+directory are safest if used on a machine kept disconnected from the internet.
+
+*   `node`: This will store a node's identity. The private contents of this
+directory will be used on the node itself.
+
+To create the directory structure, use the following commands:
+
+```bash
+cd /localhostdir
 mkdir -m700 -p {entity,node}
 ```
 

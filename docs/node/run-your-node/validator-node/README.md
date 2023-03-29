@@ -88,13 +88,23 @@ mkdir -m700 -p {entity,node}
 
 ### Copying the Genesis File
 
-The latest genesis file can be found in [Network Parameters](../../mainnet/README.md). You should download the latest `genesis.json` file, copy it to the working directory and set the following environment variable pointing to its path:
+To continue, download the most recent `genesis.json` file from the
+[Network Parameters] section and save it to your `/localhostdir` working
+directory:
+
+```bash
+cd /localhostdir
+# replace RELEASE_DATE with actual Mainnet consensus dump date, e.g. 2022-11-04
+curl -L -o genesis.json https://github.com/oasisprotocol/mainnet-artifacts/releases/download/RELEASE_DATE/genesis.json
+```
+
+Then, set the environment variable that points to its path as follows:
 
 ```bash
 GENESIS_FILE_PATH=/localhostdir/genesis.json
 ```
 
-This will be needed later when generating transactions.
+[Network Parameters]: ../../mainnet/README.md
 
 ### Initializing an Entity
 

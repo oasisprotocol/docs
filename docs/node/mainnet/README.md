@@ -71,7 +71,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0#building)):
   * [10.0.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v10.0.0)
 * Web3 Gateway version:
-  * [3.2.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.2.0)
+  * [3.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.3.0)
 
 :::info
 
@@ -88,7 +88,7 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
 * Runtime binary version:
   * [0.4.0](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.4.0)
 * Oasis Web3 Gateway version:
-  * [3.2.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.2.0)
+  * [3.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.3.0)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
 

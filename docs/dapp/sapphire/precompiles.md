@@ -23,16 +23,21 @@ construct parameter byte sequences in Solidity is with `abi.encode` and
 
 While it is possible to call the precompiles directly using Yul or, for
 example, `abi.encode` and `abi.decode` in Solidity, we recommend always
-using the wrapper library for a more comfortable experience. The
-examples below are written against it. It is provided in the
-`contracts/` project in the
-[Sapphire repository](https://github.com/oasisprotocol/sapphire-paratime),
-library file `contracts/Sapphire.sol`.
+using the `contracts/Sapphire.sol` wrapper library for a more comfortable
+experience. The examples below are written against it. The library is provided
+by the `@oasisprotocol/sapphire-contracts` npm package.
+
+```shell
+yarn add -D @oasisprotocol/sapphire-contracts
+```
+
+Then, you can use the wrapper library inside your `.sol` contract file as
+follows:
 
 ```solidity
 pragma solidity ^0.8.13;
 
-import "./Sapphire.sol";
+import "@oasisprotocol/sapphire-contracts/contracts/Sapphire.sol";
 
 contract Test {
     constructor() {}
@@ -41,6 +46,10 @@ contract Test {
     }
 }
 ```
+
+Feel free to discover other convenient libraries for Solidity inside the
+`contracts/` folder of the
+[Oasis Sapphire repository](https://github.com/oasisprotocol/sapphire-paratime)!
 
 ## Generating Pseudo-Random Bytes
 

@@ -63,7 +63,7 @@ via a web application or a browser extension.
 In the example below we will use Oasis Wallet - Web. To learn more about other
 features of the Oasis Wallets, please read the [Oasis Wallets] doc.
 
-1. Navigate to [wallet.oasisprotocol.org] and click on the _Open wallet_ button.
+1. Navigate to [wallet.oasis.io] and click on the _Open wallet_ button.
 Then, click on _Ledger_ when asked how to open your wallet.
 
 ![Oasis Wallet - Web -> Open wallet -> Ledger](../../images/wallet/ledger/wallet_web_open_ledger.png)
@@ -149,7 +149,7 @@ Ledger is supported by the Oasis CLI. Follow the instructions in the
 [Oasis Wallet - Web]: https://www.ledger.com
 [Oasis app]: https://github.com/Zondax/ledger-oasis
 [Ledger Live]: https://www.ledger.com/ledger-live/
-[wallet.oasisprotocol.org]: https://wallet.oasisprotocol.org
+[wallet.oasis.io]: https://wallet.oasis.io
 [version 2.0.0]: https://support.ledger.com/hc/en-us/articles/360014980580-Ledger-Nano-X-firmware-release-notes
 [version 2.1.0]: https://support.ledger.com/hc/en-us/articles/360010446000-Ledger-Nano-S-firmware-release-notes
 [version 1.0.4]: https://support.ledger.com/hc/en-us/articles/4494540771997-Ledger-Nano-S-Plus-Firmware-Release-Notes

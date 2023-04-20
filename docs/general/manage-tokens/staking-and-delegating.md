@@ -46,7 +46,7 @@ If you happen to send your tokens to the validator instead of staking them, try 
 
 ![Account details of entered oasis1 address in Oasis Scan](../images/manage-tokens/oasisscan_account_details.png)
 
-* Alternatively, you can use the [Oasis Web Wallet](https://wallet.oasisprotocol.org), to verify the status of your delegations.
+* Alternatively, you can use the [Oasis Web Wallet](https://wallet.oasis.io), to verify the status of your delegations.
 
 ![Account details of searched oasis1 address in Official Web Wallet](../images/wallet/web/active_delegations.png)
 

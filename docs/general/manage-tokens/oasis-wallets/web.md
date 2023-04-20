@@ -7,7 +7,7 @@ Network.
 
 ### **Access the Oasis Wallet via your web browser**
 
-You can access the [Oasis Wallet - Web](https://github.com/oasisprotocol/oasis-wallet-web/) by heading to [https://wallet.oasisprotocol.org](https://wallet.oasisprotocol.org). For the best performance, we recommend using [Chrome](https://www.google.com/chrome/) or any other [Chromium](https://www.chromium.org/Home)-based browser.
+You can access the [Oasis Wallet - Web](https://github.com/oasisprotocol/oasis-wallet-web/) by heading to [https://wallet.oasis.io](https://wallet.oasis.io). For the best performance, we recommend using [Chrome](https://www.google.com/chrome/) or any other [Chromium](https://www.chromium.org/Home)-based browser.
 
 ### **Create a New Wallet**
 

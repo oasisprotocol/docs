@@ -154,7 +154,7 @@ Next, let's transfer some `MHT`s. Fill in the amount, the address and hit the
 *Transfer* button. Metamask will show you the popup to sign and submit the
 transfer transaction. Once confirmed, Metamask will both **sign and encrypt** the transaction.
 
-![Sign and encrypt the transfetr transaction](../images/sapphire/hardhat-boilerplate-frontend3.png)
+![Sign and encrypt the transfer transaction](../images/sapphire/hardhat-boilerplate-frontend3.png)
 
 Once the transaction is processed, you will get a notification from Metamask
 and the balance in the dApp will be updated.

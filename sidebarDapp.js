@@ -54,6 +54,22 @@ const sidebars = {
         }
       ],
     },
+    {
+      type: 'category',
+      label: 'OPL',
+      link: {
+        type: 'doc',
+        id: 'dapp/opl/README',
+      },
+      items: [
+        'dapp/opl/introduction',
+        'dapp/opl/setup',
+        'dapp/opl/host',
+        'dapp/opl/enclave',
+        'dapp/opl/build',
+        'dapp/opl/frontend',
+      ],
+    },
   ],
 };
 

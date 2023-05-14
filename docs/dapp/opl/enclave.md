@@ -1,9 +1,10 @@
 # Ballot Contract
 
 We will next write the smart contract that holds private data and will be
-deployed to the Oasis Privacy Layer.
+deployed to a confidential chain such as Oasis Sapphire.
 
 Create a new Solidity contract named `BallotBoxV1.sol`.
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -149,7 +150,7 @@ Closing a ballot has implications on the host chain network.
 
 #### Private
 
-Private variable `_ballots` is encrypted.
+Private variable `_ballots` is encrypted on Sapphire.
 
 ```solidity
     mapping(ProposalId => Ballot) private _ballots;

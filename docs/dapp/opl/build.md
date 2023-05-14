@@ -135,7 +135,7 @@ We will use these addresses in our frontend application.
 
 #### Testnet
 
-We can likewise deploy to OPL [testnet](../../dapp/sapphire/guide#testnet-and-mainnet) with Sapphire.
+We can likewise deploy to OPL [Testnet](../../dapp/sapphire/guide#testnet-and-mainnet) with Sapphire.
 
 In this case, we should prepare a wallet with testnet tokens on both BNB Smart
 Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](https://faucet.testnet.oasis.dev).
@@ -152,8 +152,14 @@ And deploy with the testnet parameters.
 npx hardhat deploy-ballot-box --network sapphire-testnet --host-network bsc-testnet
 ```
 
-Then, use the ballox box address below
+Then, use the ballot box address below
 
 ```sh
 npx hardhat deploy-dao --network bsc-testnet --ballot-box-addr {BALLOT_BOX_ADDR}
 ```
+
+:::info Example
+
+You can try out and download a complete example from the Oasis Playground repository.
+
+:::

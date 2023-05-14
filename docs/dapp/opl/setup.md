@@ -24,16 +24,20 @@ cd opl-secret-ballot/backend && npx hardhat
 
 When initializing the Hardhat application, we would like to use the `backend`
 directory as the project root.
+
 ```sh
 Hardhat project root: · /Users/oasis/opl-secret-ballot/backend
 ```
 
 You should be able to start your localhost Hardhat node.
+
 ```sh
+cd backend
 npx hardhat node
 ```
 
 We will later run a similar command to compile our smart contracts.
+
 ```sh
 npx hardhat compile
 ```

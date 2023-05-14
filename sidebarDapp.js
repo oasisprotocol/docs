@@ -56,7 +56,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'OPL',
+      label: 'Oasis Privacy Layer',
       link: {
         type: 'doc',
         id: 'dapp/opl/README',

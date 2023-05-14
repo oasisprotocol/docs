@@ -1,7 +1,8 @@
 # DAO Contract
 
-Let's start with a simple smart contract `DAOV1.sol` that describes a basic DAO
-with a mapping of proposals.
+Let's start with a `DAOV1.sol` smart contract that describes a basic DAO with a
+mapping of proposals. Place it inside your `contracts/` directory.
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -107,7 +108,7 @@ be queried externally.
 
 ### OPL Differences
 
-What OPL refers to as a ***host*** contract is just a smart contract that sits
+What OPL refers to as a *host contract* is just a smart contract that sits
 on a "host" network such as BNB or Polygon. We instantiate a `Host` and add
 our event handling to cross-chain messages. Let's make the following changes to
 our existing `DAOV1.sol`.

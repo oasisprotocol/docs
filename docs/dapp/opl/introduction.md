@@ -4,10 +4,12 @@ description: How to build your first dApp on OPL
 
 # Overview
 
+On-chain voting is the basis for any decentralized autonomous organization
+(DAO) that would like to foster bottom-up decision making.
 In this tutorial, you will create a [secret ballot](https://en.wikipedia.org/wiki/Secret_ballot)
 dApp that can only be built with the Oasis Privacy Layer.
 
-Why is this important? Privacy protects a DAO token holder from intimidation
+Why is this important? Privacy protects the voter (DAO token holder) from intimidation
 and bullying when exercising their right of participation on a protocol.
 Vote organizers can encourage participation with ballots not only by
 protecting the identity of voters but also by sealing the results of an ongoing
@@ -29,5 +31,3 @@ our smart contracts
 to store simple JSON data. Not everything has to go on a blockchain.
 - built a simple [Vue.JS](https://vuejs.org/guide/introduction.html)
 app to interact with our dApp through [MetaMask](https://docs.metamask.io/wallet).
-
-***Note***. Command line experience will be helpful.

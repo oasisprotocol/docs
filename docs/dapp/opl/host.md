@@ -17,11 +17,6 @@ struct ProposalParams {
     bool publishVotes;
 }
 
-struct Outcome {
-    address payable payee;
-    uint128 payment;
-}
-
 contract DAOV1 {
     using EnumerableSet for EnumerableSet.Bytes32Set;
 
@@ -115,7 +110,7 @@ our existing `DAOV1.sol`.
 
 ```diff
 diff --git a/backend/contracts/DAOV1.sol b/backend/contracts/DAOV1.sol
-index 9af584d..bc6405a 100644
+index 21ea93e..827d80a 100644
 --- a/backend/contracts/DAOV1.sol
 +++ b/backend/contracts/DAOV1.sol
 @@ -1,6 +1,7 @@
@@ -126,16 +121,16 @@ index 9af584d..bc6405a 100644
  import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
  
  type ProposalId is bytes32;
-@@ -16,7 +17,22 @@ struct Outcome {
-     uint128 payment;
+@@ -11,7 +12,7 @@ struct ProposalParams {
+     bool publishVotes;
  }
- 
+
 -contract DAOV1 {
 +contract DAOV1 is Host {
      using EnumerableSet for EnumerableSet.Bytes32Set;
  
      error AlreadyExists();
-@@ -40,7 +56,9 @@ contract DAOV1 {
+@@ -35,7 +36,9 @@ contract DAOV1 {
      EnumerableSet.Bytes32Set private activeProposals;
      ProposalId[] private pastProposals;
  
@@ -146,7 +141,7 @@ index 9af584d..bc6405a 100644
  
      function createProposal(ProposalParams calldata _params) external payable returns (ProposalId) {
          bytes32 proposalHash = keccak256(abi.encode(msg.sender, _params));
-@@ -52,6 +70,7 @@ contract DAOV1 {
+@@ -47,6 +50,7 @@ contract DAOV1 {
          proposal.params = _params;
          proposal.active = true;
          activeProposals.add(proposalHash);
@@ -154,7 +149,7 @@ index 9af584d..bc6405a 100644
          return proposalId;
      }
  
-@@ -82,4 +101,14 @@ contract DAOV1 {
+@@ -77,4 +81,14 @@ contract DAOV1 {
              _proposals[i] = ProposalWithId({id: id, proposal: proposals[id]});
          }
      }

@@ -242,3 +242,12 @@ and their usage including the articles:
 - Web3 gateway
   We strongly suggest that you set up your own Web3 gateway for your Sapphire
   endpoint.
+
+## License
+
+The Oasis documentation software and code snippets inside the documentation are
+licensed under [Apache 2.0](./LICENSE).
+
+The content of the documentation (the `/docs` folder) including the media (e.g.
+images and diagrams) is licensed under [Creative Commons Attribution 4.0
+International](./LICENSE-docs).

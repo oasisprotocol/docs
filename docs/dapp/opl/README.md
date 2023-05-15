@@ -1,4 +1,4 @@
-# OPL
+# Oasis Privacy Layer
 
 The Oasis Privacy Layer (OPL) is an EVM-compatible privacy solution that opens
 new frontiers for confidential smart contracts in Web3 applications on the

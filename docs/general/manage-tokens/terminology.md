@@ -66,8 +66,9 @@ if we manually deposited them).
 
 ## Slashing
 
-Your delegated tokens can be slashed if the node that you delegated your tokens
-to gets slashed for double signing.
+A portion of your delegated tokens can be **slashed** (seized) by the network,
+if the node that you delegated your tokens to gets slashed, e.g. as a penalty
+for validating invalid blocks containing double signed transactions.
 
 [Bech32 encoding]:
   https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32

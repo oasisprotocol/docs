@@ -82,9 +82,9 @@ that use a trusted execution environment (TEE).
   * Minimum: 6 GB of ECC RAM
   * Recommended: 8 GB of ECC RAM
 
-* All ParaTime compute or client nodes:
-  * Minimum: 8 GB of ECC RAM
-  * Recommended: 16 GB of ECC RAM
+* Each Emerald, Sapphire, Cipher compute or client node:
+  * Minimum: 12 GB of ECC RAM
+  * Recommended: 20 GB of ECC RAM
 
 :::info
 

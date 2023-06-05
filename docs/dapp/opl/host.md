@@ -1,7 +1,8 @@
 # DAO Contract
 
 Let's start with a `DAOV1.sol` smart contract that describes a basic DAO with a
-mapping of proposals. Place it inside your `contracts/` directory.
+mapping of proposals. Place it inside your `contracts/` directory. We will
+deploy this contract to your home network such as BNB or Polygon.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -169,7 +170,9 @@ index 21ea93e..827d80a 100644
 
 #### Constructor
 
-This smart contract will need to know the address of the Enclave smart contract.
+We provide the address of the confidential (also known as *enclave*) smart
+contract deployed on the Oasis Sapphire as a constructor parameter to the
+*host* smart contract.
 
 ```solidity
     constructor(address _ballotBox) Host(_ballotBox) {
@@ -179,9 +182,11 @@ This smart contract will need to know the address of the Enclave smart contract.
 
 #### Endpoints
 
-Registering an endpoint allows access to functions are effectively callbacks
-which listen to messages from the Enclaved smart contract. This function allows
-the host contract to listen and close the proposal.
+Events in Solidity are non-confidential and do not allow cross-chain
+communication. For this reason, OPL uses *endpoints* for passing messages
+cross-chain. Endpoints are effectively callbacks which listen to messages
+from the Enclaved smart contract. The function below will listen to such a
+message and close the proposal.
 
 ```solidity
     function _oplBallotClosed(bytes calldata _args) internal returns (Result) {

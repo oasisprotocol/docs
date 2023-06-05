@@ -7,8 +7,8 @@ most popular EVM networks like Ethereum, BNB Chain, and Polygon.
 ## DApp Development
 
 The Oasis Privacy Layer contains a set of [smart contracts](https://github.com/oasisprotocol/sapphire-paratime/tree/main/contracts/contracts/opl)
-for [Sapphire](../sapphire/README.mdx) to empower your existing and future Web3
-applications with confidentiality.
+that integrate [Sapphire](../sapphire/README.mdx) into your existing and future
+Web3 applications and introduce confidentiality.
 
 Application developers on any EVM-compatible network can add confidential state
 and selective disclosures to their applications through the usage of a smart

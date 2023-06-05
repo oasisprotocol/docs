@@ -7,8 +7,6 @@ Now that we have written our two smart contracts, let's compile and deploy them!
 Compile both the host and enclave smart contracts by invoking:
 
 ```sh
-npm install @oasisprotocol/sapphire-contracts;
-npm install @openzeppelin/contracts;
 npx hardhat compile
 ```
 
@@ -20,11 +18,6 @@ We can make deployments easier by using [Hardhat deploy](https://github.com/wigh
 npm install -D hardhat-deploy
 ```
 
-We will also need these dependencies.
-
-```sh
-npm install @oasisprotocol/sapphire-hardhat
-```
 
 Add the following configuration changes to your `hardhat.config.ts`:
 

@@ -4,8 +4,7 @@ Now that we have written our two smart contracts, let's compile and deploy them!
 
 ### Compiling
 
-Of course, we need to install our dependencies `@oasisprotocol/sapphire-contracts` and `@openzeppelin/contracts`
-before we can successfully compile our smart contract.
+Compile both the host and enclave smart contracts by invoking:
 
 ```sh
 npm install @oasisprotocol/sapphire-contracts;
@@ -27,7 +26,7 @@ We will also need these dependencies.
 npm install @oasisprotocol/sapphire-hardhat
 ```
 
-And add the following configuration changes to your hardhat.config.ts
+Add the following configuration changes to your `hardhat.config.ts`:
 
 ```diff
 diff --git a/backend/hardhat.config.ts b/backend/hardhat.config.ts
@@ -92,12 +91,12 @@ index cd8df42..0875e8e 100644
 +    local: {
 +      url: 'http://127.0.0.1:8545',
 +    },
-+    'bsc-testnet': {
++    bsc_testnet: {
 +      url: 'https://data-seed-prebsc-1-s1.binance.org:8545',
 +      chainId: 97,
 +      accounts,
 +    },
-+    'sapphire-testnet': {
++    sapphire_testnet: {
 +      url: 'https://testnet.sapphire.oasis.dev',
 +      chainId: 0x5aff,
 +      accounts,

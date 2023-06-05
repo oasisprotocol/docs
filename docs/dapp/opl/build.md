@@ -151,5 +151,8 @@ BallotBox 0xFb40591a8df155da291A4B52E4Df9901a95b7C06
 Then, use the ballot box address below.
 
 ```sh
-npx hardhat deploy-dao --network bsc-testnet --ballot-box-addr {BALLOT_BOX_ADDR}
+npx hardhat deploy-dao --network bsc_testnet --ballot-box-addr {BALLOT_BOX_ADDR}
+Nothing to compile
+No need to generate any newer typings.
+DAO 0xFBcb580DD6D64fbF7caF57FB0439502412324179
 ```

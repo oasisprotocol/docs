@@ -6,14 +6,19 @@ We will need a [Pinata](https://www.pinata.cloud) development API
 ### VueJS
 
 We will take a shortcut and bypass developing a VueJS app. Instead, we will
-simply apply a sparse checkout of the complete frontend repo.
+simply apply a sparse checkout of the complete frontend repo. Inside your
+`opl-secret-ballot` directory run:
 
 ```sh
+git init .
 git remote add -f origin https://github.com/aefhm/opl-secret-ballot;
 git config core.sparseCheckout true;
 echo "frontend/" >> .git/info/sparse-checkout;
-git pull main
+git pull origin main
 ```
+
+Next, update the `@oasislabs/secret-ballot-backend` package name in
+`frontend/package.json` to match your `backend/package.json` project name.
 
 Install dependencies
 
@@ -35,11 +40,11 @@ We can now reference the deployed contracts in our frontend Vue app.
 
 Modify the `.env.development` file with the appropriate addresses:
 ```yaml
-VITE_BALLOT_BOX_V1_ADDR=0x5FbDB2315678afecb367f032d93F642f64180aa3
+VITE_BALLOT_BOX_V1_ADDR=0xFb40591a8df155da291A4B52E4Df9901a95b7C06
 ```
 and
 ```yaml
-VITE_DAO_V1_ADDR=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+VITE_DAO_V1_ADDR=0xFBcb580DD6D64fbF7caF57FB0439502412324179
 ```
 
 ### Pinata
@@ -72,7 +77,8 @@ If you have not added a local network to MetaMask already, you can use this conf
 
 ## Example
 
-You should be able to navigate to http://localhost:5173 and create a new poll.
+You should be able to navigate to
+[http://localhost:5173](http://localhost:5173) and create a new poll.
 
 ![Create a poll](../images/opl/create-poll.png)
 
@@ -81,7 +87,7 @@ the Host contract).
 
 ![Confirm new poll](../images/opl/confirm-new-poll.png)
 
-Voting on a ballot issues a request to the Enclave contract.
+Voting on a ballot issues a request to the *enclave* contract.
 
 ![Vote on ballot](../images/opl/vote-on-ballot.png)
 
@@ -89,7 +95,7 @@ You should be able to see results from past polls.
 
 ![See past proposals](../images/opl/past-dao-proposals.png)
 
-If you were able to get to this point, congrats! You have created an OPL dapp!
+If you were able to get to this point, congrats! You have created an OPL dApp!
 
 :::info Example
 

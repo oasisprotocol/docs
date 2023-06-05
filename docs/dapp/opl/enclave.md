@@ -1,7 +1,8 @@
 # Ballot Contract
 
-We will next write the smart contract that holds private data and will be
-deployed to a confidential chain such as Oasis Sapphire.
+Next, we will write a smart contract that holds private data. This smart
+contract will run inside a trusted execution environment (TEE) on the Oasis
+Sapphire ParaTime, which why we refer to these as an *enclave* smart contract.
 
 Create a new Solidity contract named `BallotBoxV1.sol`.
 
@@ -119,8 +120,34 @@ contract BallotBoxV1 is Enclave {
 
 #### Autoswitch
 
-Note that we will be switching to the Binance Smart Chain as a default when
-we deploy to testnet.
+In this tutorial, the *enclave* smart contract will talk to the *host* smart
+contract deployed on the Binance Smart Chain (`bsc`).
+
+:::tip
+
+Autoswitch will automatically pick the Testnet host network if the enclave network is also Testnet.
+
+:::
+
+Autoswitch supports the following networks:
+- `ethereum`
+- `goerli`
+- `optimism`
+- `bsc`
+- `bsc-testnet`
+- `polygon`
+- `fantom`
+- `fantom-testnet`
+- `moonriver`
+- `arbitrum-one`
+- `arbitrum-nova`
+- `sapphire`
+- `sapphire-testnet`
+- `polygon-mumbai`
+- `avalanche`
+- `avalanche-fuji`
+- `arbitrum-testnet`
+
 ```solidity
     constructor(address dao) Enclave(dao, autoswitch("bsc")) {
         registerEndpoint("createBallot", _oplCreateBallot);
@@ -129,7 +156,7 @@ we deploy to testnet.
 
 #### Event
 
-Closing a ballot has implications on the host chain network.
+Closing a ballot has an effect on the host chain network (`postMessage()`):
 
 ```solidity
     function _closeBallot(ProposalId _proposalId, Ballot storage _ballot) internal {
@@ -150,7 +177,7 @@ Closing a ballot has implications on the host chain network.
 
 #### Private
 
-Private variable `_ballots` is encrypted on Sapphire.
+The private variable `_ballots` is encrypted on Sapphire.
 
 ```solidity
     mapping(ProposalId => Ballot) private _ballots;

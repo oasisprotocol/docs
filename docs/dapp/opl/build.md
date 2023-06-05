@@ -141,7 +141,11 @@ export PRIVATE_KEY=
 Deploy with the testnet parameters.
 
 ```sh
-npx hardhat deploy-ballot-box --network sapphire-testnet --host-network bsc-testnet
+npx hardhat deploy-ballot-box --network sapphire_testnet --host-network bsc_testnet
+Nothing to compile
+No need to generate any newer typings.
+expected DAO 0xFBcb580DD6D64fbF7caF57FB0439502412324179
+BallotBox 0xFb40591a8df155da291A4B52E4Df9901a95b7C06
 ```
 
 Then, use the ballot box address below.

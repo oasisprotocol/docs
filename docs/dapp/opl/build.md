@@ -129,7 +129,7 @@ We will use these addresses in our frontend application.
 
 We can likewise deploy to OPL [Testnet](../../dapp/sapphire/guide#testnet-and-mainnet) with Sapphire.
 
-In this case, we should prepare a wallet with testnet tokens on both BNB Smart
+In this case, we should prepare a wallet with Testnet tokens on both BNB Smart
 Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](https://faucet.testnet.oasis.dev).
 
 Set the private key.

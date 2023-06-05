@@ -132,19 +132,19 @@ We can likewise deploy to OPL [Testnet](../../dapp/sapphire/guide#testnet-and-ma
 In this case, we should prepare a wallet with Testnet tokens on both BNB Smart
 Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](https://faucet.testnet.oasis.dev).
 
-Set the private key.
+We will use a common private key for both the host and enclave smart contracts.
 
 ```sh
 export PRIVATE_KEY=
 ```
 
-And deploy with the testnet parameters.
+Deploy with the testnet parameters.
 
 ```sh
 npx hardhat deploy-ballot-box --network sapphire-testnet --host-network bsc-testnet
 ```
 
-Then, use the ballot box address below
+Then, use the ballot box address below.
 
 ```sh
 npx hardhat deploy-dao --network bsc-testnet --ballot-box-addr {BALLOT_BOX_ADDR}

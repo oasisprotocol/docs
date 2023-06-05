@@ -156,9 +156,3 @@ Then, use the ballot box address below
 ```sh
 npx hardhat deploy-dao --network bsc-testnet --ballot-box-addr {BALLOT_BOX_ADDR}
 ```
-
-:::info Example
-
-You can try out and download a complete example from the Oasis Playground repository.
-
-:::

@@ -90,3 +90,10 @@ You should be able to see results from past polls.
 ![See past proposals](../images/opl/past-dao-proposals.png)
 
 If you were able to get to this point, congrats! You have created an OPL dapp!
+
+:::info Example
+
+You can also try out and download a complete example from the Oasis Playground
+repository.
+
+:::

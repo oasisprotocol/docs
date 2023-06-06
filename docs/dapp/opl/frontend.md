@@ -21,20 +21,21 @@ git pull origin main
 Next, update the `@oasislabs/secret-ballot-backend` package name in
 `frontend/package.json` to match your `backend/package.json` project name.
 
-Install dependencies
+We recommend using [pnpm](https://pnpm.io) to install dependencies, but `yarn`
+and `npm` will work with some modifications around workspaces.
 
 ```sh
-npm install
+pnpm install
 ```
 
 Compile and Hot-Reload for Development
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 Build assets for deployment
 ```sh
-npm run build
+pnpm run build
 ```
 
 We can now reference the deployed contracts in our frontend Vue app.
@@ -61,7 +62,7 @@ VITE_PINATA_JWT=
 
 Start Vue app
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 ### MetaMask

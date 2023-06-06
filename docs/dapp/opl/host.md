@@ -88,7 +88,7 @@ contract DAOV1 {
 ```
 
 Instead of storing complete ballot proposals on the network, we will use
-[IPFS](https://ipfs.tech). Our smart contract will refer to a pinned IPFS [file](https://docs.ipfs.tech/concepts/lifecycle/#_1-content-addressable-representation)
+[IPFS](https://ipfs.tech). Our smart contract will refer to a pinned [IPFS file](https://docs.ipfs.tech/concepts/lifecycle/#_1-content-addressable-representation)
 by its [hash](https://docs.ipfs.tech/concepts/hashing/).
 
 ```solidity
@@ -106,9 +106,9 @@ be queried externally.
 ### OPL Differences
 
 A *host contract* refers to a smart contract on a home network such as BNB or
-Polygon. We will extend the `Host` contract provided by OPL and add our event
-handling to cross-chain messages. Let's make the following changes to
-`DAOV1.sol`.
+Polygon. We will extend the `Host` contract provided by OPL and add our own
+implementation of event handling to process cross-chain messages. Let's make
+the following changes to `DAOV1.sol`.
 
 ```diff
 diff --git a/backend/contracts/DAOV1.sol b/backend/contracts/DAOV1.sol

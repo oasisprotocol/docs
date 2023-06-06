@@ -1,7 +1,8 @@
 # Frontend Application
 
 We will need a [Pinata](https://www.pinata.cloud) development API
-[key](https://docs.pinata.cloud/master) and JWT. Let's retrieve that first.
+[key](https://docs.pinata.cloud/master) and JWT with the `pinFileToIPFS`
+permission. Let's obtain that first.
 
 ### VueJS
 

@@ -138,7 +138,7 @@ We will use a common private key for both the host and enclave smart contracts.
 export PRIVATE_KEY=
 ```
 
-Deploy with the testnet parameters.
+Deploy the enclave smart contract using Testnet parameters.
 
 ```sh
 npx hardhat deploy-ballot-box --network sapphire_testnet --host-network bsc_testnet
@@ -148,7 +148,8 @@ expected DAO 0xFBcb580DD6D64fbF7caF57FB0439502412324179
 BallotBox 0xFb40591a8df155da291A4B52E4Df9901a95b7C06
 ```
 
-Then, use the ballot box address below.
+Next, use the obtained `BallotBox` address below to deploy the host smart
+contract:
 
 ```sh
 npx hardhat deploy-dao --network bsc_testnet --ballot-box-addr {BALLOT_BOX_ADDR}

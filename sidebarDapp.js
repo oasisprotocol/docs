@@ -6,19 +6,7 @@ const sidebars = {
     'dapp/README',
     {
       type: 'category',
-      label: 'Emerald ParaTime',
-      link: {
-        type: 'doc',
-        id: 'dapp/emerald/README',
-      },
-      items: [
-        'dapp/emerald/writing-dapps-on-emerald',
-        'dapp/emerald/integrating-band-oracle-smart-contract',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Sapphire ParaTime',
+      label: 'Sapphire',
       link: {
         type: 'doc',
         id: 'dapp/sapphire/README',
@@ -33,7 +21,35 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Cipher ParaTime',
+      label: 'Oasis Privacy Layer',
+      link: {
+        type: 'doc',
+        id: 'dapp/opl/README',
+      },
+      items: [
+        'dapp/opl/introduction',
+        'dapp/opl/setup',
+        'dapp/opl/host',
+        'dapp/opl/enclave',
+        'dapp/opl/build',
+        'dapp/opl/frontend',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Emerald',
+      link: {
+        type: 'doc',
+        id: 'dapp/emerald/README',
+      },
+      items: [
+        'dapp/emerald/writing-dapps-on-emerald',
+        'dapp/emerald/integrating-band-oracle-smart-contract',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Cipher',
       link: {
         type: 'doc',
         id: 'dapp/cipher/README',
@@ -52,22 +68,6 @@ const sidebars = {
           label: 'Go API',
           href: 'https://pkg.go.dev/github.com/oasisprotocol/oasis-sdk/client-sdk/go/client',
         }
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Oasis Privacy Layer',
-      link: {
-        type: 'doc',
-        id: 'dapp/opl/README',
-      },
-      items: [
-        'dapp/opl/introduction',
-        'dapp/opl/setup',
-        'dapp/opl/host',
-        'dapp/opl/enclave',
-        'dapp/opl/build',
-        'dapp/opl/frontend',
       ],
     },
   ],

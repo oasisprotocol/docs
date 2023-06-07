@@ -3,6 +3,7 @@ description: Home of the Oasis dApp developer resources
 ---
 
 import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Overview
@@ -22,3 +23,15 @@ Learn more by exploring the ParaTimes below!
 | **Non-Confidential** | <DocCard item={findSidebarItem('/dapp/emerald/')} />  |                                                     |
 
 [Oasis architecture]: ../general/oasis-network/README.mdx
+
+In addition to building fully native dApps running on one of the Oasis
+ParaTimes, you can also add privacy to your existing dApps running on other,
+non-confidential chains, and only use Oasis as a *privacy service*.
+
+The Oasis team prepared a rich cross-chain toolkit called the
+[**Oasis Privacy Layer**](opl/README.md). It consists of solidity precompiles
+integrating bridges and wrapping the OpenZeppelin ERC2771 contract on top of
+Sapphire, demonstrates best practices for writing confidential smart contracts
+and working examples for you to explore and extend.
+
+<DocCard item={findSidebarItem('/dapp/opl/')} />

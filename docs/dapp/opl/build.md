@@ -157,3 +157,13 @@ Nothing to compile
 No need to generate any newer typings.
 DAO 0xFBcb580DD6D64fbF7caF57FB0439502412324179
 ```
+
+:::info Example
+
+You can try out and download a complete backend example with both host and
+enclave smart contracts from the
+[Oasis Playground repository][backend-example].
+
+:::
+
+[backend-example]: https://github.com/oasisprotocol/playground/tree/main/opl-secret-ballot/backend

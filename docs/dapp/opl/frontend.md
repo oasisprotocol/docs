@@ -101,7 +101,9 @@ If you were able to get to this point, congrats! You have created an OPL dApp!
 
 :::info Example
 
-You can also try out and download a complete example from the Oasis Playground
-repository.
+You can try out and download a frontend of the secret ballot Dapp from the
+[Oasis Playground repository][frontend-example].
 
 :::
+
+[frontend-example]: https://github.com/oasisprotocol/playground/tree/main/opl-secret-ballot/frontend

@@ -12,9 +12,9 @@ simply apply a sparse checkout of the complete frontend repo. Inside your
 
 ```sh
 git init .
-git remote add -f origin https://github.com/aefhm/opl-secret-ballot;
+git remote add -f origin https://github.com/oasisprotocol/playground;
 git config core.sparseCheckout true;
-echo "frontend/" >> .git/info/sparse-checkout;
+echo "opl-secret-ballot/frontend/" >> .git/info/sparse-checkout;
 git pull origin main
 ```
 

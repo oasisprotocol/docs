@@ -217,6 +217,8 @@ and their usage:
 - Mainnet
 - Testnet
 - Oasis Core
+- OPL
+  Oasis Privacy Layer supports privacy of dApps on all EVM chains.
 - ParaTime
   Each ParaTime stores its own state separate from the consensus state.
 - ParaTime layer

@@ -15,7 +15,7 @@ npx hardhat compile
 We can make deployments easier by using [Hardhat deploy](https://github.com/wighawag/hardhat-deploy).
 
 ```sh
-npm install -D hardhat-deploy
+pnpm install -D hardhat-deploy
 ```
 
 
@@ -127,7 +127,8 @@ We will use these addresses in our frontend application.
 
 #### Testnet
 
-We can likewise deploy to OPL [Testnet](../../dapp/sapphire/guide#testnet-and-mainnet) with Sapphire.
+We can likewise deploy to [Testnet](../../dapp/sapphire/guide#testnet-and-mainnet)
+with Sapphire.
 
 In this case, we should prepare a wallet with Testnet tokens on both BNB Smart
 Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](https://faucet.testnet.oasis.dev).

@@ -55,6 +55,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
   * [2.6.2](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
+  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
 
 :::tip
 
@@ -92,6 +93,7 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
   * [3.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.3.0)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
+  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
 
 :::tip
 
@@ -109,6 +111,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [0.3.3](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.3)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
+  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
 
 :::tip
 

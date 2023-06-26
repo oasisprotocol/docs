@@ -193,7 +193,7 @@ bytes memory signature = Sapphire.sign(alg, sk, "", "signed message");
 * Precompile address: `0x0100000000000000000000000000000000000007`
 * Parameters: `uint method, bytes public_key, bytes context_or_digest, bytes message, bytes signature`
 
-The `method`, `context_or_digest` and `message` parameters have the same meaning as as described above in the Message Signing section.
+The `method`, `context_or_digest` and `message` parameters have the same meaning as described above in the Message Signing section.
 
 ### Gas Cost
 

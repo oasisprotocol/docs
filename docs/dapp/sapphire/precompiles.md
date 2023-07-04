@@ -104,7 +104,7 @@ bytes memory encrypted = Sapphire.encrypt(key, nonce, text, ad);
 bytes memory decrypted = Sapphire.decrypt(key, nonce, encrypted, ad);
 ```
 
-## Public/Private Signing Key Pair Generation
+## Signing Keypairs Generation
 
 ### Overview
 
@@ -118,9 +118,14 @@ however, that the generation method ignores subvariants, so all three
 ed25519-based are equivalent, and all secp256k1-based methods are
 equivalent. `Sr25519` is not available and will return an error.
 
-Costs:
+### Gas Cost
 * `0` (`Ed25519Oasis`), `1` (`Ed25519Pure`), `2` (`Ed25519PrehashedSha512`) - ed25519: cost 35,000,
-* `3` (`Secp256k1Oasis`), `4` (`Secp256k1PrehashedKeccak256`), `5` (`Secp256k1PrehashedSha256`) - secp256k1: cost 110,000.
+* `3` (`Secp256k1Oasis`), `4` (`Secp256k1PrehashedKeccak256`), `5` (`Secp256k1PrehashedSha256`) - secp256k1: cost 110,000 gas.
+
+### Public Key Format
+
+ * Ed25519: 32 bytes
+ * Secp256k1: 33 bytes, compressed format (0x02 or 0x03 prefix, then 32 byte X coordinate)
 
 ### Example
 
@@ -139,34 +144,46 @@ bytes memory privateKey;
 
 * Precompile address: `0x0100000000000000000000000000000000000006`
 * Parameters: `uint method, bytes private_key, bytes context_or_digest, bytes message`
-* Gas cost: see below for the method-dependent base cost, plus 8 per word of context and message except digest.
+* Gas cost: see below for the method-dependent base cost, plus 8 gas per 32 bytes of context and message except digest.
 
 The `context_or_digest` and `messages` parameters change in meaning
 slightly depending on the method requested. For methods that take a
-context value in addition to the message, pass the context in the
+context in addition to the message you must pass the context in the
 `context_or_digest` parameter and use `message` as expected. For methods
 that take a pre-existing hash of the message, pass that in
-`context_or_digest` and leave `message` empty.
+`context_or_digest` and leave `message` empty. Specifically the `Ed25519Oasis` and `Secp256k1Oasis` variants take both a context and a message (each are variable length `bytes`), the context serves as a domain separator.
 
-Ensure that the digest matches the selected method when using variants
-that take a pre-existing hashes.
+### Signing Algorithms
 
-Available methods:
-* `0` (`Ed25519Oasis`): takes a context, gas cost 75,000,
-* `1` (`Ed25519Pure`): pass empty context, gas cost 75,000,
-* `2` (`Ed25519PrehashedSha512`):, takes a pre-existing hash, gas cost 75,000,
-* `3` (`Secp256k1Oasis`): takes a context, gas cost 150,000,
-* `4` (`Secp256k1PrehashedKeccak256`): takes a pre-existing hash, gas cost 150,000,
-* `5` (`Secp256k1PrehashedSha256`): takes a pre-existing hash, gas cost 150,000.
+* `0` (`Ed25519Oasis`)
+  * 75,000 gas
+  * variable length context and message
+* `1` (`Ed25519Pure`)
+  * 75,000 gas
+  * empty context, variable length message
+* `2` (`Ed25519PrehashedSha512`)
+  * 75,000 gas
+  * pre-existing SHA-512 hash (64 bytes) as context, empty message
+* `3` (`Secp256k1Oasis`)
+  * 150,000 gas
+  * variable length context and message
+* `4` (`Secp256k1PrehashedKeccak256`)
+  * 150,000 gas
+  * pre-existing hash (32 bytes) as context, empty message
+* `5` (`Secp256k1PrehashedSha256`)
+  * 150,000 gas
+  * pre-existing hash (32 bytes) as context, empty message
 
 ### Example
 
 Using the Sapphire library:
 
 ```solidity
-bytes memory publicKey = ...;
-bytes memory privateKey = ...;
-bytes memory signature = Sapphire.signMessageWithContext(0, privateKey, "message context", "message to sign");
+Sapphire.SigningAlg alg = Sapphire.SigningAlg.Ed25519Pure;
+bytes memory pk;
+bytes memory sk;
+(pk, sk) = Sapphire.generateSigningKeyPair(alg, Sapphire.randomBytes(32, ""));
+bytes memory signature = Sapphire.sign(alg, sk, "", "signed message");
 ```
 
 ## Signature Verification
@@ -175,33 +192,28 @@ bytes memory signature = Sapphire.signMessageWithContext(0, privateKey, "message
 
 * Precompile address: `0x0100000000000000000000000000000000000007`
 * Parameters: `uint method, bytes public_key, bytes context_or_digest, bytes message, bytes signature`
-* Gas cost: see below for the method-dependent base cost, plus 8 per word of context and message.
 
-The `context_or_digest` and `messages` parameters change in meaning
-slightly depending on the method requested. For methods that take a
-context value in addition to the message, pass the context in the
-`context_or_digest` parameter and use `message` as expected. For methods
-that take a pre-existing hash of the message, pass that in
-`context_or_digest` and leave `message` empty.
+The `method`, `context_or_digest` and `message` parameters have the same meaning as described above in the Message Signing section.
 
-Ensure that the digest matches the selected method when using variants
-that take a pre-existing hashes.
+### Gas Cost
 
-Available methods:
-* `0` (`Ed25519Oasis`): takes a context, gas cost 110,000,
-* `1` (`Ed25519Pure`): pass empty context, gas cost 110,000,
-* `2` (`Ed25519PrehashedSha512`):, takes a pre-existing hash, gas cost 110,000,
-* `3` (`Secp256k1Oasis`): takes a context, gas cost 210,000,
-* `4` (`Secp256k1PrehashedKeccak256`): takes a pre-existing hash, gas cost 210,000,
-* `5` (`Secp256k1PrehashedSha256`): takes a pre-existing hash, gas cost 210,000.
+The algorithm-specific base cost below, with an additional 8 gas per 32 bytes of `context` and `message` for the `Ed25519Oasis`, `Ed25519Pure` and `Secp256k1Oasis` algorithms.
+
+* `0` (`Ed25519Oasis`), `1` (`Ed25519Pure`), `2` (`Ed25519PrehashedSha512`)
+  * 110,000 gas
+* `3` (`Secp256k1Oasis`), `4` (`Secp256k1PrehashedKeccak256`), `5` (`Secp256k1PrehashedSha256`)
+  * 210,000 gas
 
 ### Example
 
 Using the Sapphire library:
 
 ```solidity
-bytes memory publicKey = ...;
-bytes memory privateKey = ...;
-bytes memory signature = ...;
-bool result = Sapphire.verifySignatureWithContext(Sapphire.SigningAlg.Ed25519Oasis, publicKey, signature, "message context", "message to check");
+Sapphire.SigningAlg alg = Sapphire.SigningAlg.Secp256k1PrehashedKeccak256;
+bytes memory pk;
+bytes memory sk;
+bytes memory digest = abi.encodePacked(keccak256("signed message"));
+(pk, sk) = Sapphire.generateSigningKeyPair(alg, Sapphire.randomBytes(32, ""));
+bytes memory signature = Sapphire.sign(alg, sk, digest, "");
+require( Sapphire.verify(alg, pk, digest, "", signature) );
 ```

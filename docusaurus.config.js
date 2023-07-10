@@ -141,7 +141,7 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/oasisprotocol',
+                href: 'https://oasis.io/discord',
               },
             ],
           },

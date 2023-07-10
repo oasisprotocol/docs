@@ -13,7 +13,7 @@ and their online privacy.
 To stay up-to-date on the latest Oasis Network news, events, and programs, be
 sure to join our social media channels:
 
-* [Discord](https://discord.gg/oasisprotocol)
+* [Discord](https://oasis.io/discord)
 * [Twitter](https://twitter.com/OasisProtocol)
 * [Public Telegram channel](https://t.me/oasisprotocolcommunity) (for community discussions open to everyone)
 * [Telegram Announcement channel](https://t.me/oasisprotocolfoundation) (for one-way updates from the Oasis Foundation)

@@ -57,4 +57,4 @@ more tokens please contact us at our official [Discord #testnet channel]
 [discord-testnet].
 
 [faucet-testnet]: https://faucet.testnet.oasis.dev/
-[discord-testnet]: https://discord.gg/oasisprotocol
+[discord-testnet]: https://oasis.io/discord

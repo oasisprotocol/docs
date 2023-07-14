@@ -3,7 +3,11 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   paratime: [
-    'paratime/README',
+    {
+      type: 'doc',
+      label: 'Overview',
+      id: 'paratime/README',
+    },
     'paratime/prerequisites',
     'paratime/minimal-runtime',
     'paratime/modules',

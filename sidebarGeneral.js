@@ -3,7 +3,11 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   general: [
-    'general/README',
+    {
+      type: 'doc',
+      label: 'Overview',
+      id: 'general/README',
+    },
     {
       type: 'category',
       label: 'Oasis Network',

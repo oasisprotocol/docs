@@ -1,14 +1,15 @@
 # Oasis Privacy Layer
 
-The Oasis Privacy Layer (OPL) is an EVM-compatible privacy solution that opens
-new frontiers for confidential smart contracts in Web3 applications on the
-most popular EVM networks like Ethereum, BNB Chain, and Polygon.
+The Oasis Privacy Layer (OPL) is an EVM-compatible privacy solution that
+empowers developers to add new functionality to smart contracts on the most
+popular EVM networks like Ethereum, BNB Chain, and Polygon with encrypted
+transactions and confidential state.
 
 ## DApp Development
 
 The Oasis Privacy Layer contains a set of [smart contracts](https://github.com/oasisprotocol/sapphire-paratime/tree/main/contracts/contracts/opl)
 that integrate [Sapphire](../sapphire/README.mdx) into your existing and future
-Web3 applications and introduce confidentiality.
+Web3 applications, introducing confidentiality.
 
 Application developers on [any supported network](https://im-docs.celer.network/developer/contract-addresses-and-rpc-info) can add confidential state
 and selective disclosures to their applications through the usage of a smart

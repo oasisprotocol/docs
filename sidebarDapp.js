@@ -3,7 +3,11 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   developers: [
-    'dapp/README',
+    {
+      type: 'doc',
+      label: 'Overview',
+      id: 'dapp/README',
+    },
     {
       type: 'category',
       label: 'Sapphire',

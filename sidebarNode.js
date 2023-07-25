@@ -3,7 +3,11 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   operators: [
-    'node/README',
+    {
+      type: 'doc',
+      label: 'Overview',
+      id: 'node/README',
+    },
     {
       type: 'category',
       label: 'Mainnet',

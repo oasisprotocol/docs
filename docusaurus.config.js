@@ -10,7 +10,7 @@ const codeBlockSnippetsPlugin = require('./src/remark/code-block-snippets').plug
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Oasis Network Documentation',
+  title: 'Oasis Documentation',
   tagline: '',
   url: process.env.URL ?? 'https://docs.oasis.io',
   baseUrl: '/',
@@ -88,6 +88,12 @@ const config = {
             position: 'left',
           },
           {
+            label: 'Create dApp',
+            to: '/dapp/',
+            activeBaseRegex: '/dapp/',
+            position: 'left',
+          },
+          {
             label: 'Get Involved',
             to: '/get-involved/',
             position: 'left',
@@ -97,12 +103,6 @@ const config = {
             label: 'Run Node',
             to: '/node/',
             activeBaseRegex: '/node/',
-            position: 'left',
-          },
-          {
-            label: 'Create dApp',
-            to: '/dapp/',
-            activeBaseRegex: '/dapp/',
             position: 'left',
           },
           {
@@ -141,7 +141,7 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/oasisprotocol',
+                href: 'https://oasis.io/discord',
               },
             ],
           },

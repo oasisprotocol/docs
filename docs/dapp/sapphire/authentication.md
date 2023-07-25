@@ -4,17 +4,24 @@ description: Authenticate users with your confidential contracts
 
 # View-Call Authentication
 
-User impersonation on Ethereum and other 'Transparent EVMs' isn't a problem because everybody can see all data, however with the Sapphire confidential EVM it is necessary to prevent contracts from revealing confidential information to the wrong person so it cannot allow impersonation.
+User impersonation on Ethereum and other 'Transparent EVMs' isn't a problem because everybody can see all data, however with the Sapphire confidential EVM it is necessary to prevent contracts from revealing confidential information to the wrong person - for this reason we cannot allow arbitrary impersonation of any `msg.sender`.
 
-When `eth_call` is used to query a contract's `view` function the `msg.sender` parameter is set to `address(0x0)` because it is unauthenticated and anonymous.
+There are four types of contract calls:
 
-When a transaction is submitted it is signed by a keypair, and thus costs gas and can make state updates so `msg.sender` is set to the signing account.
+ 1. Contract to Contract calls
+ 2. Unauthenticted view calls (Queries)
+ 3. Authenticated view calls (Signed Queries)
+ 4. Transactions (authenticated by signature)
+
+By default all `eth_call` queries used to invoke contract functions have the `msg.sender` parameter is set to `address(0x0)`. And when a transaction is submitted it is signed by a keypair (thus costs gas and can make state updates) the `msg.sender` will be set to the signing account.
 
 Intra-contract calls always set `msg.sender` appropriately, if a contract calls another contract in a way which could reveal sensitive information, the calling contract must implement access control or authentication.
 
-When `sapphire.wrap` is used to automatically end-to-end encrypt calls to Sapphire. However, once the Sapphire wrapper is requested to sign a transaction (thus attaching the provider to a signer, or converting it into one) then subsequent `view` calls via `eth_call` will be automatically signed, these are called 'Signed Queries' meaning `msg.sender` will be set to the signing account.
+## Sapphire Wrapper
 
-However, this may not be an ideal user experience and can result in frequent pop-ups requesting they sign queries which wouldn't normally require any interaction on Transparent EVMs.
+The Ethereum provider wrapper provided by the @oasisprotocol/sapphire-paratime `sapphire.wrap` function will automatically end-to-end encrypt calldata when interacting with contracts on Sapphire, this is an easy way to ensure the calldata of your dApp transactions remain confidential - although the `from`, `to`, and `gasprice` parameters are not encrypted.
+
+However, once the Sapphire wrapper is requested to sign a transaction (thus attaching the provider to a signer, or converting it into one) then subsequent `view` calls via `eth_call` will be automatically signed, these are called 'Signed Queries' meaning `msg.sender` will be set to the signing account. This may not be an ideal user experience and can result in frequent pop-ups requesting they sign queries which wouldn't normally require any interaction on Transparent EVMs.
 
 ```solidity
 contract Example {
@@ -28,7 +35,7 @@ contract Example {
 }
 ```
 
-In the sample above, calling `isOwner` returns:
+In the sample above, assuming we're calling from the same contract or account which created the contract, calling `isOwner` will return:
 
  * `false`, for `eth_call`
  * `false`, with `sapphire.wrap` but without an attached signer
@@ -37,10 +44,12 @@ In the sample above, calling `isOwner` returns:
 
 ## Sign-in with EIP-712
 
-One strategy which can be used to reduce the number of transaction signing prompts when a user interacts with contracts via a dApp is to use EIP-712 to 'Sign-in', in combination with using two wrapped providers:
+One strategy which can be used to reduce the number of transaction signing prompts when a user interacts with contracts via a dApp is to use EIP-712 to 'Sign-in' once per day (or per-session), in combination with using two wrapped providers:
 
- 1. Perform encrypted but unauthenticated view calls
- 2. Performing encrypted and authenticated transactions (or view calls), where the user will be prompted to sign each action.
+ 1. Provider to perform encrypted but unauthenticated view calls
+ 2. Another provider to perform encrypted and authenticated transactions (or view calls), where the user will be prompted to sign each action.
+
+The two-provider pattern, in conjunction with a daily EIP-712 sign-in prompt ensures all transactions are end-to-end encrypted and the contract can authenticate users in view calls without frequent annoying popups.
 
 The code sample below uses an `authenticated` modifier to verify the sign-in
 

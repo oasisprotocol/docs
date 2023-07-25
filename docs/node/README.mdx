@@ -1,7 +1,7 @@
 import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
-# Overview
+# Run Node
 
 The following documentation is intended to assist any individual or
 organization in participating in the Oasis network as a node operator. To join
@@ -35,9 +35,9 @@ If you have any questions about running a node you can find us on [Discord].
 
 [Oasis Network]: ..//general/oasis-network/README.mdx
 [Oasis Scan]: https://www.oasisscan.com/validators
-[Discord]: https://discord.gg/oasisprotocol
+[Discord]: https://oasis.io/discord
 
-## Set Up Your Node overview
+## Node Roles
 
 To run a **Validator node**, make sure your system meets the [Hardware] and the
 [System] prerequisites and has [Oasis Node] installed.
@@ -53,10 +53,12 @@ To run a **ParaTime node** make sure to first set up a Validator node. Then,
 set up a [trusted execution environment (TEE)], if you want to run confidential
 ParaTimes. After that, proceed to the [Run a ParaTime node].
 
-Finally, if you are building a service on top of the Oasis Network, we suggest
-that you set up your own **[Non-validator node]** and (optionally) a
-**[ParaTime client node]**, so that your service do not depend on any third
-party endpoints which are often behind a traffic limiter.
+If you are **building a service** on top of the Oasis Network, you will simply
+want to set up your own **[Non-validator node]** and (optionally) a
+**[ParaTime client node]**. This way, your service will not depend on third
+party endpoints which can be behind a traffic limiter, can go down unexpectedly,
+or they can have some more CPU-intensive queries disabled which you would like
+to use.
 
 [Hardware]: ./run-your-node/prerequisites/hardware-recommendations.md
 [System]: ./run-your-node/prerequisites/system-configuration.mdx
@@ -70,7 +72,8 @@ party endpoints which are often behind a traffic limiter.
 ## Quick Navigation
 
 <DocCardList items={[
-    findSidebarItem('/node/mainnet/upgrade-log'),
+    findSidebarItem('/node/mainnet/'),
+    findSidebarItem('/node/testnet/'),
     findSidebarItem('/node/run-your-node/prerequisites'),
     findSidebarItem('/node/run-your-node/validator-node/'),
     findSidebarItem('/node/run-your-node/non-validator-node'),

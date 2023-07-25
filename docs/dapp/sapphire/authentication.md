@@ -19,7 +19,7 @@ Intra-contract calls always set `msg.sender` appropriately, if a contract calls 
 
 ## Sapphire Wrapper
 
-The Ethereum provider wrapper provided by the @oasisprotocol/sapphire-paratime `sapphire.wrap` function will automatically end-to-end encrypt calldata when interacting with contracts on Sapphire, this is an easy way to ensure the calldata of your dApp transactions remain confidential - although the `from`, `to`, and `gasprice` parameters are not encrypted.
+The Ethereum provider wrapper provided by the [@oasisprotocol/sapphire-paratime](https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime) `sapphire.wrap` function will automatically end-to-end encrypt calldata when interacting with contracts on Sapphire, this is an easy way to ensure the calldata of your dApp transactions remain confidential - although the `from`, `to`, and `gasprice` parameters are not encrypted.
 
 However, once the Sapphire wrapper is requested to sign a transaction (thus attaching the provider to a signer, or converting it into one) then subsequent `view` calls via `eth_call` will be automatically signed, these are called 'Signed Queries' meaning `msg.sender` will be set to the signing account. This may not be an ideal user experience and can result in frequent pop-ups requesting they sign queries which wouldn't normally require any interaction on Transparent EVMs.
 

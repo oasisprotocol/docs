@@ -24,11 +24,11 @@ official [page](https://oasisprotocol.org/opl).
 
 A pair of contracts are linked bidirectionally to each other across chains, with one end on Sapphire and the other on a supported EVM compatible chain (the Home Network). They can post and receive messages to & from each other using the message-passing bridge, but must register endpoints to define which messages they handle.
 
-Start by adding the `sapphire-contracts` package to your project so you can import `OPL.sol`:
+Start by adding the [`sapphire-contracts`](http://npmjs.com/package/@oasisprotocol/sapphire-contracts) package to your project so you can import `OPL.sol`:
 
     pnpm add @oasisprotocol/sapphire-contracts
 
-Then define the two contracts, starting with a contract on Sapphire which runs inside the confidential enclave and can be called via the `secretExample` handler. It is provided with the address of the other contract and the network it exists on via the constructor:
+Then define the two contracts, starting with a contract on Sapphire which runs inside the confidential enclave and can be called via the `secretExample` handler. Use the constructor to provide the Sapphire contract with the address of the other contract network:
 
 ```solidity
 import {Enclave, Result, autoswitch} from "@oasisprotocol/sapphire-contracts/contracts/OPL.sol";

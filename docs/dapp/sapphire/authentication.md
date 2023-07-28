@@ -44,10 +44,11 @@ In the sample above, assuming we're calling from the same contract or account wh
 
 ## Sign-in with EIP-712
 
-One strategy which can be used to reduce the number of transaction signing prompts when a user interacts with contracts via a dApp is to use EIP-712 to 'Sign-in' once per day (or per-session), in combination with using two wrapped providers:
+One strategy which can be used to reduce the number of transaction signing prompts when a user interacts with contracts via a dApp is to use [EIP-712](https://eips.ethereum.org/EIPS/eip-712) to 'Sign-in' once per day (or per-session), in combination with using two wrapped providers:
 
  1. Provider to perform encrypted but unauthenticated view calls
- 2. Another provider to perform encrypted and authenticated transactions (or view calls), where the user will be prompted to sign each action.
+ 2. Another provider to perform encrypted and authenticated transactions (or view calls)
+    - The user will be prompted to sign each action.
 
 The two-provider pattern, in conjunction with a daily EIP-712 sign-in prompt ensures all transactions are end-to-end encrypted and the contract can authenticate users in view calls without frequent annoying popups.
 

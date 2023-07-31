@@ -60,13 +60,25 @@ Feel free to discover other convenient libraries for Solidity inside the
 * Gas cost: 10,000 minimum plus 240 per output word plus 60 per word of
   the personalization string.
 
-Generate `num_bytes` pseudo-random bytes, with an optional
-personalization string added into the hashing algorithm to increase
-domain separation when needed.
+Generate `num_bytes` pseudo-random bytes, with an optional personalization
+string (`pers`) added into the hashing algorithm to increase domain separation
+when needed.
 
 ```solidity
 bytes memory randomPad = Sapphire.randomBytes(64, "");
 ```
+
+:::danger Prior to 0.5.3
+All view queries and simulated transactions (via `eth_call`) would receive the
+same entropy in-between blocks if they use the same `num_bytes` and `pers` parameters.
+
+This does not affect transactions, so if your contract requires confidentiality please
+generate a secret in the constructor and use it from view calls.
+
+```solidity
+Sapphire.randomBytes(64, abi.encodePacked(msg.sender, this.perContactSecret));
+```
+:::
 
 ## X25519 Key Derivation
 

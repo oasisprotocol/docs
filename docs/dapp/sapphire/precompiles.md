@@ -68,12 +68,13 @@ when needed.
 bytes memory randomPad = Sapphire.randomBytes(64, "");
 ```
 
-:::danger Prior to 0.5.3
+### Implementation Details
+
+:::danger Prior to 0.6.0
 All view queries and simulated transactions (via `eth_call`) would receive the
 same entropy in-between blocks if they use the same `num_bytes` and `pers` parameters.
-
-This does not affect transactions, so if your contract requires confidentiality please
-generate a secret in the constructor and use it from view calls.
+If your contract requires confidentiality you should generate a secret in the constructor
+to be used with view calls:
 
 ```solidity
 Sapphire.randomBytes(64, abi.encodePacked(msg.sender, this.perContactSecret));
@@ -85,7 +86,8 @@ block-dependent components) to derive the "key id", which is then used to derive
 from epoch-ephemeral entropy (using KMAC256 and cSHAKE) so a different "key id" will result in a
 unique per-block VRF key. This per-block VRF key is then used to create the per-block root RNG which
 is then used to derive domain-separated (using Merlin transcripts) per-transaction random RNGs which
-are then exposed via this precompile.
+are then exposed via this precompile. The KMAC, cSHAKE and TupleHash algorithms are SHA-3 derived functions
+defined in [NIST Special Publication 800-185](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-185.pdf).
 
 ## X25519 Key Derivation
 

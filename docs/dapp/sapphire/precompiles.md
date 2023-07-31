@@ -80,6 +80,13 @@ Sapphire.randomBytes(64, abi.encodePacked(msg.sender, this.perContactSecret));
 ```
 :::
 
+The mode (e.g. simulation or 'view call' vs transaction execution) is fed to TupleHash (among other
+block-dependent components) to derive the "key id", which is then used to derive a per-block VRF key
+from epoch-ephemeral entropy (using KMAC256 and cSHAKE) so a different "key id" will result in a
+unique per-block VRF key. This per-block VRF key is then used to create the per-block root RNG which
+is then used to derive domain-separated (using Merlin transcripts) per-transaction random RNGs which
+are then exposed via this precompile.
+
 ## X25519 Key Derivation
 
 ### Overview

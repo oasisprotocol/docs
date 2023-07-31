@@ -11,7 +11,7 @@ The Oasis Privacy Layer contains a set of [smart contracts](https://github.com/o
 that integrate [Sapphire](../sapphire/README.mdx) into your existing and future
 Web3 applications, introducing confidentiality.
 
-Application developers on [any supported network](https://im-docs.celer.network/developer/contract-addresses-and-rpc-info) can add confidential state
+Application developers on any supported network can add confidential state
 and selective disclosures to their applications through the usage of a smart
 contract deployed on OPL without leaving their existing networks.
 
@@ -19,6 +19,17 @@ For more information about OPL and to catch the latest news, please visit the
 official [page](https://oasisprotocol.org/opl).
 
 ![Oasis Privacy Layer diagram](../images/opl/privacy-layer-diagram.png)
+
+## Supported Networks
+
+### Mainnets
+
+ * Ethereum (1), BNB Chain (56), Polygon (137), Fantom (250), Avalanche (43114), Arbitrum One (42161), Moonriver (1285), Optimism (10), Aurora (1313161554), Syscoin (57), Astar (592), Ape (16350), Arbitrum Nova (42170), Milkomeda C1 (2001), zkSync Era (324), Filecoin (314), Polygon zkEVM (1101), Oasis Sapphire (23294)
+
+### Testnets
+
+ * Goerli Testnet (5), BSC Testnet (97), Fantom Testnet (4002), Arbitrum Testnet (421611), Polygon Mumbai Testnet (80001), Avalanche C-Chain Fuji Testnet (43113), Dexalot Testnet (432201), Godwoken Testnet (71401), Shibuya Testnet (81), ConsenSys zkEVM Testnet (59140), Filecoin Hyperspace Testnet (3141), Polygon zkEVM Testnet (1442), Scroll Alpha Testnet (534353), FNCY Testnet (923018)
+
 
 ## Quickstart
 
@@ -28,7 +39,7 @@ Start by adding the [`sapphire-contracts`](http://npmjs.com/package/@oasisprotoc
 
     pnpm add @oasisprotocol/sapphire-contracts
 
-Then define the two contracts, starting with a contract on Sapphire which runs inside the confidential enclave and can be called via the `secretExample` handler. Use the constructor to provide the Sapphire contract with the address of the other contract network:
+Then define the two contracts, starting with a contract on Sapphire which runs inside the confidential enclave and can be called via the `secretExample` handler. Use the constructor to provide the Sapphire contract with the location (address and chain) of the contract on the other network::
 
 ```solidity
 import {Enclave, Result, autoswitch} from "@oasisprotocol/sapphire-contracts/contracts/OPL.sol";

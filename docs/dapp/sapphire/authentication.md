@@ -4,7 +4,7 @@ description: Authenticate users with your confidential contracts
 
 # View-Call Authentication
 
-User impersonation on Ethereum and other 'Transparent EVMs' isn't a problem because everybody can see all data, however with the Sapphire confidential EVM it is necessary to prevent contracts from revealing confidential information to the wrong person - for this reason we cannot allow arbitrary impersonation of any `msg.sender`.
+User impersonation on Ethereum and other 'Transparent EVMs' isn't a problem because **everybody** can see **all** data however the Sapphire confidential EVM prevents contracts from revealing confidential information to the wrong party (account or contract) - for this reason we cannot allow arbitrary impersonation of any `msg.sender`.
 
 There are four types of contract calls:
 
@@ -21,7 +21,7 @@ Intra-contract calls always set `msg.sender` appropriately, if a contract calls 
 
 The Ethereum provider wrapper provided by the [@oasisprotocol/sapphire-paratime](https://www.npmjs.com/package/@oasisprotocol/sapphire-paratime) `sapphire.wrap` function will automatically end-to-end encrypt calldata when interacting with contracts on Sapphire, this is an easy way to ensure the calldata of your dApp transactions remain confidential - although the `from`, `to`, and `gasprice` parameters are not encrypted.
 
-However, once the Sapphire wrapper is requested to sign a transaction (thus attaching the provider to a signer, or converting it into one) then subsequent `view` calls via `eth_call` will be automatically signed, these are called 'Signed Queries' meaning `msg.sender` will be set to the signing account. This may not be an ideal user experience and can result in frequent pop-ups requesting they sign queries which wouldn't normally require any interaction on Transparent EVMs.
+However, if the Sapphire wrapper has been attached to a signer then subsequent `view` calls via `eth_call` will be request that the user sign them (e.g. a MetaMask popup), these are called 'Signed Queries' meaning `msg.sender` will be set to the signing account and can be used for authentication or to implement access control. This may add friction to the end-user experience and can result in frequent pop-ups requesting they sign queries which wouldn't normally require any interaction on Transparent EVMs.
 
 ```solidity
 contract Example {
@@ -138,12 +138,12 @@ const signature = await eth.signer._signTypedData({
         { name: 'time', type: 'uint32' },
     ]
 }, {
-    user: user,
+    user,
     time: time
 });
 const rsv = ethers.utils.splitSignature(signature);
 const auth = {user, time, rsv};
-// TODO: cache the result
+// The `auth` variable can then be cached
 
 // Then in future, authenticated view calls can be performed using the authenticated data
 await contract.authenticatedViewCall(auth, ...args);

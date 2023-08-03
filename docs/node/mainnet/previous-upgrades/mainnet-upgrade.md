@@ -23,7 +23,7 @@ In order to transition from Mainnet Beta to Mainnet, community members have coll
 * [x] At least one qualified custodian supports the native ROSE token.
   * _Currently, Anchorage and Finoa support the ROSE token. See_ [_Custody Providers_](../../../general/manage-tokens/holding-rose-tokens/custody-providers.md) _part of our docs._
 * [x] At least one web wallet or hardware wallet supports native ROSE token.
-  * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_Mobile Wallets_](../../../general/manage-tokens/holding-rose-tokens/bitpie-wallet.md) _and_ [_Web Wallets_](../../../general/manage-tokens/oasis-wallets/README.mdx) _parts of our docs._
+  * _Currently, Bitpie mobile wallet and RockX Ledger-backed web wallet are available and support ROSE token transfers. Support for staking and delegation is in development. See_ [_3rd Party Wallets_](../../../general/manage-tokens/holding-rose-tokens/) _and_ [_Oasis Wallets_](../../../general/manage-tokens/oasis-wallets/README.mdx) _parts of our docs._
 
 [archived - block explorers]: https://github.com/oasisprotocol/docs/blob/0aeeb93a6e7c9001925923661e4eb3340ec4fb4b/docs/general/community-resources/community-made-resources.md#block-explorers--validator-leaderboards-block-explorers-validator-leaderboards
 

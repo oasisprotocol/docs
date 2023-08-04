@@ -17,14 +17,14 @@ There are four types of contract calls:
  3. Authenticated view calls (Signed Queries)
  4. Transactions (authenticated by signature)
 
+Intra-contract calls always set `msg.sender` appropriately, if a contract calls
+another contract in a way which could reveal sensitive information, the calling
+contract must implement access control or authentication.
+
 By default all `eth_call` queries used to invoke contract functions have the
 `msg.sender` parameter is set to `address(0x0)`. And when a transaction is
 submitted it is signed by a keypair (thus costs gas and can make state updates)
 the `msg.sender` will be set to the signing account.
-
-Intra-contract calls always set `msg.sender` appropriately, if a contract calls
-another contract in a way which could reveal sensitive information, the calling
-contract must implement access control or authentication.
 
 ## Sapphire Wrapper
 

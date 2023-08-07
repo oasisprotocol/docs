@@ -42,7 +42,6 @@ Although the calls may be unauthenticated, they can still be encrypted!
 
 :::
 
-
 However, if the Sapphire wrapper has been attached to a signer then subsequent
 view calls via `eth_call` will be request that the user sign them (e.g. a
 MetaMask popup), these are called "Signed Queries" meaning `msg.sender` will be
@@ -74,7 +73,18 @@ which created the contract, calling `isOwner` will return:
  * `true`, with `sapphire.wrap` and an attached signer
  * `true`, if called via the contract which created it
 
-## Sign-in with EIP-712
+## Caching Signed Queries
+
+When using "Signed Queries" the blockchain will be queried each time, however
+the Sapphire wrapper will cache signatures for signed queries with the same
+parameters to avoid asking the user to sign the same thing multiple times.
+
+Behind the scenes the signed queries use a "leash" to specify validity conditions
+so the query can only be performed within a block and account `nonce` range.
+These parameters are visible in the EIP-712 popup signed by the user. Queries
+with the same parameters will use the same leash.
+
+## Daily Sign-in with EIP-712
 
 One strategy which can be used to reduce the number of transaction signing
 prompts when a user interacts with contracts via a dApp is to use

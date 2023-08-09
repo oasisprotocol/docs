@@ -60,7 +60,6 @@ const sidebars = {
           },
           items: [
             'general/manage-tokens/holding-rose-tokens/custody-providers',
-            'general/manage-tokens/holding-rose-tokens/bitpie-wallet',
             'general/manage-tokens/holding-rose-tokens/ledger-wallet',
           ]
         },

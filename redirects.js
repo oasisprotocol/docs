@@ -10,6 +10,11 @@ const redirectsOptions = {
                 '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime', // #200 Restructure docs
             ],
         },
+        // #475 Delete bitpie-wallet.md
+        {
+            to: '/general/manage-tokens/faq', // #how-can-i-transfer-rose-tokens-from-my-bitpie-wallet-to-my-oasis-wallet
+            from: '/general/manage-tokens/holding-rose-tokens/bitpie-wallet',
+        },
         // #200 Restructure docs
         {
             to: '/adrs',
@@ -51,14 +56,14 @@ const redirectsOptions = {
             to: '/dapp/cipher/',
             from: '/oasis-sdk/contract/getting-started',
         },
-	{
+        {
             to: '/dapp/sapphire/',
             from: '/general/developer-resources/sapphire-paratime',
-	},
-	{
+        },
+        {
             to: '/dapp/sapphire/quickstart',
             from: ['/general/developer-resources/sapphire-paratime/writing-dapps-on-sapphire', '/dapp/sapphire/writing-dapps-on-sapphire'], // #218 Add sapphire tutorial
-	},
+        },
         {
             to: '/general/oasis-network/faq',
             from: '/general/faq/oasis-network-faq',

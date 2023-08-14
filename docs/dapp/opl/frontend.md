@@ -1,8 +1,8 @@
 # Frontend Application
 
 We will need a [Pinata](https://www.pinata.cloud) development API
-[key](https://docs.pinata.cloud/master) and JWT with the `pinFileToIPFS`
-permission. Let's obtain that first.
+[key](https://docs.pinata.cloud/docs/getting-started#2-generate-your-api-keys)
+and JWT with the `pinFileToIPFS` permission. Let's obtain that first.
 
 ### VueJS
 
@@ -50,8 +50,9 @@ VITE_DAO_V1_ADDR=0xFBcb580DD6D64fbF7caF57FB0439502412324179
 
 ### Pinata
 
-Additionally, we will need a [Pinata](https://www.pinata.cloud) API [key](https://docs.pinata.cloud/pinata-api/authentication) to access the pinning
-service with which we store our ballots as JSON.
+Additionally, we will need a [Pinata](https://www.pinata.cloud) JWT
+[key](https://docs.pinata.cloud/reference/datatestauthentication) to access the
+pinning service with which we store our ballots as JSON.
 
 ```yaml
 VITE_PINATA_JWT=
@@ -66,9 +67,11 @@ pnpm run dev
 
 ### MetaMask
 
-You can use one of the deployed test accounts and associated private key with [MetaMask](https://metamask.io).
+You can use one of the deployed test accounts and associated private key with
+[MetaMask](https://metamask.io).
 
-If you have not added a local network to MetaMask already, you can use this configuration.
+If you have not added a local network to MetaMask already, you can use this
+configuration.
 
 #### Localhost
 

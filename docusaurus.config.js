@@ -73,8 +73,7 @@ const config = {
         indexBlog: false,
         docsRouteBasePath: '/',
       },
-    ],
-    '@docusaurus/theme-mermaid'
+    ]
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

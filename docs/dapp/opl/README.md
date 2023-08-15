@@ -5,46 +5,45 @@ empowers developers to add new functionality to smart contracts on the most
 popular EVM networks like Ethereum, BNB Chain, and Polygon with encrypted
 transactions and confidential state.
 
-By using [a Solidity library](https://github.com/oasisprotocol/sapphire-paratime/tree/main/contracts/contracts/opl)
-that integrates [Sapphire](https://oasisprotocol.org/sapphire) into your
-existing and future Web3 applications, developers on any supported network can
-seamlessly add confidential state and selective disclosures to their dApps when
-using contract a deployed on Sapphire without leaving their existing networks.
+By using [a Solidity library][sapphire-contracts]
+that integrates [Sapphire] into your existing and future Web3 applications,
+developers on any supported network can seamlessly add confidential state and
+selective disclosures to their dApps when using contract a deployed on Sapphire
+without leaving their existing networks.
 
 For more information about OPL and to catch the latest news, please visit the
-[official OPL page](https://oasisprotocol.org/opl).
+[official OPL page].
 
 ![Oasis Privacy Layer diagram](../images/opl/privacy-layer-diagram.png)
 
 The user submits a transaction on the Home network to a contract which uses
-`postMessage` to notify the <abbr title="State Guardian Network">SGN</abbr>
-that it should approve the cross-chain message. The Executor waits, when the SGN
-approves the message the Executor submits a transaction to the target contract
-on Sapphire.
-
-```mermaid
-sequenceDiagram
-    User ->> Home Contract: Transaction
-    Home Contract -->> SGN: SGN Watches Events
-    SGN -->> Executor: Waits for SGN Approval
-    Executor ->> Sapphire Contract: Submit Proof Tx
-```
+`postMessage` to notify the SGN that it should approve the cross-chain message.
+The Executor waits, when the SGN approves the message the Executor submits a
+transaction to the target contract on Sapphire.
 
 The Home Contract pays the SGN to watch and approve the message, but the
 Executor needs to be run by somebody willing to pay for the gas to submit
 transactions to the destination chain.
 
+[sapphire-contracts]: https://www.npmjs.com/package/@oasisprotocol/sapphire-contracts
+[Sapphire]: https://oasisprotocol.org/sapphire
+[official OPL page]: https://oasisprotocol.org/opl
+
 ## Quickstart
 
 A of pair contracts are linked bidirectionally 1-1 to each other across chains,
-with one end on Sapphire and the other on a supported EVM compatible chain (the
+with one end on Sapphire and the other on a supported EVM-compatible chain (the
 Home Network). They can post and receive messages to & from each other using the
 message-passing bridge, but must register endpoints to define which messages
 they handle from each other.
 
-Start by adding the [`@oasisprotocol/sapphire-contracts`](http://npmjs.com/package/@oasisprotocol/sapphire-contracts) NPM package to your Hardhat or Truffle project so you can import `OPL.sol`:
+Start by adding the [`@oasisprotocol/sapphire-contracts`] NPM package to your Hardhat or Truffle project so you can import `OPL.sol`:
 
-    pnpm add @oasisprotocol/sapphire-contracts
+```shell
+pnpm add @oasisprotocol/sapphire-contracts
+```
+
+[`@oasisprotocol/sapphire-contracts`]: http://npmjs.com/package/@oasisprotocol/sapphire-contracts
 
 Then define the two contracts, starting with a contract on Sapphire which runs
 inside the confidential enclave and can be called via the `secretExample`
@@ -82,7 +81,8 @@ contract HomeContract is Host {
 }
 ```
 
-After a few minutes the bridge will detect and then execute the `SapphireContract.on_example` method.
+After a few minutes the bridge will detect and then the executor will invoke the
+`SapphireContract.on_example` method.
 
 ## Monitoring
 
@@ -92,25 +92,28 @@ message.
 
     https://api.celerscan.com/scan/searchByTxHash?tx=0x...
 
-For details of the response format, see the [Query IM Tx Status](https://im-docs.celer.network/developer/development-guide/query-im-tx-status) page of the Celer Inter-Chain Message (IM) documentation. Using this API lets you to check if messages have been delivered.
+For details of the response format, see the [Query IM Tx Status] page of the Celer Inter-Chain Message (IM) documentation. Using this API lets you to check if messages have been delivered.
+
+[Query IM Tx Status]: https://im-docs.celer.network/developer/development-guide/query-im-tx-status
 
 ## Mainnet Deployment
 
-It is necessary to run a [Message Executor](https://im-docs.celer.network/developer/development-guide/message-executor)
-which monitors the Celer <abbr title="State Guardian Network">SGN</abbr> for
-cross-chain messages and then submits the proof on-chain to deliver them to the
-target contract.
+It is necessary to run a [Message Executor] which monitors the Celer *State
+Guardian Network* (SGN) for cross-chain messages and then submits the proof
+on-chain to deliver them to the target contract.
 
 If you are participating in a Hackathon or Grant, [please fill out the relay
 request form](https://form.typeform.com/to/RsiUR9Xz) to be allowed to use the
 shared Message Executor.
+
+[Message Executor]: https://im-docs.celer.network/developer/development-guide/message-executor
 
 ## Supported Networks
 
 ### Mainnets
 
 | Name | Int ID | Hex ID | autoswitch name |
-| - | - | - | - |
+| ---- | ------ | ------ | --------------- |
 | Ape | 16350 | 0x3fde | ape |
 | Arbitrum Nova | 42170 | 0xa4ba | arbitrum-nova |
 | Arbitrum One | 42161 | a4b1 | arbitrum-one |
@@ -133,7 +136,7 @@ shared Message Executor.
 ### Testnets
 
 | Name | Int ID | Hex ID | autoswitch name |
-| - | - | - | - |
+| ---- | ------ | ------ | --------------- |
 | Arbitrum Testnet | 421611 | 0x66eeb | arbitrum-testnet |
 | Avalanche C-Chain Fuji Testnet | 43113 | 0xa869 | avalanche-fuji |
 | BSC Testnet | 97 | 0x61 | bsc-testnet |
@@ -149,3 +152,5 @@ shared Message Executor.
 | Sapphire Testnet | 23295 | 0x5aff | sapphire-testnet |
 | Scroll Alpha Testnet | 534353 | 0x82751 | scroll-testnet |
 | Shibuya Testnet | 81 | 0x51 | shibuya-testnet |
+
+In the following sections we will look at a concrete example on how to build a confidential, cross-chain DAO-voting dApp from scratch using the Oasis Privacy Layer!

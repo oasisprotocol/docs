@@ -20,10 +20,6 @@ const config = {
   projectName: 'docs', // Usually your repo name.
   deploymentBranch: 'gh-pages',
 
-  markdown: {
-    mermaid: true
-  },
-
   presets: [
     [
       'classic',
@@ -73,7 +69,7 @@ const config = {
         indexBlog: false,
         docsRouteBasePath: '/',
       },
-    ]
+    ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

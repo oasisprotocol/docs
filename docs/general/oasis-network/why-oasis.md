@@ -138,7 +138,7 @@ The Oasis Foundation has been working with many talented dev teams via our [Gran
 * [Dead Man’s Switch](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-dead-mans-switch-32d07cdfc057): A decentralized, censorship-resistant tool for whistleblowers
 * [Luther.ai:](https://luther.ai)  Building artificial intelligence to Retain, Reinforce, Recall and ultimately augment your human memory.
 * [Oasis.Fish (by Stakefish)](https://oasis.fish/leaderboard/)
-* [Oasis Hubble (by Figment Networks)](https://www.figment.io/hubble)
+* [Oasis Hubble (by Figment Networks)](https://www.figment.io/)
 * [Oasis Monitor (by Everstake)](https://oasismonitor.com)
 * [Oasisscan (by bitcat)](https://oasisscan.com)
 * [Oasis Smartstake (by Smartstake)](https://oasis.smartstake.io): Providing validation services for the Oasis Network
@@ -165,7 +165,7 @@ The Oasis Team is made up of world-leading researchers, security experts, and pr
 
 #### [Oasis Foundation](https://www.linkedin.com/company/oasisprotocol/)
 
-* [See team page on our website](https://oasisprotocol.org/about-us)
+* [See team page on our website](https://oasisprotocol.org)
 
 #### [Oasis Labs](https://www.linkedin.com/company/oasis-labs)
 

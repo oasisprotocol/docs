@@ -85,7 +85,7 @@ so the query can only be performed within a block and account `nonce` range.
 These parameters are visible in the EIP-712 popup signed by the user. Queries
 with the same parameters will use the same leash.
 
-## Daily Sign-in with EIP-712
+## Daily Sign-In with EIP-712
 
 One strategy which can be used to reduce the number of transaction signing
 prompts when a user interacts with contracts via a dApp is to use

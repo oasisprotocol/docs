@@ -1,0 +1,5 @@
+sequenceDiagram
+    User ->> Home Contract: Transaction
+    Home Contract -->> SGN: SGN Watches Events
+    SGN -->> Executor: Waits for SGN Approval
+    Executor ->> Sapphire Contract: Submit Proof Tx

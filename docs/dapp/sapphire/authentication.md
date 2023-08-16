@@ -76,7 +76,7 @@ which created the contract, calling `isOwner` will return:
 
 ## Caching Signed Queries
 
-When using "Signed Queries" the blockchain will be queried each time, however
+When using signed queries the blockchain will be queried each time, however
 the Sapphire wrapper will cache signatures for signed queries with the same
 parameters to avoid asking the user to sign the same thing multiple times.
 

@@ -22,7 +22,9 @@ another contract in a way which could reveal sensitive information, the calling
 contract must implement access control or authentication.
 
 By default all `eth_call` queries used to invoke contract functions have the
-`msg.sender` parameter is set to `address(0x0)`. And when a transaction is
+`msg.sender` parameter set to `address(0x0)`. In contrast, authenticated calls are
+signed by a keypair and will have the `msg.sender` parameter correctly initialized
+(more on that later). Also, when a transaction is
 submitted it is signed by a keypair (thus costs gas and can make state updates)
 the `msg.sender` will be set to the signing account.
 

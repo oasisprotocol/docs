@@ -21,6 +21,8 @@ The user submits a transaction on the Home network to a contract which uses
 The Executor waits, when the SGN approves the message the Executor submits a
 transaction to the target contract on Sapphire.
 
+![Transaction Flow](../diagrams/opl-contract-flow.mmd.svg)
+
 The Home Contract pays the SGN to watch and approve the message, but the
 Executor needs to be run by somebody willing to pay for the gas to submit
 transactions to the destination chain.
@@ -31,13 +33,14 @@ transactions to the destination chain.
 
 ## Quickstart
 
-A of pair contracts are linked bidirectionally 1-1 to each other across chains,
+A pair of contracts are linked bidirectionally 1-1 to each other across chains,
 with one end on Sapphire and the other on a supported EVM-compatible chain (the
 Home Network). They can post and receive messages to & from each other using the
 message-passing bridge, but must register endpoints to define which messages
 they handle from each other.
 
-Start by adding the [`@oasisprotocol/sapphire-contracts`] NPM package to your Hardhat or Truffle project so you can import `OPL.sol`:
+Start by adding the [`@oasisprotocol/sapphire-contracts`] NPM package to your
+Hardhat or Truffle project so you can import `OPL.sol`:
 
 ```shell
 pnpm add @oasisprotocol/sapphire-contracts
@@ -48,7 +51,7 @@ pnpm add @oasisprotocol/sapphire-contracts
 Then define the two contracts, starting with a contract on Sapphire which runs
 inside the confidential enclave and can be called via the `secretExample`
 handler. Use the constructor to provide the Sapphire contract with the location
-(address and chain) of the contract on the Home network::
+(address and chain) of the contract on the Home network:
 
 ```solidity
 import {Enclave, Result, autoswitch} from "@oasisprotocol/sapphire-contracts/contracts/OPL.sol";
@@ -92,7 +95,9 @@ message.
 
     https://api.celerscan.com/scan/searchByTxHash?tx=0x...
 
-For details of the response format, see the [Query IM Tx Status] page of the Celer Inter-Chain Message (IM) documentation. Using this API lets you to check if messages have been delivered.
+For details of the response format, see the [Query IM Tx Status] page of the
+Celer Inter-Chain Message (IM) documentation. Using this API lets you to check
+if messages have been delivered.
 
 [Query IM Tx Status]: https://im-docs.celer.network/developer/development-guide/query-im-tx-status
 
@@ -153,4 +158,5 @@ shared Message Executor.
 | Scroll Alpha Testnet | 534353 | 0x82751 | scroll-testnet |
 | Shibuya Testnet | 81 | 0x51 | shibuya-testnet |
 
-In the following sections we will look at a concrete example on how to build a confidential, cross-chain DAO-voting dApp from scratch using the Oasis Privacy Layer!
+In the following sections we will look at a concrete example on how to build a
+confidential, cross-chain DAO-voting dApp from scratch using the Oasis Privacy Layer!

@@ -26,7 +26,7 @@ By default all `eth_call` queries used to invoke contract functions have the
 signed by a keypair and will have the `msg.sender` parameter correctly initialized
 (more on that later). Also, when a transaction is
 submitted it is signed by a keypair (thus costs gas and can make state updates)
-the `msg.sender` will be set to the signing account.
+and the `msg.sender` will be set to the signing account.
 
 ## Sapphire Wrapper
 

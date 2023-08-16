@@ -30,7 +30,7 @@ and the `msg.sender` will be set to the signing account.
 
 ## Sapphire Wrapper
 
-The Ethereum provider wrapper provided by the [@oasisprotocol/sapphire-paratime][sp-npm]
+The [@oasisprotocol/sapphire-paratime][sp-npm] Ethereum provider wrapper
 `sapphire.wrap` function will automatically end-to-end encrypt calldata when
 interacting with contracts on Sapphire, this is an easy way to ensure the
 calldata of your dApp transactions remain confidential - although the `from`,

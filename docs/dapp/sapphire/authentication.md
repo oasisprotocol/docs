@@ -89,7 +89,7 @@ with the same parameters will use the same leash.
 
 One strategy which can be used to reduce the number of transaction signing
 prompts when a user interacts with contracts via a dApp is to use
-[EIP-712][eip-712] to "Sign-in" once per day (or per-session), in combination
+[EIP-712][eip-712] to "sign-in" once per day (or per-session), in combination
 with using two wrapped providers:
 
 [eip-712]: https://eips.ethereum.org/EIPS/eip-712

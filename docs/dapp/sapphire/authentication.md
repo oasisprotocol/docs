@@ -12,7 +12,7 @@ impersonation of any `msg.sender`.
 
 In Sapphire, there are four types of contract calls:
 
- 1. Contract to Contract calls (also known as *internal calls*)
+ 1. Contract to contract calls (also known as *internal calls*)
  2. Unauthenticted view calls (Queries using `eth_call`)
  3. Authenticated view calls (Signed Queries)
  4. Transactions (authenticated by signature)

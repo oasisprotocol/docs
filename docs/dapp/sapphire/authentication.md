@@ -10,7 +10,7 @@ EVM prevents contracts from revealing confidential information to the wrong
 party (account or contract) - for this reason we cannot allow arbitrary
 impersonation of any `msg.sender`.
 
-There are four types of contract calls:
+In Sapphire, there are four types of contract calls:
 
  1. Contract to Contract calls (also known as *internal calls*)
  2. Unauthenticted view calls (Queries using `eth_call`)

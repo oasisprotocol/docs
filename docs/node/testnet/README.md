@@ -83,7 +83,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0-testnet#building)):
   * [10.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v10.0.0-testnet)
 * Web3 Gateway version:
-  * [3.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.3.0)
+  * [3.4.0-rc1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0-rc1)
 
 ### Sapphire
 
@@ -93,8 +93,9 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
   * [0.5.2-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.5.2-testnet)
+  * [0.6.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.6.0-testnet)
 * Web3 Gateway version:
-  * [3.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.3.0)
+  * [3.4.0-rc1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0-rc1)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
 

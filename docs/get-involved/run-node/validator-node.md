@@ -13,7 +13,7 @@ Hence, it needs a set of distributed node operators that run different nodes (in
 
 Make sure your system meets the [Hardware](../../node/run-your-node/prerequisites/hardware-recommendations.md) prerequisites and has [Oasis Node](../../node/run-your-node/prerequisites/oasis-node.md) installed.
 
-Then proceed by following the [Run a Validator Node](../../node/run-your-node/validator-node/README.md) guide to:
+Then proceed by following the [Run a Validator Node](../../node/run-your-node/validator-node.mdx) guide to:
 
 * Create your entity.
 * Initialize and configure your node.
@@ -26,7 +26,7 @@ To become a validator on the Oasis Network, you need to have enough tokens stake
 
 :::info
 
-For more information about obtaining information on your entity's account, see the [Account Get Info](../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md) doc.
+For more information about obtaining information on your entity's account, see the [Account Get Info](../../general/manage-tokens/cli/account.md#show) doc.
 
 :::
 

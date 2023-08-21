@@ -158,8 +158,8 @@ oasis-node consensus submit_tx \
 ```
 
 [upgrade governance proposal]: ../../core/consensus/services/governance.md#submit-proposal
-[your entity's nonce]: ../../general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce
-[Oasis CLI Tools Setup]: ../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable
+[your entity's nonce]: ../../general/manage-tokens/cli/account.md#show
+[Oasis CLI Tools Setup]: ../../core/oasis-node/cli.md#storing-base-and-signer-flags-in-an-environment-variable
 [Installing Oasis App on Your Ledger Wallet]:
   ../../oasis-core-ledger/usage/setup#installing-oasis-app-on-your-ledger-wallet
 
@@ -504,7 +504,7 @@ The output should look like:
 ]
 ```
 
-Obtain [your entity's nonce](../../general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce.md#get-your-entitys-nonce) and store it in the `NONCE` variable. You can do that by running:
+Obtain [your entity's nonce](../../general/manage-tokens/cli/account.md#show) and store it in the `NONCE` variable. You can do that by running:
 
 ```yaml
 ENTITY_DIR=<PATH-TO-YOUR-ENTITY>
@@ -528,7 +528,7 @@ oasis-node governance gen_cast_vote \
   --transaction.fee.amount 2000
 ```
 
-where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#storing-base-and-signer-flags-in-an-environment-variable) doc.
+where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](../../core/oasis-node/cli.md#storing-base-and-signer-flags-in-an-environment-variable) doc.
 
 :::caution
 

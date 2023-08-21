@@ -23,7 +23,7 @@ We expect the Testnet network to reach this epoch at around 2022-04-04 7:45 UTC.
 
 * (optional) Vote for the upgrade. On 2022-04-01, an upgrade proposal will be
   proposed which (if accepted) will schedule the upgrade on epoch **15056**.
-  See the [Governance documentation](../run-your-node/validator-node/governance.md)
+  See the [Governance documentation](../../general/manage-tokens/cli/network.md#governance-cast-vote)
   for details on voting for proposals.
 
 :::info
@@ -106,7 +106,7 @@ We expect the Testnet network to reach this epoch at around 2022-03-03 12:45 UTC
 
 ### Instructions
 
-* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](../run-your-node/validator-node/governance.md) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2022-03-02, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **14209.** See the [Governance documentation](../../general/manage-tokens/cli/network.md#governance-cast-vote) for details on voting for proposals.
 
 :::caution
 
@@ -395,7 +395,7 @@ We expect the Testnet network to reach this epoch at around 2021-06-23 14:30 UTC
 ### Instructions
 
 * See [Before upgrade](upgrade-log.md#before-upgrade) section for required steps to be done before upgrade.
-* (optional) Vote for the upgrade. On 2021-06-21, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **7553.** See the [Governance documentation](../run-your-node/validator-node/governance.md) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2021-06-21, an upgrade proposal will be proposed which (if accepted) will schedule the upgrade on epoch **7553.** See the [Governance documentation](../../general/manage-tokens/cli/network.md#governance-cast-vote) for details on voting for proposals.
 
 :::info
 
@@ -510,7 +510,7 @@ We expect the Testnet network to reach this epoch at around 2021-04-13 12:00 UTC
 ### Instructions
 
 * Runtime operators see [Before upgrade](upgrade-log.md#before-upgrade) section for required steps to be done before upgrade.
-* (optional) Vote for the upgrade. On 2021-04-12 an upgrade proposal will be proposed which (if accepted) will schedule a network shutdown on epoch **5662.** See the [Governance documentation](../run-your-node/validator-node/governance.md) for details on voting for proposals.
+* (optional) Vote for the upgrade. On 2021-04-12 an upgrade proposal will be proposed which (if accepted) will schedule a network shutdown on epoch **5662.** See the [Governance documentation](../../general/manage-tokens/cli/network.md#governance-cast-vote) for details on voting for proposals.
 
 :::caution
 

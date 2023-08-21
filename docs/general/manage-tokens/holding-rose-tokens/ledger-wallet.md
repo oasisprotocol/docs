@@ -158,4 +158,4 @@ Ledger is supported by the Oasis CLI. Follow the instructions in the
 [Nano S Plus]: https://support.ledger.com/hc/en-us/articles/4445777839901-Update-Ledger-Nano-S-Plus-firmware
 [BIP 39]: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 [Oasis Wallets]: ../oasis-wallets/README.mdx
-[Oasis CLI Tools]: ../advanced/oasis-cli-tools/README.md
+[Oasis CLI Tools]: ../cli/README.md

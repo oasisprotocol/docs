@@ -2,7 +2,7 @@
 
 :::info
 
-These instructions are for setting up a _key manager_ node. Key manager nodes run a special runtime that provides confidentiality to other ParaTimes. If you want to run a _validator_ node instead, see the [instructions for running a validator node](../validator-node/README.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](../paratime-node.mdx).
+These instructions are for setting up a _key manager_ node. Key manager nodes run a special runtime that provides confidentiality to other ParaTimes. If you want to run a _validator_ node instead, see the [instructions for running a validator node](../validator-node.mdx). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](../paratime-node.mdx).
 
 :::
 
@@ -33,7 +33,7 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
 
 :::tip
 
-Reading the rest of the [validator node setup instructions](../validator-node/README.md) and [ParaTime node setup instructions](../paratime-node.mdx) may also be useful.
+Reading the rest of the [validator node setup instructions](../validator-node.mdx) and [ParaTime node setup instructions](../paratime-node.mdx) may also be useful.
 
 :::
 

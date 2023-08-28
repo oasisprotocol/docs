@@ -219,13 +219,13 @@ do instead is fork that contract and remove the offending emissions.
 
 ## Contract Verification
 
-[Sourcify] is the preferred service for the verification of contracts deployed
-on Sapphire. Make sure you have the **address of each deployed contract**
-available (your deployment scripts should report those) and the **contracts JSON
-metadata file** generated when compiling contracts (Hardhat stores it inside the
-`artifacts/build-info` folder and names it as a 32-digit hex number). If your
-project contains multiple contracts, you will need to verify each contract
-separately.
+[Sourcify] is the preferred service for the [verification of smart
+contracts][ethereum-contract-verify] deployed on Sapphire. Make sure you have
+the **address of each deployed contract** available (your deployment scripts
+should report those) and the **contracts JSON metadata file** generated when
+compiling contracts (Hardhat stores it inside the `artifacts/build-info` folder
+and names it as a 32-digit hex number). If your project contains multiple
+contracts, you will need to verify each contract separately.
 
 :::danger Contract deployment encryption
 
@@ -233,18 +233,18 @@ separately.
 if you want to verify it.** For example, if your `hardhat.config.ts`
 or deployment script contains `import '@oasisprotocol/sapphire-hardhat'` or
 `import '@oasisprotocol/sapphire-paratime'` lines at the beginning, you should
-comment those out during the deployment.
+comment those out for the deployment.
 
 Verification services will try to match the contract deployment transaction code
 with the one in the provided contract's metadata and since the transaction was
 encrypted with an ephemeral ParaTime key, the verification service will not be
-able to decode it. Some services may extract the contract's bytecode from the
+able to decrypt it. Some services may extract the contract's bytecode from the
 chain directly by calling `eth_getCode` RPC, but this will not work correctly
-for contracts with immutable variables passed in the constructor.
+for contracts with immutable variables.
 
 :::
 
-To verify a contract deployed on Sapphire Mainnet or Testnet, follow steps:
+To verify a contract deployed on Sapphire Mainnet or Testnet:
 
 1. Visit the [Sourcify] website and hit the "VERIFY CONTRACT" button.
 
@@ -284,10 +284,8 @@ the source code `.sol` file of the contract is the same as the one used during t
 deployment (including the comments, variable names and source code file
 names) and use the same version of Hardhat and solc compiler.
 
-To learn more about Sourcify for contract verification, read the [official
-Sourcify contract verification instructions][sourcify-contract-verify]. If you
-are interested in the contract source verification topic in general, consult the
-official [verifying the contracts][ethereum-contract-verify] Ethereum article.
+You can also explore other verification methods on Sourcify by reading the
+[official Sourcify contract verification instructions][sourcify-contract-verify].
 
 [Sourcify]: https://sourcify.dev/
 [hardhat-example]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/hardhat

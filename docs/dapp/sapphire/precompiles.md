@@ -140,8 +140,16 @@ ed25519-based are equivalent, and all secp256k1-based methods are
 equivalent. `Sr25519` is not available and will return an error.
 
 ### Gas Cost
-* `0` (`Ed25519Oasis`), `1` (`Ed25519Pure`), `2` (`Ed25519PrehashedSha512`) - ed25519: cost 35,000,
-* `3` (`Secp256k1Oasis`), `4` (`Secp256k1PrehashedKeccak256`), `5` (`Secp256k1PrehashedSha256`) - secp256k1: cost 110,000 gas.
+* Ed25519: 1,000 gas
+  * `0` (`Ed25519Oasis`)
+  * `1` (`Ed25519Pure`)
+  * `2` (`Ed25519PrehashedSha512`)
+* Secp256k1: 1,500 gas.
+  * `3` (`Secp256k1Oasis`)
+  * `4` (`Secp256k1PrehashedKeccak256`)
+  * `5` (`Secp256k1PrehashedSha256`)
+* Secp256r1: 4,000 gas
+  * `7` (`Secp256r1PrehashedSha256`)
 
 ### Public Key Format
 
@@ -177,22 +185,25 @@ that take a pre-existing hash of the message, pass that in
 ### Signing Algorithms
 
 * `0` (`Ed25519Oasis`)
-  * 75,000 gas
+  * 1,500 gas
   * variable length context and message
 * `1` (`Ed25519Pure`)
-  * 75,000 gas
+  * 1,500 gas
   * empty context, variable length message
 * `2` (`Ed25519PrehashedSha512`)
-  * 75,000 gas
+  * 1,500 gas
   * pre-existing SHA-512 hash (64 bytes) as context, empty message
 * `3` (`Secp256k1Oasis`)
-  * 150,000 gas
+  * 3,000 gas
   * variable length context and message
 * `4` (`Secp256k1PrehashedKeccak256`)
-  * 150,000 gas
+  * 3,000 gas
   * pre-existing hash (32 bytes) as context, empty message
 * `5` (`Secp256k1PrehashedSha256`)
-  * 150,000 gas
+  * 3,000 gas
+  * pre-existing hash (32 bytes) as context, empty message
+* `7` (`Secp256r1PrehashedSha256`)
+  * 9,000 gas
   * pre-existing hash (32 bytes) as context, empty message
 
 ### Example
@@ -220,10 +231,16 @@ The `method`, `context_or_digest` and `message` parameters have the same meaning
 
 The algorithm-specific base cost below, with an additional 8 gas per 32 bytes of `context` and `message` for the `Ed25519Oasis`, `Ed25519Pure` and `Secp256k1Oasis` algorithms.
 
-* `0` (`Ed25519Oasis`), `1` (`Ed25519Pure`), `2` (`Ed25519PrehashedSha512`)
-  * 110,000 gas
-* `3` (`Secp256k1Oasis`), `4` (`Secp256k1PrehashedKeccak256`), `5` (`Secp256k1PrehashedSha256`)
-  * 210,000 gas
+* Ed25519: 2,000 gas
+  * `0` (`Ed25519Oasis`)
+  * `1` (`Ed25519Pure`)
+  * `2` (`Ed25519PrehashedSha512`)
+* Secp256k1: 3,000 gas
+  * `3` (`Secp256k1Oasis`)
+  * `4` (`Secp256k1PrehashedKeccak256`)
+  * `5` (`Secp256k1PrehashedSha256`)
+* Secp256r1: 7,900 gas
+  * `7` (`Secp256r1PrehashedSha256`)
 
 ### Example
 
@@ -238,3 +255,70 @@ bytes memory digest = abi.encodePacked(keccak256("signed message"));
 bytes memory signature = Sapphire.sign(alg, sk, digest, "");
 require( Sapphire.verify(alg, pk, digest, "", signature) );
 ```
+
+## SHA-512
+
+### Overview
+
+ * Precompile address: `0x0100000000000000000000000000000000000101`
+ * Parameters: `bytes input_data`
+
+Hash the input data with SHA-512, according to [NIST.FIPS.180-4]
+
+:::note SHA-512 is vulnerable to length-extension attacks
+
+Which is relevant if you are computing the hash of a secret message. The SHA-512/256 variant is not vulnerable to length-extension attacks.
+
+:::
+
+### Gas Cost
+
+* 115 gas, then 13 gas per word
+
+### Example
+
+```solidity
+bytes memory result = sha512(abi.encodePacked("input data"));
+```
+
+
+## SHA-512/256
+
+### Overview
+
+ * Precompile address: `0x0100000000000000000000000000000000000102`
+ * Parameters: `bytes input_data`
+
+Hash the input data with SHA-512/256, according to [NIST.FIPS.180-4]
+
+[NIST.FIPS.180-4]: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
+
+### Gas Cost
+
+ * 115 gas, then 13 gas per word
+
+### Example
+
+```solidity
+bytes32 result = sha512_256(abi.encodePacked("input data"));
+```
+
+
+## Subcall
+
+### Overview
+
+ * Precompile address: `0x0100000000000000000000000000000000000102`
+ * Parameters: `string method, bytes cborEncodedParams`
+
+Performs an Oasis SDK call, which allows Sapphire contracts to interact with the Consensus layer and other modules supported by the SDK. For more information about the specific modules and their available queries or calls see the [Oasis SDK modules source].
+
+[Oasis SDK modules source]: https://github.com/oasisprotocol/oasis-sdk/tree/main/runtime-sdk/src/modules
+
+### Gas Cost
+
+Varies per operation, refer to the oasis-sdk source code
+
+### Example
+
+TODO: an example

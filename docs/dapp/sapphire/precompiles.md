@@ -53,8 +53,6 @@ Feel free to discover other convenient libraries for Solidity inside the
 
 ## Generating Pseudo-Random Bytes
 
-### Overview
-
 * Precompile address: `0x0100000000000000000000000000000000000001`
 * Parameters: `uint num_bytes, bytes pers`
 * Gas cost: 10,000 minimum plus 240 per output word plus 60 per word of
@@ -91,8 +89,6 @@ defined in [NIST Special Publication 800-185](https://nvlpubs.nist.gov/nistpubs/
 
 ## X25519 Key Derivation
 
-### Overview
-
 * Precompile address: `0x0100000000000000000000000000000000000002`
 * Parameters: `bytes32 public_key, bytes32 private_key`
 * Gas cost: 100,000
@@ -106,8 +102,6 @@ bytes32 symmetric = Sapphire.deriveSymmetricKey(publicKey, privateKey);
 ```
 
 ## Deoxys-II Encryption
-
-### Overview
 
 * Encryption precompile address: `0x0100000000000000000000000000000000000003`
 * Decryption precompile address: `0x0100000000000000000000000000000000000004`
@@ -127,8 +121,6 @@ bytes memory decrypted = Sapphire.decrypt(key, nonce, encrypted, ad);
 
 ## Signing Keypairs Generation
 
-### Overview
-
 * Precompile address: `0x0100000000000000000000000000000000000005`
 * Parameters: `uint method, bytes seed`
 * Return value: `bytes public_key, bytes private_key`
@@ -136,7 +128,7 @@ bytes memory decrypted = Sapphire.decrypt(key, nonce, encrypted, ad);
 
 The available methods are items in the `Sapphire.SigningAlg` enum. Note,
 however, that the generation method ignores subvariants, so all three
-ed25519-based are equivalent, and all secp256k1-based methods are
+ed25519-based are equivalent, and all secp256k1 & secp256r1 based methods are
 equivalent. `Sr25519` is not available and will return an error.
 
 ### Gas Cost
@@ -154,7 +146,7 @@ equivalent. `Sr25519` is not available and will return an error.
 ### Public Key Format
 
  * Ed25519: 32 bytes
- * Secp256k1: 33 bytes, compressed format (0x02 or 0x03 prefix, then 32 byte X coordinate)
+ * Secp256k1 & Secp256r1: 33 bytes, compressed format (0x02 or 0x03 prefix, then 32 byte X coordinate)
 
 ### Example
 
@@ -169,18 +161,18 @@ bytes memory privateKey;
 
 ## Message Signing
 
-### Overview
-
 * Precompile address: `0x0100000000000000000000000000000000000006`
 * Parameters: `uint method, bytes private_key, bytes context_or_digest, bytes message`
 * Gas cost: see below for the method-dependent base cost, plus 8 gas per 32 bytes of context and message except digest.
 
-The `context_or_digest` and `messages` parameters change in meaning
-slightly depending on the method requested. For methods that take a
-context in addition to the message you must pass the context in the
-`context_or_digest` parameter and use `message` as expected. For methods
-that take a pre-existing hash of the message, pass that in
-`context_or_digest` and leave `message` empty. Specifically the `Ed25519Oasis` and `Secp256k1Oasis` variants take both a context and a message (each are variable length `bytes`), the context serves as a domain separator.
+The `context_or_digest` and `messages` parameters change in meaning slightly
+depending on the method requested. For methods that take a context in addition
+to the message you must pass the context in the `context_or_digest` parameter
+and use `message` as expected. For methods that take a pre-existing hash of the
+message, pass that in `context_or_digest` and leave `message` empty.
+Specifically the `Ed25519Oasis` and `Secp256k1Oasis` variants take both a
+context and a message (each are variable length `bytes`), the context serves as
+a domain separator.
 
 ### Signing Algorithms
 
@@ -220,16 +212,16 @@ bytes memory signature = Sapphire.sign(alg, sk, "", "signed message");
 
 ## Signature Verification
 
-### Overview
-
 * Precompile address: `0x0100000000000000000000000000000000000007`
 * Parameters: `uint method, bytes public_key, bytes context_or_digest, bytes message, bytes signature`
 
-The `method`, `context_or_digest` and `message` parameters have the same meaning as described above in the Message Signing section.
+The `method`, `context_or_digest` and `message` parameters have the same meaning
+as described above in the Message Signing section.
 
 ### Gas Cost
 
-The algorithm-specific base cost below, with an additional 8 gas per 32 bytes of `context` and `message` for the `Ed25519Oasis`, `Ed25519Pure` and `Secp256k1Oasis` algorithms.
+The algorithm-specific base cost below, with an additional 8 gas per 32 bytes of
+`context` and `message` for the `Ed25519Oasis`, `Ed25519Pure` and `Secp256k1Oasis` algorithms.
 
 * Ed25519: 2,000 gas
   * `0` (`Ed25519Oasis`)
@@ -258,18 +250,20 @@ require( Sapphire.verify(alg, pk, digest, "", signature) );
 
 ## SHA-512
 
-### Overview
-
  * Precompile address: `0x0100000000000000000000000000000000000101`
  * Parameters: `bytes input_data`
 
 Hash the input data with SHA-512, according to [NIST.FIPS.180-4]
 
-:::note SHA-512 is vulnerable to length-extension attacks
+:::warning SHA-512 is vulnerable to length-extension attacks
 
-Which is relevant if you are computing the hash of a secret message. The SHA-512/256 variant is not vulnerable to length-extension attacks.
+The SHA-512/256 variant (below) is not vulnerable to [length-extension attacks].
+Length extension attacks are relevant if, among other things, you are computing
+the hash of a secret message or computing merkle trees.
 
 :::
+
+[length-extension attacks]: https://en.wikipedia.org/wiki/Length_extension_attack
 
 ### Gas Cost
 
@@ -283,8 +277,6 @@ bytes memory result = sha512(abi.encodePacked("input data"));
 
 
 ## SHA-512/256
-
-### Overview
 
  * Precompile address: `0x0100000000000000000000000000000000000102`
  * Parameters: `bytes input_data`
@@ -306,19 +298,20 @@ bytes32 result = sha512_256(abi.encodePacked("input data"));
 
 ## Subcall
 
-### Overview
-
  * Precompile address: `0x0100000000000000000000000000000000000102`
  * Parameters: `string method, bytes cborEncodedParams`
 
-Performs an Oasis SDK call, which allows Sapphire contracts to interact with the Consensus layer and other modules supported by the SDK. For more information about the specific modules and their available queries or calls see the [Oasis SDK modules source].
-
-[Oasis SDK modules source]: https://github.com/oasisprotocol/oasis-sdk/tree/main/runtime-sdk/src/modules
+Subcall performs an Oasis SDK call. This allows Sapphire contracts to interact
+with the Consensus layer and other modules supported by the SDK. For more
+information about the specific modules and their available queries or calls see
+the Oasis SDK [source code].
 
 ### Gas Cost
 
-Varies per operation, refer to the oasis-sdk source code
+Varies per operation, refer to the oasis-sdk [source code].
 
 ### Example
 
 TODO: an example
+
+[source code]: https://github.com/oasisprotocol/oasis-sdk/tree/main/runtime-sdk/src/modules

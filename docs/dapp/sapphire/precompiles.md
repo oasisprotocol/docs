@@ -303,8 +303,8 @@ bytes32 result = sha512_256(abi.encodePacked("input data"));
 
 Subcall performs an Oasis SDK call. This allows Sapphire contracts to interact
 with the Consensus layer and other modules supported by the SDK. For more
-information about the specific modules and their available queries or calls see
-the Oasis SDK [source code].
+information about the specific modules and their available calls see the Oasis
+SDK [source code].
 
 ### Gas Cost
 

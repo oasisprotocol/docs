@@ -7,37 +7,25 @@ description: Submitting transactions without paying for fees
 When you submit a transaction to a blockchain, you need to pay certain fee
 (called *gas* in Ethereum jargon). Since only the transactions with the highest
 fee will be included in the block, this mechanism effectively prevents denial
-of service attacks on the network. On the other hand, paying for the gas
-requires the user to have certain amount of blockchain-native tokens available
-in their wallet. Such requirement may become a showstopper, if the user doesn't
-regularly use or even have access to crypto exchanges since they need to perform
-certain KYC and AML procedures apart from requiring from the user to buy actual
-tokens. This is especially annoying, if the transaction a user wanted to perform
-was not financially-related at all, but their account was used just for
-authentication. For example, suppose a user wanted to submit their vote in an
-on-chain, decentralized poll. Requiring blockchain-specific tokens in their
-account just to pay for a fee reduces their experience.
+of service attacks on the network. On the other hand, paying for gas requires
+from the user that they have certain amount of blockchain-native tokens
+available in their wallet which may not be feasible.
 
-There are two approaches on how to tackle paying for the gas problem above:
+In this chapter we will learn how the user signs and sends their transaction to
+a *relayer*. The relayer then wraps the original signed transaction into a new
+*meta-transaction* (see [ERC-2771] for details), signs it and pays for the
+necessary transaction fees. When the transaction is submitted the on-chain
+recipient contract decodes the meta-transaction, verifies both signatures and
+executes the original transaction.
 
-1. You send a small amount of tokens to the accounts of your users so that they
-   can pay for the fee when submitting a transaction, or
-2. The user signs and sends their transaction to a *relayer* which has enough
-   tokens to cover the transaction fees.
-
-A relayer wraps the original, signed transaction into a new *meta-transaction*
-(see [ERC-2771] for details). The meta-transaction is then signed by the relayer
-which also covers the fees and submits it. The on-chain recipient contract
-decodes the meta-transaction, verifies both signatures and executes it.
-
-Oasis Sapphire supports two transaction relaying methods: The on-chain signer
-exposes the Oasis-specific contract state encryption functionality while the gas
-station network method is a more standard approach known in other blockchains as
-well.
+Oasis Sapphire supports two transaction relaying methods: The **on-chain
+signer** exposes the Oasis-specific contract state encryption functionality
+while the **gas station network** method is a standardized approach known in
+other blockchains as well.
 
 :::caution
 
-The Gas Station Network implementation on Sapphire is still in early beta. Some
+The gas station network implementation on Sapphire is still in early beta. Some
 features such as the browser support are not fully implemented yet.
 
 :::
@@ -46,46 +34,222 @@ features such as the browser support are not fully implemented yet.
 
 ## On-Chain Signer
 
-The on-chain signer stores the private key of the relayer's account inside the
-encrypted smart contract state. When the user wants to submit a transaction
-without paying for the fee, they perform a signed contract call to the gasless
-wrapper and it will generate and return a signed meta-transaction following
-[EIP-155]. The user then simply submits the obtained transaction.
-
-In the remainder of the chapter, we explore two gasless methods on the voting
-example and answer
+The on-chain signer is a smart contract which receives the user's transaction,
+checks whether the transaction is valid, wraps it into a meta-transaction
+(which includes paying for the transaction fee) and returns it back to the user
+in [EIP-155] format. These steps are executed as a confidential call. Finally,
+the user submits the generated transaction to the network.
 
 ![Diagram of the On-Chain Signing](../images/sapphire/gasless-on-chain-signer.svg)
 
-Compared to the gas station network method, the meta-transaction generation is
-performed on-chain and can be audited and trusted. Also, since the transaction
-is submitted by the user and not the trusted relayer, it is censorship
-resistant.
+### EIP155Signer
 
-TODO: Confidentiality
+To sign a transaction, the Sapphire's `EIP155Signer` library bundled along the
+`@oasisprotocol/sapphire-contract` package comes with the following helper which
+returns a raw, RLP-encoded, signed transaction ready to be broadcast:
+
+```solidity
+function sign(address publicAddress, bytes32 secretKey, EthTx memory transaction) internal view returns (bytes memory);
+```
+
+`publicAddress` and `secretKey` are the signer's address and their private key
+used to sign a meta-transaction (and pay for the fees). We will store these
+sensitive data inside the encrypted smart contract state together with the
+signer's `nonce` field in the following struct:
+
+```solidity
+struct EthereumKeypair {
+  address addr;
+  bytes32 secret;
+  uint64 nonce;
+}
+```
+
+The last `transaction` parameter in the `sign()` function is the transaction
+encoded in a format based on [EIP-155]. This can either be the original user's
+transaction or a meta-transaction.
+
+### Gasless Proxy Contract
+
+The following snippet is a complete *Gasless* contract for wrapping the user's
+transactions (`makeProxyTx()`) and executing them (`proxy()`). The signer's
+private key containing enough balance to cover transaction fees should be
+provided in the constructor.
+
+```solidity
+import {EIP155Signer} from '@oasisprotocol/sapphire-contracts/contracts/EIP155Signer.sol';
+
+struct EthereumKeypair {
+  address addr;
+  bytes32 secret;
+  uint64 nonce;
+}
+
+struct EthTx {
+  uint64 nonce;
+  uint256 gasPrice;
+  uint64 gasLimit;
+  address to;
+  uint256 value;
+  bytes data;
+  uint256 chainId;
+}
+
+// Proxy for gasless transaction.
+contract Gasless {
+  EthereumKeypair private kp;
+
+  function setKeypair(EthereumKeypair memory keypair)
+  external payable
+  {
+    kp = keypair;
+  }
+
+  function makeProxyTx(
+    address innercallAddr,
+    bytes memory innercall
+  )
+  external view
+  returns (bytes memory output)
+  {
+    bytes memory data = abi.encode(innercallAddr, innercall);
+
+    // Call will invoke proxy().
+    return EIP155Signer.sign(kp.addr, kp.secret, EIP155Signer.EthTx({
+      nonce: kp.nonce,
+      gasPrice: 100_000_000_000,
+      gasLimit: 250000,
+      to: address(this),
+      value: 0,
+      data: abi.encodeCall(this.proxy, data),
+      chainId: block.chainid
+    }));
+  }
+
+  function proxy(bytes memory data)
+  external payable
+  {
+    (address addr, bytes memory subcall_data) = abi.decode(data, (address, bytes));
+    (bool success, bytes memory out_data) = addr.call{value: msg.value}(subcall_data);
+    if (!success) {
+      // Add inner-transaction meaningful data in case of error.
+      assembly { revert(add(out_data,32), mload(out_data)) }
+    }
+    kp.nonce += 1;
+  }
+}
+```
+
+:::tip
+
+The snippet above only runs on Sapphire Mainnet, Testnet or Localnet.
+`EIP155Signer.sign()` is not supported on other EVM chains.
+
+:::
+
+### Simple Gasless Commenting dApp
+
+Let's see how we can implement on-chain signer for a gasless commenting dApp
+like this:
+
+```solidity
+contract CommentBox {
+  string[] public comments;
+  
+  function comment(string memory commentText)
+  external
+  {
+    comments.push(commentText);
+  }
+}
+```
+
+Then, the TypeScript code on a client side for submitting a comment in a gasless
+fashion would look like this:
+
+```typescript
+const CommentBox = await ethers.getContractFactory("CommentBox");
+const commentBox = await CommentBox.deploy();
+const Gasless = await ethers.getContractFactory("Gasless");
+const gasless = await Gasless.deploy();
+
+// Set the private key of the 2nd builtin test mnemonic account.
+await gasless.setKeypair({
+  addr: "70997970C51812dc3A010C7d01b50e0d17dc79C8",
+  secret: Uint8Array.from(Buffer.from("59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d", 'hex')),
+  nonce: 0,
+});
+
+const innercall = commentBox.interface.encodeFunctionData("comment", ["Hello, free world!"]);
+const tx = await gasless.makeProxyTx(commentBox.address, innercall);
+
+const plain_provider = new ethers.providers.JsonRpcProvider(ethers.provider.connection);
+const plain_resp = await plain_provider.sendTransaction(tx);
+
+const receipt = await ethers.provider.waitForTransaction(plain_resp.hash);
+if (!receipt || receipt.status != 1) throw new Error('tx failed');
+```
+
+### Gasless Proxy in Production
+
+The snippets above have shown how the on-chain signer can generate and sign a
+meta-transaction for arbitrary transaction. In production environment however,
+you must consider the following:
+
+#### Confidentiality
+
+Both the inner- and the meta-transaction are stored on-chain unencrypted. Use
+`Sapphire.encrypt()` and `Sapphire.decrypt()` call on the inner-transaction with
+an encryption key generated and stored inside a confidential contract state.
+
+#### Gas Cost and Gas Limit
+
+The gas cost and the gas limit in our snippet were hardcoded inside the
+contract. Ideally the gas cost should be dynamically adjusted by an oracle and
+the gas limit determined based on the type of transactions. **Never let gas cost
+and limit to be freely defined by the user, since they can drain your relayer's
+account.**
+
+#### Allowed Transactions
+
+Your relayer will probably be used for transactions of a specific contract only.
+One approach is to store the allowed address of the target contract and **only
+allow calls to this contract address**.
+
+#### Access Control
+
+You can either whitelist specific addresses of the users in the relayer contract
+or implement the access control in the target contract. In the latter case, the
+relayer's `makeProxyTx()` should simulate the execution of the inner-transaction
+and generate the meta-transaction only if it inner-transaction succeeded.
+
+#### Multiple Signers
+
+Only one transaction per block can be relayed by the same signer since the order
+of the transactions is not deterministic and nonces could mismatch. To overcome
+this, relayer can randomly pick a signer from the **pool of signers**. When the
+transaction is relayed, don't forget to reimburse the signer of the transaction!
 
 :::info Example
 
-You can view the source of a complete example in the [demo-voting] repository.
-You can also try out a deployed gasless version of the voting dApp on the
-[Oasis Playground site][demo-voting-playground]. The ACL is configured so that
-anyone can vote on any poll and only poll creators can close the poll.
+All the above points are considered in the [Demo Voting dApp][demo-voting].
+You can explore the code and also try out a deployed gasless version of the
+voting dApp on the [Oasis Playground site][demo-voting-playground]. The access
+control list is configured so that anyone can vote on any poll and only poll
+creators can close the poll.
 
 :::
 
 [demo-voting]: https://github.com/oasisprotocol/demo-voting
 [demo-voting-playground]: https://playground.oasis.io/demo-voting
+[dao-opl]: ../opl/host.md
 [EIP-155]: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md
 
 ## Gas Station Network
 
-[Gas Station Network](https://docs.opengsn.org) (GSN) is very useful for improving
-the user experience of many dApps by making their users send transactions
-without having native tokens for gas. We make GSN functionalities available on
-Sapphire ParaTime.
-
-The diagram below illustrates a flow for signing a transaction by using a Gas
-Station Network[^1].
+[Gas Station Network](https://docs.opengsn.org) (GSN) was adapted to work with
+Sapphire in a forked `@oasislabs/opengsn-cli` package. The diagram below
+illustrates a flow for signing a transaction by using a GSN[^1].
 
 ![Diagram of the Gas Station Network Flow](../images/sapphire/gasless-gsn-flow.jpg)
 
@@ -113,7 +277,7 @@ export PRIVATE_KEY=...
 
 ### Deploy GSN
 
-We will deploy GSN relaying contracts along with the test paymaster using a
+Deploy GSN relaying contracts along with the test paymaster using a
 test token. Use the address of your account as `--burnAddress` and
 `--devAddress` parameters:
 

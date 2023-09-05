@@ -42,6 +42,17 @@ You could also copy the whole `tendermint` directory from your synced Oasis Node
 
 :::
 
+:::caution
+
+If you are copying data from a node that is running [TEE-enabled ParaTimes], you
+must make sure to **remove** the `runtimes/*/worker-local-storage.badger.db` as
+otherwise the ParaTime binary may fail to start on a different node since it
+contains data sealed to the source CPU.
+
+[TEE-enabled ParaTimes]: ../prerequisites/set-up-trusted-execution-environment-tee.md
+
+:::
+
 * Start back the synced Oasis Node.
 
 Finally, start your new Oasis Node for the first time.

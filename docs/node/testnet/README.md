@@ -55,7 +55,7 @@ The Oasis Node is part of the Oasis Core release.
 
 ## ParaTimes
 
-This section contains parameters for various ParaTimes known to be deployed on the Testnet. Similar to the Testnet, these may be subject to frequent version upgrades and/or state resets.
+This chapter contains parameters for various ParaTimes known to be deployed on the Testnet. Similar to the Testnet, these may be subject to frequent version upgrades and/or state resets.
 
 ### Cipher
 

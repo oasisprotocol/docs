@@ -6,7 +6,7 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 ## Use Oasis
 
-The introductory section contains general overview of the Oasis Network such as
+This introductory part contains general overview of the Oasis Network such as
 the distinction between the consensus layer and different ParaTimes. It
 also covers wallets and other tools for managing your assets across the Oasis
 chains and how to use unique Oasis features.
@@ -14,6 +14,7 @@ chains and how to use unique Oasis features.
 <DocCardList items={[
     findSidebarItem('/general/oasis-network/'),
     findSidebarItem('/general/manage-tokens/'),
+    findSidebarItem('/general/manage-tokens/cli/'),
 ]} />
 
 ## Create dApp
@@ -25,7 +26,7 @@ encryption**. The Oasis team also prepared a set of libraries called the
 [Oasis Privacy Layer] to **bridge existing dApps running on other chains** to
 use the unique Sapphire's confidentiality.
 
-The section also covers other ParaTimes such as the non-confidential
+The part also covers other ParaTimes such as the non-confidential
 [Oasis Emerald] and Wasm-compatible, confidential [Oasis Cipher].
 
 <DocCardList items={[
@@ -54,7 +55,7 @@ developers and how to contribute to the network.
 
 ## Run Node
 
-If you want to run your own Oasis node, the following section will provide you
+If you want to run your own Oasis node, this part will provide you
 with guides on the current Mainnet and Testnet network parameters and how to
 set up your node, let it be a validator node, perhaps running a ParaTime or
 just a simple client node for your server to submit transactions and perform
@@ -69,22 +70,23 @@ queries on the network.
 
 ## Build ParaTimes
 
-Apart from Emerald, Cipher, Sapphire and the Key manager ParaTimes, developers
-can learn how to write, compile, sign and deploy their own ParaTimes on the
-Oasis Network.
+Apart from the Sapphire, Emerald, Cipher and the Key manager ParaTimes,
+you can also write, compile, sign and deploy your own ParaTime on the Oasis
+Network. This part describes the knobs you need to use to do so.
 
 <DocCard item={findSidebarItem('/paratime/')} />
 
 ## Develop Core
 
 Whether you want to contribute your code to the core components of the Oasis
-Network or just learn more about the Oasis core, this is the place for you.
+Network or just learn more about the Oasis consensus layer and other core
+components, this is the part for you.
 
 <DocCard item={ findSidebarItem('/core/') } />
 
-Development of interoperable Oasis network components are made by consensus.
-Similar to the Ethereum's ERC/EIP mechanism, Oasis follows Architectural
-Decision Records (ADRs) which are first proposed, voted on and can then be
-implemented, if accepted.
+Additions or changes to the interoperable Oasis network components are always
+made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows
+formal Architectural Decision Records (ADRs) which are first proposed, voted on
+and finally implemented, if accepted.
 
 <DocCard item={ findSidebarItem('/adrs') } />

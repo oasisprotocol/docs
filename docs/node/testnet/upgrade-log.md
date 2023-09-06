@@ -6,6 +6,250 @@ node operators' deployments.
 
 They are enumerated and explained in this document.
 
+## 2023-10-05 Upgrade
+
+:::info
+
+Note that some of the software releases mentioned below have not yet been
+published. They are expected to become available as we get closer to the
+upgrade window.
+
+:::
+
+* **Upgrade height:** upgrade is scheduled to happen at epoch **XXX**.
+
+:::info
+
+We expect the Testnet network to reach this epoch at around 2023-10-05 8:00 UTC.
+
+:::
+
+### Instructions
+
+1. (optional) Vote for the upgrade. On 2023-10-02, an upgrade proposal will be
+   proposed which (if accepted) will schedule the upgrade on epoch **XXX**. See
+   the [Governance documentation] for details on voting for proposals.
+
+The following steps should be performed only after the network has reached the
+upgrade epoch and has halted:
+
+2. Download the Testnet genesis file published in the
+   [Testnet 2023-10-05 release].
+
+:::info
+
+Testnet state at epoch **XXX** will be exported and migrated to a 23.0
+compatible genesis file.
+
+The new genesis file will be published on the above link soon after reaching the
+upgrade epoch.
+
+:::
+
+3. Verify the provided Testnet upgrade genesis file by comparing it to the
+   local network state dump.
+
+   The state changes are described in the [State Changes](#state-changes)
+   section below.
+
+4. Replace the old genesis file with the new Testnet genesis file.
+
+5. Ensure your node will remain stopped by disabling auto-starting via your
+   process manager (e.g., [systemd] or [Supervisor])
+
+6. [Wipe state]. This must be performed _before_ replacing the Oasis Node
+   binary.
+
+:::danger
+
+State of ParaTimes/runtimes is not affected by this upgrade and MUST NOT be
+wiped. Wiping state for confidential ParaTimes will prevent your compute or
+key manager node from transitioning to the new network.
+
+Transitioning confidential ParaTimes to the new network requires local state
+that is sealed to the CPU. This also means that bootstrapping a new node on a
+separate CPU immediately after the network upgrade will not be possible until
+an updated ParaTime containing new trust roots is released and adopted.
+
+:::
+
+7. Replace the old version of Oasis Node with version [23.0].
+
+:::info
+
+The Oasis Core 23.0 binary in our published releases is built only for Ubuntu
+22.04. You'll have to build it yourself if you're using prior Ubuntu versions
+(or other distributions using older system libraries).
+
+:::
+
+8. Perform any needed [configuration changes](#configuration-changes) described
+   below.
+
+9. (only Web3 Gateway operators) Replace old version of Oasis Web3 Gateway with
+   version [4.0.0-rc1][web3-gw-4.0.0-rc1].
+
+10. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
+    Gateway with version [3.0.0-rc1][rosetta-gw-3.0.0-rc1].
+
+11. Start your node and re-enable auto-starting via your process manager.
+
+[Governance documentation]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
+[Testnet 2023-10-05 release]: https://github.com/oasisprotocol/testnet-artifacts/releases/tag/2023-10-05
+[systemd]: https://systemd.io/
+[Supervisor]: http://supervisord.org/
+[Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
+[23.0]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0
+[web3-gw-4.0.0-rc1]:
+  https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v4.0.0-rc1
+[rosetta-gw-3.0.0-rc1]:
+  https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v3.0.0-rc1
+
+### Configuration Changes
+
+:::info
+
+To see the full extent of the changes examine the [Change Log] of the 23.0
+release.
+
+:::
+
+The node configuration has been refactored so that everything is now configured
+via a YAML configuration file and **configuring via command-line options is no
+longer supported**.
+
+Some configuration options have changed and so the configuration file needs to
+be updated. To make this step easier, a command-line tool has been provided that
+will perform most of the changes automatically. You can run it with:
+
+```
+oasis-node config migrate --in config.yml --out new-config.yml
+```
+
+The migration subcommand logs the various changes it makes and warns you if a
+config option is no longer supported, etc. At the end, any unknown sections of
+the input config file are printed to the terminal to give you a chance to review
+them and make manual changes if required.
+
+Note that the migration subcommand does not preserve comments and order of
+sections from the input YAML config file. You should always carefully read the
+output of this command, as well as compare the generated config file with the
+original before using it.
+
+After you are satisfied with the new configuration file, replace the old file
+with the new one as follows:
+
+```
+mv new-config.yml config.yml
+```
+
+[Change Log]:
+  https://github.com/oasisprotocol/oasis-core/blob/v23.0/CHANGELOG.md
+### State Changes
+
+The following parts of the genesis document will be updated:
+
+:::info
+
+For a more detailed explanation of the parameters below, see the
+[Genesis Document] docs.
+
+:::
+
+:::info
+
+All state changes will be done automatically with the migration command provided
+by the new version of `oasis-node`. It can be used as follows to derive the same
+genesis file from an existing state dump at the correct height:
+
+```
+oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-05
+```
+
+:::
+
+#### **General**
+
+* **`chain_id`** will be set to `testnet-2023-10-05`.
+
+* **`halt_epoch`** will be removed as it is no longer used.
+
+#### **Registry**
+
+* **`registry.params.gas_costs.prove_freshness`** specifies the cost of the
+  freshness proof transaction. It will be set to `1000`.
+
+* **`registry.params.gas_costs.update_keymanager`** specifies the cost of the
+  keymanager policy update transaction. It will be removed as the parameter has
+  been moved under `keymanager.params.gas_costs.update_policy`.
+
+* **`registry.params.tee_features`** specify various TEE features supported by
+  the consensus layer registry service. These will be set to the following
+  values to activate the new features:
+
+  ```json
+  "tee_features": {
+    "sgx": {
+      "pcs": true,
+      "signed_attestations": true,
+      "max_attestation_age": 1200
+    },
+    "freshness_proofs": true
+  }
+  ```
+
+* **`registry.params.max_runtime_deployments`** specifies the maximum number of
+  runtime deployments that can be specified in the runtime descriptor. It will
+  be set to `5`.
+
+#### **Staking**
+
+* **`staking.params.commission_schedule_rules.min_commission_rate`** specifies
+  the minimum commission rate. It will be set to `0` to maintain the existing
+  behavior.
+
+#### **Key Manager**
+
+* **`keymanager.params.gas_costs`** specify the cost of key manager
+  transactions. These will be set to the following values:
+
+  ```json
+  "gas_costs": {
+    "publish_ephemeral_secret": 1000,
+    "publish_master_secret": 1000,
+    "update_policy": 1000
+  }
+  ```
+
+#### **Random Beacon**
+
+* **`beacon.base`** is the network's starting epoch. It will be set to the epoch
+  of Testnet's state dump + 1, `XXX`.
+
+#### **Governance**
+
+* **`governance.params.enable_change_parameters_proposal`** specifies whether
+  parameter change governance proposals are allowed. It will be set to `true`.
+
+#### Other
+
+* **`extra_data`** will be set back to the value in the [Mainnet genesis file]
+  to include the Oasis Network's genesis quote:
+
+  _”_[_Quis custodiet ipsos custodes?_][mainnet-quote]_” \[submitted by Oasis
+  Community Member Daniyar Borangaziyev]:_
+
+  ```
+  "extra_data": {
+    "quote": "UXVpcyBjdXN0b2RpZXQgaXBzb3MgY3VzdG9kZXM/IFtzdWJtaXR0ZWQgYnkgT2FzaXMgQ29tbXVuaXR5IE1lbWJlciBEYW5peWFyIEJvcmFuZ2F6aXlldl0="
+  }
+  ```
+
+[Genesis Document]: ../genesis-doc.md#parameters
+[Mainnet genesis file]:
+  https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18
+[mainnet-quote]: https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F
+
 ## 2022-04-04 Upgrade
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **15056**.

@@ -270,8 +270,10 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
 * **`roothash.params.gas_costs.submit_msg`** is a new parameter that specifies
   the cost for an submit message transaction. It will be set to `1000`.
   This will be done automatically with the `oasis-node debug fix-genesis` command.
-* **`roothash.params.max_in_runtime_messages`** is a new parameter that _TODO_.
-  It will be set to `128`.
+* **`roothash.params.max_in_runtime_messages`** is a new parameter that that
+  specifies the maximum number of incoming messages that can be queued for
+  processing by a runtime. It will be set to `128`.
+
   This will be done automatically with the `oasis-node debug fix-genesis` command.
 * **`roothash.runtime_state`** contains the state roots of the runtimes.
   Empty fields will be omitted.
@@ -308,17 +310,79 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
 
 ### **Random Beacon**
 
-* **`beacon.base`** is the network's starting epoch. It will be set to the epoch
-of Testnet's state dump + 1, i.e. `14210`.
+The **`beacon`** object contains parameters controlling the new
+[improved VRF-based random beacon][ADR 0010] introduced in the Damask upgrade.
+
+* **`beacon.base`** is the network's starting epoch. It will be set to the 
+`14209`.
+
 * **`beacon.params.backend`** configures the random beacon backend to use. It
-will be set to `"vrf"` indicating that the beacon implementing a _TODO_ should be used.
-* **`beacon.params.vrf_parameters.alpha_hq_threshold`** is _TODO_.
-* **`beacon.params.vrf_parameters.interval`** is _TODO_.
-* _TODO_
+will be set to `"vrf"` indicating that the beacon implementing a
+[VRF-based random beacon][ADR 0010] should be used.
+
+* **`beacon.params.vrf_parameters.alpha_hq_threshold`** is minimal number of
+  nodes that need to contribute a VRF proof for the beacon's output to be valid.
+  It will be set to `3`.
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+* **`beacon.params.vrf_parameters.interval`** is the duration of an epoch.
+  It will be set to `600`.
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+* **`beacon.params.vrf_parameters.proof_delay`** is number of blocks since the
+  beginning of an epoch after a node can still submit its VRF proof.
+  It will be set to `300`.
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+* **`beacon.params.vrf_parameters.gas_costs.vrf_prove`** specifies the cost for
+  a VRF prove transaction.
+  It will be set to `1000`.
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+The **`beacon.params.pvss_parameters`** control the behavior of the
+[previous random beacon implementing a PVSS scheme][pvss-beacon].
+
+Since PVSS is no longer supported, all its configuration options are removed
+as well.
+
+[ADR 0010]: ../../adrs/0010-vrf-elections
+[pvss-beacon]: ../../adrs/0007-improved-random-beacon.md
 
 ### **Governance**
 
-_TODO_
+* **`governance.params.stake_threshold`** is a new parameter specifying the
+  single unified stake threshold representing the percentage of `VoteYes` votes
+  in terms of total voting power for a governance proposal to pass.
+  It will be set to `68` (i.e. 68%).
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+* **`governance.params.quorum`** is the minimum percentage of voting power that
+  needs to be cast on a proposal for the result to be valid.
+
+  It will be removed since it is being replaced by the single
+  **`governance.params.staking_threshold`** parameter.
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
+
+* **`governance.params.threshold`** is the minimum percentage of `VoteYes` votes
+  in order for a proposal to be accepted.
+
+  It will be removed since it is being replaced by the single
+  **`governance.params.staking_threshold`** parameter.
+
+  This will be done automatically with the `oasis-node debug fix-genesis`
+  command.
 
 ### **Consensus**
 

@@ -23,7 +23,7 @@ We expect the Testnet network to reach this epoch at around 2023-10-XX X:XX UTC.
    the [Governance documentation] for details on voting for proposals.
 
 The following steps should be performed only after the network has reached the
-upgrade network and has halted:
+upgrade epoch and has halted:
 
 2. Download the Testnet genesis file published in the
    [Testnet 2023-10-XX release].
@@ -93,8 +93,8 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::info
 
-To see the full extent of the changes examine the [Change Log](https://github.com/oasisprotocol/oasis-core/blob/v23.0/CHANGELOG.md)
-of the 23.0 release.
+To see the full extent of the changes examine the [Change Log] of the 23.0
+release.
 
 :::
 
@@ -126,6 +126,10 @@ with the new one as follows:
 ```
 mv new-config.yml config.yml
 ```
+
+[Change Log]:
+  https://github.com/oasisprotocol/oasis-core/blob/v23.0/CHANGELOG.md
+
 
 ### State Changes
 

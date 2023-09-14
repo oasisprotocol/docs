@@ -77,7 +77,7 @@ private key containing enough balance to cover transaction fees should be
 provided in the constructor.
 
 ```solidity
-import {EIP155Signer} from '@oasisprotocol/sapphire-contracts/contracts/EIP155Signer.sol';
+import {EIP155Signer} from "@oasisprotocol/sapphire-contracts/contracts/EIP155Signer.sol";
 
 struct EthereumKeypair {
   address addr;
@@ -99,41 +99,47 @@ struct EthTx {
 contract Gasless {
   EthereumKeypair private kp;
 
-  function setKeypair(EthereumKeypair memory keypair)
-  external payable
-  {
+  function setKeypair(EthereumKeypair memory keypair) external payable {
     kp = keypair;
   }
 
-  function makeProxyTx(
-    address innercallAddr,
-    bytes memory innercall
-  )
-  external view
+  function makeProxyTx(address innercallAddr, bytes memory innercall)
+  external
+  view
   returns (bytes memory output)
   {
     bytes memory data = abi.encode(innercallAddr, innercall);
 
     // Call will invoke proxy().
-    return EIP155Signer.sign(kp.addr, kp.secret, EIP155Signer.EthTx({
-      nonce: kp.nonce,
-      gasPrice: 100_000_000_000,
-      gasLimit: 250000,
-      to: address(this),
-      value: 0,
-      data: abi.encodeCall(this.proxy, data),
-      chainId: block.chainid
-    }));
+    return
+      EIP155Signer.sign(
+        kp.addr,
+        kp.secret,
+        EIP155Signer.EthTx({
+          nonce: kp.nonce,
+          gasPrice: 100_000_000_000,
+          gasLimit: 250000,
+          to: address(this),
+          value: 0,
+          data: abi.encodeCall(this.proxy, data),
+          chainId: block.chainid
+        })
+      );
   }
 
-  function proxy(bytes memory data)
-  external payable
-  {
-    (address addr, bytes memory subcall_data) = abi.decode(data, (address, bytes));
-    (bool success, bytes memory out_data) = addr.call{value: msg.value}(subcall_data);
+  function proxy(bytes memory data) external payable {
+    (address addr, bytes memory subcallData) = abi.decode(
+      data,
+      (address, bytes)
+    );
+    (bool success, bytes memory outData) = addr.call{value: msg.value}(
+      subcallData
+    );
     if (!success) {
       // Add inner-transaction meaningful data in case of error.
-      assembly { revert(add(out_data,32), mload(out_data)) }
+      assembly {
+        revert(add(outData, 32), mload(outData))
+      }
     }
     kp.nonce += 1;
   }
@@ -155,10 +161,8 @@ like this:
 ```solidity
 contract CommentBox {
   string[] public comments;
-  
-  function comment(string memory commentText)
-  external
-  {
+
+  function comment(string memory commentText) external {
     comments.push(commentText);
   }
 }
@@ -173,22 +177,32 @@ const commentBox = await CommentBox.deploy();
 const Gasless = await ethers.getContractFactory("Gasless");
 const gasless = await Gasless.deploy();
 
-// Set the private key of the 2nd builtin test mnemonic account.
+// Set the keypair used to sign the meta-transaction.
 await gasless.setKeypair({
   addr: "70997970C51812dc3A010C7d01b50e0d17dc79C8",
   secret: Uint8Array.from(Buffer.from("59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d", 'hex')),
   nonce: 0,
 });
 
-const innercall = commentBox.interface.encodeFunctionData("comment", ["Hello, free world!"]);
+const innercall = commentBox.interface.encodeFunctionData('comment', ['Hello, free world!']);
 const tx = await gasless.makeProxyTx(commentBox.address, innercall);
 
-const plain_provider = new ethers.providers.JsonRpcProvider(ethers.provider.connection);
-const plain_resp = await plain_provider.sendTransaction(tx);
+const plainProvider = new ethers.providers.JsonRpcProvider(ethers.provider.connection);
+const plainResp = await plainProvider.sendTransaction(tx);
 
-const receipt = await ethers.provider.waitForTransaction(plain_resp.hash);
+const receipt = await ethers.provider.waitForTransaction(plainResp.hash);
 if (!receipt || receipt.status != 1) throw new Error('tx failed');
 ```
+
+:::info Example
+
+You can download a complete on-chain signer example based on the above snippets
+from the [Sapphire ParaTime examples] repository.
+
+:::
+
+[Sapphire ParaTime examples]:
+  https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/onchain-signer
 
 ### Gasless Proxy in Production
 

@@ -67,6 +67,12 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 7. Replace the old version of Oasis Node with version [23.0].
 
+:::info
+
+Oasis Core 23.0 binary is built only for Ubuntu 22.04. You'll have to build the core if you're using prior Ubuntu versions.
+
+:::
+
 8. Perform any needed [configuration changes](#configuration-changes) described
    below.
 

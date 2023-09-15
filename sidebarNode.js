@@ -17,6 +17,7 @@ const sidebars = {
         id: 'node/mainnet/README',
       },
       items: [
+        'node/mainnet/e-upgrade',
         'node/mainnet/damask-upgrade',
         {
           type: 'category',

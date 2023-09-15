@@ -69,7 +69,9 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::info
 
-Oasis Core 23.0 binary is built only for Ubuntu 22.04. You'll have to build the core if you're using prior Ubuntu versions.
+The Oasis Core 23.0 binary in our published releases is built only for Ubuntu
+22.04. You'll have to build it yourself if you're using prior Ubuntu versions
+(or other distributions using older system libraries).
 
 :::
 

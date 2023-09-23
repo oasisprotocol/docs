@@ -1,4 +1,4 @@
-# 🔮 Flair
+Index Emerald onchain data
 Real-time and historical custom data indexing for any evm chain.
 
 [Flair](https://flair.dev) offers reusable **indexing primitives** (such as fault-tolerant RPC ingestors, custom processors, re-org aware database integrations) to make it easy to receive, transform, store and access your on-chain data.

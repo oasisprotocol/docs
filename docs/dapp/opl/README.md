@@ -40,7 +40,7 @@ message-passing bridge, but must register endpoints to define which messages
 they handle from each other.
 
 Start by adding the [`@oasisprotocol/sapphire-contracts`] NPM package to your
-Hardhat or Truffle project so you can import `OPL.sol`:
+Hardhat project so you can import `OPL.sol`:
 
 ```shell
 pnpm add @oasisprotocol/sapphire-contracts

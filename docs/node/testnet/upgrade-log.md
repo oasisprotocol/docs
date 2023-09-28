@@ -202,11 +202,21 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-05
   runtime deployments that can be specified in the runtime descriptor. It will
   be set to `5`.
 
+### **Root Hash**
+
+* **`roothash.params.max_past_roots_stored`** specifies the maximum number of
+  past runtime state roots that are stored in consensus state for each runtime.
+  It will be set to `1200`.
+
 #### **Staking**
 
 * **`staking.params.commission_schedule_rules.min_commission_rate`** specifies
   the minimum commission rate. It will be set to `0` to maintain the existing
   behavior.
+
+* **`staking.params.thresholds.node-observer`** specifies the stake threshold
+  for registering an observer node. It will be set to `100000000000` base units
+  (or `100` tokens), same as for existing compute nodes.
 
 #### **Key Manager**
 

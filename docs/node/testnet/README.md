@@ -67,10 +67,11 @@ This section contains parameters for various ParaTimes known to be deployed on t
   * [2.6.2-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
+  * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
+Feel free to use other IAS proxies besides the ones provided here or [run your own](../run-your-node/ias-proxy.md).
 
 :::
 
@@ -98,10 +99,11 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [3.4.0-rc2](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0-rc2)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
+  * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
+Feel free to use other IAS proxies besides the ones provided here or [run your own](../run-your-node/ias-proxy.md).
 
 :::
 
@@ -115,9 +117,10 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [0.3.3-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.3-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
+  * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../run-your-node/ias-proxy.md).
+Feel free to use other IAS proxies besides the ones provided here or [run your own](../run-your-node/ias-proxy.md).
 
 :::

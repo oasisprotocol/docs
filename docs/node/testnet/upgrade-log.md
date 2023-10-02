@@ -26,7 +26,7 @@ We expect the Testnet network to reach this epoch at around 2023-10-05 8:00 UTC.
 
 ### Instructions
 
-1. (optional) Vote for the upgrade. On 2023-10-02, an upgrade proposal will be
+1. (optional) Vote for the upgrade. On 2023-10-03, an upgrade proposal will be
    proposed which (if accepted) will schedule the upgrade on epoch **XXX**. See
    the [Governance documentation] for details on voting for proposals.
 
@@ -57,7 +57,13 @@ upgrade epoch.
 5. Ensure your node will remain stopped by disabling auto-starting via your
    process manager (e.g., [systemd] or [Supervisor])
 
-6. [Wipe state]. This must be performed _before_ replacing the Oasis Node
+6. Back up the entire data directory of your node. Verify that the backup
+includes the following folders:
+- for consensus: `tendermint/abci-state` and `tendermint/data`
+- for runtimes: `runtimes/*/mkvs_storage.badger.db` and
+`runtimes/*/worker-local-storage.badger.db`
+
+7. [Wipe state]. This must be performed _before_ replacing the Oasis Node
    binary.
 
 :::danger
@@ -73,7 +79,7 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::
 
-7. Replace the old version of Oasis Node with version [23.0].
+8. Replace the old version of Oasis Node with version [23.0].
 
 :::info
 
@@ -83,16 +89,16 @@ The Oasis Core 23.0 binary in our published releases is built only for Ubuntu
 
 :::
 
-8. Perform any needed [configuration changes](#configuration-changes) described
+9. Perform any needed [configuration changes](#configuration-changes) described
    below.
 
-9. (only Web3 Gateway operators) Replace old version of Oasis Web3 Gateway with
+10. (only Web3 Gateway operators) Replace old version of Oasis Web3 Gateway with
    version [4.0.0-rc1][web3-gw-4.0.0-rc1].
 
-10. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
+11. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
     Gateway with version [3.0.0-rc1][rosetta-gw-3.0.0-rc1].
 
-11. Start your node and re-enable auto-starting via your process manager.
+12. Start your node and re-enable auto-starting via your process manager.
 
 [Governance documentation]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
 [Testnet 2023-10-05 release]: https://github.com/oasisprotocol/testnet-artifacts/releases/tag/2023-10-05

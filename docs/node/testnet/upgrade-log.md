@@ -6,7 +6,7 @@ node operators' deployments.
 
 They are enumerated and explained in this document.
 
-## 2023-10-05 Upgrade
+## 2023-10-12 Upgrade
 
 :::info
 
@@ -20,13 +20,13 @@ upgrade window.
 
 :::info
 
-We expect the Testnet network to reach this epoch at around 2023-10-05 8:00 UTC.
+We expect the Testnet network to reach this epoch at around 2023-10-12 8:00 UTC.
 
 :::
 
 ### Instructions
 
-1. (optional) Vote for the upgrade. On 2023-10-03, an upgrade proposal will be
+1. (optional) Vote for the upgrade. On 2023-10-09, an upgrade proposal will be
    proposed which (if accepted) will schedule the upgrade on epoch **XXX**. See
    the [Governance documentation] for details on voting for proposals.
 
@@ -34,7 +34,7 @@ The following steps should be performed only after the network has reached the
 upgrade epoch and has halted:
 
 2. Download the Testnet genesis file published in the
-   [Testnet 2023-10-05 release].
+   [Testnet 2023-10-12 release].
 
 :::info
 
@@ -101,7 +101,7 @@ Ubuntu versions (or other distributions using older system libraries).
 12. Start your node and re-enable auto-starting via your process manager.
 
 [Governance documentation]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
-[Testnet 2023-10-05 release]: https://github.com/oasisprotocol/testnet-artifacts/releases/tag/2023-10-05
+[Testnet 2023-10-12 release]: https://github.com/oasisprotocol/testnet-artifacts/releases/tag/2023-10-12
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
@@ -169,14 +169,14 @@ by the new version of `oasis-node`. It can be used as follows to derive the same
 genesis file from an existing state dump at the correct height:
 
 ```
-oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-05
+oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
 ```
 
 :::
 
 #### **General**
 
-* **`chain_id`** will be set to `testnet-2023-10-05`.
+* **`chain_id`** will be set to `testnet-2023-10-12`.
 
 * **`halt_epoch`** will be removed as it is no longer used.
 

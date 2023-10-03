@@ -6,8 +6,8 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 This tutorial will show you how to set up dApp development environment for
 Emerald to be able to write and deploy dApps on Oasis Emerald.
 
-We will walk you through the Hardhat and Truffle configuration and -
-for those who prefer a simpler web-only interface - the Remix IDE.
+We will walk you through the Hardhat configuration and - for those who prefer
+a simpler web-only interface - the Remix IDE.
 Oasis Emerald exposes an EVM-compatible interface so writing dApps isn't much
 different compared to the original Ethereum Network!
 
@@ -327,248 +327,6 @@ Greeter deployed to: 0x6e8e9e0DBCa4EF4a65eBCBe4032e7C2a6fb7C623
 [Node.js]: https://nodejs.org
 [ethers.js]: https://docs.ethers.io/v5/
 
-## Create dApp on Emerald with Truffle
-
-Truffle and its accompanying [web3.js] library is another popular smart
-contract deployment tool. Let's follow [the official Truffle's quickstart
-guide][truffle-quickstart] and unbox the MetaCoin example:
-
-```
-$ mkdir MetaCoin
-$ cd MetaCoin
-$ npx truffle unbox metacoin
-
-Starting unbox...
-=================
-
-✔ Preparing to download box
-✔ Downloading
-✔ Cleaning up temporary files
-✔ Setting up box
-
-Unbox successful, sweet!
-
-Commands:
-
-  Compile contracts: truffle compile
-  Migrate contracts: truffle migrate
-  Test contracts:    truffle test
-```
-
-To compile and test the contract type:
-
-```
-$ npx truffle test
-Using network 'test'.
-
-
-Compiling your contracts...
-===========================
-> Compiling ./test/TestMetaCoin.sol
-> Artifacts written to /tmp/test--1052348-l4q3zOSy9nRA
-> Compiled successfully using:
-   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
-
-
-
-  TestMetaCoin
-    ✓ testInitialBalanceUsingDeployedContract (112ms)
-    ✓ testInitialBalanceWithNewMetaCoin (106ms)
-
-  Contract: MetaCoin
-    ✓ should put 10000 MetaCoin in the first account (59ms)
-    ✓ should call a function that depends on a linked library (78ms)
-    ✓ should send coin correctly (185ms)
-
-
-  5 passing (6s)
-```
-
-This spawns an instance of Truffle Develop blockchain in the background with a
-number of prepopulated ETH accounts and runs the tests.
-
-Now, let's add support to Truffle for reading the private key stored in the
-environment variable. Add the `@truffle/hdwallet-provider` package:
-
-```
-$ npm i @truffle/hdwallet-provider --save-dev
-```
-
-Import the library by adding the following line at the beginning of your
-`truffle-config.js`:
-
-`const HDWalletProvider = require("@truffle/hdwallet-provider");`
-
-Open `truffle-config.js` and configure the `emerald_local`, `emerald_testnet`
-and `emerald_mainnet` networks:
-
-```
-emerald_local: {
-  url: "http://localhost:8545",
-  provider: function() {
-    return new HDWalletProvider(process.env.PRIVATE_KEYS.split(","), "http://localhost:8545");
-  },
-  network_id: "*"
-},
-emerald_testnet: {
-  url: "https://testnet.emerald.oasis.dev:8545",
-  provider: function() {
-    return new HDWalletProvider(process.env.PRIVATE_KEY, "https://testnet.emerald.oasis.dev");
-  },
-  network_id: "*"
-},
-emerald_mainnet: {
-  url: "https://emerald.oasis.dev:8545",
-  provider: function() {
-    return new HDWalletProvider(process.env.PRIVATE_KEY, "https://emerald.oasis.dev");
-  },
-  network_id: "*"
-}
-```
-
-The MetaCoin example is somewhat specific in that it expects at least two
-private keys for running the token transfer test. That's why we use the
-`.split(",")` in the `emerald_local` network configuration above and we assign
-two private keys to the environment variable. If you are running [emerald-dev],
-copy and paste any two of the generated private keys.
-
-```
-export PRIVATE_KEYS="0xYOUR_FIRST_EMERALD_PRIVATE_KEY,0xYOUR_SECOND_EMERALD_PRIVATE_KEY"
-```
-
-When we run the tests Truffle will deploy the contract with its dependencies
-and call the contract numerous times so it may take a few moments to complete.
-
-```
-$ truffle test --network emerald_local
-Using network 'emerald_local'.
-
-
-Compiling your contracts...
-===========================
-> Compiling ./test/TestMetaCoin.sol
-> Artifacts written to /tmp/test--1083354-x87wt3FdmfDE
-> Compiled successfully using:
-   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
-
-
-
-  TestMetaCoin
-    ✓ testInitialBalanceUsingDeployedContract (1091ms)
-    ✓ testInitialBalanceWithNewMetaCoin (913ms)
-
-  Contract: MetaCoin
-    ✓ should put 10000 MetaCoin in the first account (349ms)
-    ✓ should call a function that depends on a linked library (677ms)
-account one: 0x90adE3B7065fa715c7a150313877dF1d33e777D5
-account two: 0x33a8Ba274FEdFeed6A08d09eC524a1E1A6Da8262
-    ✓ should send coin correctly (2795ms)
-
-
-  5 passing (26s)
-```
-
-In order to deploy the contracts to the Testnet and finally the Mainnet run the
-`migrate` Truffle command and use the `emerald_testnet` or `emerald_mainnet`
-network accordingly. For the Mainnet, you would run something like this and in
-a few rounds - depending on the network congestion - the contracts will be
-deployed:
-
-```
-$ PRIVATE_KEY=0xYOUR_MAINNET_PRIVATE_KEY truffle migrate --network emerald_mainnet
-
-Compiling your contracts...
-===========================
-> Everything is up to date, there is nothing to compile.
-
-
-
-Starting migrations...
-======================
-> Network name:    'emerald_mainnet'
-> Network id:      42262
-> Block gas limit: 21000000 (0x1406f40)
-
-
-1_initial_migration.js
-======================
-
-   Deploying 'Migrations'
-   ----------------------
-   > transaction hash:    0x1630945ac8abfe6395a2e2627bd0acfffcf4bda9e107943cb3e4d6ef1d0905d4
-   > Blocks: 1            Seconds: 44
-   > contract address:    0xFaeA7eda8Be7AC83f811019094D0065D28F52c7c
-   > block number:        93914
-   > block timestamp:     1642176860
-   > account:             0x90adE3B7065fa715c7a150313877dF1d33e777D5
-   > balance:             0
-   > gas used:            209087 (0x330bf)
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:                   0 ETH
-
-
-2_deploy_contracts.js
-=====================
-
-   Deploying 'ConvertLib'
-   ----------------------
-   > transaction hash:    0xf2c53938773c316051f4ce98395e5df21cfcf0c686f634c1079725e04b9c556c
-   > Blocks: 2            Seconds: 80
-   > contract address:    0xA0FB05d6Ce497beb162C4EbA4F203544B18A3f31
-   > block number:        93918
-   > block timestamp:     1642177009
-   > account:             0x90adE3B7065fa715c7a150313877dF1d33e777D5
-   > balance:             0
-   > gas used:            121235 (0x1d993)
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   Linking
-   -------
-   * Contract: MetaCoin <--> Library: ConvertLib (at address: 0xA0FB05d6Ce497beb162C4EbA4F203544B18A3f31)
-
-   Deploying 'MetaCoin'
-   --------------------
-   > transaction hash:    0x2c5e8177df03d643e56a37b64cbe660420b114ffec097dc5d793bfc666af8e16
-   > Blocks: 2            Seconds: 60
-   > contract address:    0x5a1C04012bc233c898aebb8BB4353F80D96f3dD2
-   > block number:        93920
-   > block timestamp:     1642177073
-   > account:             0x90adE3B7065fa715c7a150313877dF1d33e777D5
-   > balance:             0
-   > gas used:            361168 (0x582d0)
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:                   0 ETH
-
-
-Summary
-=======
-> Total deployments:   3
-> Final cost:          0 ETH
-```
-
-In the output above, the MetaCoin contract has been successfully deployed to
-`0x5a1C04012bc233c898aebb8BB4353F80D96f3dD2` address on the Mainnet.
-
-[web3.js]: https://web3js.readthedocs.io/en/v1.5.2/
-[truffle-quickstart]: https://trufflesuite.com/docs/truffle/quickstart.html
-
 ## Create dApp on Emerald with Remix - Ethereum IDE
 
 [Remix] is a popular web IDE for swift development, deployment and testing
@@ -620,6 +378,20 @@ share them with us on the [#emerald-paratime Discord channel][discord].
 
 ## Troubleshooting
 
+### Truffle Support
+
+:::info Sunsetting Truffle
+
+Per Consensys [announcement], Oasis will no longer support Truffle as of
+2023-10-05 and encourage immediate [migration] to Hardhat. Please see our
+repository for the archived Truffle [tutorial].
+
+:::
+
+[announcement]: https://consensys.io/blog/consensys-announces-the-sunset-of-truffle-and-ganache-and-new-hardhat
+[migration]: https://trufflesuite.com/docs/truffle/how-to/migrate-to-hardhat/
+[tutorial]: https://github.com/oasisprotocol/docs/blob/207a7b1a42b4afdac70b925e755f5546723e4831/docs/dapp/emerald/writing-dapps-on-emerald.mdx#L330-L570
+
 ### Deployment of my contract timed out on Testnet or Mainnet
 
 Emerald validators, similar to Ethereum ones, order the execution of
@@ -632,8 +404,8 @@ required gas price on Emerald. This value should already be propagated
 automatically by the web3 endpoint, but your deployment configuration might
 have ignored it.
 
-Finally, consider increasing the `gasPrice` parameter in Hardhat/Truffle config
-files by a fraction (e.g. 10% or 20%). This will require more ROSE from your
+Finally, consider increasing the `gasPrice` parameter in the Hardhat config
+file by a fraction (e.g. 10% or 20%). This will require more ROSE from your
 wallet to deploy the contract, but you will also increase the chance of your
 transaction being included in the block.
 

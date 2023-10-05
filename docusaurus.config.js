@@ -32,7 +32,16 @@ const config = {
           numberPrefixParser: false,
           path: 'docs',
           beforeDefaultRemarkPlugins: [codeBlockSnippetsPlugin],
-          remarkPlugins: [crossRepoLinksPlugin],
+          remarkPlugins: [
+            crossRepoLinksPlugin,
+            [
+              require('@docusaurus/remark-plugin-npm2yarn'),
+              {
+                sync: true,                 // Sync the tab page across the whole docs website.
+                converters:['pnpm','yarn'], // Package managers to use.
+              },
+            ],
+          ],
           routeBasePath: '/',
           showLastUpdateTime: true,
           sidebarPath: require.resolve('./sidebars.js'),

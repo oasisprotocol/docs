@@ -56,8 +56,8 @@ config file.
 - `@openzeppelin/contracts` contains standardized DAO contracts which we will
 use to build the secret ballot application.
 
-```sh
-pnpm install -D @openzeppelin/contracts @oasisprotocol/sapphire-contracts @oasisprotocol/sapphire-hardhat
+```shell npm2yarn
+npm install -D @openzeppelin/contracts @oasisprotocol/sapphire-contracts @oasisprotocol/sapphire-hardhat
 ```
 
 You should be able to start your localhost Hardhat node.

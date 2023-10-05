@@ -27,8 +27,8 @@ using the `contracts/Sapphire.sol` wrapper library for a more comfortable
 experience. The examples below are written against it. The library is provided
 by the `@oasisprotocol/sapphire-contracts` npm package.
 
-```shell
-yarn add -D @oasisprotocol/sapphire-contracts
+```shell npm2yarn
+npm install -D @oasisprotocol/sapphire-contracts
 ```
 
 Then, you can use the wrapper library inside your `.sol` contract file as

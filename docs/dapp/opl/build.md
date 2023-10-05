@@ -14,8 +14,8 @@ npx hardhat compile
 
 We can make deployments easier by using [Hardhat deploy](https://github.com/wighawag/hardhat-deploy).
 
-```sh
-pnpm install -D hardhat-deploy
+```shell npm2yarn
+npm install -D hardhat-deploy
 ```
 
 

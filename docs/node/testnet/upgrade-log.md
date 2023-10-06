@@ -151,6 +151,15 @@ mv new-config.yml config.yml
 
 [Change Log]:
   https://github.com/oasisprotocol/oasis-core/blob/v23.0/CHANGELOG.md
+
+### Data Directory Changes
+
+The subdirectory (located inside the node's data directory) used to store
+consensus-related data, previously called `tendermint` (after the consensus
+layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0. If
+any of your scripts rely on specific directory names, please make sure to update
+them to reflect the changed sdirectory name.
+
 ### State Changes
 
 The following parts of the genesis document will be updated:
@@ -166,7 +175,8 @@ For a more detailed explanation of the parameters below, see the
 
 All state changes will be done automatically with the migration command provided
 by the new version of `oasis-node`. It can be used as follows to derive the same
-genesis file from an existing state dump at the correct height:
+genesis file from an existing state dump at the correct height (assuming there
+is a `genesis.json` present in the current working directory):
 
 ```
 oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
@@ -174,13 +184,18 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
 
 :::
 
-#### **General**
+#### General
 
 * **`chain_id`** will be set to `testnet-2023-10-12`.
 
 * **`halt_epoch`** will be removed as it is no longer used.
 
-#### **Registry**
+#### Registry
+
+* **`registry.runtimes[].txn_scheduler.propose_batch_timeout`** specifies how
+  long to wait before accepting proposal from the next backup scheduler. It will
+  be set to `5000000000` (5 seconds). Previously the value was represented in
+  the number of consensus layer blocks.
 
 * **`registry.params.gas_costs.prove_freshness`** specifies the cost of the
   freshness proof transaction. It will be set to `1000`.
@@ -208,13 +223,13 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
   runtime deployments that can be specified in the runtime descriptor. It will
   be set to `5`.
 
-### **Root Hash**
+#### Root Hash
 
 * **`roothash.params.max_past_roots_stored`** specifies the maximum number of
   past runtime state roots that are stored in consensus state for each runtime.
   It will be set to `1200`.
 
-#### **Staking**
+#### Staking
 
 * **`staking.params.commission_schedule_rules.min_commission_rate`** specifies
   the minimum commission rate. It will be set to `0` to maintain the existing
@@ -224,7 +239,7 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
   for registering an observer node. It will be set to `100000000000` base units
   (or `100` tokens), same as for existing compute nodes.
 
-#### **Key Manager**
+#### Key Manager
 
 * **`keymanager.params.gas_costs`** specify the cost of key manager
   transactions. These will be set to the following values:
@@ -237,15 +252,20 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
   }
   ```
 
-#### **Random Beacon**
+#### Random Beacon
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch
   of Testnet's state dump + 1, `XXX`.
 
-#### **Governance**
+#### Governance
 
 * **`governance.params.enable_change_parameters_proposal`** specifies whether
   parameter change governance proposals are allowed. It will be set to `true`.
+
+#### Consensus
+
+* **`consensus.params.max_block_size`** specifies the maximum block size in the
+  consensus layer. It will be set to `1048576` (1 MiB).
 
 #### Other
 

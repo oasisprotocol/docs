@@ -5,7 +5,7 @@ version [18](https://nodejs.org/en/blog/announcements/v18-release-announce).
 
 We will be using a monorepo for both the frontend and backend of our dApp.
 
-```sh
+```shell
 mkdir opl-secret-ballot;
 mkdir opl-secret-ballot/backend;
 mkdir opl-secret-ballot/frontend;
@@ -35,14 +35,14 @@ specify the version of Hardhat to install.
 
 :::
 
-```sh
+```shell
 cd opl-secret-ballot/backend && npx hardhat
 ```
 
 When initializing the Hardhat application, we would like to use the `backend`
 directory as the project root.
 
-```sh
+```shell
 Hardhat project root: · /Users/oasis/opl-secret-ballot/backend
 ```
 

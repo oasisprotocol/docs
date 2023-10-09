@@ -10,7 +10,7 @@ We will take a shortcut and bypass developing a VueJS app. Instead, we will
 simply apply a sparse checkout of the complete frontend repo. Inside your
 `opl-secret-ballot` directory run:
 
-```sh
+```shell
 git init .
 git remote add -f origin https://github.com/oasisprotocol/playground
 git checkout origin/main opl-secret-ballot/frontend

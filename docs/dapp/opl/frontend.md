@@ -10,7 +10,7 @@ We will take a shortcut and bypass developing a VueJS app. Instead, we will
 simply apply a sparse checkout of the complete frontend repo. Inside your
 `opl-secret-ballot` directory run:
 
-```sh
+```shell
 git init .
 git remote add -f origin https://github.com/oasisprotocol/playground
 git checkout origin/main opl-secret-ballot/frontend
@@ -23,18 +23,18 @@ Next, update the `@oasislabs/secret-ballot-backend` package name in
 We recommend using [pnpm](https://pnpm.io) to install dependencies, but `yarn`
 and `npm` will work with some modifications around workspaces.
 
-```sh
-pnpm install
+```shell npm2yarn
+npm install
 ```
 
 Compile and Hot-Reload for Development
-```sh
-pnpm run dev
+```shell npm2yarn
+npm run dev
 ```
 
 Build assets for deployment
-```sh
-pnpm run build
+```shell npm2yarn
+npm run build
 ```
 
 We can now reference the deployed contracts in our frontend Vue app.
@@ -61,8 +61,8 @@ VITE_PINATA_JWT=
 ### Start
 
 Start Vue app
-```sh
-pnpm run dev
+```shell npm2yarn
+npm run dev
 ```
 
 ### MetaMask

@@ -277,9 +277,9 @@ Starting with an empty folder, let us install the
 [Oasis fork of the GSN command line tool](https://github.com/oasislabs/gsn) by
 using the following commands:
 
-```shell
-pnpm init
-pnpm install -D @oasislabs/opengsn-cli
+```shell npm2yarn
+npm init
+npm install -D @oasislabs/opengsn-cli
 ```
 
 Next, we will export our hex-encoded private key (**without** the leading `0x`)
@@ -380,8 +380,8 @@ the [upstream OpenGSN website](https://docs.opengsn.org/javascript-client/gsn-he
 
 First, install the OpenGSN contracts package:
 
-```shell
-pnpm install -D @opengsn/contracts@3.0.0-beta.2
+```shell npm2yarn
+npm install -D @opengsn/contracts@3.0.0-beta.2
 ```
 
 Then follow the remainder of the steps from the

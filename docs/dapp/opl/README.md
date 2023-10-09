@@ -42,8 +42,8 @@ they handle from each other.
 Start by adding the [`@oasisprotocol/sapphire-contracts`] NPM package to your
 Hardhat project so you can import `OPL.sol`:
 
-```shell
-pnpm add @oasisprotocol/sapphire-contracts
+```shell npm2yarn
+npm install @oasisprotocol/sapphire-contracts
 ```
 
 [`@oasisprotocol/sapphire-contracts`]: http://npmjs.com/package/@oasisprotocol/sapphire-contracts

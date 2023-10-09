@@ -16,19 +16,20 @@ upgrade window.
 
 :::
 
-* **Upgrade height:** upgrade is scheduled to happen at epoch **XXX**.
+* **Upgrade height:** upgrade is scheduled to happen at epoch **29570**.
 
 :::info
 
-We expect the Testnet network to reach this epoch at around 2023-10-12 8:00 UTC.
+We expect the Testnet network to reach this epoch at around 2023-10-12 07:56
+UTC.
 
 :::
 
 ### Instructions
 
 1. (optional) Vote for the upgrade. On 2023-10-09, an upgrade proposal will be
-   proposed which (if accepted) will schedule the upgrade on epoch **XXX**. See
-   the [Governance documentation] for details on voting for proposals.
+   proposed which (if accepted) will schedule the upgrade on epoch **29570**.
+   See the [Governance documentation] for details on voting for proposals.
 
 The following steps should be performed only after the network has reached the
 upgrade epoch and has halted:
@@ -38,7 +39,7 @@ upgrade epoch and has halted:
 
 :::info
 
-Testnet state at epoch **XXX** will be exported and migrated to a 23.0
+Testnet state at epoch **29570** will be exported and migrated to a 23.0
 compatible genesis file.
 
 The new genesis file will be published on the above link soon after reaching the
@@ -255,7 +256,7 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
 #### Random Beacon
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch
-  of Testnet's state dump + 1, `XXX`.
+  of Testnet's state dump + 1, `29571`.
 
 #### Governance
 

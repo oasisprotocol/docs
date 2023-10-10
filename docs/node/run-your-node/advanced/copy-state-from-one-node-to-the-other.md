@@ -10,7 +10,7 @@ Another way to speed up bootstraping an Oasis Node is to sync the node using [St
 
 :::
 
-To bootstrap a new Oasis Node by copying state from a synced Oasis Node, first set up your new Oasis Node as a [Validator Node](../validator-node/README.md), a [Non-validator Node](../non-validator-node.md) or a [ParaTime Node](../paratime-node.mdx).
+To bootstrap a new Oasis Node by copying state from a synced Oasis Node, first set up your new Oasis Node as a [Validator Node](../validator-node.mdx), a [Non-validator Node](../non-validator-node.md) or a [ParaTime Node](../paratime-node.mdx).
 
 :::caution
 
@@ -39,6 +39,17 @@ You could also copy the whole `tendermint` directory from your synced Oasis Node
 ```
 {"caller":"node.go:696","err":"tendermint/crypto: public key mismatch, state corruption?: %!w(<nil>)","level":"error","module":"oasis-node","msg":"failed to initialize tendermint service","ts":"2021-09-25T14:13:17.919296668Z"}
 ```
+
+:::
+
+:::caution
+
+If you are copying data from a node that is running [TEE-enabled ParaTimes], you
+must make sure to **remove** the `runtimes/*/worker-local-storage.badger.db` as
+otherwise the ParaTime binary may fail to start on a different node since it
+contains data sealed to the source CPU.
+
+[TEE-enabled ParaTimes]: ../prerequisites/set-up-trusted-execution-environment-tee.md
 
 :::
 

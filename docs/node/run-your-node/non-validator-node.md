@@ -2,7 +2,7 @@
 
 :::info
 
-These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node/README.md). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](paratime-node.mdx).
+These instructions are for setting up a _non-validator_ node. If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node.mdx). Similarly, if you want to run a _ParaTime_ node instead, see the [instructions for running a ParaTime node](paratime-node.mdx).
 
 :::
 
@@ -10,7 +10,7 @@ This guide will cover setting up your non-validator node for the Oasis Network. 
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](prerequisites) section and have the Oasis Node binary installed on your systems.
+Before following this guide, make sure you've followed the [Prerequisites](prerequisites) chapter and have the Oasis Node binary installed on your systems.
 
 ### Creating a Working Directory
 

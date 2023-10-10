@@ -458,7 +458,7 @@ debug: cause: "/dev" mounted with `noexec` option
 
 Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option][dev-noexec].
 
-### Unable to Launch Enclaves
+### Unable to Launch Enclaves: Operation not permitted
 
 If running `sgx-detect --verbose` reports:
 
@@ -475,3 +475,21 @@ debug: cause: Operation not permitted (os error 1)
 Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option][dev-noexec].
 
 [dev-noexec]: #ensure-dev-is-not-mounted-with-the-noexec-option
+
+### Unable to Launch Enclaves: Invalid argument
+
+If running `sgx-detect --verbose` reports:
+
+```
+🕮  SGX system software > Able to launch enclaves > Debug mode
+The enclave could not be launched.
+
+debug: failed to load report enclave
+debug: cause: Failed to call EINIT.
+debug: cause: I/O ctl failed.
+debug: cause: Invalid argument (os error 22)
+```
+
+This may be related to a bug in the Linux kernel when attempting to run enclaves
+on certain hardware configurations. Upgrading the Linux kernel to a version
+equal to or greater than 6.5.0 may solve the issue.

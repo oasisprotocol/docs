@@ -28,7 +28,7 @@ By the end of this tutorial, we will have:
 - used [Hardhat](https://hardhat.org/docs) development environment for OPL
 - used [Hardhat Deploy](https://github.com/wighawag/hardhat-deploy) to deploy
 smarts contracts to a testnet.
-- used [Pinata](https://docs.pinata.cloud/what-can-i-learn-here/what-is-pinata)
+- used [Pinata](https://www.pinata.cloud)
 to store simple JSON data. Not everything has to go on a blockchain.
 - used [Celer](https://im-docs.celer.network/developer/celer-im-overview) to
 pass messages cross multiple chains

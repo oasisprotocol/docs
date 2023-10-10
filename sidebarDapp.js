@@ -20,8 +20,19 @@ const sidebars = {
         'dapp/sapphire/guide',
         'dapp/sapphire/browser',
         'dapp/sapphire/authentication',
+        'dapp/sapphire/gasless',
         'dapp/sapphire/precompiles',
         'dapp/sapphire/addresses',
+        {
+          type: 'link',
+          label: 'TypeScript API',
+          href: 'https://api.docs.oasis.io/js/sapphire-paratime',
+        },
+        {
+          type: 'link',
+          label: 'Solidity API',
+          href: 'https://api.docs.oasis.io/sol/sapphire-contracts',
+        },
       ],
     },
     {
@@ -66,13 +77,8 @@ const sidebars = {
         {
           type: 'link',
           label: 'Rust API',
-          href: 'https://api.docs.oasis.io/oasis-sdk/oasis_contract_sdk',
+          href: 'https://api.docs.oasis.io/rust/oasis_contract_sdk',
         },
-        {
-          type: 'link',
-          label: 'Go API',
-          href: 'https://pkg.go.dev/github.com/oasisprotocol/oasis-sdk/client-sdk/go/client',
-        }
       ],
     },
   ],

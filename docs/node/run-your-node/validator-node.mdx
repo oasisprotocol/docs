@@ -1,22 +1,25 @@
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
 # Validator Node
 
-This guide will walk you through the process of setting up your **validator node** 
-for the Oasis Network on either the Mainnet or the Testnet. It is designed for 
-individuals who have a basic understanding of command line tools. 
+This guide will walk you through the process of setting up your **validator node**
+for the Oasis Network on either the Mainnet or the Testnet. It is designed for
+individuals who have a basic understanding of command line tools.
 
 ## Prerequisites
 
-Before proceeding with this guide, ensure that you have completed the steps 
+Before proceeding with this guide, ensure that you have completed the steps
 outlined in the [Prerequisites] section so that:
 * your system meets the [hardware requirements],
 * you have the [Oasis Node binary] installed on your systems,
 * you understand what are [Stake requirements] to become a validator on the
  Oasis Network.
 
-[Prerequisites]: ../prerequisites/
-[hardware requirements]: ../prerequisites/hardware-recommendations.md
-[Oasis Node binary]: ../prerequisites/oasis-node.md
-[Stake requirements]: ../prerequisites/stake-requirements.md
+[Prerequisites]: prerequisites/
+[hardware requirements]: prerequisites/hardware-recommendations.md
+[Oasis Node binary]: prerequisites/oasis-node.md
+[Stake requirements]: prerequisites/stake-requirements.md
 
 ## Physical Machines
 
@@ -38,7 +41,7 @@ such as the [Ledger wallet].
   ../../../general/manage-tokens/holding-rose-tokens/ledger-wallet
 
 **Server:** After the entity has been created, proceed to [set up the server in
- order to start the Oasis node]. The server needs to meet the hardware 
+ order to start the Oasis node]. The server needs to meet the hardware
  requirements and have an acces to the internet.
 
 [create your entity]: #creating-your-entity
@@ -104,7 +107,7 @@ Then, set the environment variable that points to its path as follows:
 GENESIS_FILE_PATH=/localhostdir/genesis.json
 ```
 
-[Network Parameters]: ../../mainnet/README.md
+[Network Parameters]: ../mainnet/README.md
 
 ### Initializing an Entity
 
@@ -114,9 +117,9 @@ An entity is critical to operating nodes on the network as it controls the stake
 
 The Ledger-based signer stores your private keys on your Ledger wallet. It is implemented as an Oasis Core signer plugin.
 
-You will need to set it up as described in the [Setup](../../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
+You will need to set it up as described in the [Setup](../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
 
-As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](../../../oasis-core-ledger/usage/entity.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
+As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](../../oasis-core-ledger/usage/entity.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
 
 This will create 1 file in `/localhostdir/entity`:
 
@@ -288,7 +291,7 @@ We will also need to have the public entity artifacts from the `/localhostdir` p
 
 #### Copying the Genesis File to the server
 
-The latest Genesis file can be found in the [Network Parameters](../../mainnet/README.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
+The latest Genesis file can be found in the [Network Parameters](../mainnet/README.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
 
 #### Configuring the Oasis Node
 
@@ -300,13 +303,13 @@ Before using this configuration you should collect the following information to 
 
 :::info
 
-If you are using a [Sentry Node](../sentry-node.md), you should use the public IP of that machine.
+If you are using a [Sentry Node](sentry-node.md), you should use the public IP of that machine.
 
 :::
 
 *   `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-    You can find the current Oasis Seed Node address in the [Network Parameters](../../mainnet/README.md).
+    You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
 
 To use this configuration, save it in the `/serverdir/etc/config.yml` file and pass it to the `oasis-node` command as an argument to the `--config` flag.
 
@@ -454,7 +457,7 @@ This step is not necessary if your entity was fully staked at genesis.
 
 :::caution
 
-If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../../general/manage-tokens/advanced/oasis-cli-tools/get-account-info.md).
+If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../general/manage-tokens/cli/account.md#show).
 
 :::
 
@@ -507,7 +510,7 @@ Before generating the escrow transaction, you need to set the following environm
     For this guide, we will use `/localhostdir/signed-escrow.tx`.
 *   `ACCOUNT_ADDRESS`: Your staking account address.
 
-    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../../general/manage-tokens/advanced/oasis-cli-tools/address.md#obtain-account-address-from-entitys-id).
+    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../general/manage-tokens/cli/account.md#from-public-key).
 
 Then execute the following command:
 
@@ -528,7 +531,7 @@ oasis-node stake account gen_escrow \
 
 The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Oasis consensus layer as each unit value used to track the account balance is 1x10^-9 tokens.
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../core/oasis-node/cli.md#common-transaction-flags) for details.
 
 :::
 
@@ -563,7 +566,7 @@ oasis-node registry entity gen_register \
 
 :::info
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../../general/manage-tokens/advanced/oasis-cli-tools/setup.md#common-transaction-flags) for details.
+The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../core/oasis-node/cli.md#common-transaction-flags) for details.
 
 :::
 
@@ -659,3 +662,8 @@ operator's avatar.
 
 [Metadata Registry]: https://github.com/oasisprotocol/metadata-registry
 [Oasis Scan]: https://www.oasisscan.com/validators
+
+# See also
+
+<DocCard item={findSidebarItem('/core/oasis-node/cli')} />
+<DocCard item={findSidebarItem('/general/manage-tokens/cli/')} />

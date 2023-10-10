@@ -19,13 +19,20 @@ Go ahead and clone the original [Hardhat boilerplate repo]. Move to the checked
 out folder and **apply the Sapphire-specific changes** to `hardhat.config.js`
 as [described in the quickstart][quickstart].
 
-Next, install dependencies and deploy the contract on the Testnet with the private
-key of the account holding some [TEST tokens]:
+Next, install dependencies. The boilerplate project uses
+[pnpm], but `yarn` and `npm` will also work with some modifications
+around workspaces:
 
+```shell npm2yarn
+npm install
+npm install -D @oasisprotocol/sapphire-paratime
 ```
-pnpm install
-pnpm add -D @oasisprotocol/sapphire-paratime
-PRIVATE_KEY="0x..." pnpm hardhat run scripts/deploy.js --network sapphire_testnet
+
+Now, you can deploy the contract on the Testnet with the private key of the
+account holding some [TEST tokens]:
+
+```shell
+PRIVATE_KEY="0x..." npx hardhat run scripts/deploy.js --network sapphire_testnet
 ```
 
 This will compile the contract and deploy it on the Testnet. In addition
@@ -46,9 +53,9 @@ out [line 66]. Read [the guide](guide.mdx#contract-logs) to learn more.
 Now, let's explore the frontend of our dApp. Begin by moving into the
 `frontend` folder and install dependencies:
 
-```shell
-pnpm install
-pnpm add -D @oasisprotocol/sapphire-paratime
+```shell npm2yarn
+npm install
+npm install -D @oasisprotocol/sapphire-paratime
 ```
 
 The main frontend logic is stored in `frontend/src/components/Dapp.js`. Apply
@@ -136,9 +143,14 @@ instances:
 
 ## Trying it
 
-Start the frontend by typing `pnpm run start`. If all goes well the web server
-will spin up and your browser should automatically open
-`http://localhost:3000`.
+Start the frontend by typing:
+
+```shell npm2yarn
+npm run start
+```
+
+If all goes well the web server will spin up and your browser should
+automatically open `http://localhost:3000`.
 
 ![Hardhat boilerplate frontend](../images/sapphire/hardhat-boilerplate-frontend1.png)
 
@@ -192,4 +204,5 @@ repository.
 [sapphire-testnet]: ./README.mdx#testnet
 [Sapphire ParaTime examples]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/hardhat-boilerplate
 [social-media]: ../../get-involved/README.md#social-media-channels
+[pnpm]: https://pnpm.io
 [TEST tokens]: quickstart.mdx#get-some-sapphire-testnet-tokens

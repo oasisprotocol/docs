@@ -167,6 +167,16 @@ const sidebars = {
       label: 'ADRs',
       href: '/adrs'
     },
+    {
+      type: 'link',
+      label: 'Core Client TypeScript API',
+      href: 'https://api.docs.oasis.io/js/client',
+    },
+    {
+      type: 'link',
+      label: 'Core Client Go API',
+      href: 'https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go',
+    },
   ],
 };
 

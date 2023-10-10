@@ -86,20 +86,22 @@ link checker in `package.json`._
 ### Documentation structure
 
 `docs` folder contains markdown files of the documentation. Each subfolder
-represents one of the top-level chapter (general, node, dApp, paratime, core
-etc.).
+represents a documentation **part** (general, node, dApp, paratime, core etc.).
+Each markdown file inside a part corresponds to a **chapter** (subchapter for a
+markdown file inside a subfolder) and each subtitle of a chapter is called a
+**section** (subsection etc.).
 
-Some top-level chapter may contain markdown files or folders hosted and
-maintained in other Oasis repositories (e.g. oasis-sdk, oasis-core). In this
-case, a complete git submodule for the repository is cloned inside `external`
-folder. Then, symbolic links to specific markdown files or folders are added
-inside `docs` accordingly.
+Some parts may contain markdown files or folders hosted and maintained in other
+Oasis repositories (e.g. oasis-sdk, oasis-core). In this case, a complete git
+submodule for the repository is cloned inside `external` folder. Then, symbolic
+links to specific markdown files or folders are added inside `docs`
+accordingly.
 
 While all markdown files inside `docs` are compiled, not all files may be
 reachable via sidebars directly. Each top-level chapter defines own
 sidebar structure inside their `sidebarChapterName.js` file.
 
-Nouns, adjectives and verbs in section titles should be capitalized.
+Nouns, adjectives and verbs in the titles should be capitalized.
 
 ### index.md, README.md, overview.md
 
@@ -117,7 +119,7 @@ Markdown files hosted by this repository should:
   `../howto-use-wallet.md`.
   `../../../operators/set-up-your-node.md`
 
-Markdown files hosted by other Oasis repositories should:
+Symlinked Markdown files hosted by other Oasis repositories should:
 
 - reference markdown files in the same repository by a relative path e.g.
   `../howto-write-contract.md`.

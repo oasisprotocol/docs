@@ -6,7 +6,7 @@ Now that we have written our two smart contracts, let's compile and deploy them!
 
 Compile both the host and enclave smart contracts by invoking:
 
-```sh
+```shell
 npx hardhat compile
 ```
 
@@ -14,8 +14,8 @@ npx hardhat compile
 
 We can make deployments easier by using [Hardhat deploy](https://github.com/wighawag/hardhat-deploy).
 
-```sh
-pnpm install -D hardhat-deploy
+```shell npm2yarn
+npm install -D hardhat-deploy
 ```
 
 
@@ -104,13 +104,13 @@ index cd8df42..0875e8e 100644
 
 We can start local Hardhat node again:
 
-```sh
+```shell
 npx hardhat node
 ```
 
 Our deploy should succeed locally.
 
-```sh
+```shell
 npx hardhat deploy-local --network localhost
 Nothing to compile
 No need to generate any newer typings.
@@ -135,13 +135,13 @@ Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](
 
 We will use a common private key for both the host and enclave smart contracts.
 
-```sh
+```shell
 export PRIVATE_KEY=
 ```
 
 Deploy the enclave smart contract using Testnet parameters.
 
-```sh
+```shell
 npx hardhat deploy-ballot-box --network sapphire_testnet --host-network bsc_testnet
 Nothing to compile
 No need to generate any newer typings.
@@ -152,7 +152,7 @@ BallotBox 0xFb40591a8df155da291A4B52E4Df9901a95b7C06
 Next, use the obtained `BallotBox` address below to deploy the host smart
 contract:
 
-```sh
+```shell
 npx hardhat deploy-dao --network bsc_testnet --ballot-box-addr {BALLOT_BOX_ADDR}
 Nothing to compile
 No need to generate any newer typings.

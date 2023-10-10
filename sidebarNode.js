@@ -17,6 +17,7 @@ const sidebars = {
         id: 'node/mainnet/README',
       },
       items: [
+        'node/mainnet/e-upgrade',
         'node/mainnet/damask-upgrade',
         {
           type: 'category',
@@ -73,18 +74,7 @@ const sidebars = {
             'node/run-your-node/prerequisites/set-up-trusted-execution-environment-tee',
           ]
         },
-        {
-          type: 'category',
-          label: 'Validator Node',
-          link: {
-            type: 'doc',
-            id: 'node/run-your-node/validator-node/README',
-          },
-          items: [
-            'node/run-your-node/validator-node/governance',
-            'node/run-your-node/validator-node/amend-commission-schedule',
-          ],
-        },
+        'node/run-your-node/validator-node',
         'node/run-your-node/non-validator-node',
         'node/run-your-node/seed-node',
         'node/run-your-node/archive-node',

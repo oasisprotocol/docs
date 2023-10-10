@@ -1,8 +1,8 @@
 # Frontend Application
 
 We will need a [Pinata](https://www.pinata.cloud) development API
-[key](https://docs.pinata.cloud/master) and JWT with the `pinFileToIPFS`
-permission. Let's obtain that first.
+[key](https://docs.pinata.cloud/docs/getting-started#2-generate-your-api-keys)
+and JWT with the `pinFileToIPFS` permission. Let's obtain that first.
 
 ### VueJS
 
@@ -10,7 +10,7 @@ We will take a shortcut and bypass developing a VueJS app. Instead, we will
 simply apply a sparse checkout of the complete frontend repo. Inside your
 `opl-secret-ballot` directory run:
 
-```sh
+```shell
 git init .
 git remote add -f origin https://github.com/oasisprotocol/playground
 git checkout origin/main opl-secret-ballot/frontend
@@ -23,18 +23,18 @@ Next, update the `@oasislabs/secret-ballot-backend` package name in
 We recommend using [pnpm](https://pnpm.io) to install dependencies, but `yarn`
 and `npm` will work with some modifications around workspaces.
 
-```sh
-pnpm install
+```shell npm2yarn
+npm install
 ```
 
 Compile and Hot-Reload for Development
-```sh
-pnpm run dev
+```shell npm2yarn
+npm run dev
 ```
 
 Build assets for deployment
-```sh
-pnpm run build
+```shell npm2yarn
+npm run build
 ```
 
 We can now reference the deployed contracts in our frontend Vue app.
@@ -50,8 +50,9 @@ VITE_DAO_V1_ADDR=0xFBcb580DD6D64fbF7caF57FB0439502412324179
 
 ### Pinata
 
-Additionally, we will need a [Pinata](https://www.pinata.cloud) API [key](https://docs.pinata.cloud/pinata-api/authentication) to access the pinning
-service with which we store our ballots as JSON.
+Additionally, we will need a [Pinata](https://www.pinata.cloud) JWT
+[key](https://docs.pinata.cloud/reference/datatestauthentication) to access the
+pinning service with which we store our ballots as JSON.
 
 ```yaml
 VITE_PINATA_JWT=
@@ -60,15 +61,17 @@ VITE_PINATA_JWT=
 ### Start
 
 Start Vue app
-```sh
-pnpm run dev
+```shell npm2yarn
+npm run dev
 ```
 
 ### MetaMask
 
-You can use one of the deployed test accounts and associated private key with [MetaMask](https://metamask.io).
+You can use one of the deployed test accounts and associated private key with
+[MetaMask](https://metamask.io).
 
-If you have not added a local network to MetaMask already, you can use this configuration.
+If you have not added a local network to MetaMask already, you can use this
+configuration.
 
 #### Localhost
 

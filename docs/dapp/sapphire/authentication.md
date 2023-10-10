@@ -184,7 +184,7 @@ example uses Ethers:
 const time = new Date().getTime();
 const user = await eth.signer.getAddress();
 
-// Ask user to "Sign-In" every 24 hours
+// Ask user to "Sign-In" every 24 hours.
 const signature = await eth.signer._signTypedData({
     name: "SignInExample.SignIn",
     version: "1",

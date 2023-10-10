@@ -45,7 +45,7 @@ Although the calls may be unauthenticated, they can still be encrypted!
 :::
 
 However, if the Sapphire wrapper has been attached to a signer then subsequent
-view calls via `eth_call` will request that the user signs them (e.g. a
+view calls via `eth_call` will request that the user sign them (e.g. a
 MetaMask popup), these are called **signed queries** meaning `msg.sender` will be
 set to the signing account and can be used for authentication or to implement
 access control. This may add friction to the end-user experience and can result

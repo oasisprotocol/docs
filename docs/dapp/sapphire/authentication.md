@@ -170,7 +170,7 @@ contract SignInExample {
         authenticated(auth)
         returns (bytes memory output)
     {
-        // Use `auth.user` instead of `msg.sender`
+        // Use `auth.user` instead of `msg.sender`!
     }
 }
 ```

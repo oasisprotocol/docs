@@ -204,6 +204,6 @@ const auth = {user, time, rsv};
 // The `auth` variable can then be cached.
 
 // Then in the future, authenticated view calls can be performed by
-// passing auth without further user interaction authenticated data
+// passing auth without further user interaction authenticated data.
 await contract.authenticatedViewCall(auth, ...args);
 ```

@@ -150,6 +150,21 @@ with the new one as follows:
 mv new-config.yml config.yml
 ```
 
+:::tip
+
+The configuration format for seed nodes has changed and it now requires the
+node's P2P public key to be used. In case your old configuration file contains
+known Testnet seed nodes, this transformation is performed automatically.
+
+However, if it contains unknown seed nodes then the conversion did not happen
+automatically and you may need to obtain the seed node's P2P public key. For
+Testnet you can use the following addresses:
+
+* `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:26656`
+* `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:9200`
+
+:::
+
 [Change Log]:
   https://github.com/oasisprotocol/oasis-core/blob/v23.0/CHANGELOG.md
 

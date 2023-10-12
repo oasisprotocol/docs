@@ -23,13 +23,14 @@ On the Testnet, TEST tokens are in use -- if you need some to test your clients,
 
 This page is meant to be kept up to date with the information from the currently released Testnet. Use the information here to deploy or upgrade your node on the Testnet.
 
-* Latest Testnet version: **2022-03-03**
-* [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2022-03-03/genesis.json):
-  * SHA256: `4c3d271253d2a324816de3b9a048261b674471e7d4f9a02995a769489bd41984`
+* Latest Testnet version: **2023-10-12**
+* [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2023-10-12/genesis.json):
+  * SHA256: `02ce385c050b2a5c7cf0e5e34f5e4930f7804bb21efba2d1d3aa8215123aab68`
 * Genesis document's hash ([explanation](../genesis-doc.md#genesis-file-vs-genesis-document)):
-  * `50304f98ddb656620ea817cc1446c401752a05a249b36c9b90dba4616829977a`
-* Oasis seed node address:
-  * `53572F689E5BACDD3C6527E6594EC49C8F3093F6@34.86.165.6:26656`
+  * `0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76`
+* Oasis seed node addresses:
+  * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:26656`
+  * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:9200`
 
 :::tip
 
@@ -38,12 +39,9 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
-  * To sync from genesis, you need to start with an earlier version first
-    ([read more][handling network upgrades]):
-    * [22.0.3](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.0.3) (until epoch **15056**)
+  * [23.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
-  * [2.5.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.5.0)
+  * [2.6.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0)
 
 :::info
 
@@ -60,7 +58,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 ### Cipher
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
@@ -78,7 +76,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Emerald
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0-testnet#building)):
@@ -89,7 +87,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Sapphire
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime binary version:
@@ -109,7 +107,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Key Manager
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime binary version:

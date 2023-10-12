@@ -93,13 +93,10 @@ Ubuntu versions (or other distributions using older system libraries).
 9. Perform any needed [configuration changes](#configuration-changes) described
    below.
 
-10. (only Web3 Gateway operators) Replace old version of Oasis Web3 Gateway with
-   version [4.0.0-rc1][web3-gw-4.0.0-rc1].
+10. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
+    Gateway with version [2.6.0][rosetta-gw-2.6.0].
 
-11. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
-    Gateway with version [3.0.0-rc1][rosetta-gw-3.0.0-rc1].
-
-12. Start your node and re-enable auto-starting via your process manager.
+11. Start your node and re-enable auto-starting via your process manager.
 
 [Governance documentation]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
 [Testnet 2023-10-12 release]: https://github.com/oasisprotocol/testnet-artifacts/releases/tag/2023-10-12
@@ -107,10 +104,8 @@ Ubuntu versions (or other distributions using older system libraries).
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
 [23.0]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0
-[web3-gw-4.0.0-rc1]:
-  https://github.com/oasisprotocol/emerald-web3-gateway/releases/tag/v4.0.0-rc1
-[rosetta-gw-3.0.0-rc1]:
-  https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v3.0.0-rc1
+[rosetta-gw-2.6.0]:
+  https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0
 
 ### Configuration Changes
 
@@ -271,7 +266,7 @@ oasis-node genesis migrate --genesis.new_chain_id testnet-2023-10-12
 #### Random Beacon
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch
-  of Testnet's state dump + 1, `29571`.
+  of Testnet's state dump + 1, `29570`.
 
 #### Governance
 

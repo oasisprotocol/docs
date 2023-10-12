@@ -79,8 +79,8 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
   * [23.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0-testnet#building)):
-  * [10.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v10.0.0-testnet)
+* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0-testnet#building)):
+  * [11.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v11.0.0-testnet)
 * Web3 Gateway version:
   * [3.4.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0)
 

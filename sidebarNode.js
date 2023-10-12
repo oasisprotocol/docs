@@ -18,7 +18,6 @@ const sidebars = {
       },
       items: [
         'node/mainnet/e-upgrade',
-        'node/mainnet/damask-upgrade',
         {
           type: 'category',
           label: 'Previous Upgrades',
@@ -28,6 +27,7 @@ const sidebars = {
             slug: 'node/mainnet/previous-upgrades',
           },
           items: [
+            'node/mainnet/previous-upgrades/damask-upgrade',
             'node/mainnet/previous-upgrades/cobalt-upgrade',
             'node/mainnet/previous-upgrades/mainnet-upgrade',
           ],

@@ -208,6 +208,10 @@ const redirectsOptions = {
             to: '/paratime/',
             from: '/oasis-sdk/runtime/getting-started' // #200 Restructure docs
         },
+        {
+            to: '/node/mainnet/previous-upgrades/damask-upgrade',
+            from: '/node/mainnet/damask-upgrade' // #572 Move Damask Upgrade docs
+        },
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

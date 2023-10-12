@@ -158,6 +158,10 @@ Testnet you can use the following addresses:
 * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:26656`
 * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:9200`
 
+Please be aware that every seed node should be configured to listen on two
+distinct ports. One is dedicated to peer discovery within the CometBFT P2P
+network, while the other is used to bootstrap the Oasis P2P network.
+
 :::
 
 [Change Log]:

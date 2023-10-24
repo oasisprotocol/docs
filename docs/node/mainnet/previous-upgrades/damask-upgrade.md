@@ -110,7 +110,7 @@ For the actual steps that node operators need to make on their nodes, see the
   https://github.com/oasisprotocol/community/discussions/30
 [Oasis Community Forum on GitHub]:
   https://github.com/oasisprotocol/community
-[upgrade-log-damask]: upgrade-log.md#damask-upgrade
+[upgrade-log-damask]: ../upgrade-log.md#damask-upgrade
 
 ## Proposed State Changes {#state-changes}
 
@@ -351,10 +351,10 @@ as well.
   }
   ```
 
-[genesis-doc]: ../genesis-doc.md#parameters
-[minimum staking thresholds]: ../genesis-doc.md#staking-thresholds
+[genesis-doc]: ../../genesis-doc.md#parameters
+[minimum staking thresholds]: ../../genesis-doc.md#staking-thresholds
 [oasis-core-4308]: https://github.com/oasisprotocol/oasis-core/pull/4308
-[pvss-beacon]: ../../adrs/0007-improved-random-beacon.md
+[pvss-beacon]: ../../../adrs/0007-improved-random-beacon.md
 [Mainnet genesis file]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18
 [mainnet-quote]: https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F
@@ -372,5 +372,5 @@ your questions, comments, and feedback related to Damask upgrade.
 To follow the network, please use one of the many
 [community block explorers][archived - block explorers].
 
-[node-operators-slack]: ../../get-involved/README.md
+[node-operators-slack]: ../../../get-involved/README.md
 [archived - block explorers]: https://github.com/oasisprotocol/docs/blob/0aeeb93a6e7c9001925923661e4eb3340ec4fb4b/docs/general/community-resources/community-made-resources.md#block-explorers--validator-leaderboards-block-explorers-validator-leaderboards

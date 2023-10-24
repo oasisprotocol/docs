@@ -262,7 +262,7 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 
 11. Start your node and re-enable auto-starting via your process manager.
 
-[Damask Upgrade]: damask-upgrade.md#state-changes
+[Damask Upgrade]: previous-upgrades/damask-upgrade.md#state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]:

@@ -110,7 +110,7 @@ upgrade's *Proposed State Changes* section (e.g. [Damask upgrade's Proposed
 State Changes], [Cobalt upgrade's Proposed State Changes]).
 
 [Cobalt upgrade's Proposed State Changes]: ../../mainnet/previous-upgrades/cobalt-upgrade.md#proposed-state-changes
-[Damask upgrade's Proposed State Changes]: ../../mainnet/damask-upgrade.md#proposed-state-changes
+[Damask upgrade's Proposed State Changes]: ../../mainnet/previous-upgrades/damask-upgrade.md#proposed-state-changes
 
 ### Download and Verify the Provided Genesis File {#verify-genesis}
 

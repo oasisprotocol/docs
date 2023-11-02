@@ -23,7 +23,6 @@ const knownOffsets = {
 const offsetFrom = knownOffsets.recent;
 
 const estimatedEpochsPerHour = (knownOffsets.recent.epoch - knownOffsets.mainnet.epoch) / ((new Date(knownOffsets.recent.date).getTime() - new Date(knownOffsets.mainnet.date).getTime()) / 1000 / 60 / 60);
-const estimatedEpochsPerYear = 365 * 24 * estimatedEpochsPerHour;
 
 // From genesis "reward_factor_epoch_signed": "1"
 const rewardFactorEpochSigned = 1;
@@ -32,16 +31,17 @@ const rewardAmountDenominator = 100_000_000;
 
 const estimateEpochDates = (epochOffsets: number[]) => {
   return epochOffsets
-    .map(epochOffset => {
-      const timeOffset = (epochOffset - offsetFrom.epoch) / estimatedEpochsPerHour * 60 * 60 * 1000;
-      const date = new Date(new Date(offsetFrom.date).getTime() + timeOffset);
-      return date.toISOString();
+      .map(untilEpoch => {
+      const timeOffset = (untilEpoch - offsetFrom.epoch) / estimatedEpochsPerHour * 60 * 60 * 1000;
+      const date = new Date(new Date(offsetFrom.date).getTime() + timeOffset).toISOString();
+      return date;
     });
 };
 
 const estimateAPY = (scaleRewards: number[]) => {
   return scaleRewards
     .map(scale => {
+      const estimatedEpochsPerYear = 365 * 24 * estimatedEpochsPerHour;
       const rewardPerEpoch = scale * rewardFactorEpochSigned / rewardAmountDenominator;
       // Better numerical precision than yearlyCompoundedRate = (1 + rewardPerEpoch)**estimatedEpochsPerYear - 1
       const yearlyCompoundedRate = Math.expm1(Math.log1p(rewardPerEpoch) * estimatedEpochsPerYear)

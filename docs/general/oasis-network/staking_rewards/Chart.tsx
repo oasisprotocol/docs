@@ -40,7 +40,7 @@ const estimateEpochDatesAndAPY = (data: Array<{ untilEpoch: number, scale: numbe
       // Better numerical precision than yearlyCompoundedRate = (1 + rewardPerEpoch)**estimatedEpochsPerYear - 1
       const yearlyCompoundedRate = Math.expm1(Math.log1p(rewardPerEpoch) * estimatedEpochsPerYear)
 
-      return { date, yearlyCompoundedRate };
+      return { untilEpoch, scale, date, rewardPerEpoch, yearlyCompoundedRate };
     });
 };
 
@@ -114,6 +114,12 @@ const StakingRewardsChart = () => {
   // const PlotlyBasic: typeof import('plotly.js-basic-dist') = require('plotly.js-basic-dist');
   // PlotlyBasic.downloadImage(chart, { filename: 'fallback', format:'svg', width: 960, height: 600 });
 
+  // To generate data.csv:
+  // const csv = [
+  //   ['Until epoch', 'Estimated date', 'Reward per epoch %', 'Estimated annualized rewards %'].join(','),
+  //   ...estimates.map((d) => [d.untilEpoch, d.date, (d.rewardPerEpoch * 100).toFixed(6), (d.yearlyCompoundedRate * 100).toFixed(4)].join(','))
+  // ].join('\n')
+  // console.log(csv)
   return <PlotlyChart label="Staking Rewards Schedule (time estimated from epoch interval)" chart={chart} fallbackSvg={FallbackSvg} />;
 };
 

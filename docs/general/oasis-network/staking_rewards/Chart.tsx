@@ -29,33 +29,29 @@ const rewardFactorEpochSigned = 1;
 // https://github.com/oasisprotocol/oasis-core/blob/d8e352b/go/staking/api/rewards.go#L22
 const rewardAmountDenominator = 100_000_000;
 
-const estimateEpochDates = (epochOffsets: number[]) => {
-  return epochOffsets
-      .map(untilEpoch => {
+const estimateEpochDatesAndAPY = (data: Array<{ untilEpoch: number, scale: number }>) => {
+  return data
+    .map(({ untilEpoch, scale }) => {
       const timeOffset = (untilEpoch - offsetFrom.epoch) / estimatedEpochsPerHour * 60 * 60 * 1000;
       const date = new Date(new Date(offsetFrom.date).getTime() + timeOffset).toISOString();
-      return date;
-    });
-};
 
-const estimateAPY = (scaleRewards: number[]) => {
-  return scaleRewards
-    .map(scale => {
       const estimatedEpochsPerYear = 365 * 24 * estimatedEpochsPerHour;
       const rewardPerEpoch = scale * rewardFactorEpochSigned / rewardAmountDenominator;
       // Better numerical precision than yearlyCompoundedRate = (1 + rewardPerEpoch)**estimatedEpochsPerYear - 1
       const yearlyCompoundedRate = Math.expm1(Math.log1p(rewardPerEpoch) * estimatedEpochsPerYear)
-      return yearlyCompoundedRate;
+
+      return { date, yearlyCompoundedRate };
     });
 };
 
 
 const StakingRewardsChart = () => {
+  const estimates = estimateEpochDatesAndAPY(data)
   const chart: PlotlyDataLayoutConfig = {
     data: [
       {
-        x: estimateEpochDates(data.map(d => d.untilEpoch)),
-        y: estimateAPY(data.map(d => d.scale)),
+        x: estimates.map(d => d.date),
+        y: estimates.map(d => d.yearlyCompoundedRate),
         mode: 'lines',
         name: 'Annualized rewards',
         marker: {color: '#4285F4'},
@@ -134,9 +130,9 @@ function testEstimatedEpochDates() {
 
   console.info('DEV: estimatedEpochsPerHour', estimatedEpochsPerHour);
   console.info(
-    'DEV: diff between estimateEpochDates and known dates',
+    'DEV: diff between estimates and known dates',
     Object.entries(knownOffsets).map(([epochName, {epoch, date}]) => {
-      const estimatedTime = new Date(estimateEpochDates([epoch])[0]).getTime();
+      const estimatedTime = new Date(estimateEpochDatesAndAPY([{ untilEpoch: epoch, scale: 1 }])[0].date).getTime();
       const indexedTime = new Date(date).getTime();
       const diffHours = (indexedTime - estimatedTime) / 1000 / 60 / 60;
       return `at ${epochName} (${epoch}): ${diffHoursFormatter.format(diffHours)}`;

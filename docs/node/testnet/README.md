@@ -63,6 +63,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime binary version:
   * [2.6.2-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2-testnet)
+  * [3.0.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.0-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
   * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`

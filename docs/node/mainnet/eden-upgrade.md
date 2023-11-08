@@ -24,7 +24,7 @@ around TBD.
 ## Major Features
 
 All features for the Eden upgrade are implemented as part of
-**Oasis Core 23.0.3** release series which is a consensus protocol-breaking
+**Oasis Core 23.0.x** release series which is a consensus protocol-breaking
 release.
 
 Summary of the major features is as follows:
@@ -124,7 +124,7 @@ upgrade epoch and has halted:
 
 :::info
 
-Mainnet state at epoch **TBD** will be exported and migrated to a 23.0.3
+Mainnet state at epoch **TBD** will be exported and migrated to a 23.0.x
 compatible genesis file.
 
 The new genesis file will be published on the above link soon after reaching the

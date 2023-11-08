@@ -1,4 +1,4 @@
-# E* Upgrade
+# Eden Upgrade
 
 :::info
 

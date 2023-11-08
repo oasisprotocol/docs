@@ -154,6 +154,10 @@ const redirectsOptions = {
             from: '/general/run-a-node/upgrade-log', // #200 Restructure docs
         },
         {
+            to: '/node/mainnet/eden-upgrade',
+            from: '/node/mainnet/e-upgrade', // #599 Rename E* Upgrade -> Eden Upgrade
+        },
+        {
             to: '/node/run-your-node/archive-node',
             from: '/general/run-a-node/set-up-your-node/run-archive-node', // #200 Restructure docs
         },

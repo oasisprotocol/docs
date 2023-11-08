@@ -212,6 +212,10 @@ const redirectsOptions = {
             to: '/node/mainnet/previous-upgrades/damask-upgrade',
             from: '/node/mainnet/damask-upgrade' // #572 Move Damask Upgrade docs
         },
+        {
+            to: '/node/mainnet/eden-upgrade',
+            from: '/node/mainnet/e-upgrade' // #600 Add 23.0 upgrade's name
+        },
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

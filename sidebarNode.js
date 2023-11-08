@@ -17,7 +17,7 @@ const sidebars = {
         id: 'node/mainnet/README',
       },
       items: [
-        'node/mainnet/e-upgrade',
+        'node/mainnet/eden-upgrade',
         {
           type: 'category',
           label: 'Previous Upgrades',

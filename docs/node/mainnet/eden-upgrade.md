@@ -1,10 +1,9 @@
-# E* Upgrade
+# Eden Upgrade
 
 :::info
 
 This document is a work in progress and details around when the upgrade will be
-proposed and how it will be called are still not known and will be determined
-by the Oasis community.
+proposed are still not known and will be determined later.
 
 The upgrade first happened on Testnet and will only be proposed for Mainnet
 after sufficient testing has been done to ensure everything will progress as
@@ -12,20 +11,20 @@ planned.
 
 :::
 
-This document provides an overview of the changes for the E* Mainnet
+This document provides an overview of the changes for the Eden Mainnet
 upgrade.
 
 :::caution
 
-The E* upgrade on Mainnet is scheduled at epoch TBD which will happen
+The Eden upgrade on Mainnet is scheduled at epoch TBD which will happen
 around TBD.
 
 :::
 
 ## Major Features
 
-All features for the E* upgrade are implemented as part of
-**Oasis Core 23.0.x** release series which is a consensus protocol-breaking
+All features for the Eden upgrade are implemented as part of
+**Oasis Core 23.0.3** release series which is a consensus protocol-breaking
 release.
 
 Summary of the major features is as follows:
@@ -125,7 +124,7 @@ upgrade epoch and has halted:
 
 :::info
 
-Mainnet state at epoch **TBD** will be exported and migrated to a 23.0.x
+Mainnet state at epoch **TBD** will be exported and migrated to a 23.0.3
 compatible genesis file.
 
 The new genesis file will be published on the above link soon after reaching the
@@ -190,11 +189,11 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::
 
-8. Replace the old version of Oasis Node with version [23.0.x].
+8. Replace the old version of Oasis Node with version [23.0.3].
 
 :::info
 
-The Oasis Core 23.0.x binary in our published releases is built only for Ubuntu
+The Oasis Core 23.0.3 binary in our published releases is built only for Ubuntu
 22.04 (GLIBC>=2.32). You'll have to build it yourself if you're using prior
 Ubuntu versions (or other distributions using older system libraries).
 
@@ -215,7 +214,7 @@ Ubuntu versions (or other distributions using older system libraries).
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
-[23.0.x]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.x
+[23.0.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.3
 [rosetta-gw-2.6.0]:
   https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0
 
@@ -223,7 +222,7 @@ Ubuntu versions (or other distributions using older system libraries).
 
 :::info
 
-To see the full extent of the changes examine the [Change Log] of the 23.0.x
+To see the full extent of the changes examine the [Change Log] of the 23.0.3
 release.
 
 :::
@@ -277,13 +276,13 @@ network, while the other is used to bootstrap the Oasis P2P network.
 :::
 
 [Change Log]:
-  https://github.com/oasisprotocol/oasis-core/blob/v23.0.x/CHANGELOG.md
+  https://github.com/oasisprotocol/oasis-core/blob/v23.0.3/CHANGELOG.md
 
 ### Data Directory Changes
 
 The subdirectory (located inside the node's data directory) used to store
 consensus-related data, previously called `tendermint` (after the consensus
-layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.x. If
+layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.3. If
 any of your scripts rely on specific directory names, please make sure to update
 them to reflect the changed sdirectory name.
 

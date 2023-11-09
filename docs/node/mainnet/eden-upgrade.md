@@ -189,11 +189,11 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::
 
-8. Replace the old version of Oasis Node with version [23.0.3].
+8. Replace the old version of Oasis Node with version [23.0.x].
 
 :::info
 
-The Oasis Core 23.0.3 binary in our published releases is built only for Ubuntu
+The Oasis Core 23.0.x binary in our published releases is built only for Ubuntu
 22.04 (GLIBC>=2.32). You'll have to build it yourself if you're using prior
 Ubuntu versions (or other distributions using older system libraries).
 
@@ -214,7 +214,7 @@ Ubuntu versions (or other distributions using older system libraries).
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
-[23.0.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.3
+[23.0.x]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.x
 [rosetta-gw-2.6.0]:
   https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0
 
@@ -222,7 +222,7 @@ Ubuntu versions (or other distributions using older system libraries).
 
 :::info
 
-To see the full extent of the changes examine the [Change Log] of the 23.0.3
+To see the full extent of the changes examine the [Change Log] of the 23.0.x
 release.
 
 :::
@@ -276,13 +276,13 @@ network, while the other is used to bootstrap the Oasis P2P network.
 :::
 
 [Change Log]:
-  https://github.com/oasisprotocol/oasis-core/blob/v23.0.3/CHANGELOG.md
+  https://github.com/oasisprotocol/oasis-core/blob/v23.0.x/CHANGELOG.md
 
 ### Data Directory Changes
 
 The subdirectory (located inside the node's data directory) used to store
 consensus-related data, previously called `tendermint` (after the consensus
-layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.3. If
+layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.x. If
 any of your scripts rely on specific directory names, please make sure to update
 them to reflect the changed sdirectory name.
 

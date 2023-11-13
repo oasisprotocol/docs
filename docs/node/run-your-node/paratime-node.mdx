@@ -421,6 +421,33 @@ In case of `bwrap` issues you need to adjust your Seccomp or AppArmor profiles t
   --security-opt seccomp=unconfined \
 ```
 
+### Bubblewrap Fails to Create Temporary Directory
+
+If the `/tmp` directory is not writable by the user running the node, the
+Bubblewrap sandbox may fail to start the ParaTimes. In the logs you will see
+errors about creating a temporary directory, like:
+
+```json
+{"caller":"sandbox.go:546","err":"failed to create temporary directory: mkdir /tmp/oasis-runtime1152692396: read-only file system","level":"error","module":"runtime/host/sandbox","msg":"failed to start runtime","runtime_id":"000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c","ts":"2023-11-09T14:08:50.554629545Z"}
+```
+
+The node might report in the status field that a runtime has not been
+provisioned yet, like:
+
+```
+oasis-node control status -a unix:/node/data/internal.sock | grep status
+        "status": "waiting for hosted runtime provision",
+```
+
+This can happen, for example, in Kubernetes, when the `readOnlyRootFilesystem`
+setting in a Pod or container security context is set to `true`.
+
+To resolve the issue, please make sure that the `/tmp` directory is writable by
+the user running the node. If you are running the node in Kubernetes, you can
+set the `readOnlyRootFilesystem` setting to `false`, or better yet, mount a
+dedicated volume into `/tmp`. It can be very small in size, e.g., `1 MiB` is
+enough.
+
 ### Stake Requirement
 
 Double check your node entity satisfies the staking requirements for a ParaTime node. For details see the [Stake Requirements](paratime-node.mdx#stake-requirements) section.

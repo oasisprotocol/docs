@@ -102,13 +102,26 @@ upgrade. For now, please take a look at the related [Testnet upgrade].
 
 ### Voting
 
-On TBD, an upgrade proposal will be proposed which (if accepted) will schedule
-the upgrade on epoch **TBD**.
+On 2023-11-14, an upgrade proposal was proposed which (if accepted) will
+schedule the upgrade on epoch **28017** (approximately 2023-11-29 at around 8:30
+UTC).
+
+:::info
+
+The Eden upgrade proposal has the ID number 3.
+
+:::
 
 For optimal voting experience, we recommend using the [Oasis CLI].
 Follow these steps to cast your vote:
 1. [Import your keys into the wallet]
-2. [Cast your vote]
+```
+oasis wallet import-file my_entity entity.pem
+```
+2. [Cast your vote]:
+```
+oasis network governance cast-vote 3 yes
+```
 
 ### Upgrade Instructions
 
@@ -124,7 +137,7 @@ upgrade epoch and has halted:
 
 :::info
 
-Mainnet state at epoch **TBD** will be exported and migrated to a 23.0.x
+Mainnet state at epoch **28017** will be exported and migrated to a 23.0.x
 compatible genesis file.
 
 The new genesis file will be published on the above link soon after reaching the
@@ -189,11 +202,11 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::
 
-8. Replace the old version of Oasis Node with version [23.0.3].
+8. Replace the old version of Oasis Node with version [23.0.4].
 
 :::info
 
-The Oasis Core 23.0.3 binary in our published releases is built only for Ubuntu
+The Oasis Core 23.0.x binary in our published releases is built only for Ubuntu
 22.04 (GLIBC>=2.32). You'll have to build it yourself if you're using prior
 Ubuntu versions (or other distributions using older system libraries).
 
@@ -214,7 +227,7 @@ Ubuntu versions (or other distributions using older system libraries).
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
-[23.0.3]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.3
+[23.0.4]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.4
 [rosetta-gw-2.6.0]:
   https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0
 
@@ -222,7 +235,7 @@ Ubuntu versions (or other distributions using older system libraries).
 
 :::info
 
-To see the full extent of the changes examine the [Change Log] of the 23.0.3
+To see the full extent of the changes examine the [Change Log] of the 23.0.x
 release.
 
 :::
@@ -276,13 +289,13 @@ network, while the other is used to bootstrap the Oasis P2P network.
 :::
 
 [Change Log]:
-  https://github.com/oasisprotocol/oasis-core/blob/v23.0.3/CHANGELOG.md
+  https://github.com/oasisprotocol/oasis-core/blob/v23.0.x/CHANGELOG.md
 
 ### Data Directory Changes
 
 The subdirectory (located inside the node's data directory) used to store
 consensus-related data, previously called `tendermint` (after the consensus
-layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.3. If
+layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.x. If
 any of your scripts rely on specific directory names, please make sure to update
 them to reflect the changed sdirectory name.
 
@@ -381,7 +394,7 @@ oasis-node genesis migrate --genesis.new_chain_id oasis-4
 #### Random Beacon
 
 * **`beacon.base`** is the network's starting epoch. It will be set to the epoch
-  of Mainnet's state dump + 1, `TBD`.
+  of Mainnet's state dump + 1, `28017`.
 
 #### Governance
 

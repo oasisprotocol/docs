@@ -30,13 +30,13 @@ Let's create a new Hardhat project.
 
 :::info
 
-Currently we are compatible with Hardhat up to `2.12.7`. You may need to
+Currently we are compatible with Hardhat up to `2.16`. You may need to
 specify the version of Hardhat to install.
 
 :::
 
 ```shell
-cd opl-secret-ballot/backend && npx hardhat
+cd opl-secret-ballot/backend && npx hardhat init
 ```
 
 When initializing the Hardhat application, we would like to use the `backend`

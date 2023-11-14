@@ -1,23 +1,12 @@
 # Eden Upgrade
 
-:::info
-
-This document is a work in progress and details around when the upgrade will be
-proposed are still not known and will be determined later.
-
-The upgrade first happened on Testnet and will only be proposed for Mainnet
-after sufficient testing has been done to ensure everything will progress as
-planned.
-
-:::
-
 This document provides an overview of the changes for the Eden Mainnet
 upgrade.
 
 :::caution
 
-The Eden upgrade on Mainnet is scheduled at epoch TBD which will happen
-around TBD.
+The Eden upgrade on Mainnet is scheduled at epoch 28017 which will happen
+around 2023-11-29 08:30 UTC.
 
 :::
 
@@ -133,7 +122,7 @@ upgrade epoch and has halted:
     network has halted, proceed to the next steps.
 
 2. Download the Mainnet genesis file published in the
-   [Mainnet TBD release].
+   [Mainnet 2023-11-29 release].
 
 :::info
 
@@ -148,7 +137,7 @@ upgrade epoch.
 3. Verify the provided Mainnet upgrade genesis file by comparing it to the
    local network state dump.
 
-   Find the `genesis-mainnet-TBD.json` file in the `exports` subdirectory in
+   Find the `genesis-oasis-3-at-HEIGHT.json` file in the `exports` subdirectory in
    your data dir (e.g. `/node/`, `/srv/oasis/node/`)  and run `sha256sum` on it.
    Afterwards, compare it with the hash that we will share on the
    `#node-operators` Discord channel.
@@ -223,7 +212,7 @@ Ubuntu versions (or other distributions using older system libraries).
 [Oasis CLI]: ../../general/manage-tokens/cli/
 [Import your keys into the wallet]: ../../general/manage-tokens/cli/wallet.md#import-file
 [Cast your vote]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
-[Mainnet TBD release]: https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/TBD
+[Mainnet 2023-11-29 release]: https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2023-11-29
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity

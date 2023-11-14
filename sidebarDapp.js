@@ -23,6 +23,7 @@ const sidebars = {
         'dapp/sapphire/gasless',
         'dapp/sapphire/precompiles',
         'dapp/sapphire/addresses',
+        'dapp/sapphire/security',
         {
           type: 'link',
           label: 'TypeScript API',

@@ -183,7 +183,10 @@ state encryption key from the Oasis key manager. Both the keys and values of the
 items stored in state are encrypted, but the size of either is *not* hidden. You
 app may need to pad state items to a constant length, or use other obfuscation.
 Observers may also be able to infer computation based on storage access patterns,
-so you might need to obfuscate that, too.
+so you may need to obfuscate that, too. See [Security chapter] for more
+recommendations.
+
+[Security chapter]: ./security.md#storage-access-patterns
 
 :::danger Contract state leaks a fine-grained access pattern
 

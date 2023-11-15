@@ -209,7 +209,7 @@ Ubuntu versions (or other distributions using older system libraries).
 
 11. Start your node and re-enable auto-starting via your process manager.
 
-[Oasis CLI]: ../../general/manage-tokens/cli/
+[Oasis CLI]: ../../general/manage-tokens/cli/README.md
 [Import your keys into the wallet]: ../../general/manage-tokens/cli/wallet.md#import-file
 [Cast your vote]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
 [Mainnet 2023-11-29 release]: https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2023-11-29

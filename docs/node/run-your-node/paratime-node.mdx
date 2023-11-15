@@ -70,39 +70,18 @@ To be able to register as a ParaTime node on the Oasis Network, you need to
 have enough tokens staked in your entity's escrow account.
 
 Current minimum staking requirements for a specific ParaTime are listed on the
-Contribute to the Network section - [Run a ParaTime Node] page. Should you want
+Contribute to the Network section—[Run a ParaTime Node] page. Should you want
 to check the staking requirements for other node roles and registered ParaTimes
 manually, use the Oasis CLI tools as described in [Common Staking Info].
 
 Finally, to stake the tokens, use our [Oasis CLI tools]. If everything was set
-up correctly, you should see something like below when running [Oasis Node
-Stake Account Info] command for your entity's account (this is an example for
-the Testnet):
+up correctly, you should see something like below when running [`oasis account
+show`] command for your entity's account (this is an example for
+Testnet):
 
-```bash
-Balance:
-  Total: 0.0 TEST
-  Available: 0.0 TEST
+![code shell](../../../external/cli/examples/account/show-delegations.in.static)
 
-Active Delegations to this Account:
-  Total: 20000.0 TEST (20000000000000 shares)
-  Delegations:
-    - From:   oasis1qrwdwxutpyr9d2m84zh55rzcf99aw0hkts7myvv9
-      Amount: 20000.0 TEST (20000000000000 shares)
-
-Stake Accumulator:
-  Claims:
-    - Name: registry.RegisterEntity
-      Staking Thresholds:
-        - Global: entity
-    - Name: registry.RegisterNode.HG5TB3dbY8gtYBBw/R/cHfPaOpe0vT7W1wu/2rtpk/A=
-      Staking Thresholds:
-        - Global: node-compute
-      Staking Thresholds:
-        - Global: node-storage
-
-Nonce: 1
-```
+![code](../../../external/cli/examples/account/show-delegations.out.static)
 
 :::caution
 
@@ -114,64 +93,33 @@ change in the future.
 [Run a ParaTime Node]: ../../get-involved/run-node/paratime-node.mdx
 [Common Staking Info]: ../../general/manage-tokens/cli/network.md#show-native-token
 [Oasis CLI tools]: ../../general/manage-tokens/cli/account.md#delegate
-[Oasis Node Stake Account Info]: ../../general/manage-tokens/cli/account.md#show
+[`oasis account show`]: ../../general/manage-tokens/cli/account.md#show
 
 ### Register a New Entity or Update Your Entity Registration
 
-If you don't have an entity yet, create a new one by following the [Creating Your Entity](validator-node.mdx#creating-your-entity) instructions.
-
 :::danger
 
-Everything in this section should be done on the `localhost` as there are sensitive items that will be created.
+Everything in this section should be done on the `localhost` as there are
+sensitive items that will be created.
 
 :::
 
-If you will be running the ParaTime on a new Oasis Node, initialize a new node by following the [Initializing a Node](validator-node.mdx#initializing-a-node) instructions.
+1. If you don't have an entity yet, create a new one by following the
+   [Initialize Entity] instructions for validators.
 
-Then update your entity descriptor by enumerating paths to all your node's descriptors (existing and new ones) in the `--entity.node.descriptor` flag. For example:
+2. If you will be running the ParaTime on a new Oasis node, also initialize a
+   new node by following the [Starting the Oasis Node] instructions for
+   validators.
 
-```bash
-oasis-node registry entity update \
-    ... various signer flags ... \
-    --entity.node.descriptor /localhost/node1/node_genesis.json,/localhost/node2/node_genesis.json
-```
+3. Now, [list your node ID] in the entity descriptor file `nodes` field.
 
-:::info
-
-To confirm all nodes are added to your entity descriptor, run:
-
-```bash
-cat <PATH-TO-entity.json>
-```
-
-and ensure you see all your nodes' IDs under the `"nodes"` list.
-
-For example:
-
-```bash
-{
-  "v": 2,
-  "id": "QTg+ZjubD/36egwByAIGC6lMVBKgqo7xnZPgHVoIKzc=",
-  "nodes": [
-    "yT1h8/eN0VInQxn3YKcHxvSgGcsjsTSYmdTLZZMBTWI=",
-    "HG5TB3dbY8gtYBBw/R/cHfPaOpe0vT7W1wu/2rtpk/A="
-  ]
-}
-```
-
-:::
-
-Then generate and submit the new/updated entity descriptor via the entity registration transaction by following the [Generating Entity Registration Transaction](validator-node.mdx#generating-entity-registration-transaction) instructions.
-
-:::caution
-
-Make sure your entity descriptor (i.e. `entity.json`) is copied to your online server and saved as `/node/entity/entity.json` to ensure the [node's configuration](paratime-node.mdx#configuration) will find it.
-
-:::
+4. [Register] the updated entity descriptor.
 
 :::tip
 
-You will [configure the node](paratime-node.mdx#configuration) to automatically register for the roles it has enabled (i.e. storage and compute roles) via the `worker.registration.entity` configuration flag.
+You will [configure the node](#configuration) to automatically
+register for the roles it has enabled (i.e. storage and compute roles) via the
+`worker.registration.entity` configuration flag.
 
 No manual node registration is necessary.
 
@@ -179,9 +127,20 @@ No manual node registration is necessary.
 
 :::info
 
-ParaTime rewards for running the compute node will be sent to your entity address **inside the ParaTime**. To access the rewards on the consensus layer, you will need to withdraw them first. Read the [Deposit/Withdraw Tokens to/from ParaTime](../../general/manage-tokens/cli/account.md) chapter to learn more.
+ParaTime rewards for running the compute node will be sent to your entity
+address **inside the ParaTime**. To access the rewards on the consensus layer,
+you will need to withdraw them first. Use the [`oasis account withdraw`]
+command, for example:
+
+![code shell](../../../external/cli/examples/account/withdraw.y.in)
 
 :::
+
+[Initialize Entity]: validator-node.mdx#initialize-entity
+[Starting the Oasis Node]: validator-node.mdx#starting-the-oasis-node
+[list your node ID]: validator-node.mdx#adding-your-node-id-to-the-entity-descriptor
+[Register]: validator-node.mdx#entity-registration
+[`oasis account withdraw`]: ../../general/manage-tokens/cli/account.md#withdraw
 
 ### The ParaTime Bundle
 

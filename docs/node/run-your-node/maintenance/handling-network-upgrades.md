@@ -271,12 +271,12 @@ document.
 
 If you are running a compute or a client ParaTime node, you will often need to
 upgrade the ParaTime. The required ParaTime versions are stored in the network
-registry. The command below queries the registry and extracts the version
-information for the Paratime
+registry. The [`oasis network show paratimes`] command below queries the
+registry and extracts the version information for the Paratime
 `00000000000000000000000000000000000000000000000072c8215e60d5bca7`:
 
 ```bash
-oasis-node registry runtime list -v -a unix:/serverdir/node/internal.sock \| 
+oasis network show paratimes \| 
 jq 'select(.id=="00000000000000000000000000000000000000000000000072c8215e60d5bca7") | .deployments'
 ```
 
@@ -318,6 +318,8 @@ runtime:
 
 The node will then automatically run the correct version of the ParaTime as
 specified in the registry.
+
+[`oasis network show paratimes`]: ../../../general/manage-tokens/cli/network.md#show-paratimes
 
 ## Start Your Node
 

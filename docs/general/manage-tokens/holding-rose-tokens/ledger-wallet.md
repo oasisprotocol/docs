@@ -4,7 +4,7 @@ This is a general documentation that will help users setup [Ledger] hadware
 wallets with Oasis Network. Ledger Live software doesn't support Oasis (ROSE)
 tokens natively yet. In this guide we will install Oasis app via Ledger Live to
 open and access wallet with one or multiple accounts via our official
-[Oasis Wallet - Web].
+[Oasis Wallet - Web][wallet.oasis.io].
 
 ## Setup your Ledger device and Install Oasis App
 
@@ -146,7 +146,6 @@ Ledger is supported by the Oasis CLI. Follow the instructions in the
 [Oasis CLI Tools] page to learn more.
 
 [Ledger]: https://www.ledger.com
-[Oasis Wallet - Web]: https://www.ledger.com
 [Oasis app]: https://github.com/Zondax/ledger-oasis
 [Ledger Live]: https://www.ledger.com/ledger-live/
 [wallet.oasis.io]: https://wallet.oasis.io

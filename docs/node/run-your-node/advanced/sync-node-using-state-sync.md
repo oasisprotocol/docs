@@ -1,20 +1,31 @@
 # Using State Sync for Quick Bootstraping
 
-The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a [validator node](../validator-node.mdx) or a [non-validator node](../non-validator-node.md)) by using [Tendermint's Light Client protocol](https://docs.tendermint.com/main/tendermint-core/light-client.html). It allows one to initialize a node from a trusted height, its corresponding block's header and a trusted validator set (given in the [genesis document](../../genesis-doc.md)). It does so by securely updating the node's trusted state by requesting and verifying a minimal set of data from the network's full nodes.
+The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a
+[validator node](../validator-node.mdx) or a
+[non-validator node](../non-validator-node.md)) by using the
+[Tendermint's Light Client protocol]. It allows one to initialize a node from a
+trusted height, its corresponding block's header and a trusted validator set
+(given in the [genesis document](../../genesis-doc.md)). It does so by securely
+updating the node's trusted state by requesting and verifying a minimal set of
+data from the network's full nodes.
 
 :::info
 
-If you have access to an Oasis Node that is synced with the latest height, another option to speed bootstraping a new Oasis Node is to [copy state from one node to the other](copy-state-from-one-node-to-the-other.md).
+If you have access to an Oasis node that is synced with the latest height,
+another option to speed bootstraping a new Oasis node is to [copy state from one
+node to the other].
 
 :::
 
 :::caution
 
-Tendermint's Light Client protocol requires at least 1 full node to be correct to be able to [detect and submit evidence for a light client attack](https://docs.tendermint.com/main/tendermint-core/light-client.html#where-to-obtain-trusted-height-hash).
+Tendermint's Light Client protocol requires at least 1 full node to be correct
+to be able to [detect and submit evidence for a light client attack].
 
 :::
 
-To configure your node to use the state sync, amend your node's configuration (i.e. `config.yml`) with (non-relevant fields omitted):
+To configure your node to use the state sync, amend your node's configuration
+(i.e. `config.yml`) with (non-relevant fields omitted):
 
 ```yaml
 ... trimmed ...
@@ -44,28 +55,34 @@ consensus:
         - "{{ noden_grpc_endpoint }}"
 
 ... trimmed ...
-
 ```
 
 and replace the following variables in the configuration snippet:
 
-* `{{ trusted_height }}`: Trusted height defines the height at which your node should trust the chain.
-* `{{ trusted_height_hash }}`: Trusted height hash defines the hash of the block header corresponding to the trusted height.
-*   `{{ node1_grpc_endpoint }}`, `{{ node2_grpc_endpoint }}` , ...,
-
-    `{{ noden_grpc_endpoint }}`: Addresses of a Oasis Nodes' publicly exposed gRPC endpoints of the form: `xAMjfJDcUFUcwgZGEQuOdux8gAdc+IFEqccB2LHdGjU=@34.86.145.181:9001`.
+* `{{ trusted_height }}`: Trusted height defines the height at which your node 
+  should trust the chain.
+* `{{ trusted_height_hash }}`: Trusted height hash defines the hash of the block
+  header corresponding to the trusted height.
+* `{{ node1_grpc_endpoint }}`, `{{ node2_grpc_endpoint }}` , ...,
+  `{{ noden_grpc_endpoint }}`: Addresses of a Oasis nodes' publicly exposed gRPC
+  endpoints of the form:
+  `xAMjfJDcUFUcwgZGEQuOdux8gAdc+IFEqccB2LHdGjU=@34.86.145.181:9001`.
 
 :::caution
 
-You need to provide publicly exposed gRPC endpoints for **at least 2 different consensus nodes** for the state sync to work.
+You need to provide publicly exposed gRPC endpoints for **at least 2 different
+consensus nodes** for the state sync to work.
 
 :::
 
 :::danger
 
-You need to **delete any existing node state** (if it exists), otherwise state sync will be skipped. To do that, follow the [Wiping Node State](../maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity) instructions.
+You need to **delete any existing node state** (if it exists), otherwise the
+state sync will be skipped. To do that, follow the [Wiping Node State]
+instructions.
 
-If existing node state is found and state sync is skipped, you will see something like the following in your node's logs:
+If existing node state is found and state sync is skipped, you will see
+something like the following in your node's logs:
 
 ```
 {"caller":"full.go:1233","level":"info","module":"tendermint","msg":"state sync enabled","ts":"2021-06-21T14:40:55.033642763Z"}
@@ -74,26 +91,38 @@ If existing node state is found and state sync is skipped, you will see somethin
 
 :::
 
+[Tendermint's Light Client protocol]:
+  https://docs.tendermint.com/main/tendermint-core/light-client.html
+[copy state from one node to the other]: copy-state-from-one-node-to-the-other.md
+[detect and submit evidence for a light client attack]:
+  https://docs.tendermint.com/main/tendermint-core/light-client.html#where-to-obtain-trusted-height-hash
+[Wiping Node State]: ../maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
+
 ### Obtaining Trusted Height and Hash
 
-To obtain the trusted height and the corresponding block header's hash, use one of the following options.
+To obtain the trusted height and the corresponding block header's hash, use one
+of the following options.
 
 #### Block Explorers
 
-Browse to one of our block explorers (e.g. [OASIS SCAN](https://www.oasisscan.com), [Oasis Monitor](https://oasismonitor.com)) and obtain the trusted height and hash there:
+Browse to one of our block explorers (e.g. [Oasis Scan], [Oasis Monitor]) and
+obtain the trusted height and hash there:
 
 1. Obtain the current block height from the main page, e.g. 4819139.
-2. Click on block height's number to view the block's details and obtain its hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
+2. Click on block height's number to view the block's details and obtain its
+   hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
+
+[Oasis Scan]: https://www.oasisscan.com
+[Oasis Monitor]: https://oasismonitor.com
 
 #### A Trusted Node
 
-If you have an existing node that you trust, you can use its status output to retrieve the current block height and hash by running:
+If you have an existing node that you trust, you can use its status output to
+retrieve the current block height and hash by running:
 
 ```
-oasis-node control status -a $ADDR
+oasis-node control status -a unix:/serverdir/node/internal.sock
 ```
-
-replacing `$ADDR` with the path to your node's internal UNIX socket (e.g. `/srv/oasis/node/internal.sock`).
 
 This will give you output like the following (non-relevant fields omitted):
 
@@ -119,33 +148,46 @@ The values you need are `latest_height` and `latest_hash` .
 
 #### Public Rosetta Gateway
 
-Query our public Rosetta Gateway instance and obtain the trusted height and hash there:
+Query our public Rosetta Gateway instance and obtain the trusted height and hash
+there:
 
 1. _TODO._
 
 #### Oasis Node's gRPC Endpoint
 
-Query our public Oasis Node's gRPC endpoint and obtain the trusted height and hash there:
+Query our public Oasis node's gRPC endpoint and obtain the trusted height and
+hash there:
 
 1. _TODO._
 
 ### Obtaining Addresses of Oasis Nodes' Publicly Exposed gRPC Endpoints
 
-To find the addresses of Oasis Node's publicly exposed gRPC endpoints, use one of the following options.
+To find the addresses of Oasis node's publicly exposed gRPC endpoints, use one
+of the following options.
 
 #### List Registered Nodes' Descriptors via Oasis CLI from the Local Oasis Node
 
-If you already have a local Oasis Node set up, you can list the descriptors of all registered nodes via Oasis CLI.
+If you already have a local Oasis node set up, you can list the descriptors of
+all registered nodes via the [`oasis network show nodes`] Oasis CLI command.
+
+:::info
+
+To avoid denial-of-service attacks this call is not enabled on public Oasis gRPC
+endpoints. You will have to [connect Oasis CLI to your own Oasis node]!
+
+:::
 
 You need to search for the nodes that implement the `consensus-rpc` role.
 
-The publicly exposed gRPC endpoint addresses are found under the node descriptor's `tls.addresses` key.
+The publicly exposed gRPC endpoint addresses are found under the node
+descriptor's `tls.addresses` key.
 
 You can list the relevant addresses by running:
 
 ```
-oasis-node registry node list -v -a $ADDR | \
+oasis network show nodes --network mainnet_local | \
   jq 'select(.roles | contains("consensus-rpc")) | .tls.addresses'
 ```
 
-replacing `$ADDR` with the path to your node's internal UNIX socket (e.g. `/srv/oasis/node/internal.sock`).
+[`oasis network show nodes`]: ../../../general/manage-tokens/cli/network.md#show-nodes
+[connect Oasis CLI to your own Oasis node]: ../../../general/manage-tokens/cli/network.md#add

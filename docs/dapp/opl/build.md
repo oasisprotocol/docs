@@ -167,4 +167,4 @@ enclave smart contracts from the
 
 :::
 
-[backend-example]: https://github.com/oasisprotocol/playground/tree/main/opl-secret-ballot/backend
+[backend-example]: https://github.com/oasisprotocol/demo-opl-secret-ballot/tree/main/backend

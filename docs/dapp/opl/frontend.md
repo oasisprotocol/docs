@@ -12,9 +12,8 @@ simply apply a sparse checkout of the complete frontend repo. Inside your
 
 ```shell
 git init .
-git remote add -f origin https://github.com/oasisprotocol/playground
-git checkout origin/main opl-secret-ballot/frontend
-mv opl-secret-ballot/frontend/ .
+git remote add -f demo-opl-secret-ballot https://github.com/oasisprotocol/demo-opl-secret-ballot
+git checkout demo-opl-secret-ballot/main frontend
 ```
 
 Next, update the `@oasislabs/secret-ballot-backend` package name in
@@ -108,4 +107,4 @@ You can try out and download a frontend of the secret ballot Dapp from the
 
 :::
 
-[frontend-example]: https://github.com/oasisprotocol/playground/tree/main/opl-secret-ballot/frontend
+[frontend-example]: https://github.com/oasisprotocol/demo-opl-secret-ballot/tree/main/frontend

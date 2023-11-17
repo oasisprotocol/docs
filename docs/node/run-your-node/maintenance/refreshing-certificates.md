@@ -4,7 +4,7 @@
 
 ### Steps on the Validator Node
 
-Go to your validator node's data directory, e.g. `/srv/oasis`, `/node`, `/serverdir/node`:
+Go to your validator node's data directory, e.g. `/node/data`:
 
 ```
 cd <PATH-TO-DATADIR>
@@ -85,7 +85,7 @@ The validator node will re-register itself automatically once it's connected to 
 
 ### Steps on the Sentry Node
 
-Go to your sentry node's data directory, e.g. `/srv/oasis`, `/node`, `/serverdir/node`:
+Go to your sentry node's data directory, e.g. `/node/data`:
 
 ```
 cd <PATH-TO-DATADIR>
@@ -141,7 +141,7 @@ worker:
   registration:
     # In order for the node to register itself the entity.json of the entity
     # used to provision the node must be available on the node.
-    entity: /serverdir/node/entity/entity.json
+    entity: /node/etc/entity.json
   sentry:
     address:
       - "{{ sentry_node_grpc_public_key }}@{{ sentry_node_private_ip }}:9009"

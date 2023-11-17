@@ -21,7 +21,7 @@ Before following this guide, make sure you've read the [Prerequisites](prerequis
 Sentry node identity keys can be initialized with:
 
 ```bash
-oasis-node identity init --datadir /serverdir/node
+oasis-node identity init --datadir /node/data
 ```
 
 ### Configuring Sentry Node
@@ -37,7 +37,7 @@ Before using this configuration you should collect the following information to 
 * `{{ validator_tendermint_id }}`: This is the Tendermint ID (address) of the Oasis validator node that will be protected by the sentry node. This address can be obtained by running:
 
   ```bash
-  oasis-node identity tendermint show-node-address --datadir /serverdir/node
+  oasis-node identity tendermint show-node-address --datadir /node/data
   ```
 
   on the validator node.
@@ -46,7 +46,7 @@ Before using this configuration you should collect the following information to 
 * `{{ validator_sentry_client_grpc_public_key }}`: This is the public TLS key of the Oasis validator node that will be protected by the sentry node. This public key can be obtained by running:
 
   ```bash
-   oasis-node identity show-sentry-client-pubkey --datadir /serverdir/node
+   oasis-node identity show-sentry-client-pubkey --datadir /node/data
   ```
 
   on the validator node. Note that the above command is only available in `oasis-node` from version 20.8.1 onward.
@@ -69,8 +69,8 @@ Before using this configuration you should collect the following information to 
 ##
 
 # Set this to where you wish to store node data. The node artifacts
-# should also be located in this directory (for us this is /serverdir/node)
-datadir: /serverdir/node
+# should also be located in this directory (for us this is /node/data)
+datadir: /node/data
 
 # Logging.
 #
@@ -93,7 +93,7 @@ log:
 
 # Path to the genesis file for the current version of the network.
 genesis:
-  file: /serverdir/etc/genesis.json
+  file: /node/etc/genesis.json
 
 # Worker configuration.
 worker:
@@ -175,7 +175,7 @@ oasis-node registry node init \
 `SENTRY_CONSENSUS_ID`: This is the Consensus ID of the sentry node in base64 format. This ID can be obtained from `consensus_pub.pem`:
 
 ```bash
-sed -n 2p /serverdir/node/consensus_pub.pem
+sed -n 2p /node/data/consensus_pub.pem
 ```
 
 on the sentry node.
@@ -207,7 +207,7 @@ Before using this configuration you should collect the following information to 
 * `{{ sentry_node_grpc_public_key }}`: This is the sentry node's control endpoint TLS public key. This ID can be obtained by running:
 
   ```bash
-   oasis-node identity show-tls-pubkey --datadir /serverdir/node
+   oasis-node identity show-tls-pubkey --datadir /node/data
   ```
 
   on the sentry node. Note that the above command is only available in `oasis-node` from version 20.8.1 onward.
@@ -215,7 +215,7 @@ Before using this configuration you should collect the following information to 
 * `{{ sentry_node_tendermint_id }}`: This is the Tendermint ID (address) of the sentry node that will be configured as a Persistent Peer. This ID can be obtained by running:
 
   ```bash
-  oasis-node identity tendermint show-node-address --datadir /serverdir/node
+  oasis-node identity tendermint show-node-address --datadir /node/data
   ```
 
   on the sentry node.
@@ -238,8 +238,8 @@ Before using this configuration you should collect the following information to 
 ##
 
 # Set this to where you wish to store node data. The node artifacts
-# should also be located in this directory (for us this is /serverdir/node)
-datadir: /serverdir/node
+# should also be located in this directory (for us this is /node/data)
+datadir: /node/data
 
 # Logging.
 #
@@ -262,14 +262,14 @@ log:
 
 # Path to the genesis file for the current version of the network.
 genesis:
-  file: /serverdir/etc/genesis.json
+  file: /node/etc/genesis.json
 
 # Worker configuration.
 worker:
   registration:
     # In order for the node to register itself the entity.json of the entity
     # used to provision the node must be available on the node.
-    entity: /serverdir/node/entity/entity.json
+    entity: /node/etc/entity.json
   sentry:
     address:
       - "{{ sentry_node_grpc_public_key }}@{{ sentry_node_private_ip }}:9009"

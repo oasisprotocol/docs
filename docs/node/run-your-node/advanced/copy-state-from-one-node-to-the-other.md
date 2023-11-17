@@ -28,7 +28,7 @@ If an Oasis Node is **not stopped** before its state is copied, its on-disk stat
 
 :::
 
-* Copy the following directories from your synced Oasis Node's working directory (e.g. `/node/`, `/srv/oasis/node`, `/serverdir/node`) to your new Oasis Node's working directory:
+* Copy the following directories from your synced Oasis Node's working directory (e.g. `/node/data`) to your new Oasis Node's working directory:
   * `tendermint/abci-state`
   * `tendermint/data`
 

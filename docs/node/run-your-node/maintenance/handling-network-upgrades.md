@@ -64,7 +64,7 @@ While waiting for the network upgrade epoch, you can check the current height
 and epoch by running:
 
 ```bash
-oasis-node control status -a unix:/serverdir/node/internal.sock
+oasis-node control status -a unix:/node/data/internal.sock
 ```
 
 and observe the value of the `consensus.latest_height` and
@@ -115,7 +115,7 @@ State Changes], [Cobalt upgrade's Proposed State Changes]).
 ### Download and Verify the Provided Genesis File {#verify-genesis}
 
 In addition, download the new genesis file linked in the [Network Parameters]
-and save it as `/serverdir/etc/genesis.json`.
+and save it as `/node/etc/genesis.json`.
 
 Compare the dumped state with the downloaded genesis file:
 
@@ -328,7 +328,7 @@ you should use one. However, to start the node without a process manager you
 can start the [Oasis Node](../prerequisites/oasis-node.md) like this:
 
 ```bash
-oasis-node --config /serverdir/etc/config.yml
+oasis-node --config /node/etc/config.yml
 ```
 
 ## Clean Up

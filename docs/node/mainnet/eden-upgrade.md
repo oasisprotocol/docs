@@ -180,7 +180,7 @@ running the following command:
 ``` bash
 # specify 'datadir' as your node's data directory
 oasis-node unsafe-reset \
-  --datadir=/serverdir/node \
+  --datadir=/node/data \
   --dry_run
 ```
 2. **Wipe blockchain state:** after reviewing the dry run results, proceed with
@@ -188,7 +188,7 @@ the reset by running:
 ``` bash
 # specify 'datadir' as your node's data directory
 oasis-node unsafe-reset \
-  --datadir=/serverdir/node
+  --datadir=/node/data
 ```
 
 Transitioning confidential ParaTimes to the new network requires local state

@@ -121,7 +121,7 @@ If you have an existing node that you trust, you can use its status output to
 retrieve the current block height and hash by running:
 
 ```
-oasis-node control status -a unix:/serverdir/node/internal.sock
+oasis-node control status -a unix:/node/data/internal.sock
 ```
 
 This will give you output like the following (non-relevant fields omitted):

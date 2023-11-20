@@ -200,8 +200,8 @@ There are three kinds of image assets currently used in the docs.
 
 ## Vocabulary
 
-The following is a consistent case-sensitive collection of Oasis-related terms
-and their usage:
+The following is a consistent case-sensitive collection of Oasis-related terms,
+and their usage including the articles:
 
 - c10l
   Check out the c10l-hello-world folder for the confidential version of the
@@ -217,7 +217,11 @@ and their usage:
 - key manager
 - key manager node
 - Mainnet
+  This feature is also enabled on Mainnet.
 - Testnet
+  This only runs on Testnet.
+- Oasis CLI
+  You can use the Oasis CLI to set up your wallet.
 - Oasis Core
 - OPL
   Oasis Privacy Layer supports privacy of dApps on all EVM chains.

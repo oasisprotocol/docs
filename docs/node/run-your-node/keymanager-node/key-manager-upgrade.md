@@ -66,7 +66,7 @@ the `control status` output should show `keymanager.status="ready"` and
 `registration.descriptor.runtimes.0.extra_info` should contain a hash of the 
 key material state:
 ```
-$ oasis_node oasis-node -a unix:/storage/node/internal.sock control status
+$ oasis-node -a unix:/node/data/internal.sock control status
 ...
   "registration": {
     "last_registration": "2023-02-06T08:40:30Z",

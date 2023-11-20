@@ -3,52 +3,57 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Validator Node
 
-This guide will walk you through the process of setting up your **validator node**
-for the Oasis Network on either the Mainnet or the Testnet. It is designed for
-individuals who have a basic understanding of command line tools.
+This guide will walk you through the process of setting up your **validator
+node** for the Oasis Network either on Mainnet or Testnet. It is designed for
+individuals who have basic understanding of the command line environment.
+
+We will be using two separate physical machines for deployment:
+- your local system, referred to as `localhost`,
+- a remote `server` which will function as an Oasis node.
+
+The guide consists of the following steps:
+
+1. On the `localhost`, we will use [Oasis CLI] to [Initialize your
+Entity](#initialize-entity) which is essential for deploying nodes on the
+network. To ensure the security of these private keys, we strongly recommend
+to either isolate the `localhost` from any network or internet connectivity, or
+use a [hardware wallet] as a secure storage, such as [Ledger].
+
+[Oasis CLI]: ../../general/manage-tokens/cli/README.md
+[hardware wallet]:
+  https://en.wikipedia.org/wiki/Hardware_security_module
+[Ledger]:
+  ../../../general/manage-tokens/holding-rose-tokens/ledger-wallet
+
+2. After the entity has been created, we will move over to the `server` and
+[Start the Oasis Node](#starting-the-oasis-node). The server needs to meet
+the hardware requirements and have access to the internet.
+
+[create your entity]: #creating-your-entity
+[set up the server in order to start the Oasis node]:
+  #running-an-oasis-node-on-the-server
+
+3. Finally, we will [stake assets to your entity, register it on the network,
+and attach the unique ID](#staking-and-registering) of the
+Oasis Node instance running on your server.
 
 ## Prerequisites
 
 Before proceeding with this guide, ensure that you have completed the steps
-outlined in the [Prerequisites] section so that:
+outlined in the [Prerequisites] chapter so that:
+
 * your system meets the [hardware requirements],
-* you have the [Oasis Node binary] installed on your systems,
+* you have the [Oasis CLI] installed on your `localhost`,
+* you have the [Oasis Node binary] installed on your `server`,
 * you understand what are [Stake requirements] to become a validator on the
- Oasis Network.
+  Oasis Network.
 
 [Prerequisites]: prerequisites/
 [hardware requirements]: prerequisites/hardware-recommendations.md
 [Oasis Node binary]: prerequisites/oasis-node.md
 [Stake requirements]: prerequisites/stake-requirements.md
 
-## Physical Machines
-
-You will be using two separate physical machines for deployment: your local
-system, referred to as `localhost`, and a remote `server` which will function
- as an Oasis node. The reason for this is to ensure protection of the keys used
- to setup your node.
-
-**Localhost:** On the localhost, you will [create your entity] which is
-essential for deploying nodes on the network. To ensure the security of these
-private keys, we strongly recommend to isolate the localhost from any network or
-internet connectivity. Once the keys have been generated, it is highly
-recommended to use [Hardware Security Modules (HSM)] for secure storage
-such as the [Ledger wallet].
-
-[Hardware Security Modules (HSM)]:
-  https://en.wikipedia.org/wiki/Hardware_security_module
-[Ledger wallet]:
-  ../../../general/manage-tokens/holding-rose-tokens/ledger-wallet
-
-**Server:** After the entity has been created, proceed to [set up the server in
- order to start the Oasis node]. The server needs to meet the hardware
- requirements and have an acces to the internet.
-
-[create your entity]: #creating-your-entity
-[set up the server in order to start the Oasis node]:
-  ./#running-an-oasis-node-on-the-server
-
-## Creating Your Entity on the `localhost`
+## Initialize Entity
 
 :::danger
 
@@ -63,257 +68,157 @@ of nodes on the network. This guide has been designed with a particular file
 structure in mind. Nonetheless, feel free to reorganize and rename directories
 as needed to accommodate your preferences.
 
-### Creating a Working Directory
+### Add Entity Account to Oasis CLI
 
-Begin by creating a directory named `/localhostdir`. This location will be used
-to store generated artifacts. It is important that you securely store the
-generated artifacts.
+An entity is critical to operating nodes on the network as it controls the stake
+attached to a given individual or organization on the network. The entity is
+represented as a consensus-layer account using the Ed25519 encryption scheme.
+To protect your entity private key, we strongly recommend using a [hardware
+wallet] such as [Ledger].
 
-```bash
-mkdir /localhostdir
-```
+We will be using [Oasis CLI] to initialize the entity and later stake our assets
+and register the entity on the network. If you haven't already, go ahead and
+install it.
 
-Within the `/localhostdir`, create the following subdirectories and set their
-permissions to `rwx------`:
-
-*   `entity`: This will store your entity. The private contents in this
-directory are safest if used on a machine kept disconnected from the internet.
-
-*   `node`: This will store a node's identity. The private contents of this
-directory will be used on the node itself.
-
-To create the directory structure, use the following commands:
-
-```bash
-cd /localhostdir
-mkdir -m700 -p {entity,node}
-```
-
-### Copying the Genesis File
-
-To continue, download the most recent `genesis.json` file from the
-[Network Parameters] section and save it to your `/localhostdir` working
-directory:
-
-```bash
-cd /localhostdir
-# replace RELEASE_DATE with actual Mainnet consensus dump date, e.g. 2022-11-04
-curl -L -o genesis.json https://github.com/oasisprotocol/mainnet-artifacts/releases/download/RELEASE_DATE/genesis.json
-```
-
-Then, set the environment variable that points to its path as follows:
-
-```bash
-GENESIS_FILE_PATH=/localhostdir/genesis.json
-```
-
-[Network Parameters]: ../mainnet/README.md
-
-### Initializing an Entity
-
-An entity is critical to operating nodes on the network as it controls the stake attached to a given individual or organization on the network. We highly recommend using an HSM or [Ledger](../../../oasis-core-ledger) device to protect your entity private key.
-
-#### Using a Ledger-based Signer
-
-The Ledger-based signer stores your private keys on your Ledger wallet. It is implemented as an Oasis Core signer plugin.
-
-You will need to set it up as described in the [Setup](../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
-
-As the entity's private key is stored on your Ledger wallet, you only need to export the entity's public key as described in [Exporting Public Key to Entity](../../oasis-core-ledger/usage/entity.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger).
-
-This will create 1 file in `/localhostdir/entity`:
-
-* `entity.json`: The entity descriptor. This is the JSON of the unsigned information to be sent to the registry application on the network.
-
-:::info
-
-There will be no signed entity descriptor, i.e. `entity_genesis.json`, created yet. It will get created when you'll update the entity descriptor with your signed node descriptor as described in the [Adding the Node to the Entity Descriptor](#adding-the-node-to-the-entity-descriptor) section.
-
-:::
-
-#### Using a File-based Signer
+Oasis CLI stores either your entity private key encrypted inside a file or a
+reference to an account whose keypair is stored on your hardware wallet.
 
 :::danger
 
-We strongly suggest that you do not use any entity that is generated with the file-based signer on the Mainnet.
-
-When using the file-based signer the use of an [offline/air-gapped machine](https://en.wikipedia.org/wiki/Air_gap_\(networking\)) for this purpose is highly recommended. Gaining access to the entity private key can compromise your tokens.
-
-:::
-
-To initialize an entity simply run the following from `/localhostdir/entity`:
-
-```bash
-oasis-node registry entity init
-```
-
-This will generate three files in `/localhostdir/entity`:
-
-* `entity.pem`: The private key of the entity. **NEVER SHARE THIS AS IT CAN BE USED TO TRANSFER STAKE.**
-* `entity.json`: The entity descriptor. This is the JSON of the unsigned information to be sent to the registry application on the network.
-* `entity_genesis.json`: This JSON object contains the entity descriptor that has been signed with entity's private key, i.e. `entity.pem`. This is meant to be shared for inclusion in the Genesis block.
-
-### Initializing a Node
-
-A node registers itself to the network when the node starts up. However, in order to validate itself, the entity signs a public key associated with the node. This allows the node registration to happen without the uploading entity's private key to the internet.
-
-:::info
-
-To get the `$ENTITY_ID` needed below check the value of the `id` field in `entity.json`, e.g. with the following content in `entity.json`:
-
-```
-{"v":1,"id":"2D5nSE3uFGvp2UkUY3w8OSjnCCYmQX/3JpJ77+aJGUQ="}
-```
-
-the entity ID is `2D5nSE3uFGvp2UkUY3w8OSjnCCYmQX/3JpJ77+aJGUQ=`.
+If you really need to use the file-based wallet using another
+[offline/air-gapped machine] for this purpose is highly recommended. Gaining
+access to the entity private key can compromise your tokens and the network
+security through proposing and signing malicious governance transactions.
 
 :::
 
-To initialize a validator node, take note of the static IP of the server where your node will run, and issue the following commands from the `/localhostdir/node` directory:
+On the `localhost` add a new entity account to Oasis CLI. This can be done in
+one of the following ways:
 
-```bash
-ENTITY_ID=<YOUR-ENTITY-ID>
-STATIC_IP=<YOUR-STATIC-IP>
-oasis-node registry node init \
-  --node.entity_id $ENTITY_ID \
-  --node.consensus_address $STATIC_IP:26656 \
-  --node.role validator
+- Create an account entry in Oasis CLI, but use your Ledger device to store
+  the actual keypair to sign the transactions by executing
+  [`oasis wallet create`] and passing the `--kind ledger` flag. For example:
+
+  ```shell
+  oasis wallet create my_entity --kind ledger
+  ```
+
+- Import your existing `entity.pem` into Oasis CLI by executing
+  [`oasis wallet import-file`] command, for example:
+
+  ```shell
+  oasis wallet import-file my_entity entity.pem
+  ```
+
+- Generate a new keypair and store the private key in the encrypted file by
+  executing [`oasis wallet create`]:
+
+  ```shell
+  oasis wallet create my_entity
+  ```
+
+Similar to the examples above we will assume that you named your entity account
+as **`my_entity`** in the remainder of this chapter.
+
+### Write the Entity Descriptor File
+
+On the `localhost` we begin by creating a directory named `/localhostdir` with
+the `entity` subdirectory that will contain the entity file descriptor.
+
+```shell
+mkdir -p /localhostdir/entity
 ```
 
-This command will create a validator node's identity so that it can be a self-signed node (this is what allows self-registration).
+Create a JSON file containing the **public key** of your entity by executing
+[`oasis account entity init`] and store it as `entity.json`, for example:
 
-:::info
-
-There are more options for node initialization that you can explore by running:
-
-```bash
-oasis-node registry node init --help
+```shell
+oasis account entity init -o /localhostdir/entity/entity.json --account my_entity
 ```
 
-The options shown above are just the minimum.
+Now, we can move on to configuring our Oasis node with the freshly generated
+`entity.json`.
 
-:::
+[Ledger]: ../../general/manage-tokens/holding-rose-tokens/ledger-wallet.md
+[offline/air-gapped machine]: https://en.wikipedia.org/wiki/Air_gap_\(networking\)
+[`oasis wallet create`]: ../../general/manage-tokens/cli/wallet.md#create
+[`oasis wallet import`]: ../../general/manage-tokens/cli/wallet.md#import
+[`oasis wallet import-file`]: ../../general/manage-tokens/cli/wallet.md#import-file
+[`oasis account entity init`]: ../../general/manage-tokens/cli/account.md#entity-init
 
-The command will generate the following files:
-
-* `consensus.pem`: The node's consensus private key. **DO NOT SHARE**
-* `consensus_pub.pem`: The node's consensus public key.
-* `identity.pem`: The node's identity private key. **DO NOT SHARE**
-* `identity_pub.pem`: The node's identity public key.
-* `node_genesis.json`: The node's details if you wish to include this node in the genesis file of the network.
-* `p2p.pem`: The node's private key for libp2p. **DO NOT SHARE**
-* `p2p_pub.pem`: The node's public key for libp2p.
-* `sentry_client_tls_identity.pem`: The node's TLS private key for communicating with sentry nodes. **DO NOT SHARE**
-* `sentry_client_tls_identity_cert.pem`: The node's TLS certificate for communicating with sentry nodes.
-
-### Adding the Node to the Entity Descriptor
-
-Once the node has been initialized, we need to add it to the entity descriptor so that it can properly register itself when the node starts up. The instructions differ based on what kind of signer was used to generate the entity.
-
-* **If using the plugin-based signer,** execute the following command in the `/localhostdir/entity` directory (again this assumes the use of the Ledger signer plugin in which case you will need to then confirm the signing operation on the Ledger device):
-
-```bash
-oasis-node registry entity update \
-    --signer.backend plugin \
-    --signer.plugin.name ledger \
-    --signer.plugin.path "$LEDGER_SIGNER_PATH" \
-    --signer.plugin.config "wallet_id:$LEDGER_WALLET_ID,index:$LEDGER_INDEX" \
-    --entity.node.descriptor /localhostdir/node/node_genesis.json
-```
-
-* **If using the file-based signer**, execute the following command in the `/localhostdir/entity` directory:
-
-```bash
-oasis-node registry entity update \
-  --entity.node.descriptor /localhostdir/node/node_genesis.json
-```
-
-This will update the entity descriptor in `entity.json` and subsequently the `entity_genesis.json` file that contains the signed entity descriptor payload.
-
-## Running an Oasis Node on the `server`
+## Starting the Oasis Node
 
 ### Setting up the Oasis Node's Working Directory
 
-Before we run the node on the `server` we need to ensure that we have a place to store necessary files for the node.
+Before we run the node on the `server` we need to ensure that we have a place to
+store necessary files for the node.
 
 :::info
 
-We will reference the working directory on the `server` as `/serverdir` throughout the documentation.
+We will reference the working directory on the `server` as `/node`
+throughout the documentation.
 
 :::
 
-#### Setting Up the the `/serverdir` Directory
+#### Setting Up the the `/node` Directory
 
-In the `/serverdir` directory we will create the following subdirectories:
+We will reference the working directory on the `server` as `/node` (with
+subdirectories `/node/{etc,bin,runtimes,data}`) throughout the documentation.
+In the `/node` directory, create the following subdirectories:
 
-* `etc/` - this is to store the configuration
-* `node/` - this is to store the node's data
-* `node/entity/` - this is to store the public components of the node's entity
+* `etc/`: this is to store the configuration and `entity.json`
+* `data/`: this is to store the node's data
+* `bin/`: this is to store the `oasis-node` binary
+* `runtimes/`: this is to store the ParaTime `.orc` bundles
 
 You can make this directory structure by executing the following command:
 
-```bash
-mkdir -m700 -p /serverdir/{etc,node,node/entity}
+```shell
+mkdir -m700 -p /node/{etc,bin,runtimes,data}
 ```
-
-#### Copying the Node Artifacts from `/localhostdir`
-
-In order for the node registration to work properly, as defined in `/localhostdir/entity.json`, you must copy the node's artifacts you generated in the [Initializing a Node](#initializing-a-node) section. To do so, upload the following files from `/localhostdir/node` to `/serverdir/node` over a secure channel (e.g. SSH):
-
-* `consensus.pem`
-* `consensus_pub.pem`
-* `identity.pem`
-* `identity_pub.pem`
-* `p2p.pem`
-* `p2p_pub.pem`
-* `sentry_client_tls_identity.pem`
-* `sentry_client_tls_identity_cert.pem`
-
-After copying, make sure that all these files have `0600` permissions, i.e. only their owner has `read` and `write` permissions.
-
-To do so, run the following command:
-
-```bash
-chmod -R 600 /serverdir/node/*.pem
-```
-
-:::caution
-
-You may have noticed that some of these files were listed as **DO NOT SHARE** in the [Initializing a Node](#initializing-a-node) section.
-
-In the future, these keys should be generated and referenced from an HSM. However, until HSM support is implemented, these keys should be kept as secure as possible on the `server`.
-
-:::
 
 #### Copying the Public Entity Artifacts from `/localhostdir`
 
-We will also need to have the public entity artifacts from the `/localhostdir` present on the `server`. Copy the `/localhostdir/entity/entity.json` file on `localhost` to `/serverdir/node/entity/entity.json` on the `server`.
+We will also need to have the public entity artifacts from the `/localhostdir`
+present on the `server`. Copy the `/localhostdir/entity/entity.json` file on
+`localhost` to `/node/etc/entity.json` on the `server`.
 
 #### Copying the Genesis File to the server
 
-The latest Genesis file can be found in the [Network Parameters](../mainnet/README.md). You should download the latest `genesis.json` file and copy it to `/serverdir/etc/genesis.json` on the `server`.
+The latest Genesis file can be found in the Network Parameters page ([Mainnet],
+[Testnet]). You should download the latest `genesis.json` file and
+copy it to `/node/etc/genesis.json` on the `server`.
+
+[Mainnet]: ../mainnet/README.md
+[Testnet]: ../testnet/README.md
 
 #### Configuring the Oasis Node
 
-There are a variety of options available when running an Oasis node. The following YAML file is a basic configuration for a validator node on the network.
+There are a variety of options available when running an Oasis node. The
+following YAML file is a basic configuration for a validator node on the
+network.
 
-Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
+Before using this configuration you should collect the following information to
+replace the variables present in the configuration file:
 
-* `{{ external_address }}`: The external IP you used when registering this node.
+* `{{ external_ip }}`: The external/public IP address you used when registering
+  this node.
 
 :::info
 
-If you are using a [Sentry Node](sentry-node.md), you should use the public IP of that machine.
+If you are using a [Sentry Node](sentry-node.md), you should use the public IP
+of that machine.
 
 :::
 
-*   `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
 
-    You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
+  You can find the current Oasis Seed Node address in the Network Parameters
+  ([Mainnet], [Testnet]).
 
-To use this configuration, save it in the `/serverdir/etc/config.yml` file and pass it to the `oasis-node` command as an argument to the `--config` flag.
+To use this configuration, save it in the `/node/etc/config.yml` file:
 
-```yaml
+```yaml title="/node/etc/config.yml"
 ##
 # Oasis Node Configuration
 #
@@ -332,7 +237,7 @@ To use this configuration, save it in the `/serverdir/etc/config.yml` file and p
 
 # Set this to where you wish to store node data. The node's artifacts
 # should also be located in this directory.
-datadir: /serverdir/node
+datadir: /node/data
 
 # Logging.
 #
@@ -357,14 +262,14 @@ log:
 # Genesis.
 genesis:
   # Path to the genesis file for the current version of the network.
-  file: /serverdir/etc/genesis.json
+  file: /node/etc/genesis.json
 
 # Worker configuration.
 worker:
   registration:
     # In order for the node to register itself, the entity.json of the entity
     # used to provision the node must be available on the node.
-    entity: /serverdir/node/entity/entity.json
+    entity: /node/etc/entity.json
 
 # Consensus backend.
 consensus:
@@ -380,7 +285,7 @@ consensus:
       # The external IP that is used when registering this node to the network.
       # NOTE: If you are using the Sentry node setup, this option should be
       # omitted.
-      external_address: tcp://{{ external_address }}:26656
+      external_address: tcp://{{ external_ip }}:26656
 
     # List of seed nodes to connect to.
     # NOTE: You can add additional seed nodes to this list if you want.
@@ -389,23 +294,61 @@ consensus:
         - "{{ seed_node_address }}"
 ```
 
+#### Starting Oasis Node for the First Time
+
+Execute the Oasis node and pass the config file above by invoking:
+
+```shell
+oasis-node --config /node/etc/config.yml
+```
+
+After the node starts, it will automatically register itself to the peer-to-peer
+network. The following files will be generated in your `/node/data` folder:
+
+* `consensus.pem`: The node's consensus private key. **DO NOT SHARE**
+* `consensus_pub.pem`: The node's consensus public key.
+* `identity.pem`: The node's identity private key. **DO NOT SHARE**
+* `identity_pub.pem`: The node's identity public key.
+* `p2p.pem`: The node's private key for libp2p. **DO NOT SHARE**
+* `p2p_pub.pem`: The node's public key for libp2p.
+* `sentry_client_tls_identity.pem`: The node's TLS private key for communicating
+  with sentry nodes. **DO NOT SHARE**
+* `sentry_client_tls_identity_cert.pem`: The node's TLS certificate for
+  communicating with sentry nodes.
+
 #### Ensuring Proper Permissions
 
-Only the owner of the process that runs the Oasis node should have access to the files in the `/serverdir/node` directory. The `oasis-node` binary ensures that the files used by the node are as least privileged as possible so that you don't accidentally shoot yourself in the foot while operating a node.
+Only the owner of the process that runs the Oasis node should have access to the
+files in the `/node/data` directory. The `oasis-node` binary ensures that
+the files used by the node are as least privileged as possible so that you don't
+accidentally shoot yourself in the foot while operating a node.
 
-To ensure proper permissions are set, we suggest running the following to remove all non-owner read/write/execute permissions:
+To ensure proper permissions are set, we suggest running the following to remove
+all non-owner read/write/execute permissions:
 
-```bash
-chmod -R go-r,go-w,go-x /serverdir
+```shell
+chmod -R go-r,go-w,go-x /node
 ```
 
 :::info
 
-Just so it's clear, the following permissions are expected by the `oasis-node` binary:
+Just so it's clear, the following permissions are expected by the `oasis-node`
+binary:
 
-* `700` for the `/serverdir/node` directory
-* `700` for the `/serverdir/node/entity` directory
-* `600` for all `*.pem` files
+* `700` for the `/node/data` directory
+* `700` for the `/node/etc` directory
+* `600` for all `/node/data/*.pem` files
+
+:::
+
+:::caution
+
+You may have noticed that some of these files were listed as **DO NOT SHARE** in
+the [Initializing a Node](#initializing-a-node) section.
+
+In the future, these keys should be generated and referenced from an HSM.
+However, until HSM support is implemented, these keys should be kept as secure
+as possible on the `server`.
 
 :::
 
@@ -413,8 +356,8 @@ Just so it's clear, the following permissions are expected by the `oasis-node` b
 
 You can start the node by running the following command:
 
-```bash
-oasis-node --config /serverdir/etc/config.yml
+```shell
+oasis-node --config /node/etc/config.yml
 ```
 
 :::tip
@@ -425,245 +368,149 @@ We recommend you configure and use it with a process manager like [systemd](http
 
 :::
 
-### Verifying the Connection to the Network
+### Obtaining the node ID
 
-As part of the starting the server process, the `oasis-node` binary will, by default, setup an internal unix socket in the `datadir` of the Node. This socket can be used to communicate to the node and query details about the network.
+Now that the Oasis node is running, you can obtain your unique node ID which is
+needed in order to associate your node with your entity in the network registry.
 
-Run the following command:
-
-```bash
-oasis-node registry entity list -a unix:/serverdir/node/internal.sock
+```shell
+oasis-node control status -a unix:/node/data/internal.sock | jq .identity.node
 ```
 
-If this command fails, you'll receive a non-zero exit code and there's a high likelihood that you are not connected to the network. However, if it does work properly it should respond with output like the following but with potentially many more values:
-
 ```
-CVzqFIADD2Ed0khGBNf4Rvh7vSNtrL1ULTkWYQszDpc=
-C5z1jB+FHB/QgtTITr6NKWpUs9QHwD11CG3v8tmuJ0g=
-DPbZomOIleFrvcJBZPl7y/wEB1w9Q569vAbb6Krl9fE=
-DVobZ8bWlOv2J6oHO0uITr5FPO5rIY2irdPNhByprHk=
-D2hqhJcmZnBmhw9TodOdoFPAjmRkpRatANCNHxIDHgA=
+"5MsgQwijUlpH9+0Hbyors5jwmx7tTmKMA4c9leV3prI="
 ```
-
-Once you get to a node that's connected you can move on to the next section as your node is not yet registered as a validator on the Oasis Network.
-
-## Staking and Registering
-
-:::tip
-
-This step is not necessary if your entity was fully staked at genesis.
-
-:::
-
-:::caution
-
-If you've submitted staking or registry transactions before, your nonce is likely different than the nonce used in the examples. If you're uncertain, please check your account nonce by using [this guide](../../general/manage-tokens/cli/account.md#show).
-
-:::
-
-Once you have been funded, you can complete the process of connecting your node to the network by registering both your entity and your node, as described below.
 
 ### Check that your node is synced
 
-Before you can make any transactions you'll have to make sure that your node is synced. To do so call this command on the server:
+Before you can become a validator, you will have to make sure that your node is
+synced. To do so call this command on the server:
 
-```bash
-oasis-node control is-synced -a unix:/serverdir/node/internal.sock
+```shell
+oasis-node control is-synced -a unix:/node/data/internal.sock
 ```
 
 If your node is synced, the above command should output:
 
 ```
-node completed initial syncing
+"ready"
 ```
 
-If your node is not yet synced, you will need to wait before you can move forward.
+If your node is not yet synced, you will need to wait before you can move
+forward.
 
-### Generating a Staking (Escrow) Transaction on the `localhost`
+## Staking and Registering {#staking-and-registering}
 
-Your entity's private key should be disconnected from the internet on the `localhost`. Therefore, you need to generate the following transaction on the `localhost`.
+Once you have been funded, you can complete the process of connecting your node
+to the network by registering both your entity and your node, as described
+below.
 
-:::danger
+### Staking (Escrow) Transaction
 
-The entity's private key is used to authorize transactions on your staking account.
+The current minimum stake required to register an entity and register a node as
+a validator is 200 tokens. We will submit the escrow transaction that
+delegates 200 tokens from your entity account on the consensus layer to itself
+by invoking the [`oasis account delegate`] command.
 
-Hence it should never be present on the online `server`.
-
-:::
-
-The current minimum stake required to register an entity and register a node as a validator is 200 tokens. So, we will generate an escrow transaction that escrows 200 tokens on your own entity.
-
-:::info
-
-The Oasis node's staking application calls the operation of staking tokens "escrow."
-
-:::
-
-Before generating the escrow transaction, you need to set the following environment variables:
-
-* `GENESIS_FILE_PATH`: Path to the Genesis file on the `localhost`, i.e. `/localhostdir/genesis.json`.
-*   `ENTITY_DIR_PATH`: Path to entity's artifacts directory on the `localhost`,
-
-    i.e. `/localhostdir/entity/`.
-*   `OUTPUT_TX_FILE_PATH`: Path to the file containing the outputted signed transaction.
-
-    For this guide, we will use `/localhostdir/signed-escrow.tx`.
-*   `ACCOUNT_ADDRESS`: Your staking account address.
-
-    To obtain your staking account address from your Entity's ID, see [Obtaining Account Address From Entity's ID](../../general/manage-tokens/cli/account.md#from-public-key).
-
-Then execute the following command:
-
-```bash
-oasis-node stake account gen_escrow \
-  --genesis.file $GENESIS_FILE_PATH \
-  --signer.backend file \
-  --signer.dir $ENTITY_DIR_PATH \
-  --stake.escrow.account $ACCOUNT_ADDRESS \
-  --stake.amount 200000000000 \
-  --transaction.file $OUTPUT_TX_FILE_PATH \
-  --transaction.fee.gas 2269 \
-  --transaction.fee.amount 2000 \
-  --transaction.nonce 0
+```shell
+oasis account delegate 200 my_entity --no-paratime --account my_entity
 ```
 
-:::info
+You can also fund your entity account from a different one. If you haven't yet
+invoke the [`oasis wallet import`] command to import the private key of the
+funding account to the Oasis CLI and follow the instructions.
 
-The option `--stake.amount` looks like a very large number, but this is actually just an equivalent to 200 tokens on the Oasis consensus layer as each unit value used to track the account balance is 1x10^-9 tokens.
-
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../core/oasis-node/cli.md#common-transaction-flags) for details.
-
-:::
-
-### Generating Entity Registration Transaction
-
-Before you can run your node successfully, you'll need to register your entity so that your node registers properly. You could do this process _after_ you submit the escrow transaction, however, to save steps we prepare everything before hand.
-
-Before generating the register transaction, you need to set the following environment variables:
-
-*   `GENESIS_FILE_PATH`: Path to the Genesis file on the `localhost`, i.e.
-
-    `/localhostdir/genesis.json`.
-*   `ENTITY_DIR_PATH`: Path to entity's artifacts directory on the `localhost`,
-
-    i.e. `/localhostdir/entity/`.
-*   `OUTPUT_REGISTER_TX_FILE_PATH`: Path to the file containing the outputted signed transaction.
-
-    For this guide, we will use `/localhostdir/signed-register.tx`.
-
-Then execute the following command:
-
-```bash
-oasis-node registry entity gen_register \
-  --genesis.file $GENESIS_FILE_PATH \
-  --signer.backend file \
-  --signer.dir $ENTITY_DIR_PATH \
-  --transaction.file $OUTPUT_REGISTER_TX_FILE_PATH \
-  --transaction.fee.gas 2460 \
-  --transaction.fee.amount 1000 \
-  --transaction.nonce 1
+```shell
+oasis wallet import my_funding_account
 ```
 
-:::info
+Then, invoke the [`oasis account delegate`] passing the new account name with
+the `--account` parameter. For example:
 
-The `--transactions.fee.gas` and `--transaction.fee.amount` options depend on the network configuration, see [Common Transaction Flags](../../core/oasis-node/cli.md#common-transaction-flags) for details.
-
-:::
-
-### Submitting Your Transactions on the `server`
-
-To complete the staking process we need to copy the generated escrow and registry transactions from your offline `localhost` to the `server` and submit them.
-
-To do so, follow these steps:
-
-1.  Copy the file `/localhostdir/signed-escrow.tx` on the `localhost` to
-
-    `/serverdir/signed-escrow.tx` on the `server`.
-2.  Copy the file `/localhostdir/signed-register.tx` on the `localhost` to
-
-    `/serverdir/signed-register.tx` on the `server`.
-3.  Submit both transactions via `oasis-node consensus submit_tx` sub-command:
-
-    ```bash
-    oasis-node consensus submit_tx \
-     --transaction.file /serverdir/signed-escrow.tx \
-     -a unix:/serverdir/node/internal.sock
-    oasis-node consensus submit_tx \
-     --transaction.file /serverdir/signed-register.tx \
-     -a unix:/serverdir/node/internal.sock
-    ```
-
-### Checking that Your Node is Properly Registered
-
-To ensure that your node is properly connected as a validator on the network, you can run the following command:
-
-```bash
-oasis-node control status -a unix:/serverdir/node/internal.sock
+```shell
+oasis account delegate 200 my_entity --no-paratime --account my_funding_account
 ```
 
-If your node is registered and a validator, the above command should output (some fields omitted for clarity):
+[`oasis account delegate`]: ../../general/manage-tokens/cli/account.md#delegate
 
-```javascript
+### Adding your Node ID to the Entity Descriptor
+
+Now we can register our entity on the network and associate it with the node ID
+obtained in the [section above](#obtaining-the-node-id). Open the `entity.json`
+file we initially generated and add the ID inside the `nodes` block. Your
+entity descriptor file should now look like this:
+
+```json
 {
-  "software_version": "20.10",
-  "identity": {
-    ...
-  },
-  "consensus": {
-    "consensus_version": "1.0.0",
-    "backend": "tendermint",
-    "features": 3,
-    "node_peers": [
-      ...
-    ],
-    "latest_height": 55899,
-    "latest_hash": "AR34gxwWz1LS5rMDa6E0L1/ThW9E38ySIbRRlRG/shg=",
-    "latest_time": "2020-08-10T11:38:26+02:00",
-    "latest_state_root": {
-      "ns": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
-      "version": 55898,
-      "hash": "h2+8ZryxseOKpuSho1nVSImLF/irVsTF5xryc3I9cRk="
-    },
-    "genesis_height": 1,
-    "genesis_hash": "+SIAMCUeZtWuYPg/Ke+zwPRhNRripRgUq1d5Al9ImNA=",
-    "is_validator": true
-  },
-  "registration": {
-    ...
-  }
+  "id": "Bx6gOixnxy15tCs09ua5DcKyX9uo2Forb32O6Hyjoc8=",
+  "nodes": [
+    "5MsgQwijUlpH9+0Hbyors5jwmx7tTmKMA4c9leV3prI="
+  ],
+  "v": 2
 }
 ```
 
-Pay attention to the `is_validator` field which should have the value of `true`.
+### Entity Registration
+
+We can submit the fresh entity file descriptor by invoking the
+[`oasis account entity register`] command:
+
+```shell
+oasis account entity register entity.json --account my_entity
+```
+
+[`oasis account entity register`]: ../../general/manage-tokens/cli/account.md#entity-register
+
+### Checking that Your Node is Properly Registered
+
+To ensure that your node is properly connected as a validator on the network,
+invoke the following command on your `server`:
+
+```shell
+oasis-node control status -a unix:/node/data/internal.sock | jq .consensus.is_validator
+```
+
+If your node is registered and became a validator, the above command should
+output:
+
+```
+true
+```
 
 :::info
 
-Nodes are only elected into the validator set at epoch transitions, so you may need to wait for up to an epoch before being considered.
+Nodes are only elected into the validator set at epoch transitions, so you may
+need to wait for up to an epoch before being considered.
 
 :::
 
 :::caution
 
-Note that in order to be elected in the validator set you need to have enough stake to be in the top K entities (where K is a network-specific parameter specified by the `scheduler.max_validators` field in the genesis document).
+In order to be elected in the validator set you **need to have enough
+stake to be in the top K entities** (where K is a network-specific parameter
+specified by the [`scheduler.max_validators`] field in the genesis document).
 
 :::
 
 Congratulations, if you made it this far, you've properly connected your node
 to the network and became a validator on the Oasis Network.
 
+[`scheduler.max_validators`]: ../genesis-doc.md#consensus
+
 ## Oasis Metadata Registry
 
 For the final touch, you can add some metadata about your entity to the
-[Metadata Registry]. The Metadata Registry is the same for the Mainnet and
+[Metadata Registry]. The Metadata Registry is the same for Mainnet and
 the Testnet. The metadata consists of your entity name, email, Keybase handle,
-Twitter handle, etc. This information is also used by third party applications.
-For example [Oasis Scan] fetches your image from Keybase and uses it as the node
-operator's avatar.
+Twitter handle, etc. This information is also used by various applications.
+For example the [Oasis Wallet - Web] and the [Oasis Scan] will fetch and show
+the node operator's name and the avatar.
 
 [Metadata Registry]: https://github.com/oasisprotocol/metadata-registry
+[Oasis Wallet - Web]: https://wallet.oasisprotocol.org
 [Oasis Scan]: https://www.oasisscan.com/validators
 
 # See also
 
-<DocCard item={findSidebarItem('/core/oasis-node/cli')} />
 <DocCard item={findSidebarItem('/general/manage-tokens/cli/')} />
+<DocCard item={findSidebarItem('/core/oasis-node/cli')} />

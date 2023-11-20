@@ -85,7 +85,7 @@ where this is done is a misconfiguration.
 :::info
 In these examples, we change the setup to run Oasis Services (e.g. Oasis Node)
 with a non-root system user named `oasis`.
-These instructions also assume that the node's datadir is `/serverdir/node`.
+These instructions also assume that the node's datadir is `/node/data`.
 
 Adjust these as appropriate to your setup.
 :::
@@ -139,7 +139,7 @@ logging-in as this user.
 3. Transfer ownership of the datadir to the `oasis` user:
 
 ```sh
-chown -R oasis /serverdir/node
+chown -R oasis /node/data
 ```
 
 See [Invalid Permissions] troubleshooting guide for more information.
@@ -168,8 +168,8 @@ After=network.target
 [Service]
 Type=simple
 User=oasis
-WorkingDirectory=/serverdir/node
-ExecStart=/serverdir/bin/oasis-node --config /serverdir/etc/config.yml
+WorkingDirectory=/node/data
+ExecStart=/node/bin/oasis-node --config /node/etc/config.yml
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=1024000

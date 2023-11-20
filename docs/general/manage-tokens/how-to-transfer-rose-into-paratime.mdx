@@ -188,17 +188,19 @@ the exchange.
 
 :::info
 
-Advanced users (e.g. those running ParaTime
-[compute nodes](../../node/run-your-node/paratime-node.mdx)) may need to
-withdraw ROSE from EVM-compatible ParaTimes stored in their `oasis1` accounts,
-for example to claim their ParaTime execution rewards. Oasis Wallet Browser
-Extension does not support such withdrawals. Read the
-[Oasis CLI Deposit/Withdraw Tokens to/from ParaTime chapter][Oasis CLI] to
-learn how to use Oasis CLI instead.
+Advanced users (e.g. those running ParaTime [compute nodes] may need to
+withdraw ROSE from ParaTimes stored in their `oasis1` accounts, for example to
+claim their ParaTime execution rewards. Oasis Wallet Browser Extension does not
+support such withdrawals. Use the [`oasis account withdraw`] command which is
+part of the [Oasis CLI] instead, for example:
+
+![code shell](../../../external/cli/examples/account/withdraw.y.in)
 
 :::
 
-[Oasis CLI]: cli/account.md
+[compute nodes]: ../../node/run-your-node/paratime-node.mdx
+[Oasis CLI]: cli/README.md
+[`oasis account withdraw`]: cli/account.md#withdraw
 
 ### Verifying ParaTime deposits and withdrawals
 

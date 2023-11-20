@@ -64,7 +64,7 @@ While waiting for the network upgrade epoch, you can check the current height
 and epoch by running:
 
 ```bash
-oasis-node control status -a unix:/serverdir/node/internal.sock
+oasis-node control status -a unix:/node/data/internal.sock
 ```
 
 and observe the value of the `consensus.latest_height` and
@@ -115,7 +115,7 @@ State Changes], [Cobalt upgrade's Proposed State Changes]).
 ### Download and Verify the Provided Genesis File {#verify-genesis}
 
 In addition, download the new genesis file linked in the [Network Parameters]
-and save it as `/serverdir/etc/genesis.json`.
+and save it as `/node/etc/genesis.json`.
 
 Compare the dumped state with the downloaded genesis file:
 
@@ -271,12 +271,12 @@ document.
 
 If you are running a compute or a client ParaTime node, you will often need to
 upgrade the ParaTime. The required ParaTime versions are stored in the network
-registry. The command below queries the registry and extracts the version
-information for the Paratime
+registry. The [`oasis network show paratimes`] command below queries the
+registry and extracts the version information for the Paratime
 `00000000000000000000000000000000000000000000000072c8215e60d5bca7`:
 
 ```bash
-oasis-node registry runtime list -v -a unix:/serverdir/node/internal.sock \| 
+oasis network show paratimes \| 
 jq 'select(.id=="00000000000000000000000000000000000000000000000072c8215e60d5bca7") | .deployments'
 ```
 
@@ -319,6 +319,8 @@ runtime:
 The node will then automatically run the correct version of the ParaTime as
 specified in the registry.
 
+[`oasis network show paratimes`]: ../../../general/manage-tokens/cli/network.md#show-paratimes
+
 ## Start Your Node
 
 This will depend on your process manager. If you don't have a process manager,
@@ -326,7 +328,7 @@ you should use one. However, to start the node without a process manager you
 can start the [Oasis Node](../prerequisites/oasis-node.md) like this:
 
 ```bash
-oasis-node --config /serverdir/etc/config.yml
+oasis-node --config /node/etc/config.yml
 ```
 
 ## Clean Up

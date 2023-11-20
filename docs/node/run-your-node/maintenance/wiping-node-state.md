@@ -7,7 +7,7 @@ severe corruption, it's important to note that your node will need some time to
 catch up with the rest of the network.
 
 The following instructions are based on the assumption that you have defined
-your `datadir` as `/serverdir/node` in your node's configuration.
+your `datadir` as `/node/data` in your node's configuration.
 
 ## State Wipe and Keep Node Identity
 
@@ -28,12 +28,12 @@ setup).
     ```bash
     # Do a dry run first to see which files will get deleted.
     oasis-node unsafe-reset \
-      --datadir=/serverdir/node \
+      --datadir=/node/data \
       --dry_run
       
     # Delete.
     oasis-node unsafe-reset \
-      --datadir /serverdir/node
+      --datadir /node/data
     ```
 3. Start the `oasis-node` server process.
 
@@ -43,14 +43,14 @@ setup).
 encounter the following error:
 
 ```
-common/Mkdir: path '/serverdir/node' has invalid owner: 1000. Expected owner: 0
+common/Mkdir: path '/node/data' has invalid owner: 1000. Expected owner: 0
 ```
 
 you need to run the `oasis-node` command as the exact user that owns the files,
 e.g.:
 
 ```
-sudo --user=#1000 -- oasis-node unsafe-reset --datadir=/serverdir/node --dry_run --log.level info
+sudo --user=#1000 -- oasis-node unsafe-reset --datadir=/node/data --dry_run --log.level info
 ```
 
 :::
@@ -70,6 +70,6 @@ To perform a full state wipe follow these steps:
 
 1. Stop the `oasis-node` server process (this will depend on your own deployment
 setup)
-2. Remove the `/serverdir/node` directory.
+2. Remove the `/node/data` directory.
 3. Redeploy your node. You'll need to copy your Node artifacts or create brand
 new ones.

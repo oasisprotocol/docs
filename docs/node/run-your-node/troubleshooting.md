@@ -34,7 +34,7 @@ Before you begin troubleshooting we suggest you check all of the following:
 Error Message:
 
 ```text
-common/Mkdir: path '/serverdir/node' has invalid permissions: -rwxr-xr-x
+common/Mkdir: path '/node/data' has invalid permissions: -rwxr-xr-x
 ```
 
 The `entity` and `node` directories both need to have permissions `rwx------`. Make sure you initialize the directory with correct permissions or change them using `chmod`:
@@ -44,8 +44,8 @@ mkdir --mode 700 --parents {entity,node}
 ```
 
 ```bash
-chmod 700 /serverdir/node
-chmod 700 /serverdir/entity
+chmod 700 /node/data
+chmod 700 /node/etc
 ```
 
 #### Permissions for .pem files
@@ -53,7 +53,7 @@ chmod 700 /serverdir/entity
 Error Message example:
 
 ```text
-signature/signer/file: invalid PEM file permissions 700 on /serverdir/node/identity.pem
+signature/signer/file: invalid PEM file permissions 700 on /node/data/identity.pem
 ```
 
 All `.pem` files should have the permissions `600`. You can set the permissions for all `.pem` files in a directory using the following command:
@@ -62,12 +62,12 @@ All `.pem` files should have the permissions `600`. You can set the permissions 
 chmod -R 600 /path/*.pem
 ```
 
-#### Serverdir Ownership
+#### Node directory Ownership
 
-Another possible cause of permission issues is not giving ownership of your `serverdir` to the user running the node (e.g. `docker-host` or replace with your user):
+Another possible cause of permission issues is not giving ownership of your `node/` to the user running the node (e.g. `docker-host` or replace with your user):
 
 ```bash
-chown -R docker-host:docker-host /serverdir
+chown -R docker-host:docker-host /node
 ```
 
 In general, to avoid problems when running docker, specify the user when running `docker` commands by adding the flag `--user $(id -u):$(id -g)`.

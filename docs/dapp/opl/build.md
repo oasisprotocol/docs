@@ -84,12 +84,12 @@ index cd8df42..0875e8e 100644
 +    local: {
 +      url: 'http://127.0.0.1:8545',
 +    },
-+    bsc_testnet: {
++    'bsc-testnet': {
 +      url: 'https://data-seed-prebsc-1-s1.binance.org:8545',
 +      chainId: 97,
 +      accounts,
 +    },
-+    sapphire_testnet: {
++    'sapphire-testnet': {
 +      url: 'https://testnet.sapphire.oasis.dev',
 +      chainId: 0x5aff,
 +      accounts,
@@ -142,7 +142,7 @@ export PRIVATE_KEY=
 Deploy the enclave smart contract using Testnet parameters.
 
 ```shell
-npx hardhat deploy-ballot-box --network sapphire_testnet --host-network bsc_testnet
+npx hardhat deploy-ballot-box --network sapphire-testnet --host-network bsc-testnet
 Nothing to compile
 No need to generate any newer typings.
 expected DAO 0xFBcb580DD6D64fbF7caF57FB0439502412324179
@@ -153,7 +153,7 @@ Next, use the obtained `BallotBox` address below to deploy the host smart
 contract:
 
 ```shell
-npx hardhat deploy-dao --network bsc_testnet --ballot-box-addr {BALLOT_BOX_ADDR}
+npx hardhat deploy-dao --network bsc-testnet --ballot-box-addr {BALLOT_BOX_ADDR}
 Nothing to compile
 No need to generate any newer typings.
 DAO 0xFBcb580DD6D64fbF7caF57FB0439502412324179

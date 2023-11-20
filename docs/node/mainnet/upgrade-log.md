@@ -5,6 +5,212 @@ node operators' deployments.
 
 They are enumerated and explained in this document.
 
+## 2023-11-29 (8:30 UTC) - Eden Upgrade {#eden-upgrade}
+
+:::caution
+
+For a detailed view of the Eden Upgrade process, please refer to the
+[Eden Upgrade] page.
+
+:::
+
+:::caution
+
+The Oasis Core 23.0.x binary in our published releases is built only for Ubuntu
+22.04 (GLIBC>=2.32). You'll have to build it yourself if you're using prior
+Ubuntu versions (or other distributions using older system libraries).
+
+:::
+
+[Eden Upgrade]: ./eden-upgrade.md
+
+### Configuration Changes
+
+The node configuration has been refactored so that everything is now configured
+via a YAML configuration file and **configuring via command-line options is no
+longer supported**.
+
+Some configuration options have changed and so the configuration file needs to
+be updated. To make this step easier, a command-line tool has been provided that
+will perform most of the changes automatically. You can run it with:
+
+```
+oasis-node config migrate --in config.yml --out new-config.yml
+```
+
+The migration subcommand logs the various changes it makes and warns you if a
+config option is no longer supported, etc. At the end, any unknown sections of
+the input config file are printed to the terminal to give you a chance to review
+them and make manual changes if required.
+
+Note that the migration subcommand does not preserve comments and order of
+sections from the input YAML config file. You should always carefully read the
+output of this command, as well as compare the generated config file with the
+original before using it.
+
+After you are satisfied with the new configuration file, replace the old file
+with the new one as follows:
+
+```
+mv new-config.yml config.yml
+```
+
+:::tip
+
+The configuration format for seed nodes has changed and it now requires the
+node's P2P public key to be used. In case your old configuration file contains
+known Mainnet seed nodes, this transformation is performed automatically.
+
+However, if it contains unknown seed nodes then the conversion did not happen
+automatically and you may need to obtain the seed node's P2P public key. For
+Mainnet you can use the following addresses:
+
+* `TBD`
+* `TBD`
+
+Please be aware that every seed node should be configured to listen on two
+distinct ports. One is dedicated to peer discovery within the CometBFT P2P
+network, while the other is used to bootstrap the Oasis P2P network.
+
+:::
+
+[Change Log]:
+  https://github.com/oasisprotocol/oasis-core/blob/v23.0.x/CHANGELOG.md
+
+### Data Directory Changes
+
+The subdirectory (located inside the node's data directory) used to store
+consensus-related data, previously called `tendermint` (after the consensus
+layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0.x. If
+any of your scripts rely on specific directory names, please make sure to update
+them to reflect the changed sdirectory name.
+
+### State Changes
+
+The following parts of the genesis document will be updated:
+
+:::info
+
+For a more detailed explanation of the parameters below, see the
+[Genesis Document] docs.
+
+:::
+
+:::info
+
+All state changes will be done automatically with the migration command provided
+by the new version of `oasis-node`. It can be used as follows to derive the same
+genesis file from an existing state dump at the correct height (assuming there
+is a `genesis.json` present in the current working directory):
+
+```
+oasis-node genesis migrate --genesis.new_chain_id oasis-4
+```
+
+:::
+
+#### General
+
+* **`chain_id`** will be set to `oasis-4`.
+
+* **`halt_epoch`** will be removed as it is no longer used.
+
+#### Registry
+
+* **`registry.runtimes[].txn_scheduler.propose_batch_timeout`** specifies how
+  long to wait before accepting proposal from the next backup scheduler. It will
+  be set to `5000000000` (5 seconds). Previously the value was represented in
+  the number of consensus layer blocks.
+
+* **`registry.params.gas_costs.prove_freshness`** specifies the cost of the
+  freshness proof transaction. It will be set to `1000`.
+
+* **`registry.params.gas_costs.update_keymanager`** specifies the cost of the
+  keymanager policy update transaction. It will be removed as the parameter has
+  been moved under `keymanager.params.gas_costs.update_policy`.
+
+* **`registry.params.tee_features`** specify various TEE features supported by
+  the consensus layer registry service. These will be set to the following
+  values to activate the new features:
+
+  ```json
+  "tee_features": {
+    "sgx": {
+      "pcs": true,
+      "signed_attestations": true,
+      "max_attestation_age": 1200
+    },
+    "freshness_proofs": true
+  }
+  ```
+
+* **`registry.params.max_runtime_deployments`** specifies the maximum number of
+  runtime deployments that can be specified in the runtime descriptor. It will
+  be set to `5`.
+
+#### Root Hash
+
+* **`roothash.params.max_past_roots_stored`** specifies the maximum number of
+  past runtime state roots that are stored in consensus state for each runtime.
+  It will be set to `1200`.
+
+#### Staking
+
+* **`staking.params.commission_schedule_rules.min_commission_rate`** specifies
+  the minimum commission rate. It will be set to `0` to maintain the existing
+  behavior.
+
+* **`staking.params.thresholds.node-observer`** specifies the stake threshold
+  for registering an observer node. It will be set to `100000000000` base units
+  (or `100` tokens), same as for existing compute nodes.
+
+#### Key Manager
+
+* **`keymanager.params.gas_costs`** specify the cost of key manager
+  transactions. These will be set to the following values:
+
+  ```json
+  "gas_costs": {
+    "publish_ephemeral_secret": 1000,
+    "publish_master_secret": 1000,
+    "update_policy": 1000
+  }
+  ```
+
+#### Random Beacon
+
+* **`beacon.base`** is the network's starting epoch. It will be set to the epoch
+  of Mainnet's state dump + 1, `28017`.
+
+#### Governance
+
+* **`governance.params.enable_change_parameters_proposal`** specifies whether
+  parameter change governance proposals are allowed. It will be set to `true`.
+
+#### Consensus
+
+* **`consensus.params.max_block_size`** specifies the maximum block size in the
+  consensus layer. It will be set to `1048576` (1 MiB).
+
+#### Other
+
+* **`extra_data`** will be set back to the value in the [Mainnet genesis file]
+  to include the Oasis Network's genesis quote:
+
+  _”_[_Quis custodiet ipsos custodes?_][mainnet-quote]_” \[submitted by Oasis
+  Community Member Daniyar Borangaziyev]:_
+
+  ```
+  "extra_data": {
+    "quote": "UXVpcyBjdXN0b2RpZXQgaXBzb3MgY3VzdG9kZXM/IFtzdWJtaXR0ZWQgYnkgT2FzaXMgQ29tbXVuaXR5IE1lbWJlciBEYW5peWFyIEJvcmFuZ2F6aXlldl0="
+  }
+  ```
+
+[Genesis Document]: ../genesis-doc.md#parameters
+[Mainnet genesis file]:
+  https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18
+[mainnet-quote]: https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F
+
 ## 2022-04-11 (8:30 UTC) - Damask Upgrade {#damask-upgrade}
 
 * **Upgrade height:** upgrade is scheduled to happen at epoch **13402**.

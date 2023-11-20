@@ -95,6 +95,13 @@ On 2023-11-14, an upgrade proposal was proposed which (if accepted) will
 schedule the upgrade on epoch **28017** (approximately 2023-11-29 at around 8:30
 UTC).
 
+:::caution
+
+Voting for the upgrade proposal will end at epoch **27185**. We expect the
+Mainnet network to reach this epoch at around **2023-11-21 05:00 UTC**.
+
+:::
+
 :::info
 
 The Eden upgrade proposal has the ID number 3.

@@ -108,7 +108,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
 * Runtime binary version:
-  * [0.3.3](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.3)
+  * [0.3.4](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.4)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
   * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`

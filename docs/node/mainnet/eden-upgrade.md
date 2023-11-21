@@ -6,7 +6,7 @@ upgrade.
 :::caution
 
 The Eden upgrade on Mainnet is scheduled at epoch 28017 which will happen
-around 2023-11-29 08:30 UTC.
+approximately around 2023-11-29, between 9:00 AM and 11:00 AM UTC.
 
 :::
 
@@ -83,22 +83,18 @@ Summary of the major features is as follows:
 :::info
 
 This section will be updated with the exact details as we get closer to the
-upgrade. For now, please take a look at the related [Testnet upgrade].
+upgrade.
 
 :::
 
-[Testnet upgrade]: ../testnet/upgrade-log.md
-
 ### Voting
-
-On 2023-11-14, an upgrade proposal was proposed which (if accepted) will
-schedule the upgrade on epoch **28017** (approximately 2023-11-29 at around 8:30
-UTC).
 
 :::caution
 
-Voting for the upgrade proposal will end at epoch **27185**. We expect the
-Mainnet network to reach this epoch at around **2023-11-21 05:00 UTC**.
+On 2023-11-14, an upgrade proposal was proposed, which was accepted with
+more than 86% of the total voting power of the validator set. 
+The upgrade is now scheduled for epoch **28017**
+(approximately 2023-11-29, start between 9:00 AM and 11:00 AM UTC.).
 
 :::
 

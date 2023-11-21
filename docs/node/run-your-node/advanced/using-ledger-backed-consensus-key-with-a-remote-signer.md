@@ -22,7 +22,7 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
 
 Also make sure you've followed the [Install Oasis Remote Signer Binary](install-oasis-remote-signer-binary.md) section and have the Oasis Remote Signer binary installed on your remote signer system where your Ledger wallet will be connected.
 
-Finally, you need to do steps described in the [Setup](../../../oasis-core-ledger/usage/setup.md) section of our [Oasis Core Ledger docs](../../../oasis-core-ledger). Make sure you also install the _**OasisVal**_** app** on your Ledger wallet.
+Finally, make sure you install the _**OasisVal**_** app** on your Ledger wallet.
 
 ## Set Up Remote Signer System
 

@@ -142,8 +142,10 @@ tasks (sending, staking, ParaTime deposits and withdrawals), but also generating
 and/or signing raw transactions, multi-signatures, network governance
 operations etc.
 
-Ledger is supported by the Oasis CLI. Follow the instructions in the
-[Oasis CLI Tools] page to learn more.
+Ledger is supported by the [Oasis CLI]. You can add a new Ledger account to the
+Oasis CLI by invoking the [`oasis wallet create`] command. For example:
+
+![code shell](../../../../external/cli/examples/wallet/create-ledger.in.static)
 
 [Ledger]: https://www.ledger.com
 [Oasis app]: https://github.com/Zondax/ledger-oasis
@@ -157,4 +159,5 @@ Ledger is supported by the Oasis CLI. Follow the instructions in the
 [Nano S Plus]: https://support.ledger.com/hc/en-us/articles/4445777839901-Update-Ledger-Nano-S-Plus-firmware
 [BIP 39]: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 [Oasis Wallets]: ../oasis-wallets/README.mdx
-[Oasis CLI Tools]: ../cli/README.md
+[Oasis CLI]: ../cli/README.md
+[`oasis wallet create`]: ../cli/wallet.md#create

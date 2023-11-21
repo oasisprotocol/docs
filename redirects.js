@@ -130,6 +130,19 @@ const redirectsOptions = {
             from: '/general/manage-tokens/overview', // #200 Restructure docs
         },
         {
+            to: '/general/manage-tokens/holding-rose-tokens/ledger-wallet/',
+            from: [
+                '/oasis-core-ledger', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/setup', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/address', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/entity', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/transactions', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/wallets', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/versioning', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/release-process', // #626 Deprecate oasis-core-ledger
+            ]
+        },
+        {
             to: '/general/oasis-network/',
             from: '/general/oasis-network/overview', // #200 Restructure docs
         },

@@ -175,6 +175,13 @@ const redirectsOptions = {
             from: '/general/oasis-network/genesis-doc', // #200 Restructure docs
         },
         {
+            to: '/node/run-your-node/advanced/remote-signer',
+            from: [
+                '/node/run-your-node/advanced/using-ledger-backed-consensus-key-with-a-remote-signer', // #626 Deprecate oasis-core-ledger
+                '/node/run-your-node/advanced/install-oasis-remote-signer-binary', // #626 Deprecate oasis-core-ledger
+            ],
+        },
+        {
             to: '/node/run-your-node/ias-proxy',
             from: '/general/run-a-node/set-up-your-node/run-an-ias-proxy', // #200 Restructure docs
         },

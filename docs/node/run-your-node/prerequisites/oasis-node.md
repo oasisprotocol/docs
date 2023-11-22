@@ -18,7 +18,10 @@ We suggest that you build Oasis Node from source yourself for a production deplo
 
 :::
 
-For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the [Network Parameters](../../mainnet/README.md) page.
+For convenience, we provide binaries that have been built by the Oasis Protocol Foundation. Links to the binaries are provided in the Network Parameters page ([Mainnet], [Testnet]).
+
+[Mainnet]: ../../mainnet/README.md
+[Testnet]: ../../testnet/README.md
 
 ## Building From Source
 
@@ -30,11 +33,13 @@ See [Oasis Core's Build Environment Setup and Building](../../../core/developmen
 
 The code in the [`master` branch](https://github.com/oasisprotocol/oasis-core/tree/master/) might be incompatible with the code used by other nodes in the Mainnet.
 
-Make sure to use the version specified in the [Network Parameters](../../mainnet/README.md).
+Make sure to use the version specified in the Network Parameters page ([Mainnet], [Testnet]).
 
 :::
 
 ## Adding `oasis-node` Binary to `PATH`
+
+To install the `oasis-node` binary next to your Oasis node data directory, copy/symlink it to e.g. `/node/bin`.
 
 To install the `oasis-node` binary for the current user, copy/symlink it to `~/.local/bin`.
 
@@ -45,8 +50,6 @@ To install the `oasis-node` binary for all users of the system, copy it to `/usr
 If you intend to [run a ParaTime node](../paratime-node.mdx) you will need to additionally install the following software packages:
 
 * [Bubblewrap](https://github.com/projectatomic/bubblewrap) 0.4.1+, needed for creating process sandboxes.
-
-
 
   On Ubuntu 20.04+, you can install it with:
 

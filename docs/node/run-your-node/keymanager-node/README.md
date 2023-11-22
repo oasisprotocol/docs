@@ -24,12 +24,15 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
   * `data`: This will store the data directory needed by Oasis Node, including your node identity and the blockchain state. The directory permissions should be `rwx------`.
   * `bin`: This will store binaries needed by Oasis Node for running the ParaTimes.
   * `runtimes`: This will store the ParaTime bundles.
-* Downloaded or compiled the correct versions of everything according to [Mainnet Network Parameters](../../mainnet/README.md):
+* Downloaded or compiled the correct versions of everything according to Network Parameters page ([Mainnet], [Testnet]).
   * The genesis file copied to `/node/etc/genesis.json`.
   * The binaries needed by Oasis Node for running the ParaTimes copied to `/node/bin/`.
   * The key manager ParaTime bundle (`.orc` extension) copied to `/node/runtimes/`.
 * Initialized a new node and updated your entity registration by following the [Register a New Entity or Update Your Entity Registration](../paratime-node.mdx#register-a-new-entity-or-update-your-entity-registration) instructions.
   * The entity descriptor file copied to `/node/etc/entity.json`.
+
+[Mainnet]: ../../mainnet/README.md
+[Testnet]: ../../testnet/README.md
 
 :::tip
 
@@ -116,13 +119,13 @@ Before using this configuration you should collect the following information to 
 
 * `{{ external_address }}`: The external IP you used when registering this node.
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
-  * You can find the current Oasis Seed Node address in the [Network Parameters](../../mainnet/README.md).
+  * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](../paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
-  * You can find the current Oasis-supported key manager ParaTime in the [Mainnet Network Paramers](../../mainnet/README.md#paratimes).
+  * You can find the current Oasis-supported key manager ParaTime in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ keymanager_runtime_id }}`: Runtime identified for the key manager ParaTime.
-  * You can find the current Oasis-supported key manager ParaTime identifiers in the [Mainnet Network Paramers](../../mainnet/README.md#paratimes).
+  * You can find the current Oasis-supported key manager ParaTime identifiers in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
-  * You can find the current Oasis IAS proxy address in the [Mainnet Network Parameters](../../mainnet/README.md#cipher-paratime).
+  * You can find the current Oasis IAS proxy address in the Network Parameters page ([Mainnet], [Testnet]).
   * If you want, you can also [run your own IAS proxy](../ias-proxy.md).
 
 :::caution

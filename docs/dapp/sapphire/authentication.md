@@ -118,7 +118,7 @@ struct SignatureRSV {
 
 contract SignInExample {
     bytes32 public constant EIP712_DOMAIN_TYPEHASH = keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
-    string public constant SIGNIN_TYPE = "SignIn(address user, uint32 time)";
+    string public constant SIGNIN_TYPE = "SignIn(address user,uint32 time)";
     bytes32 public constant SIGNIN_TYPEHASH = keccak256(bytes(SIGNIN_TYPE));
     bytes32 public immutable DOMAIN_SEPARATOR;
 

@@ -32,7 +32,7 @@ Now, you can deploy the contract on the Testnet with the private key of the
 account holding some [TEST tokens]:
 
 ```shell
-PRIVATE_KEY="0x..." npx hardhat run scripts/deploy.js --network sapphire_testnet
+PRIVATE_KEY="0x..." npx hardhat run scripts/deploy.js --network sapphire-testnet
 ```
 
 This will compile the contract and deploy it on the Testnet. In addition

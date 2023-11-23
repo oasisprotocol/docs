@@ -76,7 +76,7 @@ index 414e974..49c95f9 100644
  const config: HardhatUserConfig = {
    solidity: "0.8.17",
 +  networks: {
-+    sapphire_testnet: {
++    'sapphire-testnet': {
 +      // This is Testnet! If you want Mainnet, add a new network config item.
 +      url: "https://testnet.sapphire.oasis.dev",
 +      accounts: process.env.PRIVATE_KEY
@@ -155,7 +155,7 @@ Pretty cool if you ask me!
 Anyway, make it happen by running
 
 ```shell
-PRIVATE_KEY="0x..." npx hardhat run scripts/run-vigil.ts --network sapphire_testnet
+PRIVATE_KEY="0x..." npx hardhat run scripts/run-vigil.ts --network sapphire-testnet
 ```
 
 And if you see something like the following, you'll know you're well on the road

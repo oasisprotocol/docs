@@ -23,7 +23,7 @@ The specific Oasis Core version requirements also impact the way how you
   and then sequentially perform seamless upgrade(s).
 
 For example, at time of writing this guide in order to sync your node from
-scratch on the [Testnet network][Testnet Parameters] you needed to do the
+scratch on the [Testnet Network Parameters][Testnet] you needed to do the
 following:
 
 - Download the genesis document and run Oasis Core 22.0.x which synced
@@ -33,7 +33,7 @@ following:
 
 The expected versions of the Oasis Core to sync your node from the latest
 genesis document on the Mainnet and Testnet are always published on the
-[Network Parameters] and [Testnet Parameters] pages respectively.
+Network Parameters page ([Mainnet], [Testnet]).
 
 ## Reaching Upgrade Epoch
 
@@ -78,8 +78,8 @@ Once the upgrade epoch is reached, follow the instructions in the corresponding
 [upgrade log].
 
 [upgrade log]: ../../mainnet/upgrade-log.md
-[Network Parameters]: ../../mainnet/README.md
-[Testnet Parameters]: ../../testnet/README.md
+[Mainnet]: ../../mainnet/README.md
+[Testnet]: ../../testnet/README.md
 [Testnet upgrade 2022-04-04]: ../../testnet/upgrade-log.md#2022-04-04-upgrade
 [Testnet upgrade 2022-03-03]: ../../testnet/upgrade-log.md#2022-03-03-upgrade
 [Testnet upgrade 2021-08-11]: ../../testnet/upgrade-log.md#2021-08-11-upgrade
@@ -114,8 +114,8 @@ State Changes], [Cobalt upgrade's Proposed State Changes]).
 
 ### Download and Verify the Provided Genesis File {#verify-genesis}
 
-In addition, download the new genesis file linked in the [Network Parameters]
-and save it as `/node/etc/genesis.json`.
+In addition, download the new genesis file linked in the Network Parameters
+page ([Mainnet], [Testnet]) and save it as `/node/etc/genesis.json`.
 
 Compare the dumped state with the downloaded genesis file:
 

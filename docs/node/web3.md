@@ -45,7 +45,7 @@ First, follow the
 [Oasis ParaTime client node](run-your-node/paratime-client-node.mdx)
 guide on how to configure the Oasis client node with one or more ParaTimes.
 Always use the exact combination of the Oasis node/ParaTime versions as
-published on the network parameters page for either [Mainnet] or [Testnet].
+published on the Network Parameters page ([Mainnet], [Testnet]).
 
 Apart from the transactions that happen on-chain and produce some effects,
 there are also a number of read-only queries implemented in the Oasis protocol

@@ -74,11 +74,14 @@ For example, running a ParaTime client node for an SGX-enabled ParaTime like Cip
 
 ### The ParaTime Bundle
 
-In order to run a ParaTime node you need to obtain the ParaTime bundle that
-needs to come from a trusted source. The bundle (usually with an `.orc`
+In order to run a ParaTime node you need to obtain an active ParaTime bundle,
+see the Network Parameters page ([Mainnet], [Testnet]). The bundle (`.orc`
 extension that stands for Oasis Runtime Container) contains all the needed
 ParaTime binaries together with the identifier and version metadata to ease
 deployment.
+
+[Mainnet]: ../mainnet/README.md
+[Testnet]: ../testnet/README.md
 
 When the ParaTime is running in a trusted execution environment (TEE) the bundle
 will also contain all the required artifacts (e.g. SGXS version of the binary
@@ -207,9 +210,9 @@ runtime:
 Before using this configuration you should collect the following information to replace  the  variables present in the configuration file:.
 
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
-  * You can find the current Oasis Seed Node address in the [Network Parameters](../mainnet/README.md).
+  * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
-  * You can find the current Oasis-supported ParaTimes in the [Network Paramers](../mainnet/README.md#paratimes).
+  * You can find the current Oasis-supported ParaTimes in the Network Parameters page ([Mainnet], [Testnet]).
 
 ## Starting the Oasis Node
 

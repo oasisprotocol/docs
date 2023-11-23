@@ -51,7 +51,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
   * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
-* Runtime binary version:
+* Runtime bundle version:
   * [2.6.2](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
@@ -69,7 +69,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0#building)):
+* Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0#building)):
   * [10.0.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v10.0.0)
 * Web3 Gateway version:
   * [3.4.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0)
@@ -86,7 +86,7 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
   * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000f80306c9858e7279`
-* Runtime binary version:
+* Runtime bundle version:
   * [0.5.2](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.5.2)
   * [0.6.4](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.6.4)
 * Oasis Web3 Gateway version:
@@ -107,7 +107,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
   * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
-* Runtime binary version:
+* Runtime bundle version:
   * [0.3.4](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.3.4)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`

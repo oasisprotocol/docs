@@ -61,7 +61,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
   * [23.0.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.5)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
-* Runtime binary version:
+* Runtime bundle version:
   * [3.0.1-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.1-testnet)
   * [3.0.2-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.2-testnet)
 * IAS proxy address:
@@ -80,7 +80,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
   * [23.0.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.5)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
-* Runtime binary version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0-testnet#building)):
+* Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0-testnet#building)):
   * [11.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v11.0.0-testnet)
 * Web3 Gateway version:
   * [4.0.0-rc1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v4.0.0-rc1)
@@ -91,7 +91,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
   * [23.0.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.5)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
-* Runtime binary version:
+* Runtime bundle version:
   * [0.7.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.0-testnet)
 * Web3 Gateway version:
   * [4.0.0-rc1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v4.0.0-rc1)
@@ -111,7 +111,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
   * [23.0.5](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.5)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
-* Runtime binary version:
+* Runtime bundle version:
   * [0.4.1-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.4.1-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`

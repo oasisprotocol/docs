@@ -55,13 +55,6 @@ copy it to `/node/etc/genesis.json` on the `server`.
 
 ### Downloading a Binary Release
 
-:::tip
-
-We suggest that you build Oasis Node from source yourself for a production
-deployment of an Oasis node.
-
-:::
-
 For convenience, we provide binaries that have been built by the Oasis Protocol
 Foundation. Links to the binaries are provided in the Network Parameters page
 ([Mainnet], [Testnet]).

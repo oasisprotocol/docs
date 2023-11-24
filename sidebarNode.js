@@ -121,8 +121,7 @@ const sidebars = {
           items: [
             'node/run-your-node/advanced/sync-node-using-state-sync',
             'node/run-your-node/advanced/copy-state-from-one-node-to-the-other',
-            'node/run-your-node/advanced/install-oasis-remote-signer-binary',
-            'node/run-your-node/advanced/using-ledger-backed-consensus-key-with-a-remote-signer',
+            'node/run-your-node/advanced/remote-signer',
           ]
         },
         'node/run-your-node/troubleshooting',

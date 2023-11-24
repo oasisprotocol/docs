@@ -110,15 +110,26 @@ and [import it to the Oasis wallet][oasis-wallet-import-private-key].
 
 ### Chromium under Ubuntu does not recognize my Ledger device. What is the problem?
 
-First check that you added the Ledger udev device descriptors as mentioned in the [Linux installation guide](https://support.ledger.com/hc/en-us/articles/4404389606417-Download-and-install-Ledger-Live). Next, check that your Ledger wallet is recognized by the [Oasis Core Ledger tool](../../oasis-core-ledger/usage/address.md). You should see something like this:
+First check that you added the Ledger udev device descriptors as mentioned in
+the [Linux installation guide]. Next, check that your Ledger wallet is
+recognized by the [Oasis CLI]. You should be able to add your Ledger account to
+the Oasis CLI wallet by running:
 
-```bash
-$ oasis-core-ledger show_address
-oasis1qp8d9kuduq0zutuatjsgltpugxvl38cuaq3gzkmn
-Ensure account address shown on device's screen matches the outputted address.
-```
+![code shell](../../../external/cli/examples/wallet/create.in.static)
 
-If all of the above works, then the issue is most likely that Chromium does not have the permission to access your Ledger device. Starting with Ubuntu 20.04 the Chromium browser is installed via snap package by default. Snap is more convenient for upstream developers to deploy their software and it also adds additional layer of security by using apparmor. In our case however, it prevents Chromium to access arbitrary USB devices with WebUSB API including your Ledger device. A workaround for this issue is to install Chromium natively using the official [Chormium beta PPA](https://launchpad.net/\~saiarcot895/+archive/ubuntu/chromium-beta) or the official [Google Chrome .deb package](https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb).
+If all of the above works, then the issue is most likely that Chromium does not
+have the permission to access your Ledger device. Starting with Ubuntu 20.04 the
+Chromium browser is installed via snap package by default. Snap is more
+convenient for upstream developers to deploy their software and it also adds
+additional layer of security by using apparmor. In our case however, it prevents
+Chromium to access arbitrary USB devices with WebUSB API including your Ledger
+device. A workaround for this issue is to install Chromium natively using the
+official [Chormium beta PPA] or the official [Google Chrome .deb package].
+
+[Linux installation guide]: https://support.ledger.com/hc/en-us/articles/4404389606417-Download-and-install-Ledger-Live
+[Oasis CLI]: cli/README.md
+[Chormium beta PPA]: https://launchpad.net/\~saiarcot895/+archive/ubuntu/chromium-beta
+[Google Chrome .deb package]: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 ### Are Ethereum and Oasis wallets that different? I can use the same mnemonics with both, right?
 

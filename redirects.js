@@ -130,6 +130,19 @@ const redirectsOptions = {
             from: '/general/manage-tokens/overview', // #200 Restructure docs
         },
         {
+            to: '/general/manage-tokens/holding-rose-tokens/ledger-wallet/',
+            from: [
+                '/oasis-core-ledger', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/setup', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/address', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/entity', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/transactions', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/usage/wallets', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/versioning', // #626 Deprecate oasis-core-ledger
+                '/oasis-core-ledger/release-process', // #626 Deprecate oasis-core-ledger
+            ]
+        },
+        {
             to: '/general/oasis-network/',
             from: '/general/oasis-network/overview', // #200 Restructure docs
         },
@@ -160,6 +173,13 @@ const redirectsOptions = {
         {
             to: '/node/genesis-doc',
             from: '/general/oasis-network/genesis-doc', // #200 Restructure docs
+        },
+        {
+            to: '/node/run-your-node/advanced/remote-signer',
+            from: [
+                '/node/run-your-node/advanced/using-ledger-backed-consensus-key-with-a-remote-signer', // #626 Deprecate oasis-core-ledger
+                '/node/run-your-node/advanced/install-oasis-remote-signer-binary', // #626 Deprecate oasis-core-ledger
+            ],
         },
         {
             to: '/node/run-your-node/ias-proxy',

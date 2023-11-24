@@ -7,7 +7,6 @@ const sidebars = {
   ...require('./sidebarDapp.js'),
   ...require('./sidebarParatime.js'),
   ...require('./sidebarCore.js'),
-  ...require('./sidebarOasisCoreLedger.js'),
   ...require('./sidebarAdrs.js'),
   ...require('./sidebarGetInvolved.js'),
 };

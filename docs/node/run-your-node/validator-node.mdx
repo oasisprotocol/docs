@@ -29,10 +29,6 @@ use a [hardware wallet] as a secure storage, such as [Ledger].
 [Start the Oasis Node](#starting-the-oasis-node). The server needs to meet
 the hardware requirements and have access to the internet.
 
-[create your entity]: #creating-your-entity
-[set up the server in order to start the Oasis node]:
-  #running-an-oasis-node-on-the-server
-
 3. Finally, we will [stake assets to your entity, register it on the network,
 and attach the unique ID](#staking-and-registering) of the
 Oasis Node instance running on your server.
@@ -146,53 +142,12 @@ Now, we can move on to configuring our Oasis node with the freshly generated
 [`oasis wallet import-file`]: ../../general/manage-tokens/cli/wallet.md#import-file
 [`oasis account entity init`]: ../../general/manage-tokens/cli/account.md#entity-init
 
-## Starting the Oasis Node
+### Copy the Public Entity File Descriptor to `server`
 
-### Setting up the Oasis Node's Working Directory
+The Oasis node needs access to the public key of your entity. Copy your
+`entity.json` to `/node/etc/entity.json` on the `server`.
 
-Before we run the node on the `server` we need to ensure that we have a place to
-store necessary files for the node.
-
-:::info
-
-We will reference the working directory on the `server` as `/node`
-throughout the documentation.
-
-:::
-
-#### Setting Up the the `/node` Directory
-
-We will reference the working directory on the `server` as `/node` (with
-subdirectories `/node/{etc,bin,runtimes,data}`) throughout the documentation.
-In the `/node` directory, create the following subdirectories:
-
-* `etc/`: this is to store the configuration and `entity.json`
-* `data/`: this is to store the node's data
-* `bin/`: this is to store the `oasis-node` binary
-* `runtimes/`: this is to store the ParaTime `.orc` bundles
-
-You can make this directory structure by executing the following command:
-
-```shell
-mkdir -m700 -p /node/{etc,bin,runtimes,data}
-```
-
-#### Copying the Public Entity Artifacts from `/localhostdir`
-
-We will also need to have the public entity artifacts from the `/localhostdir`
-present on the `server`. Copy the `/localhostdir/entity/entity.json` file on
-`localhost` to `/node/etc/entity.json` on the `server`.
-
-#### Copying the Genesis File to the server
-
-The latest Genesis file can be found in the Network Parameters page ([Mainnet],
-[Testnet]). You should download the latest `genesis.json` file and
-copy it to `/node/etc/genesis.json` on the `server`.
-
-[Mainnet]: ../mainnet/README.md
-[Testnet]: ../testnet/README.md
-
-#### Configuring the Oasis Node
+## Configuration
 
 There are a variety of options available when running an Oasis node. The
 following YAML file is a basic configuration for a validator node on the
@@ -294,16 +249,31 @@ consensus:
         - "{{ seed_node_address }}"
 ```
 
-#### Starting Oasis Node for the First Time
+## Starting the Oasis Node
 
-Execute the Oasis node and pass the config file above by invoking:
+You can start the node by simply running the command:
 
 ```shell
 oasis-node --config /node/etc/config.yml
 ```
 
-After the node starts, it will automatically register itself to the peer-to-peer
-network. The following files will be generated in your `/node/data` folder:
+:::tip
+
+The Oasis node is configured to run in the foreground by default.
+
+We recommend that you configure and use it with a process manager like
+[systemd](https://github.com/systemd/systemd) or
+[Supervisor](http://supervisord.org). Check out the [System Configuration]
+page for examples.
+
+:::
+
+### Node Keys
+
+The Oasis node requires **node keys** in order to register itself and to
+securely communicate with other nodes in the peer-to-peer network. The following
+keys will automatically be generated and stored in your `/node/data` folder
+as `.pem` files:
 
 * `consensus.pem`: The node's consensus private key. **DO NOT SHARE**
 * `consensus_pub.pem`: The node's consensus public key.
@@ -316,59 +286,51 @@ network. The following files will be generated in your `/node/data` folder:
 * `sentry_client_tls_identity_cert.pem`: The node's TLS certificate for
   communicating with sentry nodes.
 
-#### Ensuring Proper Permissions
+:::info
+
+If the node keys do not exist, they will be automatically generated when you
+launch the Oasis node. Otherwise, the existing ones will be used.
+
+:::
+
+:::caution
+
+You may have noticed that some files above are listed as **DO NOT SHARE**.
+
+Ideally, the node keys should be stored on a separate device such as a
+[hardware wallet] or a [remote signer]. However, until the support is
+fully implemented, keep the keys on the `server` as secure as possible.
+
+:::
+
+[System Configuration]: prerequisites/system-configuration.mdx#change-to-non-root
+
+### Ensuring Proper Permissions
 
 Only the owner of the process that runs the Oasis node should have access to the
 files in the `/node/data` directory. The `oasis-node` binary ensures that
 the files used by the node are as least privileged as possible so that you don't
 accidentally shoot yourself in the foot while operating a node.
 
-To ensure proper permissions are set, we suggest running the following to remove
-all non-owner read/write/execute permissions:
+If you followed the steps described in the
+[Install the Oasis Node][Oasis node binary] chapter, then the proper permissions
+are already set:
+
+* `700` for the `/node/data` directory
+* `700` for the `/node/etc` directory
+* `700` for the `/node/runtimes` directory
+* `600` for all `/node/data/*.pem` files
+
+Otherwise, run the following to remove all non-owner read/write/execute
+permissions:
 
 ```shell
 chmod -R go-r,go-w,go-x /node
 ```
 
-:::info
+[remote signer]: advanced/remote-signer.mdx
 
-Just so it's clear, the following permissions are expected by the `oasis-node`
-binary:
-
-* `700` for the `/node/data` directory
-* `700` for the `/node/etc` directory
-* `600` for all `/node/data/*.pem` files
-
-:::
-
-:::caution
-
-You may have noticed that some of these files were listed as **DO NOT SHARE** in
-the [Initializing a Node](#initializing-a-node) section.
-
-In the future, these keys should be generated and referenced from an HSM.
-However, until HSM support is implemented, these keys should be kept as secure
-as possible on the `server`.
-
-:::
-
-### Starting the Oasis Node
-
-You can start the node by running the following command:
-
-```shell
-oasis-node --config /node/etc/config.yml
-```
-
-:::tip
-
-The Oasis node is configured to run in the foreground by default.
-
-We recommend you configure and use it with a process manager like [systemd](https://github.com/systemd/systemd) or [Supervisor](http://supervisord.org).
-
-:::
-
-### Obtaining the node ID
+### Obtain the Node ID
 
 Now that the Oasis node is running, you can obtain your unique node ID which is
 needed in order to associate your node with your entity in the network registry.
@@ -381,7 +343,7 @@ oasis-node control status -a unix:/node/data/internal.sock | jq .identity.node
 "5MsgQwijUlpH9+0Hbyors5jwmx7tTmKMA4c9leV3prI="
 ```
 
-### Check that your node is synced
+### Check that your Node is Synced
 
 Before you can become a validator, you will have to make sure that your node is
 synced. To do so call this command on the server:
@@ -433,10 +395,10 @@ oasis account delegate 200 my_entity --no-paratime --account my_funding_account
 
 [`oasis account delegate`]: ../../general/manage-tokens/cli/account.md#delegate
 
-### Adding your Node ID to the Entity Descriptor
+### Add your Node ID to the Entity Descriptor
 
 Now we can register our entity on the network and associate it with the node ID
-obtained in the [section above](#obtaining-the-node-id). Open the `entity.json`
+obtained in the [section above](#obtain-the-node-id). Open the `entity.json`
 file we initially generated and add the ID inside the `nodes` block. Your
 entity descriptor file should now look like this:
 
@@ -461,7 +423,7 @@ oasis account entity register entity.json --account my_entity
 
 [`oasis account entity register`]: ../../general/manage-tokens/cli/account.md#entity-register
 
-### Checking that Your Node is Properly Registered
+### Check that Your Node is Properly Registered
 
 To ensure that your node is properly connected as a validator on the network,
 invoke the following command on your `server`:

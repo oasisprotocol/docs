@@ -366,8 +366,7 @@ oasis-node consensus submit_tx \
 [upgrade governance proposal]: ../../core/consensus/services/governance.md#submit-proposal
 [your entity's nonce]: ../../general/manage-tokens/cli/account.md#show
 [Oasis CLI Tools Setup]: ../../core/oasis-node/cli.md#storing-base-and-signer-flags-in-an-environment-variable
-[Installing Oasis App on Your Ledger Wallet]:
-  ../../oasis-core-ledger/usage/setup#installing-oasis-app-on-your-ledger-wallet
+[Installing Oasis App on Your Ledger Wallet]: ../../general/manage-tokens/holding-rose-tokens/ledger-wallet.md
 
 ### Instructions - Before upgrade
 

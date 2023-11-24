@@ -4,7 +4,6 @@ const cliRegex = /https:\/\/github\.com\/oasisprotocol\/cli\/blob\/master\/docs\
 const oasisSdkContractRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/contract\/(.*)\.mdx?(#.*)?/;
 const oasisSdkRuntimeRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/runtime\/(.*)\.mdx?(#.*)?/;
 const oasisCoreRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-core\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
-const oasisCoreLedgerRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-core-ledger\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
 const adrsRegex = /https:\/\/github\.com\/oasisprotocol\/adrs\/blob\/main\/(.*)\.mdx?(#.*)?/;
 const docsRegex = /https:\/\/github\.com\/oasisprotocol\/docs\/blob\/main\/docs\/(.*)\.mdx?(#.*)?/;
 
@@ -32,8 +31,6 @@ module.exports = function (options) {
             node.url = node.url.replace(cliRegex, '/general/manage-tokens/cli/$1$2');
         } else if (oasisCoreRegex.test(node.url)) {
             node.url = node.url.replace(oasisCoreRegex, '/core/$1$2');
-        } else if (oasisCoreLedgerRegex.test(node.url)) {
-            node.url = node.url.replace(adrsRegex, '/oasis-core-ledger/$1$2');
         } else if (adrsRegex.test(node.url)) {
             node.url = node.url.replace(adrsRegex, '/adrs/$1$2');
         } else if (docsRegex.test(node.url)) {

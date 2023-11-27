@@ -179,23 +179,24 @@ number in the comment which added this redirection for future reference, if
 major rewrite is to happen and the developers would need more context around
 the redirection.
 
-### Diagrams
+### Images
 
-There are three kinds of image assets currently used in the docs.
+There are three kinds of image assets used in the docs.
 
-1. Screenshots, photos, non-technical figures go into `images/` folder of the
-   respected top-level chapter.
+1. Screenshots, photos, non-technical figures go into `images/` folder
+   on the part-level (i.e. `docs/dapp/images`). External repositories may use
+   own images in their respective folder.
 2. [Mermaid](https://mermaid-js.github.io) diagrams (preferred tool for
    sequence diagrams, flowcharts and other technical material) live in
-   `diagrams/` folder of the respected top-level chapter. Diagram sources
-   reside in the .mmd files. To generate .svg which can be used in the
+   `diagrams/` folder of the respective part or the external repository. Diagram
+   sources reside in the .mmd files. To generate .svg which can be used in the
    markdown run `yarn diagrams`. Both .svg and .mmd files should be stored in
    git. CI will check that they are always in sync.
 3. Other diagrams which cannot be designed with Mermaid are drawn in
    [diagrams.net](https://diagrams.net) and then stored locally inside
    `images/` folder along other images. When exporting the diagram, don't
    forget to tick the "Include a copy of my diagram" checkbox so that the
-   diagram source will be stored along in the .svg file so you will
+   diagram source will be stored along in the .svg file and you will
    be able to edit it in the future.
 
 ## Vocabulary

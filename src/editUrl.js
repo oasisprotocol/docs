@@ -7,6 +7,7 @@ const gitModules = {
     'external/cli/': 'https://github.com/oasisprotocol/cli/{mode}/master/',
     'external/oasis-core/': 'https://github.com/oasisprotocol/oasis-core/{mode}/stable/22.2.x/',
     'external/oasis-sdk/': 'https://github.com/oasisprotocol/oasis-sdk/{mode}/main/',
+    'external/sapphire-paratime/': 'https://github.com/oasisprotocol/sapphire-paratime/{mode}/main/',
 };
 
 /**

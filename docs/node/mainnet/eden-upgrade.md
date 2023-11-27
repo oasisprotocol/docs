@@ -194,11 +194,11 @@ an updated ParaTime containing new trust roots is released and adopted.
 
 :::
 
-8. Replace the old version of Oasis Node with version [23.0.5].
+8. Replace the old version of Oasis Node with version [23.0.6].
 
 :::info
 
-The Oasis Core 23.0.5 binary in our published releases is built only for Ubuntu
+The Oasis Core 23.0.6 binary in our published releases is built only for Ubuntu
 22.04 (GLIBC>=2.32). You'll have to build it yourself if you're using prior
 Ubuntu versions (or other distributions using older system libraries).
 
@@ -219,7 +219,7 @@ Ubuntu versions (or other distributions using older system libraries).
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
 [Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
-[23.0.5]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.5
+[23.0.6]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.6
 [rosetta-gw-2.6.0]:
   https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0
 

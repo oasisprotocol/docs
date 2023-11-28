@@ -45,26 +45,23 @@ This will configure the given node to only follow the consensus layer.
 In order to configure the node create the `/node/etc/config.yml` file with the following content:
 
 ```yaml
-datadir: /node/data
-
-log:
-  level:
-    default: info
-    tendermint: info
-    tendermint/context: error
-  format: JSON
+mode: client
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: info
+            cometbft/context: error
+            default: info
 
 genesis:
-  file: /node/etc/genesis.json
-
-consensus:
-  tendermint:
-    p2p:
-      # List of seed nodes to connect to.
-      # NOTE: You can add additional seed nodes to this list if you want.
-      seed:
-        - "{{ seed_node_address }}"
-
+    file: /node/etc/genesis.json
+p2p:
+    # List of seed nodes to connect to.
+    # NOTE: You can add additional seed nodes to this list if you want.
+    seeds:
+        - {{ seed_node_address }}
 ```
 
 Before using this configuration you should collect the following information to replace the  variables present in the configuration file:

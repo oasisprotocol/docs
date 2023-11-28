@@ -174,79 +174,56 @@ of that machine.
 To use this configuration, save it in the `/node/etc/config.yml` file:
 
 ```yaml title="/node/etc/config.yml"
-##
-# Oasis Node Configuration
-#
-# This file's contents are derived from the command line arguments found in the
-# root command of the oasis-node binary. For more information, execute:
-#
-#     oasis-node --help
-#
-# Settings on the command line that are separated by a dot all belong to the
-# same nested object. For example, "--foo.bar.baz hello" would translate to:
-#
-#     foo:
-#       bar:
-#         baz: hello
-##
+mode: validator
+common:
+    # Set this to where you wish to store node data. The node's artifacts
+    # should also be located in this directory.
+    data_dir: /node/data
+    # Logging.
+    #
+    # Per-module log levels are defined below. If you prefer just one unified 
+    # log level, you can use:
+    #
+    # log:
+    #   level: debug
+    log:
+        level:
+            cometbft: warn
+            cometbft/context: error
+            # Per-module log levels. Longest prefix match will be taken. 
+            # Fallback to "default", if no match.
+            default: debug
+        format: JSON
+        # By default logs are output to stdout. If you would like to output 
+        # logs to a file, you can use:
+        #
+        # file: /var/log/oasis-node.log
 
-# Set this to where you wish to store node data. The node's artifacts
-# should also be located in this directory.
-datadir: /node/data
+consensus:
+    # The external IP that is used when registering this node to the network.
+    # NOTE: If you are using the Sentry node setup, this option should be
+    # omitted.
+    external_address: tcp://{{ external_ip }}:26656
+    listen_address: tcp://0.0.0.0:26656
 
-# Logging.
-#
-# Per-module log levels are defined below. If you prefer just one unified log
-# level, you can use:
-#
-# log:
-#   level: debug
-log:
-  level:
-    # Per-module log levels. Longest prefix match will be taken. Fallback to
-    # "default", if no match.
-    default: debug
-    tendermint: warn
-    tendermint/context: error
-  format: JSON
-  # By default logs are output to stdout. If you would like to output logs to
-  # a file, you can use:
-  #
-  # file: /var/log/oasis-node.log
-
-# Genesis.
 genesis:
-  # Path to the genesis file for the current version of the network.
-  file: /node/etc/genesis.json
+    # Path to the genesis file for the current version of the network.
+    file: /node/etc/genesis.json
 
-# Worker configuration.
-worker:
-  registration:
+p2p:
+    port: 9200
+    registration:
+        addresses:
+            - {{ external_ip }}:9200
+    seeds:
+        # List of seed nodes to connect to.
+        # NOTE: You can add additional seed nodes to this list if you want.
+        - {{ seed_node_address }}
+
+registration:
     # In order for the node to register itself, the entity.json of the entity
     # used to provision the node must be available on the node.
     entity: /node/etc/entity.json
-
-# Consensus backend.
-consensus:
-  # Setting this to true will mean that the node you're deploying will attempt
-  # to register as a validator.
-  validator: true
-
-  # Tendermint backend configuration.
-  tendermint:
-    core:
-      listen_address: tcp://0.0.0.0:26656
-
-      # The external IP that is used when registering this node to the network.
-      # NOTE: If you are using the Sentry node setup, this option should be
-      # omitted.
-      external_address: tcp://{{ external_ip }}:26656
-
-    # List of seed nodes to connect to.
-    # NOTE: You can add additional seed nodes to this list if you want.
-    p2p:
-      seed:
-        - "{{ seed_node_address }}"
 ```
 
 ## Starting the Oasis Node

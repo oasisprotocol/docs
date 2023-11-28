@@ -264,66 +264,59 @@ If a ParaTime requires the use of a TEE, then make sure you set up TEE as instru
 In order to configure the node create the `/node/etc/config.yml` file with the following content:
 
 ```yaml
-datadir: /node/data
-
-log:
-  level:
-    default: info
-    tendermint: info
-    tendermint/context: error
-  format: JSON
-
-genesis:
-  file: /node/etc/genesis.json
+mode: compute
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: info
+            cometbft/context: error
+            default: info
 
 consensus:
-  tendermint:
-    core:
-      listen_address: tcp://0.0.0.0:26656
+    # The external IP that is used when registering this node to the network.
+    # NOTE: If you are using the Sentry node setup, this option should be
+    # omitted.
+    external_address: tcp://{{ external_address }}:26656
+    listen_address: tcp://0.0.0.0:26656
 
-      # The external IP that is used when registering this node to the network.
-      # NOTE: If you are using the Sentry node setup, this option should be
-      # omitted.
-      external_address: tcp://{{ external_address }}:26656
+genesis:
+    file: /node/etc/genesis.json
 
-    p2p:
-      # List of seed nodes to connect to.
-      # NOTE: You can add additional seed nodes to this list if you want.
-      seed:
-        - "{{ seed_node_address }}"
+# The IAS section is required for ParaTimes which are running inside the
+# Intel SGX Trusted Execution Environment.
+ias:
+    proxy_addresses:
+        # List of IAS proxies to connect to.
+        # NOTE: You can add additional IAS proxies to this list if you want.
+        - {{ ias_proxy_address }}
 
-runtime:
-  mode: compute
-  paths:
-    # Paths to ParaTime bundles for all of the supported ParaTimes.
-    - "{{ runtime_orc_path }}"
+p2p:
+    # External P2P configuration.
+    port: 30002
+    registration:
+        addresses:
+            # The external IP that is used when registering this node to the
+            # network.
+            - {{ external_address }}:30002
+    seeds:
+        # List of seed nodes to connect to.
+        # NOTE: You can add additional seed nodes to this list if you want.
+        - {{ seed_node_address }}
 
-  # The following section is required for ParaTimes which are running inside the
-  # Intel SGX Trusted Execution Environment.
-  sgx:
-    loader: /node/bin/oasis-core-runtime-loader
-
-worker:
-  registration:
+registration:
     # In order for the node to register itself, the entity.json of the entity
     # used to provision the node must be available on the node.
     entity: /node/entity/entity.json
 
-  p2p:
-    # External P2P configuration.
-    port: 30002
-    addresses:
-      # The external IP that is used when registering this node to the network.
-      - "{{ external_address }}:30002"
-
-# The following section is required for ParaTimes which are running inside the
-# Intel SGX Trusted Execution Environment.
-ias:
-  proxy:
-    address:
-      # List of IAS proxies to connect to.
-      # NOTE: You can add additional IAS proxies to this list if you want.
-      - "{{ ias_proxy_address }}"
+runtime:
+    paths:
+        # Paths to ParaTime bundles for all of the supported ParaTimes.
+        - {{ runtime_orc_path }}
+    # The following section is required for ParaTimes which are running inside 
+    # the Intel SGX Trusted Execution Environment.
+    sgx_loader: /node/bin/oasis-core-runtime-loader
 ```
 
 Before using this configuration you should collect the following information to replace the  variables present in the configuration file:

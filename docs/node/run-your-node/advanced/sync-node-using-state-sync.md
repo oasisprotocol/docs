@@ -35,45 +35,20 @@ consensus:
 
   ... trimmed ...
 
-  # Tendermint backend configuration.
-  tendermint:
-
-    ... trimmed ...
-
-    # Enable consensus state sync (i.e. Tendermint light client sync).
-    state_sync:
-      enabled: true
-      trust_height: {{ trusted_height }}
-      trust_hash: "{{ trusted_height_hash }}"
-      # List of consensus nodes to use for syncing.
-      consensus_node:
-        - "{{ node1_grpc_endpoint }}"
-        - "{{ node2_grpc_endpoint }}"
-        
-        .. trimmed ...
-        
-        - "{{ noden_grpc_endpoint }}"
+  # Enable consensus state sync (i.e. CometBFT light client sync).
+  state_sync:
+    enabled: true
+    trust_height: {{ trusted_height }}
+    trust_hash: "{{ trusted_height_hash }}"
 
 ... trimmed ...
+
 ```
 
 and replace the following variables in the configuration snippet:
 
-* `{{ trusted_height }}`: Trusted height defines the height at which your node 
-  should trust the chain.
-* `{{ trusted_height_hash }}`: Trusted height hash defines the hash of the block
-  header corresponding to the trusted height.
-* `{{ node1_grpc_endpoint }}`, `{{ node2_grpc_endpoint }}` , ...,
-  `{{ noden_grpc_endpoint }}`: Addresses of a Oasis nodes' publicly exposed gRPC
-  endpoints of the form:
-  `xAMjfJDcUFUcwgZGEQuOdux8gAdc+IFEqccB2LHdGjU=@34.86.145.181:9001`.
-
-:::caution
-
-You need to provide publicly exposed gRPC endpoints for **at least 2 different
-consensus nodes** for the state sync to work.
-
-:::
+* `{{ trusted_height }}`: Trusted height defines the height at which your node should trust the chain.
+* `{{ trusted_height_hash }}`: Trusted height hash defines the hash of the block header corresponding to the trusted height.
 
 :::danger
 
@@ -85,8 +60,8 @@ If existing node state is found and state sync is skipped, you will see
 something like the following in your node's logs:
 
 ```
-{"caller":"full.go:1233","level":"info","module":"tendermint","msg":"state sync enabled","ts":"2021-06-21T14:40:55.033642763Z"}
-{"caller":"node.go:692","level":"info","module":"tendermint:base","msg":"Found local state with non-zero height, skipping state sync","ts":"2021-06-21T14:40:55.838955955Z"}
+{"caller":"full.go:709","level":"info","module":"cometbft","msg":"state sync enabled","ts":"2023-11-16T20:06:58.56502593Z"}
+{"caller":"node.go:770","level":"info","module":"cometbft:base","msg":"Found local state with non-zero height, skipping state sync","ts":"2023-11-16T20:06:59.22387592Z"}
 ```
 
 :::
@@ -120,7 +95,7 @@ obtain the trusted height and hash there:
 If you have an existing node that you trust, you can use its status output to
 retrieve the current block height and hash by running:
 
-```
+```bash
 oasis-node control status -a unix:/node/data/internal.sock
 ```
 
@@ -128,16 +103,86 @@ This will give you output like the following (non-relevant fields omitted):
 
 ```json
 {
-  "software_version": "21.3.1",
+  "software_version": "23.0.5",
   "identity": {
     ...
   },
   "consensus": {
     ...
-    "latest_height": 6388075,
-    "latest_hash": "d9f57b806917b6d3131925f7c987a785ea90f62b3a6987aedd1abdc371d84403",
-    "latest_time": "2021-10-19T12:01:55+02:00",
-    "latest_epoch": 10636,
+    "latest_height": 18466200,
+    "latest_hash": "9611c81c7e231a281f1de491047a833364f97c38142a80abd65ce41bce123378",
+    "latest_time": "2023-11-27T08:31:15Z",
+    "latest_epoch": 30760,
+    ...
+  },
+  ...
+}
+```
+
+the values you need are `latest_height` and `latest_hash`.
+
+#### Public Rosetta Gateway
+
+First obtain the network's Genesis document's hash (e.g. from the Networks Parameters Page):
+- mainnet: [b11b369e0da5bb230b220127f5e7b242d385ef8c6f54906243f30af63c815535](https://docs.oasis.io/node/mainnet/)
+- testnet: [0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76](https://docs.oasis.io/node/testnet/)
+
+Query our public Rosetta Gateway instance and obtain the trusted height and hash
+there (replace the `<chain-context>` with the value obtained in the previous step):
+
+```bash
+curl -X POST https://rosetta.oasis.dev/api/block \
+-H "Content-Type: application/json" \
+-d '{
+    "network_identifier": {
+        "blockchain": "Oasis",
+        "network": "<chain-context>"
+    },
+    "block_identifier": {
+        "index": 0
+    }
+}'
+```
+
+This will give you output like the following (non-relevant fields omitted):
+
+```json
+{
+	"block": {
+		"block_identifier": {
+			"index": 16787439,
+			"hash": "443b71d835dbae7ea6233b06280ab596287d5c45f88fa76a71bf6cc52366592e"
+		},
+    ...
+	}
+}
+```
+
+The values you need are `index` and `hash`.
+
+#### Oasis CLI
+
+Query our public Oasis node's endpoint using the Oasis CLI and obtain the
+trusted height and hash there:
+
+```bash
+oasis network status
+```
+
+This will give you output like the following (non-relevant fields omitted):
+
+```json
+{
+  "software_version": "23.0.5",
+  "identity": {
+    ...
+  },
+  "consensus": {
+    ...
+    "latest_height": 18466200,
+    "latest_hash": "9611c81c7e231a281f1de491047a833364f97c38142a80abd65ce41bce123378",
+    "latest_time": "2023-11-27T08:31:15Z",
+    "latest_epoch": 30760,
     ...
   },
   ...
@@ -145,49 +190,3 @@ This will give you output like the following (non-relevant fields omitted):
 ```
 
 The values you need are `latest_height` and `latest_hash` .
-
-#### Public Rosetta Gateway
-
-Query our public Rosetta Gateway instance and obtain the trusted height and hash
-there:
-
-1. _TODO._
-
-#### Oasis Node's gRPC Endpoint
-
-Query our public Oasis node's gRPC endpoint and obtain the trusted height and
-hash there:
-
-1. _TODO._
-
-### Obtaining Addresses of Oasis Nodes' Publicly Exposed gRPC Endpoints
-
-To find the addresses of Oasis node's publicly exposed gRPC endpoints, use one
-of the following options.
-
-#### List Registered Nodes' Descriptors via Oasis CLI from the Local Oasis Node
-
-If you already have a local Oasis node set up, you can list the descriptors of
-all registered nodes via the [`oasis network show nodes`] Oasis CLI command.
-
-:::info
-
-To avoid denial-of-service attacks this call is not enabled on public Oasis gRPC
-endpoints. You will have to [connect Oasis CLI to your own Oasis node]!
-
-:::
-
-You need to search for the nodes that implement the `consensus-rpc` role.
-
-The publicly exposed gRPC endpoint addresses are found under the node
-descriptor's `tls.addresses` key.
-
-You can list the relevant addresses by running:
-
-```
-oasis network show nodes --network mainnet_local | \
-  jq 'select(.roles | contains("consensus-rpc")) | .tls.addresses'
-```
-
-[`oasis network show nodes`]: ../../../general/manage-tokens/cli/network.md#show-nodes
-[connect Oasis CLI to your own Oasis node]: ../../../general/manage-tokens/cli/network.md#add

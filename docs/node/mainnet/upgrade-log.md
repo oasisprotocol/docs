@@ -5,7 +5,7 @@ node operators' deployments.
 
 They are enumerated and explained in this document.
 
-## 2023-11-29 (8:30 UTC) - Eden Upgrade {#eden-upgrade}
+## 2023-11-29 (10:02 UTC) - Eden Upgrade {#eden-upgrade}
 
 :::caution
 

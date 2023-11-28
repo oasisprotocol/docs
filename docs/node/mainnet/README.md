@@ -2,8 +2,8 @@
 
 These are the current parameters for the Mainnet:
 
-* [Genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2022-04-11/genesis.json):
-  * SHA256: `bb379c0202cf82404d75a3ebc6466b0c3b98f32fac62111ee4736a59d2d3f266`
+* [Genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2023-11-29/genesis.json):
+  * SHA256: `b14e45e97da0216a16c25096fd216f591e4d526aa6abac110ac23cb327b64ba1`
 
 :::info
 
@@ -12,9 +12,10 @@ Genesis file is signed by [network's current maintainers](https://github.com/oas
 :::
 
 * Genesis document's hash ([explanation](../genesis-doc.md#genesis-file-vs-genesis-document)):
-  * `b11b369e0da5bb230b220127f5e7b242d385ef8c6f54906243f30af63c815535`
-* Oasis seed node address:
-  * `E27F6B7A350B4CC2B48A6CBE94B0A02B0DCB0BF3@35.199.49.168:26656`
+  * `bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55`
+* Oasis seed node addresses:
+  * `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:26656`
+  * `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:9200`
 
 :::tip
 
@@ -23,9 +24,9 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
-  * [2.4.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.4.0)
+  * [2.6.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0)
 
 :::info
 
@@ -48,7 +49,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime bundle version:
@@ -66,11 +67,10 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
-* Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v10.0.0#building)):
-  * [10.0.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v10.0.0)
+* Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0#building)):
   * [11.0.0](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v11.0.0)
 * Web3 Gateway version:
   * [3.4.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0)
@@ -84,11 +84,10 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
 ### Sapphire
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000f80306c9858e7279`
 * Runtime bundle version:
-  * [0.5.2](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.5.2)
   * [0.6.4](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.6.4)
 * Oasis Web3 Gateway version:
   * [3.4.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v3.4.0)
@@ -105,7 +104,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Key Manager
 
 * Oasis Core version:
-  * [22.2.11](https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.11)
+  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
 * Runtime bundle version:

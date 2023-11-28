@@ -203,7 +203,9 @@ Ubuntu versions (or other distributions using older system libraries).
 10. (only Rosetta Gateway operators) Replace old version of Oasis Rosetta
     Gateway with version [2.6.0][rosetta-gw-2.6.0].
 
-11. Start your node and re-enable auto-starting via your process manager.
+11. (only Emerald paratime operators) Upgrade Emerald to version 11.0.0.
+
+12. Start your node and re-enable auto-starting via your process manager.
 
 [Oasis CLI]: ../../general/manage-tokens/cli/README.md
 [Import your keys into the wallet]: ../../general/manage-tokens/cli/wallet.md#import-file
@@ -270,6 +272,13 @@ Mainnet you can use the following addresses:
 Please be aware that every seed node should be configured to listen on two
 distinct ports. One is dedicated to peer discovery within the CometBFT P2P
 network, while the other is used to bootstrap the Oasis P2P network.
+
+:::
+
+:::info
+
+For those running the Emerald ParaTime, please make sure to upgrade to Emerald
+version 11.0.0 before or soon after the network upgrade is completed.
 
 :::
 

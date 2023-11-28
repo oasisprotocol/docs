@@ -39,21 +39,18 @@ This will configure the given node to only act as a seed node.
 In order to configure the node create the `/node/etc/config.yml` file with the following content:
 
 ```yaml
-datadir: /node/data
-
-log:
-  level:
-    default: info
-    tendermint: info
-    tendermint/context: error
-  format: JSON
+mode: seed
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: info
+            cometbft/context: error
+            default: info
 
 genesis:
-  file: /node/etc/genesis.json
-
-consensus:
-  tendermint:
-    mode: seed
+    file: /node/etc/genesis.json
 ```
 
 ## Starting the Oasis Node

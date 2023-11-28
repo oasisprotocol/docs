@@ -58,18 +58,12 @@ In order to configure the IAS proxy create the `/node/ias/config.yml` file with
 the following content:
 
 ```yaml
-datadir: /node/ias
-
-log:
-  level:
-    default: info
-  format: JSON
-
-ias:
-  production: true
-
-grpc:
-  port: 8650
+common:
+    data_dir: /node/ias
+    log:
+        format: JSON
+        level:
+            default: info
 ```
 
 ## Starting the IAS Proxy
@@ -77,7 +71,11 @@ grpc:
 You can start the IAS Proxy using the following command:
 
 ```bash
-oasis-node ias proxy --config /node/ias/config.yml --address unix:{{ oasis_node_socket }}
+oasis-node ias proxy \
+  --config /node/ias/config.yml \
+  --address unix:{{ oasis_node_socket }} \
+  --ias.production true \
+  --grpc.port 8650
 ```
 
 Before using this configuration you should collect the following information to

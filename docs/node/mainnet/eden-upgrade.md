@@ -266,8 +266,8 @@ However, if it contains unknown seed nodes then the conversion did not happen
 automatically and you may need to obtain the seed node's P2P public key. For
 Mainnet you can use the following addresses:
 
-* `TBD`
-* `TBD`
+* `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:26656`
+* `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:9200`
 
 Please be aware that every seed node should be configured to listen on two
 distinct ports. One is dedicated to peer discovery within the CometBFT P2P

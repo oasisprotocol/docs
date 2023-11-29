@@ -24,7 +24,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
+  * [23.0.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.8)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
   * [2.6.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0)
 
@@ -49,7 +49,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Cipher
 
 * Oasis Core version:
-  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
+  * [23.0.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.8)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime bundle version:
@@ -67,7 +67,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Emerald
 
 * Oasis Core version:
-  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
+  * [23.0.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.8)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
 * Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0#building)):
@@ -84,7 +84,7 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
 ### Sapphire
 
 * Oasis Core version:
-  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
+  * [23.0.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.8)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000f80306c9858e7279`
 * Runtime bundle version:
@@ -104,7 +104,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 ### Key Manager
 
 * Oasis Core version:
-  * [23.0.7](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7)
+  * [23.0.8](https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.8)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
 * Runtime bundle version:

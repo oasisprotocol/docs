@@ -62,6 +62,7 @@ const sidebars = {
       items: [
         'dapp/emerald/writing-dapps-on-emerald',
         'dapp/emerald/integrating-band-oracle-smart-contract',
+        'dapp/emerald/index-emerald-onchain-data',
       ],
     },
     {

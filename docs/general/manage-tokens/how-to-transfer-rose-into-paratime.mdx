@@ -4,22 +4,24 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 # How to Transfer ROSE into a ParaTime
 
 This guide will walk you through transferring ROSE tokens from an Oasis
-consensus layer account into an Emerald, Sapphire or Cipher ParaTime using the
+consensus layer account into a Sapphire, Emerald or Cipher ParaTime using the
 Oasis Wallet - Browser Extension.
 
 ## About
 
+![Consensus and ParaTime layers](../images/architecture/technology_scalability.svg)
+
 Each ParaTime hosts accounts in its own independent chain state, which means
 that ROSE held at the consensus layer is not the same as the ParaTime's token.
 Fortunately, you can easily swap between the two by making _deposits_ and
-_withdrawals_. These procedures are formally described in [ADR 0003].
+_withdrawals_. These procedures are formally described in [ADR-3].
 
-The _deposit_ procedure will approve the ParaTime access to the specified
+The _deposit_ procedure will first _allow_ the ParaTime to access a specified
 amount of ROSE. Then, a `Deposit` transaction will be executed inside the
 ParaTime and tokens will be transferred from your consensus layer account to
 the ParaTime. If that transaction succeeds, the ParaTime will update the state
-of your provided EVM account to reflect the deposit of tokens. Emerald,
-Sapphire and Cipher will give you 1 e/s/cROSE for each consensus ROSE, although
+of your provided EVM account to reflect the deposit of tokens. Sapphire, Emerald
+and Cipher will give you 1 ParaTime ROSE for each consensus ROSE—although
 other ParaTimes may implement different rules.
 
 The _withdraw_ procedure executes the `Withdraw` transaction inside the
@@ -28,14 +30,14 @@ the provided `oasis1` address. If the transaction succeeds, the ParaTime will
 update your EVM account state (usually by burning the tokens inside the
 ParaTime).
 
-Currently, the Oasis Wallet Browser Extension is the only graphical user
-interface for performing deposits/withdrawals to/from ParaTimes. Alternatively,
-you can use the [Oasis CLI], if you are more keen to using a command line
-interface.
+Both the Oasis Wallet Browser Extension and the Oasis Wallet Web offer a
+graphical user interface for performing deposits/withdrawals to/from ParaTimes.
+Alternatively, you can use the [Oasis CLI], if you are more keen to using a
+command line interface or you want to automate token operations.
 
-[ADR 0003]: ../../adrs/0003-consensus-runtime-token-transfer.md
+[ADR-3]: ../../adrs/0003-consensus-runtime-token-transfer.md
 
-## Managing your account with Oasis Wallet Browser Extension
+## Managing your account with the Oasis Wallet Browser Extension
 
 First, install the Oasis Wallet Browser extension. Next, restore your existing
 Oasis wallet or create a new by following the
@@ -45,6 +47,14 @@ Oasis wallet or create a new by following the
 
 Once done, you will see your balance on the **Oasis consensus layer**. Next, we
 will import your wallet to be used in the ParaTime.
+
+:::tip
+
+At time of writing, depositing and withdrawing ROSE to and from ParaTimes
+works for Oasis wallets **imported from the private key or the mnemonic only**.
+If you want to use the Ledger wallet, please use the [Oasis CLI].
+
+:::
 
 ### Importing wallet account
 
@@ -57,7 +67,7 @@ Click "Import" and select the:
 - "Oasis Private Key" to import your existing Oasis private key to be used by
   Cipher ParaTime; or
 - "Ethereum-compatible Private Key" to import your existing Ethereum Account to
-  be used by the EVM-compatible Emerald or Sapphire.
+  be used by the EVM-compatible Sapphire or Emerald.
 
 :::info
 
@@ -108,32 +118,29 @@ anymore!**
 ### Depositing ROSE to a ParaTime
 
 Now, you can transfer your ROSE to the ParaTime. Navigate to the "ParaTimes" tab.
-For the sake of demonstration, we'll continue with the Emerald ParaTime, but the
-Sapphire or Cipher ParaTimes work just as well.
+For the sake of demonstration, we'll continue with the Sapphire ParaTime, but the
+Emerald or Cipher ParaTimes work just as well.
 
-Under Emerald click on the "To ParaTime" button.
+Under the Sapphire label click on the "To ParaTime" button.
 
-![ParaTimes - Transfer ROSE to Emerald](../images/wallet/ext/paratimes.png)
+![ParaTimes - Transfer ROSE to Sapphire](../images/wallet/ext/paratimes.png)
 
-Fill in the "Amount" of ROSE that you want to transfer to Emerald and, in our
+Fill in the "Amount" of ROSE that you want to transfer to Sapphire and, in our
 case, your Ethereum-compatible address in the "To" field you imported/created
 before. Then, click "Next", review and confirm the transaction.
 
-![Sending ROSE to Emerald](../images/wallet/ext/deposit.png)
+![Sending ROSE to Sapphire](../images/wallet/ext/deposit.png)
 
-:::info
+If everything goes well, you will see a successful ParaTime transaction in your
+account history.
 
-At the time of writing, depositing and withdrawing ROSE to and from ParaTimes
-works for Oasis wallets **imported from the private key or the mnemonic only**.
-Support for the Ledger hardware wallet is not implemented yet.
-
-:::
+![Account history](../images/wallet/ext/account_history.png)
 
 ### Verifying ROSE balance on ParaTime
 
 If everything went well, your entered amount of ROSE was sent to the
 destination address on ParTime. In our case, let's verify that your ROSE safely
-arrived at your Emerald Ethereum wallet.
+arrived at your Sapphire Ethereum wallet.
 
 #### Wallet Browser Extension
 
@@ -143,27 +150,31 @@ sent ROSE. Then click on the back arrow and navigate to the "ParaTimes" tab.
 In the corresponding ParaTime pane, you will notice the available amount of
 your ROSE.
 
-![ROSE balance in Emerald](../images/wallet/ext/paratimes2.png)
+![ROSE balance in Sapphire](../images/wallet/ext/paratimes2.png)
 
 #### Metamask
 
 For EVM-compatible ParaTimes, you can as well verify the balance in
-[Metamask](https://metamask.io) (or a built-in wallet in the Brave browser).
-First, install the extension in your favorite browser and add the Emerald
-Mainnet/Testnet by pointing your wallet at the Web3 gateway with parameters
-listed [here](/dapp/emerald/#web3-gateway) (Sapphire
-parameters can be found [here](/dapp/sapphire/#web3-gateway)). Then,
-import your Ethereum keypair and your balance should immediately be visible.
+[Metamask](https://metamask.io) or a built-in wallet in the Brave browser:
 
-:::info
+1. Install the Metamask extension to your browser.
+2. Add the corresponding [Sapphire](/dapp/sapphire/#web3-gateway) and/or
+   [Emerald](/dapp/emerald/#web3-gateway) networks to Metamask. You can either
+   click on the "Click here to register..." buttons following the links above or
+   enter the network details manually.
 
-Brave wallet network configuration requires you to enter Chain's currency decimals for ROSE: 18)
+   ![Metamask - Adding Sapphire Mainnet Network Configuration](../images/wallet/metamask/settings.png)
 
-:::
+   :::info
 
-![Metamask - Adding Emerald Mainnet Network Configuration](../images/wallet/metamask/settings.png)
+   Brave wallet network configuration requires you to enter Chain's currency
+   decimals for ROSE: 18)
 
-![Brave Wallet - Received ROSE](../images/wallet/metamask/brave.png)
+   :::
+
+3. Import your Ethereum keypair. The balance should immediately be visible.
+
+   ![Metamask - Received ROSE](../images/wallet/metamask/account.png)
 
 ### Withdrawing ROSE from a ParaTime
 
@@ -177,7 +188,7 @@ consensus layer.
 :::danger
 
 If you want to transfer ROSE to an exchange and you currently have them
-deposited on Emerald ParaTime, **we strongly recommend that you withdraw ROSE
+deposited on Sapphire, **we strongly recommend that you withdraw ROSE
 to your Oasis wallet first and then perform a regular token transfer to your
 Oasis address on the exchange!** The ParaTime's withdrawal procedure involves a
 number of steps as described in the introduction and some exchanges may not
@@ -186,7 +197,7 @@ the exchange.
 
 :::
 
-:::info
+:::tip
 
 Advanced users (e.g. those running ParaTime [compute nodes] may need to
 withdraw ROSE from ParaTimes stored in their `oasis1` accounts, for example to
@@ -209,7 +220,7 @@ you can use the official [Oasis Scan](https://www.oasisscan.com) block
 explorer. Enter your consensus bech32-encoded address and press Search. Then
 navigate to Transactions section and press "ParaTime" button next to consensus.
 You will be able to see all transactions made from both the native or Ethereum
-compatible address (`0x`) you used in Emerald to your consensus (`oasis1`)
+compatible address (`0x`) you used in Sapphire to your consensus (`oasis1`)
 address where you sent your ROSE to.
 
 ![Search result of oasis1 address - Account details](../images/manage-tokens/paratime-deposit-withdraw/oasisscan1.png)
@@ -223,17 +234,17 @@ destination consensus address, and **amount** of ROSE transferred.
 :::info
 
 Be aware that the [Oasis Scan Blockchain Explorer](https://www.oasisscan.com)
-is built for consensus layer. If you want to explore Emerald ParaTime (0x
-addresses, Token Transfers, Contract Calls, etc.), you have to use the
-[Emerald Blockchain Explorer](https://explorer.emerald.oasis.dev).
+is built for consensus layer. If you want to explore Sapphire (0x addresses,
+Token Transfers, Contract Calls, etc.), you have to use the
+[Sapphire Blockchain Explorer](https://explorer.sapphire.oasis.dev).
 
 :::
 
 ## See also
 
 <DocCardList items={[
-    findSidebarItem('/dapp/emerald/writing-dapps-on-emerald'),
     findSidebarItem('/dapp/sapphire/quickstart'),
+    findSidebarItem('/dapp/emerald/writing-dapps-on-emerald'),
     findSidebarItem('/dapp/cipher/'),
     findSidebarItem('/general/manage-tokens/cli/account')
 ]} />

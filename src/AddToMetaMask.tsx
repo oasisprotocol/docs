@@ -1,5 +1,4 @@
 import React from 'react';
-import PlotlyChart from "@site/src/PlotlyChart";
 
 const AddToMetaMask = (props: {
   name: string,

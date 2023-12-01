@@ -131,7 +131,7 @@ Query our public Rosetta Gateway instance and obtain the trusted height and hash
 there (replace the `<chain-context>` with the value obtained in the previous step):
 
 ```bash
-curl -X POST https://rosetta.oasis.dev/api/block \
+curl -X POST https://rosetta.oasis.io/api/block \
 -H "Content-Type: application/json" \
 -d '{
     "network_identifier": {

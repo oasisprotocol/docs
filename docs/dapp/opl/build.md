@@ -90,7 +90,7 @@ index cd8df42..0875e8e 100644
 +      accounts,
 +    },
 +    'sapphire-testnet': {
-+      url: 'https://testnet.sapphire.oasis.dev',
++      url: 'https://testnet.sapphire.oasis.io',
 +      chainId: 0x5aff,
 +      accounts,
 +    },
@@ -131,7 +131,7 @@ We can likewise deploy to [Testnet](../../dapp/sapphire/guide#testnet-and-mainne
 with Sapphire.
 
 In this case, we should prepare a wallet with Testnet tokens on both BNB Smart
-Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](https://faucet.testnet.oasis.dev).
+Chain [Faucet](https://testnet.bnbchain.org/faucet-smart) and Sapphire [faucet](https://faucet.testnet.oasis.io).
 
 We will use a common private key for both the host and enclave smart contracts.
 

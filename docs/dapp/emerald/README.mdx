@@ -1,107 +1,96 @@
 import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
+import {AddEmeraldToMetaMask as E, AddEmeraldTestnetToMetaMask as ET} from '@site/src/AddToMetaMask';
 
 # Emerald ParaTime
 
-The Emerald ParaTime is our official EVM Compatible ParaTime providing smart contract environment with full EVM compatibility.
+Emerald is our official ParaTime which executes smart contracts inside the
+[Ethereum Virtual Machine (EVM)].
 
-As the official EVM compatible ParaTime on the Oasis Network, Emerald allows for:
+Emerald allows for:
 
 * Full EVM compatibility
-* Easy integration with EVM-based dApps, such as DeFi, NFT, Metaverse and crypto gaming
-* Scalability — increased throughput of transactions
-* Low-cost — 99%+ lower fees than Ethereum
+* Easy integration with EVM-based dApps, such as DeFi, NFT, Metaverse and crypto
+  gaming
+* Scalability: increased throughput of transactions
+* Low-cost: 99%+ lower fees than Ethereum
+* 6 second finality (1 block)
 * Cross-chain bridge to enable cross-chain interoperability (upcoming)
 
-If you're looking for EVM, but with confidentiality,
-check out the [Sapphire ParaTime](../sapphire/README.mdx).
+If you're looking for EVM, but with confidentiality, check out the
+[Sapphire ParaTime](../sapphire/README.mdx).
 
-## ParaTime Incentives
+[Ethereum Virtual Machine (EVM)]: https://ethereum.org/en/developers/docs/evm/
 
-Emerald is fully decentralized with node operators distributed globally, and Oasis ROSE will be the native token used for gas fees.
-
-The ParaTime will release tokens on-chain to reward nodes for participation. These tokens will be released, per epoch, with the reward being 3 ROSE Tokens per entity per epoch.
-
-Epochs are currently being produced at a speed of one per hour. Each node has an approximately 30% chance of being selected by the primary committee to claim the rewards. Hence, a node entity can earn 24 ROSE tokens per day, 720 ROSE tokens per month.
-
-The reward program is two years long.
-
-## Web3 Gateway
-
-To get started building on our Emerald ParaTime, you can use our public Web3 gateway, fully compatible with Ethereum's Web3 gateway.
+## Chain Information
 
 ### Mainnet
 
-* RPC HTTP endpoint: `https://emerald.oasis.dev`
-* RPC WebSockets endpoint: `wss://emerald.oasis.dev/ws`
-* Chain ID:
-  * Hex: 0xa516
-  * Decimal: 42262
-* Block explorer: [https://explorer.emerald.oasis.dev](https://explorer.emerald.oasis.dev)
-
-<button
-  class="button button--primary margin-bottom--md"
-  onClick={() => {
-    if (!window.ethereum?.request) {
-      return alert('Have you installed MetaMask yet? If not, please do so.\n\nComputer: Once it is installed, you will be able to add the ParaTime to your MetaMask.\n\nPhone: Open the website through your MetaMask Browser to add the ParaTime.')
-    }
-    window.ethereum.request({
-      method: 'wallet_addEthereumChain',
-      params: [
-        {
-          chainId: '0xa516',
-          chainName: 'Oasis Emerald',
-          nativeCurrency: {
-            name: 'Emerald Rose',
-            symbol: 'ROSE',
-            decimals: 18,
-          },
-          rpcUrls: ['https://emerald.oasis.dev', 'wss://emerald.oasis.dev/ws'],
-          blockExplorerUrls: ['https://explorer.emerald.oasis.dev'],
-        },
-      ],
-    })
-  }}
->
-  Click here to register Emerald Mainnet to your MetaMask or Brave Wallet
-</button>
+- Network name: `emerald`
+- Long network name: `Oasis Emerald`
+- Chain ID:
+  - Hex: `0xa516`
+  - Decimal: `42262`
 
 ### Testnet
 
-* RPC HTTP endpoint: `https://testnet.emerald.oasis.dev`
-* RPC WebSockets endpoint: `wss://testnet.emerald.oasis.dev/ws`
-* Chain ID:
-  * Hex: 0xa515
-  * Decimal: 42261
-* Block explorer: [https://testnet.explorer.emerald.oasis.dev](https://testnet.explorer.emerald.oasis.dev)
+- Network name: `emerald-testnet`
+- Long network name: `Oasis Emerald Testnet`
+- Chain ID:
+  - Hex: `0xa515`
+  - Decimal: `42261`
 
-<button
-  class="button button--primary margin-bottom--md"
-  onClick={() => {
-    if (!window.ethereum?.request) {
-      return alert('Have you installed MetaMask yet? If not, please do so.\n\nComputer: Once it is installed, you will be able to add the ParaTime to your MetaMask.\n\nPhone: Open the website through your MetaMask Browser to add the ParaTime.')
-    }
-    window.ethereum.request({
-      method: 'wallet_addEthereumChain',
-      params: [
-        {
-          chainId: '0xa515',
-          chainName: 'Oasis Emerald Testnet',
-          nativeCurrency: {
-            name: 'TEST',
-            symbol: 'TEST',
-            decimals: 18,
-          },
-          rpcUrls: ['https://testnet.emerald.oasis.dev/', 'wss://testnet.emerald.oasis.dev/ws'],
-          blockExplorerUrls: ['https://testnet.explorer.emerald.oasis.dev'],
-        },
-      ],
-    })
-  }}
->
-  Click here to register Emerald Testnet to your MetaMask or Brave Wallet
-</button>
+## RPC Endpoints
 
+:::danger
+
+The RPC endpoint is a *point of trust*. Beside traffic rate limiting, it can
+also perform censorship or even a man-in-the-middle attack. If you have security
+considerations, we strongly recommend that you set up your own [ParaTime client
+node][paratime-client-node] and the [Web3-compatible gateway].
+
+:::
+
+
+[Web3-compatible gateway]: ../../node/web3.mdx
+[paratime-client-node]: ../../node/run-your-node/paratime-client-node.mdx
+
+You can connect to one of the public Web3 gateways below (in alphabetic order):
+
+| Provider                    | Mainnet RPC URLs                                                        | Testnet RPC URLs                                                                         |
+|-----------------------------|-------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| [1RPC]                      | <E rpcs={['https://1rpc.io/oasis/emerald']} />                          | N/A                                                                                      |
+| [Oasis Protocol Foundation] | <E rpcs={['https://emerald.oasis.io','wss://emerald.oasis.io/ws']} /> | <ET rpcs={['https://testnet.emerald.oasis.io','wss://testnet.emerald.oasis.io/ws']} /> |
+
+[Oasis Protocol Foundation]: https://oasisprotocol.org
+
+Public RPCs may have rate limits or traffic restrictions. For professional,
+dedicated RPC endpoints, consider the following providers (in alphabetic order):
+
+| Provider                  | Instructions              | Pricing                 |
+|---------------------------|---------------------------|-------------------------|
+| [1RPC]                    | [docs.1rpc.io][1RPC-docs] | [Pricing][1RPC-pricing] |
+
+
+[1RPC]: https://www.1rpc.io/
+[1RPC-docs]: https://docs.1rpc.io/guide/how-to-use-1rpc
+[1RPC-pricing]: https://www.1rpc.io/#pricing
+
+## Block Explorers
+
+| Provider                    | Mainnet URL                               | Testnet URL                               | EIP-3091 compatible |
+|-----------------------------|-------------------------------------------|-------------------------------------------|---------------------|
+| [Oasis Protocol Foundation] | https://explorer.oasis.io/mainnet/emerald | https://explorer.oasis.io/testnet/emerald | Yes                 |
+
+:::tip
+
+If you are running your own Emerald endpoint or a block explorer, and you wish
+to be added to the public list above, open an issue at
+[github.com/oasisprotocol/docs].
+
+:::
+
+[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs
 
 ## See also
 

@@ -1,10 +1,11 @@
 import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
+import {AddSapphireToMetaMask as S, AddSapphireTestnetToMetaMask as ST} from '@site/src/AddToMetaMask';
 
 # Sapphire ParaTime
 
-The Sapphire ParaTime is our official confidential EVM Compatible ParaTime
-providing a smart contract development environment with EVM compatibility.
+Sapphire is our official confidential ParaTime providing a smart contract
+development environment with [Ethereum Virtual Machine (EVM)] compatibility.
 
 As the official confidential EVM-compatible ParaTime on the Oasis Network,
 Sapphire allows for:
@@ -13,8 +14,8 @@ Sapphire allows for:
 * EVM compatibility
 * Easy integration with EVM-based dApps, such as DeFi, NFT, Metaverse and
   crypto gaming
-* Scalability — increased throughput of transactions
-* Low-cost — 99%+ lower fees than Ethereum
+* Scalability: increased throughput of transactions
+* Low-cost: 99%+ lower fees than Ethereum
 * 6 second finality (1 block)
 * Cross-chain bridge to enable cross-chain interoperability (upcoming)
 
@@ -22,82 +23,80 @@ If you are not bound to EVM and you wish to develop dApps with more
 fine-grained confidentiality, check out the
 [Cipher ParaTime](../cipher/README.mdx).
 
-## Web3 Gateway
+[Ethereum Virtual Machine (EVM)]: https://ethereum.org/en/developers/docs/evm/
 
-To get started building on our Sapphire ParaTime, you can use our public Web3
-gateway, fully compatible with Ethereum's Web3 gateway.
+## Chain Information
 
 ### Mainnet
 
-* RPC HTTP endpoint: `https://sapphire.oasis.io`
-* RPC WebSockets endpoint: `wss://sapphire.oasis.io/ws`
-* Chain ID:
-  * Hex: 0x5afe
-  * Decimal: 23294
-* Block explorer: [https://explorer.sapphire.oasis.io](https://explorer.sapphire.oasis.io)
-
-<button
-  class="button button--primary margin-bottom--md"
-  onClick={() => {
-    if (!window.ethereum?.request) {
-      return alert('Have you installed MetaMask yet? If not, please do so.\n\nComputer: Once it is installed, you will be able to add the ParaTime to your MetaMask.\n\nPhone: Open the website through your MetaMask Browser to add the ParaTime.')
-    }
-    window.ethereum.request({
-      method: 'wallet_addEthereumChain',
-      params: [
-        {
-          chainId: '0x5afe',
-          chainName: 'Oasis Sapphire',
-          nativeCurrency: {
-            name: 'ROSE',
-            symbol: 'ROSE',
-            decimals: 18,
-          },
-          rpcUrls: ['https://sapphire.oasis.io/', 'wss://sapphire.oasis.io/ws'],
-          blockExplorerUrls: ['https://explorer.sapphire.oasis.io'],
-        },
-      ],
-    })
-  }}
->
-  Click here to register Sapphire Mainnet to your MetaMask or Brave Wallet
-</button>
+- Network name: `sapphire`
+- Long network name: `Oasis Sapphire`
+- Chain ID:
+  - Hex: `0x5afe`
+  - Decimal: `23294`
 
 ### Testnet
 
-* RPC HTTP endpoint: `https://testnet.sapphire.oasis.dev`
-* RPC WebSockets endpoint: `wss://testnet.sapphire.oasis.dev/ws`
-* Chain ID:
-  * Hex: 0x5aff
-  * Decimal: 23295
-* Block explorer: [https://testnet.explorer.sapphire.oasis.dev](https://testnet.explorer.sapphire.oasis.dev)
+- Network name: `sapphire-testnet`
+- Long network name: `Oasis Sapphire Testnet`
+- Chain ID:
+  - Hex: `0x5aff`
+  - Decimal: `23295`
 
-<button
-  class="button button--primary margin-bottom--md"
-  onClick={() => {
-    if (!window.ethereum?.request) {
-      return alert('Have you installed MetaMask yet? If not, please do so.\n\nComputer: Once it is installed, you will be able to add the ParaTime to your MetaMask.\n\nPhone: Open the website through your MetaMask Browser to add the ParaTime.')
-    }
-    window.ethereum.request({
-      method: 'wallet_addEthereumChain',
-      params: [
-        {
-          chainId: '0x5aff',
-          chainName: 'Oasis Sapphire Testnet',
-          nativeCurrency: {
-            name: 'TEST',
-            symbol: 'TEST',
-            decimals: 18,
-          },
-          rpcUrls: ['https://testnet.sapphire.oasis.dev/', 'wss://testnet.sapphire.oasis.dev/ws'],
-          blockExplorerUrls: ['https://testnet.explorer.sapphire.oasis.dev'],
-        },
-      ],
-    })
-  }}
->
-  Click here to register Sapphire Testnet to your MetaMask or Brave Wallet
-</button>
+## RPC Endpoints
+
+:::danger
+
+The RPC endpoint is a *point of trust*. Beside traffic rate limiting, it can
+also perform censorship or even a man-in-the-middle attack. If you have security
+considerations, we strongly recommend that you set up your own [ParaTime client
+node][paratime-client-node] and the [Web3-compatible gateway].
+
+:::
+
+[Web3-compatible gateway]: ../../node/web3.mdx
+[paratime-client-node]: ../../node/run-your-node/paratime-client-node.mdx
+
+You can connect to one of the public Web3 gateways below (in alphabetic order):
+
+| Provider                    | Mainnet RPC URLs                                                        | Testnet RPC URLs                                                                           | Supports Confidential Queries |
+|-----------------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|-------------------------------|
+| [1RPC]                      | <S rpcs={['https://1rpc.io/oasis/sapphire']} />                         | N/A                                                                                        | Yes                           |
+| [Oasis Protocol Foundation] | <S rpcs={['https://sapphire.oasis.io','wss://sapphire.oasis.io/ws']} /> | <ST rpcs={['https://testnet.sapphire.oasis.io','wss://testnet.sapphire.oasis.io/ws']} /> | Yes                           |
+
+[Oasis Protocol Foundation]: https://oasisprotocol.org
+
+Public RPCs may have rate limits or traffic restrictions. For professional,
+dedicated RPC endpoints, consider the following providers (in alphabetic order):
+
+| Provider     | Instructions                           | Pricing                       | Supports Confidential Queries |
+|--------------|----------------------------------------|-------------------------------|-------------------------------|
+| [1RPC]       | [docs.1rpc.io][1RPC-docs]              | [Pricing][1RPC-pricing]       | Yes                           |
+| [Chainstack] | [docs.chainstack.com][Chainstack-docs] | [Pricing][Chainstack-pricing] | Yes                           |
+
+
+[1RPC]: https://www.1rpc.io/
+[1RPC-docs]: https://docs.1rpc.io/guide/how-to-use-1rpc
+[1RPC-pricing]: https://www.1rpc.io/#pricing
+[Chainstack]: https://chainstack.com/build-better-with-oasis-sapphire/
+[Chainstack-docs]: https://docs.chainstack.com/docs/oasis-sapphire-tooling
+[Chainstack-pricing]: https://chainstack.com/pricing/
+
+## Block Explorers
+
+| Provider                    | Mainnet URL                                | Testnet URL                                | EIP-3091 compatible |
+|-----------------------------|--------------------------------------------|--------------------------------------------|---------------------|
+| [Oasis Protocol Foundation] | https://explorer.oasis.io/mainnet/sapphire | https://explorer.oasis.io/testnet/sapphire | Yes                 |
+
+:::tip
+
+If you are running your own Sapphire endpoint or a block explorer, and you wish
+to be added to the public list above, open an issue at
+[github.com/oasisprotocol/docs].
+
+:::
+
+[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs
 
 ## See also
 

@@ -55,5 +55,5 @@ number of TEST by using our [Oasis Network Testnet Faucet][faucet-testnet]. For
 more tokens please contact us at our official [Discord #testnet
 channel][discord-testnet].
 
-[faucet-testnet]: https://faucet.testnet.oasis.dev/
+[faucet-testnet]: https://faucet.testnet.oasis.io/
 [discord-testnet]: https://oasis.io/discord

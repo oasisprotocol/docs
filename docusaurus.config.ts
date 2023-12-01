@@ -174,7 +174,7 @@ const config: Config = {
             items: [
               {
                 label: 'Testnet Faucet',
-                to: 'https://faucet.testnet.oasis.dev/',
+                to: 'https://faucet.testnet.oasis.io/',
               },
               {
                 label: 'Playground',

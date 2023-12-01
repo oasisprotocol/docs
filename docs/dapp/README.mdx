@@ -35,3 +35,65 @@ Sapphire, demonstrates best practices for writing confidential smart contracts
 and working examples for you to explore and extend.
 
 <DocCard item={findSidebarItem('/dapp/opl/')} />
+
+# Consensus Layer RPC Endpoints
+
+:::danger
+
+The RPC endpoint is a **point of trust**. Beside rate limiting, it can also
+perform censorship or even man-in-the-middle attack. If you have security
+considerations, we strongly recommend that you [run your own client
+node][non-validator-node],
+
+:::
+
+[non-validator-node]: ../node/run-your-node/non-validator-node.mdx
+
+Most dApp developers will build dApps on the ParaTime layer (the *compute*
+layer) depicted above. For Sapphire and Emerald which are EVM-compatible chains,
+those dApps connect directly to an [EVM-compatible Web3 endpoint][web3].
+However, if you are building a dApp for Cipher or the one that needs to
+perform consensus operations such as the consensus-layer token transfers,
+governance transactions, cross-chain ParaTime deposits and withdrawals and
+similar, you will need to connect to the one of the endpoints speaking
+[Oasis gRPC][grpc].
+
+Public gRPC endpoints (in alphabetic order):
+
+| Provider                    | Mainnet URL         | Testnet URL                 |
+|-----------------------------|---------------------|-----------------------------|
+| [Oasis Protocol Foundation] | `grpc.oasis.io:443` | `testnet.grpc.oasis.io:443` |
+
+[Oasis Protocol Foundation]: https://oasisprotocol.org
+[web3]: ../node/web3.mdx
+[grpc]: ../node/grpc.mdx
+
+## Consensus Layer Block Explorers
+
+| Provider                    | Mainnet URL               | Testnet URL                   |
+|-----------------------------|---------------------------|-------------------------------|
+| [Bit Cat]                   | https://www.oasisscan.com | https://testnet.oasisscan.com |
+| [Oasis Protocol Foundation] | *Coming soon*             | *Coming soon*                 |
+
+[Bit Cat]: https://www.bitcat365.com/
+
+## Rosetta Endpoints
+
+| Provider                    | Mainnet URL                               | Testnet URL                               |
+|-----------------------------|-------------------------------------------|-------------------------------------------|
+| [Oasis Protocol Foundation] | `https://rosetta.oasis.io/api/mainnet/v1` | `https://rosetta.oasis.io/api/testnet/v1` |
+
+
+:::tip
+
+If you are running your own Oasis client node endpoint, a block explorer or the
+Rosetta gateway and you wish to be added to the public list above, open an issue
+at [github.com/oasisprotocol/docs].
+
+:::
+
+[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs/issues
+
+# See also
+
+<DocCardList items={[findSidebarItem('https://api.docs.oasis.io/js/client'), findSidebarItem('https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go')]} />

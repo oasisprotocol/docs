@@ -16,10 +16,10 @@ additional driver and software components are properly installed and running.
 
 ## BIOS Configuration
 
-To enable Intel SGX on your hardware, you also need to configure the BIOS. 
-First, **update the BIOS to the latest version with the latest microcode** and 
-then proceed with BIOS configuration as shown below. Note that some settings may 
-not apply to your BIOS. In that case, configure only the relevant ones. Please 
+To enable Intel SGX on your hardware, you also need to configure the BIOS.
+First, **update the BIOS to the latest version with the latest microcode** and
+then proceed with BIOS configuration as shown below. Note that some settings may
+not apply to your BIOS. In that case, configure only the relevant ones. Please
 set the BIOS settings as follows:
 
 - **SGX**: ENABLE
@@ -30,13 +30,6 @@ set the BIOS settings as follows:
 - **Turbo Mode**: DISABLE
 - **CPU AES**: ENABLE
 
-To test if your settings are correct, you may use the [attestation tool] 
-([binary]) for testing remote attestation against Intel SGX's 
-development server.
-
-[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
-[binary]: https://github.com/oasisprotocol/tools/releases
-
 ## Ensure Clock Synchronization
 
 Due to additional sanity checks within runtime enclaves, you should ensure that
@@ -45,79 +38,15 @@ than half a second you may experience unexpected runtime aborts.
 
 ## Install SGX Linux Driver
 
-:::info
-
 In case you are running Linux kernel version 5.11 or higher, the required SGX
-driver is already included and no additional installation is needed so you may
-skip this section.
-
-:::
-
-On older distributions see below for instructions on how to install the
-[legacy (out-of-tree) driver].
-
-[legacy (out-of-tree) driver]: https://github.com/intel/linux-sgx-driver
-
-### Ubuntu 18.04/16.04
-
-A convenient way to install the SGX Linux driver on Ubuntu 18.04/16.04 systems
-is to use the [Fortanix](https://edp.fortanix.com/docs/installation/guide/)'s
-APT repository and its [DKMS](https://en.wikipedia.org/wiki/Dynamic_Kernel_Module_Support)
-package.
-
-First add Fortanix's APT repository to your system:
-
-```bash
-echo "deb https://download.fortanix.com/linux/apt xenial main" | sudo tee /etc/apt/sources.list.d/fortanix.list >/dev/null
-curl -sSL "https://download.fortanix.com/linux/apt/fortanix.gpg" | sudo -E apt-key add -
-```
-
-And then install the `intel-sgx-dkms` package:
-
-```bash
-sudo apt update
-sudo apt install intel-sgx-dkms
-```
-
-:::caution
-
-Some [Azure Confidential Computing instances](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)
-have the [Intel SGX DCAP driver](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
-pre-installed.
-
-To determine that, run `dmesg | grep -i sgx` and observe if a line like the
-following is shown:
-
-```
-[    4.991649] sgx: intel_sgx: Intel SGX DCAP Driver v1.33
-```
-
-If that is the case, you need to blacklist the Intel SGX DCAP driver's module by
-running:
-
-```
-echo "blacklist intel_sgx" | sudo tee -a /etc/modprobe.d/blacklist-intel_sgx.conf >/dev/null
-```
-
-:::
-
-### Fedora 34/33
-
-A convenient way to install the SGX Linux driver on Fedora 34/33 systems is to
-use the Oasis-provided [Fedora Package for the Legacy Intel SGX Linux Driver](https://github.com/oasisprotocol/sgx-driver-kmod).
-
-### Other Distributions
-
-Go to [Intel SGX Downloads](https://01.org/intel-software-guard-extensions/downloads)
-page and find the latest "Intel SGX Linux Release" (_not_ "Intel SGX DCAP
-Release") and download the "Intel (R) SGX Installers" for your distribution. The
-package will have `driver` in the name (e.g., `sgx_linux_x64_driver_2.11.0_2d2b795.bin`).
+driver is already included and no additional installation is needed. We
+recommend you to update your kernel. If unable, you need to manually
+install a compatible SGX driver.
 
 ### Verification
 
-After installing the driver and restarting your system, make sure that the one
-of the SGX devices exists (the exact device name depends on which driver is
-being used):
+Make sure that the one of the SGX devices exists (the exact device name depends
+on which driver is being used):
 
 * `/dev/sgx_enclave` (since Linux kernel 5.11)
 * `/dev/isgx` (legacy driver)
@@ -141,40 +70,7 @@ sudo adduser oasis sgx
 
 Failure to do so may result in permission denied errors during runtime startup.
 
-## Ensure `/dev` is NOT Mounted with the `noexec` Option
-
-Some Linux distributions mount `/dev` with the `noexec` mount option. If that is
-the case, it will prevent the enclave loader from mapping executable pages.
-
-Ensure your `/dev` (i.e. `devtmpfs`) is not mounted with the `noexec` option.
-To check that, use:
-
-```
-cat /proc/mounts | grep devtmpfs
-```
-
-To temporarily remove the `noexec` mount option for `/dev`, run:
-
-```
-sudo mount -o remount,exec /dev
-```
-
-To permanently remove the `noexec` mount option for `/dev`, add the following to
-the system's `/etc/fstab` file:
-
-```
-devtmpfs        /dev        devtmpfs    defaults,exec 0 0
-```
-
-:::info
-
-This is the recommended way to modify mount options for virtual (i.e. API) file
-system as described in [systemd's API File Systems](https://www.freedesktop.org/wiki/Software/systemd/APIFileSystems/)
-documentation.
-
-:::
-
-## Install AESM Service
+## AESM Service
 
 To allow execution of SGX enclaves, several **Architectural Enclaves (AE)** are
 involved (i.e. Launch Enclave, Provisioning Enclave, Provisioning Certificate
@@ -186,9 +82,27 @@ Architectural Enclaves is through **Application Enclave Service Manager
 can facilitate various SGX services such as launch approval, remote attestation
 quote signing, etc.
 
-### Ubuntu 22.04/20.04/18.04
+Oasis node supports the (legacy) EPID and (newer) DCAP attestation methods.
+Following instructions differ depending on the attestation method used.
 
-A convenient way to install the AESM service on Ubuntu 22.04/20.04/18.04 systems
+To see if your system supports DCAP attestation run the following:
+
+```bash
+ cpuid -1  | grep "SGX"
+ ```
+
+and look for the following line:
+```
+      SGX_LC: SGX launch config supported      = true
+```
+
+If your system doesn't support the "SGX_LC: SGX launch config supported", skip to the [EPID attestation](#legacy-epid-attestation) section.
+
+## DCAP Attestation
+
+### Ubuntu 22.04
+
+A convenient way to install the AESM service on Ubuntu 22.04 systems
 is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
 
 First add Intel SGX APT repository to your system:
@@ -198,7 +112,146 @@ echo "deb https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) m
 curl -sSL "https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key" | sudo -E apt-key add -
 ```
 
-And then install the `sgx-aesm-service`,  `libsgx-aesm-launch-plugin` and
+And then install the `sgx-aesm-service`, `libsgx-aesm-ecdsa-plugin`, `libsgx-aesm-quote-ex-plugin` and `libsgx-dcap-default-qpl` packages:
+
+```bash
+sudo apt update
+sudo apt install sgx-aesm-service libsgx-aesm-ecdsa-plugin libsgx-aesm-quote-ex-plugin libsgx-dcap-default-qpl
+```
+
+The AESM service should be up and running. To confirm that, use:
+
+```bash
+sudo systemctl status aesmd.service
+```
+
+#### Configuring the Quote Provider
+
+The Intel Quote Provider (`libsgx-dcap-default-qpl`) needs to be configured in
+order to use either the Intel PCS, the PCCS of your cloud service provider, or
+your own PCCS. The configuration file is located at `/etc/sgx_default_qcnl.conf`.
+
+Make sure to always restart the `aesmd.service` after updating the
+configuration, via:
+
+```bash
+sudo systemctl restart aesmd.service
+```
+
+#### Intel PCS
+
+Using the Intel PCS is the simplest and most generic way, but it may be less
+reliable than using your own PCCS. Some cloud providers (see the [following section](#cloud-service-providers-pccs))
+also require you to use their PCCS.
+
+To use Intel PCS update the `pccs_url` value in `/etc/sgx_default_qcnl.conf`
+to the Intel PCS API URL:
+
+```json
+  //PCCS server address
+  "pccs_url": "https://api.trustedservices.intel.com/sgx/certification/v4/"
+```
+
+#### Cloud Service Provider's PCCS
+
+Some cloud providers require you to use their PCCS.
+
+- Azure: See the [Azure documentation] for details on configuring the quote provider. The documentation
+  contains an example of an Intel QPL configuration file that can be used.
+
+- Alibaba Cloud: See the [Alibaba Cloud documentation] for details on configuring the quote provider. The
+  documentation shows the required `sgx_default_qcnl.conf` changes.
+
+- Other cloud providers: If you are using a different cloud service provider, consult their
+specific documentation for the appropriate PCCS configuration and guidance on configuring the quote provider, or
+use one of the other PCCS options.
+
+[Azure documentation]: https://learn.microsoft.com/en-us/azure/security/fundamentals/trusted-hardware-identity-management#how-do-i-use-intel-qpl-with-trusted-hardware-identity-management
+[Alibaba Cloud documentation]: https://www.alibabacloud.com/help/en/ecs/user-guide/build-an-sgx-encrypted-computing-environment
+
+#### Own PCCS
+
+It is also possible to run PCCS yourself. Follow [official Intel instructions] on how to setup your own PCCS.
+
+[official Intel Instructions]: https://www.intel.com/content/www/us/en/developer/articles/guide/intel-software-guard-extensions-data-center-attestation-primitives-quick-install-guide.html
+
+### DCAP Attestation Docker
+
+Alternatively, an easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled
+system is to use [our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
+
+Executing the following command should (always) pull the latest version of our
+AESMD Docker container, map the SGX devices and `/var/run/aesmd` directory
+and ensure AESM is running in the background (also automatically started on boot):
+
+```bash
+docker run \
+  --pull always \
+  --detach \
+  --restart always \
+  --device /dev/sgx_enclave \
+  --device /dev/sgx_provision \
+  --volume /var/run/aesmd:/var/run/aesmd \
+  --name aesmd \
+  ghcr.io/oasisprotocol/aesmd-dcap:master
+```
+
+:::tip
+
+Make sure to use the correct SGX devices based on your [SGX driver](set-up-trusted-execution-environment-tee.md#verification).
+The example above assumes the use of the newer driver which uses two devices.
+For the legacy driver you need to specify `--device /dev/isgx` instead.
+
+:::
+
+:::tip
+
+Make sure to use the correct docker image based on your attestation method.
+For DCAP use the `ghcr.io/oasisprotocol/aesmd-dcap:master` and for EPID use the
+`ghcr.io/oasisprotocol/aesmd-epid:master` image.
+
+:::
+
+By default, the Intel Quote Provider in the docker container is configured to use the Intel PCS endpoint.
+To override the Intel Quote Provider configuration within the container mount your own custom configuration using
+the `volume` flag.
+
+```bash
+docker run \
+  --pull always \
+  --detach \
+  --restart always \
+  --device /dev/sgx_enclave \
+  --device /dev/sgx_provision \
+  --volume /var/run/aesmd:/var/run/aesmd \
+  --volume /etc/sgx_default_qcnl.conf:/etc/sgx_default_qcnl.conf \
+  --name aesmd \
+  ghcr.io/oasisprotocol/aesmd-dcap:master
+```
+
+The default Intel Quote Provider config is available in [Intel SGX Github repository](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf).
+
+## (Legacy) EPID Attestation
+
+:::tip
+
+Skip this section if you already configured AESM with DCAP Attestation.
+
+:::
+
+### Ubuntu 22.04
+
+A convenient way to install the AESM service on Ubuntu 22.04 systems
+is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
+
+First add Intel SGX APT repository to your system:
+
+```bash
+echo "deb https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list >/dev/null
+curl -sSL "https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key" | sudo -E apt-key add -
+```
+
+And then install the `sgx-aesm-service`, `libsgx-aesm-launch-plugin` and
 `libsgx-aesm-epid-plugin` packages:
 
 ```bash
@@ -230,7 +283,7 @@ docker run \
   --device /dev/sgx_provision \
   --volume /var/run/aesmd:/var/run/aesmd \
   --name aesmd \
-  ghcr.io/oasisprotocol/aesmd:master
+  ghcr.io/oasisprotocol/aesmd-epid:master
 ```
 
 :::tip
@@ -239,60 +292,10 @@ Make sure to use the correct devices based on your [kernel version](set-up-trust
 The example above assumes the use of the newer driver which uses two devices.
 For the legacy driver you need to specify `--device /dev/isgx` instead.
 
+Make sure to use the correct docker image based on your attestation method.
+For DCAP use the `ghcr.io/oasisprotocol/aesmd-dcap:master` and for EPID use the
+`ghcr.io/oasisprotocol/aesmd-epid:master` image.
 :::
-
-### Podman-enabled System
-
-Similarly to Docker-enabled systems, an easy way to install and run the AESM
-service on a [Podman](https://podman.io)-enabled system is to use
-[our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
-
-First, create the container with:
-
-```bash
-sudo podman create \
-  --pull always \
-  --device /dev/sgx_enclave \
-  --device /dev/sgx_provision \
-  --volume /var/run/aesmd:/var/run/aesmd:Z \
-  --name aesmd \
-  ghcr.io/oasisprotocol/aesmd:master
-```
-
-:::tip
-
-Make sure to use the correct devices based on your [kernel version](set-up-trusted-execution-environment-tee.md#verification).
-The example above assumes the use of the newer driver which uses two devices.
-For the legacy driver you need to specify `--device /dev/isgx` instead.
-
-:::
-
-Then generate the `container-aesmd.service` systemd unit file for it with:
-
-```bash
-sudo podman generate systemd --restart-policy=always --time 10 --name aesmd | \
-  sed "/\[Service\]/a RuntimeDirectory=aesmd" | \
-  sudo tee /etc/systemd/system/container-aesmd.service
-```
-
-Finally, enable and start the `container-aesmd.service` with:
-
-```bash
-sudo systemctl enable container-aesmd.service
-sudo systemctl start container-aesmd.service
-```
-
-The AESM service should be up and running. To confirm that, use:
-
-```bash
-sudo systemctl status container-aesmd.service
-```
-
-To see the logs of the AESM service, use:
-
-```
-sudo podman logs -t -f aesmd
-```
 
 ## Check SGX Setup
 
@@ -405,6 +408,21 @@ _Debug mode_ and _Production mode (Intel whitelisted)_.
 In case you encounter errors, see the [list of common SGX installation issues](https://edp.fortanix.com/docs/installation/help/)
 for help.
 
+### Oasis Attestation tool (EPID Only)
+
+To test if your settings are correct, you may use the [attestation tool]
+([binary]) for testing remote attestation against Intel SGX's
+development server.
+
+[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
+[binary]: https://github.com/oasisprotocol/tools/releases
+
+:::tip
+
+At the moment, the attestation tool only supports (Legacy) EPID attestation.
+
+:::
+
 ## Troubleshooting
 
 See  [the general troubleshooting section](../troubleshooting.md), before
@@ -456,7 +474,39 @@ debug: Error opening device: "/dev" mounted with `noexec` option
 debug: cause: "/dev" mounted with `noexec` option
 ```
 
-Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option][dev-noexec].
+#### Ensure `/dev` is NOT Mounted with the `noexec` Option
+
+Some Linux distributions mount `/dev` with the `noexec` mount option. If that is
+the case, it will prevent the enclave loader from mapping executable pages.
+
+Ensure your `/dev` (i.e. `devtmpfs`) is not mounted with the `noexec` option.
+To check that, use:
+
+```
+cat /proc/mounts | grep devtmpfs
+```
+
+To temporarily remove the `noexec` mount option for `/dev`, run:
+
+```
+sudo mount -o remount,exec /dev
+```
+
+To permanently remove the `noexec` mount option for `/dev`, add the following to
+the system's `/etc/fstab` file:
+
+```
+devtmpfs        /dev        devtmpfs    defaults,exec 0 0
+```
+
+:::info
+
+This is the recommended way to modify mount options for virtual (i.e. API) file
+system as described in [systemd's API File Systems](https://www.freedesktop.org/wiki/Software/systemd/APIFileSystems/)
+documentation.
+
+:::
+
 
 ### Unable to Launch Enclaves: Operation not permitted
 

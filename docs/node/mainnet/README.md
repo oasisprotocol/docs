@@ -53,7 +53,6 @@ This section contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime bundle version:
-  * [2.6.2](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2)
   * [3.0.2](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.2)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
@@ -89,7 +88,6 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000f80306c9858e7279`
 * Runtime bundle version:
-  * [0.6.4](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.6.4)
   * [0.7.0](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.0)
 * Oasis Web3 Gateway version:
   * [4.0.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v4.0.0)

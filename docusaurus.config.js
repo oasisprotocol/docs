@@ -146,28 +146,90 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
         links: [
           {
-            title: 'Support',
+            title: 'General',
             items: [
               {
-                label: 'Discord',
-                href: 'https://oasis.io/discord',
+                label: 'Explorer',
+                to: 'https://explorer.oasis.io',
+              },
+              {
+                label: 'Wallet',
+                to: 'https://wallet.oasis.io',
+              },
+              {
+                label: 'CLI',
+                to: 'https://github.com/oasisprotocol/cli',
+              },
+              {
+                label: 'Status',
+                to: 'https://status.oasis.io',
               },
             ],
           },
           {
-            title: 'Watch us',
+            title: 'dApp',
             items: [
               {
+                label: 'Testnet Faucet',
+                to: 'https://faucet.testnet.oasis.dev/',
+              },
+              {
+                label: 'Playground',
+                to: 'https://playground.oasis.io/',
+              },
+              {
+                label: 'API',
+                to: 'https://api.docs.oasis.io/',
+              },
+            ],
+          },
+          {
+            title: 'Node',
+            items: [
+              {
+                label: 'Mainnet',
+                to: 'node/mainnet/',
+              },
+              {
+                label: 'Testnet',
+                to: 'node/testnet/',
+              },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Discord',
+                to: 'https://oasis.io/discord',
+              },
+              {
                 label: 'Youtube',
-                href: 'https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ',
+                to: 'https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ',
+              },
+              {
+                label: 'GitHub',
+                to: 'https://github.com/oasisprotocol',
               },
             ],
           },
         ],
-        copyright: `<p xmlns:cc="http://creativecommons.org/ns#" > Copyright © ${new Date().getFullYear()} by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasisprotocol.org">Oasis Protocol Foundation</a>. Licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a> or <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Apache 2.0</a>.</p><p>Built with &#x2665; and Docusaurus.</p>`,
+        copyright: `
+<p xmlns:cc="http://creativecommons.org/ns#" >Copyright © ${new Date().getFullYear()}
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasisprotocol.org">
+Oasis Protocol Foundation</a>.
+Unless otherwise specified, all text and images on this website are licensed
+under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+src="img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+src="img/by.svg"></a>.
+This does not include the Oasis software and the code examples, both of which are
+licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0"
+target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p>`,
       },
       prism: {
         theme: lightCodeTheme,

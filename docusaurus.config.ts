@@ -91,7 +91,7 @@ const config: Config = {
           src: 'img/logo.png',
           // Uncomment src and style below to enable christmas mode ;)
           //src: 'img/logo_christmas.png',
-          //style: {height: '48px', 'max-width': '58px', 'margin-top': '-15px', 'margin-left': '-15px'},
+          //style: {height: '48px', maxWidth: '58px', marginTop: '-15px', marginLeft: '-15px'},
         },
         items: [
           {

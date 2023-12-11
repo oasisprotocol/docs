@@ -408,7 +408,7 @@ _Debug mode_ and _Production mode (Intel whitelisted)_.
 In case you encounter errors, see the [list of common SGX installation issues](https://edp.fortanix.com/docs/installation/help/)
 for help.
 
-### Oasis Attestation tool (EPID Only)
+### Oasis Attestation tool
 
 To test if your settings are correct, you may use the [attestation tool]
 ([binary]) for testing remote attestation against Intel SGX's
@@ -416,12 +416,6 @@ development server.
 
 [attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
 [binary]: https://github.com/oasisprotocol/tools/releases
-
-:::tip
-
-At the moment, the attestation tool only supports (Legacy) EPID attestation.
-
-:::
 
 ## Troubleshooting
 

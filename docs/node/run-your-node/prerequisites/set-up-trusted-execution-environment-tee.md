@@ -422,7 +422,7 @@ development server.
 See  [the general troubleshooting section](../troubleshooting.md), before
 proceeding with ParaTime node-specific troubleshooting.
 
-### Missing `libsgx-aesm-epid-plugin`
+### AESM: error 30
 
 If you are encountering the following error message in your node's logs:
 
@@ -430,9 +430,9 @@ If you are encountering the following error message in your node's logs:
 failed to initialize TEE: error while getting quote info from AESMD: aesm: error 30
 ```
 
-Ensure you have all required SGX driver libraries installed as listed in
-[Install SGX Linux Driver section](../paratime-node.mdx#install-sgx-linux-driver).
-Previous versions of this guide were missing the `libsgx-aesm-epid-plugin`.
+Ensure you have all required SGX driver libraries installed as listed in either
+[DCAP Attestation](#dcap-attestation) or [EPID attestation](#legacy-epid-attestation)
+sections.
 
 ### Permission Denied When Accessing SGX Kernel Device
 

@@ -239,6 +239,13 @@ Skip this section if you already configured AESM with DCAP Attestation.
 
 :::
 
+:::info
+
+EPID attestation support has been discontinued in newer processors (Intel Xeon 3rd generation onwards).
+Please refer to the [DCAP attestation](#dcap-attestation) section on newer systems.
+
+:::
+
 ### Ubuntu 22.04
 
 A convenient way to install the AESM service on Ubuntu 22.04 systems

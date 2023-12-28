@@ -26,7 +26,7 @@ The  Proof of Residency document required for Synaps must be dated within 3 mont
 
 :::
 
-* **Step 3: Submit your ROSE wallet address.** After you complete the KYC process, you will receive an follow-up email from the Oasis Foundation with information on how to submit your ROSE wallet address via a unique code that connects your ROSE wallet to your KYC data. Please allow at least 1 full week to pass after you complete KYC to receive the follow-up email with instructions on how to submit your ROSE wallet address.
+* **Step 3: Submit your ROSE wallet address.** After you complete the KYC process, you will receive a follow-up email from the Oasis Foundation with information on how to submit your ROSE wallet address via a unique code that connects your ROSE wallet to your KYC data. Please allow at least 1 full week to pass after you complete KYC to receive the follow-up email with instructions on how to submit your ROSE wallet address.
 * **Step 4: Receive the tokens deposited to your ROSE wallet.** After you have completed KYC and submitted your ROSE wallet address, allow 1 to 2 weeks for your ROSE tokens to be deposited into your wallet. We will be doing weekly token distributions on Fridays, but only if you have completed all of the steps described in his document.
 
 :::caution

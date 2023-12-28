@@ -3,7 +3,7 @@
 ## Welcome to the Oasis Community
 
 Whether you're a blockchain enthusiast, a software developer, or someone who is
-just starting learn about crypto, we're excited to welcome you to our community.
+just starting to learn about crypto, we're excited to welcome you to our community.
 We look forward to working together on our mission to build a responsible data
 economy and empower users around the world to take back ownership of their data
 and their online privacy.

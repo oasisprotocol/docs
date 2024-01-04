@@ -87,10 +87,10 @@ const config = {
         title: 'Oasis Docs',
         logo: {
           alt: 'OPF Logo',
-          //src: 'img/logo.png',
+          src: 'img/logo.png',
           // Uncomment src and style below to enable christmas mode ;)
-          src: 'img/logo_christmas.png',
-          style: {height: '48px', 'max-width': '58px', 'margin-top': '-15px', 'margin-left': '-15px'},
+          //src: 'img/logo_christmas.png',
+          //style: {height: '48px', 'max-width': '58px', 'margin-top': '-15px', 'margin-left': '-15px'},
         },
         items: [
           {

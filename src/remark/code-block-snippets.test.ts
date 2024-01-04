@@ -1,5 +1,5 @@
-// @ts-check
-const codeBlockSnippets = require('./code-block-snippets');
+import {expect, test} from '@jest/globals';
+import {visitor} from './code-block-snippets';
 
 // #region test-region
 // This is to test including
@@ -14,12 +14,12 @@ test('basic', () => {
         children: [{
             type: 'image',
             alt: 'code js',
-            url: 'src/remark/code-block-snippets.test.js',
+            url: 'src/remark/code-block-snippets.test.ts',
             title: 'Some title',
         }],
     };
 
-    codeBlockSnippets.visitor(node);
+    visitor(node);
 
     expect(node.type).toBe('code');
     expect(node.lang).toBe('js');
@@ -33,12 +33,12 @@ test('line-number', () => {
         children: [{
             type: 'image',
             alt: 'code js',
-            url: 'src/remark/code-block-snippets.test.js#L3',
+            url: 'src/remark/code-block-snippets.test.ts#L3',
             title: 'Some title',
         }],
     };
 
-    codeBlockSnippets.visitor(node);
+    visitor(node);
 
     expect(node.type).toBe('code');
     expect(node.lang).toBe('js');
@@ -52,12 +52,12 @@ test('line-numbers', () => {
         children: [{
             type: 'image',
             alt: 'code js',
-            url: 'src/remark/code-block-snippets.test.js#L2-L4',
+            url: 'src/remark/code-block-snippets.test.ts#L2-L4',
             title: 'Some title',
         }],
     };
 
-    codeBlockSnippets.visitor(node);
+    visitor(node);
 
     expect(node.type).toBe('code');
     expect(node.lang).toBe('js');
@@ -71,16 +71,17 @@ test('region', () => {
         children: [{
             type: 'image',
             alt: 'code js',
-            url: 'src/remark/code-block-snippets.test.js#test-region',
+            url: 'src/remark/code-block-snippets.test.ts#test-region',
             title: 'Some title',
         }],
     };
 
-    codeBlockSnippets.visitor(node);
+    visitor(node);
 
     expect(node.type).toBe('code');
     expect(node.lang).toBe('js');
     expect(node.meta).toBe('title="Some title"');
+    // @ts-expect-error TODO: code block can't link to source
     expect(node.url.endsWith('L5-L8')).toBe(true);
     expect(node.value.split("\n").length).toBe(4);
 });
@@ -90,13 +91,13 @@ test('invalid-file', () => {
         type: 'paragraph',
         children: [{
             type: 'image',
-            alt: 'code js',
-            url: 'src/remark/foobar.js',
+            alt: 'code ts',
+            url: 'src/remark/foobar.ts',
             title: 'Some title',
         }],
     };
 
-    expect(() => {codeBlockSnippets.visitor(node)}).toThrow('ENOENT: no such file or directory, open \'src/remark/foobar.js\'');
+    expect(() => {visitor(node)}).toThrow('ENOENT: no such file or directory, open \'src/remark/foobar.ts\'');
 });
 
 test('invalid-region', () => {
@@ -105,12 +106,12 @@ test('invalid-region', () => {
         children: [{
             type: 'image',
             alt: 'code js',
-            url: 'src/remark/code-block-snippets.test.js#some-nonexistent-region',
+            url: 'src/remark/code-block-snippets.test.ts#some-nonexistent-region',
             title: 'Some title',
         }],
     };
 
-    expect(() => {codeBlockSnippets.visitor(node)}).toThrow(ReferenceError);
+    expect(() => {visitor(node)}).toThrow(ReferenceError);
 });
 
 test('invalid-line-numbers', () => {
@@ -119,40 +120,37 @@ test('invalid-line-numbers', () => {
         children: [{
             type: 'image',
             alt: 'code js',
-            url: 'src/remark/code-block-snippets.test.js#L2-L400',
+            url: 'src/remark/code-block-snippets.test.ts#L2-L400',
             title: 'Some title',
         }],
     };
 
-    expect(() => {codeBlockSnippets.visitor(node)}).toThrow(ReferenceError);
+    expect(() => {visitor(node)}).toThrow(ReferenceError);
 });
 
 test('code-in-separate-paragraph', () => {
     let node = {
         type: 'paragraph',
         children: [{
-                type: 'image',
-                alt: 'code js',
-                url: 'src/remark/code-block-snippets.test.js',
-                title: 'Some title',
+            type: 'image',
+            alt: 'code js',
+            url: 'src/remark/code-block-snippets.test.ts',
+            title: 'Some title',
+        }, {
+            type: 'text',
+            value: 'some-text',
         }],
     };
 
-    const textNode = {
-        type: 'text',
-        value: 'some-text',
-    };
-
-    node.children.push(textNode);
-    codeBlockSnippets.visitor(node);
+    visitor(node);
     expect(node.type).toBe('paragraph');
     node.children.pop();
 
-    node.children = [textNode, ...node.children];
-    codeBlockSnippets.visitor(node);
+    node.children = [{ type: 'text',value: 'some-text' }, ...node.children];
+    visitor(node);
     expect(node.type).toBe('paragraph');
 
-    node.children.push(textNode);
-    codeBlockSnippets.visitor(node);
+    node.children.push({ type: 'text', value: 'some-text' });
+    visitor(node);
     expect(node.type).toBe('paragraph');
 });

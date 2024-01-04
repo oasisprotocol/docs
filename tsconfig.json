@@ -1,4 +1,5 @@
 {
+  "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "jsx": "react",
     "resolveJsonModule": true,

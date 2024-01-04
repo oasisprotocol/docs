@@ -1,7 +1,6 @@
-// @ts-check
+import {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-const sidebars = {
+export const sidebarCore: SidebarsConfig = {
   oasisCore: [
     {
       type: 'doc',
@@ -174,5 +173,3 @@ const sidebars = {
     },
   ],
 };
-
-module.exports = sidebars;

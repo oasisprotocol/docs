@@ -92,6 +92,7 @@ Now you can start using that wrapped assets across new Oasis dApps like the firs
 
 :::info
 
-Make sure that your MetaMask is connected to the Emerald Mainnet network. You can find network parameters [here](/dapp/emerald#web3-gateway).
+Make sure that your MetaMask is connected to the Emerald Mainnet chain. You
+can find the network parameters [here](../../dapp/emerald/README.mdx#web3-gateway).
 
 :::

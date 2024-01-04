@@ -1,13 +1,11 @@
-// @ts-check
 import {useDocsVersion} from "@docusaurus/theme-common/internal";
+import {PropSidebar} from "@docusaurus/plugin-content-docs";
 
 /**
  * Builds an index of href => sidebar item.
  * Indexed sidebar items are doc, category (with defined link) and link.
- *
- *  @param {import('@docusaurus/plugin-content-docs').PropSidebar} sidebarItems
  */
-function reindex(sidebarItems) {
+function reindex(sidebarItems: PropSidebar) {
     for (const item of sidebarItems) {
         const key = item.href;
         if (key && globalThis.sidebarItemsMap[key] === undefined) {
@@ -23,7 +21,7 @@ function reindex(sidebarItems) {
 /**
  * Finds sidebar item object in the sidebars given the item's href.
  */
-export function findSidebarItem(href) {
+export function findSidebarItem(href: string) {
     const docsVersion = useDocsVersion();
 
     if (!docsVersion) {

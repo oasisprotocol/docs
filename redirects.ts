@@ -1,10 +1,8 @@
-// @ts-check
+import { Options } from '@docusaurus/plugin-client-redirects';
 
-/** @type {import('@docusaurus/plugin-client-redirects').PluginOptions} */
-const redirectsOptions = {
+export const redirectsOptions: Options = {
     redirects: [
         // Write down PR responsible for the removal of a page next to the "from" redirect.
-        // TODO: Add fragments (anchors) in "to" URLs once https://github.com/facebook/docusaurus/issues/6845 is implemented. Since then, put the fragment name in the comment.
         {
             to: '/adrs',
             from: [
@@ -13,9 +11,9 @@ const redirectsOptions = {
             ],
         },
         {
-            to: '/core/oasis-node/cli',
+            to: '/core/oasis-node/cli#dump',
             from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/list-accounts', // #list // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/oasis-cli-tools/list-accounts', // #399 Replace oasis-node with Oasis CLI
             ],
         },
         {
@@ -38,27 +36,67 @@ const redirectsOptions = {
             ],
         },
         {
-            to: '/general/manage-tokens/cli/account',
+            to: '/general/manage-tokens/cli/account#amend-commission-schedule',
             from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime', // #deposit // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-info', // #show // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce', // #show // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/address', // #from-public-key // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/transfer-tokens', // #transfer // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/delegate-tokens', // #delegate // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/reclaim-tokens', // #undelegate // #399 Replace oasis-node with Oasis CLI
-                '/general/run-a-node/set-up-your-node/amend-commission-schedule', // #amend-commission-schedule // #200 Restructure docs
-                '/node/run-your-node/validator-node/amend-commission-schedule', // #amend-commission-schedule // #399 Replace oasis-node with Oasis CLI
+                '/general/run-a-node/set-up-your-node/amend-commission-schedule', // #200 Restructure docs
+                '/node/run-your-node/validator-node/amend-commission-schedule', // #399 Replace oasis-node with Oasis CLI
             ],
         },
         {
-            to: '/general/manage-tokens/cli/network',
+            to: '/general/manage-tokens/cli/account#delegate',
             from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/common-staking-info', // #show-native-token // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/gas-costs', // #gas-costs // #399 Replace oasis-node with Oasis CLI
-                '/general/run-a-node/set-up-your-node/governance', // #governance_cast_vote // #200 Restructure docs
-                '/node/run-your-node/validator-node/governance', // #governance_cast_vote // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/oasis-cli-tools/delegate-tokens', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/account#deposit',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/account#from-public-key',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/address', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/account#show',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-info', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/account#transfer',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/transfer-tokens', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/account#undelegate',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/reclaim-tokens', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/network#gas-costs',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/gas-costs', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/general/manage-tokens/cli/network#governance_cast_vote',
+            from: [
+                '/general/run-a-node/set-up-your-node/governance', // #200 Restructure docs
+                '/node/run-your-node/validator-node/governance', // #399 Replace oasis-node with Oasis CLI
             ],
+        },
+        {
+            to: '/general/manage-tokens/cli/network#show-native-token',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/common-staking-info', // #399 Replace oasis-node with Oasis CLI
+            ]
         },
         {
             to: '/general/manage-tokens/cli/setup',
@@ -270,5 +308,3 @@ const redirectsOptions = {
         return undefined;
     },
 };
-
-module.exports = redirectsOptions

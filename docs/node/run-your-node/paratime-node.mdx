@@ -138,7 +138,7 @@ command, for example:
 
 [Initialize Entity]: validator-node.mdx#initialize-entity
 [Starting the Oasis Node]: validator-node.mdx#starting-the-oasis-node
-[list your node ID]: validator-node.mdx#adding-your-node-id-to-the-entity-descriptor
+[list your node ID]: validator-node.mdx#add-your-node-id-to-the-entity-descriptor
 [Register]: validator-node.mdx#entity-registration
 [`oasis account withdraw`]: ../../general/manage-tokens/cli/account.md#withdraw
 
@@ -191,7 +191,7 @@ For each ParaTime, you need to obtain its bundle and install it to the
 
 :::info
 
-For example, for the [Cipher ParaTime](../mainnet/README.md#cipher-paratime),
+For example, for the [Cipher ParaTime](../mainnet/README.md#cipher),
 you would have to obtain the `cipher-paratime.orc` bundle and install it to
 `/node/runtimes/cipher-paratime.orc`.
 
@@ -314,7 +314,7 @@ runtime:
     paths:
         # Paths to ParaTime bundles for all of the supported ParaTimes.
         - {{ runtime_orc_path }}
-    # The following section is required for ParaTimes which are running inside 
+    # The following section is required for ParaTimes which are running inside
     # the Intel SGX Trusted Execution Environment.
     sgx_loader: /node/bin/oasis-core-runtime-loader
 ```
@@ -359,7 +359,7 @@ See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troub
 
 ### Too Old Bubblewrap Version
 
-Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. For details see the [Install Bubblewrap Sandbox](paratime-node.mdx#install-bubblewrap-sandbox-at-least-version-0-3-3) section.
+Double check your installed `bubblewrap` version, and ensure is at least of version **0.3.3**. For details see the [Install Bubblewrap Sandbox](#install-bubblewrap-sandbox-at-least-version-033) section.
 
 ### Bubblewrap Sandbox Fails to Start
 

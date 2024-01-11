@@ -256,10 +256,10 @@ There are several **`staking.params.thresholds`** parameters that specify the
 minimum number of tokens that need to be staked in order for a particular entity
 or a particular type of node to participate in the network.
 
-The **`entity`,** **`node-compute`, `node-keymanager`, and **`node-validator`**
-parameters are set to 100,000,000,000 base units for each, indicating that you
-need to stake at least 100 ROSE tokens in order to have your entity or any of
-the specified nodes go live on the network.
+The **`entity`**, **`node-compute`**, **`node-keymanager`**, and
+**`node-validator`** parameters are set to 100,000,000,000 base units for each,
+indicating that you need to stake at least 100 ROSE tokens in order to have your
+entity or any of the specified nodes go live on the network.
 
 The **`staking.params.thresholds`** parameters also specify the minimum
 thresholds for registering new ParaTimes. The **`runtime-compute`** and

@@ -24,8 +24,8 @@ policy.
 The trusted key manager policy signer set (i.e. the authorized public keys) and
 the threshold of keys that need to sign the policy are hard-coded in the key
 manager's source code.
-The trusted signer set for the Oasis Key Manager is defined in [its source code
-][oasis-km-signer-set].
+The trusted signer set for the Oasis Key Manager is defined in [its source
+code][oasis-km-signer-set].
 
 :::danger
 
@@ -68,15 +68,12 @@ manager policy signer set and hence the key manager itself.
 
 :::
 
-
-
 [key manager policy]:
   https://github.com/oasisprotocol/oasis-core/blob/master/docs/consensus/services/keymanager.md#policies
 [Oasis Node binary installation guide]: ../prerequisites/oasis-node.md
 [oasis-km-signer-set]:
   https://github.com/oasisprotocol/keymanager-paratime/blob/main/src/lib.rs
-[instructions in our Validator Node guide]:
-  ../validator-node/#initializing-an-entity
+[instructions in our Validator Node guide]: ../validator-node.mdx#initialize-entity
 [offline/air-gapped machine]:
   https://en.wikipedia.org/wiki/Air_gap_\(networking\)
 
@@ -84,7 +81,7 @@ manager policy signer set and hence the key manager itself.
 
 For easier handling of key manager policy files, define the following variables:
 
-```
+```shell
 POLICY=path/to/policy.cbor
 KEY=path/to/entity/key.pem
 NAME=your_name
@@ -94,7 +91,7 @@ NAME=your_name
 
 To print and inspect a key manager policy, use the following command:
 
-```bash
+```shell
 oasis-node keymanager verify_policy \
   --keymanager.policy.file $POLICY \
   --keymanager.policy.ignore.signature \

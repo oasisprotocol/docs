@@ -63,7 +63,7 @@ Oasis Wallet - Web uses English mnemonic phrase words as defined in [BIP39](http
 
 :::caution
 
-Oasis Wallet mnemonics are incompatible with BitPie mnemonics. Check our [FAQ](./README.mdx#frequently-asked-questions) for more information.
+Oasis Wallet mnemonics are incompatible with BitPie mnemonics. Check our [FAQ](../faq.mdx#how-can-i-transfer-rose-tokens-from-my-bitpie-wallet-to-my-oasis-wallet) for more information.
 
 :::
 

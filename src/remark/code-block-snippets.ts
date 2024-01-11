@@ -1,8 +1,10 @@
 // @ts-check
-const fs = require('fs-extra');
-const path = require("path");
-const visit = require('unist-util-visit');
-const viewLinkUrl = require('../editUrl.js').viewLinkUrl;
+import type {Transformer} from 'unified';
+import {viewLinkUrl} from '../editUrl';
+import * as fs from "fs";
+import * as path from "path";
+import type mdast from 'mdast'
+import {visit} from 'unist-util-visit';
 
 // File name of the markdown file which references external code snippet.
 let mdFilePath = "";
@@ -20,8 +22,8 @@ let mdFilePath = "";
  * ![code go](../examples/my-example/src/server.go#L5-L11 "src/server.go")
  * ![code go](../examples/my-example/src/account.go#native-account "Structure of the Native account")
  */
-function plugin(options) {
-    function transform(tree) {
+export function plugin(): Transformer {
+    function transform(tree: mdast.Node) {
         visit(tree, ['paragraph'], visitor);
     }
 
@@ -33,14 +35,15 @@ function plugin(options) {
 
 /**
  * Find paragraph -> image pattern and perform the replacement.
- *
- * @param {Omit<import('mdast').Paragraph, 'type'> & import('mdast').Code} node
  */
-function visitor(node) {
-    if (!node.children || node.children.length != 1 || node.children[0].type != 'image' || !node.children[0]?.alt?.startsWith("code")) return;
+export function visitor(untypedNode: mdast.Node): asserts untypedNode is mdast.Code {
+    const node = untypedNode as Omit<mdast.Paragraph, 'type'> & mdast.Code
+    if (!node.children || node.children.length != 1 || node.children[0].type != 'image') return;
+    const imgNode = node.children[0];
+    if (!imgNode?.alt?.startsWith("code")) return;
 
     // Move code block in place of the paragraph node.
-    const imgNode = node.children[0];
+    // @ts-expect-error Ignore that field is typed as required.
     delete node.children;
 
     node.type = 'code';
@@ -64,6 +67,7 @@ function visitor(node) {
     }
 
     const code = fs.readFileSync(srcFilePath, 'utf-8');
+    // @ts-expect-error TODO: code block can't link to source
     node.url = viewLinkUrl(srcFilePath);
 
     // Remove trailing newline, if any.
@@ -92,6 +96,7 @@ function visitor(node) {
         }
 
         // Append line numbers to source URL (even if region was initially provided).
+        // @ts-expect-error TODO: code block can't link to source
         node.url += `#L${range[0]}-L${range[1]}`;
 
         const snippetLines = snippet.split('\n');
@@ -105,6 +110,3 @@ function visitor(node) {
 
     node.value = snippet;
 }
-
-// Visitor also needs to be exported for running unit tests.
-module.exports = {plugin, visitor};

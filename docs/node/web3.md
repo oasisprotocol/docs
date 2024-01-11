@@ -263,12 +263,12 @@ extended downtime while the Web3 Gateway is reindexing the blocks.
 [emerald-testnet]: ../dapp/emerald/README.mdx#testnet
 [github-releases]: https://github.com/oasisprotocol/oasis-web3-gateway/releases
 [Mainnet]: mainnet/README.md
-[mainnet-emerald]: mainnet/README.md#emerald-paratime
+[mainnet-emerald]: mainnet/README.md#emerald
 [Oasis archive node]: run-your-node/archive-node.md
 [README.md]: https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/README.md#building-and-testing
 [Sapphire]: ../dapp/sapphire/README.mdx
 [sapphire-testnet]: ../dapp/sapphire/README.mdx#testnet
 [system service]: run-your-node/prerequisites/system-configuration.mdx#non-root
 [Testnet]: testnet/README.md
-[testnet-emerald]: testnet/README.md#emerald-paratime
-[testnet-sapphire]: testnet/README.md#sapphire-paratime
+[testnet-emerald]: testnet/README.md#emerald
+[testnet-sapphire]: testnet/README.md#sapphire

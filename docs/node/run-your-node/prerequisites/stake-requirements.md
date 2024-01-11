@@ -52,8 +52,8 @@ the [**max_validators** consensus parameter].
 
 For the Testnet you are going to need TEST tokens. You can receive a limited
 number of TEST by using our [Oasis Network Testnet Faucet][faucet-testnet]. For
-more tokens please contact us at our official [Discord #testnet channel]
-[discord-testnet].
+more tokens please contact us at our official [Discord #testnet
+channel][discord-testnet].
 
 [faucet-testnet]: https://faucet.testnet.oasis.dev/
 [discord-testnet]: https://oasis.io/discord

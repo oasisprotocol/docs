@@ -18,7 +18,7 @@ In addition to using the [Oasis CLI](cli/README.md) for generating the `staking.
 
 * [Oasis Wallet - Web](oasis-wallets/web.md)
 * [Oasis Wallet - Browser Extension](oasis-wallets/browser-extension.md)
-* [Copper.co](staking-and-delegating.md#rewards-and-tokenonomics) (custodian)
+* [Copper.co](#rewards-and-tokenomics) (custodian)
 * [Anchorage](https://anchorage.com) (custodian)
 * [Finoa](https://finoa.io) (custodian)
 

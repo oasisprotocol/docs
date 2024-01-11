@@ -1,15 +1,13 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+import {editLinkUrl as editUrlFunction} from './src/editUrl';
+import crossRepoLinksPlugin from './src/remark/cross-repo-links';
+import {plugin as codeBlockSnippetsPlugin} from './src/remark/code-block-snippets';
+import {redirectsOptions} from './redirects';
 
-const editUrlFunction = require('./src/editUrl.js').editLinkUrl
-const crossRepoLinksPlugin = require('./src/remark/cross-repo-links');
-const codeBlockSnippetsPlugin = require('./src/remark/code-block-snippets').plugin;
-
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
   title: 'Oasis Documentation',
   tagline: '',
   url: process.env.URL ?? 'https://docs.oasis.io',
@@ -20,11 +18,15 @@ const config = {
   projectName: 'docs', // Usually your repo name.
   deploymentBranch: 'gh-pages',
 
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           breadcrumbs: false,
           editUrl: editUrlFunction,
@@ -44,13 +46,13 @@ const config = {
           ],
           routeBasePath: '/',
           showLastUpdateTime: true,
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.ts',
         },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      } satisfies Preset.Options,
     ],
   ],
   plugins: [
@@ -68,7 +70,7 @@ const config = {
     },
     [
       '@docusaurus/plugin-client-redirects',
-      require('./redirects.js'),
+      redirectsOptions,
     ],
   ],
   themes: [
@@ -77,20 +79,19 @@ const config = {
       {
         indexBlog: false,
         docsRouteBasePath: '/',
-      },
+      } satisfies import('@easyops-cn/docusaurus-search-local').PluginOptions,
     ],
   ],
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       navbar: {
         title: 'Oasis Docs',
         logo: {
           alt: 'OPF Logo',
-          //src: 'img/logo.png',
+          src: 'img/logo.png',
           // Uncomment src and style below to enable christmas mode ;)
-          src: 'img/logo_christmas.png',
-          style: {height: '48px', 'max-width': '58px', 'margin-top': '-15px', 'margin-left': '-15px'},
+          //src: 'img/logo_christmas.png',
+          //style: {height: '48px', 'max-width': '58px', 'margin-top': '-15px', 'margin-left': '-15px'},
         },
         items: [
           {
@@ -224,22 +225,22 @@ Unless otherwise specified, all text and images on this website are licensed
 under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
 target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
 CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-src="img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-src="img/by.svg"></a>.
+src="/img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+src="/img/by.svg"></a>.
 This does not include the Oasis software and the code examples, both of which are
 licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0"
 target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
 Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p>`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-        additionalLanguages: ['rust', 'toml', 'solidity'],
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
+        additionalLanguages: ['diff', 'rust', 'solidity', 'toml'],
       },
       colorMode: {
         respectPrefersColorScheme: true,
       },
-    }),
+    } satisfies Preset.ThemeConfig,
 };
 
 module.exports = config;

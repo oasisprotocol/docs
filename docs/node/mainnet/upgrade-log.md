@@ -341,7 +341,7 @@ oasis-node governance gen_cast_vote \
 ```
 
 where `TX_FLAGS` refer to previously set base and signer flags as described in
-the [Oasis CLI Tools Setup] doc.
+the [Oasis node CLI Tools Setup] doc.
 
 :::caution
 
@@ -365,7 +365,7 @@ oasis-node consensus submit_tx \
 
 [upgrade governance proposal]: ../../core/consensus/services/governance.md#submit-proposal
 [your entity's nonce]: ../../general/manage-tokens/cli/account.md#show
-[Oasis CLI Tools Setup]: ../../core/oasis-node/cli.md#storing-base-and-signer-flags-in-an-environment-variable
+[Oasis node CLI Tools Setup]: ../../core/oasis-node/cli.md
 [Installing Oasis App on Your Ledger Wallet]: ../../general/manage-tokens/holding-rose-tokens/ledger-wallet.md
 
 ### Instructions - Before upgrade
@@ -467,7 +467,7 @@ spin up an Oasis Node in archive mode and query the pre-Damask state.
 
 11. Start your node and re-enable auto-starting via your process manager.
 
-[Damask Upgrade]: previous-upgrades/damask-upgrade.md#state-changes
+[Damask Upgrade]: previous-upgrades/damask-upgrade.md#proposed-state-changes
 [Damask upgrade release]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2022-04-11
 [Handling Network Upgrades]:
@@ -733,11 +733,11 @@ oasis-node governance gen_cast_vote \
   --transaction.fee.amount 2000
 ```
 
-where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis CLI Tools Setup](../../core/oasis-node/cli.md#storing-base-and-signer-flags-in-an-environment-variable) doc.
+where `TX_FLAGS` refer to previously set base and signer flags as described in the [Oasis node CLI Tools Setup] doc.
 
 :::caution
 
-If you use a Ledger-signer backed entity, you will need to install version 2.3.1 of the Oasis App as described in [Installing Oasis App 2.3.1 to Your Ledger](upgrade-log.md#installing-oasis-app-2-3-1-to-your-ledger). This is needed because the current version of the Oasis App available through Ledger Live, version 1.8.2, doesn't support signing the `governance.CastVote` transaction type.
+If you use a Ledger-signer backed entity, you will need to install version 2.3.1 of the Oasis App as described in [Installing Oasis App 2.3.1 to Your Ledger](#installing-oasis-app-231-to-your-ledger). This is needed because the current version of the Oasis App available through Ledger Live, version 1.8.2, doesn't support signing the `governance.CastVote` transaction type.
 
 :::
 
@@ -1018,7 +1018,7 @@ Version **20.12.7** is backwards compatible with other **20.12.x** releases, so 
 
 :::
 
-*   To ensure your node will stop at epoch **5046** [submit the following upgrade descriptor](../run-your-node/maintenance/handling-network-upgrades.md#stop-the-node-at-specific-epoch) at any time before the upgrade:
+*   To ensure your node will stop at epoch **5046** [submit the following upgrade descriptor](https://github.com/oasisprotocol/cli/blob/master/docs/network.md#governance-create-proposal) at any time before the upgrade:
 
     ```
     {
@@ -1084,7 +1084,7 @@ Mainnet state at epoch **5046** will be exported and migrated to a 21.1.x compat
 
 :::
 
-* Verify the provided Cobalt upgrade genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
+* Verify the provided Cobalt upgrade genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#verify-genesis) guide.
 * Replace the old genesis file with the new Cobalt upgrade genesis file.
 * Stop your node (if you haven't stopped it already by submitting the upgrade descriptor).
 * Replace the old version of Oasis Node with version [21.1.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.1.1).
@@ -1134,7 +1134,7 @@ We expect the Mainnet Beta network to reach this block height at around 2020-11-
 * Download [Oasis Node](../run-your-node/prerequisites/oasis-node.md) version [20.12.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.2), while continuing to run version 20.10.x.
 * (optional) Use Oasis Node version 20.12.2 to dump network state at the specified block height. It will connect to the running version 20.10.x node.
 * Download the Mainnet genesis file published in the [2020-11-18 release](https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18).
-* (optional) Verify the provided Mainnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
+* (optional) Verify the provided Mainnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#verify-genesis) guide.
 * Replace the old Mainnet Beta genesis file with the Mainnet genesis file.
 * Stop your node.
 * Remove the old 20.10.x version of Oasis Node.

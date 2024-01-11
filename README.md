@@ -99,7 +99,7 @@ accordingly.
 
 While all markdown files inside `docs` are compiled, not all files may be
 reachable via sidebars directly. Each top-level chapter defines own
-sidebar structure inside their `sidebarChapterName.js` file.
+sidebar structure inside their `sidebarChapterName.ts` file.
 
 Nouns, adjectives and verbs in the titles should be capitalized.
 
@@ -174,7 +174,7 @@ To define the region in the referenced file put `#region some-region-name` and
 
 When you move, rename or delete previously published content, make sure that
 **any previously valid URL will always point to the new valid location**. Set
-up redirects in `redirects.js` accordingly and leave the pull request
+up redirects in `redirects.ts` accordingly and leave the pull request
 number in the comment which added this redirection for future reference, if
 major rewrite is to happen and the developers would need more context around
 the redirection.

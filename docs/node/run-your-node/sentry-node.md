@@ -156,7 +156,7 @@ If your validator node is already registered and running in a non-sentry setup, 
 
 :::
 
-When you are [initializing a validator node](validator-node.mdx#initializing-a-node), you should use the sentry node's external address and Consensus ID in the `node.consensus_address` flag. If you are running multiple sentry nodes, you can specify the `node.consensus_address` flag multiple times.
+When you are [initializing a validator node](validator-node.mdx#configuration), you should use the sentry node's external address and Consensus ID in the `node.consensus_address` flag. If you are running multiple sentry nodes, you can specify the `node.consensus_address` flag multiple times.
 
 To initialize a validator node with 2 sentry nodes, run the following commands from the `/localhostdir/node` directory:
 

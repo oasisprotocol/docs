@@ -1,6 +1,6 @@
-// @ts-check
-const fs = require('fs-extra');
-const path = require('path');
+import * as path from "path";
+import * as fs from "fs";
+import type { EditUrlFunction } from '@docusaurus/plugin-content-docs'
 
 const gitModules = {
     'external/adrs/': 'https://github.com/oasisprotocol/adrs/{mode}/main/',
@@ -12,10 +12,8 @@ const gitModules = {
 
 /**
  * Generates cross-repo edit URL link.
- *
- * @type {import('@docusaurus/plugin-content-docs').EditUrlFunction}
  */
-function editLinkUrl(params) {
+export const editLinkUrl: EditUrlFunction = (params) => {
     const relFilepath = path.join(params.versionDocsDirPath, params.docPath);
     return linkUrl(relFilepath, 'edit');
 }
@@ -23,17 +21,19 @@ function editLinkUrl(params) {
 /**
  * Generates cross-repo view URL link (e.g. for viewing example sources).
  */
-function viewLinkUrl(relFilePath) {
+export function viewLinkUrl(relFilePath: string) {
     return linkUrl(relFilePath, 'blob');
 }
 
-function linkUrl(filename, mode) {
+function linkUrl(filename: string, mode: string) {
     // Resolve composed paths and symlinks, if needed.
     filename = fs.realpathSync(filename);
 
     // Obtain relative filename to project root.
     filename = path.relative(process.cwd(), filename)
-    for (const r in gitModules) {
+
+    let r: keyof typeof gitModules
+    for (r in gitModules) {
         if (filename.startsWith(r)) {
             // Extract relative filename inside the git submodule.
             return filename.replace(r, gitModules[r]).replace("{mode}", mode);
@@ -43,5 +43,3 @@ function linkUrl(filename, mode) {
     return `https://github.com/oasisprotocol/docs/{mode}/main/${filename}`.replace("{mode}", mode);
 
 }
-
-module.exports = {editLinkUrl, viewLinkUrl};

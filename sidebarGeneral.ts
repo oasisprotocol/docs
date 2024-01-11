@@ -1,7 +1,6 @@
-// @ts-check
+import {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-const sidebars = {
+export const sidebarGeneral: SidebarsConfig = {
   general: [
     {
       type: 'doc',
@@ -87,5 +86,3 @@ const sidebars = {
     },
   ],
 };
-
-module.exports = sidebars;

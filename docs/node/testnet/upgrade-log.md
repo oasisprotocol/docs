@@ -687,7 +687,7 @@ as well.
   computing checkpoints is I/O intensive.
 
 [Genesis Document]: ../genesis-doc.md#parameters
-[minimum staking thresholds]: ../genesis-doc.md#node-and-paratime-token-thresholds
+[minimum staking thresholds]: ../genesis-doc.md#staking-thresholds
 
 ## 2021-08-11 Upgrade
 
@@ -945,9 +945,9 @@ We expect the Testnet network to reach this epoch at around 2021-03-24 11:30 UTC
 
 ### Instructions
 
-*   (optional) To ensure your node will stop at epoch **5128** [submit the following upgrade descriptor](../run-your-node/maintenance/handling-network-upgrades.md#stop-the-node-at-specific-epoch) at any time before the upgrade:
+*   (optional) To ensure your node will stop at epoch **5128** [submit the following upgrade descriptor](https://github.com/oasisprotocol/cli/blob/master/docs/network.md#governance-create-proposal) at any time before the upgrade:
 
-    ```
+    ```json
     {
       "name": "testnet-upgrade-2021-03-24",
       "method": "internal",
@@ -963,11 +963,11 @@ Testnet state at epoch **5128** will be exported and migrated to a 21.0.x compat
 
 :::
 
-* (optional) Verify the provided Testnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#download-and-verify-the-provided-genesis-file) guide.
+* (optional) Verify the provided Testnet genesis file by comparing it to network state dump. See instructions in the [Handling Network Upgrades](../run-your-node/maintenance/handling-network-upgrades.md#verify-genesis) guide.
 * Replace the old genesis file with the new Testnet genesis file.
 * Stop your node (if you haven't stopped it already by submitting the upgrade descriptor).
 * Replace the old version of Oasis Node with version [21.0.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v21.0.1).
-* Update your node's configuration or perform any additional needed steps as per [Additional Steps](./README.md#additional-steps) below.
+* Update your node's configuration or perform any additional needed steps as per [Additional Steps](#additional-steps) below.
 * [Wipe state](../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity).
 * Start your node.
 

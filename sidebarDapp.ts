@@ -20,7 +20,6 @@ export const sidebarDapp: SidebarsConfig = {
         'dapp/sapphire/browser',
         'dapp/sapphire/authentication',
         'dapp/sapphire/gasless',
-        'dapp/sapphire/precompiles',
         'dapp/sapphire/addresses',
         'dapp/sapphire/security',
         {

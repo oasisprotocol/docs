@@ -274,6 +274,10 @@ export const redirectsOptions: Options = {
             to: '/node/mainnet/eden-upgrade',
             from: '/node/mainnet/e-upgrade' // #600 Add 23.0 upgrade's name
         },
+        {
+            to: 'https://api.docs.oasis.io/sol/sapphire-contracts',
+            from: '/dapp/sapphire/precompiles' // #688 Migrate dapp/sapphire/precompiles chapter to api.docs.oasis.io
+        },
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

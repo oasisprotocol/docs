@@ -198,7 +198,17 @@ chpst -u oasis oasis-node ...
 </TabItem>
 </Tabs>
 
-5. Start your Oasis Node.
+5. Adding SGX Permissions for ParaTime Node/Client
+
+If you intend to run a ParaTime Node or a ParaTime Client Node and want to enable SGX support, you'll need to ensure that the `oasis` user has the necessary permissions to access SGX resources.
+
+1. **Add `oasis` User to `sgx` Group:**
+   Ensure that the `oasis` user is added to the `sgx` group to grant it access to SGX resources. You can do this by running:
+
+   ```bash
+   sudo usermod -aG sgx oasis
+
+6. Start your Oasis Node.
 
 [`User` directive]:
   https://www.freedesktop.org/software/systemd/man/systemd.exec.html#User=

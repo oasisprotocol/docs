@@ -30,7 +30,7 @@ Let's create a new Hardhat project.
 
 :::info
 
-Currently we are compatible with Hardhat up to `2.16`. You may need to
+Currently we are compatible with Hardhat up to `2.19`. You may need to
 specify the version of Hardhat to install.
 
 :::

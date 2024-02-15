@@ -16,7 +16,7 @@ This guide will cover setting up your key manager node for the Oasis Network. Th
 
 ## Prerequisites
 
-Before following this guide, make sure you've followed the [Prerequisites](../prerequisites) and [Run a Non-validator Node](../non-validator-node.md) sections and have:
+Before following this guide, make sure you've followed the [Prerequisites](../prerequisites) and [Run a Non-validator Node](../non-validator-node.mdx) sections and have:
 
 * Oasis Node binary installed on your system and a dedicated non-root user that will run your Oasis Node.
 * The chosen top-level `/node/` working directory prepared (feel free to name it as you wish, e.g. `/srv/oasis/`) with:

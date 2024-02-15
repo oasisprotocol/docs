@@ -2,6 +2,9 @@
 description: Web3 gateway for Emerald and Sapphire ParaTimes
 ---
 
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
 # Oasis Web3 Gateway for your EVM ParaTime
 
 This guide will walk you through the steps needed to set up the Oasis Web3
@@ -272,3 +275,10 @@ extended downtime while the Web3 Gateway is reindexing the blocks.
 [Testnet]: testnet/README.md
 [testnet-emerald]: testnet/README.md#emerald
 [testnet-sapphire]: testnet/README.md#sapphire
+
+## See also
+
+<DocCardList items={[
+    findSidebarItem('/node/run-your-node'),
+    findSidebarItem('/node/grpc'),
+]} />

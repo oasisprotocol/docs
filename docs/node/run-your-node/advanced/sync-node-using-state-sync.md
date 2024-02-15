@@ -2,7 +2,7 @@
 
 The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a
 [validator node](../validator-node.mdx) or a
-[non-validator node](../non-validator-node.md)) by using the
+[non-validator node](../non-validator-node.mdx)) by using the
 [Tendermint's Light Client protocol]. It allows one to initialize a node from a
 trusted height, its corresponding block's header and a trusted validator set
 (given in the [genesis document](../../genesis-doc.md)). It does so by securely

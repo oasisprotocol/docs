@@ -11,7 +11,7 @@ as:
 :::info
 
 Hardware requirements for running the Oasis Web3 gateway can be found
-[here](../../web3.md#hardware).
+[here](../../web3.mdx#hardware).
 
 :::
 

@@ -1,4 +1,4 @@
-import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Validator Node
@@ -181,7 +181,7 @@ common:
     data_dir: /node/data
     # Logging.
     #
-    # Per-module log levels are defined below. If you prefer just one unified 
+    # Per-module log levels are defined below. If you prefer just one unified
     # log level, you can use:
     #
     # log:
@@ -190,11 +190,11 @@ common:
         level:
             cometbft: warn
             cometbft/context: error
-            # Per-module log levels. Longest prefix match will be taken. 
+            # Per-module log levels. Longest prefix match will be taken.
             # Fallback to "default", if no match.
             default: debug
         format: JSON
-        # By default logs are output to stdout. If you would like to output 
+        # By default logs are output to stdout. If you would like to output
         # logs to a file, you can use:
         #
         # file: /var/log/oasis-node.log
@@ -451,5 +451,8 @@ the node operator's name and the avatar.
 
 # See also
 
-<DocCard item={findSidebarItem('/general/manage-tokens/cli/')} />
-<DocCard item={findSidebarItem('/core/oasis-node/cli')} />
+<DocCardList items={[
+    findSidebarItem('/general/manage-tokens/cli/'),
+    findSidebarItem('/core/oasis-node/cli'),
+    findSidebarItem('/node/grpc')]}
+/>

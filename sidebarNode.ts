@@ -131,5 +131,10 @@ export const sidebarNode: SidebarsConfig = {
       label: 'Web3 Gateway',
       id: 'node/web3',
     },
+    {
+      type: 'doc',
+      label: 'gRPC Proxy',
+      id: 'node/grpc',
+    },
   ],
 };

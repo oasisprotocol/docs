@@ -1,3 +1,6 @@
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
 # Non-validator Node
 
 :::info
@@ -86,3 +89,6 @@ To ensure that your node is properly connected with the network, you can run the
 oasis-node control status -a unix:/node/data/internal.sock
 ```
 
+## See also
+
+<DocCard item={findSidebarItem('/node/grpc')} />

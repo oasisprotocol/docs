@@ -56,86 +56,44 @@ Before using this configuration you should collect the following information to 
   on the validator node. Note that the above command is only available in `oasis-node` from version 20.8.1 onward.
 
 ```yaml
-##
-# Oasis Sentry Node Configuration
-#
-# This file's configurations are derived from the command line args found in the
-# root command of the oasis-node binary. For more information execute:
-#
-#     oasis-node --help
-#
-# Settings on the command line that are separated by a dot all belong to the
-# same nested object. So "--foo.bar.baz hello" would translate to:
-#
-#     foo:
-#       bar:
-#         baz: hello
-##
-
-# Set this to where you wish to store node data. The node artifacts
-# should also be located in this directory (for us this is /node/data)
-datadir: /node/data
-
-# Logging.
-#
-# Per-module log levels are defined below. If you prefer just one unified log
-# level, you can use:
-#
-# log:
-#   level: debug
-log:
-  level:
-    # Per-module log levels. Longest prefix match will be taken. Fallback to
-    # "default", if no match.
-    default: debug
-    tendermint: warn
-    tendermint/context: error
-  format: JSON
-  # By default logs are output to stdout. If you're running this in docker keep
-  # the default
-  #file: /var/log/oasis-node.log
-
-# Path to the genesis file for the current version of the network.
+mode: client
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: warn
+            cometbft/context: error
+            # Per-module log levels. Longest prefix match will be taken. Fallback to
+            # "default", if no match.
+            default: debug
+            # By default logs are output to stdout. If you're running this in docker 
+            # keep the default
+            #file: /var/log/oasis-node.log
+consensus:
+    external_address: tcp://{{ external_address }}:26656
+    listen_address: tcp://0.0.0.0:26656
+    sentry_upstream_addresses:
+        - {{ validator_tendermint_id }}@{{ validator_private_address }}:26656
 genesis:
-  file: /node/etc/genesis.json
-
-# Worker configuration.
-worker:
-  sentry:
-    # Enable sentry node.
-    enabled: true
+    # Path to the genesis file for the current version of the network.
+    file: /node/etc/genesis.json
+p2p:
+    seeds:
+        # List of seed nodes to connect to.
+        # NOTE: You can add additional seed nodes to this list if you want.
+        - {{ seed_node_address }}
+sentry:
     # Port used by validator nodes to query sentry node for registry
     # information.
     # IMPORTANT: Only validator nodes protected by the sentry node should have
     # access to this port. This port should not be exposed on the public
     # network.
     control:
-      port: 9009
-      authorized_pubkey:
-        - {{ validator_sentry_client_grpc_public_key }}
-
-# Tendermint backend configuration.
-consensus:
-  tendermint:
-    abci:
-      prune:
-        strategy: keep_n
-        # Keep ~1 hour of data since block production is ~1 block every 6 seconds.
-        # (3600/6 = 600)
-        num_kept: 600
-    core:
-      listen_address: tcp://0.0.0.0:26656
-      external_address: tcp://{{ external_address }}:26656
-  
-    # List of seed nodes to connect to.
-    # NOTE: You can add additional seed nodes to this list if you want.
-    p2p:
-      seed:
-        - "{{ seed_node_address }}"
-  
-    sentry:
-      upstream_address:
-        - "{{ validator_tendermint_id }}@{{ validator_private_address }}:26656"
+        authorized_pubkeys:
+            - {{ validator_sentry_client_grpc_public_key }}
+        port: 9009
+    enabled: true
 ```
 
 :::tip
@@ -225,78 +183,39 @@ Before using this configuration you should collect the following information to 
   on the sentry node.
 
 ```yaml
-##
-# Oasis Node Configuration
-#
-# This file's configurations are derived from the command line args found in
-# the root command of the oasis-node binary. For more information execute:
-#
-#     oasis-node --help
-#
-# Settings on the command line that are separated by a dot all belong to the
-# same nested object. So "--foo.bar.baz hello" would translate to:
-#
-#     foo:
-#       bar:
-#         baz: hello
-##
+mode: validator
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: warn
+            cometbft/context: error
+            # Per-module log levels. Longest prefix match will be taken.
+            # Fallback to "default", if no match.
+            default: debug
+        # By default logs are output to stdout. If you're running this in docker keep
+        # the default
+        #file: /var/log/oasis-node.log
 
-# Set this to where you wish to store node data. The node artifacts
-# should also be located in this directory (for us this is /node/data)
-datadir: /node/data
+consensus:
+    listen_address: tcp://0.0.0.0:26656
+    p2p:
+        disable_peer_exchange: true
+        persistent_peers:
+            - {{ sentry_node_tendermint_id }}@{{ sentry_node_private_ip }}:26656
 
-# Logging.
-#
-# Per-module log levels are defined below. If you prefer just one unified log
-# level, you can use:
-#
-# log:
-#   level: debug
-log:
-  level:
-    # Per-module log levels. Longest prefix match will be taken. Fallback to
-    # "default", if no match.
-    default: debug
-    tendermint: warn
-    tendermint/context: error
-  format: JSON
-  # By default logs are output to stdout. If you're running this in docker keep
-  # the default
-  #file: /var/log/oasis-node.log
-
-# Path to the genesis file for the current version of the network.
 genesis:
-  file: /node/etc/genesis.json
+    # Path to the genesis file for the current version of the network.
+    file: /node/etc/genesis.json
 
-# Worker configuration.
-worker:
-  registration:
+registration:
     # In order for the node to register itself the entity.json of the entity
     # used to provision the node must be available on the node.
     entity: /node/etc/entity.json
-  sentry:
+
+sentry:
     address:
-      - "{{ sentry_node_grpc_public_key }}@{{ sentry_node_private_ip }}:9009"
-
-# Consensus backend.
-consensus:
-  # Setting this to true will mean that the node you're deploying will attempt
-  # to register as a validator.
-  validator: True
-
-  # Tendermint backend configuration.
-  tendermint:
-    abci:
-      prune:
-        strategy: keep_n
-        # Keep ~7 days of data since block production is ~1 block every 6 seconds.
-        # (7*24*3600/6 = 100800)
-        num_kept: 100800
-    core:
-      listen_address: tcp://0.0.0.0:26656
-    p2p:
-      persistent_peer:
-        - "{{ sentry_node_tendermint_id }}@{{ sentry_node_private_ip }}:26656"
-      disable_peer_exchange: True
+        - {{ sentry_node_grpc_public_key }}@{{ sentry_node_private_ip }}:9009
 ```
 

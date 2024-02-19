@@ -73,11 +73,6 @@ common:
 consensus:
     external_address: tcp://{{ external_address }}:26656
     listen_address: tcp://0.0.0.0:26656
-    prune:
-        # Keep ~1 hour of data since block production is ~1 block every 6 seconds.
-        # (3600/6 = 600)
-        num_kept: 600
-        strategy: keep_n
     sentry_upstream_addresses:
         - {{ validator_tendermint_id }}@{{ validator_private_address }}:26656
 genesis:
@@ -209,11 +204,6 @@ consensus:
         disable_peer_exchange: true
         persistent_peers:
             - {{ sentry_node_tendermint_id }}@{{ sentry_node_private_ip }}:26656
-    prune:
-        # Keep ~7 days of data since block production is ~1 block every 6
-        # seconds. (7*24*3600/6 = 100800)
-        num_kept: 100800
-        strategy: keep_n
 
 genesis:
     # Path to the genesis file for the current version of the network.

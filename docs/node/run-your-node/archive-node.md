@@ -72,4 +72,4 @@ Output should report `archive` consensus mode status:
 
 ## See also
 
-[Archive Web3 Gateway](../web3.md#archive-web3-gateway)
+[Archive Web3 Gateway](../web3.mdx#archive-web3-gateway)

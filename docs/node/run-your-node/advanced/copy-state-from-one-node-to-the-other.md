@@ -17,7 +17,7 @@ the [State Sync](sync-node-using-state-sync.md).
 
 To bootstrap a new Oasis node by copying state from a synced Oasis node, first
 set up your new Oasis node as a [Validator Node](../validator-node.mdx), a
-[Non-validator Node](../non-validator-node.md) or a
+[Non-validator Node](../non-validator-node.mdx) or a
 [ParaTime Node](../paratime-node.mdx).
 
 :::caution

@@ -10,7 +10,7 @@ Before following this guide, make sure you've followed the
 [Prerequisites](prerequisites) section and have the Oasis Node binary installed
 on your system. The IAS Proxy connects to an Oasis Node, so make sure you have a
 running node first. For more details, see the instructions on how to
-[Run a Non-validator Node](non-validator-node.md#configuration).
+[Run a Non-validator Node](non-validator-node.mdx#configuration).
 
 ### Obtaining IAS Service Provider ID (SPID) and API Key
 

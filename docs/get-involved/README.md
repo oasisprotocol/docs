@@ -35,7 +35,6 @@ your native language, check out our region-based community channels:
 * Japan: [https://t.me/OasisNetworkCommunity_japan8](https://t.me/OasisNetworkCommunity_japan8)
 * Korea: [https://t.me/OasisNetworkCommunity_Korea](https://t.me/OasisNetworkCommunity_Korea)
 * Nigeria: [https://t.me/OasisNetworkCommunity_Nigeria](https://t.me/OasisNetworkCommunity_Nigeria)
-* Pakistan: [https://t.me/OasisNetworkCommunity_Pakistan](https://t.me/OasisNetworkCommunity_Pakistan)
 * Philippines: [https://t.me/OasisNetworkCommunity_Philippine](https://t.me/OasisNetworkCommunity_Philippine)
 * Russia: [https://t.me/OasisNetworkCommunity_Russia](https://t.me/OasisNetworkCommunity_Russia)
 * Singapore: [https://t.me/OasisNetworkCommunity_Singapore8](https://t.me/OasisNetworkCommunity_Singapore8)

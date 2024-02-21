@@ -294,12 +294,12 @@ ias:
 
 p2p:
     # External P2P configuration.
-    port: 30002
+    port: 9200
     registration:
         addresses:
             # The external IP that is used when registering this node to the
             # network.
-            - {{ external_address }}:30002
+            - {{ external_address }}:9200
     seeds:
         # List of seed nodes to connect to.
         # NOTE: You can add additional seed nodes to this list if you want.
@@ -332,7 +332,7 @@ Before using this configuration you should collect the following information to 
 
 :::caution
 
-Make sure the `p2p.port` (default: `30002`) port is exposed and publicly
+Make sure the `p2p.port` (default: `9200`) port is exposed and publicly
 accessible on the internet (for `TCP` traffic).
 
 :::

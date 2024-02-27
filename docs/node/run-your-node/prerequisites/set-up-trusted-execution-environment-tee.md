@@ -125,7 +125,7 @@ The AESM service should be up and running. To confirm that, use:
 sudo systemctl status aesmd.service
 ```
 
-#### Configuring the Quote Provider
+### Configuring the Quote Provider
 
 The Intel Quote Provider (`libsgx-dcap-default-qpl`) needs to be configured in
 order to use either the Intel PCS, the PCCS of your cloud service provider, or
@@ -230,6 +230,49 @@ docker run \
 ```
 
 The default Intel Quote Provider config is available in [Intel SGX Github repository](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf).
+
+## Migrate from EPID Attestation to DCAP Attestation
+
+EPID attestation will be discontinued in 2025 and will no longer be available on
+any processors. All nodes using EPID attestation should migrate to DCAP
+attestation.
+
+:::info
+
+Compute node operators, please hold for further instructions. We will coordinate
+the migration in phases to ensure that during the migration the network remains
+operational.
+
+:::
+
+For transitioning to the DCAP attestation, follow these steps:
+1. See if your system [supports DCAP attestation]. If your hardware does not
+support DCAP attestation, you'll need to migrate your node to newer hardware.
+2. [Gracefully shutdown] your compute nodes (Sapphire and Cipher).
+3. Transition to DCAP attestation:
+  - In case you are running AESM service on Docker follow [these instructions].
+  - Otherwise manually configure AESM service to use DCAP attestation:
+    1. Remove any leftover EPID attestation packages. If running on Ubuntu 22.04 run
+      the following command:
+      ```bash
+        sudo apt remove libsgx-aesm-launch-plugin libsgx-aesm-epid-plugin
+      ```
+    2. Configure AESM service to use [DCAP attestation]
+    3. Restart the AESM service. If running on Ubuntu 22.04 run the following
+      command:
+      ```bash
+      sudo systemctl restart aesmd.service
+      ```
+4. [Configure the Quote Provider].
+5. Use the [attestation tool] to test if your settings are correct.
+6. Start your compute node.
+
+[these instructions]: #dcap-attestation-docker
+[supports DCAP attestation]: #aesm-service
+[Gracefully shutdown]: ../maintenance/shutting-down-a-node.md
+[DCAP attestation]: #dcap-attestation
+[Configure the Quote Provider]: #configuring-the-quote-provider
+[attestation tool]: #oasis-attestation-tool
 
 ## (Legacy) EPID Attestation
 

@@ -235,7 +235,7 @@ Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p>`,
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
-        additionalLanguages: ['diff', 'rust', 'solidity', 'toml'],
+        additionalLanguages: ['diff', 'rust', 'solidity', 'toml', 'ini'],
       },
       colorMode: {
         respectPrefersColorScheme: true,

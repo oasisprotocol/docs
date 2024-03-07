@@ -108,8 +108,8 @@ is to use the Intel's [official Intel SGX APT repository](https://download.01.or
 First add Intel SGX APT repository to your system:
 
 ```bash
-echo "deb https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list >/dev/null
-curl -sSL "https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key" | sudo -E apt-key add -
+curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo gpg --dearmor -o /usr/share/keyrings/intel-sgx-deb.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-sgx-deb.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list > /dev/null
 ```
 
 And then install the `sgx-aesm-service`, `libsgx-aesm-ecdsa-plugin`, `libsgx-aesm-quote-ex-plugin` and `libsgx-dcap-default-qpl` packages:
@@ -297,8 +297,8 @@ is to use the Intel's [official Intel SGX APT repository](https://download.01.or
 First add Intel SGX APT repository to your system:
 
 ```bash
-echo "deb https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list >/dev/null
-curl -sSL "https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key" | sudo -E apt-key add -
+curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo gpg --dearmor -o /usr/share/keyrings/intel-sgx-deb.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-sgx-deb.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list > /dev/null
 ```
 
 And then install the `sgx-aesm-service`, `libsgx-aesm-launch-plugin` and

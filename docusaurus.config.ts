@@ -23,6 +23,9 @@ const config: Config = {
     locales: ['en'],
   },
 
+  onBrokenAnchors: 'throw',
+  onBrokenMarkdownLinks: 'throw',
+
   presets: [
     [
       'classic',

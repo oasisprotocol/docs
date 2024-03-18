@@ -12,7 +12,7 @@ The Oasis Node is currently only supported on x86_64 Linux systems.
 
 [Oasis Core]: https://github.com/oasisprotocol/oasis-core
 [`go/`]: https://github.com/oasisprotocol/oasis-core/tree/master/go
-[roles]: ../../README.mdx#node-roles
+[roles]: ../../README.mdx#validator-and-paratime-nodes
 
 ## Set up the Oasis Node's Working Directory
 

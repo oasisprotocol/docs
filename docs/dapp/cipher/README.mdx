@@ -4,29 +4,32 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Cipher ParaTime
 
-The Cipher ParaTime is a Confidential ParaTime for executing Wasm smart contracts.
+Cipher is a confidential ParaTime for executing Wasm smart contracts.
 
 As the officially supported ParaTime by the Oasis Protocol Foundation, Cipher
 allows for:
 
-* Flexibility — Developer can define which data to store in a public
+* Flexibility: developer can define which data to store in a public
   and which data in the (more expensive) confidential storage
-* Security — Rust language primarily used for writing Wasm smart contracts is
-  known for its strict memory management and was developed specifically to
+* Security: the [rust language] primarily used for writing Wasm smart contracts
+  is known for its strict memory management and was developed specifically to
   avoid memory leaks
-* Scalability — increased throughput of transactions
-* Low-cost — 99%+ lower fees than Ethereum
+* Scalability: increased throughput of transactions
+* Low-cost: 99%+ lower fees than Ethereum
+* 6 second finality (1 block)
 * Cross-chain bridge to enable cross-chain interoperability (upcoming)
 
 If you're looking for EVM-compatible ParaTimes, check out the
 [Emerald](../emerald/README.mdx) and the confidential
 [Sapphire](../sapphire/README.mdx) paratimes.
 
-## Smart Contracts Development
+[rust language]: https://www.rust-lang.org/
 
-The Cipher ParaTime implements the [Oasis Contract SDK] API. To learn how to
-write a confidential smart contract in Rust and deploy it on the Oasis Cipher
-ParaTime, read the related Oasis Contract SDK chapters:
+## Smart Contract Development
+
+Cipher implements the [Oasis Contract SDK] API. To learn how to write a
+confidential smart contract in Rust and deploy it on Cipher, read the related
+Oasis Contract SDK chapters:
 
 <DocCard item={
     findSidebarItem('/dapp/cipher/prerequisites')
@@ -39,6 +42,45 @@ ParaTime, read the related Oasis Contract SDK chapters:
 <DocCard item={
     findSidebarItem('/dapp/cipher/confidential-smart-contract')
 } />
+
+## RPC Endpoints
+
+:::danger
+
+The RPC endpoint is a *point of trust*. Beside traffic rate limiting, it can
+also perform censorship or even a man-in-the-middle attack. If you have security
+considerations, we strongly recommend that you set up your own [ParaTime client
+node][paratime-client-node].
+
+:::
+
+Cipher endpoints share the gRPC protocol with the Oasis Core. You can connect to
+one of the public endpoints below (in alphabetic order):
+
+[paratime-client-node]: ../../node/run-your-node/paratime-client-node.mdx
+
+| Provider                    | Mainnet RPC URLs    | Testnet RPC URLs            |
+|-----------------------------|---------------------|-----------------------------|
+| [Oasis Protocol Foundation] | `grpc.oasis.io:443` | `testnet.grpc.oasis.io:443` |
+
+[Oasis Protocol Foundation]: https://oasisprotocol.org
+
+## Block Explorers
+
+No block explorers are available for Cipher yet. Consider debugging the Cipher
+blocks using the [`oasis paratime show`] command in [Oasis CLI].
+
+[`oasis paratime show`]: ../../general/manage-tokens/cli/paratime.md#show
+[Oasis CLI]: ../../general/manage-tokens/cli/README.md
+
+:::tip
+
+If you are running your own Cipher endpoint and you wish to be added to the
+public list above, open an issue at [github.com/oasisprotocol/docs].
+
+:::
+
+[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs
 
 ## See also
 

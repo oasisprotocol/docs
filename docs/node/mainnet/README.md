@@ -1,5 +1,7 @@
 # Mainnet
 
+## Network Parameters
+
 These are the current parameters for the Mainnet:
 
 * [Genesis file](https://github.com/oasisprotocol/mainnet-artifacts/releases/download/2023-11-29/genesis.json):
@@ -7,7 +9,8 @@ These are the current parameters for the Mainnet:
 
 :::info
 
-Genesis file is signed by [network's current maintainers](https://github.com/oasisprotocol/mainnet-artifacts/blob/master/README.md#pgp-keys-of-current-maintainers). To verify its authenticity, follow the [PGP verification instructions](https://github.com/oasisprotocol/mainnet-artifacts/blob/master/README.md#verifying-genesis-file-signatures).
+Genesis file is signed by [network's current maintainers]. To verify its
+authenticity, follow the [PGP verification instructions].
 
 :::
 
@@ -36,11 +39,16 @@ The Oasis Node is part of the Oasis Core release.
 
 :::danger
 
-Do not use a newer version of Oasis Core since it likely contains changes that are incompatible with the version of Oasis Core used by other nodes.
+Do not use a newer version of Oasis Core since it likely contains changes that
+are incompatible with the version of Oasis Core used by other nodes.
 
 :::
 
-If you want to join our Testnet, see the [Testnet](../testnet/README.md) docs for the current Testnet parameters.
+If you want to join our Testnet, see the [Testnet](../testnet/README.md) docs
+for the current Testnet parameters.
+
+[network's current maintainers]: https://github.com/oasisprotocol/mainnet-artifacts/blob/master/README.md#pgp-keys-of-current-maintainers
+[PGP verification instructions]: https://github.com/oasisprotocol/mainnet-artifacts/blob/master/README.md#verifying-genesis-file-signatures
 
 ## ParaTimes
 
@@ -60,7 +68,8 @@ This section contains parameters for various ParaTimes known to be deployed on t
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../../node/run-your-node/ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or
+[run your own](../../node/run-your-node/ias-proxy.md).
 
 :::
 
@@ -77,7 +86,8 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 
 :::info
 
-Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access the public Web3 gateway.
+Check the [Emerald ParaTime page](/dapp/emerald/#rpc-endpoints) on how to access
+the public Web3 endpoint.
 
 :::
 
@@ -97,7 +107,8 @@ Check the [Emerald ParaTime page](/dapp/emerald/#web3-gateway) on how to access 
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../../node/run-your-node/ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or
+[run your own](../../node/run-your-node/ias-proxy.md).
 
 :::
 
@@ -115,6 +126,7 @@ Feel free to use other IAS proxies besides the one provided here or [run your ow
 
 :::tip
 
-Feel free to use other IAS proxies besides the one provided here or [run your own](../../node/run-your-node/ias-proxy.md).
+Feel free to use other IAS proxies besides the one provided here or
+[run your own](../../node/run-your-node/ias-proxy.md).
 
 :::

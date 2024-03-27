@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_oasis_io=self.webpackChunkdocs_oasis_io||[]).push([[3568],{2474:e=>{e.exports=JSON.parse('{"title":"Processes","slug":"core/processes","permalink":"/core/processes","navigation":{"previous":{"title":"Merklized Key-Value Store (MKVS)","permalink":"/core/mkvs"},"next":{"title":"Release Process","permalink":"/core/release-process"}}}')}}]);

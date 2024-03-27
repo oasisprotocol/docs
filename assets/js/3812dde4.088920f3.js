@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_oasis_io=self.webpackChunkdocs_oasis_io||[]).push([[68],{856:e=>{e.exports=JSON.parse('{"title":"Oasis Node","slug":"core/oasis-node","permalink":"/core/oasis-node","navigation":{"previous":{"title":"Runtime Messages","permalink":"/core/runtime/messages"},"next":{"title":"RPC","permalink":"/core/oasis-node/rpc"}}}')}}]);

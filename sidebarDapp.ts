@@ -80,5 +80,16 @@ export const sidebarDapp: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Indexers',
+      link: {
+        type: 'doc',
+        id: 'dapp/indexers/README',
+      },
+      items: [
+        'dapp/indexers/subquery',
+      ],
+    },
   ],
 };

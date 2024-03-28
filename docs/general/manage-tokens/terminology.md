@@ -30,6 +30,9 @@ corresponding entity's public key, prefixed by a 1 byte address version.
 It uses [Bech32 encoding] for text serialization with `oasis` as its human
 readable part (HRP) prefix.
 
+EVM-compatible ParaTimes running on the Oasis compute layer **may use**
+EVM-compatible 20-byte addresses in hex format (starting with `0x`).
+
 ## Delegation
 
 You can **delegate** your tokens by submitting an **escrow** transaction that

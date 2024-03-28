@@ -17,7 +17,7 @@ export const redirectsOptions: Options = {
             ],
         },
         {
-            to: '/general/manage-tokens/how-to-transfer-rose-into-paratime',
+            to: '/general/manage-tokens/',
             from: [
                 '/general/manage-tokens/how-to-transfer-rose-into-emerald-paratime', // #171 Add sapphire docs
                 '/general/manage-tokens/how-to-transfer-rose-into-evm-paratime', // #200 Restructure docs
@@ -165,7 +165,10 @@ export const redirectsOptions: Options = {
         },
         {
             to: '/general/manage-tokens/',
-            from: '/general/manage-tokens/overview', // #200 Restructure docs
+            from: [
+              '/general/manage-tokens/overview', // #200 Restructure docs
+              '/general/manage-tokens/how-to-transfer-rose-into-paratime', // #777 Revamp manage-tokens chapters
+            ]
         },
         {
             to: '/general/manage-tokens/holding-rose-tokens/ledger-wallet/',

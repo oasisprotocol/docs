@@ -20,14 +20,45 @@ Designed for the next generation of blockchain, the Oasis Network is the first p
 
 ### Technology Highlights
 
-* **Separates consensus and execution into two layers**, the consensus layer and The ParaTime layer, for better scalability and increased versatility.
-* Separation of consensus and execution allows **multiple ParaTimes to process transactions in parallel**, meaning complex workloads processed on one ParaTime won’t slow down faster, simpler transactions on another.
-* **The ParaTime layer is entirely decentralized, allowing anyone to develop and build their own ParaTime.** Each ParaTime can be developed in isolation to meet the needs of a specific application, such as confidential compute, open or closed committees, and more.
-* The network’s sophisticated discrepancy detection makes **Oasis more efficient than sharding and parachains**, requiring a smaller replication factor for the same level of security.
-* **There are 3 ParaTimes built by the Oasis core team already on the network.**
-  * **Emerald ParaTime, the EVM-Compatible ParaTime**, was built to solve the problems faced by Solidity developers. High fees and low throughput. Emerald solves both of these problems by increasing the throughput of transactions to 1,000 per second and reducing fees by 99%+ compared to Ethereum. This means more users will be able to use and build on the network.
-  * **Cipher ParaTime, the confidential smart contract ParaTime**, holds the features that Oasis is known for — privacy-preserving smart contracts. As with Emerald, it boasts high throughput, instant finality, and low fees with added privacy-preserving features. Cipher enables DEX’s to stop front-running transactions, NFT users to protect their assets privately, and can potentially unlock trillions in credit and lending markets from traditional finance. Cipher executes smart contracts compiled in Oasis Wasm. Currently, we offer tooling for the [Rust programming language] which is very rigorous about memory management and thus suitable for security-first apps.
-  * **Sapphire ParaTime, the EVM-Compatible confidential smart contract ParaTime** is the latest addition to the Oasis ecosystem. It enables confidential computation of the smart contracts written in Solidity or other EVM-compatible language. In contrast to Cipher, dApp developers can integrate Sapphire for privacy-preserving data storage, governance, and computation into their applications with little or no additional work to existing smart contracts code.
+* **Separates consensus and execution into two layers**, the consensus layer and
+  the ParaTime layer, for better scalability and increased versatility.
+* Separation of consensus and execution allows **multiple ParaTimes to process
+  transactions in parallel**, meaning complex workloads processed on one
+  ParaTime won’t slow down transactions on another.
+* **The ParaTime layer is entirely decentralized, allowing anyone to register,
+  develop and deploy their own ParaTime.** Each ParaTime can be developed in
+  isolation to meet the needs of a specific application, such as confidential
+  compute, open or closed committees, and more.
+* ParaTimes can be used as a **truly scalable and fundamentally cheaper L2
+  technology** since the transaction gas fee and congestion doesn't affect the
+  underlying consensus layer block and the other way around.
+* The network’s sophisticated discrepancy detection makes **Oasis more efficient
+  than sharding and parachains**, requiring a smaller replication factor for the
+  same level of security.
+* There are **3 ParaTimes** built by the Oasis core team and currently deployed
+  on the network for general availability:
+  * **Sapphire ParaTime, the EVM-Compatible confidential smart contract ParaTime**
+    enables confidential computation of the smart contracts written in Solidity
+    or other EVM-compatible language. DApp developers can integrate Sapphire for
+    privacy-preserving data storage, governance, and computation into their
+    applications with little or no additional work to existing smart contracts
+    code.
+  * **Cipher ParaTime, the confidential smart contract ParaTime**, was the first
+    ParaTime deployed by the Oasis team that supports privacy-preserving smart
+    contracts. As with other compute ParaTimes, it boasts high throughput,
+    instant finality, and low fees with added privacy-preserving features.
+    Cipher enables DEX’s to stop front-running transactions, NFT users to
+    protect their assets privately, and can potentially unlock trillions in
+    credit and lending markets from traditional finance. Cipher executes smart
+    contracts compiled in **Oasis Wasm**. Currently, we offer tooling for the
+    [Rust programming language] which is very rigorous about memory management
+    and thus suitable for security-first dApps.
+  * **Emerald ParaTime, the EVM-Compatible ParaTime**, was built to solve the
+    problems faced by Solidity developers. High fees and low throughput. Emerald
+    solves both of these problems by increasing the throughput of transactions
+    to 1,000 per second and reducing fees by 99%+ compared to Ethereum. This
+    means more users will be able to use and build on the network. Emerald does
+    not support confidential computation.
 
 [Rust programming language]: https://www.rust-lang.org/
 

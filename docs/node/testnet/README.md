@@ -62,6 +62,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime bundle version:
+  * [3.0.4-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.4-testnet)
   * [3.0.3-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.3-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
@@ -91,6 +92,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime bundle version:
+  * [0.7.2-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.2-testnet)
   * [0.7.1-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.1-testnet)
 * Web3 Gateway version:
   * [5.0.1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.0.1)

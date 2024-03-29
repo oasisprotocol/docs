@@ -244,6 +244,33 @@ docker run \
 
 The default Intel Quote Provider config is available in [Intel SGX Github repository](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf).
 
+### Multi-socket Systems
+
+Note that platform provisioning for multi-socket systems (e.g. systems with
+multiple CPUs) is more complex, especially if one is using a hypervisor and
+running SGX workloads inside guest VMs. In this case additional provisioning may
+be required to be performed on the host.
+
+Note that the system must be booted in UEFI mode for provisioning to work as the
+provisioning process uses UEFI variables to communicate with the BIOS.
+
+#### Ubuntu 22.04
+
+To provision and register your multi-socket system you need to install the Intel
+SGX Multi-Package Registration Agent Service as follows (assuming Intel's SGX
+apt repository has been added as discussed above):
+
+```shell
+sudo apt install sgx-ra-service
+```
+
+#### VMware vSphere 8.0+
+
+In order to enable SGX remote attestation on VMware vSphere-based systems,
+please follow [the vSphere guide].
+
+[the vSphere guide]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-F16476FD-3B66-462F-B7FB-A456BEDC3549.html
+
 ## Migrate from EPID Attestation to DCAP Attestation
 
 EPID attestation will be discontinued in 2025 and will no longer be available on

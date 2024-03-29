@@ -152,6 +152,19 @@ to the Intel PCS API URL:
   "pccs_url": "https://api.trustedservices.intel.com/sgx/certification/v4/"
 ```
 
+:::tip
+
+In case there is an error in the QPL configuration file, attestation will refuse
+to work and the AESM service may produce unhelpful errors like the following:
+
+```
+Couldn't find the platform library. (null)
+```
+
+The only thing that needs to be changed is the `pccs_url` value above.
+
+:::
+
 #### Cloud Service Provider's PCCS
 
 Some cloud providers require you to use their PCCS.
@@ -230,6 +243,33 @@ docker run \
 ```
 
 The default Intel Quote Provider config is available in [Intel SGX Github repository](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf).
+
+### Multi-socket Systems
+
+Note that platform provisioning for multi-socket systems (e.g. systems with
+multiple CPUs) is more complex, especially if one is using a hypervisor and
+running SGX workloads inside guest VMs. In this case additional provisioning may
+be required to be performed on the host.
+
+Note that the system must be booted in UEFI mode for provisioning to work as the
+provisioning process uses UEFI variables to communicate with the BIOS.
+
+#### Ubuntu 22.04
+
+To provision and register your multi-socket system you need to install the Intel
+SGX Multi-Package Registration Agent Service as follows (assuming Intel's SGX
+apt repository has been added as discussed above):
+
+```shell
+sudo apt install sgx-ra-service
+```
+
+#### VMware vSphere 8.0+
+
+In order to enable SGX remote attestation on VMware vSphere-based systems,
+please follow [the vSphere guide].
+
+[the vSphere guide]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-F16476FD-3B66-462F-B7FB-A456BEDC3549.html
 
 ## Migrate from EPID Attestation to DCAP Attestation
 
@@ -587,3 +627,18 @@ debug: cause: Invalid argument (os error 22)
 This may be related to a bug in the Linux kernel when attempting to run enclaves
 on certain hardware configurations. Upgrading the Linux kernel to a version
 equal to or greater than 6.5.0 may solve the issue.
+
+### Couldn't find the platform library
+
+If AESMD service log reports:
+
+```
+[read_persistent_data ../qe_logic.cpp:1084] Couldn't find the platform library. (null)
+[get_platform_quote_cert_data ../qe_logic.cpp:438] Couldn't load the platform library. (null)
+```
+
+It may be that the [DCAP quote provider] is misconfigured or the configuration
+file is not a valid JSON file but is malformed. Double-check that its
+configuration file (e.g. `/etc/sgx_default_qcnl.conf`) is correct.
+
+[DCAP quote provider]: #configuring-the-quote-provider

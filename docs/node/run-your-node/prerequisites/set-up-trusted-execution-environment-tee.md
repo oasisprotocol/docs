@@ -152,6 +152,19 @@ to the Intel PCS API URL:
   "pccs_url": "https://api.trustedservices.intel.com/sgx/certification/v4/"
 ```
 
+:::tip
+
+In case there is an error in the QPL configuration file, attestation will refuse
+to work and the AESM service may produce unhelpful errors like the following:
+
+```
+Couldn't find the platform library. (null)
+```
+
+The only thing that needs to be changed is the `pccs_url` value above.
+
+:::
+
 #### Cloud Service Provider's PCCS
 
 Some cloud providers require you to use their PCCS.
@@ -587,3 +600,18 @@ debug: cause: Invalid argument (os error 22)
 This may be related to a bug in the Linux kernel when attempting to run enclaves
 on certain hardware configurations. Upgrading the Linux kernel to a version
 equal to or greater than 6.5.0 may solve the issue.
+
+### Couldn't find the platform library
+
+If AESMD service log reports:
+
+```
+[read_persistent_data ../qe_logic.cpp:1084] Couldn't find the platform library. (null)
+[get_platform_quote_cert_data ../qe_logic.cpp:438] Couldn't load the platform library. (null)
+```
+
+It may be that the [DCAP quote provider] is misconfigured or the configuration
+file is not a valid JSON file but is malformed. Double-check that its
+configuration file (e.g. `/etc/sgx_default_qcnl.conf`) is correct.
+
+[DCAP quote provider]: #configuring-the-quote-provider

@@ -210,6 +210,10 @@ const config: Config = {
                 to: 'https://oasis.io/discord',
               },
               {
+                label: 'Telegram',
+                to: 'https://t.me/oasisprotocolcommunity',
+              },
+              {
                 label: 'Youtube',
                 to: 'https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ',
               },

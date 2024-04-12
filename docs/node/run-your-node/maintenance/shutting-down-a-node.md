@@ -7,9 +7,12 @@ gracefully to avoid network disruption.
 
 The graceful shutdown process involves the following steps:
 
-1. Halt the automatic re-registration.
-2. Wait for the node's existing registration to expire.
-3. Terminate the node binary.
+1. Ensure your service manager (e.g. systemd) will not restart the node after
+   exit. Otherwise the node may re-register on startup and you will need to wait
+   another epoch for it to expire.
+2. Halt the automatic re-registration.
+3. Wait for the node's existing registration to expire.
+4. Terminate the node binary.
 
 To have the node gracefully shutdown, run:
 
@@ -27,21 +30,6 @@ oasis-node control shutdown \
 
 Failure to gracefully shutdown the node may result in the node being
 frozen (and potentially stake being slashed) due to the node being
-unavailable to service requests in an epoch that it is registered.
+unavailable to service requests in an epoch that it is registered for.
 
 :::
-
-## Restarting a Shutdown Node
-
-To prevent restart loops causes by service managers, and to ensure
-that the node will shutdown when requested, the node will persist
-a flag indicating that a shutdown is in progress.
-
-Oasis nodes prior to 22.0.3 will require that once a node is gracefully
-shutdown, the next time it is launched, the
-`--worker.registration.force_register` command line argument or equivalent
-config option be passed to the node the next time the node is started,
-or the node will shutdown immediately.
-
-This behavior has been changed in newer revisions of the software such
-that the flag should no longer be required.

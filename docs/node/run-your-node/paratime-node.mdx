@@ -199,7 +199,11 @@ you would have to obtain the `cipher-paratime.orc` bundle and install it to
 
 ### Install Bubblewrap Sandbox (at least version 0.3.3)
 
-ParaTime compute nodes execute ParaTime binaries inside a sandboxed environment provided by [Bubblewrap](https://github.com/containers/bubblewrap). In order to install it, please follow these instructions, depending on your distribution:
+ParaTime compute nodes execute ParaTime binaries inside a sandboxed environment
+provided by [Bubblewrap](https://github.com/containers/bubblewrap). In order to
+install it, please follow these instructions, depending on your distribution. Also
+note that in case your platform is using AppArmor, you may need to update the
+policy (see [AppArmor profiles](prerequisites/system-configuration.mdx#apparmor-profiles)).
 
 <Tabs>
 <TabItem value="Ubuntu 18.10+">
@@ -375,6 +379,8 @@ In case of `bwrap` issues you need to adjust your Seccomp or AppArmor profiles t
   --security-opt apparmor=unconfined \
   --security-opt seccomp=unconfined \
 ```
+
+You can also configure an [AppArmor profile for Bubblewrap](prerequisites/system-configuration.mdx#apparmor-profiles).
 
 ### Bubblewrap Fails to Create Temporary Directory
 

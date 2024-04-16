@@ -71,7 +71,7 @@ const StakingRewardsChart = () => {
         y: estimates.map(d => d.yearlyCompoundedRate),
         mode: 'lines',
         name: 'Annualized rewards',
-        marker: {color: '#4285F4'},
+        marker: {color: '#0500e2'},
         text: data.map(d => {
           const percentPerEpoch = 100 * d.scale * rewardFactorEpochSigned / rewardAmountDenominator;
           return `<i>Reward per epoch: ${percentPerEpoch}%<br>Epoch: ${d.untilEpoch}</i>`;

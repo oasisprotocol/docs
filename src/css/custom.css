@@ -6,25 +6,49 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3884ff;
-  --ifm-color-primary-dark: #3884ff;
-  --ifm-color-primary-darker: #3884ff;
-  --ifm-color-primary-darkest: #3884ff;
-  --ifm-color-primary-light: #3884ff;
-  --ifm-color-primary-lighter: #3884ff;
-  --ifm-color-primary-lightest: #3884ff;
+  --ifm-color-primary: #0500e2;
+  --ifm-color-primary-dark: #0500e2;
+  --ifm-color-primary-darker: #0500e2;
+  --ifm-color-primary-darkest: #0500e2;
+  --ifm-color-primary-light: #0500e2;
+  --ifm-color-primary-lighter: #0500e2;
+  --ifm-color-primary-lightest: #0500e2;
   --ifm-code-font-size: 95%;
+  --ifm-font-family-base: "Roboto", sans-serif;
+  --ifm-font-family-monospace: "Roboto Mono", monospace;
+  --ifm-global-radius: 0;
+  --ifm-alert-border-width: 5px;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 html[data-theme='dark'] {
-  --ifm-color-primary: #3884ff;
-  --ifm-color-primary-dark: #3884ff;
-  --ifm-color-primary-darker: #3884ff;
-  --ifm-color-primary-darkest: #3884ff;
-  --ifm-color-primary-light: #3884ff;
-  --ifm-color-primary-lighter: #3884ff;
-  --ifm-color-primary-lightest: #3884ff;
+  --ifm-color-primary: #00ffff;
+  --ifm-color-primary-dark: #00ffff;
+  --ifm-color-primary-darker: #00ffff;
+  --ifm-color-primary-darkest: #00ffff;
+  --ifm-color-primary-light: #00ffff;
+  --ifm-color-primary-lighter: #00ffff;
+  --ifm-color-primary-lightest: #00ffff;
+}
+
+/* Custom fonts */
+@font-face {
+  font-family: "Roboto";
+  src: url("/static/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  src: url("/static/fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("/static/fonts/RobotoMono-Regular.ttf") format("truetype");
+}
+
+article strong, h1 {
+  font-family: "Roboto Medium", sans-serif;
 }
 
 .docusaurus-highlight-code-line {
@@ -81,13 +105,32 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 /* Add vertical spacing between the individual DocCards outside of DocCardList
    component. */
 .markdown > a.card {
-	margin-bottom: 32px;
+  margin-bottom: 32px;
 }
-
 
 /* Reduce the font size to make the sidebar more appealing. */
 .theme-doc-sidebar-menu {
   font-size: 14px;
+}
+
+/* Make the search field more Oasis-like */
+.navbar__search-input {
+  border-radius: 0;
+  border: 1px solid black;
+}
+
+/* Make docccard and navcard border stronger */
+.card,
+.pagination-nav__link {
+  border: 1px solid black !important;
+}
+[data-theme='dark'] .card,
+[data-theme='dark'] .pagination-nav__link {
+  border: 1px solid white !important;
+}
+
+.card {
+  --ifm-link-hover-color: inherit !important;
 }
 
 /* Hack to make .svg and .png diagrams readable in dark theme */

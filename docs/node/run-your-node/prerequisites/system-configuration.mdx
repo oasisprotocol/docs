@@ -6,8 +6,8 @@ import TabItem from '@theme/TabItem';
 This page outlines the modifications necessary that should be made to the
 configuration of the system where you are running an Oasis Node instance. To
 prepare the system for running an Oasis Node, we will guide you through the
-process of creating a dedicated user account and increasing the file descriptor
-limit.
+process of creating a dedicated user account, increasing the file descriptor
+limit and optional AppArmor profiles.
 
 ## Create a user
 Nothing in Oasis Node requires elevated privileges, so running the Oasis Node
@@ -149,6 +149,32 @@ In order for the changes to take effect a system restart may be required.
 
 </TabItem>
 </Tabs>
+
+## AppArmor profiles
+
+In case your system is using AppArmor and is restricting unprivileged user namespace
+creation, you may need to allow them for Bubblewrap (the sandbox that Oasis Node is
+using to execute runtimes).
+
+You can use the following policy in `/etc/apparmor.d/bwrap`:
+
+```
+abi <abi/4.0>,
+include <tunables/global>
+
+profile bwrap /usr/bin/bwrap flags=(unconfined) {
+  userns,
+
+  # Site-specific additions and overrides. See local/README for details.
+  include if exists <local/bwrap>
+}
+```
+
+Then reload AppArmor policies by running:
+
+```
+sudo systemctl reload apparmor.service
+```
 
 ## Example snippets for different setups
 

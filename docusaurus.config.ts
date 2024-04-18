@@ -12,7 +12,7 @@ const config: Config = {
   tagline: '',
   url: process.env.URL ?? 'https://docs.oasis.io',
   baseUrl: '/',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   organizationName: 'oasisprotocol', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
@@ -88,10 +88,10 @@ const config: Config = {
   themeConfig:
     {
       navbar: {
-        title: 'Oasis Docs',
         logo: {
-          alt: 'OPF Logo',
-          src: 'img/logo.png',
+          alt: 'Oasis Docs',
+          src: 'img/logo.svg',
+          //srcDark: 'img/logo_dark.svg',
           // Uncomment src and style below to enable christmas mode ;)
           //src: 'img/logo_christmas.png',
           //style: {height: '48px', maxWidth: '58px', marginTop: '-15px', marginLeft: '-15px'},

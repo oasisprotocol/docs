@@ -219,3 +219,10 @@ sentry:
         - {{ sentry_node_grpc_public_key }}@{{ sentry_node_private_ip }}:9009
 ```
 
+
+:::caution
+
+Make sure the `consensus` port (default: `26656`) and `p2p.port` (default: `9200`) are exposed and publicly
+accessible on the internet (for `TCP` and `UDP` traffic).
+
+:::

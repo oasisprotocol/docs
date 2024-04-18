@@ -53,6 +53,13 @@ genesis:
     file: /node/etc/genesis.json
 ```
 
+:::caution
+
+Make sure the `consensus` port (default: `26656`) and `p2p.port` (default: `9200`) are exposed and publicly
+accessible on the internet (for `TCP` and `UDP` traffic).
+
+:::
+
 ## Starting the Oasis Node
 
 You can start the node by running the following command:

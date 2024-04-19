@@ -91,7 +91,7 @@ const config: Config = {
         logo: {
           alt: 'Oasis Docs',
           src: 'img/logo.svg',
-          //srcDark: 'img/logo_dark.svg',
+          srcDark: 'img/logo_dark.svg', // Workaround for browsers that don't support @media (prefers-color-scheme: dark) in external SVGs.
           // Uncomment src and style below to enable christmas mode ;)
           //src: 'img/logo_christmas.png',
           //style: {height: '48px', maxWidth: '58px', marginTop: '-15px', marginLeft: '-15px'},

@@ -118,6 +118,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   border-radius: 0;
   border: 1px solid black;
 }
+/* The primary dark mode color is too aggressive for the eye when hovering over
+   the hits. Ideally we should color the matched substrings with the primary
+   color, but highlight it with --ifm-navbar-search-input-background-color when
+   hovering over. Temporary fix: Use a less aggressive color for everything. */
+html[data-theme="dark"] {
+  --search-local-highlight-color: #3ec8ff;
+}
 
 /* Make docccard and navcard border stronger */
 .card,

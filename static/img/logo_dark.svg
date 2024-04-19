@@ -3,13 +3,7 @@
   <defs>
     <style>
       path {
-        fill: #0500e2;
-        stroke-width: 0px;
-      }
-      @media (prefers-color-scheme: dark) {
-        path {
-          fill: white;
-        }
+        fill: white;
       }
     </style>
   </defs>

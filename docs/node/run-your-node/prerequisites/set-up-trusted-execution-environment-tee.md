@@ -485,7 +485,7 @@ Detecting SGX, this may take a minute...
   ？ CPU configuration
   ✘  Able to launch production mode enclave
 ✔  SGX system software
-  ✔  SGX kernel device (/dev/isgx)
+  ✔  SGX kernel device (/dev/sgx_enclave)
   ✘  libsgx_enclave_common
   ✔  AESM service
   ✔  Able to launch enclaves

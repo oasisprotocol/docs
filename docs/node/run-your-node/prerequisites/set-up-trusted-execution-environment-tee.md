@@ -514,6 +514,26 @@ development server.
 See  [the general troubleshooting section](../troubleshooting.md), before
 proceeding with ParaTime node-specific troubleshooting.
 
+### AESM could not be contacted
+
+If running `sgx-detect --verbose` reports:
+
+```
+🕮  SGX system software > AESM service
+AESM could not be contacted. AESM is needed for launching enclaves and generating attestations.
+
+Please check your AESM installation.
+
+debug: error communicating with aesm
+debug: cause: Connection refused (os error 111)
+
+More information: https://edp.fortanix.com/docs/installation/help/#aesm-service
+```
+
+Ensure  you have completed all the necessary installation steps outlined in either
+[DCAP Attestation](#dcap-attestation) or [EPID attestation](#legacy-epid-attestation)
+sections.
+
 ### AESM: error 30
 
 If you are encountering the following error message in your node's logs:

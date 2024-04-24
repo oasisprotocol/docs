@@ -45,10 +45,12 @@ install a compatible SGX driver.
 
 ### Verification
 
-Make sure that the one of the SGX devices exists (the exact device name depends
-on which driver is being used):
+Make sure that one of the following SGX devices exists (the exact device name
+depends on which driver is being used):
 
 * `/dev/sgx_enclave` (since Linux kernel 5.11)
+* `/dev/sgx/enclave` (legacy driver)
+* `/dev/sgx` (legacy driver)
 * `/dev/isgx` (legacy driver)
 
 ## Ensure Proper SGX Device Permissions

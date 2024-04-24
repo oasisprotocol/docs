@@ -45,10 +45,12 @@ install a compatible SGX driver.
 
 ### Verification
 
-Make sure that the one of the SGX devices exists (the exact device name depends
-on which driver is being used):
+Make sure that one of the following SGX devices exists (the exact device name
+depends on which driver is being used):
 
 * `/dev/sgx_enclave` (since Linux kernel 5.11)
+* `/dev/sgx/enclave` (legacy driver)
+* `/dev/sgx` (legacy driver)
 * `/dev/isgx` (legacy driver)
 
 ## Ensure Proper SGX Device Permissions
@@ -483,7 +485,7 @@ Detecting SGX, this may take a minute...
   ？ CPU configuration
   ✘  Able to launch production mode enclave
 ✔  SGX system software
-  ✔  SGX kernel device (/dev/isgx)
+  ✔  SGX kernel device (/dev/sgx_enclave)
   ✘  libsgx_enclave_common
   ✔  AESM service
   ✔  Able to launch enclaves
@@ -511,6 +513,26 @@ development server.
 
 See  [the general troubleshooting section](../troubleshooting.md), before
 proceeding with ParaTime node-specific troubleshooting.
+
+### AESM could not be contacted
+
+If running `sgx-detect --verbose` reports:
+
+```
+🕮  SGX system software > AESM service
+AESM could not be contacted. AESM is needed for launching enclaves and generating attestations.
+
+Please check your AESM installation.
+
+debug: error communicating with aesm
+debug: cause: Connection refused (os error 111)
+
+More information: https://edp.fortanix.com/docs/installation/help/#aesm-service
+```
+
+Ensure  you have completed all the necessary installation steps outlined in either
+[DCAP Attestation](#dcap-attestation) or [EPID attestation](#legacy-epid-attestation)
+sections.
 
 ### AESM: error 30
 

@@ -144,3 +144,10 @@ html[data-theme="dark"] {
 html[data-theme='dark'] main img {
   background-color: #fff;
 }
+
+/* Show the content of tabs slightly indented with a border on the left */
+.tabs-container > div {
+  margin-top: inherit !important;
+  padding: 1rem;
+  border-left: 3px solid var(--ifm-tabs-color-active-border);
+}

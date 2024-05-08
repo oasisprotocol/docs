@@ -75,7 +75,7 @@ network, while the other is used to bootstrap the Oasis P2P network.
 :::
 
 [Change Log]:
-  https://github.com/oasisprotocol/oasis-core/blob/v23.0.x/CHANGELOG.md
+  https://github.com/oasisprotocol/oasis-core/blob/stable/23.0.x/CHANGELOG.md
 
 ### Data Directory Changes
 

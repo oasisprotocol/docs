@@ -283,7 +283,7 @@ version 11.0.0 before or soon after the network upgrade is completed.
 :::
 
 [Change Log]:
-  https://github.com/oasisprotocol/oasis-core/blob/v23.0.x/CHANGELOG.md
+  https://github.com/oasisprotocol/oasis-core/blob/stable/23.0.x/CHANGELOG.md
 
 ### Data Directory Changes
 

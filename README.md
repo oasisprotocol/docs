@@ -204,14 +204,18 @@ There are three kinds of image assets used in the docs.
 The following is a consistent case-sensitive collection of Oasis-related terms,
 and their usage including the articles:
 
+- Bech32
 - c10l
   Check out the c10l-hello-world folder for the confidential version of the
   original example.
 - c13y
   EVM with added c13y.
+- CBOR
 - Cipher
 - consensus layer
   The consensus layer makes sure that the ParaTimes tick.
+- Ed25519
+  The consensus layer only supports the Ed25519 signature scheme.
 - Emerald
 - dApp
   Emerald supports writing dApps. DApp is a modern distributed application.
@@ -224,6 +228,8 @@ and their usage including the articles:
 - Oasis CLI
   You can use the Oasis CLI to set up your wallet.
 - Oasis Core
+- Oasis Network
+  The Oasis Network is a proof-of-stake network.
 - OPL
   Oasis Privacy Layer supports privacy of dApps on all EVM chains.
 - ParaTime
@@ -234,11 +240,15 @@ and their usage including the articles:
   Please send 10.00000000 ROSE to the address above.
 - runtime
 - Sapphire
+- secp256k1
+  The Koblitz curve secp256k1 parameters are deterministic.
+- Sr25519
 - TEST
   Please send 10.00000000 TEST to the address above.
 - trusted execution environment
 - validator
 - validator node
+- Wasm
 - Web3 gateway
   We strongly suggest that you set up your own Web3 gateway for your Sapphire
   endpoint.

@@ -1,30 +1,188 @@
-import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+---
+description: Transfer, deposit, withdraw and delegate your ROSE
+---
 
-# Overview
+# Manage your Tokens
 
-This documentation will guide you on how to use your ROSE tokens, where to keep them, how to transfer them, how to stake/delegate them, and more.
+The **native token** on Oasis Mainnet is called **ROSE**. The native token plays
+a crucial security role in the proof-of-stake block validation protocol and in
+participating on governance proposal votes. Staking rewards are paid out in the
+native token and smart contract users pay gas fees with ROSE.
 
-## Summary
+## ROSE and the ParaTimes
 
-* For **self-custody**, we recommend using one of our **official** [**Oasis Wallets**](oasis-wallets/README.mdx), [Web](oasis-wallets/web.md) or [Browser Extension](oasis-wallets/browser-extension.md).
-* ROSE is supported via three [**custody providers**](holding-rose-tokens/custody-providers.md): [Copper.co](https://copper.co), [Anchorage](https://anchorage.com) and [Finoa](https://finoa.io).
-* For extra security with self-custody, we recommend using the [Ledger](https://www.ledger.com) wallet with one of our official [Oasis Wallets](oasis-wallets/README.mdx).
-* For experienced developers/power users, we offer [Oasis CLI Tools](cli/README.md).
+The [Oasis Network architecture] separates between the **consensus** and the
+**compute** layer. The consensus layer and each ParaTime running on the compute
+layer have their own **ledger** containing, among other data, the **balances of
+the accounts**.
+
+You can only use your ROSE token **one place at a time**—either on the consensus
+layer or inside an individual ParaTime. Moving tokens from the consensus layer
+to a ParaTime is a **deposit** and moving them from a ParaTime back to
+the consensus layer is a **withdrawal** (see [ADR-3] for technical
+specifications). You can **transfer** tokens from your account to another
+account only, if both accounts are either on the consensus layer or inside the
+same ParaTime. Besides moving the tokens across layers and accounts, you can also
+**[delegate tokens]** to a validator and **earn passive income** as a reward.
+
+![Deposits, withdrawals, transfers](../images/manage-tokens/transfer_deposit_withdrawal.svg)
+
+[delegate tokens]: staking-and-delegating.md
+[ADR-3]: ../../adrs/0003-consensus-runtime-token-transfer.md
+[Oasis Network architecture]: ../oasis-network/README.mdx
+
+## The Wallets
+
+To sign the token-related transactions such as transfers, deposits, withdrawals
+and delegations described above, you need a **private key** tied to the
+corresponding account. Your keys are stored in *[crypto wallets]*.
+
+[crypto wallets]: https://en.wikipedia.org/wiki/Cryptocurrency_wallet
 
 :::caution
 
-For your own security and peace of mind, please only use wallets that are listed in our official documentation. Any other wallets are likely unofficial and may be subject to critical security vulnerabilities and other technical issues. Using wallets that not listed in our official documentation could result in the permanent loss of your ROSE tokens.
+For your own security and peace of mind, please only use the wallets that are
+listed here. **Using unofficial wallets can result in the permanent loss of your
+ROSE!**
 
 :::
 
-## Quick Navigation
+### Non-Custodial Oasis Wallets
 
-<DocCardList items={[
-    findSidebarItem('/general/manage-tokens/terminology'),
-    findSidebarItem('/general/manage-tokens/staking-and-delegating'),
-    findSidebarItem('/general/manage-tokens/oasis-wallets/'),
-    findSidebarItem('/general/manage-tokens/cli/'),
-    findSidebarItem('/general/manage-tokens/holding-rose-tokens/custody-providers'),
-    findSidebarItem('/general/manage-tokens/holding-rose-tokens/ledger-wallet'),
-]} />
+The Oasis team developed the following **non-custodial wallets** for you. This
+means that the keys for managing the tokens are **stored on your device** such
+as a laptop or a mobile phone and **you are responsible to keep it safe**:
+
+- **[Oasis ROSE Wallet - Web]**: Runs as a web application in your web browser, the private keys are encrypted
+  with a password and stored inside your Browser's local store.
+
+- **[Oasis ROSE Wallet - Browser extension]**: Runs as an extension to your Chrome-based browser, the private keys are
+  encrypted with a password and stored inside your Browser's encrypted store.
+
+- **[Oasis CLI]**: Runs in a command line, suitable for automation, the private keys are
+  encrypted by a password and stored inside your home folder.
+
+[Oasis ROSE Wallet - Web]: oasis-wallets/web.mdx
+[Oasis ROSE Wallet - Browser extension]: oasis-wallets/browser-extension.mdx
+[Oasis CLI]: cli/README.md
+
+### MetaMask
+
+[MetaMask] is probably the most-known crypto wallet. However, it is an
+**EVM-compatible** wallet. This means **you can only use it to check the account
+balances and sign transactions on Sapphire and Emerald chains**. You cannot use
+it, for example, to sign **consensus layer transactions** or perform
+**deposits** and **withdrawals** to and from ParaTimes.
+
+You can add the Sapphire RPC endpoint by clicking on the "Add to MetaMask"
+button next to your preferred Mainnet endpoint provider in the [Sapphire]
+chapter. Similarly, you will find a list of RPC endpoints for Emerald on the
+[Emerald] page.
+
+![Metamask - Adding Sapphire Mainnet Network Configuration](../images/wallet/metamask/settings.png)
+
+[MetaMask]: https://metamask.io/download/
+[Sapphire]: ../../dapp/sapphire/README.mdx#rpc-endpoints
+[Emerald]: ../../dapp/emerald/README.mdx#rpc-endpoints
+
+### Ledger
+
+The wallets above are just carefully programmed computer programs that store
+your keys (in an encrypted form) somewhere on your disk and then use them to
+sign the transactions. However, if your device gets infected with a piece of
+malicious software (malware, key loggers, screen captures), **the password to
+decrypt your private keys may be obtained and your private keys stolen**.
+
+To mitigate such attacks, a **hardware wallet** can be used. This is a physical
+device which stores your private key and which is only accessed when you send
+the hardware wallet a transaction to be signed. The transaction is then decoded,
+shown on the hardware wallet screen for a user to verify and if the user agrees,
+the transaction is signed and sent back to your computer or mobile device to be
+submitted. The Oasis team **integrated support for Ledger hardware wallets into all Oasis
+wallets**. Check out a [special chapter][Ledger] devoted to the Ledger wallet.
+
+[Ledger]: holding-rose-tokens/ledger-wallet.md
+
+### Custodial Services
+
+It is up to you to pick the right strategy for keeping the private key of your
+account holding your tokens safe. Some users may decide to trust their tokens to
+a **custody provider**. You can read more about those in the
+[Custody providers][custody-providers] chapter.
+
+[custody-providers]: holding-rose-tokens/custody-providers.md
+
+## Account Formats and Signature Schemes
+
+Transactions on the consensus layer must be signed using the **ed25519
+signature scheme**. The addresses on the consensus layer use the
+**[Bech-32 encoding]** and you can recognize them by a typical `oasis1` prefix.
+
+ParaTimes can implement arbitrary signature schemes and address encodings. For
+example, since the Sapphire and Emerald ParaTimes are EVM-compatible, they
+implement the **secp256k1** scheme and prefer the **hex-encoded**
+addresses and private keys starting with `0x`.
+
+The table below summarizes the current state of the address formats, signature
+schemes and compatible wallets.
+
+| Consensus or ParaTime | Address Format | Digital Signature Scheme    | Supported Wallets                                           |
+|-----------------------|----------------|-----------------------------|-------------------------------------------------------------|
+| Consensus             | `oasis1`       | ed25519                     | <ul><li>Oasis Wallet - Web</li><li>Oasis Wallet - Browser Extension</li><li>Oasis CLI</li></ul> |
+| Sapphire              | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>Oasis Wallet - Browser Extension</li><li>Oasis Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
+| Cipher                | `oasis1`       | secp256k1, ed25519, sr25519 | <ul><li>Oasis CLI</li></ul> |
+| Emerald               | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>Oasis Wallet - Browser Extension</li><li>Oasis Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
+
+[Bech-32 encoding]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32
+
+## Obtaining ROSE
+
+The most common way to obtain ROSE is by buying it on a centralized
+[cryptocurrency exchange]. At time of writing this chapter, all exchanges
+operated solely on the **consensus layer**. This means that you can only move
+the tokens in or out of the exchange using **your consensus account**.
+
+An alternative way to obtain ROSE is by swapping another cryptocurrency with
+ROSE on an on-chain exchange also known as **a [decentralized exchange] (DEX)**.
+At time of writing at least one such exchange is operating on Sapphire. In this
+case, your originating token is sent to the contract address on the source chain
+and the payout is made to **your account on Sapphire**.
+
+[cryptocurrency exchange]: https://en.wikipedia.org/wiki/Cryptocurrency_exchange
+[decentralized exchange]: https://en.wikipedia.org/wiki/Decentralized_finance#Decentralized_exchanges
+
+## Check your account
+
+To check the balance of your consensus account, you can use the
+[Oasis Scan](https://www.oasisscan.com) block explorer. Enter your `oasis1`
+address at the top and hit enter. For example:
+
+![Account details of entered oasis1 address in Oasis Scan](../images/manage-tokens/oasisscan_account_details.png)
+
+The "Amount" is a sum of three values:
+
+- the "Available" tokens that can immediately be transferred,
+- the "Escrow" tokens that are delegated,
+- the "Reclaim" tokens that are waiting for the debonding period to pass.
+
+To check the account's deposits and withdrawals navigate to "Transactions" pane
+and press "ParaTime" on the right side, next to the "Consensus" button.
+You will see all ParaTime-related transactions including deposits, withdrawals,
+transfers and even smart contract transactions.
+
+![Search result of oasis1 address - Account details](../images/manage-tokens/oasisscan_paratime_txes.png)
+
+Furthermore, you can view the transaction details, if you click on a
+transaction's "Tx Hash". Among others, you will see the transaction type, the
+"from", "to" and "amount" fields.
+
+![Tx Hash - Transaction details](../images/manage-tokens/oasisscan_paratime_tx_details.png)
+
+:::info
+
+Be aware that the [Oasis Scan Blockchain Explorer](https://www.oasisscan.com)
+is built for consensus layer. If you want to explore Sapphire (0x addresses,
+Token Transfers, Contract Calls, etc.), you have to use the
+[Sapphire Blockchain Explorer](https://explorer.oasis.io/mainnet/sapphire).
+
+:::

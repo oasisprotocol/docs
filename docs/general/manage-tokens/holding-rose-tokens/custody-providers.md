@@ -1,12 +1,25 @@
-# Custody Providers
+---
+description: Not comfortable keeping the keys on your own?
+---
 
-Another way to hold your ROSE tokens is by using a custody provider.
+# Custody Providers & Protocols
 
-We've partnered with industry-leaders who each support a number of top crypto assets.
+Another way to hold your ROSE is by involving custodial partners—either
+by giving them complete custody over your tokens
+([Custody Providers](#custody-providers)) or just require a multi-signature
+transaction to move them and then splitting some of those keys among trusted
+parties ([Decentralized Custody Protocols](#decentralized-custody-protocols)).
+We've partnered with industry-leaders who support a number of top crypto
+assets. You can pick among the custodial providers or decentralized custody
+protocols below.
+
+
+## Custody Providers
 
 :::info
 
-Below are some simple ways to get in touch, but please do reach out to them directly for more information on insurance, fees and cross-chain support.
+Below are some simple ways to get in touch, but please do reach out to them
+directly for more information on insurance, fees and cross-chain support.
 
 :::
 
@@ -33,3 +46,16 @@ Finoa is a regulated custodian for digital assets, servicing professional invest
 * **Delegation options:** Finoa offers delegation to a number of select validators including Bison Trails, Blockdaemon, Chorus One, Figment Networks, and more.
 * **Min holding:** No threshold for assets under custody. Please check out details at [finoa.io](https://www.finoa.io).
 * **Sign up:** Email [oasis@finoa.io](mailto:oasis@finoa.io) to set up an account.
+
+## Decentralized Custody Protocols
+
+### [Oasis Safe][safe.oasis.io]
+
+Unlock a new way of ownership! Oasis Safe is the most trusted **decentralized
+custody protocol** and collective asset management (*multisignature* support)
+platform running on **Oasis Sapphire**.
+
+Visit [safe.oasis.io] and login with your MetaMask or other Ethereum-compatible
+wallet.
+
+[safe.oasis.io]: https://safe.oasis.io

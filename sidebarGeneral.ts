@@ -39,22 +39,31 @@ export const sidebarGeneral: SidebarsConfig = {
         'general/manage-tokens/staking-and-delegating',
         {
           type: 'category',
-          label: 'Oasis Wallets',
+          label: 'Oasis ROSE Wallets',
           link: {
-            type: 'doc',
-            id: 'general/manage-tokens/oasis-wallets/README',
+            type: 'generated-index',
+            description: "The Oasis team developed two wallets specialized for the Oasis Network transactions. You can learn how to use them below.",
+            slug: 'general/manage-tokens/oasis-wallets',
           },
           items: [
-            'general/manage-tokens/oasis-wallets/web',
-            'general/manage-tokens/oasis-wallets/browser-extension',
+            {
+              type: 'doc',
+              label: 'Web',
+              id: 'general/manage-tokens/oasis-wallets/web'
+            },
+            {
+              type: 'doc',
+              label: 'Browser Extension',
+              id: 'general/manage-tokens/oasis-wallets/browser-extension'
+            }
           ]
         },
         {
           type: 'category',
-          label: '3rd Party Custody & Wallets',
+          label: '3rd Party Wallets and Services',
           link: {
             type: 'generated-index',
-            description: "This document provides an overview of 3rd party custody and wallet solutions supported by the Oasis Network for managing ROSE tokens.",
+            description: "There is a number of 3rd party services, tools and wallets out there which support the Oasis network. Some of them are categorized below. Keep in mind that these products were developed by 3rd parties and the Oasis Protocol Foundation cannot be held responsible for any security vulnerabilities or malicious activity.",
             slug: 'general/manage-tokens/holding-rose-tokens',
           },
           items: [
@@ -62,7 +71,6 @@ export const sidebarGeneral: SidebarsConfig = {
             'general/manage-tokens/holding-rose-tokens/ledger-wallet',
           ]
         },
-        'general/manage-tokens/how-to-transfer-rose-into-paratime',
         'general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime',
         {
           type: 'category',

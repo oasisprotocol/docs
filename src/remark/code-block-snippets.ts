@@ -56,6 +56,12 @@ export function visitor(untypedNode: mdast.Node): asserts untypedNode is mdast.C
         node.meta = `title="${imgNode.title}"`;
     }
 
+    // Highlight line numbers, if {some-range,and,some,more,lines} syntax used.
+    const lineNumber = imgNode.alt.match(/(\{.*\})/g);
+    if (lineNumber) {
+        node.meta = lineNumber[0] + (node.meta?" "+node.meta:"");
+    }
+
     // Source filename can have fragment symbol # followed by the line number(s) or region name.
     const [relSrcFilePath, fragment] = imgNode.url.split("#");
 

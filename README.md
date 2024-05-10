@@ -170,6 +170,12 @@ region name:
 To define the region in the referenced file put `#region some-region-name` and
 `#endregion some-region-name` as a comment line.
 
+Highlighting specific lines also work:
+
+```markdown
+![code go {4-6}](../../examples/somefile.go)
+```
+
 ### Backward compatibility
 
 When you move, rename or delete previously published content, make sure that

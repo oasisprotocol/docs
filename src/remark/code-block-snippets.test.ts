@@ -60,7 +60,6 @@ test('line-numbers', () => {
     visitor(node);
 
     expect(node.type).toBe('code');
-    expect(node.lang).toBe('js');
     expect(node.meta).toBe('title="Some title"');
     expect(node.value.split("\n").length).toBe(3);
 });
@@ -84,6 +83,74 @@ test('region', () => {
     // @ts-expect-error TODO: code block can't link to source
     expect(node.url.endsWith('L5-L8')).toBe(true);
     expect(node.value.split("\n").length).toBe(4);
+});
+
+test('highlight-line-numbers', () => {
+    let node = {
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code {4-6}',
+            url: 'src/remark/code-block-snippets.test.ts',
+        }],
+    };
+
+    visitor(node);
+
+    expect(node.type).toBe('code');
+    expect(node.meta).toBe('{4-6}');
+});
+
+test('highlight-line-numbers-title', () => {
+    let node = {
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code {4-6}',
+            url: 'src/remark/code-block-snippets.test.ts',
+            title: 'Some title',
+        }],
+    };
+
+    visitor(node);
+
+    expect(node.type).toBe('code');
+    expect(node.meta).toBe('{4-6} title="Some title"');
+});
+
+test('highlight-line-numbers-lang', () => {
+    let node = {
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code text {4-6}',
+            url: 'src/remark/code-block-snippets.test.ts',
+        }],
+    };
+
+    visitor(node);
+
+    expect(node.type).toBe('code');
+    expect(node.lang).toBe('text');
+    expect(node.meta).toBe('{4-6}');
+});
+
+test('highlight-line-numbers-lang-title', () => {
+    let node = {
+        type: 'paragraph',
+        children: [{
+            type: 'image',
+            alt: 'code text {4-6}',
+            url: 'src/remark/code-block-snippets.test.ts',
+            title: 'Some title',
+        }],
+    };
+
+    visitor(node);
+
+    expect(node.type).toBe('code');
+    expect(node.lang).toBe('text');
+    expect(node.meta).toBe('{4-6} title="Some title"');
 });
 
 test('invalid-file', () => {

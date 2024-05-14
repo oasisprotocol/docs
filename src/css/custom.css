@@ -18,6 +18,7 @@
   --ifm-font-family-monospace: "Roboto Mono", monospace;
   --ifm-global-radius: 0;
   --ifm-alert-border-width: 5px;
+  --docusaurus-highlighted-code-line-bg: #dddfe1;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -29,6 +30,7 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: #00ffff;
   --ifm-color-primary-lighter: #00ffff;
   --ifm-color-primary-lightest: #00ffff;
+  --docusaurus-highlighted-code-line-bg: #646464;
 }
 
 /* Custom fonts */

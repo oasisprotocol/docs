@@ -170,10 +170,11 @@ region name:
 To define the region in the referenced file put `#region some-region-name` and
 `#endregion some-region-name` as a comment line.
 
-Highlighting specific lines also work:
+Highlighting specific lines also work by passing the list of lines and/or line
+ranges as a third parameter:
 
 ```markdown
-![code go {4-6}](../../examples/somefile.go)
+![code go {5-8,13,21}](../../examples/somefile.go)
 ```
 
 ### Backward compatibility

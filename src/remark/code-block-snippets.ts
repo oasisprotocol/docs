@@ -56,10 +56,10 @@ export function visitor(untypedNode: mdast.Node): asserts untypedNode is mdast.C
         node.meta = `title="${imgNode.title}"`;
     }
 
-    // Highlight line numbers, if {some-range,and,some,more,lines} syntax used.
-    const lineNumber = imgNode.alt.match(/(\{.*\})/g);
+    // Highlight line numbers, if the third argument is passed. The curly brackets are already stripped. e.g. some-range,and,some,more,lines
+    const lineNumber = imgNode.alt.split(" ")[2];
     if (lineNumber) {
-        node.meta = lineNumber[0] + (node.meta?" "+node.meta:"");
+        node.meta = `{${lineNumber}}${node.meta?" "+node.meta:""}`;
     }
 
     // Source filename can have fragment symbol # followed by the line number(s) or region name.

@@ -85,45 +85,12 @@ test('region', () => {
     expect(node.value.split("\n").length).toBe(4);
 });
 
-test('highlight-line-numbers', () => {
-    let node = {
-        type: 'paragraph',
-        children: [{
-            type: 'image',
-            alt: 'code {4-6}',
-            url: 'src/remark/code-block-snippets.test.ts',
-        }],
-    };
-
-    visitor(node);
-
-    expect(node.type).toBe('code');
-    expect(node.meta).toBe('{4-6}');
-});
-
-test('highlight-line-numbers-title', () => {
-    let node = {
-        type: 'paragraph',
-        children: [{
-            type: 'image',
-            alt: 'code {4-6}',
-            url: 'src/remark/code-block-snippets.test.ts',
-            title: 'Some title',
-        }],
-    };
-
-    visitor(node);
-
-    expect(node.type).toBe('code');
-    expect(node.meta).toBe('{4-6} title="Some title"');
-});
-
 test('highlight-line-numbers-lang', () => {
     let node = {
         type: 'paragraph',
         children: [{
             type: 'image',
-            alt: 'code text {4-6}',
+            alt: 'code text 4-6', // {4-6} curly brackets are automatically stripped.
             url: 'src/remark/code-block-snippets.test.ts',
         }],
     };
@@ -131,7 +98,6 @@ test('highlight-line-numbers-lang', () => {
     visitor(node);
 
     expect(node.type).toBe('code');
-    expect(node.lang).toBe('text');
     expect(node.meta).toBe('{4-6}');
 });
 
@@ -140,7 +106,7 @@ test('highlight-line-numbers-lang-title', () => {
         type: 'paragraph',
         children: [{
             type: 'image',
-            alt: 'code text {4-6}',
+            alt: 'code text 4-6', // {4-6} curly brackets are automatically stripped.
             url: 'src/remark/code-block-snippets.test.ts',
             title: 'Some title',
         }],

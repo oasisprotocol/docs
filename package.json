@@ -20,10 +20,10 @@
     "fmt-markdown": "markdownlint-cli2-fix 'docs/**/*.md' 'docs/**/*.mdx'"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.2.1",
-    "@docusaurus/plugin-client-redirects": "^3.2.1",
-    "@docusaurus/preset-classic": "^3.2.1",
-    "@docusaurus/remark-plugin-npm2yarn": "^3.2.1",
+    "@docusaurus/core": "3.3.2",
+    "@docusaurus/plugin-client-redirects": "3.3.2",
+    "@docusaurus/preset-classic": "3.3.2",
+    "@docusaurus/remark-plugin-npm2yarn": "3.3.2",
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@mdx-js/react": "^3.0.0",
     "@mermaid-js/mermaid-cli": "^10.6.1",

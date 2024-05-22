@@ -59,7 +59,7 @@ Add the following task to your playbook:
 
 ```yml
 - name: Create oasis user
-  user:
+  ansible.builtin.user:
     name: oasis
     comment: Oasis Services user
     system: yes

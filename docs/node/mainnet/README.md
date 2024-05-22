@@ -19,6 +19,8 @@ authenticity, follow the [PGP verification instructions].
 * Oasis seed node addresses:
   * `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:26656`
   * `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:9200`
+  * `90em3ItdQkFy15GtWqCKHi5j7uEUmZPZIzBt7I5d6w4=@146.148.13.130:26656`
+  * `90em3ItdQkFy15GtWqCKHi5j7uEUmZPZIzBt7I5d6w4=@146.148.13.130:9200`
 
 :::tip
 

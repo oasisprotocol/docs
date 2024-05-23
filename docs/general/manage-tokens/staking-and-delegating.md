@@ -52,8 +52,8 @@ the network security**.
 Once you decided which validator you want to delegate to, consult the following
 sections based on your wallet for a step-by-step walkthrough:
 
-* [Oasis Wallet - Web](oasis-wallets/web.mdx#stake)
-* [Oasis Wallet - Browser Extension](oasis-wallets/browser-extension.mdx#stake)
+* [ROSE Wallet - Web](oasis-wallets/web.mdx#stake)
+* [ROSE Wallet - Browser Extension](oasis-wallets/browser-extension.mdx#stake)
 * [Oasis CLI](cli/account.md#delegate)
 
 :::danger Staking your ROSE is a different transaction than sending them!

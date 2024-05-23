@@ -5,24 +5,24 @@ description: The Oasis Foundation-managed non-custodial browser extension wallet
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Oasis ROSE Wallet - Browser Extension
+# ROSE Wallet - Browser Extension
 
 ## Installation
 
 :::info
 
-Currently, [Oasis Wallet - Browser Extension](https://github.com/oasisprotocol/oasis-wallet-ext)
+Currently, the [ROSE Wallet - Browser Extension](https://github.com/oasisprotocol/oasis-wallet-ext)
 **only supports** [**Chrome**](https://www.google.com/chrome/) or other
 [Chromium](https://www.chromium.org/Home)-based browsers.
 
 :::
 
-You can install the Oasis Wallet - Browser Extension by heading to the
+You can install the ROSE Wallet - Browser Extension by heading to the
 [Chrome Web Store](https://chrome.google.com/webstore/detail/oasis-wallet/ppdadbejkmjnefldpcdjhnkpbjkikoip).
 
-![Oasis Wallet Extension - chrome web store](../../images/wallet/ext/chrome_web_store.png)
+![ROSE Wallet Extension - chrome web store](../../images/wallet/ext/chrome_web_store.png)
 
-Next, either [create a new Oasis wallet](#create-a-new-account) or
+Next, either [create a new wallet](#create-a-new-account) or
 [restore your existing one](#import-an-existing-account).
 
 
@@ -77,7 +77,7 @@ Click "Import" and select the:
 
 We assume that you already have your public/private keypair. If you don’t have
 one yet, please go and create one. Store your Private Key, because you will
-need it in the Oasis Wallet Browser Extension.
+need it in the ROSE Wallet - Browser Extension.
 
 :::
 
@@ -107,7 +107,7 @@ that it matches the address shown to you when you generated the keypair.
 
 :::danger
 
-In older versions of the Oasis Wallet Browser Extension there was also another
+In older versions of the ROSE Wallet - Browser Extension there was also another
 Bech32-encoded version of the Ethereum address shown in the Ethereum-compatible
 wallet. This address is used in the backend for setting the allowance policy
 on the Oasis Network. **If you can see it, you should immediately update
@@ -129,7 +129,7 @@ not be accessible anymore!**
 2. Open the Oasis Chrome Extension Wallet and click the account icon on the top
    right. Select Ledger on the bottom right of the app.
 
-![Unlock your Oasis Wallet Extension](../../images/wallet/ext/ledger1.png)
+![Unlock your ROSE Wallet Browser Extension](../../images/wallet/ext/ledger1.png)
 
 
 4. Follow user onboarding flow clicking "Next" as you move forward with set up.
@@ -190,8 +190,8 @@ ParaTimes.
 :::tip
 
 At time of writing, depositing and withdrawing ROSE to and from ParaTimes
-works for Oasis wallets **imported from the private key or the mnemonic only**.
-If you want to use the Ledger wallet, please use the [Oasis CLI].
+works only for the accounts **imported from the private key or the mnemonic**.
+If you want to use a hardware wallet, please use the [Oasis CLI].
 
 :::
 
@@ -215,10 +215,10 @@ account history.
 
     </TabItem>
     <TabItem value="Withdraw">
-You can withdraw your ROSE from the ParaTime back to your Oasis wallet by first
+You can withdraw your ROSE from the ParaTime back to your consensus account by first
 selecting your ParaTime account in the *Account Management* screen. Next, switch to
 ParaTimes tab and click on the "To Consensus" button near the ParaTime entry.
-Fill in the "Amount" and your Bech32-encoded Oasis wallet address and confirm
+Fill in the "Amount" and your Bech32-encoded consensus layer address and confirm
 the withdrawal. In a few moments you will have your ROSE accessible on the
 consensus layer.
 
@@ -226,7 +226,7 @@ consensus layer.
 
 If you want to transfer ROSE to an exchange and you currently have them
 deposited on Sapphire, **we strongly recommend that you withdraw ROSE
-to your Oasis wallet first and then perform a regular token transfer to your
+to your ROSE Wallet first and then perform a regular token transfer to your
 Oasis address on the exchange!** The ParaTime's withdrawal procedure involves a
 number of steps as described in the introduction and some exchanges may not
 recognize this transaction as a valid transaction for funding your account on
@@ -238,9 +238,9 @@ the exchange.
 
 Advanced users (e.g. those running ParaTime [compute nodes]) may need to
 withdraw ROSE from ParaTimes stored in their `oasis1` accounts, for example to
-claim their ParaTime execution rewards. Oasis Wallet Browser Extension does not
-support such withdrawals. Use the [`oasis account withdraw`] command which is
-part of the [Oasis CLI] instead, for example:
+claim their ParaTime execution rewards. The ROSE Wallet - Browser Extension does
+not support such withdrawals. Use the [`oasis account withdraw`] command which
+is part of the [Oasis CLI] instead, for example:
 
 ![code shell](../../../../external/cli/examples/account/withdraw.y.in)
 

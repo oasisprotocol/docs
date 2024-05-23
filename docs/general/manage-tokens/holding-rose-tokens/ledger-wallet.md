@@ -8,7 +8,7 @@ This is a general documentation that will help users setup the [Ledger] hadware
 wallet on the Oasis Network. Ledger Live doesn't support Oasis (ROSE)
 tokens natively yet. In this guide we will install Oasis app via Ledger Live to
 open and access wallet with one or multiple accounts via our official
-[Oasis Wallet - Web][wallet.oasis.io].
+[ROSE Wallet - Web][wallet.oasis.io].
 
 ## Setup your Ledger device and Install Oasis App
 
@@ -58,7 +58,7 @@ initialized your Ledger device!**
 
 :::tip
 
-For security, the Oasis wallets use a **different mnemonic to private key
+For security, the ROSE Wallet uses a **different mnemonic to private key
 derivation path** by default for your Ledger accounts (known as *Ledger* or
 *ed25519-legacy*) and for the accounts stored on a disk or inside a browser
 (also known as [ADR-8]). If you find yourself in a situation where your Ledger
@@ -71,23 +71,23 @@ you urgently need to access your funds, use the *[Oasis unmnemonic tool][unmnemo
 
 [ADR-8]: ../../../adrs/0008-standard-account-key-generation.md
 [unmnemonic-tool]: https://github.com/oasisprotocol/tools/tree/main/unmnemonic
-[unmnemonic-tool-faq]: ../faq.mdx#i-lost-my-ledger-or-my-ledger-is-broken-i-urgently-need-to-access-my-assets-can-i-import-ledger-mnemonic-into-oasis-wallet
+[unmnemonic-tool-faq]: ../faq.mdx#i-lost-my-ledger-or-my-ledger-is-broken-i-urgently-need-to-access-my-assets-can-i-import-ledger-mnemonic-into-rose-wallet
 
 ## Connect to your wallet
 
-### Oasis Wallets
+### ROSE Wallet
 
 This is a simpler option since it offers a nice UI for connecting your Ledger to
 a web application or a browser extension. Check out the following sections
 corresponding to your wallet for instructions:
 
-- [Oasis wallet - Web: Import Ledger account](../oasis-wallets/web.mdx#import-an-existing-account)
-- [Oasis wallet - Browser extension: Ledger](../oasis-wallets/browser-extension.mdx#ledger)
+- [ROSE Wallet - Web: Import Ledger account](../oasis-wallets/web.mdx#import-an-existing-account)
+- [ROSE Wallet - Browser extension: Ledger](../oasis-wallets/browser-extension.mdx#ledger)
 
 :::note
 
 At time of writing, signing the ParaTime transactions is not yet supported by
-the Oasis Wallet - Web or the Browser extension.
+the ROSE Wallet - Web or the Browser extension.
 
 :::
 
@@ -114,7 +114,7 @@ where you will need to **carefully review transaction details and make sure they
 match the ones on your computer**. Then, navigate to the screen where you will
 see the "APPROVE" button. Use the two buttons to approve your transaction.
 
-![Oasis Wallet - Web -> Ledger -> Approve TX](../../images/wallet/ledger/ledger_oasis_approve.jpg)
+![ROSE Wallet - Web -> Ledger -> Approve TX](../../images/wallet/ledger/ledger_oasis_approve.jpg)
 
 The signed transaction will be sent back to your computer and submitted to the
 network.
@@ -132,6 +132,5 @@ network.
 [Nano S]: https://support.ledger.com/hc/en-us/articles/360002731113-Update-Ledger-Nano-S-firmware
 [Nano S Plus]: https://support.ledger.com/hc/en-us/articles/4445777839901-Update-Ledger-Nano-S-Plus-firmware
 [BIP 39]: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
-[Oasis Wallets]: ../oasis-wallets
 [Oasis CLI]: ../cli/README.md
 [`oasis wallet create`]: ../cli/wallet.md#create

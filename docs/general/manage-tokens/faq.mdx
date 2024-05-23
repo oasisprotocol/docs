@@ -3,16 +3,16 @@ import TabItem from '@theme/TabItem';
 
 # Frequently Asked Questions
 
-This documents answers frequently asked questions about Oasis Wallets and 3rd
-party wallets & custody providers supporting ROSE tokens.
+This documents answers frequently asked questions about the official Oasis and
+3rd party wallets & custody providers supporting ROSE.
 
-### How can I transfer ROSE tokens from my BitPie wallet to my Oasis Wallet?
+### How can I transfer ROSE tokens from my BitPie wallet to my ROSE Wallet?
 
 :::caution
 
 BitPie wallet doesn't use the [standardized Oasis mnemonic derivation (ADR-8)][ADR-8].
 Consequently, your **Bitpie wallet's mnemonic phrase will not open the same
-account in the Oasis Wallet**.
+account in the ROSE Wallet**.
 
 :::
 
@@ -25,12 +25,12 @@ one of the two ways:
 - [Convert BitPie mnemonic to Oasis private key offline](#how-can-i-export-oasis-private-key-if-bitpie-doesnt-show-my-rose-account-anymore)
 
 Once you obtained the private key, you can
-[import it to the Oasis wallet][oasis-wallet-import-private-key] and access
+[import it to the ROSE Wallet][rose-wallet-import-private-key] and access
 your assets.
 
 [bitpie-announcement]: https://medium.com/bitpie/announcement-on-suspension-of-support-for-algo-and-rose-fc35cb322617
 [ADR-8]: ../../adrs/0008-standard-account-key-generation.md
-[oasis-wallet-import-private-key]: ../../general/manage-tokens/oasis-wallets/web.mdx#import-an-existing-account
+[rose-wallet-import-private-key]: ../../general/manage-tokens/oasis-wallets/web.mdx#import-an-existing-account
 
 ### How can I export Oasis private key from a working BitPie wallet?
 
@@ -61,7 +61,7 @@ Finally, your account's private key will be shown to you encoded in Base64
 format (e.g.
 `YgwGOfrHG1TVWSZBs8WM4w0BUjLmsbk7Gqgd7IGeHfSqdbeQokEhFEJxtc3kVQ4KqkdZTuD0bY7LOlhdEKevaQ==`)
 which you can
-[import into Oasis Wallet][oasis-wallet-import-private-key].
+[import into ROSE Wallet][rose-wallet-import-private-key].
 
 ### How can I export Oasis private key, if BitPie doesn't show my ROSE account anymore?
 
@@ -144,7 +144,7 @@ can either:
 
 - Open it with a text editor, copy the Base64-encoded key between the
 `-----BEGIN ED25519 PRIVATE KEY-----` and `-----END ED25519 PRIVATE KEY-----`,
-and [paste it into the Oasis wallet][oasis-wallet-import-private-key], or
+and [paste it into the ROSE Wallet][rose-wallet-import-private-key], or
 - if you use the [Oasis CLI] simply execute the [`oasis wallet import-file`]
   command to add the exported account to your CLI wallet, for example:
 
@@ -179,30 +179,30 @@ official [Chormium beta PPA] or the official [Google Chrome .deb package].
 [Chormium beta PPA]: https://launchpad.net/\~saiarcot895/+archive/ubuntu/chromium-beta
 [Google Chrome .deb package]: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-### Are Ethereum and Oasis wallets that different? I can use the same mnemonics with both, right?
+### Are Ethereum and ROSE Wallet that different? I can use the same mnemonics with both, right?
 
-Yes, both Oasis and Ethereum wallets make use of the mnemonics as defined in [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) and they even use the same wordlist to derive the keypairs for your wallet. However, they use a different **signature scheme and a derivation path**, so the addresses and the private keys are incompatible.
+Yes, both ROSE and Ethereum wallets make use of the mnemonics as defined in [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) and they even use the same wordlist to derive the keypairs for your wallet. However, they use a different **signature scheme and a derivation path**, so the addresses and the private keys are incompatible.
 
 Here's a task for you:
 
 1. Visit [https://iancoleman.io/bip39/](https://iancoleman.io/bip39/) to generate a BIP39 mnemonic.
 2. Select ETH token and copy the hex-encoded private key of the first derived account, for example `0xab2c4f3bc70d40f12f6030750fe452448b5464114cbfc46704edeef2cd06da74`.
-3. Import the Ethereum-compatible account with the private key obtained above to your Oasis Wallet Browser Extension.
+3. Import the Ethereum-compatible account with the private key obtained above to your ROSE Wallet.
 4. Notice the Ethereum address of the account, for example `0x58c72Eb040Dd0DF10882aA87a39851c21Ae5F331`.
 5. Now in the Account management screen, select this account and click on the "Export private key" button. Confirm the risk warning.
 6. You will notice the private key of the Ethereum-compatible account, the hex-encoded address and the very same address encoded in the Oasis Bech32 format, in our case `oasis1qpaj6hznytpvyvalmsdg8vw5fzlpftpw7g7ku0h0`.
-7. Now let's use the private key from step 2 to import the Oasis wallet with. First, convert the hex-encoded key to base64 format, for example by using [this service](https://base64.guru/converter/encode/hex). In our example, that would be `qyxPO8cNQPEvYDB1D+RSRItUZBFMv8RnBO3u8s0G2nQ=`.
-8. Next, import this base64-encoded private key to the Oasis Wallet Browser Extension.
+7. Now let's use the private key from step 2 to import the account. First, convert the hex-encoded key to base64 format, for example by using [this service](https://base64.guru/converter/encode/hex). In our example, that would be `qyxPO8cNQPEvYDB1D+RSRItUZBFMv8RnBO3u8s0G2nQ=`.
+8. Next, import this base64-encoded private key to the ROSE Wallet Browser Extension.
 9. You should see your newly imported account and the Oasis address. In our case `oasis1qzaf9zd8rlmchywmkkqmy00wrczstugfxu9q09ng`.
-10. Observe that this account address is different than the Bech32-encoded version of the Ethereum-compatible address despite using the same private key to import the wallet with, because of a different _signature scheme_.
+10. Observe that this account address **is different** than the Bech32-encoded version of the Ethereum-compatible address despite using the same private key to import the wallet with, because of a different _signature scheme_.
 
-As an additional exercise, you can also create an Oasis wallet using the BIP39 mnemonic from the step 1 above. You will notice that the imported account's base64-encoded private key in the account details screen is different from the one in step 7 above. That's because Oasis uses a different _derivation path_ than Ethereum.
+As an additional exercise, you can also create an Oasis account using the BIP39 mnemonic from the step 1 above. You will notice that the imported account's base64-encoded private key in the account details screen is different from the one in step 7 above. That's because Oasis uses a different _derivation path_ than Ethereum.
 
 ### Which derivation path should I use on Ledger? ADR-8 or Legacy? {#ledger-derivation-paths}
 
 To convert your mnemonic phrase into a private key for signing trasactions,
 each wallet (hardware or software) performs a *key derivation*. The Oasis
-Protocol Foundation standardized the key derivation for official Oasis wallets
+Protocol Foundation standardized the key derivation for the official ROSE Wallet
 in a document called [ADR-8] back in January 2021. However, the Ledger
 hardware wallet already supported signing transactions at that time using a
 custom (we now call it *legacy*) derivation path which is incompatible with
@@ -217,13 +217,13 @@ compared to the legacy one:
   key derivation (and transaction signing) without compromising security.
 - In case your Ledger device is broken or lost and you are unable to retrieve
   a new one, you will be able to import your Ledger mnemonic and restore your
-  private key in any Oasis wallet which implements ADR-8.
+  private key in a ROSE Wallet which implements ADR-8.
 
 For reasons above, we recommend the usage of ADR-8. However, since there are
-no security considerations at stake, Oasis wallets will support legacy
+no security considerations at stake, the ROSE Wallet will support legacy
 derivation on Ledger for the foreseeable future.
 
-### I lost my Ledger or my Ledger is broken. I urgently need to access my assets. Can I import Ledger mnemonic into Oasis wallet?
+### I lost my Ledger or my Ledger is broken. I urgently need to access my assets. Can I import Ledger mnemonic into ROSE Wallet?
 
 <!-- NOTE: This answer is similar to the BitPie answer above. Keep them in sync. -->
 
@@ -244,7 +244,7 @@ If you used your Ledger with the [Oasis CLI] and the [ADR-8] derivation path,
 you can import the mnemonic directly into the CLI wallet by invoking
 [`oasis wallet import`] and selecting the `ed25519-adr8` algorithm.
 
-If you used your Ledger with the Oasis Wallet Web, the browser extension, the
+If you used your Ledger with the ROSE Wallet Web, the browser extension, the
 Oasis CLI with the `ed25519-legacy` derivation path or the Oasis Core, then you
 will need to use the [Oasis unmnemonic tool] (64-bit binaries available for
 [Linux][unmnemonic-linux], [MacOS][unmnemonic-macos] and
@@ -340,7 +340,7 @@ can either:
 
 - Open it with a text editor, copy the Base64-encoded key between the
   `-----BEGIN ED25519 PRIVATE KEY-----` and `-----END ED25519 PRIVATE KEY-----`,
-  and [paste it into the Oasis wallet][oasis-wallet-import-private-key], or
+  and [paste it into the ROSE Wallet][rose-wallet-import-private-key], or
 - if you use the [Oasis CLI] simply execute the [`oasis wallet import-file`]
   command to add the exported account to your CLI wallet, for example:
 
@@ -352,7 +352,7 @@ can either:
 
 Please check that:
 
-* All mnemonics were spelled correctly. Oasis Wallets use English mnemonic phrase words as defined in BIP39. You can find a complete list of valid phrase words [here](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt).
+* All mnemonics were spelled correctly. The ROSE Wallet uses English mnemonic phrase words as defined in BIP39. You can find a complete list of valid phrase words [here](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt).
 * The mnemonics were input in correct order.
 * All mnemonics were provided. The keyphrase should be either 12, 15, 18, 21, or 24 words long.
 
@@ -368,8 +368,8 @@ selected. These are completely separated networks and although the wallet
 address can be the same, the transactions and consequently the balances may
 differ. Finally, there might be a temporary problem with the
 [Oasis Monitor service](https://oasisscan.com) itself which observes the network
-and indexes transactions. Oasis Wallets rely on that service and once it is back
-up and running, you should be able to see the correct balance.
+and indexes transactions. The ROSE Wallet relies on that service and once it is
+back up and running, you should be able to see the correct balance.
 
 If your wallet address is different than the one you used to transfer your funds
 to, then you used one of the wallets that don't implement the [standardized key

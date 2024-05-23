@@ -245,6 +245,8 @@ and their usage including the articles:
   The ParaTime layer supports up to a thousand runtimes running in parallel.
 - ROSE
   Please send 10.00000000 ROSE to the address above.
+- ROSE Wallet
+  Since this is not supported by MetaMask, please use the ROSE Wallet instead.
 - runtime
 - Sapphire
 - secp256k1

@@ -39,7 +39,7 @@ export const sidebarGeneral: SidebarsConfig = {
         'general/manage-tokens/staking-and-delegating',
         {
           type: 'category',
-          label: 'Oasis ROSE Wallets',
+          label: 'ROSE Wallet',
           link: {
             type: 'generated-index',
             description: "The Oasis team developed two wallets specialized for the Oasis Network transactions. You can learn how to use them below.",

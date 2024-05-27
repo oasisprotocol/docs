@@ -113,7 +113,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime bundle version:
-  * [0.4.1-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.4.1-testnet)
+  * [0.5.0-testnet](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.5.0-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
   * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`

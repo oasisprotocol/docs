@@ -43,7 +43,7 @@ Feel free to use other seed nodes besides the one provided here.
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
   * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
-  * [2.6.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0)
+  * [2.7.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.7.0)
 
 :::info
 

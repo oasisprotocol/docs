@@ -61,7 +61,7 @@ You can connect to one of the public Web3 gateways below (in alphabetic order):
 
 | Provider                    | Mainnet RPC URLs                                                        | Testnet RPC URLs                                                                           | Supports Confidential Queries |
 |-----------------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|-------------------------------|
-| [1RPC]                      | <S rpcs={['https://1rpc.io/oasis/sapphire']} />                         | N/A                                                                                        | Yes                           |
+| [1RPC]                      | <S rpcs={['https://1rpc.io/oasis/sapphire']} />                         | *N/A*                                                                                      | Yes                           |
 | [Oasis Protocol Foundation] | <S rpcs={['https://sapphire.oasis.io','wss://sapphire.oasis.io/ws']} /> | <ST rpcs={['https://testnet.sapphire.oasis.io','wss://testnet.sapphire.oasis.io/ws']} /> | Yes                           |
 
 [Oasis Protocol Foundation]: https://oasisprotocol.org
@@ -84,14 +84,39 @@ dedicated RPC endpoints, consider the following providers (in alphabetic order):
 
 ## Block Explorers
 
-| Provider                    | Mainnet URL                                | Testnet URL                                | EIP-3091 compatible |
-|-----------------------------|--------------------------------------------|--------------------------------------------|---------------------|
-| [Oasis Protocol Foundation] | https://explorer.oasis.io/mainnet/sapphire | https://explorer.oasis.io/testnet/sapphire | Yes                 |
+| Name (Provider)                               | Mainnet URL                                | Testnet URL                                | EIP-3091 compatible |
+|-----------------------------------------------|--------------------------------------------|--------------------------------------------|---------------------|
+| Oasis Explorer ([Oasis Protocol Foundation])  | https://explorer.oasis.io/mainnet/sapphire | https://explorer.oasis.io/testnet/sapphire | Yes                 |
+| Oasis Scan ([Bit Cat])                        | [https://www.oasisscan.com/paratimes/000…279](https://www.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000f80306c9858e7279) | [https://testnet.oasisscan.com/paratimes/000…f6c](https://testnet.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c) | No |
 
-:::tip
+[Bit Cat]: https://www.bitcat365.com/
 
-If you are running your own Sapphire endpoint or a block explorer, and you wish
-to be added to the public list above, open an issue at
+## Indexers
+
+| Name (Provider)      | Mainnet URL                                                    | Testnet URL                                            | Documentation                              |
+|--------------------|------------------------------------------------------------------|--------------------------------------------------------|--------------------------------------------|
+| [Covalent]                   | `https://api.covalenthq.com/v1/oasis-sapphire-mainnet` | `https://api.covalenthq.com/v1/oasis-sapphire-testnet` | [Unified API docs][Covalent-docs]          |
+| [Goldsky Subgraph][Goldsky]  | *N/A*                                                  | *N/A*                                                  | [Documentation site][Goldsky-docs]         |
+| Oasis Nexus ([Oasis Protocol Foundation]) | `https://nexus.oasis.io/v1/`              | `https://testnet.nexus.oasis.io/v1/`                   | [API][Nexus-docs]                          |
+| Oasis Scan ([Bit Cat])       | `https://api.oasisscan.com/mainnet/v2`                 | `https://api.oasisscan.com/testnet/v2`                 | [Mainnet Runtime API][OasisScan-Mainnet-docs], [Testnet Runtime API][OasisScan-Testnet-docs] |
+| [SubQuery Network][SubQuery] | *N/A*                                                  | *N/A*                                                  | [SubQuery Academy][SubQuery-docs], [QuickStart][SubQuery-quickstart], [Starter project][SubQuery-starter] |
+
+[Covalent]: https://www.covalenthq.com/
+[Covalent-docs]: https://www.covalenthq.com/docs/unified-api/
+[Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
+[Goldsky]: https://goldsky.com
+[Goldsky-docs]: https://docs.goldsky.com
+[OasisScan-Testnet-docs]: https://api.oasisscan.com/testnet/swagger-ui/#/runtime-controller
+[OasisScan-Mainnet-docs]: https://api.oasisscan.com/mainnet/swagger-ui/#/runtime-controller
+[SubQuery]: https://subquery.network
+[SubQuery-docs]: https://academy.subquery.network/
+[SubQuery-quickstart]: https://academy.subquery.network/quickstart/quickstart.html
+[SubQuery-starter]: https://github.com/subquery/ethereum-subql-starter/tree/main/Oasis/oasis-sapphire-starter
+
+:::note
+
+If you are running your own Sapphire endpoint, a block explorer, or an indexer
+and wish to be added to these docs, open an issue at
 [github.com/oasisprotocol/docs].
 
 :::

@@ -70,12 +70,23 @@ Public gRPC endpoints (in alphabetic order):
 
 ## Consensus Layer Block Explorers
 
-| Provider                    | Mainnet URL               | Testnet URL                   |
-|-----------------------------|---------------------------|-------------------------------|
-| [Bit Cat]                   | https://www.oasisscan.com | https://testnet.oasisscan.com |
-| [Oasis Protocol Foundation] | *Coming soon*             | *Coming soon*                 |
+| Name (Provider)                              | Mainnet URL               | Testnet URL                   |
+|----------------------------------------------|---------------------------|-------------------------------|
+| Oasis Scan ([Bit Cat])                       | https://www.oasisscan.com | https://testnet.oasisscan.com |
+| Oasis Explorer ([Oasis Protocol Foundation]) | *Coming soon*             | *Coming soon*                 |
 
 [Bit Cat]: https://www.bitcat365.com/
+
+## Consensus Layer Indexers
+
+| Name (Provider)                           | Mainnet URL                            | Testnet URL                            | Documentation                              |
+|-------------------------------------------|----------------------------------------|----------------------------------------|--------------------------------------------|
+| Oasis Scan ([Bit Cat])                    | `https://api.oasisscan.com/mainnet/v2` | `https://api.oasisscan.com/testnet/v2` | [Mainnet API][OasisScan-Mainnet-docs], [Testnet API][OasisScan-Testnet-docs] |
+| Oasis Nexus ([Oasis Protocol Foundation]) | `https://nexus.oasis.io/v1`            | `https://testnet.nexus.oasis.io/v1`    | [API][Nexus-docs]                          |
+
+[Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
+[OasisScan-Testnet-docs]: https://api.oasisscan.com/testnet/swagger-ui/
+[OasisScan-Mainnet-docs]: https://api.oasisscan.com/mainnet/swagger-ui/
 
 ## Rosetta Endpoints
 
@@ -83,12 +94,11 @@ Public gRPC endpoints (in alphabetic order):
 |-----------------------------|-------------------------------------------|-------------------------------------------|
 | [Oasis Protocol Foundation] | `https://rosetta.oasis.io/api/mainnet/v1` | `https://rosetta.oasis.io/api/testnet/v1` |
 
+:::note
 
-:::tip
-
-If you are running your own Oasis client node endpoint, a block explorer or the
-Rosetta gateway and you wish to be added to the public list above, open an issue
-at [github.com/oasisprotocol/docs].
+If you are running your own Oasis client node endpoint, a block explorer, an
+indexer, or the Rosetta gateway and wish to be added to these docs, open an
+issue at [github.com/oasisprotocol/docs].
 
 :::
 

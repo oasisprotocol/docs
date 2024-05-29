@@ -11,3 +11,11 @@ updates:
       prefix: "submodules:"
     labels:
       - c:deps
+
+  # Manage Github Actions versions.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: "ci:"

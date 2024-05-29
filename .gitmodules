@@ -1,7 +1,7 @@
 [submodule "external/oasis-core"]
 	path = external/oasis-core
 	url = https://github.com/oasisprotocol/oasis-core
-	branch = stable/23.0.x
+	branch = stable/24.0.x
 [submodule "external/oasis-sdk"]
 	path = external/oasis-sdk
 	url = https://github.com/oasisprotocol/oasis-sdk

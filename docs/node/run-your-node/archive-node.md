@@ -12,28 +12,115 @@ historic state which is pruned in dump-restore network upgrades.
 
 ## Prerequisites
 
-Archive node requires a pre-existing oasis-node state.
+Running an archive node requires a pre-existing `oasis-node` state. If you don't have one,
+you can download a snapshot of a specific network state [here][snapshots].
 
-## Configuration
+[snapshots]: https://snapshots.oasis.io
 
-Archive mode can be enabled by using the `mode` setting.
+## Configuration (Oasis Core 23 and later)
+
+Starting from the Oasis Core version 23, the configuration for enabling archive mode has changed.
+Use the `mode` setting:
 
 :::info
 
-This will configure the given node to act as an archive node.
+This setting configures the node to act as an archive node.
 
 :::
 
 ```yaml
-# other settings omitted ...
 mode: archive
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: info
+            cometbft/context: error
+            default: info
+genesis:
+    file: /node/etc/genesis.json
+runtime:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    paths:
+        - {{ runtime_orc_path }}
 ```
 
 :::info
 
-Keep other settings unchanged from the full-node. For example in order to
-serve archived runtime state, the node needs to have the runtime configured
-and have the state present.
+Keep all other settings the same as those for a full client node. For example, to serve archived runtime
+state, the node needs to have the runtime configured and the state present.
+
+:::
+
+## Configuration (Oasis Core 22 and earlier)
+
+For all pre-Eden networks, such as Damask, the configuration remains the same but requires the
+appropriate version of `oasis-node` and the node state.
+
+#### Damask
+
+To run an archive node for Damask, use [Oasis Core v22.2.12] and the following
+configuration:
+
+```yaml
+datadir: /node/data
+
+log:
+  level:
+    default: info
+    tendermint: info
+    tendermint/context: error
+  format: JSON
+
+genesis:
+  file: /node/etc/genesis.json
+
+consensus:
+  tendermint:
+    mode: archive
+
+runtime:
+  mode: client
+  paths:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    - "{{ runtime_orc_path }}"
+```
+
+#### Cobalt
+
+To run an archive node for Cobalt, use [Oasis Core v21.3.14] and the following configuration:
+
+```yaml
+log:
+  level:
+    default: info
+    tendermint: info
+    tendermint/context: error
+  format: JSON
+
+genesis:
+  file: /node/etc/genesis.json
+
+consensus:
+  tendermint:
+    mode: archive
+
+runtime:
+  supported:
+    - "{{ runtime_id }}"
+
+  paths:
+    "{{ runtime_id }}": {{ paratime_binary_path }}
+
+worker:
+  storage:
+    enabled: true
+```
+
+:::warn
+
+Ensure you are using the correct version of oasis-node and the pre-existing state for your specific pre-Eden network.
 
 :::
 
@@ -73,3 +160,6 @@ Output should report `archive` consensus mode status:
 ## See also
 
 [Archive Web3 Gateway](../web3.mdx#archive-web3-gateway)
+
+[Oasis Core v22.2.12]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.12
+[Oasis Core v21.3.14]: https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.14

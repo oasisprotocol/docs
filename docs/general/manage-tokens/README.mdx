@@ -4,32 +4,54 @@ description: Transfer, deposit, withdraw and delegate your ROSE
 
 # Manage your Tokens
 
-The **native token** on Oasis Mainnet is called **ROSE**. The native token plays
-a crucial security role in the proof-of-stake block validation protocol and in
-participating on governance proposal votes. Staking rewards are paid out in the
-native token and smart contract users pay gas fees with ROSE.
+The **native token** on Oasis Mainnet is called **ROSE**. Native tokens are used
+for:
+
+- proof-of-stake **block proposal and validation**,
+- **governance proposal voting**,
+- paying out **staking rewards**,
+- paying **network gas fees**,
+- dApp-specific use cases.
 
 ## ROSE and the ParaTimes
 
 The [Oasis Network architecture] separates between the **consensus** and the
-**compute** layer. The consensus layer and each ParaTime running on the compute
-layer have their own **ledger** containing, among other data, the **balances of
-the accounts**.
-
-You can only use your ROSE token **one place at a time**—either on the consensus
-layer or inside an individual ParaTime. Moving tokens from the consensus layer
-to a ParaTime is a **deposit** and moving them from a ParaTime back to
-the consensus layer is a **withdrawal** (see [ADR-3] for technical
-specifications). You can **transfer** tokens from your account to another
-account only, if both accounts are either on the consensus layer or inside the
-same ParaTime. Besides moving the tokens across layers and accounts, you can also
-**[delegate tokens]** to a validator and **earn passive income** as a reward.
+**compute** (a.k.a. ParaTime) layer. The consensus layer and each ParaTime
+running on the compute layer have their own **ledger** containing, among othe
+data, the **balances of the accounts**.
 
 ![Deposits, withdrawals, transfers](../images/manage-tokens/transfer_deposit_withdrawal.svg)
+
+Moving tokens from the consensus layer to a ParaTime is called a **deposit** and
+moving them from a ParaTime back to the consensus layer is a **withdrawal** (see
+[ADR-3] for technical specifications).
+
+You can **transfer** tokens from your account to another account only, if both
+accounts are either on the consensus layer or inside the same ParaTime.
+
+Besides moving the tokens across layers and accounts, you can also **[delegate
+tokens]** to a validator and **earn passive income** as a reward.
 
 [delegate tokens]: staking-and-delegating.md
 [ADR-3]: ../../adrs/0003-consensus-runtime-token-transfer.md
 [Oasis Network architecture]: ../oasis-network/README.mdx
+
+## Obtaining ROSE
+
+The most common way to obtain ROSE is by buying it on a centralized
+[cryptocurrency exchange]. At time of writing this chapter, **all exchanges
+supported the consensus layer only**. This means that you can withdraw
+tokens from the exchange only to **your consensus account**. Use the [ROSE
+Wallet](#official-non-custodial-wallets) to **create one** and also to **deposit
+ROSE to Sapphire**, if you want to use your tokens in a dApp afterwards.
+
+An alternative way to obtain ROSE is by swapping another cryptocurrency for
+ROSE on a **[decentralized exchange] (DEX) running on Sapphire**. In this case,
+the payout is made to **your account on Sapphire** directly, and you can use a
+standard [Ethereum-compatible wallet](#metamask) to manage it.
+
+[cryptocurrency exchange]: https://en.wikipedia.org/wiki/Cryptocurrency_exchange
+[decentralized exchange]: https://en.wikipedia.org/wiki/Decentralized_finance#Decentralized_exchanges
 
 ## The Wallets
 
@@ -47,28 +69,30 @@ ROSE!**
 
 :::
 
-### Non-Custodial Oasis Wallets
+### Official Non-Custodial Wallets
 
 The Oasis team developed the following **non-custodial wallets** for you. This
 means that the keys for managing the tokens are **stored on your device** such
 as a laptop or a mobile phone and **you are responsible to keep it safe**:
 
-- **[Oasis ROSE Wallet - Web]**: Runs as a web application in your web browser, the private keys are encrypted
-  with a password and stored inside your Browser's local store.
+- **[ROSE Wallet - Web]**: Runs as a web application in your web browser, the
+  private keys are encrypted with a password and stored inside your Browser's
+  local store.
 
-- **[Oasis ROSE Wallet - Browser extension]**: Runs as an extension to your Chrome-based browser, the private keys are
-  encrypted with a password and stored inside your Browser's encrypted store.
+- **[ROSE Wallet - Browser extension]**: Runs as an extension to your
+  Chrome-based browser, the private keys are encrypted with a password and
+  stored inside your Browser's encrypted store.
 
-- **[Oasis CLI]**: Runs in a command line, suitable for automation, the private keys are
-  encrypted by a password and stored inside your home folder.
+- **[Oasis CLI]**: Runs in a command line, suitable for automation, the private
+  keys are encrypted by a password and stored inside your home folder.
 
-[Oasis ROSE Wallet - Web]: oasis-wallets/web.mdx
-[Oasis ROSE Wallet - Browser extension]: oasis-wallets/browser-extension.mdx
+[ROSE Wallet - Web]: oasis-wallets/web.mdx
+[ROSE Wallet - Browser extension]: oasis-wallets/browser-extension.mdx
 [Oasis CLI]: cli/README.md
 
 ### MetaMask
 
-[MetaMask] is probably the most-known crypto wallet. However, it is an
+[MetaMask] is probably the best-known crypto wallet. However, it is an
 **EVM-compatible** wallet. This means **you can only use it to check the account
 balances and sign transactions on Sapphire and Emerald chains**. You cannot use
 it, for example, to sign **consensus layer transactions** or perform
@@ -76,8 +100,7 @@ it, for example, to sign **consensus layer transactions** or perform
 
 You can add the Sapphire RPC endpoint by clicking on the "Add to MetaMask"
 button next to your preferred Mainnet endpoint provider in the [Sapphire]
-chapter. Similarly, you will find a list of RPC endpoints for Emerald on the
-[Emerald] page.
+chapter.
 
 ![Metamask - Adding Sapphire Mainnet Network Configuration](../images/wallet/metamask/settings.png)
 
@@ -93,13 +116,15 @@ sign the transactions. However, if your device gets infected with a piece of
 malicious software (malware, key loggers, screen captures), **the password to
 decrypt your private keys may be obtained and your private keys stolen**.
 
-To mitigate such attacks, a **hardware wallet** can be used. This is a physical
-device which stores your private key and which is only accessed when you send
-the hardware wallet a transaction to be signed. The transaction is then decoded,
-shown on the hardware wallet screen for a user to verify and if the user agrees,
-the transaction is signed and sent back to your computer or mobile device to be
-submitted. The Oasis team **integrated support for Ledger hardware wallets into all Oasis
-wallets**. Check out a [special chapter][Ledger] devoted to the Ledger wallet.
+To mitigate such attacks, a **hardware wallet** should be used. This is a
+physical device which stores your private key and which is only accessed when
+you send the hardware wallet a transaction to be signed. The transaction content
+is then shown on the hardware wallet screen for a user to verify and if the
+user agrees, the transaction is signed and sent back to your computer or your
+mobile phone for submission to the network. The Oasis team **integrated support
+for Ledger hardware wallets into all ROSE wallets and the Oasis CLI**. Check out
+a special [Ledger chapter][Ledger] to learn how to install the Oasis nano app
+on your Ledger device.
 
 [Ledger]: holding-rose-tokens/ledger-wallet.md
 
@@ -128,28 +153,12 @@ schemes and compatible wallets.
 
 | Consensus or ParaTime | Address Format | Digital Signature Scheme    | Supported Wallets                                           |
 |-----------------------|----------------|-----------------------------|-------------------------------------------------------------|
-| Consensus             | `oasis1`       | ed25519                     | <ul><li>Oasis Wallet - Web</li><li>Oasis Wallet - Browser Extension</li><li>Oasis CLI</li></ul> |
-| Sapphire              | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>Oasis Wallet - Browser Extension</li><li>Oasis Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
+| Consensus             | `oasis1`       | ed25519                     | <ul><li>ROSE Wallet - Web</li><li>ROSE Wallet - Browser Extension</li><li>Oasis CLI</li></ul> |
+| Sapphire              | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>ROSE Wallet - Browser Extension</li><li>ROSE Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
 | Cipher                | `oasis1`       | secp256k1, ed25519, sr25519 | <ul><li>Oasis CLI</li></ul> |
-| Emerald               | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>Oasis Wallet - Browser Extension</li><li>Oasis Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
+| Emerald               | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>ROSE Wallet - Browser Extension</li><li>ROSE Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
 
 [Bech-32 encoding]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32
-
-## Obtaining ROSE
-
-The most common way to obtain ROSE is by buying it on a centralized
-[cryptocurrency exchange]. At time of writing this chapter, all exchanges
-operated solely on the **consensus layer**. This means that you can only move
-the tokens in or out of the exchange using **your consensus account**.
-
-An alternative way to obtain ROSE is by swapping another cryptocurrency with
-ROSE on an on-chain exchange also known as **a [decentralized exchange] (DEX)**.
-At time of writing at least one such exchange is operating on Sapphire. In this
-case, your originating token is sent to the contract address on the source chain
-and the payout is made to **your account on Sapphire**.
-
-[cryptocurrency exchange]: https://en.wikipedia.org/wiki/Cryptocurrency_exchange
-[decentralized exchange]: https://en.wikipedia.org/wiki/Decentralized_finance#Decentralized_exchanges
 
 ## Check your account
 

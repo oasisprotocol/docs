@@ -67,16 +67,37 @@ one of the public endpoints below (in alphabetic order):
 
 ## Block Explorers
 
-No block explorers are available for Cipher yet. Consider debugging the Cipher
-blocks using the [`oasis paratime show`] command in [Oasis CLI].
+| Name/Provider               | Mainnet URL                               | Testnet URL                               | EIP-3091 compatible |
+|-----------------------------|-------------------------------------------|-------------------------------------------|---------------------|
+| Oasis Scan ([Bit Cat])                      | [https://www.oasisscan.com/paratimes/000…7cb](https://www.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000e199119c992377cb) | [https://testnet.oasisscan.com/paratimes/000…000](https://testnet.oasisscan.com/paratimes/0000000000000000000000000000000000000000000000000000000000000000) | No |
+
+[Bit Cat]: https://www.bitcat365.com/
+
+:::tip
+
+Only rudimentary block explorer features exist for Cipher. Consider debugging
+the Cipher transactions using the [`oasis paratime show`] command part of the
+[Oasis CLI].
+
+:::
 
 [`oasis paratime show`]: ../../general/manage-tokens/cli/paratime.md#show
 [Oasis CLI]: ../../general/manage-tokens/cli/README.md
 
-:::tip
+## Indexers
 
-If you are running your own Cipher endpoint and you wish to be added to the
-public list above, open an issue at [github.com/oasisprotocol/docs].
+| Name (Provider)                           | Mainnet URL                                           | Testnet URL                          | Documentation     |
+|-------------------------------------------|-------------------------------------------------------|--------------------------------------|-------------------|
+| Oasis Scan ([Bit Cat])                    | `https://api.oasisscan.com/mainnet/v2`                | `https://api.oasisscan.com/testnet/v2` | [Mainnet Runtime API][OasisScan-Mainnet-docs], [Testnet Runtime API][OasisScan-Testnet-docs] |
+
+[OasisScan-Testnet-docs]: https://api.oasisscan.com/testnet/swagger-ui/#/runtime-controller
+[OasisScan-Mainnet-docs]: https://api.oasisscan.com/mainnet/swagger-ui/#/runtime-controller
+
+:::note
+
+If you are running your own Cipher endpoint, a block explorer, or an indexer
+and wish to be added to these docs, open an issue at
+[github.com/oasisprotocol/docs].
 
 :::
 

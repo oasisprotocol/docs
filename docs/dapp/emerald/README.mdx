@@ -78,14 +78,36 @@ dedicated RPC endpoints, consider the following providers (in alphabetic order):
 
 ## Block Explorers
 
-| Provider                    | Mainnet URL                               | Testnet URL                               | EIP-3091 compatible |
+| Name/Provider               | Mainnet URL                               | Testnet URL                               | EIP-3091 compatible |
 |-----------------------------|-------------------------------------------|-------------------------------------------|---------------------|
-| [Oasis Protocol Foundation] | https://explorer.oasis.io/mainnet/emerald | https://explorer.oasis.io/testnet/emerald | Yes                 |
+| [Oasis Explorer][Oasis Protocol Foundation] | https://explorer.oasis.io/mainnet/emerald | https://explorer.oasis.io/testnet/emerald | Yes                 |
+| Oasis Scan ([Bit Cat])                      | [https://www.oasisscan.com/paratimes/000…87f](https://www.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000e2eaa99fc008f87f) | [https://testnet.oasisscan.com/paratimes/000…ca7](https://testnet.oasisscan.com/paratimes/00000000000000000000000000000000000000000000000072c8215e60d5bca7) | No |
 
-:::tip
+[Bit Cat]: https://www.bitcat365.com/
 
-If you are running your own Emerald endpoint or a block explorer, and you wish
-to be added to the public list above, open an issue at
+## Indexers
+
+| Name (Provider)                           | Mainnet URL                                           | Testnet URL                          | Documentation     |
+|-------------------------------------------|-------------------------------------------------------|--------------------------------------|-------------------|
+| [Covalent]                                | `https://api.covalenthq.com/v1/oasis-emerald-mainnet` | *N/A*                                | [Unified API docs][Covalent-docs] |
+| Oasis Nexus ([Oasis Protocol Foundation]) | `https://nexus.oasis.io/v1/`                          | `https://testnet.nexus.oasis.io/v1/` | [API][Nexus-docs] |
+| Oasis Scan ([Bit Cat])                    | `https://api.oasisscan.com/mainnet/v2`                | `https://api.oasisscan.com/testnet/v2` | [Mainnet Runtime API][OasisScan-Mainnet-docs], [Testnet Runtime API][OasisScan-Testnet-docs] |
+| [SubQuery Network][SubQuery]              | *N/A*                                                 | *N/A*                                | [SubQuery Academy][SubQuery-docs], [QuickStart][SubQuery-quickstart], [Starter project][SubQuery-starter] |
+
+[Covalent]: https://www.covalenthq.com/
+[Covalent-docs]: https://www.covalenthq.com/docs/unified-api/
+[Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
+[OasisScan-Testnet-docs]: https://api.oasisscan.com/testnet/swagger-ui/#/runtime-controller
+[OasisScan-Mainnet-docs]: https://api.oasisscan.com/mainnet/swagger-ui/#/runtime-controller
+[SubQuery]: https://subquery.network
+[SubQuery-docs]: https://academy.subquery.network/
+[SubQuery-quickstart]: https://academy.subquery.network/quickstart/quickstart.html
+[SubQuery-starter]: https://github.com/subquery/ethereum-subql-starter/tree/main/Oasis/oasis-emerald-starter
+
+:::note
+
+If you are running your own Emerald endpoint, a block explorer, or an indexer
+and wish to be added to these docs, open an issue at
 [github.com/oasisprotocol/docs].
 
 :::

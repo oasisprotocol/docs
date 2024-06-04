@@ -21,6 +21,7 @@ export const sidebarDapp: SidebarsConfig = {
         'dapp/sapphire/authentication',
         'dapp/sapphire/gasless',
         'dapp/sapphire/addresses',
+        'dapp/sapphire/deployment',
         'dapp/sapphire/security',
         {
           type: 'link',

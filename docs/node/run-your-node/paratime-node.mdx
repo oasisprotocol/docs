@@ -413,6 +413,39 @@ enough.
 
 Double check your node entity satisfies the staking requirements for a ParaTime node. For details see the [Stake Requirements](paratime-node.mdx#stake-requirements) section.
 
+### Enclave panicked
+
+If there is a misconfiguration in the prerequisite [BIOS settings], you can see an error in the logs reporting a
+problem when running SGX enclaves.
+
+```json
+{"component":"ronl","level":"warn","module":"runtime","msg":"runtime execution failed: Enclave panicked: Enclave triggered exception: SgxEnclaveRun { function: EResume, exception_vector: 6, exception_error_code: 0, exception_addr: 0x0 }","runtime_id":"0000000000000000000000000000000000000000000000000000000000000000","runtime_name":"cipher-paratime","ts":"2024-06-03T11:00:43.417403299Z"}
+```
+
+For example, this can happen if you forget to configure AES instruction set (i.e. the `CPU AES: ENABLE` BIOS setting).
+To see if your system supports AES instruction set in the CPU run:
+
+```bash
+ cpuid -1  | grep "AES"
+ ```
+
+and look for the following line:
+```
+AES instruction                         = true
+```
+
+If the AES instruction is set to `false`, you need to reconfigure you BIOS and set it to `true`.
+You can do similar inspection for other [BIOS settings].
+
+:::tip
+
+You can use the [attestation tool] (at least version 0.3.4) that also checks if the AES instruction set is available.
+
+:::
+
+[BIOS settings]: prerequisites/set-up-trusted-execution-environment-tee.md#bios-configuration
+[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
+
 ## See also
 
 <DocCard item={findSidebarItem('/node/web3')} />

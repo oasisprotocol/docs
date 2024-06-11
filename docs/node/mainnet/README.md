@@ -121,7 +121,7 @@ Feel free to use other IAS proxies besides the one provided here or
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
 * Runtime bundle version:
-  * [0.4.1](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.4.1)
+  * [0.5.0](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.5.0)
 * IAS proxy address:
   * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
   * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`

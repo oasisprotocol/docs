@@ -163,7 +163,9 @@ to work and the AESM service may produce unhelpful errors like the following:
 Couldn't find the platform library. (null)
 ```
 
-The only thing that needs to be changed is the `pccs_url` value above.
+The only thing that needs to be changed is the `pccs_url` value above. **Do not
+add any comments and/or modify punctuation as these could make the configuration
+file invalid.**
 
 :::
 

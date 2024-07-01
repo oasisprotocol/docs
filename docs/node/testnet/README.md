@@ -41,7 +41,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
   * [2.7.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.7.0)
 
@@ -60,7 +60,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 ### Cipher
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime bundle version:
@@ -78,7 +78,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Emerald
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0-testnet#building)):
@@ -89,7 +89,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Sapphire
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime bundle version:
@@ -109,7 +109,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Key Manager
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime bundle version:

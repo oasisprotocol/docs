@@ -110,6 +110,12 @@ const config: Config = {
             position: 'left',
           },
           {
+            label: 'Build ROFL',
+            to: '/rofl/',
+            activeBaseRegex: '/rofl/',
+            position: 'left',
+          },
+          {
             label: 'Get Involved',
             to: '/get-involved/',
             position: 'left',

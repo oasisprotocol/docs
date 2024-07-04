@@ -33,6 +33,8 @@ const AddToMetaMask = (props: {
                 blockExplorerUrls: props.be,
               },
             ],
+          }).then(response => {
+            if (response === null) alert('Added')
           })
         }}
       >

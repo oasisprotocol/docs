@@ -54,9 +54,17 @@ the following behavior:
 - whitelisted methods for checking the network status, performing queries and
   submitting transactions,
 - no control methods allowed and no queries that are CPU or I/O intensive,
-- lives on `grpc.my-oasis-node.com` with TLS-enabled connection and certificates
+- lives on `grpc.example.com` with TLS-enabled connection and certificates
   that you already have from Let's Encrypt,
 - `internal.sock` of the Oasis node is accessible at `/node/data/internal.sock`.
+
+:::info Example hostnames
+
+This chapter uses various hostnames under the `example.com` domain. These only
+serve as an example and in a real deployment you should replace them with your
+own domain.
+
+:::
 
 Envoy already has built-in support for gRPC so after installing Envoy, simply
 put the configuration below inside your `envoy.yaml` and then execute the proxy
@@ -227,9 +235,9 @@ static_resources:
                   - h2,http/1.1
                 tls_certificates:
                   - certificate_chain:
-                      filename: /etc/letsencrypt/live/grpc.my-oasis-node.com/fullchain.pem
+                      filename: /etc/letsencrypt/live/grpc.example.com/fullchain.pem
                     private_key:
-                      filename: /etc/letsencrypt/live/grpc.my-oasis-node.com/privkey.pem
+                      filename: /etc/letsencrypt/live/grpc.example.com/privkey.pem
   clusters:
     - name: oasis_node_grpc
       connect_timeout: 0.25s
@@ -260,12 +268,12 @@ layered_runtime:
 ## Tunnel Unix socket via SSH
 
 SSH supports forwarding a Unix socket over a secure layer. The command below
-will establish a secure shell to the `my-oasis-node.com` server and then tunnel
+will establish a secure shell to the `example.com` server and then tunnel
 the `internal.sock` file inside the data directory to a Unix socket inside your
 home folder:
 
 ```shell
-ssh oasis@my-oasis-node.com -L /home/user/oasis-node-internal.sock:/node/data/internal.sock
+ssh oasis@example.com -L /home/user/oasis-node-internal.sock:/node/data/internal.sock
 ```
 
 The `/home/user/oasis-node-internal.sock` can now be used to safely connect to

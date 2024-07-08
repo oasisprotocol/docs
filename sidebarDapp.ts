@@ -53,18 +53,6 @@ export const sidebarDapp: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Emerald',
-      link: {
-        type: 'doc',
-        id: 'dapp/emerald/README',
-      },
-      items: [
-        'dapp/emerald/writing-dapps-on-emerald',
-        'dapp/emerald/integrating-band-oracle-smart-contract',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Cipher',
       link: {
         type: 'doc',
@@ -79,6 +67,18 @@ export const sidebarDapp: SidebarsConfig = {
           label: 'Rust API',
           href: 'https://api.docs.oasis.io/rust/oasis_contract_sdk',
         },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Emerald',
+      link: {
+        type: 'doc',
+        id: 'dapp/emerald/README',
+      },
+      items: [
+        'dapp/emerald/writing-dapps-on-emerald',
+        'dapp/emerald/integrating-band-oracle-smart-contract',
       ],
     },
   ],

@@ -57,6 +57,27 @@ The Oasis Node is part of the Oasis Core release.
 
 This chapter contains parameters for various ParaTimes known to be deployed on the Testnet. Similar to the Testnet, these may be subject to frequent version upgrades and/or state resets.
 
+### Sapphire
+
+* Oasis Core version:
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
+* Runtime identifier:
+  * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
+* Runtime bundle version:
+  * [0.8.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.8.0-testnet)
+  * [0.7.3-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.3-testnet)
+* Web3 Gateway version:
+  * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
+* IAS proxy address:
+  * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
+  * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`
+
+:::tip
+
+Feel free to use other IAS proxies besides the ones provided here or [run your own](../run-your-node/ias-proxy.md).
+
+:::
+
 ### Cipher
 
 * Oasis Core version:
@@ -86,27 +107,6 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
   * [11.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v11.0.0-testnet)
 * Web3 Gateway version:
   * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
-
-### Sapphire
-
-* Oasis Core version:
-  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
-* Runtime identifier:
-  * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
-* Runtime bundle version:
-  * [0.8.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.8.0-testnet)
-  * [0.7.3-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.3-testnet)
-* Web3 Gateway version:
-  * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
-* IAS proxy address:
-  * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
-  * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`
-
-:::tip
-
-Feel free to use other IAS proxies besides the ones provided here or [run your own](../run-your-node/ias-proxy.md).
-
-:::
 
 ### Key Manager
 

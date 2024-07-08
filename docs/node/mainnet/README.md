@@ -56,6 +56,27 @@ for the current Testnet parameters.
 
 This section contains parameters for various ParaTimes known to be deployed on the Mainnet.
 
+### Sapphire
+
+* Oasis Core version:
+  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+* Runtime identifier:
+  * `000000000000000000000000000000000000000000000000f80306c9858e7279`
+* Runtime bundle version:
+  * [0.7.3](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.3)
+* Oasis Web3 Gateway version:
+  * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
+* IAS proxy address:
+  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
+  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
+
+:::tip
+
+Feel free to use other IAS proxies besides the one provided here or
+[run your own](../../node/run-your-node/ias-proxy.md).
+
+:::
+
 ### Cipher
 
 * Oasis Core version:
@@ -90,27 +111,6 @@ Feel free to use other IAS proxies besides the one provided here or
 
 Check the [Emerald ParaTime page](/dapp/emerald/#rpc-endpoints) on how to access
 the public Web3 endpoint.
-
-:::
-
-### Sapphire
-
-* Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
-* Runtime identifier:
-  * `000000000000000000000000000000000000000000000000f80306c9858e7279`
-* Runtime bundle version:
-  * [0.7.3](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.3)
-* Oasis Web3 Gateway version:
-  * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
-* IAS proxy address:
-  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
-  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
-
-:::tip
-
-Feel free to use other IAS proxies besides the one provided here or
-[run your own](../../node/run-your-node/ias-proxy.md).
 
 :::
 

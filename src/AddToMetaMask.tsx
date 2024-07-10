@@ -18,6 +18,7 @@ const AddToMetaMask = (props: {
           if (!window.ethereum?.request) {
             return alert('Have you installed MetaMask yet? If not, please do so.\n\nComputer: Once it is installed, you will be able to add the ParaTime to your MetaMask.\n\nPhone: Open the website through your MetaMask Browser to add the ParaTime.')
           }
+          const startTime = Date.now()
           window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [
@@ -33,6 +34,10 @@ const AddToMetaMask = (props: {
                 blockExplorerUrls: props.be,
               },
             ],
+          }).then(response => {
+            // XXX: A workaround to figure out if the RPC already exists.
+            const isAutomatedResponse = Date.now() - startTime < 100
+            if (response === null && isAutomatedResponse) alert(`The ${props.name} RPC already added.`)
           })
         }}
       >

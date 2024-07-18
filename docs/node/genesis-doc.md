@@ -1,7 +1,7 @@
 # Genesis Document
 
 A genesis document contains the initial state of an Oasis Network, and all the
-necessary information for launching that particular network (i.g. [Mainnet],
+necessary information for launching that particular network (e.g. [Mainnet],
 [Testnet]).
 
 :::info
@@ -30,10 +30,10 @@ Up to date information about the current genesis file and the current genesis
 document's hash can be found on the Network Parameters page ([Mainnet],
 [Testnet]).
 
+:::
+
 [Mainnet]: mainnet/README.md
 [Testnet]: testnet/README.md
-
-:::
 
 ## Parameters
 

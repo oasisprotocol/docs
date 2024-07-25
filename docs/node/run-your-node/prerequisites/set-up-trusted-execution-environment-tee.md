@@ -292,8 +292,7 @@ operational.
 For transitioning to the DCAP attestation, follow these steps:
 1. See if your system [supports DCAP attestation]. If your hardware does not
 support DCAP attestation, you'll need to migrate your node to newer hardware.
-2. [Gracefully shutdown] your compute nodes (Sapphire and Cipher).
-3. Transition to DCAP attestation:
+2. Transition to DCAP attestation:
   - In case you are running AESM service on Docker follow [these instructions].
   - Otherwise manually configure AESM service to use DCAP attestation:
     1. Remove any leftover EPID attestation packages. If running on Ubuntu 22.04 run
@@ -307,9 +306,9 @@ support DCAP attestation, you'll need to migrate your node to newer hardware.
       ```bash
       sudo systemctl restart aesmd.service
       ```
-4. [Configure the Quote Provider].
-5. Use the [attestation tool] to test if your settings are correct.
-6. Start your compute node.
+3. [Configure the Quote Provider].
+4. Use the [attestation tool] to test if your settings are correct.
+5. Restart your compute node and verify that node is `ready`.
 
 [these instructions]: #dcap-attestation-docker
 [supports DCAP attestation]: #aesm-service

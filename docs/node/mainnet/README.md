@@ -29,7 +29,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
   * [2.7.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.7.0)
 
@@ -59,7 +59,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 ### Sapphire
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000f80306c9858e7279`
 * Runtime bundle version:
@@ -80,7 +80,7 @@ Feel free to use other IAS proxies besides the one provided here or
 ### Cipher
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime bundle version:
@@ -99,7 +99,7 @@ Feel free to use other IAS proxies besides the one provided here or
 ### Emerald
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e2eaa99fc008f87f`
 * Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0#building)):
@@ -117,7 +117,7 @@ the public Web3 endpoint.
 ### Key Manager
 
 * Oasis Core version:
-  * [24.0](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.0)
+  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
 * Runtime bundle version:

@@ -52,9 +52,8 @@ export const sidebarNode: SidebarsConfig = {
       label: 'Run Your Node',
       collapsible: false,
       link: {
-        type: 'generated-index',
-        description: "This section provides documentation on how to set up an Oasis Node running on your computer.",
-        slug: 'node/run-your-node',
+        type: 'doc',
+        id: 'node/run-your-node/README',
       },
       items: [
         {

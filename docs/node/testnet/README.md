@@ -41,7 +41,7 @@ Feel free to use other seed nodes besides the one provided here.
 :::
 
 * [Oasis Core](https://github.com/oasisprotocol/oasis-core) version:
-  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
+  * [24.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.2)
 * [Oasis Rosetta Gateway](https://github.com/oasisprotocol/oasis-rosetta-gateway) version:
   * [2.7.0](https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.7.0)
 
@@ -60,12 +60,11 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 ### Sapphire
 
 * Oasis Core version:
-  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
+  * [24.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.2)
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c`
 * Runtime bundle version:
   * [0.8.1-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.8.1-testnet)
-  * [0.8.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.8.0-testnet)
 * Web3 Gateway version:
   * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
 * IAS proxy address:
@@ -81,12 +80,11 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Cipher
 
 * Oasis Core version:
-  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
+  * [24.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.2)
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime bundle version:
   * [3.1.1-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.1.1-testnet)
-  * [3.1.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.1.0-testnet)
 * IAS proxy address:
   * `y4XO1ZETqgtHeZzLLmJLYAzpEfdGSJLvtd8bhIz+v3s=@34.86.197.181:8650`
   * `jaFE5Lq6GS76ya1V7a+XlGQTgttAagXEtknO4Tv1wLs=@185.56.138.83:8650`
@@ -100,7 +98,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Emerald
 
 * Oasis Core version:
-  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
+  * [24.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.2)
 * Runtime identifier:
   * `00000000000000000000000000000000000000000000000072c8215e60d5bca7`
 * Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0-testnet#building)):
@@ -111,7 +109,7 @@ Feel free to use other IAS proxies besides the ones provided here or [run your o
 ### Key Manager
 
 * Oasis Core version:
-  * [24.1](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.1)
+  * [24.2](https://github.com/oasisprotocol/oasis-core/releases/tag/v24.2)
 * Runtime identifier:
   * `4000000000000000000000000000000000000000000000004a1a53dff2ae482d`
 * Runtime bundle version:

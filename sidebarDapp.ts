@@ -78,7 +78,17 @@ export const sidebarDapp: SidebarsConfig = {
       },
       items: [
         'dapp/emerald/writing-dapps-on-emerald',
-        'dapp/emerald/integrating-band-oracle-smart-contract',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tools & Services',
+      link: {
+        type: 'doc',
+        id: 'dapp/tools/README',
+      },
+      items: [
+        'dapp/tools/band',
       ],
     },
   ],

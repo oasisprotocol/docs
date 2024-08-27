@@ -281,6 +281,10 @@ export const redirectsOptions: Options = {
             to: 'https://api.docs.oasis.io/sol/sapphire-contracts',
             from: '/dapp/sapphire/precompiles' // #688 Migrate dapp/sapphire/precompiles chapter to api.docs.oasis.io
         },
+        {
+            to: '/dapp/tools/band',
+            from: '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
+        }
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

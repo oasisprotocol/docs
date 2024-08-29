@@ -216,6 +216,55 @@ accessible on the internet (for `TCP` and `UDP` traffic).
 
 :::
 
+## Configuring TEE Paratime Client Node
+
+If your node requires the ability to issue queries that can access confidential
+data, start by following the [Configuration](#configuration) section to create
+the `/node/etc/config.yml` file. Once the file is set up, add the following
+content to the `runtime` part within the `/node/etc/config.yml` file:
+
+```yaml
+# ... sections not relevant are omitted ...
+runtime:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    paths:
+        - {{ runtime_orc_path }}
+    environment: sgx
+    sgx_loader: /node/bin/oasis-core-runtime-loader
+```
+
+Before using this configuration you should collect the following information to
+replace the variables present in the configuration file:
+
+* `{{ runtime_orc_path }}`: Path to the
+[ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form
+`/node/runtimes/foo-paratime.orc`.
+
+## Enabling Expensive Queries
+
+In case you need to issue runtime queries that may require more resources to
+compute (e.g. when running a Web3 Gateway), you need to configure the following
+in your node's `/node/etc/config.yml` file:
+
+```yaml
+# ... sections not relevant are omitted ...
+runtime:
+    paths:
+      - {{ runtime_orc_path }}
+    environment: sgx
+    config:
+      {{ runtime_id }}:
+          estimate_gas_by_simulating_contracts: true
+          allowed_queries:
+              - all_expensive: true 
+```
+
+* `{{ runtime_id}}`: You can find the `runtime_id` in the Network Parameters
+chapter ([Mainnet], [Testnet])
+* `{{ runtime_orc_path }}`: Path to the
+[ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form
+`/node/runtimes/foo-paratime.orc`.
+
 ## Starting the Oasis Node
 
 You can start the node by running the following command:

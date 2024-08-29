@@ -36,23 +36,6 @@ Due to additional sanity checks within runtime enclaves, you should ensure that
 the node's local clock is synchronized (e.g. using NTP). If it is off by more
 than half a second you may experience unexpected runtime aborts.
 
-## Install SGX Linux Driver
-
-In case you are running Linux kernel version 5.11 or higher, the required SGX
-driver is already included and no additional installation is needed. We
-recommend you to update your kernel. If unable, you need to manually
-install a compatible SGX driver.
-
-### Verification
-
-Make sure that one of the following SGX devices exists (the exact device name
-depends on which driver is being used):
-
-* `/dev/sgx_enclave` (since Linux kernel 5.11)
-* `/dev/sgx/enclave` (legacy driver)
-* `/dev/sgx` (legacy driver)
-* `/dev/isgx` (legacy driver)
-
 ## Ensure Proper SGX Device Permissions
 
 Make sure that the user that is running the Oasis Node binary has access to the
@@ -84,10 +67,8 @@ Architectural Enclaves is through **Application Enclave Service Manager
 can facilitate various SGX services such as launch approval, remote attestation
 quote signing, etc.
 
-Oasis node supports the (legacy) EPID and (newer) DCAP attestation methods.
-Following instructions differ depending on the attestation method used.
-
-To see if your system supports DCAP attestation run the following:
+Oasis node requires the use of DCAP attestation. To see if your system supports
+it, run the following:
 
 ```bash
  cpuid -1  | grep "SGX"
@@ -97,8 +78,6 @@ and look for the following line:
 ```
       SGX_LC: SGX launch config supported      = true
 ```
-
-If your system doesn't support the "SGX_LC: SGX launch config supported", skip to the [EPID attestation](#legacy-epid-attestation) section.
 
 ## DCAP Attestation
 
@@ -213,22 +192,6 @@ docker run \
   ghcr.io/oasisprotocol/aesmd-dcap:master
 ```
 
-:::tip
-
-Make sure to use the correct SGX devices based on your [SGX driver](set-up-trusted-execution-environment-tee.md#verification).
-The example above assumes the use of the newer driver which uses two devices.
-For the legacy driver you need to specify `--device /dev/isgx` instead.
-
-:::
-
-:::tip
-
-Make sure to use the correct docker image based on your attestation method.
-For DCAP use the `ghcr.io/oasisprotocol/aesmd-dcap:master` and for EPID use the
-`ghcr.io/oasisprotocol/aesmd-epid:master` image.
-
-:::
-
 By default, the Intel Quote Provider in the docker container is configured to use the Intel PCS endpoint.
 To override the Intel Quote Provider configuration within the container mount your own custom configuration using
 the `volume` flag.
@@ -278,16 +241,8 @@ please follow [the vSphere guide].
 ## Migrate from EPID Attestation to DCAP Attestation
 
 EPID attestation will be discontinued in 2025 and will no longer be available on
-any processors. All nodes using EPID attestation should migrate to DCAP
+any processors. All nodes using EPID attestation must migrate to DCAP
 attestation.
-
-:::info
-
-Compute node operators, please hold for further instructions. We will coordinate
-the migration in phases to ensure that during the migration the network remains
-operational.
-
-:::
 
 For transitioning to the DCAP attestation, follow these steps:
 1. See if your system [supports DCAP attestation]. If your hardware does not
@@ -316,79 +271,6 @@ support DCAP attestation, you'll need to migrate your node to newer hardware.
 [DCAP attestation]: #dcap-attestation
 [Configure the Quote Provider]: #configuring-the-quote-provider
 [attestation tool]: #oasis-attestation-tool
-
-## (Legacy) EPID Attestation
-
-:::tip
-
-Skip this section if you already configured AESM with DCAP Attestation.
-
-:::
-
-:::info
-
-EPID attestation support has been discontinued in newer processors (Intel Xeon 3rd generation onwards).
-Please refer to the [DCAP attestation](#dcap-attestation) section on newer systems.
-
-:::
-
-### Ubuntu 22.04
-
-A convenient way to install the AESM service on Ubuntu 22.04 systems
-is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
-
-First add Intel SGX APT repository to your system:
-
-```bash
-curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo gpg --dearmor -o /usr/share/keyrings/intel-sgx-deb.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-sgx-deb.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list > /dev/null
-```
-
-And then install the `sgx-aesm-service`, `libsgx-aesm-launch-plugin` and
-`libsgx-aesm-epid-plugin` packages:
-
-```bash
-sudo apt update
-sudo apt install sgx-aesm-service libsgx-aesm-launch-plugin libsgx-aesm-epid-plugin
-```
-
-The AESM service should be up and running. To confirm that, use:
-
-```bash
-sudo systemctl status aesmd.service
-```
-
-### Docker-enabled System
-
-An easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled
-system is to use [our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
-
-Executing the following command should (always) pull the latest version of our
-AESM Docker container, map the SGX devices and `/var/run/aesmd` directory and
-ensure AESM is running in the background (also automatically started on boot):
-
-```bash
-docker run \
-  --pull always \
-  --detach \
-  --restart always \
-  --device /dev/sgx_enclave \
-  --device /dev/sgx_provision \
-  --volume /var/run/aesmd:/var/run/aesmd \
-  --name aesmd \
-  ghcr.io/oasisprotocol/aesmd-epid:master
-```
-
-:::tip
-
-Make sure to use the correct devices based on your [kernel version](set-up-trusted-execution-environment-tee.md#verification).
-The example above assumes the use of the newer driver which uses two devices.
-For the legacy driver you need to specify `--device /dev/isgx` instead.
-
-Make sure to use the correct docker image based on your attestation method.
-For DCAP use the `ghcr.io/oasisprotocol/aesmd-dcap:master` and for EPID use the
-`ghcr.io/oasisprotocol/aesmd-epid:master` image.
-:::
 
 ## Check SGX Setup
 
@@ -531,9 +413,8 @@ debug: cause: Connection refused (os error 111)
 More information: https://edp.fortanix.com/docs/installation/help/#aesm-service
 ```
 
-Ensure  you have completed all the necessary installation steps outlined in either
-[DCAP Attestation](#dcap-attestation) or [EPID attestation](#legacy-epid-attestation)
-sections.
+Ensure  you have completed all the necessary installation steps outlined in
+[DCAP Attestation](#dcap-attestation) section.
 
 ### AESM: error 30
 
@@ -543,9 +424,8 @@ If you are encountering the following error message in your node's logs:
 failed to initialize TEE: error while getting quote info from AESMD: aesm: error 30
 ```
 
-Ensure you have all required SGX driver libraries installed as listed in either
-[DCAP Attestation](#dcap-attestation) or [EPID attestation](#legacy-epid-attestation)
-sections.
+Ensure you have all required SGX driver libraries installed as listed in
+[DCAP Attestation](#dcap-attestation) section.
 
 ### Permission Denied When Accessing SGX Kernel Device
 

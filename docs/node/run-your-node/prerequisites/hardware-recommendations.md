@@ -152,12 +152,12 @@ onward. This will reduce the amount of storage required for the consensus and
 ParaTime state.
 
 To enable pruning of the consensus state set the
-`consensus.tendermint.abci.prune.strategy` and
-`consensus.tendermint.abci.prune.num_kept` parameters appropriately in your
+`consensus.prune.strategy` and
+`consensus.prune.num_kept` parameters appropriately in your
 [node's configuration].
 
 To enable pruning of the ParaTime state set the
-`runtime.history.pruner.strategy` and `runtime.history.pruner.num_kept`
+`runtime.prune.strategy` and `runtime.prune.num_kept`
 parameters appropriately in your [node's configuration].
 
 :::

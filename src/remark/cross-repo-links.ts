@@ -7,7 +7,7 @@ const oasisSdkContractRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/
 const oasisSdkRuntimeRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/runtime\/(.*)\.mdx?(#.*)?/;
 const oasisCoreRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-core\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
 const adrsRegex = /https:\/\/github\.com\/oasisprotocol\/adrs\/blob\/main\/(.*)\.mdx?(#.*)?/;
-const sapphireParatimeRegex = /https:\/\/github\.com\/oasisprotocol\/sapphire-paratime\/blob\/main\/(.*)\.mdx?(#.*)?/;
+const sapphireParatimeRegex = /https:\/\/github\.com\/oasisprotocol\/sapphire-paratime\/blob\/main\/docs\/(.*)\.mdx?(#.*)?/;
 const docsRegex = /https:\/\/github\.com\/oasisprotocol\/docs\/blob\/main\/docs\/(.*)\.mdx?(#.*)?/;
 
 const indexReadmeRegex = /(index|README)($|#)/;
@@ -38,7 +38,7 @@ export default function plugin(): Transformer {
         } else if (adrsRegex.test(node.url)) {
             node.url = node.url.replace(adrsRegex, '/adrs/$1$2');
         } else if (sapphireParatimeRegex.test(node.url)) {
-            node.url = node.url.replace(sapphireParatimeRegex, '/sapphire-paratime/$1$2');
+            node.url = node.url.replace(sapphireParatimeRegex, '/dapp/sapphire/$1$2');
         } else if (docsRegex.test(node.url)) {
             node.url = node.url.replace(docsRegex, '/$1$2');
         } else {

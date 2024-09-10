@@ -219,9 +219,11 @@ running SGX workloads inside guest VMs. In this case additional provisioning may
 be required to be performed on the host.
 
 Note that the system must be booted in UEFI mode for provisioning to work as the
-provisioning process uses UEFI variables to communicate with the BIOS.
+provisioning process uses UEFI variables to communicate with the BIOS. In
+addition the **SGX Auto MP Registration** BIOS configuration setting should be
+set to _enabled_.
 
-#### Ubuntu 22.04
+#### Ubuntu 22.04+
 
 To provision and register your multi-socket system you need to install the Intel
 SGX Multi-Package Registration Agent Service as follows (assuming Intel's SGX
@@ -230,6 +232,12 @@ apt repository has been added as discussed above):
 ```shell
 sudo apt install sgx-ra-service
 ```
+
+After boot, the log in `/var/log/mpa_registration.log` should indicate
+successful registration. If an error is reported, make sure that you have
+enabled SGX Auto MP Registration in the BIOS as mentioned above. You can also
+perform re-provisioning by rebooting and setting the **SGX Factory Reset**
+option to _enabled_.
 
 #### VMware vSphere 8.0+
 

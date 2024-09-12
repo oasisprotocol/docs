@@ -1,4 +1,4 @@
-import {useDocsVersion} from "@docusaurus/theme-common/internal";
+import {useDocsVersion} from "@docusaurus/plugin-content-docs/client";
 import {PropSidebar} from "@docusaurus/plugin-content-docs";
 
 /**

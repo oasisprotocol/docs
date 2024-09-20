@@ -9,6 +9,11 @@ export const sidebarROFL: SidebarsConfig = {
     },
     'rofl/prerequisites',
     'rofl/app',
+    {
+      type: 'doc',
+      label: 'Deployment',
+      id: 'rofl/deployment',
+    },
     'rofl/trust-root',
   ],
 };

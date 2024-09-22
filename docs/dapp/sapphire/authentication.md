@@ -1,1 +1,0 @@
-../../../external/sapphire-paratime/docs/authentication.md

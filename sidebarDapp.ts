@@ -16,9 +16,11 @@ export const sidebarDapp: SidebarsConfig = {
       },
       items: [
         'dapp/sapphire/quickstart',
+        'dapp/sapphire/network',
         'dapp/sapphire/guide',
         'dapp/sapphire/browser',
         'dapp/sapphire/authentication',
+        'dapp/sapphire/verification',
         'dapp/sapphire/gasless',
         'dapp/sapphire/addresses',
         'dapp/sapphire/deployment',
@@ -77,6 +79,7 @@ export const sidebarDapp: SidebarsConfig = {
         id: 'dapp/emerald/README',
       },
       items: [
+        'dapp/emerald/network',
         'dapp/emerald/writing-dapps-on-emerald',
       ],
     },

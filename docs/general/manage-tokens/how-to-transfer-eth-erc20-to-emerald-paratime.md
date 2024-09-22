@@ -93,6 +93,6 @@ Now you can start using that wrapped assets across new Oasis dApps like the firs
 :::info
 
 Make sure that your MetaMask is connected to the Emerald Mainnet chain. You
-can find the network parameters [here](../../dapp/emerald/README.mdx#rpc-endpoints).
+can find the network parameters [here](../../dapp/emerald/network.mdx#rpc-endpoints).
 
 :::

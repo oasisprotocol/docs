@@ -1,6 +1,5 @@
 import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
-import {AddEmeraldToMetaMask as E, AddEmeraldTestnetToMetaMask as ET} from '@site/src/AddToMetaMask';
 
 # Emerald ParaTime
 
@@ -9,9 +8,8 @@ Emerald is our official ParaTime which executes smart contracts inside the
 
 Emerald allows for:
 
-* Full EVM compatibility
-* Easy integration with EVM-based dApps, such as DeFi, NFT, Metaverse and crypto
-  gaming
+* Full EVM compatibility and easy integration with EVM-based dApps, such as
+DeFi, NFT, Metaverse and crypto gaming
 * Scalability: increased throughput of transactions
 * Low-cost: 99%+ lower fees than Ethereum
 * 6 second finality (1 block)
@@ -21,98 +19,6 @@ If you're looking for EVM, but with confidentiality, check out the
 [Sapphire ParaTime](../sapphire/README.mdx).
 
 [Ethereum Virtual Machine (EVM)]: https://ethereum.org/en/developers/docs/evm/
-
-## Chain Information
-
-### Mainnet
-
-- Network name: `emerald`
-- Long network name: `Oasis Emerald`
-- Chain ID:
-  - Hex: `0xa516`
-  - Decimal: `42262`
-
-### Testnet
-
-- Network name: `emerald-testnet`
-- Long network name: `Oasis Emerald Testnet`
-- Chain ID:
-  - Hex: `0xa515`
-  - Decimal: `42261`
-
-## RPC Endpoints
-
-:::danger
-
-The RPC endpoint is a *point of trust*. Beside traffic rate limiting, it can
-also perform censorship or even a man-in-the-middle attack. If you have security
-considerations, we strongly recommend that you set up your own [ParaTime client
-node][paratime-client-node] and the [Web3-compatible gateway].
-
-:::
-
-
-[Web3-compatible gateway]: ../../node/web3.mdx
-[paratime-client-node]: ../../node/run-your-node/paratime-client-node.mdx
-
-You can connect to one of the public Web3 gateways below (in alphabetic order):
-
-| Provider                    | Mainnet RPC URLs                                                        | Testnet RPC URLs                                                                         |
-|-----------------------------|-------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| [1RPC]                      | <E rpcs={['https://1rpc.io/oasis/emerald']} />                          | N/A                                                                                      |
-| [Oasis Protocol Foundation] | <E rpcs={['https://emerald.oasis.io','wss://emerald.oasis.io/ws']} /> | <ET rpcs={['https://testnet.emerald.oasis.io','wss://testnet.emerald.oasis.io/ws']} /> |
-
-[Oasis Protocol Foundation]: https://oasisprotocol.org
-
-Public RPCs may have rate limits or traffic restrictions. For professional,
-dedicated RPC endpoints, consider the following providers (in alphabetic order):
-
-| Provider                  | Instructions              | Pricing                 |
-|---------------------------|---------------------------|-------------------------|
-| [1RPC]                    | [docs.1rpc.io][1RPC-docs] | [Pricing][1RPC-pricing] |
-
-
-[1RPC]: https://www.1rpc.io/
-[1RPC-docs]: https://docs.1rpc.io/guide/how-to-use-1rpc
-[1RPC-pricing]: https://www.1rpc.io/#pricing
-
-## Block Explorers
-
-| Name/Provider               | Mainnet URL                               | Testnet URL                               | EIP-3091 compatible |
-|-----------------------------|-------------------------------------------|-------------------------------------------|---------------------|
-| [Oasis Explorer][Oasis Protocol Foundation] | https://explorer.oasis.io/mainnet/emerald | https://explorer.oasis.io/testnet/emerald | Yes                 |
-| Oasis Scan ([Bit Cat])                      | [https://www.oasisscan.com/paratimes/000…87f](https://www.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000e2eaa99fc008f87f) | [https://testnet.oasisscan.com/paratimes/000…ca7](https://testnet.oasisscan.com/paratimes/00000000000000000000000000000000000000000000000072c8215e60d5bca7) | No |
-
-[Bit Cat]: https://www.bitcat365.com/
-
-## Indexers
-
-| Name (Provider)                           | Mainnet URL                                           | Testnet URL                          | Documentation     |
-|-------------------------------------------|-------------------------------------------------------|--------------------------------------|-------------------|
-| [Covalent]                                | `https://api.covalenthq.com/v1/oasis-emerald-mainnet` | *N/A*                                | [Unified API docs][Covalent-docs] |
-| Oasis Nexus ([Oasis Protocol Foundation]) | `https://nexus.oasis.io/v1/`                          | `https://testnet.nexus.oasis.io/v1/` | [API][Nexus-docs] |
-| Oasis Scan ([Bit Cat])                    | `https://api.oasisscan.com/mainnet/v2`                | `https://api.oasisscan.com/testnet/v2` | [Mainnet Runtime API][OasisScan-Mainnet-docs], [Testnet Runtime API][OasisScan-Testnet-docs] |
-| [SubQuery Network][SubQuery]              | *N/A*                                                 | *N/A*                                | [SubQuery Academy][SubQuery-docs], [QuickStart][SubQuery-quickstart], [Starter project][SubQuery-starter] |
-
-[Covalent]: https://www.covalenthq.com/
-[Covalent-docs]: https://www.covalenthq.com/docs/unified-api/
-[Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
-[OasisScan-Testnet-docs]: https://api.oasisscan.com/testnet/swagger-ui/#/runtime-controller
-[OasisScan-Mainnet-docs]: https://api.oasisscan.com/mainnet/swagger-ui/#/runtime-controller
-[SubQuery]: https://subquery.network
-[SubQuery-docs]: https://academy.subquery.network/
-[SubQuery-quickstart]: https://academy.subquery.network/quickstart/quickstart.html
-[SubQuery-starter]: https://github.com/subquery/ethereum-subql-starter/tree/main/Oasis/oasis-emerald-starter
-
-:::note
-
-If you are running your own Emerald endpoint, a block explorer, or an indexer
-and wish to be added to these docs, open an issue at
-[github.com/oasisprotocol/docs].
-
-:::
-
-[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs
 
 ## See also
 

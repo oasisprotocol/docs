@@ -1,26 +1,22 @@
 ---
-description: Network Information for Emerald
+description: Network Information for Emerald, with detailed information about chains, RPCs, block explorer and indexer
 ---
 
 import {AddEmeraldToMetaMask as E, AddEmeraldTestnetToMetaMask as ET} from '@site/src/AddToMetaMask';
 
 # Network Information
 
-### Mainnet
+## Networks
 
-- Network name: `emerald`
-- Long network name: `Oasis Emerald`
-- Chain ID:
-  - Hex: `0xa516`
-  - Decimal: `42262`
+|                   | Mainnet                             | Testnet                             | Localnet                                |
+| ------------------| ----------------------------------- | ----------------------------------- |---------------------------------------- |
+| Network name      | `emerald`                           | `emerald-testnet`                   | `emerald-localnet`
+| Long network name | `Oasis Emerald`                     | `Oasis Emerald Testnet`             | `Oasis Emerald Localnet`
+| Chain ID          | Hex:`0xa516`<br /> Decimal: `42262` | Hex:`0xa515`<br /> Decimal: `42261` | Hex:`0xa514`<br /> Decimal: `42260`
+| Tools             |                                     | [Testing token Faucet][faucet]      | [Local development Docker image][localnet]
 
-### Testnet
-
-- Network name: `emerald-testnet`
-- Long network name: `Oasis Emerald Testnet`
-- Chain ID:
-  - Hex: `0xa515`
-  - Decimal: `42261`
+[faucet]: https://faucet.testnet.oasis.io/
+[localnet]: https://github.com/oasisprotocol/oasis-web3-gateway/tree/main/docker
 
 ## RPC Endpoints
 

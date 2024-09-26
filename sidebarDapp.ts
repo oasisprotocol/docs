@@ -62,6 +62,7 @@ export const sidebarDapp: SidebarsConfig = {
       },
       items: [
         'dapp/cipher/prerequisites',
+        'dapp/cipher/network',
         'dapp/cipher/hello-world',
         'dapp/cipher/confidential-smart-contract',
         {

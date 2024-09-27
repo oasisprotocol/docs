@@ -66,6 +66,7 @@ export const sidebarNode: SidebarsConfig = {
           },
           items: [
             'node/run-your-node/prerequisites/hardware-recommendations',
+            'node/run-your-node/prerequisites/cloud-providers',
             'node/run-your-node/prerequisites/stake-requirements',
             'node/run-your-node/prerequisites/oasis-node',
             'node/run-your-node/prerequisites/system-configuration',

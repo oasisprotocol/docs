@@ -53,7 +53,11 @@ and the user running Oasis Node is `oasis`, you can do:
 sudo adduser oasis sgx
 ```
 
-Failure to do so may result in permission denied errors during runtime startup.
+Failure to do so may result in the "permission denied OS error 13" during
+runtime startup.
+
+If you are planning to run your node from an interactive session, make sure to
+log out for permissions to take effect.
 
 ## AESM Service
 

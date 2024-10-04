@@ -87,6 +87,7 @@ export const sidebarGeneral: SidebarsConfig = {
             'general/manage-tokens/cli/account',
             'general/manage-tokens/cli/transaction',
             'general/manage-tokens/cli/addressbook',
+            'general/manage-tokens/cli/rofl',
           ]
         },
         'general/manage-tokens/faq',

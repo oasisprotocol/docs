@@ -5,6 +5,7 @@ import {visit} from 'unist-util-visit';
 const cliRegex = /https:\/\/github\.com\/oasisprotocol\/cli\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
 const oasisSdkContractRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/contract\/(.*)\.mdx?(#.*)?/;
 const oasisSdkRuntimeRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/runtime\/(.*)\.mdx?(#.*)?/;
+const oasisSdkRoflRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-sdk\/blob\/main\/docs\/rofl\/(.*)\.mdx?(#.*)?/;
 const oasisCoreRegex = /https:\/\/github\.com\/oasisprotocol\/oasis-core\/blob\/master\/docs\/(.*)\.mdx?(#.*)?/;
 const adrsRegex = /https:\/\/github\.com\/oasisprotocol\/adrs\/blob\/main\/(.*)\.mdx?(#.*)?/;
 const sapphireParatimeRegex = /https:\/\/github\.com\/oasisprotocol\/sapphire-paratime\/blob\/main\/docs\/(.*)\.mdx?(#.*)?/;
@@ -31,6 +32,8 @@ export default function plugin(): Transformer {
             node.url = node.url.replace(oasisSdkContractRegex, '/dapp/cipher/$1$2');
         } else if (oasisSdkRuntimeRegex.test(node.url)) {
             node.url = node.url.replace(oasisSdkRuntimeRegex, '/paratime/$1$2');
+        } else if (oasisSdkRoflRegex.test(node.url)) {
+            node.url = node.url.replace(oasisSdkRoflRegex, '/rofl/$1$2');
         } else if (cliRegex.test(node.url)) {
             node.url = node.url.replace(cliRegex, '/general/manage-tokens/cli/$1$2');
         } else if (oasisCoreRegex.test(node.url)) {

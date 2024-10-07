@@ -108,7 +108,7 @@ Our very simple DAO contract creates proposals and manages them, allowing
 both active and past proposals to be queried externally through methods
 `getActiveProposals` and `getPastProposals`. This would be sufficient on a
 single chain, and it is possible to develop confidential applications without
-bridges, relying solely on [Sapphire](../sapphire/README.mdx). However, we will proceed
+bridges, relying solely on [Sapphire](../../sapphire/README.mdx). However, we will proceed
 to demonstrate the cross-chain capabilities of OPL.
 
 ## What is different with OPL?

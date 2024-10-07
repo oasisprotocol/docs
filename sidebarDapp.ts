@@ -45,12 +45,34 @@ export const sidebarDapp: SidebarsConfig = {
         id: 'dapp/opl/README',
       },
       items: [
-        'dapp/opl/introduction',
-        'dapp/opl/setup',
-        'dapp/opl/host',
-        'dapp/opl/enclave',
-        'dapp/opl/build',
-        'dapp/opl/frontend',
+        {
+          type: 'category',
+          label: 'Router Protocol',
+          link: {
+            type: 'doc',
+            id: 'dapp/opl/router-protocol/README',
+          },
+          items: [
+            'dapp/opl/router-protocol/pingpong-example',
+            'dapp/opl/router-protocol/interface',
+            'dapp/opl/router-protocol/approve',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Secret Ballot Example',
+          link: {
+            type: 'doc',
+            id: 'dapp/opl/secret-ballot-example/README',
+          },
+          items: [
+            'dapp/opl/secret-ballot-example/setup',
+            'dapp/opl/secret-ballot-example/host',
+            'dapp/opl/secret-ballot-example/enclave',
+            'dapp/opl/secret-ballot-example/build',
+            'dapp/opl/secret-ballot-example/frontend',
+          ],
+        },
       ],
     },
     {

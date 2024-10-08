@@ -7,5 +7,5 @@ you are using a tool that has problems integrating with Oasis.
 
 [Remix]: https://remix.run/docs/en/main
 [Sourcify]: /dapp/sapphire/verification
-[localnet]: /dapp/sapphire/guide#running-a-private-oasis-network-locally
+[localnet]: /dapp/tools/localnet
 [discord]: https://oasis.io/discord

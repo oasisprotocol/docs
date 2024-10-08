@@ -115,6 +115,7 @@ export const sidebarDapp: SidebarsConfig = {
       },
       items: [
         'dapp/tools/band',
+        'dapp/tools/localnet',
       ],
     },
   ],

@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant User
+    participant P-A as PingPong.sol<br/>(Chain A)
+    participant G-A as Gateway<br/>(Chain A)
+    participant Relayer as Router Chain<br/>& Relayer
+    participant G-B as Gateway<br/>(Chain B)
+    participant P-B as PingPong.sol<br/>(Chain B)
+    User->>+P-A: iPing()
+    P-A->>+G-A: iSend()
+    G-A-->>Relayer: Listens to event
+    Relayer-->>+G-B: Relays message
+    G-B->>+P-B: iReceive()
+    P-B->>-G-B: Response from<br/>iReceive()
+    G-B-->>-Relayer: Listens to event
+    Relayer-->>G-A: Relays message
+    G-A->>-P-A: iAck()

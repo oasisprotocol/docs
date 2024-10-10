@@ -50,6 +50,7 @@ We would like to set `@oasisprotocol/secret-ballot-backend` as the package name
 inside `package.json` at `version` of `1.0.0`.
 
 Finally, we need to install the following dependencies:
+
 - `@oasisprotocol/sapphire-contracts` contains the OPL Solidity smart contracts.
 - `@oasisprotocol/sapphire-hardhat` integrates Sapphire using the Hardhat
 config file.

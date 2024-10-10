@@ -83,20 +83,20 @@ configuration.
 You should be able to navigate to
 [http://localhost:5173](http://localhost:5173) and create a new poll.
 
-![Create a poll](../images/opl/create-poll.png)
+![Create a poll](../../images/opl/create-poll.png)
 
 Confirm and sign a transaction to create a new poll (issues a request against
 the Host contract).
 
-![Confirm new poll](../images/opl/confirm-new-poll.png)
+![Confirm new poll](../../images/opl/confirm-new-poll.png)
 
 Voting on a ballot issues a request to the *enclave* contract.
 
-![Vote on ballot](../images/opl/vote-on-ballot.png)
+![Vote on ballot](../../images/opl/vote-on-ballot.png)
 
 You should be able to see results from past polls.
 
-![See past proposals](../images/opl/past-dao-proposals.png)
+![See past proposals](../../images/opl/past-dao-proposals.png)
 
 If you were able to get to this point, congrats! You have created an OPL dApp!
 

@@ -78,7 +78,7 @@ contract SapphireContract is Enclave {
 }
 ```
 
-### Host Contract
+### Home Contract
 
 On the other chain, define your contract which can be called via
 `triggerExample` to send a message to the contract on Sapphire using the

@@ -1,5 +1,5 @@
 ---
-description: Router Protocol PingPong example
+description: Protocol PingPong example with Router CrossTalk
 ---
 
 # PingPong Example

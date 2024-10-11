@@ -4,6 +4,84 @@ description: A message bridge by Celer
 
 # Celer Inter-Chain Messaging (IM)
 
+**Celer Inter-Chain Messaging (IM)** is a message passing protocol that
+facilitates the seamless transfer of any type of generic message, including
+function calls, across multiple blockchains via a single source-chain
+transaction. Celer IM currently supports message passing between Oasis Sapphire
+and all other IM-supported chains. The message-passing support enables
+developers to build entirely new privacy-centric dApps or add confidentiality
+to existing dApps on popular EVM networks using Sapphire as a privacy layer.
+
+**Celer IM** offers two design patterns:
+
+- Cross-chain logic execution without fund transfer
+- Cross-chain logic execution with accompanying fund transfer
+
+This documentation focuses on cross-chain logic execution **without** fund
+transfer. For information on using Celer IM with fund transfer, please refer
+to the [Celer IM documentation].
+
+[Celer IM documentation]: https://im-docs.celer.network/
+
+## Architecture
+
+![Celer IM Architecture](../../images/opl/celer-e2e.png)
+*Architecture diagram for Celer IM[^1]*
+
+[^1]: The Celer IM architecture diagram is courtesy of [Celer documentation][celer-architecture].
+
+[celer-architecture]: https://im-docs.celer.network/developer/architecture-walkthrough/end-to-end-workflow
+
+Celer IM’s architecture is composed of several core components that work
+together to facilitate secure and reliable cross-chain messaging:
+
+- **MessageBus**: The primary component managing message transmission between
+  source and destination blockchains. It ensures proper formatting and routing
+  of messages through the Celer network.
+- **State Guardian Network (SGN)**: A decentralized network of validators that
+  manage the state of cross-chain messages. SGN validators sign off on messages
+  and coordinate their secure delivery, providing security and availability for
+  cross-chain interactions.
+- **[Executor](#executor)**: An off-chain component that listens to the SGN for
+  validated messages ready for execution on the destination chain. Once a
+  message is verified, the Executor sends transactions to the MessageBus on the
+  destination chain, triggering the execution of the specified logic.
+
+## Executor
+
+The [Executor][Message Executor] is a crucial part of the Celer IM framework.
+It performs two main functions:
+
+- Monitors the Celer State Guardian Network (SGN) for messages ready to be
+  submitted (with sufficient validator signatures).
+- Submits message execution transactions to the MessageBus contract.
+
+It is necessary a [Message Executor] runs for you dapp. To set up an executor,
+you have two options 
+
+- Follow the [documentation] to set up your own executor.
+- Fill out this [form][celer-form] for Celer to set up a hosted executor
+  service for you.
+
+For Hackathon or Grant participants, we recommend filling out the
+[relay request form][celer-form] to use the shared Message Executor.
+
+In most cases, Celer advises dApp developers to use the shared executor
+services provided by the Celer Network team to avoid server configuration and
+operation concerns.
+
+[Message Executor]: https://im-docs.celer.network/developer/development-guide/message-executor
+[documentation]: https://im-docs.celer.network/developer/development-guide/message-executor/integration-guide
+[celer-form]:https://form.typeform.com/to/RsiUR9Xz
+
+## Fees
+
+The cross-chain messaging process involves fees paid to two parties:
+
+- **SGN Fee**: Paid as `msg.value` to the *MessageBus* contract by
+  the entity calling `sendMessge`.
+- **Executor Fee**: Charged by the Executor for submitting execute message
+  transactions.
 
 ## Monitoring
 
@@ -18,72 +96,3 @@ Celer-IM documentation. Using this API lets you to check if messages have been
 delivered.
 
 [Query IM Tx Status]: https://im-docs.celer.network/developer/development-guide/query-im-tx-status
-
-## Executor
-
-The Executor is an essential part of the Celer IM framework. The Executor monitors the Celer *State Guardian Network*(SGN) for messages ready to be submitted (with enough validator signatures) and submits the message execution transactions to the MessageBus contract.
-
-It is necessary to run a [Message Executor] which monitors the Celer SGN for cross-chain messages and then submits the proof on-chain to deliver them to the target contract.
-
-To set up an executor, you can either follow this [documentation] to set up your own, or fill out this [form][celer-form] for Celer to set up a hosted executor service for you.
-
-If you are participating in a Hackathon or Grant, [please fill out the relay
-request form](https://form.typeform.com/to/RsiUR9Xz) to be allowed to use the
-shared Message Executor.
-
-In most cases, we recommend dApp developers use the shared executor services provided by the Celer Network team so that you do not need to worry about the executor server configuration and operation.
-
-[Message Executor]: https://im-docs.celer.network/developer/development-guide/message-executor
-[documentation]: https://im-docs.celer.network/developer/development-guide/message-executor/integration-guide
-[celer-form]:https://form.typeform.com/to/RsiUR9Xz
-
-## Supported Networks
-
-### Mainnets
-
-| Name | Int ID | Hex ID | autoswitch name |
-| ---- | ------ | ------ | --------------- |
-| Ape | 16350 | 0x3fde | ape |
-| Arbitrum Nova | 42170 | 0xa4ba | arbitrum-nova |
-| Arbitrum One | 42161 | a4b1 | arbitrum-one |
-| Astar | 592 | 0x250 | astar |
-| Aurora | 1313161554 | 0x4e454152 | aurora |
-| Avalanche | 43114 | 0xa86a | avalanche |
-| Binance Smart Chain | 56 | 0x38 | bsc |
-| Ethereum | 1 | 0x1 | ethereum |
-| Fantom | 250 | 0xfa | fantom |
-| Filecoin | 314 | 0x13a | filecoin |
-| Milkomeda C1 | 2001 | 0x7d1 | milkomeda |
-| Moonriver | 1285 | 0x505 | moonriver |
-| Polygon | 137 | 0x89 | polygon |
-| Sapphire | 23294 | 0x5afe | sapphire |
-| Syscoin | 57 | 0x39 | syscoin |
-| Polygon zkEVM | 1101 | 0x44d | polygon-zkevm |
-| Optimism | 10 | 0xa | optimism |
-| zkSync Era | 324 | 0x144 | zksync-era |
-
-### Testnets
-
-| Name | Int ID | Hex ID | autoswitch name |
-| ---- | ------ | ------ | --------------- |
-| Arbitrum Testnet | 421611 | 0x66eeb | arbitrum-testnet |
-| Avalanche C-Chain Fuji Testnet | 43113 | 0xa869 | avalanche-fuji |
-| BSC Testnet | 97 | 0x61 | bsc-testnet |
-| ConsenSys zkEVM Testnet | 59140 | 0xe704 | zkevm-testnet |
-| Dexalot Testnet | 432201 | 0x69849 | dexalot-testnet |
-| Fantom Testnet | 4002 | 0xfa2 | fantom-testnet |
-| Filecoin Hyperspace Testnet | 3141 | 0xc45 | filecoin-testnet |
-| FNCY Testnet | 923018 | 0xe158a | fncy-testnet |
-| Godwoken Testnet | 71401 | 0x116e9 | godwoken-testnet |
-| Goerli Testnet | 5 | 0x5 | goerli |
-| Polygon Mumbai Testnet | 80001 | 0x13881 | polygon-mumbai |
-| Polygon zkEVM Testnet | 1442 | 0x5a2 | zkevm-testnet |
-| Sapphire Testnet | 23295 | 0x5aff | sapphire-testnet |
-| Scroll Alpha Testnet | 534353 | 0x82751 | scroll-testnet |
-| Shibuya Testnet | 81 | 0x51 | shibuya-testnet |
-
-In the following sections we will look at a concrete example on how to build a
-confidential, cross-chain DAO-voting dApp from scratch using the Oasis Privacy Layer!
-
-
-

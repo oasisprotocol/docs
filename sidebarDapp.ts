@@ -47,6 +47,41 @@ export const sidebarDapp: SidebarsConfig = {
       items: [
         {
           type: 'category',
+          label: 'OPL SDK',
+          link: {
+            type: 'doc',
+            id: 'dapp/opl/opl-sdk/README',
+          },
+          items: [
+            {
+              type: 'category',
+              label: 'Secret Ballot Example',
+              link: {
+                type: 'doc',
+                id: 'dapp/opl/secret-ballot-example/README',
+              },
+              items: [
+                'dapp/opl/secret-ballot-example/setup',
+                'dapp/opl/secret-ballot-example/host',
+                'dapp/opl/secret-ballot-example/enclave',
+                'dapp/opl/secret-ballot-example/build',
+                'dapp/opl/secret-ballot-example/frontend',
+              ],
+            }
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Celer Inter-Chain Messaging',
+          link: {
+            type: 'doc',
+            id: 'dapp/opl/celer/README',
+          },
+          items: [
+          ],
+        },
+        {
+          type: 'category',
           label: 'Router Protocol',
           link: {
             type: 'doc',
@@ -56,21 +91,6 @@ export const sidebarDapp: SidebarsConfig = {
             'dapp/opl/router-protocol/pingpong-example',
             'dapp/opl/router-protocol/interface',
             'dapp/opl/router-protocol/approve',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Secret Ballot Example',
-          link: {
-            type: 'doc',
-            id: 'dapp/opl/secret-ballot-example/README',
-          },
-          items: [
-            'dapp/opl/secret-ballot-example/setup',
-            'dapp/opl/secret-ballot-example/host',
-            'dapp/opl/secret-ballot-example/enclave',
-            'dapp/opl/secret-ballot-example/build',
-            'dapp/opl/secret-ballot-example/frontend',
           ],
         },
       ],

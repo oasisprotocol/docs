@@ -4,6 +4,10 @@ description: How to build your first dApp on OPL
 
 # Secret Ballot Example
 
+This example is an extensive tutorial on how to use [OPL] for confidential voting.
+
+[OPL]: ../opl-sdk/README.md
+
 ## Overview
 
 On-chain voting is the basis for any decentralized autonomous organization

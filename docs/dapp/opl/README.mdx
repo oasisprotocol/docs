@@ -1,0 +1,55 @@
+---
+description: Integrating privacy into dApps on other blockchains
+---
+
+import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
+# Oasis Privacy Layer (OPL)
+
+The Oasis Privacy Layer (OPL) is a powerful solution that enables developers
+to integrate privacy features into their decentralized applications (dApps)
+across multiple EVM-compatible networks. 
+
+- **Privacy-First**: OPL leverages the [Sapphire]'s privacy features to ensure
+that data remains confidential and transactions are encrypted end-to-end.
+- **Cross-Chain Compatibility**: OPL is compatible with multiple blockchains
+through message bridging protocols, making it easy to integrate privacy
+regardless of the chain your dApp is built on.
+
+For more information about OPL and to catch the latest news, please visit the
+[official OPL page].
+
+[official OPL page]: https://oasisprotocol.org/opl
+[Sapphire]: https://oasisprotocol.org/sapphire
+
+## How OPL Works
+
+The OPL is made possible through message bridges, which enable secure
+communication between OPL-enabled contracts on Sapphire and smart contracts on
+other chains. This allows dApps to access privacy-preserving capabilities while
+keeping their main logic on their primary chain.
+
+![Oasis Privacy Layer diagram](../images/opl/privacy-layer-diagram.png)
+
+### Message Bridges
+
+You can integrate message bridges into your dApps using one of these three methods:
+
+- **OPL-SDK**: A wrapper provided by the Oasis Protocol that simplifies the integration of message bridging with Oasis’s privacy features. 
+- **Celer Inter-Chain Messaging (IM)**: A generalized message bridging solution by Celer, which lets you build more complex solutions.
+- **Router Protocol CrossTalk**: An extensible cross-chain framework that enables seamless state transitions across multiple chains.
+
+<DocCardList items={[
+    findSidebarItem('/dapp/opl/opl-sdk/'),
+    findSidebarItem('/dapp/opl/celer/'),
+    findSidebarItem('/dapp/opl/router-protocol/')
+    ]} />
+
+## Examples
+
+<DocCardList items={[
+    findSidebarItem('/dapp/opl/secret-ballot-example/'),
+    findSidebarItem('/dapp/opl/router-protocol/pingpong-example'),
+    ]} />

@@ -4,16 +4,22 @@ description: A message bridge by Celer
 
 # Celer Inter-Chain Messaging (IM)
 
-**Celer Inter-Chain Messaging (IM)** is a versatile solution for enabling cross-chain communication between different blockchain networks. It allows developers to transfer arbitrary messages, such as data or function calls, between smart contracts deployed on distinct chains. 
+**Celer Inter-Chain Messaging (IM)** is a message passing protocol that
+facilitates the seamless transfer of any type of generic message, including
+function calls, across multiple blockchains via a single source-chain
+transaction. Celer IM currently supports message passing between Oasis Sapphire
+and all other IM-supported chains. The message-passing support enables
+developers to build entirely new privacy-centric dApps or add confidentiality
+to existing dApps on popular EVM networks using Sapphire as a privacy layer.
 
-**Celer IM** offer two design pattern:
+**Celer IM** offers two design patterns:
 
 - Cross-chain logic execution without fund transfer
 - Cross-chain logic execution with accompanying fund transfer
 
-This documentation focuses on cross-chain logic execution **without** fund transfer.
-If you`re interested to use Celer IM with fundtransfer, please consult the
-[Celer IM documentation].
+This documentation focuses on cross-chain logic execution **without** fund
+transfer. For information on using Celer IM with fund transfer, please refer
+to the [Celer IM documentation].
 
 [Celer IM documentation]: https://im-docs.celer.network/
 
@@ -26,24 +32,43 @@ If you`re interested to use Celer IM with fundtransfer, please consult the
 
 [celer-architecture]: https://im-docs.celer.network/developer/architecture-walkthrough/end-to-end-workflow
 
-Celer IM’s architecture is composed of several core components that work together to facilitate secure and reliable cross-chain messaging:
+Celer IM’s architecture is composed of several core components that work
+together to facilitate secure and reliable cross-chain messaging:
 
-- **MessageBus**: The MessageBus is the primary component that manages message transmission between source and destination blockchains. It ensures that messages are properly formatted and routed through the Celer network.
-- **State Guardian Network (SGN)**: SGN is a decentralized network of validators responsible for managing the state of cross-chain messages. Validators in the SGN sign off on messages and coordinate their secure delivery, providing both a layer of security and availability for cross-chain interactions.
-- **[Executor](#executor)**: The Message Executor is an off-chain component that listens to the SGN for new messages that have been validated and need to be executed on the destination chain. Once a message is verified, the Message Executor sends transactions to the MessageBus on the destination chain, triggering the execution of the specified logic as defined by the original message. This design ensures that message delivery remains secure and synchronized with the validators' consensus.
+- **MessageBus**: The primary component managing message transmission between
+  source and destination blockchains. It ensures proper formatting and routing
+  of messages through the Celer network.
+- **State Guardian Network (SGN)**: A decentralized network of validators that
+  manage the state of cross-chain messages. SGN validators sign off on messages
+  and coordinate their secure delivery, providing security and availability for
+  cross-chain interactions.
+- **[Executor](#executor)**: An off-chain component that listens to the SGN for
+  validated messages ready for execution on the destination chain. Once a
+  message is verified, the Executor sends transactions to the MessageBus on the
+  destination chain, triggering the execution of the specified logic.
 
 ## Executor
 
-The Executor is an essential part of the Celer IM framework. The Executor monitors the Celer *State Guardian Network*(SGN) for messages ready to be submitted (with enough validator signatures) and submits the message execution transactions to the MessageBus contract.
+The [Executor][Message Executor] is a crucial part of the Celer IM framework.
+It performs two main functions:
 
-It is necessary to run a [Message Executor] which monitors the Celer SGN for cross-chain messages and then submits the proof on-chain to deliver them to the target contract.
+- Monitors the Celer State Guardian Network (SGN) for messages ready to be
+  submitted (with sufficient validator signatures).
+- Submits message execution transactions to the MessageBus contract.
 
-To set up an executor, you can either follow this [documentation] to set up your own, or fill out this [form][celer-form] for Celer to set up a hosted executor service for you.
+It is necessary a [Message Executor] runs for you dapp. To set up an executor,
+you have two options 
 
-If you are participating in a Hackathon or Grant, [please fill out the relay
-request form][celer-form] to be allowed to use the shared Message Executor.
+- Follow the [documentation] to set up your own executor.
+- Fill out this [form][celer-form] for Celer to set up a hosted executor
+  service for you.
 
-In most cases, we recommend dApp developers use the shared executor services provided by the Celer Network team so that you do not need to worry about the executor server configuration and operation.
+For Hackathon or Grant participants, we recommend filling out the
+[relay request form][celer-form] to use the shared Message Executor.
+
+In most cases, Celer advises dApp developers to use the shared executor
+services provided by the Celer Network team to avoid server configuration and
+operation concerns.
 
 [Message Executor]: https://im-docs.celer.network/developer/development-guide/message-executor
 [documentation]: https://im-docs.celer.network/developer/development-guide/message-executor/integration-guide
@@ -51,11 +76,12 @@ In most cases, we recommend dApp developers use the shared executor services pro
 
 ## Fees
 
-Fees in the cross-chain messaging process are paid to two parties:
+The cross-chain messaging process involves fees paid to two parties:
 
-- **SGN Fee**: paid as `msg.value` to the *MessageBus* contract by whoever
-  calls `sendMessge`.
-- **Executor Fee**: Executor charges fees to submit execute message transactions.
+- **SGN Fee**: Paid as `msg.value` to the *MessageBus* contract by
+  the entity calling `sendMessge`.
+- **Executor Fee**: Charged by the Executor for submitting execute message
+  transactions.
 
 ## Monitoring
 

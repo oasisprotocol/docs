@@ -161,7 +161,6 @@ If you want to build on Oasis, you can read more about the Ecosystem Fund [here]
 
 The Oasis Foundation has been working with many talented dev teams via our [Grants program](https://oasisprotocol.org/ecosystem#grantsprogram) to build new applications and integrations on top of the Oasis Network. These include:
 
-* [Anthem (by Chorus One)](https://anthem.chorus.one)
 * [Alethea.ai](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-alethea-ai-aac8f854e436): A marketplace for AI-generated media
 * [Bankex](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-bankex-9bb127f9e449): Send digital assets across your social networks
 * [Castalise](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-castalise-347f155ab66f): Enabling privacy-preserving predictive analytics on pharmaceutical data

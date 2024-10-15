@@ -169,7 +169,6 @@ The Oasis Foundation has been working with many talented dev teams via our [Gran
 * [Luther.ai:](https://luther.ai)  Building artificial intelligence to Retain, Reinforce, Recall and ultimately augment your human memory.
 * [Oasis.Fish (by Stakefish)](https://oasis.fish/leaderboard/)
 * [Oasis Hubble (by Figment Networks)](https://figment.io/)
-* [Oasis Monitor (by Everstake)](https://oasismonitor.com)
 * [Oasisscan (by bitcat)](https://oasisscan.com)
 * [Oasis Smartstake (by Smartstake)](https://oasis.smartstake.io): Providing validation services for the Oasis Network
 * Oasis Mobile Wallet by RockX

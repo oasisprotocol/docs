@@ -209,7 +209,7 @@ Over 200 articles have been written since the company came out of stealth mode. 
 * [The New York Times: Building a World Where Data Privacy Exists Online](https://www.nytimes.com/2019/11/19/technology/artificial-intelligence-dawn-song.html)
 * [WIRED: Oasis Labs' Dawn Song on a Safer Way to Protect Your Data](https://www.wired.com/story/dawn-song-oasis-labs-data-privacy-wired25/)
 * [MIT Technology Review: How AI could save lives without spilling medical secrets](https://www.technologyreview.com/2019/05/14/239125/how-ai-could-save-lives-without-spilling-secrets/)
-* [Yahoo! Finance: Web3 Users will Control Their Data, Says Oasis Ecosystem Head](https://www.yahoo.com/now/web3-users-control-data-says-132837055.html)
+* [Coin Rivet: Web3 Users will Control Their Data, Says Oasis Ecosystem Head](https://coinrivet.com/web3-users-will-control-their-data-says-oasis-ecosystem-head/)
 * [Cointelegraph: First DEX on Oasis Network hits $100M TVL in 24 hours ](https://cointelegraph.com/news/first-dex-on-oasis-network-hits-100m-tvl-in-24-hours)
 * [Cointelegraph: Binance Labs backs $200M Oasis Ecosystem Fund ](https://cointelegraph.com/news/binance-labs-backs-200m-oasis-ecosystem-fund)
 * [CoinSpeaker: Oasis Protocol Inks Partnership with Meta to Facilitate AI Computing Applications](https://www.coinspeaker.com/oasis-protocol-partnership-meta/)

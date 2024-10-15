@@ -90,9 +90,8 @@ runtime:
 
 worker:
   registration:
-    # In order for the node to register itself, the entity.json of the entity
-    # used to provision the node must be available on the node.
-    entity: /node/etc/entity.json
+    # In order for the node to register itself, the entity ID must be set.
+    entity_id: {{ entity_id }}
 
   keymanager:
     runtime:
@@ -122,6 +121,7 @@ Before using this configuration you should collect the following information to 
   * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](../paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
   * You can find the current Oasis-supported key manager ParaTime in the Network Parameters page ([Mainnet], [Testnet]).
+* `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
 * `{{ keymanager_runtime_id }}`: Runtime identified for the key manager ParaTime.
   * You can find the current Oasis-supported key manager ParaTime identifiers in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.

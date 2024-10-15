@@ -132,8 +132,19 @@ Create a JSON file containing the **public key** of your entity by executing
 oasis account entity init -o /localhostdir/entity/entity.json --account my_entity
 ```
 
-Now, we can move on to configuring our Oasis node with the freshly generated
-`entity.json`.
+Now, we can move on to configuring our Oasis node with the information from
+freshly generated `entity.json`.
+
+:::info
+
+You can obtain your entity ID by running the `cat entity.json` command and
+reading out the `id` field.
+
+Alternatively, if your entity account is imported into the Oasis CLI you can use
+the [`oasis wallet show`] command. Your entity ID will be displayed in the
+`Public Key` field.
+
+:::
 
 [Ledger]: ../../general/manage-tokens/holding-rose-tokens/ledger-wallet.md
 [offline/air-gapped machine]: https://en.wikipedia.org/wiki/Air_gap_\(networking\)
@@ -141,11 +152,7 @@ Now, we can move on to configuring our Oasis node with the freshly generated
 [`oasis wallet import`]: ../../general/manage-tokens/cli/wallet.md#import
 [`oasis wallet import-file`]: ../../general/manage-tokens/cli/wallet.md#import-file
 [`oasis account entity init`]: ../../general/manage-tokens/cli/account.md#entity-init
-
-### Copy the Public Entity File Descriptor to `server`
-
-The Oasis node needs access to the public key of your entity. Copy your
-`entity.json` to `/node/etc/entity.json` on the `server`.
+[`oasis wallet show`]: ../../general/manage-tokens/cli/wallet.md#show
 
 ## Configuration
 
@@ -170,6 +177,8 @@ of that machine.
 
   You can find the current Oasis Seed Node address in the Network Parameters
   page ([Mainnet], [Testnet]).
+
+* `{{ entity_id }}`: The node's entity ID from `entity.json`.
 
 To use this configuration, save it in the `/node/etc/config.yml` file:
 
@@ -224,9 +233,8 @@ p2p:
         - {{ seed_node_address }}
 
 registration:
-    # In order for the node to register itself, the entity.json of the entity
-    # used to provision the node must be available on the node.
-    entity: /node/etc/entity.json
+    # In order for the node to register itself, the entity ID must be set.
+    entity_id: {{ entity_id }}
 ```
 
 :::caution

@@ -161,7 +161,6 @@ If you want to build on Oasis, you can read more about the Ecosystem Fund [here]
 
 The Oasis Foundation has been working with many talented dev teams via our [Grants program](https://oasisprotocol.org/ecosystem#grantsprogram) to build new applications and integrations on top of the Oasis Network. These include:
 
-* [Anthem (by Chorus One)](https://anthem.chorus.one)
 * [Alethea.ai](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-alethea-ai-aac8f854e436): A marketplace for AI-generated media
 * [Bankex](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-bankex-9bb127f9e449): Send digital assets across your social networks
 * [Castalise](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-castalise-347f155ab66f): Enabling privacy-preserving predictive analytics on pharmaceutical data
@@ -169,8 +168,7 @@ The Oasis Foundation has been working with many talented dev teams via our [Gran
 * [Dead Man’s Switch](https://medium.com/oasis-protocol-project/devaccelerator-spotlight-dead-mans-switch-32d07cdfc057): A decentralized, censorship-resistant tool for whistleblowers
 * [Luther.ai:](https://luther.ai)  Building artificial intelligence to Retain, Reinforce, Recall and ultimately augment your human memory.
 * [Oasis.Fish (by Stakefish)](https://oasis.fish/leaderboard/)
-* [Oasis Hubble (by Figment Networks)](https://www.figment.io/)
-* [Oasis Monitor (by Everstake)](https://oasismonitor.com)
+* [Oasis Hubble (by Figment Networks)](https://figment.io/)
 * [Oasisscan (by bitcat)](https://oasisscan.com)
 * [Oasis Smartstake (by Smartstake)](https://oasis.smartstake.io): Providing validation services for the Oasis Network
 * Oasis Mobile Wallet by RockX
@@ -210,7 +208,7 @@ Over 200 articles have been written since the company came out of stealth mode. 
 * [The New York Times: Building a World Where Data Privacy Exists Online](https://www.nytimes.com/2019/11/19/technology/artificial-intelligence-dawn-song.html)
 * [WIRED: Oasis Labs' Dawn Song on a Safer Way to Protect Your Data](https://www.wired.com/story/dawn-song-oasis-labs-data-privacy-wired25/)
 * [MIT Technology Review: How AI could save lives without spilling medical secrets](https://www.technologyreview.com/2019/05/14/239125/how-ai-could-save-lives-without-spilling-secrets/)
-* [Yahoo! Finance: Web3 Users will Control Their Data, Says Oasis Ecosystem Head](https://www.yahoo.com/now/web3-users-control-data-says-132837055.html)
+* [Coin Rivet: Web3 Users will Control Their Data, Says Oasis Ecosystem Head](https://coinrivet.com/web3-users-will-control-their-data-says-oasis-ecosystem-head/)
 * [Cointelegraph: First DEX on Oasis Network hits $100M TVL in 24 hours ](https://cointelegraph.com/news/first-dex-on-oasis-network-hits-100m-tvl-in-24-hours)
 * [Cointelegraph: Binance Labs backs $200M Oasis Ecosystem Fund ](https://cointelegraph.com/news/binance-labs-backs-200m-oasis-ecosystem-fund)
 * [CoinSpeaker: Oasis Protocol Inks Partnership with Meta to Facilitate AI Computing Applications](https://www.coinspeaker.com/oasis-protocol-partnership-meta/)

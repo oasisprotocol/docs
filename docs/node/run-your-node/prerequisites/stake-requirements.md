@@ -59,8 +59,8 @@ To run a ParaTime compute node, the minimum you need to stake currently is:
 
 |            | Mainnet     | Testnet  |
 | ---------- | ----------- | -------- |
-| Sapphire   | 50,000 ROSE | 100 TEST |
-| Emerald    | 50,000 ROSE | 100 TEST |
+| Sapphire   | 5,000,100 ROSE | 100 TEST |
+| Emerald    | 5,000,100 ROSE | 100 TEST |
 | Cipher     | 100 ROSE    | 100 TEST |
 
 

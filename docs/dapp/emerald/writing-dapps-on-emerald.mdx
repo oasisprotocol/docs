@@ -79,91 +79,12 @@ ParaTime.
 [Emerald Mainnet]: ./network.mdx
 [Emerald Testnet]: ./network.mdx
 
-## Running a Private Oasis Network Locally
+## Localnet
 
-For convenient development and testing of your dApps the Oasis team prepared
-the [ghcr.io/oasisprotocol/emerald-localnet][emerald-localnet] Docker image which brings you a complete Oasis
-stack to your desktop. This network is isolated from the Mainnet or Testnet and
-consists of:
+For development and testing, you can run a local [instance][localnet] of the
+entire Emerald stack.
 
-- single Oasis validator node with 1-second block time and 30-second epoch,
-- single Oasis client node,
-- three compute nodes running Oasis Emerald,
-- PostgreSQL instance,
-- Oasis Web3 gateway with transaction indexer,
-- helper script which populates initial test accounts for you.
-
-To run the image, execute:
-
-```sh
-docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-localnet
-```
-
-After a while, the tool will show you something like this:
-
-```
-emerald-localnet 2023-02-28-git84730b2 (oasis-core: 22.2.6, emerald-paratime: 10.0.0, oasis-web3-gateway: 3.2.0-git84730b2)
-
-Starting oasis-net-runner with emerald...
-Starting postgresql...
-Starting oasis-web3-gateway...
-Bootstrapping network and populating account(s) (this might take a minute)...
-
-Available Accounts
-==================
-(0) 0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2 (100 ROSE)
-(1) 0x903a7dce5a26a3f4DE2d157606c2191740Bc4BC9 (100 ROSE)
-(2) 0xF149ad5CBFfD92ba84F5784106f6Cb071A32a1b8 (100 ROSE)
-(3) 0x2315F40C1122400Df55483743B051D2997ef0a62 (100 ROSE)
-(4) 0xf6FdcacbA93A428A07d27dacEf1fBF25E2C65B0F (100 ROSE)
-
-Private Keys
-==================
-(0) 0x160f52faa5c0aecfa26c793424a04d53cbf23dcad5901ce15b50c2e85b9d6ca7
-(1) 0x0ba685723b47d8e744b1b70a9bea9d4d968f60205385ae9de99865174c1af110
-(2) 0xfa990cf0c22af455d2734c879a2a844ff99bd779b400bb0e2919758d1be284b5
-(3) 0x3bf225ef73b1b56b03ceec8bb4dfb4830b662b073b312beb7e7fec3159b1bb4f
-(4) 0xad0dd7ceb896fd5f5ddc76d56e54ee6d5c2a3ffeac7714d3ef544d3d6262512c
-
-HD Wallet
-==================
-Mnemonic:       bench remain brave curve frozen verify dream margin alarm world repair innocent
-Base HD Path:   m/44'/60'/0'/0/%d
-
-WARNING: The chain is running in ephemeral mode. State will be lost after restart!
-
-Listening on http://localhost:8545 and ws://localhost:8546
-```
-
-Those familiar with local dApp environments will find the output above similar
-to `geth --dev` or `ganache-cli` commands or the `geth-dev-assistant` npm
-package. [emerald-localnet] will spin up a private Oasis Network locally, generate
-and populate test accounts and make the following Web3 endpoints available for
-you to use:
-- `http://localhost:8545`
-- `ws://localhost:8546`
-
-:::tip
-
-If you prefer using the same mnemonics each time (e.g. for testing purposes)
-or to populate just a single wallet, use `-to` flag and pass the mnemonics or
-the wallet addresses. For example
-
-```sh
-docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-localnet -to "bench remain brave curve frozen verify dream margin alarm world repair innocent"
-docker run -it -p8545:8545 -p8546:8546 ghcr.io/oasisprotocol/emerald-localnet -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2,0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
-```
-
-:::
-
-:::danger
-
-[emerald-localnet] runs in ephemeral mode. Any smart contract and wallet balance
-will be lost after you quit the Docker container!
-
-:::
-
-[emerald-localnet]: https://github.com/oasisprotocol/oasis-web3-gateway/pkgs/container/emerald-localnet
+[localnet]: ../tools/localnet.mdx
 
 ## Create dApp on Emerald with Hardhat
 
@@ -213,7 +134,7 @@ ETH and registers them to the [ethers.js] instance used in the tests.
 Next, let's look at how to configure Hardhat for Emerald. For convenience, we
 assign the `PRIVATE_KEY` environment variable a hex-encoded private key of your
 Emerald wallet containing tokens to pay for gas fees. If you are running
-[emerald-localnet], use any of the five generated private keys.
+[localnet], use any of the five generated private keys.
 
 ```
 export PRIVATE_KEY="YOUR_0x_EMERALD_PRIVATE_KEY"
@@ -245,7 +166,7 @@ networks: {
 
 Next, we increase the default timeout for mocha tests from 20 seconds to 60
 seconds. This step is not needed, if you will test your contracts solely on
-[emerald-localnet], but is required for Testnet to avoid timeouts. Append the
+[localnet], but is required for Testnet to avoid timeouts. Append the
 following block to the `config` object:
 
 ```
@@ -258,14 +179,14 @@ mocha: {
 
 `geth --dev` and `ganache-cli` tools use a so-called "instant mining" mode.
 In this mode, a new block is mined immediately when a new transaction occurs in
-the mempool. Neither Oasis Mainnet and Testnet Networks nor [emerald-localnet]
+the mempool. Neither Oasis Mainnet and Testnet Networks nor [localnet]
 support such mode and the new block will always be mined at least after the 1
 second block time elapsed.
 
 :::
 
-Now deploy the contract to the local [emerald-localnet] Docker container by
-selecting the `emerald_local` network we configured above and run the tests:
+Now deploy the contract to the [localnet] Docker container by selecting the
+`emerald_local` network we configured above and run the tests:
 
 ```
 $ npx hardhat run scripts/deploy.ts --network emerald_local
@@ -336,8 +257,8 @@ transactions.
 
 If you haven't done it yet, first [install the MetaMask extension for your
 browser][metamask]. Import your wallet and configure Emerald Testnet and
-Mainnet Networks. If you wish to connect to [emerald-localnet] container, configure
-the local network as well.
+Mainnet Networks. If you wish to connect to the Emerald [localnet] container,
+configure the local network as well.
 
 When you open Remix for the first time, it automatically creates an example
 project. Let's open one of the contracts and compile it in the "Solidity

@@ -131,6 +131,7 @@ After generating a new TLS private key and certificate on the sentry node, set t
 
 Before using the below validator node configuration snippet, replace the following variables:
 
+* `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
 * `{{ sentry_node_grpc_public_key }}`: The sentry node's new TLS public key encoded in Base64-encoding (e.g. `1dA4/NuYPSWXYaKpLhaofrZscIb2FDKtJclCMnVC0Xc=`).
 * `{{ sentry_node_private_ip }}`: The private IP address of the sentry node over which sentry node should be accessible to the validator.
 
@@ -139,9 +140,8 @@ Before using the below validator node configuration snippet, replace the followi
 
 worker:
   registration:
-    # In order for the node to register itself the entity.json of the entity
-    # used to provision the node must be available on the node.
-    entity: /node/etc/entity.json
+    # In order for the node to register itself, the entity ID must be set.
+    entity_id: {{ entity_id }}
   sentry:
     address:
       - "{{ sentry_node_grpc_public_key }}@{{ sentry_node_private_ip }}:9009"

@@ -79,7 +79,7 @@ export const sidebarDapp: SidebarsConfig = {
           },
           items: [
             'dapp/opl/celer/networks',
-            'dapp/opl/celer/pingpong-example',
+            'dapp/opl/celer/ping-example',
           ],
         },
         {

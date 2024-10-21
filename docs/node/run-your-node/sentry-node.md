@@ -182,6 +182,8 @@ Before using this configuration you should collect the following information to 
 
   on the sentry node.
 
+* `{{ entity_id }}`: This is node's entity ID from `entity.json`.
+
 ```yaml
 mode: validator
 common:
@@ -210,9 +212,8 @@ genesis:
     file: /node/etc/genesis.json
 
 registration:
-    # In order for the node to register itself the entity.json of the entity
-    # used to provision the node must be available on the node.
-    entity: /node/etc/entity.json
+    # In order for the node to register itself, the entity ID must be set.
+    entity_id: {{ entity_id }}
 
 sentry:
     address:

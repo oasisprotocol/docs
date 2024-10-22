@@ -54,7 +54,8 @@ It performs two main functions:
 
 - Monitors the Celer State Guardian Network (SGN) for messages ready to be
   submitted (with sufficient validator signatures).
-- Submits message execution transactions to the MessageBus contract.
+- Submits message execution transactions to the MessageBus contract on the
+  destination chain.
 
 It is necessary a [Message Executor] runs for you dapp. To set up an executor,
 you have two options 
@@ -69,6 +70,14 @@ For Hackathon or Grant participants, we recommend filling out the
 In most cases, Celer advises dApp developers to use the shared executor
 services provided by the Celer Network team to avoid server configuration and
 operation concerns.
+
+:::info
+
+Oasis is running an executor for the Sapphire Testnet, which is okay to rely on
+for a test, for a faster execution it's recommended to run your own or use the
+hosted service.
+
+:::
 
 [Message Executor]: https://im-docs.celer.network/developer/development-guide/message-executor
 [documentation]: https://im-docs.celer.network/developer/development-guide/message-executor/integration-guide

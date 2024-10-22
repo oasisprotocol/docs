@@ -53,6 +53,7 @@ export const sidebarDapp: SidebarsConfig = {
             id: 'dapp/opl/opl-sdk/README',
           },
           items: [
+            'dapp/opl/opl-sdk/ping-example',
             {
               type: 'category',
               label: 'Secret Ballot Example',
@@ -78,8 +79,8 @@ export const sidebarDapp: SidebarsConfig = {
             id: 'dapp/opl/celer/README',
           },
           items: [
-            'dapp/opl/celer/networks',
             'dapp/opl/celer/ping-example',
+            'dapp/opl/celer/networks',
           ],
         },
         {

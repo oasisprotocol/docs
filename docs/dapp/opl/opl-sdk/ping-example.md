@@ -65,7 +65,7 @@ message which was received.
             (bytes memory message) = abi.decode((_args), (bytes));
             emit MessageReceived(message);
             return Result.Success;
-        }    
+        }
     }
     ```
 </details>
@@ -85,7 +85,7 @@ message which was received.
     contract Pong is Enclave {
         event MessageReceived(bytes message);
 
-        constructor(address ping, bytes32 chain) Enclave(ping, autoswitch(chain)) {
+        constructor(uint nonce, bytes32 chain) Enclave(computeAddress(msg.sender, nonce), autoswitch(chain)) {
             registerEndpoint("ping", _pingMessage);
         }
 
@@ -94,101 +94,130 @@ message which was received.
             emit MessageReceived(message);
             return Result.Success;
         }
+
+        function computeAddress(address _origin, uint _nonce) public pure returns (address) {
+            if (_nonce == 0x00) {
+                return address(uint160(uint256(keccak256(abi.encodePacked(
+                    bytes1(0xd6), bytes1(0x94), _origin, bytes1(0x80)
+                )))));
+            }
+            if (_nonce <= 0x7f) {
+                return address(uint160(uint256(keccak256(abi.encodePacked(
+                    bytes1(0xd6), bytes1(0x94), _origin, bytes1(uint8(_nonce))
+                )))));
+            }
+            if (_nonce <= 0xff) {
+                return address(uint160(uint256(keccak256(abi.encodePacked(
+                    bytes1(0xd7), bytes1(0x94), _origin, bytes1(0x81), uint8(_nonce)
+                )))));
+            }
+            if (_nonce <= 0xffff) {
+                return address(uint160(uint256(keccak256(abi.encodePacked(
+                    bytes1(0xd8), bytes1(0x94), _origin, bytes1(0x82), uint16(_nonce)
+                )))));
+            }
+            if (_nonce <= 0xffffff) {
+                return address(uint160(uint256(keccak256(abi.encodePacked(
+                    bytes1(0xd9), bytes1(0x94), _origin, bytes1(0x83), uint24(_nonce)
+                )))));
+            }
+            return address(uint160(uint256(keccak256(abi.encodePacked(
+                bytes1(0xda), bytes1(0x94), _origin, bytes1(0x84), uint32(_nonce)
+            )))));
+        }
     }
     ```
 </details>
 
 ### Key points
 
-- `Host`: Celer's MessageBus contract on the respective chain.
-- `sendPing`: Initiates the cross-chain my calling Celers MessageBus.
-- `executeMessage`: Called by Celer's MessageBus on the destination chian.
+- `Host`: OPL wrapper for outside contract.
+- `Enclave`: OPL wrapper for the contract on Sapphire side.
+- `registerEndpoint`: Registers endpoints in an OPL managed map.
+- `postMessage`: Call registered endpoints.
+- `autoswitch`: Finds correct MessageBus address via chain name.
 
 ## Compiling the Contract
 
-For compatibility with Sapphire, compile the contract using Solidity version
-**`0.8.24`** or older.
+For compatibility with Sapphire, compile the contract using compiler version
+**`0.8.24`** and evm version **`paris`** (under advanced configuration).
+
+## Deploying the Contract
+
+Deploy the Ping contract on `BSC Testnet` and the Pong.sol contract on
+`Sapphire Testnet`.
+
+### Deploying Pong.sol on Sapphire Testnet
+
+You'll deploy the contract on `Sapphire Testnet` first to avoid switching chains
+back and forth.
+
+1. Obtain TEST tokens for `Sapphire Testnet` from the [Oasis faucet].
+2. Get next nonce of your account from `BSC Testnet`
+   1. If you didn't do anything on *BSC Testnet* yet this will `0`.
+   2. Else you need to get your last nonce, e.g. by checking your account
+address on [bscscan](https://testnet.bscscan.com/) and and inspect the details
+of your latest transaction, and then add 1.
+3. In Metamask, switch to the `Sapphire Testnet` network and select
+   `Injected Provider - MetaMask` as the environment in Remix.
+4. Select the `Pong.sol` contract.
+5. Fill in the deployment parameters:
+
+- **`nonce`**: `0` (or next nonce as written above)
+- **`chain`**: `0x6273630000000000000000000000000000000000000000000000000000000000`
+  (bytes encoded `"bsc"`)
+
+6. Deploy the contract on `Sapphire Testnet`
 
 :::info
 
-You can also use Celer's framework contracts and interfaces by importing them 
-
-```solidity
-import "sgn-v2-contracts/contracts/message/framework/MessageBusAddress.sol";
-import "sgn-v2-contracts/contracts/message/framework/MessageReceiverApp.sol";
-import "sgn-v2-contracts/contracts/message/interfaces/IMessageBus.sol";
-```
-
-but this will limit you to use only Solidity version **`0.8.9`**.
+Copy the address of the deployed contract, you'll need it for the next step as
+Remix will remove the contract from the UI if you change the chain.
 
 :::
 
-### Deploying the Contract
+[Oasis Faucet]: https://faucet.testnet.oasis.io/
 
-Deploy the Ping contract on two different chains: `BSC Testnet` and
-`Sapphire Testnet`.
-
-#### Deploying on BSC Testnet
+### Deploying Ping.sol on BSC Testnet
 
 1. Obtain BNB test token for `BSC Testnet` from the [BNB faucet] or their
    discord.
 2. In MetaMask, switch to the `BSC Testnet` network and select
    `Injected Provider - MetaMask` as the environment in Remix.
-3. Fill in the messageBus address for BSC Testnet:
-   `0xAd204986D6cB67A5Bc76a3CB8974823F43Cb9AAA`.
-4. Deploy the contract on `BSC Testnet`.
-
+3. Select the `Ping.sol` contract.
+4. Fill in the contract addess you just have deployed on `Sapphire Testnet`.
+5. Deploy the contract on `BSC Testnet`.
 
 [BNB faucet]: https://www.bnbchain.org/en/testnet-faucet
-
-#### Deploying on Sapphire Testnet
-
-1. Obtain TEST tokens for `Sapphire Testnet` from the [Oasis faucet].
-2. In Metamask, switch to the `Sapphire Testnet` network and select
-   `Injected Provider - MetaMask` as the environment in Remix
-3. Fill in the messageBus address for BSC Testnet:
-   `0x9Bb46D5100d2Db4608112026951c9C965b233f4D`.  
-4. Deploy the contract on Sapphire Testnet
-
-[Oasis Faucet]: https://faucet.testnet.oasis.io/
 
 ## Executing Ping
 
 Now that you've deployed the contacts, you can send the ping message
 cross-chain.
 
-You'll need the following three parameters:
+You'll need the following parameter for `startPing`:
 
-- `_dstContract`: The contract address of the reveiving contract on the
-  destination chain which you just deployed.
-- `_dstChainId`: The chain id of the the destination chain. Which is in our
-  example `Sapphire Testnet` - `23295`.
-- `message`: The encoded message. e.g. "Hello from BSC" - 
+- `_message`: The encoded message. e.g. "Hello from BSC" - 
   `0x48656c6c6f2066726f6d20425343000000000000000000000000000000000000`.
 
-Additionally you'll have to pay a fee which you send as value. For sending the
-ping 0.001 tBNB will be enough.
+Additionally you'll have to pay a fee which you send as `value`. For sending the
+ping 0.001 tBNB (1000000 gwei) will be enough.
+
+Finally execute the function `startPing`.
 
 :::info
 
 For the `Sapphire Testnet` an executor is running to relay the messages every
-few mintues. If you deploy on mainnet please refer to the [Executor chapter]
-on how to run an executor.
+few mintues. If you deploy on mainnet please refer to the [Executor chapter].
 :::
 
-[Executor chapter]:  ./README.md#executor
-
-:::info
-
-//TODO: add statement about encrypting the message for real use cases
-
-:::
+[Executor chapter]:  ../celer/README.md#executor
 
 ## Checking execution 
 
 To see if you successfully send a ping message cross-chain you can watch for
 new transactions at the [MessageBus address] from Celer or your deployed
-contract Sapphire Testnet
+contract on `Sapphire Testnet`.
 
 [MessageBus address]: https://explorer.oasis.io/testnet/sapphire/address/0x9Bb46D5100d2Db4608112026951c9C965b233f4D
 

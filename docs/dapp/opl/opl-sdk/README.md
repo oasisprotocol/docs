@@ -103,7 +103,7 @@ After a few minutes the bridge will detect and then the executor will invoke the
 
 As noted in the [fees](#fees) section, an exectuor needs to relay your messages.
 Please refer to the Celer [Executor][celer-executor] section on how to get on
-the shared Message Executor on Testnet or how to set up your own executor.
+the shared Message Executor or how to set up your own executor.
 
 :::
 

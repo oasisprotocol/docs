@@ -22,7 +22,7 @@ For more information about OPL and to catch the latest news, please visit the
 [official OPL page].
 
 [official OPL page]: https://oasisprotocol.org/opl
-[Sapphire]: https://oasisprotocol.org/sapphire
+[Sapphire]: ../sapphire/README.mdx
 
 ## How OPL Works
 
@@ -36,29 +36,41 @@ keeping their main logic on their primary chain.
 :::info
 
 For how to use use signed messages with the GSN to trigger a cross-chain
-messages, please visit our [Gasless Transactions chatper].
+messages, please visit our [Gasless Transactions chapter].
 
 :::
 
-[Gasless Transactions chatper]: ../sapphire/gasless.md
+[Gasless Transactions chapter]: ../sapphire/gasless.md
 
-### Message Bridges
+## Message Bridges
 
-You can integrate message bridges into your dApps using one of these three methods:
+You can integrate message bridges into your dApps using one of these three
+methods:
 
-- **OPL-SDK**: A wrapper provided by the Oasis Protocol that simplifies the integration of message bridging with Oasis’s privacy features. 
-- **Celer Inter-Chain Messaging (IM)**: A generalized message bridging solution by Celer, which lets you build more complex solutions.
-- **Router Protocol CrossTalk**: An extensible cross-chain framework that enables seamless state transitions across multiple chains.
+- **[OPL SDK]**: A wrapper provided by the Oasis Protocol that simplifies the
+integration of message bridging with Oasis’s privacy features.
+- **[Celer Inter-Chain Messaging (IM)][celer]**: A generalized message bridging solution
+by Celer, which lets you build more complex solutions.
+- **[Router Protocol CrossTalk][router]**: An extensible cross-chain framework that
+enables seamless state transitions across multiple chains.
 
-<DocCardList items={[
-    findSidebarItem('/dapp/opl/opl-sdk/'),
-    findSidebarItem('/dapp/opl/celer/'),
-    findSidebarItem('/dapp/opl/router-protocol/')
-    ]} />
+### Comparison
+
+| Protocol        | Validator Network | Relayer | Fees |
+| --------------- | ----------------- | ------ | ------ |
+| **[OPL SDK]**         | SGN (Celer)                       | Executor (self-hosted or hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
+| **[Celer IM][celer]**        | SGN (Celer)                       | Executor (self-hosted or hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
+| **[Router Protocol][router]** | Orchestrators (Router Chain)      | Relayer (run by 3rd party) | Paid by the approved feepayer on the Routerchain |
 
 ## Examples
 
 <DocCardList items={[
     findSidebarItem('/dapp/opl/secret-ballot-example/'),
+    findSidebarItem('/dapp/opl/opl-sdk/ping-example'),
+    findSidebarItem('/dapp/opl/celer/ping-example'),
     findSidebarItem('/dapp/opl/router-protocol/pingpong-example'),
     ]} />
+
+[OPL SDK]: ./opl-sdk/README.md
+[celer]: ./celer/README.md
+[router]: ./router-protocol/README.md

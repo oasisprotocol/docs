@@ -29,9 +29,10 @@ If you're new to Remix, follow our basic guide for using Remix
 ## Overview Ping
 
 In this example, you'll deploy the same contract on two different chains.
-You'll then send a `ping` from chain A to chain B, facilitated by Celer-IM.
-The contract on chain B will receive the `ping` and emits an event with the
-message which was received.
+You'll then send a `ping` from *BSC Testnet* to *Saphhire Testnet*, facilitated
+by Celer-IM.
+The contract on *Sapphire Testnet* will receive the `ping` and emits an event
+with the message which was received.
 
 ## Contract Setup
 
@@ -115,12 +116,12 @@ message which was received.
 
 ## Compiling the Contract
 
-For compatibility with Sapphire, compile the contract using Solidity version
-**`0.8.24`** or older.
+For compatibility with Sapphire, compile the contract using compiler version
+**`0.8.24`** and evm version **`paris`** (under advanced configuration).
 
 :::info
 
-You can also use Celer's framework contracts and interfaces by importing them 
+You can also use Celer's framework contracts and interfaces by importing them
 
 ```solidity
 import "sgn-v2-contracts/contracts/message/framework/MessageBusAddress.sol";
@@ -132,12 +133,12 @@ but this will limit you to use only Solidity version **`0.8.9`**.
 
 :::
 
-### Deploying the Contract
+## Deploying the Contract
 
 Deploy the Ping contract on two different chains: `BSC Testnet` and
 `Sapphire Testnet`.
 
-#### Deploying on BSC Testnet
+### Deploying on BSC Testnet
 
 1. Obtain BNB test token for `BSC Testnet` from the [BNB faucet] or their
    discord.
@@ -150,7 +151,7 @@ Deploy the Ping contract on two different chains: `BSC Testnet` and
 
 [BNB faucet]: https://www.bnbchain.org/en/testnet-faucet
 
-#### Deploying on Sapphire Testnet
+### Deploying on Sapphire Testnet
 
 1. Obtain TEST tokens for `Sapphire Testnet` from the [Oasis faucet].
 2. In Metamask, switch to the `Sapphire Testnet` network and select
@@ -176,27 +177,22 @@ You'll need the following three parameters:
   `0x48656c6c6f2066726f6d20425343000000000000000000000000000000000000`.
 
 Additionally you'll have to pay a fee which you send as value. For sending the
-ping 0.001 tBNB will be enough.
+ping 0.001 tBNB (1000000 gwei) will be enough.
 
 :::info
 
 For the `Sapphire Testnet` an executor is running to relay the messages every
-few mintues. If you deploy on mainnet please refer to the [Executor chapter]
-on how to run an executor.
+few mintues. If you deploy on mainnet please refer to the [Executor chapter].
 :::
 
 [Executor chapter]:  ./README.md#executor
-
-:::info
-
-//TODO: add statement about encrypting the message for real use cases
-
-:::
 
 ## Checking execution 
 
 To see if you successfully send a ping message cross-chain you can watch for
 new transactions at the [MessageBus address] from Celer or your deployed
-contract Sapphire Testnet
+contract Sapphire Testnet.
 
 [MessageBus address]: https://explorer.oasis.io/testnet/sapphire/address/0x9Bb46D5100d2Db4608112026951c9C965b233f4D
+
+[Remix]: https://remix.ethereum.org/

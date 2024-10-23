@@ -13,7 +13,7 @@ future Web3 applications.
 [sapphire-contracts]: https://www.npmjs.com/package/@oasisprotocol/sapphire-contracts
 [Sapphire]: https://oasisprotocol.org/sapphire
 
-## Overview 
+## Overview
 
 ![Transaction Flow](../../diagrams/opl-contract-flow.mmd.svg)
 

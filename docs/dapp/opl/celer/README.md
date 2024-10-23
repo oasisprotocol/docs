@@ -58,7 +58,7 @@ It performs two main functions:
   destination chain.
 
 It is necessary a [Message Executor] runs for you dapp. To set up an executor,
-you have two options 
+you have two options:
 
 - Follow the [documentation] to set up your own executor.
 - Fill out this [form][celer-form] for Celer to set up a hosted executor

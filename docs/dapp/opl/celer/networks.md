@@ -46,9 +46,3 @@ description: Supported networks on Celer IM
 | Sapphire Testnet | 23295 | 0x5aff | sapphire-testnet |
 | Scroll Alpha Testnet | 534353 | 0x82751 | scroll-testnet |
 | Shibuya Testnet | 81 | 0x51 | shibuya-testnet |
-
-In the following sections we will look at a concrete example on how to build a
-confidential, cross-chain DAO-voting dApp from scratch using the Oasis Privacy Layer!
-
-
-

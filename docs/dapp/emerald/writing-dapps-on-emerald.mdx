@@ -5,11 +5,17 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 This tutorial will show you how to set up dApp development environment for
 Emerald to be able to write and deploy dApps on Oasis Emerald.
-
-We will walk you through the Hardhat configuration and - for those who prefer
-a simpler web-only interface - the Remix IDE.
-Oasis Emerald exposes an EVM-compatible interface so writing dApps isn't much
+Oasis Emerald exposes an **EVM-compatible** interface so writing dApps isn't much
 different compared to the original Ethereum Network!
+
+We will walk you through the Hardhat configuration.
+
+Those who prefer a simpler web-only interface can also use the Remix IDE. Check out our
+general [Remix guide]. Just remember to use the Emerald [networks]
+when selecting *Inject Web3* environment and connecting to MetaMask.
+
+[Remix guide]: ../tools/remix.md
+[networks]: ./network.mdx#rpc-endpoints
 
 ## Oasis Consensus Layer and Emerald ParaTime
 
@@ -247,55 +253,6 @@ Greeter deployed to: 0x6e8e9e0DBCa4EF4a65eBCBe4032e7C2a6fb7C623
 
 [Node.js]: https://nodejs.org
 [ethers.js]: https://docs.ethers.io/v5/
-
-## Create dApp on Emerald with Remix - Ethereum IDE
-
-[Remix] is a popular web IDE for swift development, deployment and testing
-smart contracts on the Ethereum Network. We will use it in combination with
-MetaMask to access the network settings and your wallet to sign and submit the
-transactions.
-
-If you haven't done it yet, first [install the MetaMask extension for your
-browser][metamask]. Import your wallet and configure Emerald Testnet and
-Mainnet Networks. If you wish to connect to the Emerald [localnet] container,
-configure the local network as well.
-
-When you open Remix for the first time, it automatically creates an example
-project. Let's open one of the contracts and compile it in the "Solidity
-compiler" tab.
-
-![The initial example project in Remix - Ethereum IDE](../images/emerald/remix1.png)
-
-![Solidity compiler tab](../images/emerald/remix2.png)
-
-Next, in the "Deploy and Run Transactions" tab, select the "Injected Web3"
-environment. A MetaMask popup will appear and you will have to connect one or
-more accounts with Remix. Once the connection succeeds, click on the "Deploy"
-button. The MetaMask popup appears again and you will have to review the
-transaction, the gas options and finally confirm the transaction.
-
-![Metamask transaction confirmation](../images/emerald/remix3.png)
-
-If everything goes well, your transaction will be deployed using the selected
-account in the MetaMask and the corresponding Emerald Network.
-
-![Successful contract deployment on Emerald Testnet with Remix](../images/emerald/remix4.png)
-
-:::info
-
-Sometimes the gas limit estimation function might compute a slightly lower
-value from the required one. In this case, try increasing the gas limit
-manually by 10% or 20%.
-
-:::
-
-Congratulations! Now you can start developing your own smart contracts on the
-Oasis Emerald blockchain! Should you have any questions, do not hesitate to
-share them with us on the [#emerald-paratime Discord channel][discord].
-
-[Remix]: https://remix.ethereum.org
-[metamask]: ../../general/manage-tokens/README.mdx#check-your-account
-[discord]: https://oasis.io/discord
 
 ## Troubleshooting
 

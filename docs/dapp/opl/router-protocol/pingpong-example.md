@@ -1,5 +1,5 @@
 ---
-description: Router Protocol PingPong example
+description: PingPong example with Router CrossTalk
 ---
 
 # PingPong Example
@@ -217,17 +217,17 @@ acknowledgment message back to the contract on chain A.
 - `iAck`: Handles the acknowledgment in a bidirectional cross-chain message on
   the source contract.
 
-### Compiling the Contract
+## Compiling the Contract
 
-For compatibility with Sapphire, compile the contract using Solidity version
-**`0.8.24`** or older.
+For compatibility with Sapphire, compile the contract using compiler version
+**`0.8.24`** and evm version **`paris`** (under advanced configuration).
 
-### Deploying the Contract
+## Deploying the Contract
 
 Deploy the PingPong contract on two different chains: `Sapphire Testnet` and
 `Polygon Amoy`.
 
-#### Deploying on Sapphire Testnet
+### Deploying on Sapphire Testnet
 
 1. Obtain TEST tokens for `Sapphire Testnet` from the [Oasis faucet].
 2. In Metamask, switch to the `Sapphire Testnet` network and select
@@ -249,7 +249,7 @@ Deploy the PingPong contract on two different chains: `Sapphire Testnet` and
 
 [Oasis Faucet]: https://faucet.testnet.oasis.io/
 
-#### Deploying on Polygon Amoy
+### Deploying on Polygon Amoy
 
 1. Obtain POL tokens for `Polygon Amoy` Testnet from the [Polygon faucet].
 2. Switch to the `Polygon Amoy` network in Metamask.

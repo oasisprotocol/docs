@@ -54,21 +54,6 @@ export const sidebarDapp: SidebarsConfig = {
           },
           items: [
             'dapp/opl/opl-sdk/ping-example',
-            {
-              type: 'category',
-              label: 'Secret Ballot Example',
-              link: {
-                type: 'doc',
-                id: 'dapp/opl/secret-ballot-example/README',
-              },
-              items: [
-                'dapp/opl/secret-ballot-example/setup',
-                'dapp/opl/secret-ballot-example/host',
-                'dapp/opl/secret-ballot-example/enclave',
-                'dapp/opl/secret-ballot-example/build',
-                'dapp/opl/secret-ballot-example/frontend',
-              ],
-            }
           ],
         },
         {

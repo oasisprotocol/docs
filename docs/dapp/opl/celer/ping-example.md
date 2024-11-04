@@ -22,7 +22,7 @@ The only prerequisite is a set-up Metamask account.
 If you're new to Remix, follow our basic guide for using Remix
 [here][dapp-remix].
 
-[dapp-remix]: /dapp/emerald/writing-dapps-on-emerald#create-dapp-on-emerald-with-remix---ethereum-ide
+[dapp-remix]: /dapp/tools/remix.md
 
 :::
 
@@ -123,11 +123,11 @@ For compatibility with Sapphire, compile the contract using compiler version
 
 You can also use Celer's framework contracts and interfaces by importing them
 
-```solidity
-import "sgn-v2-contracts/contracts/message/framework/MessageBusAddress.sol";
-import "sgn-v2-contracts/contracts/message/framework/MessageReceiverApp.sol";
-import "sgn-v2-contracts/contracts/message/interfaces/IMessageBus.sol";
-```
+    ```solidity
+    import "sgn-v2-contracts/contracts/message/framework/MessageBusAddress.sol";
+    import "sgn-v2-contracts/contracts/message/framework/MessageReceiverApp.sol";
+    import "sgn-v2-contracts/contracts/message/interfaces/IMessageBus.sol";
+    ```
 
 but this will limit you to use only Solidity version **`0.8.9`**.
 
@@ -173,7 +173,7 @@ You'll need the following three parameters:
   destination chain which you just deployed.
 - `_dstChainId`: The chain id of the the destination chain. Which is in our
   example `Sapphire Testnet` - `23295`.
-- `message`: The encoded message. e.g. "Hello from BSC" - 
+- `message`: The encoded message. e.g. "Hello from BSC" -
   `0x48656c6c6f2066726f6d20425343000000000000000000000000000000000000`.
 
 Additionally you'll have to pay a fee which you send as value. For sending the
@@ -183,11 +183,12 @@ ping 0.001 tBNB (1000000 gwei) will be enough.
 
 For the `Sapphire Testnet` an executor is running to relay the messages every
 few mintues. If you deploy on mainnet please refer to the [Executor chapter].
+
 :::
 
-[Executor chapter]:  ./README.md#executor
+[Executor chapter]: ./README.md#executor
 
-## Checking execution 
+## Checking execution
 
 To see if you successfully send a ping message cross-chain you can watch for
 new transactions at the [MessageBus address] from Celer or your deployed

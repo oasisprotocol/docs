@@ -22,7 +22,7 @@ The only prerequisite is a set-up Metamask account.
 If you're new to Remix, follow our basic guide for using Remix
 [here][dapp-remix].
 
-[dapp-remix]: /dapp/emerald/writing-dapps-on-emerald#create-dapp-on-emerald-with-remix---ethereum-ide
+[dapp-remix]: /dapp/tools/remix.md
 
 :::
 

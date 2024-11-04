@@ -23,7 +23,7 @@ The only prerequisite is a set-up Metamask account.
 If you're new to Remix, follow our basic guide for using Remix
 [here][dapp-remix].
 
-[dapp-remix]: /dapp/emerald/writing-dapps-on-emerald#create-dapp-on-emerald-with-remix---ethereum-ide
+[dapp-remix]: /dapp/tools/remix.md
 
 :::
 
@@ -197,7 +197,7 @@ cross-chain.
 
 You'll need the following parameter for `startPing`:
 
-- `_message`: The encoded message. e.g. "Hello from BSC" - 
+- `_message`: The encoded message. e.g. "Hello from BSC" -
   `0x48656c6c6f2066726f6d20425343000000000000000000000000000000000000`.
 
 Additionally you'll have to pay a fee which you send as `value`. For sending the
@@ -213,7 +213,7 @@ few mintues. If you deploy on mainnet please refer to the [Executor chapter].
 
 [Executor chapter]:  ../celer/README.md#executor
 
-## Checking execution 
+## Checking execution
 
 To see if you successfully send a ping message cross-chain you can watch for
 new transactions at the [MessageBus address] from Celer or your deployed

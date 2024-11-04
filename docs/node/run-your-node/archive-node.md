@@ -92,6 +92,8 @@ runtime:
 To run an archive node for Cobalt, use [Oasis Core v21.3.14] and the following configuration:
 
 ```yaml
+datadir: /node/data
+
 log:
   level:
     default: info

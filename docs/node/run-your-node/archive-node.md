@@ -120,7 +120,7 @@ worker:
     enabled: true
 ```
 
-:::warn
+:::warning
 
 Ensure you are using the correct version of oasis-node and the pre-existing state for your specific pre-Eden network.
 

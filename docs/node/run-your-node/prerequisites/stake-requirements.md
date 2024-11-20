@@ -1,82 +1,75 @@
 # Stake Requirements
 
-This page provides an overview of the stake requirements to become a validator
-on the consensus layer, to run a ParaTime compute nodes and to run observer
-nodes on the Oasis Network.
-
-## Registering an Entity
-
-To register an entity you are going to need at least: 
-
-|                             | Mainnet  | Testnet  |
-| --------------------------- | -------- | -------- |
-| Entity Registration         | 100 ROSE | 100 TEST |
-| Each Node Registration      | 100 ROSE | 100 TEST |
-
-
-## Validator Node
-
-To become a validator on the consensus layer, you will need to have enough ROSE
-for **registering your entity**, **registering your validator node**, and be among
-the top entities by stake to be included in the **validator set**.
-
-You can check the current top validators on the blockchain explorers like the [Oasis Scan].
-
-For the Testnet, you can receive a limited number of TEST tokens by using our [Oasis Network Testnet Faucet][faucet-testnet].
-For more tokens please contact us on our official [Discord in the #testnet channel][discord].
-
 :::tip
 
-You can use the Oasis CLI to check your account and the network parameters. Use
-the [`oasis account show`] command to check your entity's account and
-[`oasis network show native-token`] to see the current values used by the network.
+To check the balance of your account, use one of the blockchain explorers like
+the [Oasis Scan] or the [`oasis account show`] command part of the Oasis CLI.
 
 :::
 
+|                                                         |                                                   Mainnet |                    Testnet |
+|---------------------------------------------------------|----------------------------------------------------------:|---------------------------:|
+| Registration of entity[^entity-reg]                     |                                                  100 ROSE |                   100 TEST |
+| Registration of node                                    |                                                  100 ROSE |                   100 TEST |
+| Size of the validator set[^validator-set]               |                               120[^validator-set-mainnet] | 110[^validator-set-testnet] |
+| Run Sapphire or Emerald compute node[^compute-node]     | 5,000,000 ROSE<br/>+ member of the validator set[^member] |                          / |
+| Run Cipher compute node[^compute-node]                  |                      member of the validator set[^member] |                          / |
+| Create ROFL app on Sapphire or Cipher[^rofl-app-create] |                      10,000 ROSE[^rofl-app-create-amount] |                10,000 TEST[^rofl-app-create-amount] |
+| Create a ParaTime                                       |                                               50,000 ROSE |                10,000 TEST |
 
-:::info
+[^entity-reg]: You can fetch the latest entity registration stake requirements
+by running [`oasis network show native-token`].
 
-To determine if you are eligible to receive a delegation from the Oasis Protocol
-Foundation, see the [Delegation Policy] document.
+[^validator-set]: The size of the consensus committee (i.e. the validator set)
+is configured by the [**max_validators** committee-scheduler parameter]. You can
+view the current value by running [`oasis network show parameters`].
 
-:::
+[^validator-set-mainnet]: To determine if you are eligible to receive a
+delegation from the Oasis Protocol Foundation, see the [Delegation Policy]
+document.
 
-:::info
+[^validator-set-testnet]: For the Testnet, you can receive a limited number of
+TEST tokens by using our [Oasis Network Testnet Faucet][faucet-testnet]. For
+more tokens please contact us on our official [Discord in the #testnet channel][discord].
 
-The size of the consensus committee (i.e. the validator set) is configured by
-the [**max_validators** consensus parameter][**max_validators** consensus parameter].
+[^member]: You can check the current top validators on the blockchain explorers
+like the [Oasis Scan] or by running [`oasis network show validators`].
 
-:::
+[^compute-node]: You can fetch the latest ParaTime-specific stake requirements
+by running [`oasis network show`] and specifying the ParaTime ID ([Mainnet], [Testnet]).
+
+[^rofl-app-create]: You can fetch current ParaTime application-specific stake
+requirements by running [`oasis paratime show parameters`].
+
+[^rofl-app-create-amount]: The amount must be staked inside the ParaTime.
+
+## Stake requirements by a specific role of the node
+
+The table below shows required stake-related steps you need to make, if you
+want to set up a working node from scratch.
+
+| Node role              | Requirement                                                                                                                                                          |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Validator node]       | 1. Registration of entity<br/>2. Registration of the validator node<br/>3. Member of the validator set                                                               |
+| [Non-validator node]   | /                                                                                                                                                                    |
+| [ParaTime node]        | 1. Registration of entity<br/>2. Registration of the compute node<br/>3. Extra ParaTime-specific compute node stake<br/>4. Member of the validator set (Mainnet only) |
+| [ParaTime client node] | 1. Registration of entity<br/>2. Registration of the observer node                                                                                                   |
+
+[Validator node]: ../validator-node.mdx
+[Non-validator node]: ../non-validator-node.mdx
+[ParaTime node]: ../paratime-node.mdx
+[ParaTime client node]: ../paratime-client-node.mdx
 
 [Oasis Scan]: https://www.oasisscan.com/validators
 [`oasis account show`]: ../../../general/manage-tokens/cli/account.md#show
 [`oasis network show native-token`]: ../../../general/manage-tokens/cli/network.md#show-native-token
+[`oasis network show validators`]: ../../../general/manage-tokens/cli/network.md#show-validators
+[`oasis network show parameters`]: ../../../general/manage-tokens/cli/network.md#show-parameters
 [Delegation Policy]: ../../../get-involved/delegation-policy.md
-[**max_validators** consensus parameter]: ../../genesis-doc.md#consensus
+[**max_validators** committee-scheduler parameter]: ../../genesis-doc.md#committee-scheduler
 [faucet-testnet]: https://faucet.testnet.oasis.io/
 [discord]: https://oasis.io/discord
-
-## ParaTime Compute Node
-
- To run a ParaTime compute node you will need to have a minimum stake which
- currently is:
-
-|          | Mainnet        | Testnet  |
-| -------- | -------------- | -------- |
-| Sapphire | 5,000,100 ROSE | 100 TEST |
-| Emerald  | 5,000,100 ROSE | 100 TEST |
-| Cipher   | 100 ROSE       | 100 TEST |
-
-To run a ParaTime compute node, on Mainnet you will also have to be in the
-validator set:
-
-|          | Mainnet - Validator Set | Testnet - Validator Set |
-| -------- | ----------------------- | ----------------------- |
-| Sapphire | Yes                     | No                      |
-| Emerald  | Yes                     | No                      |
-| Cipher   | Yes                     | No                      |
-
-## ParaTime Observer Node
-
-To run a ParaTime observer nodes, you will need to register an entity and add
-your observer nodes to the entity descriptor.
+[`oasis network show`]: ../../../general/manage-tokens/cli/network.md#show-id
+[Mainnet]: ../../mainnet/README.md#paratimes
+[Testnet]: ../../testnet/README.md#paratimes
+[`oasis paratime show parameters`]: ../../../general/manage-tokens/cli/paratime.md#show-parameters

@@ -122,6 +122,7 @@ export const sidebarDapp: SidebarsConfig = {
         id: 'dapp/tools/README',
       },
       items: [
+        'dapp/tools/abi-playground',
         'dapp/tools/band',
         'dapp/tools/localnet',
         'dapp/tools/remix'

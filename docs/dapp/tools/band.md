@@ -17,7 +17,7 @@ for full list of deployed contract addresses.
 :::
 
 [paratime]: /general/oasis-network/faq#how-is-a-paratime-different-from-a-parachain
-[emerald]: /dapp/emerald
+[emerald]: /dapp/tools/other-paratimes/emerald/README.mdx
 [band-supported-blockchains]: https://docs.bandchain.org/develop/supported-blockchains
 
 ### What is the Band Protocol?

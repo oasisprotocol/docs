@@ -14,7 +14,7 @@ Those who prefer a simpler web-only interface can also use the Remix IDE. Check 
 general [Remix guide]. Just remember to use the Emerald [networks]
 when selecting *Inject Web3* environment and connecting to MetaMask.
 
-[Remix guide]: ../tools/remix.md
+[Remix guide]: ../../remix.md
 [networks]: ./network.mdx#rpc-endpoints
 
 ## Oasis Consensus Layer and Emerald ParaTime
@@ -43,10 +43,10 @@ account to Emerald. Consult the [How to transfer ROSE into Emerald
 ParaTime][how-to-deposit-rose] chapter to learn more.
 
 
-[overview]: ../../general/oasis-network/README.mdx
+[overview]: ../../../../general/oasis-network/README.mdx
 [Ed25519]: https://en.wikipedia.org/wiki/EdDSA#Ed25519
 [ECDSA]: https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm
-[how-to-deposit-rose]: ../../general/manage-tokens/README.mdx
+[how-to-deposit-rose]: ../../../../general/manage-tokens/README.mdx
 [Testnet faucet]: https://faucet.testnet.oasis.io/
 
 ## Testnet and Mainnet
@@ -80,8 +80,8 @@ ParaTime.
 
 :::
 
-[network-parameters]: ../../node/mainnet/README.md
-[Testnet]: ../../node/testnet/README.md
+[network-parameters]: ../../../../node/mainnet/README.md
+[Testnet]: ../../../../node/testnet/README.md
 [Emerald Mainnet]: ./network.mdx
 [Emerald Testnet]: ./network.mdx
 
@@ -90,7 +90,7 @@ ParaTime.
 For development and testing, you can run a local [instance][localnet] of the
 entire Emerald stack.
 
-[localnet]: ../tools/localnet.mdx
+[localnet]: ../../localnet.mdx
 
 ## Create dApp on Emerald with Hardhat
 
@@ -238,9 +238,9 @@ explorer ([Mainnet][mainnet-explorer], [Testnet][testnet-explorer]). This tool
 indexes all Emerald accounts, blocks, transactions and even offers a neat user
 interface for browsing ETH-specifics like the ERC20 tokens and the ERC721 NFTs.
 
-![Emerald Block Explorer showing the latest transactions](../images/emerald/block_explorer1.png)
+![Emerald Block Explorer showing the latest transactions](../../../images/emerald/block_explorer1.png)
 
-![Emerald Block Explorer showing our account 0x90adE3B7065fa715c7a150313877dF1d33e777D5 used for deploying the smart contract](../images/emerald/block_explorer2.png)
+![Emerald Block Explorer showing our account 0x90adE3B7065fa715c7a150313877dF1d33e777D5 used for deploying the smart contract](../../../images/emerald/block_explorer2.png)
 
 Finally, by selecting the `emerald_mainnet` network and the corresponding
 private key, we can deploy the contract on the Mainnet:
@@ -255,20 +255,6 @@ Greeter deployed to: 0x6e8e9e0DBCa4EF4a65eBCBe4032e7C2a6fb7C623
 [ethers.js]: https://docs.ethers.io/v5/
 
 ## Troubleshooting
-
-### Truffle Support
-
-:::info Sunsetting Truffle
-
-Per Consensys [announcement], Oasis will no longer support Truffle as of
-2023-10-05 and encourage immediate [migration] to Hardhat. Please see our
-repository for the archived Truffle [tutorial].
-
-:::
-
-[announcement]: https://consensys.io/blog/consensys-announces-the-sunset-of-truffle-and-ganache-and-new-hardhat
-[migration]: https://trufflesuite.com/docs/truffle/how-to/migrate-to-hardhat/
-[tutorial]: https://github.com/oasisprotocol/docs/blob/207a7b1a42b4afdac70b925e755f5546723e4831/docs/dapp/emerald/writing-dapps-on-emerald.mdx#L330-L570
 
 ### Deployment of my contract timed out on Testnet or Mainnet
 
@@ -292,7 +278,7 @@ transaction being included in the block.
 If you are using Testnet or Mainnet, try to debug your transaction by finding
 it on the Emerald block explorer ([Mainnet][mainnet-explorer], [Testnet][testnet-explorer]):
 
-![Emerald block explorer showing a failed transaction](../images/emerald/oasisscan1.png)
+![Emerald block explorer showing a failed transaction](../../../images/emerald/oasisscan1.png)
 
 In some cases, the transaction result on Emerald block explorer might be stuck
 at `Error: (Awaiting internal transactions for reason)`. In this case or in
@@ -303,7 +289,7 @@ offers some introspection into ParaTime transactions as well. Once you find your
 failed Emerald transaction, the `Status` field should contain a more verbose
 error description, for example:
 
-![Oasis Scan showing the Out of gas error for a transaction on Emerald](../images/emerald/oasisscan2.png)
+![Oasis Scan showing the Out of gas error for a transaction on Emerald](../../../images/emerald/oasisscan2.png)
 
 ## See also
 

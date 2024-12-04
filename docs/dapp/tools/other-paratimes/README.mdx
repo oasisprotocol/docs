@@ -1,0 +1,22 @@
+---
+description: Other Paratimes
+---
+import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
+# Other ParaTimes
+
+In addition to our primary ParaTime, [Sapphire], several additional ParaTimes
+are running on top of the consensus layer.
+DApp developers can choose a Paratime to build on according to their
+specific requirements, such as confidentiality and EVM compatibility.
+
+Learn more by exploring the ParaTimes below!
+
+|                      | EVM-compatible                                        | Oasis Wasm                                          |
+|---------------------:|-------------------------------------------------------|-----------------------------------------------------|
+| **Confidential**     | <DocCard item={findSidebarItem('/dapp/sapphire/')} /> | <DocCard item={findSidebarItem('/dapp/tools/other-paratimes/cipher/')} /> |
+| **Non-Confidential** | <DocCard item={findSidebarItem('/dapp/tools/other-paratimes/emerald/')} />  | |
+
+[Sapphire]: https://github.com/oasisprotocol/docs/blob/main/docs/dapp/sapphire/README.mdx

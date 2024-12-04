@@ -1,1 +1,0 @@
-../../../external/oasis-sdk/docs/contract/hello-world.md

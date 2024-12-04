@@ -111,7 +111,7 @@ Feel free to use other IAS proxies besides the one provided here or
 
 :::info
 
-Check the [Emerald ParaTime page](/dapp/emerald/network#rpc-endpoints) on how to access
+Check the [Emerald ParaTime page](/dapp/tools/other-paratimes/emerald/network#rpc-endpoints) on how to access
 the public Web3 endpoint.
 
 :::

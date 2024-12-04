@@ -287,11 +287,19 @@ export const redirectsOptions: Options = {
         },
         {
             to: '/dapp/tools/other-paratimes/emerald/',
-            from: '/dapp/emerald', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+            from: '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+        },
+        {
+            to: '/dapp/tools/other-paratimes/emerald/writing-dapps-on-emerald.mdx',
+            from: '/dapp/emerald/writing-dapps-on-emerald', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         },
         {
             to: '/dapp/tools/other-paratimes/cipher/',
             from: '/dapp/cipher', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+        },
+        {
+            to: '/dapp/tools/other-paratimes/cipher/README.mdx',
+            from: '/dapp/cipher/README.mdx', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         }
     ],
     createRedirects(existingPath) {
@@ -325,11 +333,11 @@ export const redirectsOptions: Options = {
             return [existingPath.replace('/core', '/oasis-core')];
         }
         // 1041 Move Emerald and Cipher to /tools/other-paratimes/
-        if (existingPath.includes('/dapp/tools/other-paratimes/emerald/')) {
-            return [existingPath.replace('/dapp/tools/other-paratimes/emerald/', '/dapp/emerald')];
+        if (existingPath.includes('/dapp/emerald')) {
+            return [existingPath.replace('/dapp/emerald', '/dapp/tools/other-paratimes/emerald',)];
         }
-        if (existingPath.includes('/dapp/tools/other-paratimes/cipher/')) {
-            return [existingPath.replace('/dapp/tools/other-paratimes/cipher/', '/dapp/cipher')];
+        if (existingPath.includes('/dapp/cipher/')) {
+            return [existingPath.replace('/dapp/cipher', '/dapp/tools/other-paratimes/cipher')];
         }
         return undefined;
     },

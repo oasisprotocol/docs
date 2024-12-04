@@ -1,1 +1,0 @@
-../../../external/oasis-sdk/docs/contract/prerequisites.md

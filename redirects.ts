@@ -290,17 +290,9 @@ export const redirectsOptions: Options = {
             from: '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         },
         {
-            to: '/dapp/tools/other-paratimes/emerald/writing-dapps-on-emerald.mdx',
-            from: '/dapp/emerald/writing-dapps-on-emerald', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
-        },
-        {
             to: '/dapp/tools/other-paratimes/cipher/',
             from: '/dapp/cipher', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         },
-        {
-            to: '/dapp/tools/other-paratimes/cipher/README.mdx',
-            from: '/dapp/cipher/README.mdx', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
-        }
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

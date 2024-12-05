@@ -153,3 +153,8 @@ html[data-theme='dark'] main img {
   padding: 1rem;
   border-left: 3px solid var(--ifm-tabs-color-active-border);
 }
+
+/* Style Chrome extension screenshot images */
+.wallet-extension-img {
+  max-width: 350px;
+}

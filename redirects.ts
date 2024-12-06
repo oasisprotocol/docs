@@ -291,7 +291,7 @@ export const redirectsOptions: Options = {
         },
         {
             to: '/dapp/tools/other-paratimes/cipher/',
-            from: '/dapp/cipher', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+            from: '/dapp/cipher/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         },
     ],
     createRedirects(existingPath) {
@@ -323,13 +323,6 @@ export const redirectsOptions: Options = {
         }
         if (existingPath.includes('/core')) {
             return [existingPath.replace('/core', '/oasis-core')];
-        }
-        // 1041 Move Emerald and Cipher to /tools/other-paratimes/
-        if (existingPath.includes('/dapp/emerald')) {
-            return [existingPath.replace('/dapp/emerald', '/dapp/tools/other-paratimes/emerald',)];
-        }
-        if (existingPath.includes('/dapp/cipher/')) {
-            return [existingPath.replace('/dapp/cipher', '/dapp/tools/other-paratimes/cipher')];
         }
         return undefined;
     },

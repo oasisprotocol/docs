@@ -171,7 +171,7 @@ You'll need the following three parameters:
 
 - `_dstContract`: The contract address of the reveiving contract on the
   destination chain which you just deployed.
-- `_dstChainId`: The chain id of the the destination chain. Which is in our
+- `_dstChainId`: The chain id of the destination chain. Which is in our
   example `Sapphire Testnet` - `23295`.
 - `message`: The encoded message. e.g. "Hello from BSC" -
   `0x48656c6c6f2066726f6d20425343000000000000000000000000000000000000`.

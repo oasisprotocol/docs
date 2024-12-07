@@ -156,7 +156,7 @@ back and forth.
 2. Get next nonce of your account from `BSC Testnet`
    1. If you didn't do anything on *BSC Testnet* yet this will `0`.
    2. Else you need to get your last nonce, e.g. by checking your account
-address on [bscscan](https://testnet.bscscan.com/) and and inspect the details
+address on [bscscan](https://testnet.bscscan.com/) and inspect the details
 of your latest transaction, and then add 1.
 3. In Metamask, switch to the `Sapphire Testnet` network and select
    `Injected Provider - MetaMask` as the environment in Remix.

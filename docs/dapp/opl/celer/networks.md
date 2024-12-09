@@ -40,7 +40,6 @@ description: Supported networks on Celer IM
 | Filecoin Hyperspace Testnet | 3141 | 0xc45 | filecoin-testnet |
 | FNCY Testnet | 923018 | 0xe158a | fncy-testnet |
 | Godwoken Testnet | 71401 | 0x116e9 | godwoken-testnet |
-| Goerli Testnet | 5 | 0x5 | goerli |
 | Polygon Mumbai Testnet | 80001 | 0x13881 | polygon-mumbai |
 | Polygon zkEVM Testnet | 1442 | 0x5a2 | zkevm-testnet |
 | Sapphire Testnet | 23295 | 0x5aff | sapphire-testnet |

@@ -31,18 +31,12 @@ description: Supported networks on Celer IM
 
 | Name | Int ID | Hex ID | autoswitch name |
 | ---- | ------ | ------ | --------------- |
-| Arbitrum Testnet | 421611 | 0x66eeb | arbitrum-testnet |
 | Avalanche C-Chain Fuji Testnet | 43113 | 0xa869 | avalanche-fuji |
 | BSC Testnet | 97 | 0x61 | bsc-testnet |
-| ConsenSys zkEVM Testnet | 59140 | 0xe704 | zkevm-testnet |
 | Dexalot Testnet | 432201 | 0x69849 | dexalot-testnet |
 | Fantom Testnet | 4002 | 0xfa2 | fantom-testnet |
-| Filecoin Hyperspace Testnet | 3141 | 0xc45 | filecoin-testnet |
 | FNCY Testnet | 923018 | 0xe158a | fncy-testnet |
 | Godwoken Testnet | 71401 | 0x116e9 | godwoken-testnet |
-| Goerli Testnet | 5 | 0x5 | goerli |
-| Polygon Mumbai Testnet | 80001 | 0x13881 | polygon-mumbai |
-| Polygon zkEVM Testnet | 1442 | 0x5a2 | zkevm-testnet |
 | Sapphire Testnet | 23295 | 0x5aff | sapphire-testnet |
 | Scroll Alpha Testnet | 534353 | 0x82751 | scroll-testnet |
 | Shibuya Testnet | 81 | 0x51 | shibuya-testnet |

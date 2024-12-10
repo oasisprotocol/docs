@@ -161,12 +161,16 @@ Some cloud providers require you to use their PCCS.
 - Alibaba Cloud: See the [Alibaba Cloud documentation] for details on configuring the quote provider. The
   documentation shows the required `sgx_default_qcnl.conf` changes.
 
+- IBM Cloud: See the [IBM Cloud documentation] for details on configuring the quote provider. The
+  documentation shows the required `sgx_default_qcnl.conf` changes.
+
 - Other cloud providers: If you are using a different cloud service provider, consult their
 specific documentation for the appropriate PCCS configuration and guidance on configuring the quote provider, or
 use one of the other PCCS options.
 
 [Azure documentation]: https://learn.microsoft.com/en-us/azure/security/fundamentals/trusted-hardware-identity-management#how-do-i-use-intel-qpl-with-trusted-hardware-identity-management
 [Alibaba Cloud documentation]: https://www.alibabacloud.com/help/en/ecs/user-guide/build-an-sgx-encrypted-computing-environment
+[IBM Cloud documentation]: https://cloud.ibm.com/docs/vpc?topic=vpc-about-attestation-sgx-dcap-vpc
 
 #### Own PCCS
 

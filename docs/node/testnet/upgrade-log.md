@@ -565,7 +565,7 @@ For a more detailed explanation of the parameters below, see the [Genesis Docume
 * **`roothash.params.gas_costs.submit_msg`** is a new parameter that specifies
   the cost for an submit message transaction. It will be set to `1000`.
   This will be done automatically with the `oasis-node debug fix-genesis` command.
-* **`roothash.params.max_in_runtime_messages`** is a new parameter that that
+* **`roothash.params.max_in_runtime_messages`** is a new parameter that
   specifies the maximum number of incoming messages that can be queued for
   processing by a runtime. It will be set to `128`.
 

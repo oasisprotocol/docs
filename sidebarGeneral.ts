@@ -16,7 +16,6 @@ export const sidebarGeneral: SidebarsConfig = {
         id: 'general/oasis-network/README',
       },
       items: [
-        'general/oasis-network/why-oasis',
         'general/oasis-network/token-metrics-and-distribution',
         {
           type: 'link',

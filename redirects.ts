@@ -145,7 +145,7 @@ export const redirectsOptions: Options = {
             ],
         },
         {
-            to: '/dapp/cipher/',
+            to: '/dapp/tools/other-paratimes/cipher/',
             from: '/oasis-sdk/contract/getting-started', // #200 Restructure docs
         },
         {
@@ -284,7 +284,15 @@ export const redirectsOptions: Options = {
         {
             to: '/dapp/tools/band',
             from: '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
-        }
+        },
+        {
+            to: '/dapp/tools/other-paratimes/emerald/',
+            from: '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+        },
+        {
+            to: '/dapp/tools/other-paratimes/cipher/',
+            from: '/dapp/cipher/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+        },
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

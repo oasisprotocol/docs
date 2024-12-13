@@ -142,11 +142,6 @@ html[data-theme="dark"] {
   --ifm-link-hover-color: inherit !important;
 }
 
-/* Hack to make .svg and .png diagrams readable in dark theme */
-html[data-theme='dark'] main img {
-  background-color: #fff;
-}
-
 /* Show the content of tabs slightly indented with a border on the left */
 .tabs-container > div {
   margin-top: inherit !important;

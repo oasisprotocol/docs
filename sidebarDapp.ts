@@ -17,13 +17,25 @@ export const sidebarDapp: SidebarsConfig = {
       items: [
         'dapp/sapphire/quickstart',
         'dapp/sapphire/network',
+        'dapp/sapphire/ethereum',
+
+        {
+          type: 'category',
+          label: 'Build',
+          link: {
+            type: 'doc',
+            id: 'dapp/sapphire/build/README',
+          },
+          items: [
+            'dapp/sapphire/build/authentication',
+            'dapp/sapphire/build/gasless',
+            'dapp/sapphire/build/deployment',
+            'dapp/sapphire/build/security',
+          ],
+        },
         'dapp/sapphire/guide',
         'dapp/sapphire/browser',
-        'dapp/sapphire/authentication',
-        'dapp/sapphire/gasless',
         'dapp/sapphire/addresses',
-        'dapp/sapphire/deployment',
-        'dapp/sapphire/security',
         {
           type: 'link',
           label: 'TypeScript API',

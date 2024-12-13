@@ -284,6 +284,10 @@ export const redirectsOptions: Options = {
         {
             to: '/dapp/tools/band',
             from: '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
+        },
+        {
+            to: '/dapp/tools/verification',
+            from: '/dapp/sapphire/verification', // #1054 Move Sapphire verification to Tools section
         }
     ],
     createRedirects(existingPath) {

@@ -82,6 +82,6 @@ Should you have any other problems or questions, do not hesitate to share them w
 
 [abi-playground]: https://abi-playground.oasis.io/
 [Explorer]: https://explorer.oasis.io/
-[localnet]: /dapp/tools/localnet
-[verification]: /dapp/sapphire/verification
+[localnet]: ./localnet.mdx
+[verification]: ./verification.md
 [discord]: https://oasis.io/discord

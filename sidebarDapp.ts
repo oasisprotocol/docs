@@ -20,7 +20,6 @@ export const sidebarDapp: SidebarsConfig = {
         'dapp/sapphire/guide',
         'dapp/sapphire/browser',
         'dapp/sapphire/authentication',
-        'dapp/sapphire/verification',
         'dapp/sapphire/gasless',
         'dapp/sapphire/addresses',
         'dapp/sapphire/deployment',
@@ -123,9 +122,10 @@ export const sidebarDapp: SidebarsConfig = {
       },
       items: [
         'dapp/tools/abi-playground',
+        'dapp/tools/verification',
         'dapp/tools/band',
         'dapp/tools/localnet',
-        'dapp/tools/remix'
+        'dapp/tools/remix',
       ],
     },
   ],

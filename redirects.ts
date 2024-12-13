@@ -138,25 +138,26 @@ export const redirectsOptions: Options = {
             from: '/general/community-resources/token-delivery-and-kyc', // #200 Restructure docs
         },
         {
-            to: '/dapp/',
+            to: '/build/',
             from: [
                 '/oasis-sdk/', // #200 Restructure docs
-                '/general/developer-resources/overview' // #200 Restructure docs
+                '/general/developer-resources/overview', // #200 Restructure docs
+                '/dapp/', // #1058 Rename dapp to build
             ],
         },
         {
-            to: '/dapp/tools/other-paratimes/cipher/',
-            from: '/oasis-sdk/contract/getting-started', // #200 Restructure docs
+            to: '/build/sapphire/',
+            from: [
+                '/general/developer-resources/sapphire-paratime', // #200 Restructure docs
+                '/dapp/sapphire/', // #1058 Rename dapp to build
+            ]
         },
         {
-            to: '/dapp/sapphire/',
-            from: '/general/developer-resources/sapphire-paratime', // #200 Restructure docs
-        },
-        {
-            to: '/dapp/sapphire/quickstart',
+            to: '/build/sapphire/quickstart',
             from: [
                 '/general/developer-resources/sapphire-paratime/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
                 '/dapp/sapphire/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
+                '/dapp/sapphire/quickstart', // #1058 Rename dapp to build
             ],
         },
         {
@@ -272,8 +273,11 @@ export const redirectsOptions: Options = {
             from: '/general/foundation/testnet/upgrade-log', // #200 Restructure docs
         },
         {
-            to: '/paratime/',
-            from: '/oasis-sdk/runtime/getting-started' // #200 Restructure docs
+            to: '/build/tools/build-paratime/',
+            from: [
+                '/oasis-sdk/runtime/getting-started', // #200 Restructure docs
+                '/paratime/', // #1058 Rename dapp to build
+            ]
         },
         {
             to: '/node/mainnet/previous-upgrades/damask-upgrade',
@@ -288,20 +292,41 @@ export const redirectsOptions: Options = {
             from: '/dapp/sapphire/precompiles' // #688 Migrate dapp/sapphire/precompiles chapter to api.docs.oasis.io
         },
         {
-            to: '/dapp/tools/band',
-            from: '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
+            to: '/build/tools/band',
+            from: [
+                '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
+                '/dapp/tools/band', // #1058 Rename dapp to build
+            ]
         },
         {
-            to: '/dapp/tools/verification',
-            from: '/dapp/sapphire/verification', // #1054 Move Sapphire verification to Tools section
+            to: '/build/tools/verification',
+            from: [
+                '/dapp/sapphire/verification', // #1054 Move Sapphire verification to Tools section
+                '/dapp/tools/verification', // #1058 Rename dapp to build
+            ]
         },
         {
-            to: '/dapp/tools/other-paratimes/emerald/',
-            from: '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+            to: '/build/tools/other-paratimes/emerald/',
+            from: [
+                '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+                '/dapp/tools/other-paratimes/emeerald/', // #1058 Rename dapp to build
+            ]
         },
         {
-            to: '/dapp/tools/other-paratimes/cipher/',
-            from: '/dapp/cipher/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+            to: '/build/tools/other-paratimes/cipher/',
+            from: [
+                '/oasis-sdk/contract/getting-started', // #200 Restructure docs'
+                '/dapp/cipher/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
+                '/dapp/tools/other-paratimes/cipher/', // #1058 Rename dapp to build
+            ]
+        },
+        {
+            to: '/build/rofl/',
+            from: '/rofl/', // #1058 Rename dapp to build
+        },
+        {
+            to: '/build/tools/build-paratime/',
+            from: '/paratime/', // #1058 Rename dapp to build
         },
     ],
     createRedirects(existingPath) {
@@ -322,14 +347,14 @@ export const redirectsOptions: Options = {
         if (existingPath.includes('/node/run-your-node/maintenance')) {
             return [existingPath.replace('/node/run-your-node/maintenance', '/general/run-a-node/maintenance-guides')];
         }
-        if (existingPath.includes('/dapp/emerald')) {
-            return [existingPath.replace('/dapp/emerald', '/general/developer-resources/emerald-paratime')];
+        if (existingPath.includes('/build/emerald')) {
+            return [existingPath.replace('/build/emerald', '/general/developer-resources/emerald-paratime')];
         }
-        if (existingPath.includes('/dapp/cipher')) {
-            return [existingPath.replace('/dapp/cipher', '/oasis-sdk/contract')];
+        if (existingPath.includes('/build/cipher')) {
+            return [existingPath.replace('/build/cipher', '/oasis-sdk/contract')];
         }
-        if (existingPath.includes('/paratime')) {
-            return [existingPath.replace('/paratime', '/oasis-sdk/runtime')];
+        if (existingPath.includes('/build/tools/build-paratime')) {
+            return [existingPath.replace('/build/tools/build-paratime', '/oasis-sdk/runtime')];
         }
         if (existingPath.includes('/core')) {
             return [existingPath.replace('/core', '/oasis-core')];

@@ -105,15 +105,9 @@ const config: Config = {
             position: 'left',
           },
           {
-            label: 'Create dApp',
-            to: '/dapp/',
-            activeBaseRegex: '/dapp/',
-            position: 'left',
-          },
-          {
-            label: 'Build ROFL',
-            to: '/rofl/',
-            activeBaseRegex: '/rofl/',
+            label: 'Build',
+            to: '/build/',
+            activeBaseRegex: '/build/',
             position: 'left',
           },
           {
@@ -126,12 +120,6 @@ const config: Config = {
             label: 'Run Node',
             to: '/node/',
             activeBaseRegex: '/node/',
-            position: 'left',
-          },
-          {
-            label: 'Build ParaTime',
-            to: '/paratime/',
-            activeBaseRegex: '/paratime/',
             position: 'left',
           },
           {
@@ -180,7 +168,7 @@ const config: Config = {
             ],
           },
           {
-            title: 'dApp',
+            title: 'Build',
             items: [
               {
                 label: 'Testnet Faucet',

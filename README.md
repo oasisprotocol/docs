@@ -86,7 +86,7 @@ link checker in `package.json`._
 ### Documentation structure
 
 `docs` folder contains markdown files of the documentation. Each subfolder
-represents a documentation **part** (general, node, dApp, paratime, core etc.).
+represents a documentation **part** (general, node, build, paratime, core etc.).
 Each markdown file inside a part corresponds to a **chapter** (subchapter for a
 markdown file inside a subfolder) and each subtitle of a chapter is called a
 **section** (subsection etc.).
@@ -191,7 +191,7 @@ the redirection.
 There are three kinds of image assets used in the docs.
 
 1. Screenshots, photos, non-technical figures go into `images/` folder
-   on the part-level (i.e. `docs/dapp/images`). External repositories may use
+   on the part-level (i.e. `docs/build/images`). External repositories may use
    own images in their respective folder.
 2. [Mermaid](https://mermaid-js.github.io) diagrams (preferred tool for
    sequence diagrams, flowcharts and other technical material) live in
@@ -225,7 +225,7 @@ and their usage including the articles:
   The consensus layer only supports the Ed25519 signature scheme.
 - Emerald
 - dApp
-  Emerald supports writing dApps. DApp is a modern distributed application.
+  Sapphire supports writing dApps. DApp is a modern distributed application.
 - key manager
 - key manager node
 - Mainnet

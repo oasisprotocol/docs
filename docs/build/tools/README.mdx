@@ -1,0 +1,26 @@
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+
+# Tools & Services
+
+Oasis integrates with a number of services and provides tooling support for
+developers using [Remix] (*unencrypted transactions only*), [Sourcify],
+[Docker images][localnet], [Band], and more. Please reach out to us on
+[Discord][discord] if you are using a tool that has problems integrating with
+Oasis.
+
+[Remix]: ./remix.md
+[Sourcify]: ./verification.md
+[localnet]: ./localnet.mdx
+[Band]: ./band.md
+[discord]: https://oasis.io/discord
+
+## See also
+
+<DocCardList items={[
+  findSidebarItem('/build/tools/abi-playground'),
+  findSidebarItem('/build/tools/verification'),
+  findSidebarItem('/build/tools/localnet'),
+  findSidebarItem('/build/tools/band'),
+  findSidebarItem('/build/tools/remix'),
+]} />

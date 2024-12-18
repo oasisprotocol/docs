@@ -17,23 +17,37 @@ export const sidebarDapp: SidebarsConfig = {
       items: [
         'dapp/sapphire/quickstart',
         'dapp/sapphire/network',
-        'dapp/sapphire/guide',
-        'dapp/sapphire/browser',
-        'dapp/sapphire/authentication',
-        'dapp/sapphire/gasless',
+        'dapp/sapphire/ethereum',
+
+        {
+          type: 'category',
+          label: 'Build',
+          link: {
+            type: 'doc',
+            id: 'dapp/sapphire/build/README',
+          },
+          items: [
+            'dapp/sapphire/build/concept',
+            'dapp/sapphire/build/browser',
+            'dapp/sapphire/build/clients',
+            'dapp/sapphire/build/authentication',
+            'dapp/sapphire/build/gasless',
+            'dapp/sapphire/build/deployment',
+            'dapp/sapphire/build/security',
+            {
+              type: 'link',
+              label: 'TypeScript API',
+              href: 'https://api.docs.oasis.io/js/sapphire-paratime',
+            },
+            {
+              type: 'link',
+              label: 'Solidity API',
+              href: 'https://api.docs.oasis.io/sol/sapphire-contracts',
+            },
+          ],
+        },
+        'dapp/sapphire/examples',
         'dapp/sapphire/addresses',
-        'dapp/sapphire/deployment',
-        'dapp/sapphire/security',
-        {
-          type: 'link',
-          label: 'TypeScript API',
-          href: 'https://api.docs.oasis.io/js/sapphire-paratime',
-        },
-        {
-          type: 'link',
-          label: 'Solidity API',
-          href: 'https://api.docs.oasis.io/sol/sapphire-contracts',
-        },
       ],
     },
     {

@@ -33,7 +33,7 @@ need a working [Metamask/Ethereum compatible wallet](#metamask).
 
 The [Oasis Network architecture] separates between the **consensus** and the
 **compute** (a.k.a. ParaTime) layer. The consensus layer and each ParaTime
-running on the compute layer have their own **ledger** containing, among othe
+running on the compute layer have their own **ledger** containing, among other
 data, the **balances of the accounts**.
 
 ![Deposits, withdrawals, transfers](../images/manage-tokens/transfer_deposit_withdrawal.svg)
@@ -93,7 +93,7 @@ ROSE!**
 
 The Oasis team developed the following **non-custodial wallets** for you. This
 means that the keys for managing the tokens are **stored on your device** such
-as a laptop or a mobile phone and **you are responsible to keep it safe**:
+as a laptop or a mobile phone, and **you are responsible to keep it safe**:
 
 - **[ROSE Wallet - Web]**: Runs as a web application in your web browser, the
   private keys are encrypted with a password and stored inside your Browser's
@@ -133,7 +133,7 @@ chapter.
 The wallets above are just carefully programmed computer programs that store
 your keys (in an encrypted form) somewhere on your disk and then use them to
 sign the transactions. However, if your device gets infected with a piece of
-malicious software (malware, key loggers, screen captures), **the password to
+malicious software (malware, keyloggers, screen captures), **the password to
 decrypt your private keys may be obtained and your private keys stolen**.
 
 To mitigate such attacks, a **hardware wallet** should be used. This is a
@@ -161,7 +161,7 @@ a **custody provider**. You can read more about those in the
 
 Transactions on the consensus layer must be signed using the **ed25519
 signature scheme**. The addresses on the consensus layer use the
-**[Bech-32 encoding]** and you can recognize them by a typical `oasis1` prefix.
+**[Bech-32 encoding]**, and you can recognize them by a typical `oasis1` prefix.
 
 ParaTimes can implement arbitrary signature schemes and address encodings. For
 example, since the Sapphire and Emerald ParaTimes are EVM-compatible, they
@@ -171,11 +171,11 @@ addresses and private keys starting with `0x`.
 The table below summarizes the current state of the address formats, signature
 schemes and compatible wallets.
 
-| Consensus or ParaTime | Address Format | Digital Signature Scheme    | Supported Wallets                                           |
-|-----------------------|----------------|-----------------------------|-------------------------------------------------------------|
-| Consensus             | `oasis1`       | ed25519                     | <ul><li>ROSE Wallet - Web</li><li>ROSE Wallet - Browser Extension</li><li>Oasis CLI</li></ul> |
+| Consensus or ParaTime | Address Format | Digital Signature Scheme    | Supported Wallets                                                                                                                                                                                |
+|-----------------------|----------------|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Consensus             | `oasis1`       | ed25519                     | <ul><li>ROSE Wallet - Web</li><li>ROSE Wallet - Browser Extension</li><li>Oasis CLI</li></ul>                                                                                                    |
 | Sapphire              | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>ROSE Wallet - Browser Extension</li><li>ROSE Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
-| Cipher                | `oasis1`       | secp256k1, ed25519, sr25519 | <ul><li>Oasis CLI</li></ul> |
+| Cipher                | `oasis1`       | secp256k1, ed25519, sr25519 | <ul><li>Oasis CLI</li></ul>                                                                                                                                                                      |
 | Emerald               | `0x`, `oasis1` | secp256k1, ed25519, sr25519 | <ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>ROSE Wallet - Browser Extension</li><li>ROSE Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul> |
 
 [Bech-32 encoding]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32

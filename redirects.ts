@@ -188,8 +188,11 @@ export const redirectsOptions: Options = {
             from: '/general/oasis-network/overview', // #200 Restructure docs
         },
         {
-            to: '/general/oasis-network/why-oasis',
-            from: '/oasis-network-primer/', // #200 Restructure docs
+            to: 'https://oasisprotocol.org/',
+            from: [
+              '/general/oasis-network/why-oasis', // #1052 Redirect why page to OPF
+              '/oasis-network-primer/', // #200 Restructure docs
+            ]
         },
         {
             to: '/general/oasis-network/token-metrics-and-distribution',

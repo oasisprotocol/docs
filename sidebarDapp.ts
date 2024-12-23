@@ -84,37 +84,6 @@ export const sidebarDapp: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Cipher',
-      link: {
-        type: 'doc',
-        id: 'dapp/cipher/README',
-      },
-      items: [
-        'dapp/cipher/prerequisites',
-        'dapp/cipher/network',
-        'dapp/cipher/hello-world',
-        'dapp/cipher/confidential-smart-contract',
-        {
-          type: 'link',
-          label: 'Rust API',
-          href: 'https://api.docs.oasis.io/rust/oasis_contract_sdk',
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Emerald',
-      link: {
-        type: 'doc',
-        id: 'dapp/emerald/README',
-      },
-      items: [
-        'dapp/emerald/network',
-        'dapp/emerald/writing-dapps-on-emerald',
-      ],
-    },
-    {
-      type: 'category',
       label: 'Tools & Services',
       link: {
         type: 'doc',
@@ -126,6 +95,47 @@ export const sidebarDapp: SidebarsConfig = {
         'dapp/tools/band',
         'dapp/tools/localnet',
         'dapp/tools/remix',
+        {
+          type: 'category',
+          label: 'Other Paratimes',
+          link: {
+            type: 'doc',
+            id: 'dapp/tools/other-paratimes/README',
+          },
+          items: [
+            {
+              type: 'category',
+              label: 'Emerald',
+              link: {
+                type: 'doc',
+                id: 'dapp/tools/other-paratimes/emerald/README',
+              },
+              items: [
+                'dapp/tools/other-paratimes/emerald/network',
+                'dapp/tools/other-paratimes/emerald/writing-dapps-on-emerald',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Cipher',
+              link: {
+                type: 'doc',
+                id: 'dapp/tools/other-paratimes/cipher/README',
+              },
+              items: [
+                'dapp/tools/other-paratimes/cipher/prerequisites',
+                'dapp/tools/other-paratimes/cipher/network',
+                'dapp/tools/other-paratimes/cipher/hello-world',
+                'dapp/tools/other-paratimes/cipher/confidential-smart-contract',
+                {
+                  type: 'link',
+                  label: 'Rust API',
+                  href: 'https://api.docs.oasis.io/rust/oasis_contract_sdk',
+                },
+              ],
+            }
+          ],
+        },
       ],
     },
   ],

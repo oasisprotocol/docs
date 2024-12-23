@@ -12,17 +12,17 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 The [Oasis architecture] is designed to have a simple, robust consensus layer
 on top which connects handful of ParaTimes executing smart contracts.
-DApp developers may choose among those ParaTimes depending on whether they
-require confidentiality and/or EVM-compatibility.
 
-Learn more by exploring the ParaTimes below!
+[Sapphire] is the primary ParaTime. It is EVM-compatible and allows you to
+write both confidential and non-confidential smart contracts.
 
-|                      | EVM-compatible                                        | Oasis Wasm                                          |
-|---------------------:|-------------------------------------------------------|-----------------------------------------------------|
-| **Confidential**     | <DocCard item={findSidebarItem('/dapp/sapphire/')} /> | <DocCard item={findSidebarItem('/dapp/cipher/')} /> |
-| **Non-Confidential** | <DocCard item={findSidebarItem('/dapp/emerald/')} />  |                                                     |
+For an overview of the other ParaTimes, refer to the [Other ParaTimes] chapter.
 
 [Oasis architecture]: ../general/oasis-network/README.mdx
+[Sapphire]: https://github.com/oasisprotocol/docs/blob/main/docs/dapp/sapphire/README.mdx
+[Other ParaTimes]: ./tools/other-paratimes/README.mdx
+
+## Oasis Privacy Layer
 
 In addition to building fully native dApps running on one of the Oasis
 ParaTimes, you can also add privacy to your existing dApps running on other,

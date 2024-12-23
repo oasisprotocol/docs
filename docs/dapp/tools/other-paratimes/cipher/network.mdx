@@ -1,47 +1,8 @@
-import DocCard from '@theme/DocCard';
-import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+---
+description: Network Information for Cipher, with detailed information about RPCs, block explorer and indexer
+---
 
-# Cipher ParaTime
-
-Cipher is a confidential ParaTime for executing Wasm smart contracts.
-
-As the officially supported ParaTime by the Oasis Protocol Foundation, Cipher
-allows for:
-
-* Flexibility: developer can define which data to store in a public
-  and which data in the (more expensive) confidential storage
-* Security: the [rust language] primarily used for writing Wasm smart contracts
-  is known for its strict memory management and was developed specifically to
-  avoid memory leaks
-* Scalability: increased throughput of transactions
-* Low-cost: 99%+ lower fees than Ethereum
-* 6 second finality (1 block)
-* Cross-chain bridge to enable cross-chain interoperability (upcoming)
-
-If you're looking for EVM-compatible ParaTimes, check out the
-[Emerald](../emerald/README.mdx) and the confidential
-[Sapphire](../sapphire/README.mdx) paratimes.
-
-[rust language]: https://www.rust-lang.org/
-
-## Smart Contract Development
-
-Cipher implements the [Oasis Contract SDK] API. To learn how to write a
-confidential smart contract in Rust and deploy it on Cipher, read the related
-Oasis Contract SDK chapters:
-
-<DocCard item={
-    findSidebarItem('/dapp/cipher/prerequisites')
-} />
-
-<DocCard item={
-    findSidebarItem('/dapp/cipher/hello-world')
-} />
-
-<DocCard item={
-    findSidebarItem('/dapp/cipher/confidential-smart-contract')
-} />
+# Network Information
 
 ## RPC Endpoints
 
@@ -57,7 +18,7 @@ node][paratime-client-node].
 Cipher endpoints share the gRPC protocol with the Oasis Core. You can connect to
 one of the public endpoints below (in alphabetic order):
 
-[paratime-client-node]: ../../node/run-your-node/paratime-client-node.mdx
+[paratime-client-node]: ../../../../node/run-your-node/paratime-client-node.mdx
 
 | Provider                    | Mainnet RPC URLs    | Testnet RPC URLs            |
 |-----------------------------|---------------------|-----------------------------|
@@ -76,13 +37,13 @@ one of the public endpoints below (in alphabetic order):
 :::tip
 
 Only rudimentary block explorer features exist for Cipher. Consider debugging
-the Cipher transactions using the [`oasis paratime show`] command part of the
+Cipher transactions with the [`oasis paratime show`] command using the
 [Oasis CLI].
 
 :::
 
-[`oasis paratime show`]: ../../general/manage-tokens/cli/paratime.md#show
-[Oasis CLI]: ../../general/manage-tokens/cli/README.md
+[`oasis paratime show`]: ../../../../general/manage-tokens/cli/paratime.md#show
+[Oasis CLI]: ../../../../general/manage-tokens/cli/README.md
 
 ## Indexers
 
@@ -101,16 +62,3 @@ and wish to be added to these docs, open an issue at
 :::
 
 [github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs
-
-## See also
-
-<DocCardList items={[
-    findSidebarItem('/general/manage-tokens/'),
-    findSidebarItem('/node/run-your-node/paratime-node'),
-    findSidebarItem('/node/run-your-node/paratime-client-node'),
-    findSidebarItem('/dapp/emerald/'),
-    findSidebarItem('/dapp/sapphire/'),
-]} />
-
-[Oasis Contract SDK]:
-  https://github.com/oasisprotocol/oasis-sdk/tree/main/contract-sdk

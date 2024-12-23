@@ -29,7 +29,7 @@ export default function plugin(): Transformer {
     function visitor(untypedNode: mdast.Node) {
         const node = untypedNode as mdast.Definition | mdast.Link
         if (oasisSdkContractRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkContractRegex, '/dapp/cipher/$1$2');
+            node.url = node.url.replace(oasisSdkContractRegex, '/dapp/tools/other-paratimes/cipher/$1$2');
         } else if (oasisSdkRuntimeRegex.test(node.url)) {
             node.url = node.url.replace(oasisSdkRuntimeRegex, '/paratime/$1$2');
         } else if (oasisSdkRoflRegex.test(node.url)) {

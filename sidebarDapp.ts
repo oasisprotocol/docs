@@ -49,6 +49,7 @@ export const sidebarDapp: SidebarsConfig = {
         'dapp/sapphire/examples',
         'dapp/sapphire/addresses',
       ],
+      collapsed: false
     },
     {
       type: 'category',
@@ -95,6 +96,7 @@ export const sidebarDapp: SidebarsConfig = {
           ],
         },
       ],
+      collapsed: false
     },
     {
       type: 'category',
@@ -151,6 +153,7 @@ export const sidebarDapp: SidebarsConfig = {
           ],
         },
       ],
+      collapsed: false
     },
   ],
 };

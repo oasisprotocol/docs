@@ -33,7 +33,7 @@ export default function plugin(): Transformer {
         } else if (oasisSdkRuntimeRegex.test(node.url)) {
             node.url = node.url.replace(oasisSdkRuntimeRegex, '/paratime/$1$2');
         } else if (oasisSdkRoflRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkRoflRegex, '/rofl/$1$2');
+            node.url = node.url.replace(oasisSdkRoflRegex, '/dapp/rofl/$1$2');
         } else if (cliRegex.test(node.url)) {
             node.url = node.url.replace(cliRegex, '/general/manage-tokens/cli/$1$2');
         } else if (oasisCoreRegex.test(node.url)) {

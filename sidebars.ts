@@ -17,7 +17,6 @@ const sidebars: SidebarsConfig = {
   ...sidebarGetInvolved,
   ...sidebarNode,
   ...sidebarParaTime,
-  ...sidebarROFL,
 };
 
 export default sidebars;

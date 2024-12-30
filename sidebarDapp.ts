@@ -53,6 +53,25 @@ export const sidebarDapp: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'ROFL',
+      link: {
+        type: 'doc',
+        id: 'dapp/rofl/README',
+      },
+      items: [
+        'dapp/rofl/prerequisites',
+        'dapp/rofl/app',
+        {
+          type: 'doc',
+          label: 'Deployment',
+          id: 'dapp/rofl/deployment',
+        },
+        'dapp/rofl/trust-root',
+      ],
+      collapsed: false
+    },
+    {
+      type: 'category',
       label: 'Oasis Privacy Layer',
       link: {
         type: 'doc',

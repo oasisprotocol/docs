@@ -7,7 +7,6 @@ import {sidebarGeneral} from './sidebarGeneral';
 import {sidebarGetInvolved} from './sidebarGetInvolved';
 import {sidebarNode} from './sidebarNode';
 import {sidebarParaTime} from './sidebarParatime';
-import {sidebarROFL} from './sidebarRofl';
 
 const sidebars: SidebarsConfig = {
   ...sidebarAdrs,

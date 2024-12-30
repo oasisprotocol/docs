@@ -105,15 +105,9 @@ const config: Config = {
             position: 'left',
           },
           {
-            label: 'Create dApp',
+            label: 'Build',
             to: '/dapp/',
             activeBaseRegex: '/dapp/',
-            position: 'left',
-          },
-          {
-            label: 'Build ROFL',
-            to: '/rofl/',
-            activeBaseRegex: '/rofl/',
             position: 'left',
           },
           {

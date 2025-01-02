@@ -23,7 +23,7 @@ The only prerequisite is a set-up Metamask account.
 If you're new to Remix, follow our basic guide for using Remix
 [here][dapp-remix].
 
-[dapp-remix]: /dapp/tools/remix.md
+[dapp-remix]: ../../tools/remix.md
 
 :::
 

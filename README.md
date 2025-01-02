@@ -191,7 +191,7 @@ the redirection.
 There are three kinds of image assets used in the docs.
 
 1. Screenshots, photos, non-technical figures go into `images/` folder
-   on the part-level (i.e. `docs/dapp/images`). External repositories may use
+   on the part-level (i.e. `docs/build/images`). External repositories may use
    own images in their respective folder.
 2. [Mermaid](https://mermaid-js.github.io) diagrams (preferred tool for
    sequence diagrams, flowcharts and other technical material) live in

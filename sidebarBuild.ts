@@ -1,39 +1,39 @@
 import {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
-export const sidebarDapp: SidebarsConfig = {
+export const sidebarBuild: SidebarsConfig = {
   developers: [
     {
       type: 'doc',
       label: 'Overview',
-      id: 'dapp/README',
+      id: 'build/README',
     },
     {
       type: 'category',
       label: 'Sapphire',
       link: {
         type: 'doc',
-        id: 'dapp/sapphire/README',
+        id: 'build/sapphire/README',
       },
       items: [
-        'dapp/sapphire/quickstart',
-        'dapp/sapphire/network',
-        'dapp/sapphire/ethereum',
+        'build/sapphire/quickstart',
+        'build/sapphire/network',
+        'build/sapphire/ethereum',
 
         {
           type: 'category',
           label: 'Build',
           link: {
             type: 'doc',
-            id: 'dapp/sapphire/build/README',
+            id: 'build/sapphire/build/README',
           },
           items: [
-            'dapp/sapphire/build/concept',
-            'dapp/sapphire/build/browser',
-            'dapp/sapphire/build/clients',
-            'dapp/sapphire/build/authentication',
-            'dapp/sapphire/build/gasless',
-            'dapp/sapphire/build/deployment',
-            'dapp/sapphire/build/security',
+            'build/sapphire/build/concept',
+            'build/sapphire/build/browser',
+            'build/sapphire/build/clients',
+            'build/sapphire/build/authentication',
+            'build/sapphire/build/gasless',
+            'build/sapphire/build/deployment',
+            'build/sapphire/build/security',
             {
               type: 'link',
               label: 'TypeScript API',
@@ -46,8 +46,8 @@ export const sidebarDapp: SidebarsConfig = {
             },
           ],
         },
-        'dapp/sapphire/examples',
-        'dapp/sapphire/addresses',
+        'build/sapphire/examples',
+        'build/sapphire/addresses',
       ],
       collapsed: false
     },
@@ -56,17 +56,17 @@ export const sidebarDapp: SidebarsConfig = {
       label: 'ROFL',
       link: {
         type: 'doc',
-        id: 'dapp/rofl/README',
+        id: 'build/rofl/README',
       },
       items: [
-        'dapp/rofl/prerequisites',
-        'dapp/rofl/app',
+        'build/rofl/prerequisites',
+        'build/rofl/app',
         {
           type: 'doc',
           label: 'Deployment',
-          id: 'dapp/rofl/deployment',
+          id: 'build/rofl/deployment',
         },
-        'dapp/rofl/trust-root',
+        'build/rofl/trust-root',
       ],
       collapsed: false
     },
@@ -75,7 +75,7 @@ export const sidebarDapp: SidebarsConfig = {
       label: 'Oasis Privacy Layer',
       link: {
         type: 'doc',
-        id: 'dapp/opl/README',
+        id: 'build/opl/README',
       },
       items: [
         {
@@ -83,10 +83,10 @@ export const sidebarDapp: SidebarsConfig = {
           label: 'OPL SDK',
           link: {
             type: 'doc',
-            id: 'dapp/opl/opl-sdk/README',
+            id: 'build/opl/opl-sdk/README',
           },
           items: [
-            'dapp/opl/opl-sdk/ping-example',
+            'build/opl/opl-sdk/ping-example',
           ],
         },
         {
@@ -94,11 +94,11 @@ export const sidebarDapp: SidebarsConfig = {
           label: 'Celer Inter-Chain Messaging',
           link: {
             type: 'doc',
-            id: 'dapp/opl/celer/README',
+            id: 'build/opl/celer/README',
           },
           items: [
-            'dapp/opl/celer/ping-example',
-            'dapp/opl/celer/networks',
+            'build/opl/celer/ping-example',
+            'build/opl/celer/networks',
           ],
         },
         {
@@ -106,12 +106,12 @@ export const sidebarDapp: SidebarsConfig = {
           label: 'Router Protocol',
           link: {
             type: 'doc',
-            id: 'dapp/opl/router-protocol/README',
+            id: 'build/opl/router-protocol/README',
           },
           items: [
-            'dapp/opl/router-protocol/pingpong-example',
-            'dapp/opl/router-protocol/interface',
-            'dapp/opl/router-protocol/approve',
+            'build/opl/router-protocol/pingpong-example',
+            'build/opl/router-protocol/interface',
+            'build/opl/router-protocol/approve',
           ],
         },
       ],
@@ -122,20 +122,20 @@ export const sidebarDapp: SidebarsConfig = {
       label: 'Tools & Services',
       link: {
         type: 'doc',
-        id: 'dapp/tools/README',
+        id: 'build/tools/README',
       },
       items: [
-        'dapp/tools/abi-playground',
-        'dapp/tools/verification',
-        'dapp/tools/band',
-        'dapp/tools/localnet',
-        'dapp/tools/remix',
+        'build/tools/abi-playground',
+        'build/tools/verification',
+        'build/tools/band',
+        'build/tools/localnet',
+        'build/tools/remix',
         {
           type: 'category',
           label: 'Other Paratimes',
           link: {
             type: 'doc',
-            id: 'dapp/tools/other-paratimes/README',
+            id: 'build/tools/other-paratimes/README',
           },
           items: [
             {
@@ -143,11 +143,11 @@ export const sidebarDapp: SidebarsConfig = {
               label: 'Emerald',
               link: {
                 type: 'doc',
-                id: 'dapp/tools/other-paratimes/emerald/README',
+                id: 'build/tools/other-paratimes/emerald/README',
               },
               items: [
-                'dapp/tools/other-paratimes/emerald/network',
-                'dapp/tools/other-paratimes/emerald/writing-dapps-on-emerald',
+                'build/tools/other-paratimes/emerald/network',
+                'build/tools/other-paratimes/emerald/writing-dapps-on-emerald',
               ],
             },
             {
@@ -155,13 +155,13 @@ export const sidebarDapp: SidebarsConfig = {
               label: 'Cipher',
               link: {
                 type: 'doc',
-                id: 'dapp/tools/other-paratimes/cipher/README',
+                id: 'build/tools/other-paratimes/cipher/README',
               },
               items: [
-                'dapp/tools/other-paratimes/cipher/prerequisites',
-                'dapp/tools/other-paratimes/cipher/network',
-                'dapp/tools/other-paratimes/cipher/hello-world',
-                'dapp/tools/other-paratimes/cipher/confidential-smart-contract',
+                'build/tools/other-paratimes/cipher/prerequisites',
+                'build/tools/other-paratimes/cipher/network',
+                'build/tools/other-paratimes/cipher/hello-world',
+                'build/tools/other-paratimes/cipher/confidential-smart-contract',
                 {
                   type: 'link',
                   label: 'Rust API',

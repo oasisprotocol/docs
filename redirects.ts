@@ -138,22 +138,22 @@ export const redirectsOptions: Options = {
             from: '/general/community-resources/token-delivery-and-kyc', // #200 Restructure docs
         },
         {
-            to: '/dapp/',
+            to: '/build/',
             from: [
                 '/oasis-sdk/', // #200 Restructure docs
                 '/general/developer-resources/overview' // #200 Restructure docs
             ],
         },
         {
-            to: '/dapp/tools/other-paratimes/cipher/',
+            to: '/build/tools/other-paratimes/cipher/',
             from: '/oasis-sdk/contract/getting-started', // #200 Restructure docs
         },
         {
-            to: '/dapp/sapphire/',
+            to: '/build/sapphire/',
             from: '/general/developer-resources/sapphire-paratime', // #200 Restructure docs
         },
         {
-            to: '/dapp/sapphire/quickstart',
+            to: '/build/sapphire/quickstart',
             from: [
                 '/general/developer-resources/sapphire-paratime/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
                 '/dapp/sapphire/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
@@ -285,19 +285,19 @@ export const redirectsOptions: Options = {
             from: '/dapp/sapphire/precompiles' // #688 Migrate dapp/sapphire/precompiles chapter to api.docs.oasis.io
         },
         {
-            to: '/dapp/tools/band',
+            to: '/build/tools/band',
             from: '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
         },
         {
-            to: '/dapp/tools/verification',
+            to: '/build/tools/verification',
             from: '/dapp/sapphire/verification', // #1054 Move Sapphire verification to Tools section
         },
         {
-            to: '/dapp/tools/other-paratimes/emerald/',
+            to: '/build/tools/other-paratimes/emerald/',
             from: '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         },
         {
-            to: '/dapp/tools/other-paratimes/cipher/',
+            to: '/build/tools/other-paratimes/cipher/',
             from: '/dapp/cipher/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
         },
     ],

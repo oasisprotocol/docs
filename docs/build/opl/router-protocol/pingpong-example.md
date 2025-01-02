@@ -22,7 +22,7 @@ The only prerequisite is a set-up Metamask account.
 If you're new to Remix, follow our basic guide for using Remix
 [here][dapp-remix].
 
-[dapp-remix]: /dapp/tools/remix.md
+[dapp-remix]: ../../tools/remix.md
 
 :::
 
@@ -281,7 +281,7 @@ For detailed instructions on fee payer approval, see our [approval guide].
 
 [Router faucet]: https://faucet.routerprotocol.com/
 [feepayer]: https://testnet.routerscan.io/feePayer
-[approval guide]: /dapp/opl/router-protocol/approve
+[approval guide]: ./approve.md
 
 ## Executing PingPong
 

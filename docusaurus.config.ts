@@ -106,8 +106,8 @@ const config: Config = {
           },
           {
             label: 'Build',
-            to: '/dapp/',
-            activeBaseRegex: '/dapp/',
+            to: '/build/',
+            activeBaseRegex: '/build/',
             position: 'left',
           },
           {

@@ -87,13 +87,13 @@ Note that Remix operates without a Sapphire client, meaning transactions and
 queries are unencrypted and unsigned by default. To make use of Sapphire's
 confidential features, refer to our [Quickstart Tutorial].
 
-[Quickstart Tutorial]: https://docs.oasis.io/dapp/sapphire/quickstart
+[Quickstart Tutorial]: https://github.com/oasisprotocol/docs/blob/main/docs/dapp/sapphire/quickstart.mdx
 
 Should you have any questions, do not hesitate to share them with us on the
 [#dev-central Discord channel][discord].
 
 [localnet]: ./localnet.mdx
-[network page]: https://docs.oasis.io/dapp/sapphire/network#rpc-endpoints
+[network page]: https://github.com/oasisprotocol/docs/blob/main/docs/dapp/sapphire/network.mdx#rpc-endpoints
 [Remix]: https://remix.ethereum.org
 [Remix documentation]: https://remix-ide.readthedocs.io/en/latest/
 [metamask]: ../../general/manage-tokens/README.mdx#metamask

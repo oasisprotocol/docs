@@ -15,7 +15,6 @@ const sidebars: SidebarsConfig = {
   ...sidebarGeneral,
   ...sidebarGetInvolved,
   ...sidebarNode,
-  ...sidebarParaTime,
 };
 
 export default sidebars;

@@ -31,7 +31,7 @@ export default function plugin(): Transformer {
         if (oasisSdkContractRegex.test(node.url)) {
             node.url = node.url.replace(oasisSdkContractRegex, '/build/tools/other-paratimes/cipher/$1$2');
         } else if (oasisSdkRuntimeRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkRuntimeRegex, '/paratime/$1$2');
+            node.url = node.url.replace(oasisSdkRuntimeRegex, '/build/tools/build-paratime/$1$2');
         } else if (oasisSdkRoflRegex.test(node.url)) {
             node.url = node.url.replace(oasisSdkRoflRegex, '/build/rofl/$1$2');
         } else if (cliRegex.test(node.url)) {

@@ -123,12 +123,6 @@ const config: Config = {
             position: 'left',
           },
           {
-            label: 'Build ParaTime',
-            to: '/paratime/',
-            activeBaseRegex: '/paratime/',
-            position: 'left',
-          },
-          {
             label: 'Develop Core',
             to: '/core/',
             position: 'left',

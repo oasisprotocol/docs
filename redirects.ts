@@ -269,7 +269,7 @@ export const redirectsOptions: Options = {
             from: '/general/foundation/testnet/upgrade-log', // #200 Restructure docs
         },
         {
-            to: '/paratime/',
+            to: '/build/tools/build-paratime/',
             from: '/oasis-sdk/runtime/getting-started' // #200 Restructure docs
         },
         {

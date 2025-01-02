@@ -132,6 +132,35 @@ export const sidebarBuild: SidebarsConfig = {
         'build/tools/remix',
         {
           type: 'category',
+          label: 'Build Paratime',
+          link: {
+            type: 'doc',
+            id: 'build/tools/build-paratime/README'
+          },
+          items: [
+            'build/tools/build-paratime/prerequisites',
+            'build/tools/build-paratime/minimal-runtime',
+            'build/tools/build-paratime/modules',
+            'build/tools/build-paratime/reproducibility',
+            {
+              type: 'link',
+              label: 'ParaTime Client TypeScript API',
+              href: 'https://api.docs.oasis.io/js/client-rt',
+            },
+            {
+              type: 'link',
+              label: 'ParaTime Client Go API',
+              href: 'https://pkg.go.dev/github.com/oasisprotocol/oasis-sdk/client-sdk/go/client',
+            },
+            {
+              type: 'link',
+              label: 'ParaTime SDK Rust API',
+              href: 'https://api.docs.oasis.io/rust/oasis_runtime_sdk',
+            },
+          ]
+        },
+        {
+          type: 'category',
           label: 'Other Paratimes',
           link: {
             type: 'doc',

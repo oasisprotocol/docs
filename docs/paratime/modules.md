@@ -1,1 +1,0 @@
-../../external/oasis-sdk/docs/runtime/modules.md

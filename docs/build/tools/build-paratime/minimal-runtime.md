@@ -1,0 +1,1 @@
+../../../../external/oasis-sdk/docs/runtime/minimal-runtime.md

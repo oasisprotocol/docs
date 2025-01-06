@@ -209,6 +209,53 @@ service] and register it in the service manager for your platform.
 
 :::
 
+### Metrics
+
+Web3 Gateway can report a number of metrics to Prometheus server.
+Metrics collection is not enabled by default. Enable metrics by configuring
+the `monitoring` section in the config file of the Web3 gateway.
+
+```yaml title='gateway.yml'
+...
+# Existing fields omitted ...
+gateway:
+# Existing fields omitted ...
+  monitoring:
+    host: "localhost"
+    # Use different port for each Web3 gateway instance, if all run locally.
+    port: 9999
+```
+
+Oasis Web3 Gateway reports metrics starting with `oasis_web3_gateway_`.
+
+The following metrics are currently reported:
+
+<!-- markdownlint-disable line-length -->
+
+Name | Type | Description | Labels | Package
+-----|------|-------------|--------|--------
+oasis_web3_gateway_gas_oracle_node_min_price | Gauge | Min gas price queried from the node. |  | [gas](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/gas/backend.go)
+oasis_web3_gateway_gas_oracle_computed_price | Gauge | Computed recommended gas price based on recent full blocks. -1 if none (no recent full blocks). |  | [gas](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/gas/backend.go)
+oasis_web3_gateway_cache_hits | Gauge | Number of cache hits. | cache | [indexer](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/indexer/backend_cache.go)
+oasis_web3_gateway_cache_misses | Gauge | Number of cache misses. | cache | [indexer](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/indexer/backend_cache.go)
+oasis_web3_gateway_cache_hit_ratio | Gauge | Percent of Hits over all accesses (Hits + Misses). | cache | [indexer](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/indexer/backend_cache.go)
+oasis_web3_gateway_block_indexed | Gauge | Indexed block heights. |  | [indexer](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/indexer/indexer.go)
+oasis_web3_gateway_block_pruned | Gauge | Pruned block heights. |  | [indexer](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/indexer/indexer.go)
+oasis_web3_gateway_indexer_health | Gauge | 1 if gateway indexer healthcheck is reporting as healthy, 0 otherwise. |  | [indexer](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/indexer/indexer.go)
+oasis_web3_gateway_subscription_seconds | Histogram | Histogram for the eth subscription API subscriptions duration. | method_name | [rpc/eth/filters](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/eth/filters/metrics.go)
+oasis_web3_gateway_subscription_inflight | Gauge | Number of concurrent eth inflight subscriptions. | method_name | [rpc/eth/filters](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/eth/filters/metrics.go)
+oasis_web3_gateway_api_request_heights | Histogram | Histogram of eth API request heights (difference from the latest  height). | method_name | [rpc/eth/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/eth/metrics/api.go)
+oasis_web3_gateway_signed_queries | Counter | Number of eth_call signed queries. |  | [rpc/eth/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/eth/metrics/api.go)
+oasis_web3_gateway_api_seconds | Histogram | Histogram for the eth API requests duration. | method_name | [rpc/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/metrics/metrics.go)
+oasis_web3_gateway_api_request | Counter | Counter for API requests. | method_name | [rpc/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/metrics/metrics.go)
+oasis_web3_gateway_api_failure | Counter | Counter for API request failures. | method_name | [rpc/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/metrics/metrics.go)
+oasis_web3_gateway_api_success | Counter | Counter for API successful requests. | method_name | [rpc/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/metrics/metrics.go)
+oasis_web3_gateway_api_inflight | Gauge | Number of inflight API request. | method_name | [rpc/metrics](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/rpc/metrics/metrics.go)
+oasis_web3_gateway_health | Gauge | 1 if gateway healthcheck is reporting as healthy, 0 otherwise. |  | [server](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/server/json_rpc.go)
+oasis_web3_gateway_psql_query_seconds | Histogram | Histogram for the postgresql query duration. | query | [storage/psql](https://github.com/oasisprotocol/oasis-web3-gateway/blob/main/storage/psql/metrics.go)
+
+<!-- markdownlint-enable line-length -->
+
 ## Archive Web3 Gateway
 
 Each Oasis Web3 gateway can only connect to and synchronize blocks from a

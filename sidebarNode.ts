@@ -91,7 +91,6 @@ export const sidebarNode: SidebarsConfig = {
             'node/run-your-node/keymanager-node/key-manager-upgrade',
           ],
         },
-        'node/run-your-node/ias-proxy',
         'node/run-your-node/sentry-node',
         {
           type: 'category',

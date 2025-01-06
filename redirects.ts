@@ -226,8 +226,12 @@ export const redirectsOptions: Options = {
             ],
         },
         {
-            to: '/node/run-your-node/ias-proxy',
-            from: '/general/run-a-node/set-up-your-node/run-an-ias-proxy', // #200 Restructure docs
+            to: '/node/run-your-node',
+            from: '/general/run-a-node/set-up-your-node/run-an-ias-proxy', // #1076 Remove IAS Proxy
+        },
+        {
+            to: '/node/run-your-node',
+            from: '/node/run-your-node/ias-proxy', // #1076 Remove IAS Proxy
         },
         {
             to: '/node/run-your-node/non-validator-node',

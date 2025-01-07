@@ -67,16 +67,6 @@ This section contains parameters for various ParaTimes known to be deployed on t
   * [0.8.2](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.8.2)
 * Oasis Web3 Gateway version:
   * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
-* IAS proxy address:
-  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
-  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
-
-:::tip
-
-Feel free to use other IAS proxies besides the one provided here or
-[run your own](../../node/run-your-node/ias-proxy.md).
-
-:::
 
 ### Cipher
 
@@ -87,16 +77,6 @@ Feel free to use other IAS proxies besides the one provided here or
 * Runtime bundle version:
   * [3.0.5](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.5)
   * [3.1.2](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.1.2)
-* IAS proxy address:
-  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
-  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
-
-:::tip
-
-Feel free to use other IAS proxies besides the one provided here or
-[run your own](../../node/run-your-node/ias-proxy.md).
-
-:::
 
 ### Emerald
 
@@ -124,13 +104,3 @@ the public Web3 endpoint.
   * `4000000000000000000000000000000000000000000000008c5ea5e49b4bc9ac`
 * Runtime bundle version:
   * [0.5.0](https://github.com/oasisprotocol/keymanager-paratime/releases/tag/v0.5.0)
-* IAS proxy address:
-  * `tnTwXvGbbxqlFoirBDj63xWtZHS20Lb3fCURv0YDtYw=@34.86.108.137:8650`
-  * `tuDyXwaajTEbNWb1QIlf8FWHsdkaB4W1+TjzP1QID/U=@131.153.243.17:8650`
-
-:::tip
-
-Feel free to use other IAS proxies besides the one provided here or
-[run your own](../../node/run-your-node/ias-proxy.md).
-
-:::

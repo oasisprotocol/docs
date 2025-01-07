@@ -103,15 +103,6 @@ worker:
     addresses:
       # The external IP that is used when registering this node to the network.
       - "{{ external_address }}:20104"
-
-# The following section is required for ParaTimes which are running inside the
-# Intel SGX Trusted Execution Environment.
-ias:
-  proxy:
-    address:
-      # List of IAS proxies to connect to.
-      # NOTE: You can add additional IAS proxies to this list if you want.
-      - "{{ ias_proxy_address }}"
 ```
 
 Before using this configuration you should collect the following information to replace the `{{ ... }}` variables present in the configuration file:
@@ -124,9 +115,6 @@ Before using this configuration you should collect the following information to 
 * `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
 * `{{ keymanager_runtime_id }}`: Runtime identified for the key manager ParaTime.
   * You can find the current Oasis-supported key manager ParaTime identifiers in the Network Parameters page ([Mainnet], [Testnet]).
-* `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
-  * You can find the current Oasis IAS proxy address in the Network Parameters page ([Mainnet], [Testnet]).
-  * If you want, you can also [run your own IAS proxy](../ias-proxy.md).
 
 :::caution
 

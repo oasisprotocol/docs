@@ -288,14 +288,6 @@ consensus:
 genesis:
     file: /node/etc/genesis.json
 
-# The IAS section is required for ParaTimes which are running inside the
-# Intel SGX Trusted Execution Environment.
-ias:
-    proxy_addresses:
-        # List of IAS proxies to connect to.
-        # NOTE: You can add additional IAS proxies to this list if you want.
-        - {{ ias_proxy_address }}
-
 p2p:
     # External P2P configuration.
     port: 9200
@@ -330,9 +322,6 @@ Before using this configuration you should collect the following information to 
 * `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
 * `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
   * You can find the current Oasis-supported ParaTimes in the Network Parameters page ([Mainnet], [Testnet]).
-* `{{ ias_proxy_address }}`: The IAS proxy address in the form `ID@HOST:port`.
-  * You can find the current Oasis IAS proxy address in the Network Parameters page ([Mainnet], [Testnet]).
-  * If you want, you can also [run your own IAS proxy](ias-proxy.md).
 
 :::caution
 

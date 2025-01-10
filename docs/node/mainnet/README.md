@@ -63,7 +63,6 @@ This section contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000f80306c9858e7279`
 * Runtime bundle version:
-  * [0.7.3](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.7.3)
   * [0.8.2](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.8.2)
 * Oasis Web3 Gateway version:
   * [5.1.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.1.0)
@@ -75,7 +74,6 @@ This section contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime bundle version:
-  * [3.0.5](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.0.5)
   * [3.1.2](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.1.2)
 
 ### Emerald

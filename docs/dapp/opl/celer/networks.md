@@ -29,6 +29,15 @@ description: Supported networks on Celer IM
 
 ## Testnets
 
+:::info
+
+Oasis operates an IM [executor] supporting Avalanche and BSC testnets. You may
+need to deploy your own while developing on another Celer supported network.
+
+:::
+
+[executor]: ../celer/README.md#executor
+
 | Name | Int ID | Hex ID | autoswitch name |
 | ---- | ------ | ------ | --------------- |
 | Avalanche C-Chain Fuji Testnet | 43113 | 0xa869 | avalanche-fuji |

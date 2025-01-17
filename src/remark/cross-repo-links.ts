@@ -29,11 +29,11 @@ export default function plugin(): Transformer {
     function visitor(untypedNode: mdast.Node) {
         const node = untypedNode as mdast.Definition | mdast.Link
         if (oasisSdkContractRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkContractRegex, '/dapp/tools/other-paratimes/cipher/$1$2');
+            node.url = node.url.replace(oasisSdkContractRegex, '/build/tools/other-paratimes/cipher/$1$2');
         } else if (oasisSdkRuntimeRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkRuntimeRegex, '/paratime/$1$2');
+            node.url = node.url.replace(oasisSdkRuntimeRegex, '/build/tools/build-paratime/$1$2');
         } else if (oasisSdkRoflRegex.test(node.url)) {
-            node.url = node.url.replace(oasisSdkRoflRegex, '/rofl/$1$2');
+            node.url = node.url.replace(oasisSdkRoflRegex, '/build/rofl/$1$2');
         } else if (cliRegex.test(node.url)) {
             node.url = node.url.replace(cliRegex, '/general/manage-tokens/cli/$1$2');
         } else if (oasisCoreRegex.test(node.url)) {
@@ -41,7 +41,7 @@ export default function plugin(): Transformer {
         } else if (adrsRegex.test(node.url)) {
             node.url = node.url.replace(adrsRegex, '/adrs/$1$2');
         } else if (sapphireParatimeRegex.test(node.url)) {
-            node.url = node.url.replace(sapphireParatimeRegex, '/dapp/sapphire/$1$2');
+            node.url = node.url.replace(sapphireParatimeRegex, '/build/sapphire/$1$2');
         } else if (docsRegex.test(node.url)) {
             node.url = node.url.replace(docsRegex, '/$1$2');
         } else {

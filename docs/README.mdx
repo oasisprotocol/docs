@@ -17,7 +17,7 @@ chains and how to use unique Oasis features.
     findSidebarItem('/general/manage-tokens/cli/'),
 ]} />
 
-## Create dApp
+## Build on Oasis
 
 Contains learning material for the smart contract developers. Since the Oasis
 platform is best known for confidentiality, the most notable ParaTime is
@@ -26,29 +26,21 @@ encryption**. The Oasis team also prepared a set of libraries called the
 [Oasis Privacy Layer] to **bridge existing dApps running on other chains** to
 use the unique Sapphire's confidentiality.
 
-The part also covers other ParaTimes such as the non-confidential
-[Oasis Emerald] and Wasm-compatible, confidential [Oasis Cipher].
-
-<DocCardList items={[
-    findSidebarItem('/dapp/sapphire/'),
-    findSidebarItem('/dapp/opl/'),
-    findSidebarItem('/dapp/tools/other-paratimes/emerald/'),
-    findSidebarItem('/dapp/tools/other-paratimes/cipher/'),
-]} />
-
-[Oasis Sapphire]: dapp/sapphire/README.mdx
-[Oasis Privacy Layer]: dapp/opl/README.mdx
-[Oasis Emerald]: dapp/tools/other-paratimes/emerald/README.mdx
-[Oasis Cipher]: dapp/tools/other-paratimes/cipher/README.mdx
-
-## Build ROFL
-
-Runtime OFfchain Logic (ROFL) enables you to build secure applications running
-offchain in a trusted environment (TEE) and that seamlessly communicate with
+Our [Runtime OFfchain Logic (ROFL)][ROFL] enables you to **build secure applications running
+offchain** in a trusted environment (TEE) and that seamlessly communicate with
 Oasis Sapphire. This is ideal for trusted oracles, compute-expensive tasks
 in AI or as a backend for interactive games.
 
-<DocCard item={findSidebarItem('/rofl/')} />
+<DocCardList items={[
+    findSidebarItem('/build/sapphire/'),
+    findSidebarItem('/build/opl/'),
+    findSidebarItem('/build/rofl/'),
+    findSidebarItem('/build/tools/'),
+]} />
+
+[Oasis Sapphire]: ./build/sapphire/README.mdx
+[Oasis Privacy Layer]: ./build/opl/README.mdx
+[ROFL]: ./build/rofl/README.mdx
 
 ## Get Involved
 
@@ -83,7 +75,7 @@ Apart from the Sapphire, Emerald, Cipher and the Key manager ParaTimes,
 you can also write, compile, sign and deploy your own ParaTime on the Oasis
 Network. This part describes the knobs you need to use to do so.
 
-<DocCard item={findSidebarItem('/paratime/')} />
+<DocCard item={findSidebarItem('/build/tools/build-paratime/')} />
 
 ## Develop Core
 

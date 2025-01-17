@@ -89,7 +89,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 
 :::info
 
-Check the [Emerald ParaTime page](/dapp/tools/other-paratimes/emerald/network#rpc-endpoints) on how to access
+Check the [Emerald ParaTime page](../../build/tools/other-paratimes/emerald/network#rpc-endpoints) on how to access
 the public Web3 endpoint.
 
 :::

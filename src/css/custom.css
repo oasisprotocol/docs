@@ -140,6 +140,14 @@ html[data-theme="dark"] {
 
 .card {
   --ifm-link-hover-color: inherit !important;
+  height: 100%
+}
+
+/* To have the full description of pages,
+   in combination with card heigt 100% to have even size boxes in a list.
+  */
+.card p {
+  white-space: normal;
 }
 
 /* Show the content of tabs slightly indented with a border on the left */

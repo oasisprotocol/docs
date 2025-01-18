@@ -146,21 +146,6 @@ export const redirectsOptions: Options = {
             ],
         },
         {
-            to: '/build/sapphire/',
-            from: [
-                '/general/developer-resources/sapphire-paratime', // #200 Restructure docs
-                '/dapp/sapphire/', // #1058 Rename dapp to build
-            ]
-        },
-        {
-            to: '/build/sapphire/quickstart',
-            from: [
-                '/general/developer-resources/sapphire-paratime/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
-                '/dapp/sapphire/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
-                '/dapp/sapphire/quickstart', // #1058 Rename dapp to build
-            ],
-        },
-        {
             to: '/general/oasis-network/faq',
             from: '/general/faq/oasis-network-faq', // #200 Restructure docs
         },
@@ -292,10 +277,85 @@ export const redirectsOptions: Options = {
             from: '/dapp/sapphire/precompiles' // #688 Migrate dapp/sapphire/precompiles chapter to api.docs.oasis.io
         },
         {
+            to: '/build/sapphire/',
+            from: [
+                '/general/developer-resources/sapphire-paratime', // #200 Restructure docs
+                '/dapp/sapphire/', // #1058 Rename dapp to build
+            ]
+        },
+        {
+            to: '/build/sapphire/quickstart',
+            from: [
+                '/general/developer-resources/sapphire-paratime/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
+                '/dapp/sapphire/writing-dapps-on-sapphire', // #218 Add sapphire tutorial
+                '/dapp/sapphire/quickstart', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/network',
+            from: [
+                '/dapp/sapphire/network', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/addresses',
+            from: [
+                '/dapp/sapphire/addresses', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/develop/authentication',
+            from: [
+                '/dapp/sapphire/authentication', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/develop/browser',
+            from: [
+                '/dapp/sapphire/browser', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/develop',
+            from: [
+                '/dapp/sapphire/guide', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/develop/gasless',
+            from: [
+                '/dapp/sapphire/gasless', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/sapphire/develop/deployment',
+            from: [
+                '/dapp/sapphire/deployment', // #1058 Rename dapp to build
+            ],
+        },
+        {
             to: '/build/tools/band',
             from: [
                 '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section
                 '/dapp/tools/band', // #1058 Rename dapp to build
+            ]
+        },
+        {
+            to: '/build/tools/localnet',
+            from: [
+                '/dapp/tools/localnet', // #1058 Rename dapp to build
+            ]
+        },
+        {
+            to: '/build/tools/abi-playground',
+            from: [
+                '/dapp/tools/abi-playground', // #1058 Rename dapp to build
+            ]
+        },
+        {
+            to: '/build/tools/remix',
+            from: [
+                '/dapp/tools/remix', // #1058 Rename dapp to build
             ]
         },
         {
@@ -325,8 +385,20 @@ export const redirectsOptions: Options = {
             from: '/rofl/', // #1058 Rename dapp to build
         },
         {
-            to: '/build/tools/build-paratime/',
-            from: '/paratime/', // #1058 Rename dapp to build
+            to: '/build/opl/',
+            from: '/dapp/opl/', // #1058 Rename dapp to build
+        },
+        {
+            to: '/build/opl/opl-sdk',
+            from: '/dapp/opl/opl-sdk', // #1058 Rename dapp to build
+        },
+        {
+            to: '/build/opl/celer',
+            from: '/dapp/opl/celer', // #1058 Rename dapp to build
+        },
+        {
+            to: '/build/opl/router-protocol',
+            from: '/dapp/opl/router-protocol', // #1058 Rename dapp to build
         },
     ],
     createRedirects(existingPath) {
@@ -358,6 +430,9 @@ export const redirectsOptions: Options = {
         }
         if (existingPath.includes('/core')) {
             return [existingPath.replace('/core', '/oasis-core')];
+        }
+        if (existingPath.includes('/dapp/')) {
+            return [existingPath.replace('/dapp/', '/build/')];
         }
         return undefined;
     },

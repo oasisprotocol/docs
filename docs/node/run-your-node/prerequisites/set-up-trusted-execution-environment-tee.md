@@ -546,6 +546,26 @@ This may be related to a bug in the Linux kernel when attempting to run enclaves
 on certain hardware configurations. Upgrading the Linux kernel to a version
 equal to or greater than 6.5.0 may solve the issue.
 
+### Unable to Launch Enclaves: Input/output error
+
+If running `sgx-detect --verbose` reports:
+
+```
+🕮 SGX system software > Able to launch enclaves > Debug mode
+The enclave could not be launched.
+
+debug: failed to load report enclave
+debug: cause: Failed to call ECREATE.
+debug: cause: I/O ctl failed.
+debug: cause: Input/output error (os error 5)
+```
+
+This may be related to a bug in the [`rust-sgx`](https://github.com/fortanix/rust-sgx/issues/565)
+library causing `sgx-detect` (and `attestation-tool`) to fail and report that
+debug enclaves cannot be launched. This is a known issue and is being worked on.
+If the `sgx-detect` is reporting that production enclaves can be launched, you
+can ignore this error when setting up the Oasis node.
+
 ### Couldn't find the platform library
 
 If AESMD service log reports:

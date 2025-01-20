@@ -104,6 +104,16 @@ export const sidebarBuild: SidebarsConfig = {
             'build/opl/router-protocol/approve',
           ],
         },
+        {
+          type: 'category',
+          label: 'Hyperlane',
+          link: {
+            type: 'doc',
+            id: 'build/opl/hyperlane/README',
+          },
+          items: [
+          ],
+        },
       ],
     },
     {

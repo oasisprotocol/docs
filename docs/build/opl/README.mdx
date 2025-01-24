@@ -56,11 +56,12 @@ enables seamless state transitions across multiple chains.
 
 ### Comparison
 
-| Protocol        | Validator Network | Relayer | Fees |
-| --------------- | ----------------- | ------ | ------ |
-| **[OPL SDK]**         | SGN (Celer)                       | Executor (self-hosted or hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
-| **[Celer IM][celer]**        | SGN (Celer)                       | Executor (self-hosted or hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
-| **[Router Protocol][router]** | Orchestrators (Router Chain)      | Relayer (run by 3rd party) | Paid by the approved feepayer on the Routerchain |
+| Protocol                      | Validator Network            | Relayer                                           | Fees                                                                                   |
+| ----------------------------- | ---------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **[OPL SDK]**                 | SGN (Celer)                  | Executor (self-hosted or hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
+| **[Celer IM][celer]**         | SGN (Celer)                  | Executor (self-hosted or hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
+| **[Router Protocol][router]** | Orchestrators (Router Chain) | Relayer (run by 3rd party)                        | Paid by the approved feepayer on the Routerchain                                       |
+| **[Hyperlane][hyperlane]**    | Self-hosted (permissionless) | Self-hosted                                       | Interchain Gas Payments on origin chain                                                |
 
 ## Examples
 
@@ -73,3 +74,4 @@ enables seamless state transitions across multiple chains.
 [OPL SDK]: ./opl-sdk/README.md
 [celer]: ./celer/README.md
 [router]: ./router-protocol/README.md
+[hyperlane]: ./hyperlane/README.md

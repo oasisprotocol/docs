@@ -80,15 +80,15 @@ of the following options.
 
 #### Block Explorers
 
-Browse to one of our block explorers (e.g. [Oasis Scan], [Oasis Monitor]) and
+Browse to one of our block explorers (e.g. [Oasis Explorer], [Oasis Scan]) and
 obtain the trusted height and hash there:
 
 1. Obtain the current block height from the main page, e.g. 4819139.
 2. Click on block height's number to view the block's details and obtain its
    hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
 
+[Oasis Explorer]: https://explorer.oasis.io/
 [Oasis Scan]: https://www.oasisscan.com
-[Oasis Monitor]: https://oasismonitor.com
 
 #### A Trusted Node
 

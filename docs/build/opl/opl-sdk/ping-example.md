@@ -185,7 +185,7 @@ Remix will remove the contract from the UI if you change the chain.
 2. In MetaMask, switch to the `BSC Testnet` network and select
    `Injected Provider - MetaMask` as the environment in Remix.
 3. Select the `Ping.sol` contract.
-4. Fill in the contract addess you just have deployed on `Sapphire Testnet`.
+4. Fill in the contract address you just have deployed on `Sapphire Testnet`.
 5. Deploy the contract on `BSC Testnet`.
 
 [BNB faucet]: https://www.bnbchain.org/en/testnet-faucet

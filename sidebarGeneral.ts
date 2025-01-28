@@ -17,11 +17,7 @@ export const sidebarGeneral: SidebarsConfig = {
       },
       items: [
         'general/oasis-network/token-metrics-and-distribution',
-        {
-          type: 'link',
-          label: 'Papers',
-          href: 'https://oasisprotocol.org/papers',
-        },
+        'general/oasis-network/papers',
         'general/oasis-network/faq',
       ],
     },

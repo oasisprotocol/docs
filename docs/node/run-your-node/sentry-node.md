@@ -154,7 +154,7 @@ Tendermint Peer Exchange should be disabled on the validator with the `consensus
 
 Sentry nodes can also be configured as Tendermint Persistent-Peers with the `consensus.tendermint.p2p.persistent_peer` flag.
 
-In addition to the familiar Tendermint setup above, the node needs to be configured to query sentry nodes for external addresses every time the validator preforms a re-registration. This is configured with the `worker.sentry.address` flag.
+In addition to the familiar Tendermint setup above, the node needs to be configured to query sentry nodes for external addresses every time the validator performs a re-registration. This is configured with the `worker.sentry.address` flag.
 
 The `worker.sentry.address` flag is of format: `<pubkey>@ip:port` where:
 

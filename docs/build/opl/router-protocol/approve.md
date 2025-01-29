@@ -1,5 +1,5 @@
 ---
-description: Approving fee payer in Router Protcol
+description: Approving fee payer in Router Protocol
 ---
 
 # Approving the Fee Payer

@@ -1,68 +1,57 @@
 ---
-description: Hyperlane Protocol
+description: Hyperlane Protocol Overview
 ---
+import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
+import {findSidebarItem} from '@site/src/sidebarUtils';
 
-# Hyperlane
+# Hyperlane Protocol
 
 [Hyperlane] is a permissionless interoperability protocol that enables seamless
 cross-chain communication for developers. Its unique design allows deployment
 across various blockchain environments, including layer 1 chains, rollups, and
-app-chains, without the need for approvals or intermediaries. This 
+app-chains, without the need for approvals or intermediaries. This
 [permissionless design] empowers developers to build cross-chain applications
-with full control over their operations in a multi-chain ecosystem. 
+with full control over their operations in a multi-chain ecosystem.
 
 [Hyperlane]: https://hyperlane.xyz/
 [permissionless design]: https://docs.hyperlane.xyz/docs/intro
 
-## Hyperlane CLI on Sapphire
+### Architecture
 
-:::info
+![Hyperlane Messaging Flow](../../diagrams/opl-hyperlane-flow.mmd.svg)
 
-The standard **Hyperlane CLI** relies on the `eth_getStorageAt` method, which is
-incompatible with **Sapphire** by default. To address this, a **[custom branch]** of the
-Hyperlane CLI has been created.
+*Basic Hyperlane cross-chain messaging flow[^1]*
 
-For more details about `eth_getStorageAt` on Sapphire, refer to the
-[Sapphire documentation].
+[^1]: Architecture diagram is courtesy of [Hyperlane documentation][hyperlane-architecture]
 
-:::
+[hyperlane-architecture]: https://docs.hyperlane.xyz/docs/protocol/protocol-overview
 
-To use the Hyperlane branch that supports Sapphire, run the following:
+Hyperlane's architecture consists of four key components:
 
-1. Clone the branch to your local machine:
+- **[Mailboxes]**: Core messaging contracts deployed on each chain that handle message sending/receiving
+- **[Interchain Security Modules (ISMs)][ism]**: Custom security logic that determines how messages are verified
+- **[Relayers]**: Off-chain agents that transport messages between chains
+- **[Validators]**: Fulfilling the security layer of the Hyperlane protocol
 
-    ```
-    git clone https://github.com/hyperlane-xyz/hyperlane-monorepo.git --branch pb/storage-workaround
-    cd hyperlane-monorepo
-    ```
+[Mailboxes]: https://docs.hyperlane.xyz/docs/protocol/mailbox
+[ism]: https://docs.hyperlane.xyz/docs/protocol/ISM/modular-security
+[Relayers]: https://docs.hyperlane.xyz/docs/protocol/agents/relayer
+[Validators]: https://docs.hyperlane.xyz/docs/protocol/agents/validators
 
-2. Install dependencies and build the project:
+## Fees
 
-    ```
-    yarn install && yarn build
-    ```
+Hyperlane fees are called **Interchain Gas Payments** and are payed by the
+*message sender* to the *relayer*.
 
-3. Run the modified CLI using the following command:
+For more info about the Interchain Gas Payments, consult the [Hyperlane documentation][igp]
 
-    ```
-    yarn workspace @hyperlane-xyz/cli hyperlane
-    ```
+[igp]: https://docs.hyperlane.xyz/docs/protocol/interchain-gas-payment
 
-:::info
+## See also
 
-For more details about Hyperlane compatibility, refer to the
-[Hyperlane Troubleshooting documentation].
-
-:::
-
-
-[custom branch]: https://github.com/hyperlane-xyz/hyperlane-monorepo/tree/pb/storage-workaround
-[Sapphire documentation]: https://github.com/oasisprotocol/sapphire-paratime/blob/main/docs/develop/deployment#caution-against-using-eth_getstorageat
-[Hyperlane Troubleshooting documentation]: https://docs.hyperlane.xyz/docs/deploy-hyperlane-troubleshooting#eth_getstorageat-compatibility
-
-### Hyperlane Deployment
-
-For guidance on deploying on a new chain using the Hyperlane CLI, refer to the
-[official deploy documentation][hyperlane-deploy].
-
-[hyperlane-deploy]: https://docs.hyperlane.xyz/docs/deploy-hyperlane
+<DocCardList items={[
+    findSidebarItem('/build/opl/hyperlane/cli'),
+    findSidebarItem('/build/opl/hyperlane/relayer'),
+    findSidebarItem('/build/opl/hyperlane/pingpong-example'),
+]} />

@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant User
+    participant P-A as PingPong.sol<br/>(Chain A)
+    participant I-A as ISM<br/>(Chain A)
+    participant M-A as Mailbox<br/>(Chain A)
+    participant Relayer as Verifier<br/>& Relayer
+    participant M-B as Mailbox<br/>(Chain B)
+    participant I-B as ISM<br/>(Chain B)
+    participant P-B as PingPong.sol<br/>(Chain B)
+    User->>+P-A: sendPing()
+    P-A->>+M-A: disptach()
+    M-A-->>-Relayer: Listens to event
+    Relayer-->>+M-B: Relays message<br/>via process()
+    M-B<<->>+P-B: interchainSecurityModule()<br>Mailbox default ISM if empty
+    M-B<<->>+I-B: verify()
+    M-B->>+P-B: handle()
+    P-B->>-M-B: disptach()
+    M-B-->>-Relayer: Listens to event
+    Relayer-->>+M-A: Relays message<br/>via process()
+    M-A<<->>P-A: interchainSecurityModule()<br>Mailbox default ISM if empty
+    M-A<<->>I-A: verify()
+    M-A->>-P-A: handle()

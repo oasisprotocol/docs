@@ -93,6 +93,19 @@ export const sidebarBuild: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'Hyperlane Protocol',
+          link: {
+            type: 'doc',
+            id: 'build/opl/hyperlane/README',
+          },
+          items: [
+            'build/opl/hyperlane/cli',
+            'build/opl/hyperlane/relayer',
+            'build/opl/hyperlane/pingpong-example',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Router Protocol',
           link: {
             type: 'doc',
@@ -102,16 +115,6 @@ export const sidebarBuild: SidebarsConfig = {
             'build/opl/router-protocol/pingpong-example',
             'build/opl/router-protocol/interface',
             'build/opl/router-protocol/approve',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Hyperlane',
-          link: {
-            type: 'doc',
-            id: 'build/opl/hyperlane/README',
-          },
-          items: [
           ],
         },
       ],

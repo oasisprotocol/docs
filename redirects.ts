@@ -334,6 +334,12 @@ export const redirectsOptions: Options = {
             ],
         },
         {
+            to: '/build/tools',
+            from: [
+                '/dapp/tools', // #1058 Rename dapp to build
+            ]
+        },
+        {
             to: '/build/tools/band',
             from: [
                 '/dapp/emerald/integrating-band-oracle-smart-contract', // #907 Move Band oracle to Tools section

@@ -1,0 +1,27 @@
+flowchart TB
+    Relayer((Relayer))
+
+    subgraph Origin
+      Sender
+      M_O[(Mailbox)]
+
+      Sender -- "1.dispatch(destination, recipient, body)" --> M_O
+    end
+
+    M_O -. "2.emit dispatch(sender, destination, recipient, body)" .-> Relayer
+
+    subgraph Destination
+      Recipient
+      M_D[(Mailbox)]
+      ISM[InterchainSecurityModule]
+
+      M_D -. "4.interchainSecurityModule()" .-> Recipient
+      M_D -- "5.verify(metadata, message)" --> ISM
+      M_D -- "6.handle(origin, sender, body)" --> Recipient
+    end
+
+    Relayer -- "3.process(metadata, message)" --> M_D
+
+    style Sender fill:#efab17
+    style Recipient fill:#efab17
+    

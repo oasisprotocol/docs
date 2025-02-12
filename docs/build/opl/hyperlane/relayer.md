@@ -26,8 +26,9 @@ The easiest way to run a relayer is with the **[Hyperlane CLI]**.
 
 :::info Chain Configs
 
-If you didn't deploy the *Hyperlane Core* on `Sapphire Testnet` yourself, make
-sure you have the following *Hyperlane* chain config yaml files in
+`Sapphire Testnet` is registered in the *Hyperlane Registry*, if you deploy
+the *Hyperlane Core* on `Sapphire Testnet` yourself, make sure you have
+*Hyperlane* config files similar to the ones below in
 `$HOME/.hyperlane/chains/sapphiretestnet`.
 
 <details>
@@ -35,7 +36,7 @@ sure you have the following *Hyperlane* chain config yaml files in
     ```yaml
     # yaml-language-server: $schema=../schema.json
     blockExplorers:
-      - apiUrl: https://explorer.oasis.io/testnet/sapphire
+      - apiUrl: https://nexus.oasis.io/v1/
         family: other
         name: Oasis Explorer
         url: https://explorer.oasis.io/testnet/sapphire
@@ -57,19 +58,19 @@ sure you have the following *Hyperlane* chain config yaml files in
  <details>
   <summary> addresses.yaml </summary>
     ```yaml
-    domainRoutingIsmFactory: "0x5eE9aE59Bc69E6B3813F0BE581f7f53069A98937"
-    interchainAccountIsm: "0x3F233b5d8fa45C29bAff0bfC5902F97dE63828e5"
-    interchainAccountRouter: "0x741A3F38262fFbaEBbE3Ee9D31362Da5C31D0412"
-    mailbox: "0x8cd4D8103B5962dCA62E4c05C28F78D7Ae5147aF"
-    proxyAdmin: "0xD1679E584b180eE4e2d6e2a1d226191A9fAeFE4E"
-    staticAggregationHookFactory: "0xaECc8B121a39A8D16Edfb20143708f3a56483428"
-    staticAggregationIsmFactory: "0x98e8B1D67613069DeE6D1065A1Bb44DCf94E076E"
-    staticMerkleRootMultisigIsmFactory: "0x80efD5d1868A14d6f7BC3bE38aa0c14E2842AE8C"
-    staticMerkleRootWeightedMultisigIsmFactory: "0x60EDA4eA956908E7f743bba62815Bb38FD386601"
-    staticMessageIdMultisigIsmFactory: "0x1598602720369655a187e6AAdd3106BCD6c4bAf4"
-    staticMessageIdWeightedMultisigIsmFactory: "0xEf4166c4E6b293cf80D381C783d7bD02D28adf4D"
-    testRecipient: "0x826B542005fAC683ed6E289c57FbB6f2c85dD27A"
-    validatorAnnounce: "0xc6fe8329797a87Cd1515E407cDa3912223Dc2053"
+    domainRoutingIsmFactory: "0x3497967f8E5041f486eC559E6B760d8f051A034C"
+    interchainAccountIsm: "0xD84DE931A0EDA06Af3944a4e9933c24f3B56DCaC"
+    interchainAccountRouter: "0xFdca43771912CE5F5B4D869B0c05df0b6eF8aEFc"
+    mailbox: "0x79d3ECb26619B968A68CE9337DfE016aeA471435"
+    proxyAdmin: "0x5Ed8004e3352df333901b0B2E98Bd98C3B4AA59A"
+    staticAggregationHookFactory: "0x212c232Ee07E187CF9b4497A30A3a4D034aAC4D6"
+    staticAggregationIsmFactory: "0xE25A539AdCa1Aac56549997f2bB88272c5D9498c"
+    staticMerkleRootMultisigIsmFactory: "0x9851EC4C62943E9974370E87E93CE552abE7705E"
+    staticMerkleRootWeightedMultisigIsmFactory: "0x688dE6d0aBcb60a711f149c274014c865446b49D"
+    staticMessageIdMultisigIsmFactory: "0xFE0937b1369Bbba59211c4119B91984FF450ccf1"
+    staticMessageIdWeightedMultisigIsmFactory: "0x1de05675c8cd512A30c17Ea0a3491d74eF290994"
+    testRecipient: "0x7bf548104F8f500C563Aa6DC7FbF3b1ad93E4E03"
+    validatorAnnounce: "0xB119f96a106919489b6495128f30e7088e55B05c"
     ```
 </details>
 

@@ -465,7 +465,7 @@ or use the scripts below.
 
     async function main() {
       // deployed mailbox on Sapphire Testnet
-      const mailbox = "0x8cd4D8103B5962dCA62E4c05C28F78D7Ae5147aF";
+      const mailbox = "0x79d3ECb26619B968A68CE9337DfE016aeA471435";
 
       const PongFactory = await hre.ethers.getContractFactory("Pong");    
       const pong = await PongFactory.deploy(mailbox);

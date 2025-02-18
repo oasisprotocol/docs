@@ -1,5 +1,6 @@
 import {useDocsVersion} from "@docusaurus/plugin-content-docs/client";
 import {PropSidebar} from "@docusaurus/plugin-content-docs";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 /**
  * Builds an index of href => sidebar item.
@@ -22,6 +23,7 @@ function reindex(sidebarItems: PropSidebar) {
  * Finds sidebar item object in the sidebars given the item's href.
  */
 export function findSidebarItem(href: string) {
+    const {siteConfig, siteMetadata} = useDocusaurusContext();
     const docsVersion = useDocsVersion();
 
     if (!docsVersion) {
@@ -38,9 +40,13 @@ export function findSidebarItem(href: string) {
 
     // Throw error, if the sidebar item is still not found.
     if (globalThis.sidebarItemsMap[href] === undefined) {
-        console.log('Registered sidebar items:');
+        console.log(`Item ${href} not found. Registered sidebar items:`);
         console.log(globalThis.sidebarItemsMap);
-        throw new Error('Unexpected: sidebar item with href '+href+' does not exist.');
+        if (siteConfig.onBrokenMarkdownLinks == 'throw') {
+            throw new Error(`Unexpected: sidebar item with href ${href} does not exist.`);
+        } else {
+            return globalThis.sidebarItemsMap['/general/']; // TODO: route to 404
+        }
     }
 
     return globalThis.sidebarItemsMap[href];

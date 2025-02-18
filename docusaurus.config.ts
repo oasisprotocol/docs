@@ -23,8 +23,9 @@ const config: Config = {
     locales: ['en'],
   },
 
-  onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenLinks: process.env.NETLIFY ? 'warn' : 'throw',
+  onBrokenAnchors: process.env.NETLIFY ? 'warn' : 'throw',
+  onBrokenMarkdownLinks: process.env.NETLIFY ? 'warn' : 'throw',
 
   presets: [
     [

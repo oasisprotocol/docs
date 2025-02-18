@@ -56,7 +56,8 @@ export const sidebarBuild: SidebarsConfig = {
           label: 'Deployment',
           id: 'build/rofl/deployment',
         },
-        'build/rofl/trust-root',
+        'build/rofl/features',
+        'build/rofl/resources',
       ],
     },
     {

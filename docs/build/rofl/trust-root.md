@@ -1,1 +1,0 @@
-../../../external/oasis-sdk/docs/rofl/trust-root.md

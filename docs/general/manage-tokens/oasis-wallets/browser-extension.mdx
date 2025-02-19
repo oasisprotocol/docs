@@ -2,8 +2,8 @@
 description: The Oasis Foundation-managed non-custodial browser extension wallet
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # ROSE Wallet - Browser Extension
 
@@ -25,14 +25,16 @@ You can install the ROSE Wallet - Browser Extension by heading to the
 Next, either [create a new wallet](#create-a-new-account) or
 [restore your existing one](#import-an-existing-account).
 
-
 ## Create a New Account
 
 Enter the **new wallet password**. You will need to enter this password each
 time you open the wallet and after some time when the wallet automatically
 locks. Click "Next".
 
-![Create new wallet: Enter password](../../images/wallet/ext/create_wallet.png)
+<div className="wallet-extension-img">
+  ![Create new wallet: Enter
+  password](../../images/wallet/ext/create_wallet.png)
+</div>
 
 The newly generated mnemonic is shown to you. Carefully back it up. You will
 need this mnemonic, to migrate the wallet to another device or to restore it, if
@@ -57,14 +59,19 @@ Now reenter the mnemonic words as a proof that you backed up the mnemonic and
 click on the "Confirm" button. Once done, you will see your balance on the
 **Oasis consensus layer**.
 
-![Account history](../../images/wallet/ext/account_history.png)
+<div className="wallet-extension-img">
+  ![Account history](../../images/wallet/ext/account_overview.png)
+</div>
 
 ## Import an Existing Account
 
 In the top-right corner, click your account icon to open the Account management
 menu.
 
-![Account Management - Importing Accounts](../../images/wallet/ext/accounts1.png)
+<div className="wallet-extension-img">
+  ![Account Management - Importing
+  Accounts](../../images/wallet/ext/accounts1.png)
+</div>
 
 Click "Import" and select the:
 
@@ -81,11 +88,11 @@ need it in the ROSE Wallet - Browser Extension.
 
 :::
 
-![Importing Ethereum-compatible Account with Private Key](../../images/wallet/ext/import.png)
-
-Fill in the "Account name" that will appear later in the Account Management screen.
-
-![Imported Account Name](../../images/wallet/ext/import2.png)
+<div className="wallet-extension-img">
+  ![Importing Ethereum-compatible Account with Private
+  Key](../../images/wallet/ext/import.png) ![Importing Ethereum-compatible
+  Account with Private Key](../../images/wallet/ext/import1.png)
+</div>
 
 Next, paste your Base64-encoded Oasis or hex-encoded Ethereum private key.
 
@@ -98,7 +105,10 @@ by [importing](../cli/wallet.md#import) the mnemonic into the Oasis CLI and
 
 :::
 
-![Entering Ethereum address Private Key (BIP44)](../../images/wallet/ext/import3.png)
+<div className="wallet-extension-img">
+  ![Entering Ethereum address Private Key
+  (BIP44)](../../images/wallet/ext/import3.png)
+</div>
 
 Your newly imported account will, depending on the account type, appear under
 the "Oasis Account" or "Ethereum-compatible Account" sections in the Account
@@ -118,24 +128,32 @@ not be accessible anymore!**
 
 :::
 
-![Account Management - Accounts Overview](../../images/wallet/ext/accounts2.png)
+<div className="wallet-extension-img">
+  ![Account Management - Accounts
+  Overview](../../images/wallet/ext/accounts2.png)
+</div>
 
 ## Ledger
 
 1. Plug your Ledger device into your computer and log into the Oasis app on-device
 
-![Oasis App Ready on Ledger Nano S connected to your device](../../images/wallet/ledger/ledger_oasis_ready.jpg)
+<div className="wallet-extension-img">
+  ![Oasis App Ready on Ledger Nano S connected to your
+  device](../../images/wallet/ext/ledger.jpg)
+</div>
 
 2. Open the Oasis Chrome Extension Wallet and click the account icon on the top
    right. Select Ledger on the bottom right of the app.
 
-![Unlock your ROSE Wallet Browser Extension](../../images/wallet/ext/ledger1.png)
-
+<div className="wallet-extension-img">
+  ![Unlock your ROSE Wallet Browser
+  Extension](../../images/wallet/ext/ledger1.png)
+</div>
 
 4. Follow user onboarding flow clicking "Next" as you move forward with set up.
 
-5. You'll see a pop-up in your Chrome Browser asking you to select  which device
-to connect. Click on your Ledger device. Then click "Connect".
+5. You'll see a pop-up in your Chrome Browser asking you to select which device
+   to connect. Click on your Ledger device. Then click "Connect".
 
    :::note
 
@@ -143,32 +161,37 @@ to connect. Click on your Ledger device. Then click "Connect".
 
    :::
 
-![Confirm your Ledger device and Import](../../images/wallet/ext/ledger2.png)
+<div className="wallet-extension-img">
+  ![Confirm your Ledger device and Import](../../images/wallet/ext/ledger2.png)
+</div>
 
 6. Follow the next onboarding steps to upload the correct Ledger account, clicking "Confirm" when complete.
 
-![Confirm your account(s) from Ledger for Import](../../images/wallet/ext/ledger3.png)
+<div className="wallet-extension-img">
+  ![Confirm your account(s) from Ledger for
+  Import](../../images/wallet/ext/ledger3.png)
+</div>
 
 7. Use your Ledger to send, receive and stake on the Oasis Network!
 
 ## Transfer
 
 <Tabs>
-    <TabItem value="Send">
-        1. Click the avatar on the top right corner
-        2. Pick an account you want to transfer tokens out of
-        3. Click "Send"
-        4. Type in the token amount under "Amount"
-        5. Type in the Receiver’s wallet address
-        6. Click "Next"
-        7. Check the "Send Details"; if everything looks good to you, click "Confirm"
-        8. Wait for a couple of seconds, and you’ll get a status update of your transaction
-        9. Go back to the Account page, and you’ll see the transfer has gone through
-    </TabItem>
-    <TabItem value="Receive">
-        Click ‘Receive’ on the Account page, and you’ll get the QR code as well as the
-        wallet address in text format
-    </TabItem>
+  <TabItem value="Send">
+    1. Click the avatar on the top right corner
+    2. Pick an account you want to transfer tokens out of
+    3. Click "Send"
+    4. Type in the token amount under "Amount"
+    5. Type in the Receiver’s wallet address
+    6. Click "Next"
+    7. Check the "Send Details"; if everything looks good to you, click "Confirm"
+    8. Wait for a couple of seconds, and you’ll get a status update of your transaction
+    9. Go back to the Account page, and you’ll see the transfer has gone through
+  </TabItem>
+  <TabItem value="Receive">
+    Click ‘Receive’ on the Account page, and you’ll get the QR code as well as
+    the wallet address in text format
+  </TabItem>
 </Tabs>
 
 ## Stake
@@ -182,10 +205,12 @@ to connect. Click on your Ledger device. Then click "Connect".
 
 ## ParaTimes
 
-Switch to the *ParaTimes tab* to deposit and withdraw ROSE to or from the
+Switch to the _ParaTimes tab_ to deposit and withdraw ROSE to or from the
 ParaTimes.
 
-![The ParaTimes tab](../../images/wallet/ext/paratimes.png)
+<div className="wallet-extension-img">
+  ![The ParaTimes tab](../../images/wallet/ext/paratimes_deposit.png)
+</div>
 
 :::tip
 
@@ -206,17 +231,25 @@ Fill in the "Amount" of ROSE that you want to transfer to Sapphire and, in our
 case, your Ethereum-compatible address in the "To" field you imported/created
 before. Then, click "Next", review and confirm the transaction.
 
-![Sending ROSE to Sapphire](../../images/wallet/ext/deposit.png)
+<div className="wallet-extension-img">
+  ![Select ParaTime](../../images/wallet/ext/paratimes_deposit_select.png)
+  ![Deposit Address](../../images/wallet/ext/paratimes_deposit_address.png)
+  ![Deposit Amount](../../images/wallet/ext/paratimes_deposit_amount.png)
+  ![Deposited](../../images/wallet/ext/paratimes_deposited.png)
+</div>
 
 If everything goes well, you will see a successful ParaTime transaction in your
 account history.
 
-![Account history](../../images/wallet/ext/account_history.png)
+<div className="wallet-extension-img">
+  ![Account history](../../images/wallet/ext/account_history.png)
+</div>
 
     </TabItem>
     <TabItem value="Withdraw">
+
 You can withdraw your ROSE from the ParaTime back to your consensus account by first
-selecting your ParaTime account in the *Account Management* screen. Next, switch to
+selecting your ParaTime account in the _Account Management_ screen. Next, switch to
 ParaTimes tab and click on the "To Consensus" button near the ParaTime entry.
 Fill in the "Amount" and your Bech32-encoded consensus layer address and confirm
 the withdrawal. In a few moments you will have your ROSE accessible on the
@@ -242,25 +275,33 @@ claim their ParaTime execution rewards. The ROSE Wallet - Browser Extension does
 not support such withdrawals. Use the [`oasis account withdraw`] command which
 is part of the [Oasis CLI] instead, for example:
 
-![code shell](../../../../external/cli/examples/account/withdraw.y.in)
+<div className="wallet-extension-img">
+  ![code shell](../../../../external/cli/examples/account/withdraw.y.in)
+</div>
 
 :::
 
 [compute nodes]: ../../../node/run-your-node/paratime-node.mdx
 [Oasis CLI]: ../cli/README.md
 [`oasis account withdraw`]: ../cli/account.md#withdraw
+
     </TabItem>
+
 </Tabs>
 
 You can check the balance of your consensus and ParaTime accounts by opening the
-*Account Management* screen and selecting the corresponding account. Then click
-on the back arrow. The *Wallet* tab will show you the balance on the consensus
-layer and for ParaTimes navigate to the *ParaTimes tab*. There you will notice
+_Account Management_ screen and selecting the corresponding account. Then click
+on the back arrow. The _Wallet_ tab will show you the balance on the consensus
+layer and for ParaTimes navigate to the _ParaTimes tab_. There you will notice
 the available amount of ROSE per each ParaTime.
 
-![ROSE balance in Sapphire](../../images/wallet/ext/paratimes2.png)
+<div className="wallet-extension-img">
+  ![ROSE balance in Sapphire](../../images/wallet/ext/paratimes2.png)
+</div>
 
 For EVM-compatible ParaTimes, you can as well verify the balance in
 [Metamask](../README.mdx#metamask) or a built-in wallet in the Brave browser:
 
-![Metamask - Received ROSE](../../images/wallet/metamask/account.png)
+<div className="wallet-extension-img">
+  ![Metamask - Received ROSE](../../images/wallet/ext/metamask_account.png)
+</div>

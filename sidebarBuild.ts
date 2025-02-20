@@ -135,6 +135,7 @@ export const sidebarBuild: SidebarsConfig = {
         'build/tools/band',
         'build/tools/localnet',
         'build/tools/remix',
+        'build/tools/foundry',
         {
           type: 'category',
           label: 'Build Paratime',

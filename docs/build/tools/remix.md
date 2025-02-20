@@ -4,8 +4,6 @@ description: A guide for the Remix web IDE
 
 # Remix
 
-## Intro
-
 [Remix] is a web-based Integrated Development Environment (IDE) designed for
 developing, testing, and deploying smart contracts on the Ethereum Network.
 This guide will show you how to use Remix in conjunction with MetaMask on the

@@ -388,7 +388,22 @@ export const redirectsOptions: Options = {
         },
         {
             to: '/build/rofl/',
-            from: '/rofl/', // #1058 Rename dapp to build
+            from: [
+		    '/rofl/', // #1058 Rename dapp to build
+		    '/rofl/trust-root', // #1058 Rename dapp to build
+	    ],
+        },
+        {
+            to: '/build/rofl/prerequisites',
+            from: '/rofl/prerequisites', // #1058 Rename dapp to build
+        },
+        {
+            to: '/build/rofl/app',
+            from: '/rofl/app', // #1058 Rename dapp to build
+        },
+        {
+            to: '/build/rofl/deployment',
+            from: '/rofl/deployment', // #1058 Rename dapp to build
         },
         {
             to: '/build/opl/',

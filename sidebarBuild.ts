@@ -69,29 +69,7 @@ export const sidebarBuild: SidebarsConfig = {
         id: 'build/opl/README',
       },
       items: [
-        {
-          type: 'category',
-          label: 'OPL SDK',
-          link: {
-            type: 'doc',
-            id: 'build/opl/opl-sdk/README',
-          },
-          items: [
-            'build/opl/opl-sdk/ping-example',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Celer Inter-Chain Messaging',
-          link: {
-            type: 'doc',
-            id: 'build/opl/celer/README',
-          },
-          items: [
-            'build/opl/celer/ping-example',
-            'build/opl/celer/networks',
-          ],
-        },
+
         {
           type: 'category',
           label: 'Hyperlane Protocol',
@@ -116,6 +94,29 @@ export const sidebarBuild: SidebarsConfig = {
             'build/opl/router-protocol/pingpong-example',
             'build/opl/router-protocol/interface',
             'build/opl/router-protocol/approve',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'OPL SDK',
+          link: {
+            type: 'doc',
+            id: 'build/opl/opl-sdk/README',
+          },
+          items: [
+            'build/opl/opl-sdk/ping-example',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Celer Inter-Chain Messaging',
+          link: {
+            type: 'doc',
+            id: 'build/opl/celer/README',
+          },
+          items: [
+            'build/opl/celer/ping-example',
+            'build/opl/celer/networks',
           ],
         },
       ],

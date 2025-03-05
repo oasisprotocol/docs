@@ -38,15 +38,6 @@ with and debugging your code.
 
 ## Setup and Configuration
 
-Foundry uses default revm EVM implementation which does not contain
-[Sapphire-specific features].
-For that reason, we have to install special Sapphire precompiles which are
-available in the **Sapphire foundry** package.
-
-**Sapphire Contracts** package is also provided. It contains
-helper solidity contracts and libraries that enable convenient access to
-on-chain data and precompiles (rng, signatures, on-chain encryption, etc.).
-
 Follow the steps below to setup your project:
 
 1. Install and run Foundryup:
@@ -64,7 +55,10 @@ Follow the steps below to setup your project:
    cd sapphire_demo
    ```
 
-3. After intializing the project, we can install the **Sapphire Contracts**
+3. **Sapphire Contracts** package contains
+helper solidity contracts and libraries that enable convenient access to
+on-chain data and precompiles (rng, signatures, on-chain encryption, etc.).
+After intializing the project, we can install the **Sapphire Contracts**
 package using Foundry package manager [soldeer]:
 
    ```shell
@@ -72,6 +66,11 @@ package using Foundry package manager [soldeer]:
    ```
 
 ### Installing Sapphire Foundry (Optional)
+
+Foundry uses [revm] EVM implementation which does not contain
+[Sapphire-specific features].
+For that reason, we have to install special Sapphire precompiles which are
+available in the **Sapphire foundry** package.
 
 If you intend to use Sapphire features in Forge tests,
 follow these additional steps:
@@ -82,11 +81,9 @@ follow these additional steps:
    forge soldeer install @oasisprotocol-sapphire-foundry~0.1.0
    ```
 
-2. Add `ffi = true` to your foundry.toml file:
+2. Your foundry.toml file should now look like this:
 
-3. Your foundry.toml file should now look like this:
-
-   ```toml
+   ```toml  title="foundry.toml"
    [profile.default]
    src = "src"
    out = "out"
@@ -128,14 +125,14 @@ follow these additional steps:
    cargo +nightly build --release
    ```
 
-## Sapphire specific features
+## Sapphire-specific Tests
 
 Users who aren't familiar with confidential benefits of Sapphire
 should take a moment to review the Ethereum [comparison page].
 The `@oasisprotocol-sapphire-foundry` package enables
 testing with precompiles and encrypted calls.
 
-#### Precompiles
+### Precompiles
 
 Sapphire precompiles are special precompiled contracts that
 contain cryptographic primitives and enable confidential transactions.
@@ -146,8 +143,10 @@ To enable them in Forge tests, add the **import** statement to your test file:
 ```solidity
 import {SapphireTest} from "@oasisprotocol-sapphire-foundry-0.1.0/BaseSapphireTest.sol";
 ```
+
 and then inherit from `SapphireTest` from `BaseSapphireTest.sol`
 and override the `setUp()` function:
+
 ```solidity
    contract PrecompileTest is SapphireTest {
       
@@ -156,7 +155,7 @@ and override the `setUp()` function:
       }
 ```
 
-#### Encrypted Transactions and Calls
+### Encrypted Transactions and Calls
 
 Sapphire uses end-to-end encryption for confidential transactions and calls.
 This means that the calldata is encrypted using the shared [key].
@@ -183,7 +182,7 @@ how to test encrypted gasless transaction.
 3. `vm.broadcastRawTransaction(raw_tx)` to send the raw transaction.
 
 
-### Forge Tests
+### `forge test`
 
 To run tests add a new file in the `tests/` directory. Run tests with:
 ```shell
@@ -198,7 +197,7 @@ example.
 
 [foundry-example]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/foundry
 
-### Forge Script
+### `forge script`
 
 To run a script add a new file in the `scripts/` directory. Run scripts with:
 
@@ -208,7 +207,7 @@ forge script
 
 Forge scripts should run the same way as tests.
 
-## A note on Forks/External RPC nodes
+## A Note on Forks/External RPC Nodes
 
 When running scripts, we might also want to run on Localnet/Testnet/Mainnet
 using `--rpc-url` or `--fork-url`.
@@ -244,3 +243,4 @@ Should you have any questions, do not hesitate to share them with us on the
 [foreign function interface]: https://book.getfoundry.sh/cheatcodes/ffi
 [soldeer]: https://book.getfoundry.sh/projects/soldeer?highlight=soldeer#soldeer-as-a-package-manager
 [Oasis Web3 gateway]: ../../node/web3.mdx
+[revm]: https://github.com/bluealloy/revm

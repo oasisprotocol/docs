@@ -3,19 +3,20 @@
 :::tip
 
 To check the balance of your account, use one of the blockchain explorers like
-the [Oasis Scan] or the [`oasis account show`] command part of the Oasis CLI.
+the [Oasis Explorer], [Oasis Scan] or the [`oasis account show`] command part
+of the Oasis CLI.
 
 :::
 
-|                                                         |                                                   Mainnet |                    Testnet |
-|---------------------------------------------------------|----------------------------------------------------------:|---------------------------:|
-| Registration of entity[^entity-reg]                     |                                                  100 ROSE |                   100 TEST |
-| Registration of node                                    |                                                  100 ROSE |                   100 TEST |
-| Size of the validator set[^validator-set]               |                               120[^validator-set-mainnet] | 110[^validator-set-testnet] |
-| Run Sapphire or Emerald compute node[^compute-node]     | 5,000,000 ROSE<br/>+ member of the validator set[^member] |                          / |
-| Run Cipher compute node[^compute-node]                  |                      member of the validator set[^member] |                          / |
-| Create ROFL app on Sapphire or Cipher[^rofl-app-create] |                      10,000 ROSE[^rofl-app-create-amount] |                10,000 TEST[^rofl-app-create-amount] |
-| Create a ParaTime                                       |                                               50,000 ROSE |                10,000 TEST |
+|                                                         |                                                   Mainnet |                                          Testnet |
+|---------------------------------------------------------|----------------------------------------------------------:|-------------------------------------------------:|
+| Registration of entity[^entity-reg]                     |                                                  100 ROSE |                                         100 TEST |
+| Registration of node                                    |                                                  100 ROSE |                                         100 TEST |
+| Size of the validator set[^validator-set]               |                               120[^validator-set-mainnet] |                      110[^validator-set-testnet] |
+| Run Sapphire or Emerald compute node[^compute-node]     | 5,000,000 ROSE<br/>+ member of the validator set[^member] |                                                / |
+| Run Cipher compute node[^compute-node]                  |                      member of the validator set[^member] |                                                / |
+| Create ROFL app on Sapphire or Cipher[^rofl-app-create] |                      10,000 ROSE[^rofl-app-create-amount] |                100 TEST[^rofl-app-create-amount] |
+| Create a ParaTime                                       |                                               50,000 ROSE |                                      10,000 TEST |
 
 [^entity-reg]: You can fetch the latest entity registration stake requirements
 by running [`oasis network show native-token`].
@@ -33,7 +34,9 @@ TEST tokens by using our [Oasis Network Testnet Faucet][faucet-testnet]. For
 more tokens please contact us on our official [Discord in the #testnet channel][discord].
 
 [^member]: You can check the current top validators on the blockchain explorers
-like the [Oasis Scan] or by running [`oasis network show validators`].
+like the [Oasis Explorer][oasis-explorer-validators],
+[Oasis Scan][oasis-scan-validators] or by running
+[`oasis network show validators`].
 
 [^compute-node]: You can fetch the latest ParaTime-specific stake requirements
 by running [`oasis network show`] and specifying the ParaTime ID ([Mainnet], [Testnet]).
@@ -60,9 +63,12 @@ want to set up a working node from scratch.
 [ParaTime node]: ../paratime-node.mdx
 [ParaTime client node]: ../paratime-client-node.mdx
 
-[Oasis Scan]: https://www.oasisscan.com/validators
+[Oasis Explorer]: https://explorer.oasis.io/mainnet/consensus
+[Oasis Scan]: https://www.oasisscan.com
 [`oasis account show`]: ../../../general/manage-tokens/cli/account.md#show
 [`oasis network show native-token`]: ../../../general/manage-tokens/cli/network.md#show-native-token
+[oasis-explorer-validators]: https://explorer.oasis.io/mainnet/consensus/validators
+[oasis-scan-validators]: https://www.oasisscan.com/validators
 [`oasis network show validators`]: ../../../general/manage-tokens/cli/network.md#show-validators
 [`oasis network show parameters`]: ../../../general/manage-tokens/cli/network.md#show-parameters
 [Delegation Policy]: ../../../get-involved/delegation-policy.md

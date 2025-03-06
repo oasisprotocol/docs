@@ -82,7 +82,7 @@ a web application or a browser extension. Check out the following sections
 corresponding to your wallet for instructions:
 
 - [ROSE Wallet - Web: Import Ledger account](../oasis-wallets/web.mdx#import-an-existing-account)
-- [ROSE Wallet - Browser extension: Ledger](../oasis-wallets/browser-extension.mdx#ledger)
+- [ROSE Wallet - Browser extension: Ledger](../oasis-wallets/browser-extension.mdx#import-an-existing-account)
 
 :::note
 

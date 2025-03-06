@@ -1,31 +1,29 @@
 ---
-description: The Oasis Foundation-managed non-custodial web wallet
+description: The Oasis Foundation-managed non-custodial browser extension wallet
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-# ROSE Wallet - Web
+# ROSE Wallet - Browser Extension
 
-This is the Oasis Foundation-managed non-custodial web wallet for the Oasis
-Network. You can access it by visiting **[wallet.oasis.io](https://wallet.oasis.io)**.
+## Installation
 
-![Home screen](../../images/wallet/web/home.png)
+:::info
 
-:::note
-
-The wallet was designed to work with any modern browser. In order to use the
-[Ledger hardware wallet](../holding-rose-tokens/ledger-wallet.md) though, **you
-will need the WebUSB support**. At time of writing, this was only available in
-[Chrome](https://www.google.com/chrome/) and other
+Currently, the [ROSE Wallet - Browser Extension](https://github.com/oasisprotocol/wallet)
+**only supports** [**Chrome**](https://www.google.com/chrome/) or other
 [Chromium](https://www.chromium.org/Home)-based browsers.
 
 :::
 
-Opening the wallet for the first time will show the *Home screen* where you can
-choose to [create a new account](#create-a-new-account) or
-[open an existing one](#import-an-existing-account).
+You can install the ROSE Wallet - Browser Extension by heading to the
+[Chrome Web Store](https://chrome.google.com/webstore/detail/oasis-wallet/ppdadbejkmjnefldpcdjhnkpbjkikoip).
 
+![ROSE Wallet Extension - chrome web store](../../images/wallet/ext/chrome_web_store.png)
+
+Next, either [create a new wallet](#create-a-new-account) or
+[restore your existing one](#import-an-existing-account).
 
 ## Create a New Account
 
@@ -51,13 +49,15 @@ Anyone with your mnemonic can access your wallet and your tokens.
 After you’ve saved your mnemonic, click the “I saved my keyphrase” checkbox and
 then click on the “Import my wallet” button.
 
-![Create a New Wallet](../../images/wallet/web/create_new_wallet_mnemonic1.png)
+![Create a New
+  Wallet](../../images/wallet/ext/create_new_wallet_mnemonic1.png)
 
 Next, you will need to confirm your mnemonic by writing the mnemonic into the
 text area. The ROSE Wallet will check for any typos and missing words. When
 done click the "Import my wallet" button.
 
-![Confirm your mnemonic](../../images/wallet/web/create_new_wallet_mnemonic2.png)
+![Confirm your
+  mnemonic](../../images/wallet/ext/create_new_wallet_mnemonic2.png)
 
 ### Account Derivation
 
@@ -67,19 +67,21 @@ balances on the right. These are the accounts derived from your
 mnemonic based on the [ADR-8 derivation scheme][adr8]. Select one or more
 accounts and click the "Open" button to import them into your wallet.
 
-![Account derivation popup](../../images/wallet/web/create_new_wallet_select_accounts.png)
+![Account derivation](../../images/wallet/ext/account_derivation.png)
 
 ### User Profile
 
 If you want to permanently store the keys of selected accounts, turn on the "Create a profile" toggle button below, which will Store your private keys locally and protect them with a password by creating a profile.
 After entering a password below, this will **instantiate a profile inside the local store of your
 browser to safely store your keys**. To access them, you will need to enter the correct
-password each time you will open the ROSE Wallet - Web.
+password each time you will open the ROSE Wallet - Chrome extension.
 
-Finally, you will be taken to the *Wallet screen*, containing
+![Create a profile](../../images/wallet/ext/create_profile.png)
+
+After clicking the 'Open' button, you will be taken to the _Wallet screen_, containing
 information about your account balance, recent transactions and more.
 
-![The Wallet screen](../../images/wallet/web/wallet.png)
+![The Wallet screen](../../images/wallet/ext/wallet_screen.png)
 
 [adr8]: ../../../adrs/0008-standard-account-key-generation.md
 
@@ -88,7 +90,7 @@ information about your account balance, recent transactions and more.
 On the "Open wallet" page select whether you want to open your
 wallet via a mnemonic, a private key, or a Ledger hardware wallet.
 
-![Access an Existing Wallet](../../images/wallet/web/import_wallet.png)
+![Access an Existing Wallet](../../images/wallet/ext/import_wallet.png)
 
 <Tabs>
 
@@ -97,7 +99,8 @@ wallet via a mnemonic, a private key, or a Ledger hardware wallet.
 In the "Enter your mnemonic here" field, enter each word of your mnemonic
 separated by a space. Then, hit the "Import my wallet" button.
 
-![Open Wallet via Mnemonic](../../images/wallet/web/import_wallet_mnemonic.png)
+![Open Wallet via
+  Mnemonic](../../images/wallet/ext/import_wallet_mnemonic.png)
 
 The [account derivation popup](#account-derivation) will be shown where
 you can pick one or more derived accounts to import.
@@ -119,7 +122,8 @@ If you misspelled a word, the wallet will warn you.
 Paste your Base64-encoded Ed25519 private key in the "Enter your private key
 here" field and then click on the "Import my wallet" button.
 
-![Open Wallet via Private Key](../../images/wallet/web/import_wallet_private_key.png)
+![Open Wallet via Private
+  Key](../../images/wallet/ext/import_wallet_private_key.png)
 
 Toggling on "Create a profile" will store private keys locally, protected by a password and instantiate
 the [user's profile](#user-profile).
@@ -150,6 +154,7 @@ we suggest that you perform a test transaction the first time you import your
 wallet from the private key so you can rest assured the key is valid.
 
 :::
+
 </TabItem>
 
 <TabItem value="Ledger">
@@ -157,12 +162,17 @@ wallet from the private key so you can rest assured the key is valid.
 To use the Ledger hardware wallet, make sure you have your Ledger device readily
 available and have familiarized yourself with the [Oasis-specific Ledger usage instructions](../holding-rose-tokens/ledger-wallet.md).
 
+Click on 'Grant access to your Ledger' and you'll see a pop-up in your Chrome Browser asking you to select which device to connect.
+Click on your Ledger device. Then click "Connect Ledger device".
+
 Next, click on the "Select accounts to open". If this is the first time you're
 using Ledger with your browser, a system popup will appear showing the list of
 Ledger devices connected to your computer and requesting permission to use it.
 Select one and then click the "Connect" button.
 
-![Open Wallet via Ledger](../../images/wallet/web/import_wallet_ledger.png)
+![Open Wallet via Ledger](../../images/wallet/ext/import_wallet_ledger1.png)
+
+![Open Wallet via Ledger](../../images/wallet/ext/import_wallet_ledger2.png)
 
 The [account derivation popup](#account-derivation) will be shown next,
 where you can pick one or more derived accounts to import.
@@ -177,7 +187,7 @@ to access your Ledger device.
 </TabItem>
 </Tabs>
 
-Finally, you will be taken to your *Wallet screen*, containing information about
+Finally, you will be taken to your _Wallet screen_, containing information about
 your account balance, recent transactions and more.
 
 ## Transfer
@@ -186,32 +196,31 @@ your account balance, recent transactions and more.
 
 <TabItem value="Send tokens">
 
-To transfer tokens, open the *Wallet screen*. Fill in the "Recipient" and
+To transfer tokens, open the _Wallet screen_. Fill in the "Recipient" and
 "Amount" fields and click "Send". A confirmation popup will appear showing
 transaction details. Carefully review the transaction and click the "Confirm"
 button.
 
-![Transfer confirmation dialog](../../images/wallet/web/transfer.png)
+![Transfer confirmation dialog](../../images/wallet/ext/transfer.png)
 
 </TabItem>
 <TabItem value="Receive tokens">
 
-To receive tokens, open the *Wallet screen* and copy the `oasis1` account
-address at the top. You can also scan or store a QR code corresponding to your
-account on the right side of the screen.
+To receive tokens, open the _Wallet screen_ and copy the `oasis1` account
+address at the top.
 
-![The Wallet screen](../../images/wallet/web/wallet.png)
+![The Wallet screen](../../images/wallet/ext/wallet.png)
 
 </TabItem>
 </Tabs>
 
 ## Stake
 
-To [stake your tokens](../staking-and-delegating.md) open the *Stake screen*.
+To [stake your tokens](../staking-and-delegating.md) go to _Stake tab_ at the bottom navigation.
 The list of validators will appear, their status, current escrow and the
 commission fee. Follow the sections below to delegate or undelegate your tokens.
 
-![Stake screen](../../images/wallet/web/stake.png)
+![Stake screen](../../images/wallet/ext/stake.png)
 
 <Tabs>
 <TabItem value="Delegate">
@@ -220,17 +229,17 @@ commission fee. Follow the sections below to delegate or undelegate your tokens.
    tokens to by clicking on it. Fill in the amount and click the "Delegate"
    button.
 
-   ![Stake screen: Selected validator](../../images/wallet/web/delegate1.png)
+   ![Stake screen: Selected validator](../../images/wallet/ext/delegate1.png)
 
 2. A confirmation popup will appear showing transaction details. Carefully
    review the transaction and click the "Confirm" button.
 
-   ![Delegate confirmation dialog](../../images/wallet/web/delegate2.png)
+   ![Delegate confirmation dialog](../../images/wallet/ext/delegate2.png)
 
 3. In a while, your delegated tokens will appear under the "Staked"
    tab.
 
-   ![Active delegations](../../images/wallet/web/delegate3.png)
+   ![Active delegations](../../images/wallet/ext/delegate3.png)
 
 </TabItem>
 <TabItem value="Undelegate">
@@ -240,18 +249,18 @@ commission fee. Follow the sections below to delegate or undelegate your tokens.
    click the "Reclaim all" button to undelegate all delegated tokens from this
    validator.
 
-   ![Active delegations](../../images/wallet/web/undelegate1.png)
+   ![Active delegations](../../images/wallet/ext/undelegate1.png)
 
 2. A confirmation popup will appear showing transaction details. Carefully review
    the transaction and click the "Confirm" button.
 
-   ![Undelegate confirmation dialog](../../images/wallet/web/undelegate2.png)
+   ![Undelegate confirmation dialog](../../images/wallet/ext/undelegate2.png)
 
 3. In a while, your undelegated tokens will enter the **debonding period**. You can
    check out all the delegations that are in the debonding period in the "Debonding
    delegations" tab.
 
-   ![Debonding delegations](../../images/wallet/web/undelegate3.png)
+   ![Debonding delegations](../../images/wallet/ext/undelegate3.png)
 
 </TabItem>
 </Tabs>
@@ -259,25 +268,25 @@ commission fee. Follow the sections below to delegate or undelegate your tokens.
 ## ParaTimes
 
 To move tokens from the consensus layer to a ParaTime (**deposit**) or the
-other way around (**withdrawal**), open the *ParaTime screen*. Click on the
+other way around (**withdrawal**), open the _ParaTime screen_. Click on the
 "Deposit to ParaTime" or "Withdraw from ParaTime" button and follow the sections
 below.
 
-![The ParaTime screen](../../images/wallet/web/paratimes.png)
+![The ParaTime screen](../../images/wallet/ext/paratimes.png)
 
 <Tabs>
 <TabItem value="Deposit">
 
 1. Select the ParaTime you wish to deposit your tokens to and click "Next".
 
-   ![Deposit tokens: Select ParaTime](../../images/wallet/web/deposit1.png)
+   ![Deposit tokens: Select ParaTime](../../images/wallet/ext/deposit1.png)
 
 2. Enter the recipient address in the ParaTime. For EVM-compatible
    ParaTimes you will need to enter a hex-encoded address starting with `0x` and
    for other ParaTimes the Oasis native address starting with `oasis1`. Click
    "Next".
 
-   ![Deposit tokens: Recipient address](../../images/wallet/web/deposit2.png)
+   ![Deposit tokens: Recipient address](../../images/wallet/ext/deposit2.png)
 
 3. Enter the amount to deposit.
 
@@ -286,24 +295,24 @@ below.
 
    Finally, click "Next".
 
-   ![Deposit tokens: Amount](../../images/wallet/web/deposit3.png)
+   ![Deposit tokens: Amount](../../images/wallet/ext/deposit3.png)
 
 4. Review deposit details, check the "I confirm the amount and the address are
    correct" and click the "Deposit" button.
 
-   ![Deposit tokens: Review deposit](../../images/wallet/web/deposit4.png)
+   ![Deposit tokens: Review deposit](../../images/wallet/ext/deposit4.png)
 
    Once the deposit transaction is confirmed the tokens will appear on your
    ParaTime account.
 
-   ![Deposit tokens: Deposit complete](../../images/wallet/web/deposit5.png)
+   ![Deposit tokens: Deposit complete](../../images/wallet/ext/deposit5.png)
 
 </TabItem>
 <TabItem value="Withdraw">
 
 1. Select the ParaTime you wish to withdraw your tokens from and click "Next".
 
-   ![Withdraw tokens: Select ParaTime](../../images/wallet/web/withdraw1.png)
+   ![Withdraw tokens: Select ParaTime](../../images/wallet/ext/withdraw1.png)
 
 2. Enter the recipient address on the consensus layer below.
 
@@ -316,7 +325,8 @@ below.
 
    Click "Next" to continue.
 
-   ![Withdraw tokens: Recipient address](../../images/wallet/web/withdraw2.png)
+   ![Withdraw tokens: Recipient
+address](../../images/wallet/ext/withdraw2.png)
 
 3. Enter the amount to withdraw.
 
@@ -325,36 +335,36 @@ below.
 
    Finally, click "Next".
 
-   ![Withdraw tokens: Amount](../../images/wallet/web/withdraw3.png)
+   ![Withdraw tokens: Amount](../../images/wallet/ext/withdraw3.png)
 
 4. Review withdrawal details, check the "I confirm the amount and the address
    are correct" and click the "Withdraw" button.
 
-   ![Withdraw tokens: Review withdrawal](../../images/wallet/web/withdraw4.png)
+   ![Withdraw tokens: Review
+withdrawal](../../images/wallet/ext/withdraw4.png)
 
    Once the withdrawal transaction is confirmed the tokens will appear on your
    consensus account.
 
-   ![Withdraw tokens: Withdrawal complete](../../images/wallet/web/withdraw5.png)
+   ![Withdraw tokens: Withdrawal complete](../../images/wallet/ext/withdraw5.png)
 
 </TabItem>
 </Tabs>
 
 ## Buy
 
-You can buy ROSE directly from within the wallet by opening the *Buy screen*.
-The ROSE Wallet team integrated a 3rd party [Transak](https://transak.com/)
+You can buy ROSE via the _Buy screen_ tab that links to a 3rd party [Transak](https://transak.com/)
 service which performs the necessary KYC, supports various payment methods, buys
 the tokens on the market and transfers them to your currently selected account.
 
-![Buy tokens directly from the wallet](../../images/wallet/web/buy.png)
+![Buy tokens directly from the wallet](../../images/wallet/ext/buy.png)
 
 ## Account options
 
 When you have at least one account opened, click on the account jazz icon in the
 top-right corner. A popup will appear.
 
-![Settings popup](../../images/wallet/web/settings-my-accounts.png)
+![Settings popup](../../images/wallet/ext/account_options.png)
 
 ### My Accounts
 
@@ -368,23 +378,11 @@ Contains a list of named addresses similar to the address book.
 
 Used to change the password or delete your [profile](#user-profile).
 
-### Settings
-
-You can change the wallet language and toggle between the light and the dark
-theme.
-
-![Account popup: Change theme](../../images/wallet/web/account-popup-theme-dark.png)
-
-If you do not have a profile, a sun/moon icon will be shown in the
-lower-left corner.
-
-![Toggle between light mode and dark mode, no profile](../../images/wallet/web/no-profile-dark-theme.png)
-
 ## Share your feedback with us
 
 If you have any questions or issues using the
-[ROSE Wallet - Web](https://github.com/oasisprotocol/oasis-wallet-web/), you
-can [submit a GitHub issue](https://github.com/oasisprotocol/oasis-wallet-web/issues),
+[ROSE Wallet - Browser Extension](https://github.com/oasisprotocol/wallet/), you
+can [submit a GitHub issue](https://github.com/oasisprotocol/wallet/issues),
 and the dev team will take a look. You can also connect with us to share your
 feedback via [Discord](https://oasis.io/discord) or
 [Telegram](https://t.me/oasisprotocolcommunity).

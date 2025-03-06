@@ -23,15 +23,15 @@ open and access wallet with one or multiple accounts via our official
 
    The Oasis app requires an up-to-date firmware on your Ledger wallet:
 
-   - At least [version 2.0.0] released on Oct 21, 2021 on a Nano X device.
-   - At least [version 2.1.0] released on Nov 30, 2021 on a Nano S device.
-   - At least [version 1.0.4] released on Sep 27, 2022 on a Nano S Plus device.
+   * At least [version 2.0.0] released on Oct 21, 2021 on a Nano X device.
+   * At least [version 2.1.0] released on Nov 30, 2021 on a Nano S device.
+   * At least [version 1.0.4] released on Sep 27, 2022 on a Nano S Plus device.
 
    Follow Ledger's instructions for updating the firmware on your Ledger wallet:
 
-   - [Nano X]
-   - [Nano S]
-   - [Nano S Plus]
+   * [Nano X]
+   * [Nano S]
+   * [Nano S Plus]
 
    :::
 
@@ -59,11 +59,11 @@ initialized your Ledger device!**
 :::tip
 
 For security, the ROSE Wallet uses a **different mnemonic to private key
-derivation path** by default for your Ledger accounts (known as _Ledger_ or
-_ed25519-legacy_) and for the accounts stored on a disk or inside a browser
+derivation path** by default for your Ledger accounts (known as *Ledger* or
+*ed25519-legacy*) and for the accounts stored on a disk or inside a browser
 (also known as [ADR-8]). If you find yourself in a situation where your Ledger
 device does not function anymore, you have the backup mnemonic available, and
-you urgently need to access your funds, use the _[Oasis unmnemonic tool][unmnemonic-tool]_ to
+you urgently need to access your funds, use the *[Oasis unmnemonic tool][unmnemonic-tool]* to
 **derive the private key from your Ledger mnemonic**. Checkout out this
 [FAQ section][unmnemonic-tool-faq] to download it and learn more.
 
@@ -82,7 +82,7 @@ a web application or a browser extension. Check out the following sections
 corresponding to your wallet for instructions:
 
 - [ROSE Wallet - Web: Import Ledger account](../oasis-wallets/web.mdx#import-an-existing-account)
-- [ROSE Wallet - Browser extension: Ledger](../oasis-wallets/browser-extension.mdx#import-an-existing-account)
+- [ROSE Wallet - Browser extension: Ledger](../oasis-wallets/browser-extension.mdx#ledger)
 
 :::note
 
@@ -118,6 +118,8 @@ see the "APPROVE" button. Use the two buttons to approve your transaction.
 
 The signed transaction will be sent back to your computer and submitted to the
 network.
+
+
 
 [Ledger]: https://www.ledger.com
 [Oasis app]: https://github.com/Zondax/ledger-oasis

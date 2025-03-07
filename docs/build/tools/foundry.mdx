@@ -19,7 +19,7 @@ Foundry contains the following tools:
 
 - **Forge** is a CLI [tool] for building, testing,
 and deploying smart contracts.
-Due to integrated revm it significantly increases runtime speed when testing.
+Due to integrated Revm it significantly increases runtime speed when testing.
 
 - **Anvil** is a local development EVM [node].
 It is installed as part of Foundry, but currently cannot
@@ -59,23 +59,24 @@ Follow the steps below to setup your project:
 helper solidity contracts and libraries that enable convenient access to
 on-chain data and precompiles (rng, signatures, on-chain encryption, etc.).
 After intializing the project, we can install the **Sapphire Contracts**
-package using Foundry package manager [soldeer]:
+package using Foundry package manager [Soldeer]:
 
    ```shell
-   forge soldeer install @oasisprotocol-sapphire-contracts~0.2.11
+   forge soldeer install @oasisprotocol-sapphire-contracts~0.2.13
    ```
 
 ### Installing Sapphire Foundry (Optional)
 
-Foundry uses [revm] EVM implementation which does not contain
+If you intend to use Sapphire features in Forge tests/scripts
+follow this section.
+
+Forge tests use [Revm], an EVM implementation which does not contain
 [Sapphire-specific features].
 For that reason, we have to install special Sapphire precompiles which are
 available in the **Sapphire foundry** package.
 
-If you intend to use Sapphire features in Forge tests,
-follow these additional steps:
 
-1. Install the **Sapphire Foundry** soldeer package:
+1. Install the **Sapphire Foundry** Soldeer package:
 
    ```shell
    forge soldeer install @oasisprotocol-sapphire-foundry~0.1.0
@@ -83,26 +84,28 @@ follow these additional steps:
 
 2. Your foundry.toml file should now look like this:
 
-   ```toml  title="foundry.toml"
-   [profile.default]
-   src = "src"
-   out = "out"
-   libs = ["lib", "dependencies"]
-   ffi = true
-
-   [dependencies]
-   "@oasisprotocol-sapphire-contracts" = "0.2.11"
-   "@oasisprotocol-sapphire-foundry" = "0.1.0"
+   ```toml title="foundry.toml"
+      [profile.default]
+      src = "src"
+      out = "out"
+      libs = ["lib", "dependencies"]
+      // highlight-start
+      ffi = true
+      
+      [dependencies]
+      "@oasisprotocol-sapphire-contracts" = "0.2.11"
+      "@oasisprotocol-sapphire-foundry" = "0.1.0"
+      // highlight-end
    ```
 
    Note:
-   - `ffi = true` enables `vm.ffi()` ([foreign function interface])
-   which is used to call rust bindings containing the precompile and
-   decryption logic
-   - `"dependencies"` lists the required project dependencies installed
-   via the Foundry package manager [soldeer]
-   - (Alternative) You can also skip previous steps, copy the contents
-   to your foundry.toml file and run:
+      - `ffi = true` enables `vm.ffi()` ([foreign function interface])
+      which is used to call rust bindings containing the precompile and
+      decryption logic
+      - `"dependencies"` lists the required project dependencies installed
+      via the Foundry package manager [Soldeer]
+      - (Alternative) You can also skip previous steps, copy the contents
+      to your foundry.toml file and run:
 
    ```shell
    forge soldeer install
@@ -136,7 +139,7 @@ testing with precompiles and encrypted calls.
 
 Sapphire precompiles are special precompiled contracts that
 contain cryptographic primitives and enable confidential transactions.
-Since Foundry uses un-customized revm, they are not available by default.
+Since Foundry uses un-customized Revm, they are not available by default.
 
 To enable them in Forge tests, add the **import** statement to your test file:
 
@@ -199,7 +202,8 @@ example.
 
 ### `forge script`
 
-To run a script add a new file in the `scripts/` directory. Run scripts with:
+To run a script add a new file in the `scripts/` directory.
+Run scripts with:
 
 ```shell
 forge script
@@ -207,17 +211,48 @@ forge script
 
 Forge scripts should run the same way as tests.
 
-## A Note on Forks/External RPC Nodes
+## Forking/Deploying on Sapphire
 
-When running scripts, we might also want to run on Localnet/Testnet/Mainnet
-using `--rpc-url` or `--fork-url`.
-This is not possible with this setup, because Sapphire precompiles are not
-available in the default revm.
-When using `forge script` on an external RPC node or a fork,
-precompiles are available through the `vm.rpcUrl()` cheatcode.
-To disable simulation on integrated revm make sure to disable
-simulation with `--no-simulation` flag and
-remove the imports and inheritances from previous steps.
+**When working with forks and broadcasting to Mainnet/Testnet/Localnet we do
+not use any imports and contracts described in the
+[Installing Sapphire Foundry (Optional)](#installing-sapphire-foundry-optional)**
+
+When running scripts, we may also want to deploy and test on
+Localnet/Testnet/Mainnet using `--broadcast` and `--rpc-url`
+or `--fork-rpc` flags. The issue with Foundry, when broadcasting
+Forge ***scripts*** is, that it only broadcasts state-changing transactions.
+This means that none of ***view calls*** are sent through the RPC node.
+They are still executed in the local in-memory Revm even when
+`--broadcast` and `--skip-simulation` flags are provided.
+
+Using Forge script we can deploy and broadcast transactions on Sapphire
+just like on Ethereum, but since most Sapphire features are enabled
+through precompile ***view calls*** we then have to use `vm.rpc()`
+cheatcode to query data directly.
+
+This code contains Forge Script contract, that calls
+**RANDOM_BYTES (0x0100000000000000000000000000000000000001)** precompile
+directly using `vm.rpc()`:
+
+```solidity
+   contract CounterScript is Script {
+
+    function setUp() public {
+        vm.createSelectFork("https://testnet.sapphire.oasis.io");
+    }
+
+    function run() public {
+      vm.startBroadcast();
+      string memory transactionArgs = string.concat(
+         "[{\"to\":\"", "0x0100000000000000000000000000000000000001",
+         "\",\"data\":\"", vm.toString(abi.encode(32, "")),
+         "\"}, \"latest\"]"
+      );
+      bytes memory result = vm.rpc("eth_call", transactionArgs);
+      vm.stopBroadcast();
+    }
+   }
+```
 
 ## Verification with Foundry
 
@@ -239,8 +274,8 @@ Should you have any questions, do not hesitate to share them with us on the
 [gasless transactions]: ../sapphire/develop/gasless
 [key]: ../sapphire/develop/concept
 [examples/foundry]: https://github.com/oasisprotocol/sapphire-paratime/tree/main/examples/foundry
-[verification with foundry]: ./verification/#verification-with-foundry
+[Verification with Foundry]: ./verification/#verification-with-foundry
 [foreign function interface]: https://book.getfoundry.sh/cheatcodes/ffi
-[soldeer]: https://book.getfoundry.sh/projects/soldeer?highlight=soldeer#soldeer-as-a-package-manager
+[Soldeer]: https://book.getfoundry.sh/projects/soldeer?highlight=soldeer#soldeer-as-a-package-manager
 [Oasis Web3 gateway]: ../../node/web3.mdx
-[revm]: https://github.com/bluealloy/revm
+[Revm]: https://github.com/bluealloy/revm

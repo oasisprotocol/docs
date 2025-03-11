@@ -206,6 +206,14 @@ There are three kinds of image assets used in the docs.
    diagram source will be stored along in the .svg file and you will
    be able to edit it in the future.
 
+#### Dark Mode
+
+We aim to support dark mode when introducing new assets. We prefer to include
+assets with dark mode friendly CSS using `@media (prefers-color-scheme: dark)`
+when possible. We generate Mermaid diagrams with dark mode CSS injected, and
+export [diagrams.net](https://diagrams.net) diagrams with a transparent
+background and "Automatic" appearance.
+
 ## Vocabulary
 
 The following is a consistent case-sensitive collection of Oasis-related terms,

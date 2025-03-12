@@ -1,0 +1,91 @@
+.actor, .labelBox { 
+    stroke: black !important; 
+    stroke-width: 1.5px !important; 
+    fill: #007bff !important; 
+}
+
+.note { 
+    fill: #007bff !important; 
+    stroke-width: 1px !important; 
+    stroke: black !important; 
+}
+
+.noteText tspan, .actor tspan, .labelText { 
+    fill: white !important; 
+}
+
+.loopText, .loopText tspan { 
+    fill: #007bff !important; 
+}
+
+.actor-line { 
+    stroke: #007bff !important; 
+    stroke-width: 1px; 
+}
+
+.messageText, .loopText, .labelText, .noteText { 
+    font-size: 15px !important; 
+    stroke: none !important; 
+    background: white !important; 
+}
+
+.loopLine, line { 
+    stroke: #333 !important; 
+    stroke-width: 1px; 
+    fill: none !important;  
+}
+
+.activation0 { 
+    fill: #eaecef; 
+    stroke: #333; 
+}
+
+@media (prefers-color-scheme: dark) {
+    background-color: transparent !important;
+
+    #arrowhead path{fill:white !important;stroke:white !important;}
+
+    .actor, .labelBox { 
+        stroke: white !important; 
+        stroke-width: 1.5px !important; 
+        fill: #55b4d2 !important; 
+    }
+    
+    .noteText tspan, .actor tspan, .labelText { 
+        fill: white !important; 
+    }
+    
+    .actor-line { 
+        stroke: white !important; 
+        stroke-width: 1px; 
+    }
+    
+    .messageText, .loopText, .labelText, .noteText { 
+        font-size: 15px !important; 
+        stroke: white !important; 
+        fill: white !important;
+        background: white !important; 
+    }
+
+    .marker.cross, .marker, .flowchart-link {
+        stroke: white !important; 
+        stroke-width: 1px; 
+        fill: none !important;   
+    }
+
+    .loopLine, line { 
+        stroke: white !important; 
+        stroke-width: 1px; 
+        fill: none !important;  
+    }
+
+    .messageLine0, line {
+        stroke: white !important; 
+        fill: white !important;
+    }
+    
+    .activation0 {
+        fill: #666666 !important;
+        stroke: white; 
+    }
+}

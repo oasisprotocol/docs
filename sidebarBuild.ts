@@ -34,6 +34,7 @@ export const sidebarBuild: SidebarsConfig = {
             'build/sapphire/develop/deployment',
             'build/sapphire/develop/security',
             'build/sapphire/develop/testing',
+            'build/sapphire/develop/dappwright',
           ],
         },
         'build/sapphire/examples',

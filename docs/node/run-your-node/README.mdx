@@ -53,12 +53,14 @@ efficiently.
 
 ## Client Nodes
 
-A Client Node is a type of node within the Oasis Network that serves as
+A [Client Node] is a type of node within the Oasis Network that serves as
 an interface for users or other applications to interact with the blockchain.
 Unlike compute nodes, which handle transaction processing and smart contract
 execution, client nodes are primarily responsible for tasks such as querying
 the blockchain, submitting transactions, and retrieving other data from the
-network.
+network. For confidential ParaTimes such as Sapphire and Cipher, there is a
+special mode of client node called [Observer Node] that supports confidential
+smart contact queries.
 
 - **[Non-Validator Node]** is a type of node in the Oasis Network that does not
 participate in the consensus process of validating and proposing new blocks.
@@ -84,6 +86,8 @@ to deploy and manage decentralized applications (dApps) that utilize the
 Ethereum Virtual Machine (EVM).
 
 [Non-Validator Node]: ./non-validator-node.mdx
+[Client Node]: ./paratime-client-node.mdx
+[Observer Node]: ./paratime-observer-node.mdx
 [Sapphire Client Node]: ./paratime-client-node.mdx
 [Cipher Client Node]: ./paratime-client-node.mdx
 [Emerald Client Node]: ./paratime-client-node.mdx

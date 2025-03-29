@@ -78,7 +78,17 @@ export const sidebarNode: SidebarsConfig = {
         'node/run-your-node/seed-node',
         'node/run-your-node/archive-node',
         'node/run-your-node/paratime-node',
-        'node/run-your-node/paratime-client-node',
+        {
+          type: 'category',
+          label: 'ParaTime Client Node',
+          link: {
+            type: 'doc',
+            id: 'node/run-your-node/paratime-client-node',
+          },
+          items: [
+            'node/run-your-node/paratime-observer-node',
+          ],
+        },
         {
           type: 'category',
           label: 'Key Manager Node',

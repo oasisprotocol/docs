@@ -56,7 +56,7 @@ want to set up a working node from scratch.
 | [Validator node]       | 1. Registration of entity<br/>2. Registration of the validator node<br/>3. Member of the validator set                                                               |
 | [Non-validator node]   | /                                                                                                                                                                    |
 | [ParaTime node]        | 1. Registration of entity<br/>2. Registration of the compute node<br/>3. Extra ParaTime-specific compute node stake<br/>4. Member of the validator set (Mainnet only) |
-| [ParaTime client node] | 1. Registration of entity<br/>2. Registration of the [ParaTime observer node]                                                                                                   |
+| [ParaTime observer node] | 1. Registration of entity<br/>2. Registration of the observer node |                                                                                                 |
 
 [Validator node]: ../validator-node.mdx
 [Non-validator node]: ../non-validator-node.mdx

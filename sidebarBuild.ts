@@ -50,6 +50,7 @@ export const sidebarBuild: SidebarsConfig = {
         id: 'build/rofl/README',
       },
       items: [
+        'build/rofl/quickstart',
         'build/rofl/prerequisites',
         'build/rofl/app',
         {

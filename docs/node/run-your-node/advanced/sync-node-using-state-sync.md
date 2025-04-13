@@ -3,7 +3,7 @@
 The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a
 [validator node](../validator-node.mdx) or a
 [non-validator node](../non-validator-node.mdx)) by using the
-[Tendermint's Light Client protocol]. It allows one to initialize a node from a
+[CometBFT's Light Client protocol]. It allows one to initialize a node from a
 trusted height, its corresponding block's header and a trusted validator set
 (given in the [genesis document](../../genesis-doc.md)). It does so by securely
 updating the node's trusted state by requesting and verifying a minimal set of
@@ -19,7 +19,7 @@ node to the other].
 
 :::caution
 
-Tendermint's Light Client protocol requires at least 1 full node to be correct
+CometBFT's Light Client protocol requires at least 1 full node to be correct
 to be able to [detect and submit evidence for a light client attack].
 
 :::
@@ -69,11 +69,11 @@ something like the following in your node's logs:
 
 :::
 
-[Tendermint's Light Client protocol]:
-  https://docs.tendermint.com/main/tendermint-core/light-client.html
+[CometBFT's Light Client protocol]:
+  https://docs.cometbft.com/main/explanation/core/light-client
 [copy state from one node to the other]: copy-state-from-one-node-to-the-other.md
 [detect and submit evidence for a light client attack]:
-  https://docs.tendermint.com/main/tendermint-core/light-client.html#where-to-obtain-trusted-height-hash
+  https://docs.cometbft.com/main/explanation/core/light-client#where-to-obtain-trusted-height--hash
 [Wiping Node State]: ../maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
 
 ### Obtaining Trusted Height and Hash

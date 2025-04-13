@@ -38,8 +38,11 @@ consensus:
   # Enable consensus state sync (i.e. CometBFT light client sync).
   state_sync:
     enabled: true
-    trust_height: {{ trusted_height }}
-    trust_hash: "{{ trusted_height_hash }}"
+  # Configure trusted height & hash for the light client.
+  light_client:
+    trust:
+      height: {{ trusted_height }}
+      hash: "{{ trusted_height_hash }}"
 
 ... trimmed ...
 

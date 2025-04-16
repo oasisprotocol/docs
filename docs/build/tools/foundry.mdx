@@ -62,7 +62,7 @@ After intializing the project, we can install the **Sapphire Contracts**
 package using Foundry package manager [Soldeer]:
 
    ```shell
-   forge soldeer install @oasisprotocol-sapphire-contracts~0.2.13
+   forge soldeer install @oasisprotocol-sapphire-contracts~0.2.14
    ```
 
 ### Installing Sapphire Foundry (Optional)
@@ -79,7 +79,7 @@ available in the **Sapphire foundry** package.
 1. Install the **Sapphire Foundry** Soldeer package:
 
    ```shell
-   forge soldeer install @oasisprotocol-sapphire-foundry~0.1.0
+   forge soldeer install @oasisprotocol-sapphire-foundry~0.1.1
    ```
 
 2. Your foundry.toml file should now look like this:
@@ -93,8 +93,8 @@ available in the **Sapphire foundry** package.
    ffi = true
    
    [dependencies]
-   "@oasisprotocol-sapphire-contracts" = "0.2.13"
-   "@oasisprotocol-sapphire-foundry" = "0.1.0"
+   "@oasisprotocol-sapphire-contracts" = "0.2.14"
+   "@oasisprotocol-sapphire-foundry" = "0.1.1"
    // highlight-end
    ```
 
@@ -119,12 +119,12 @@ available in the **Sapphire foundry** package.
    rustup default nightly
    ```
 
-   Note: `@oasisprotocol-sapphire-foundry` relies on Oasis Sapphire
+   Note: `oasisprotocol-sapphire-foundry` relies on Oasis Sapphire
    `runtime-sdk` crate which requires nightly toolchain.
 
 4. Install Sapphire precompiles:
    ```shell
-   cd dependencies/@oasisprotocol-sapphire-foundry-0.1.0/precompiles
+   cd dependencies/@oasisprotocol-sapphire-foundry-0.1.1/precompiles
    cargo +nightly build --release
    ```
 
@@ -144,7 +144,7 @@ Since Foundry uses un-customized Revm, they are not available by default.
 To enable them in Forge tests, add the **import** statement to your test file:
 
 ```solidity
-import {SapphireTest} from "@oasisprotocol-sapphire-foundry-0.1.0/BaseSapphireTest.sol";
+import {SapphireTest} from "@oasisprotocol-sapphire-foundry-0.1.1/BaseSapphireTest.sol";
 ```
 
 and then inherit from `SapphireTest` from `BaseSapphireTest.sol`
@@ -174,7 +174,7 @@ through the fallback function.
 We need to inherit from it to enable decryption.
 
    ```solidity
-   import {SapphireDecryptor} from "@oasisprotocol-sapphire-foundry-0.1.0/BinaryContracts.sol";
+   import {SapphireDecryptor} from "@oasisprotocol-sapphire-foundry-0.1.1/BinaryContracts.sol";
 
    contract CustomContract is SapphireDecryptor {
    ```

@@ -464,7 +464,7 @@ or use the scripts below.
       // deployed mailbox on Sapphire Testnet
       const mailbox = "0x79d3ECb26619B968A68CE9337DfE016aeA471435";
 
-      const PongFactory = await hre.ethers.getContractFactory("Pong");    
+      const PongFactory = await ethers.getContractFactory("Pong");    
       const pong = await PongFactory.deploy(mailbox);
       const pongAddr = await pong.waitForDeployment();
       console.log(`Pong deployed at: ${pongAddr.target}`);
@@ -667,8 +667,8 @@ use the following script:
       console.log("Calculating fee...");
       let fee = await contract.quoteDispatch(
           destChainId,
-          hre.ethers.toUtf8Bytes(message));
-      console.log(`Fee: ${hre.ethers.formatEther(fee)} ETH`);
+          ethers.toUtf8Bytes(message));
+      console.log(`Fee: ${ethers.formatEther(fee)} ETH`);
       console.log("Sending message...");
       const tx = await contract.sendPing(destChainId, message, {value: fee});
       await tx.wait();

@@ -12,14 +12,13 @@ const knownOffsets = {
   epoch15835: { epoch: 15835, date: '2022-07-20T16:11:11.000Z' },
   epoch18653: { epoch: 18653, date: '2022-11-13T13:33:25.000Z' },
 
-  // epoch from https://oasismonitor.com/block/4000000
-  // time from https://www.oasisscan.com/blocks/4000000
+  // time and epoch from https://explorer.oasis.io/mainnet/consensus/block/4000000
   block4M: { epoch: 6664, date: '2021-07-05T04:42:51.000Z' },
   block5M: { epoch: 8328, date: '2021-09-12T03:57:19.000Z' },
   block6M: { epoch: 9992, date: '2021-11-19T23:18:41.000Z' },
   block7M: { epoch: 11656, date: '2022-01-28T05:06:25.000Z' },
   block8M: { epoch: 13320, date: '2022-04-07T22:49:44.000Z' },
-  // Damask Upgrade was at https://api.oasisscan.com/mainnet/chain/block/8048956
+  // Damask Upgrade was at https://explorer.oasis.io/mainnet/consensus/block/8048956
   block9M: { epoch: 14987, date: '2022-06-15T16:22:57.000Z' },
   block10M: { epoch: 16653, date: '2022-08-23T09:29:12.000Z' },
   block11M: { epoch: 18320, date: '2022-10-30T22:41:53.000Z' },

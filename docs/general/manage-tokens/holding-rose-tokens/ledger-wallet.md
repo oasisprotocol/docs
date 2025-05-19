@@ -125,12 +125,12 @@ network.
 [Oasis app]: https://github.com/Zondax/ledger-oasis
 [Ledger Live]: https://www.ledger.com/ledger-live/
 [wallet.oasis.io]: https://wallet.oasis.io
-[version 2.0.0]: https://support.ledger.com/hc/en-us/articles/360014980580-Ledger-Nano-X-firmware-release-notes
-[version 2.1.0]: https://support.ledger.com/hc/en-us/articles/360010446000-Ledger-Nano-S-firmware-release-notes
-[version 1.0.4]: https://support.ledger.com/hc/en-us/articles/4494540771997-Ledger-Nano-S-Plus-Firmware-Release-Notes
-[Nano X]: https://support.ledger.com/hc/en-us/articles/360013349800
-[Nano S]: https://support.ledger.com/hc/en-us/articles/360002731113-Update-Ledger-Nano-S-firmware
-[Nano S Plus]: https://support.ledger.com/hc/en-us/articles/4445777839901-Update-Ledger-Nano-S-Plus-firmware
+[version 2.0.0]: https://support.ledger.com/article/360014980580-zd
+[version 2.1.0]: https://support.ledger.com/article/360010446000-zd
+[version 1.0.4]: https://support.ledger.com/article/4494540771997-zd
+[Nano X]: https://support.ledger.com/article/360013349800-zd
+[Nano S]: https://support.ledger.com/article/360013349800-zd
+[Nano S Plus]: https://support.ledger.com/article/360013349800-zd
 [BIP 39]: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 [Oasis CLI]: ../cli/README.md
 [`oasis wallet create`]: ../cli/wallet.md#create

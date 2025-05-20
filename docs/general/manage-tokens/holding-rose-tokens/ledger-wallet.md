@@ -26,12 +26,16 @@ open and access wallet with one or multiple accounts via our official
    * At least [version 2.0.0] released on Oct 21, 2021 on a Nano X device.
    * At least [version 2.1.0] released on Nov 30, 2021 on a Nano S device.
    * At least [version 1.0.4] released on Sep 27, 2022 on a Nano S Plus device.
+   * At least [version 1.4.0] released on Apr 29, 2024 on a Stax device.
+   * At least [version 1.1.1] released on Jul 26, 2024 on a Flex device.
 
    Follow Ledger's instructions for updating the firmware on your Ledger wallet:
 
    * [Nano X]
    * [Nano S]
    * [Nano S Plus]
+   * [Stax]
+   * [Flex]
 
    :::
 
@@ -125,12 +129,16 @@ network.
 [Oasis app]: https://github.com/Zondax/ledger-oasis
 [Ledger Live]: https://www.ledger.com/ledger-live/
 [wallet.oasis.io]: https://wallet.oasis.io
-[version 2.0.0]: https://support.ledger.com/hc/en-us/articles/360014980580-Ledger-Nano-X-firmware-release-notes
-[version 2.1.0]: https://support.ledger.com/hc/en-us/articles/360010446000-Ledger-Nano-S-firmware-release-notes
-[version 1.0.4]: https://support.ledger.com/hc/en-us/articles/4494540771997-Ledger-Nano-S-Plus-Firmware-Release-Notes
-[Nano X]: https://support.ledger.com/hc/en-us/articles/360013349800
-[Nano S]: https://support.ledger.com/hc/en-us/articles/360002731113-Update-Ledger-Nano-S-firmware
-[Nano S Plus]: https://support.ledger.com/hc/en-us/articles/4445777839901-Update-Ledger-Nano-S-Plus-firmware
+[version 2.0.0]: https://support.ledger.com/article/360014980580-zd
+[version 2.1.0]: https://support.ledger.com/article/360010446000-zd
+[version 1.0.4]: https://support.ledger.com/article/4494540771997-zd
+[version 1.4.0]: https://support.ledger.com/article/Ledger-Stax-OS-release-notes
+[version 1.1.1]: https://support.ledger.com/article/Ledger-Flex-OS-release
+[Nano X]: https://support.ledger.com/article/360013349800-zd
+[Nano S]: https://support.ledger.com/article/360013349800-zd
+[Nano S Plus]: https://support.ledger.com/article/360013349800-zd
+[Stax]: https://support.ledger.com/article/360013349800-zd
+[Flex]: https://support.ledger.com/article/360013349800-zd
 [BIP 39]: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 [Oasis CLI]: ../cli/README.md
 [`oasis wallet create`]: ../cli/wallet.md#create

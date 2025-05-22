@@ -2,7 +2,8 @@
 
 :::info **BEFORE YOU BEGIN TROUBLESHOOTING**
 
-Before you begin troubleshooting we suggest you check all of the following:
+Before you begin troubleshooting your Oasis Node we suggest you check all of the
+following:
 
 * Check that your current binary version is the latest listed on the Network Parameters page ([Mainnet](../mainnet/README.md), [Testnet](../testnet/README.md))
   * Check the version on your localhost using `oasis-node --version`

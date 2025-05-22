@@ -1,0 +1,65 @@
+import DocCard from '@theme/DocCard';
+import {findSidebarItem} from '@site/src/sidebarUtils';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ROFL Node
+
+## Prerequisistes
+
+## Hosting ROFL Apps via ROFL marketplace
+
+TODO: Register your provider
+
+![ROFL marketplace](../../build/rofl/images/rofl-marketplace.svg)
+
+## Hosting the ROFL App Bundle manually
+
+ROFL apps are deployed through Oasis nodes running on systems that support the
+targeted TEE (e.g. Intel TDX). If you don't have a running node where you could
+deploy your ROFL app, please first make sure that you have a client node with
+the Sapphire Testnet runtime configured (see the [client node documentation] for
+instructions on setting one up).
+
+After your node is set up, include the ORC bundle that contains ROFL app in the
+`runtime` section of your configuration:
+
+```yaml
+runtime:
+  # ... other options omitted ...
+  paths:
+    - /node/rofls/myapp.default.orc
+```
+
+Note the appropriate paths to both the latest Sapphire Testnet runtime and the
+ROFL app bundle. Before proceeding with the rest of the chapter, please make
+sure that the node is fully synchronized with Sapphire Testnet.
+
+The node will also need to cover any transaction fees that are required to
+maintain registration of the ROFL app. First, determine the address of the node
+you are connecting to by running the following:
+
+```shell
+oasis-node identity show-address -a unix:/node/data/internal.sock
+```
+
+This should output an address like the following:
+
+```
+oasis1qp6tl30ljsrrqnw2awxxu2mtxk0qxyy2nymtsy90
+```
+
+You can then [transfer some tokens] to this address on Sapphire Testnet to make
+sure it will have funds to pay for registration fees:
+
+```shell
+oasis account transfer 10 oasis1qp6tl30ljsrrqnw2awxxu2mtxk0qxyy2nymtsy90 \
+  --network testnet --paratime sapphire
+```
+
+[client node documentation]: https://github.com/oasisprotocol/docs/blob/main/docs/node/run-your-node/paratime-client-node.mdx#configuring-tee-paratime-client-node
+[transfer some tokens]: https://github.com/oasisprotocol/cli/blob/master/docs/account.md#transfer
+
+## See also
+
+<DocCard item={findSidebarItem('/build/rofl/deployment')} />

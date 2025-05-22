@@ -89,6 +89,7 @@ export const sidebarNode: SidebarsConfig = {
             'node/run-your-node/paratime-observer-node',
           ],
         },
+        'node/run-your-node/rofl-node',
         {
           type: 'category',
           label: 'Key Manager Node',

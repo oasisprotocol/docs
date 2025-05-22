@@ -53,13 +53,24 @@ export const sidebarBuild: SidebarsConfig = {
         'build/rofl/quickstart',
         'build/rofl/prerequisites',
         'build/rofl/app',
+        'build/rofl/deployment',
         {
-          type: 'doc',
-          label: 'Deployment',
-          id: 'build/rofl/deployment',
+          type: 'category',
+          label: 'Features',
+          link: {
+            type: 'generated-index',
+            description: "Containerized ROFL apps automatically have access to some useful features that\n" +
+              "ease development. This chapter provides an introduction to these features.",
+            slug: '/build/rofl/features',
+          },
+          items: [
+            'build/rofl/features/secrets',
+            'build/rofl/features/manifest',
+            'build/rofl/features/rest',
+            'build/rofl/features/testing',
+          ]
         },
-        'build/rofl/features',
-        'build/rofl/resources',
+        'build/rofl/troubleshooting',
       ],
     },
     {

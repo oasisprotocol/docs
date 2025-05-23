@@ -34,7 +34,7 @@ Hyperlane's architecture consists of four key components:
 - **[Relayers]**: Off-chain agents that transport messages between chains
 - **[Validators]**: Fulfilling the security layer of the Hyperlane protocol
 
-[Mailboxes]: https://docs.hyperlane.xyz/docs/protocol/mailbox
+[Mailboxes]: https://docs.hyperlane.xyz/docs/protocol/core/mailbox
 [ism]: https://docs.hyperlane.xyz/docs/protocol/ISM/modular-security
 [Relayers]: https://docs.hyperlane.xyz/docs/protocol/agents/relayer
 [Validators]: https://docs.hyperlane.xyz/docs/protocol/agents/validators
@@ -46,12 +46,38 @@ Hyperlane fees are called **Interchain Gas Payments** and are payed by the
 
 For more info about the Interchain Gas Payments, consult the [Hyperlane documentation][igp]
 
-[igp]: https://docs.hyperlane.xyz/docs/protocol/interchain-gas-payment
+[igp]: https://docs.hyperlane.xyz/docs/protocol/core/interchain-gas-payment
+
+## Hyperlane CLI
+
+The [Hyperlane CLI][cli] is the official command-line tool for deploying and
+managing Hyperlane infrastructure. It provides a comprehensive set of utilities
+for:
+
+- **Chain Configuration**: Set up and register new chains with the Hyperlane
+network
+- **Core Contract Deployment**: Deploy Hyperlane's core contracts (Mailbox,
+ISM, etc.) to new chains
+- **Warp Route Management**: Configure and deploy token bridges between chains
+- **Message Testing**: Send test messages across chains to verify connectivity
+- **Registry Management**: Interact with chain metadata and contract addresses
+
+The CLI streamlines the process of connecting new chains to the Hyperlane
+network, making cross-chain communication accessible to developers and chain
+operators.
+
+[cli]: https://docs.hyperlane.xyz/docs/reference/developer-tools/cli
+
+## Hyperlane Core Deployment
+
+For guidance on how to deploy the Hyperlane Core on Sapphire, refer to the
+[official deploy documentation][hyperlane-deploy].
+
+[hyperlane-deploy]: https://docs.hyperlane.xyz/docs/get-started-building#step-2%3A-deploy-hyperlane-core-infrastructure
 
 ## See also
 
 <DocCardList items={[
-    findSidebarItem('/build/opl/hyperlane/cli'),
     findSidebarItem('/build/opl/hyperlane/relayer'),
     findSidebarItem('/build/opl/hyperlane/pingpong-example'),
 ]} />

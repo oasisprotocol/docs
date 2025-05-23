@@ -97,7 +97,6 @@ export const sidebarBuild: SidebarsConfig = {
             id: 'build/opl/hyperlane/README',
           },
           items: [
-            'build/opl/hyperlane/cli',
             'build/opl/hyperlane/relayer',
             'build/opl/hyperlane/pingpong-example',
           ],

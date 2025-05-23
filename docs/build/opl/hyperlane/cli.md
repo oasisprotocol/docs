@@ -4,44 +4,65 @@ description: Hyperlane CLI for Sapphire
 
 # Hyperlane CLI
 
-:::info
+## Introduction
 
-The standard **Hyperlane CLI** relies on the `eth_getStorageAt` method,
-which is incompatible with **Sapphire** by default. To address this, use the
-**[custom branch]** of the Hyperlane CLI or follow the guidance in the
-[Troubleshooting section] of Hyperlane.
+The [Hyperlane CLI][cli] is the official command-line tool for deploying and managing
+Hyperlane infrastructure. It provides a comprehensive set of utilities for:
 
-For more details about `eth_getStorageAt` on Sapphire, refer to the
-[Sapphire documentation].
+- **Chain Configuration**: Set up and register new chains with the Hyperlane
+network
+- **Core Contract Deployment**: Deploy Hyperlane's core contracts (Mailbox, ISM,
+etc.) to new chains
+- **Warp Route Management**: Configure and deploy token bridges between chains
+- **Message Testing**: Send test messages across chains to verify connectivity
+- **Registry Management**: Interact with chain metadata and contract addresses
 
-:::
+The CLI streamlines the process of connecting new chains to the Hyperlane
+network, making cross-chain communication accessible to developers and chain
+operators. This modified version includes compatibility fixes for Sapphire's
+unique storage requirements.
+
+[cli]: https://docs.hyperlane.xyz/docs/reference/cli
 
 ## Installation
 
-1. Clone the Sapphire-compatible branch:
-    ```bash
-    git clone https://github.com/hyperlane-xyz/hyperlane-monorepo.git --branch pb/storage-workaround
-    cd hyperlane-monorepo
-    ```
+Install the Hyperlane CLI globally using npm:
 
-2. Install dependencies and build the project:
-    ```bash
-    yarn install && yarn build
-    ```
+```bash
+npm install -g @hyperlane-xyz/cli
+```
+
+Alternatively, you can run commands directly without installing globally:
+
+```bash
+# Run via NPM's npx command
+npx @hyperlane-xyz/cli
+
+# Or via Yarn's dlx command
+yarn dlx @hyperlane-xyz/cli
+```
 
 ## Usage
 
-Run the modified CLI:
+Once installed, you can run the CLI from anywhere in your terminal:
+
 ```bash
-yarn workspace @hyperlane-xyz/cli hyperlane
+hyperlane --help
 ```
+
+To view available commands and options, use the help flag. Common commands
+include:
+
+- `hyperlane relayer` - Start a relayer to facilitate message delivery between
+chains.
+For more information visited the our [Relayer page][relayer]
+- `hyperlane send message` - Send test messages across chains
+
+[relayer]: ./relayer.md
 
 ## Hyperlane Core Deployment
 
-For guidance on how to use the modified CLI for deploying the Hyperlane Core
-on Sapphire, refer to the [official deploy documentation][hyperlane-deploy].
+For guidance on how to deploy the Hyperlane Core on Sapphire, refer to the
+[official deploy documentation][hyperlane-deploy].
 
-[custom branch]: https://github.com/hyperlane-xyz/hyperlane-monorepo/tree/pb/storage-workaround
-[Sapphire documentation]: https://github.com/oasisprotocol/sapphire-paratime/blob/main/docs/develop/deployment#caution-against-using-eth_getstorageat
-[Troubleshooting section]: https://docs.hyperlane.xyz/docs/deploy-hyperlane-troubleshooting#eth_getstorageat-compatibility
 [hyperlane-deploy]: https://docs.hyperlane.xyz/docs/deploy-hyperlane

@@ -11,7 +11,7 @@ description: Run a Hyperlane Relayer
 
 The easiest way to run a relayer is with the **[Hyperlane CLI]**.
 
-[Hyperlane CLI]: https://docs.hyperlane.xyz/docs/reference/cli
+[Hyperlane CLI]: https://docs.hyperlane.xyz/docs/reference/developer-tools/cli
 
 1. Export your private key to be used with the CLI
 

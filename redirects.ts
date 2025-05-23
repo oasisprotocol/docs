@@ -429,6 +429,10 @@ export const redirectsOptions: Options = {
             to: '/general/manage-tokens/how-to-bridge-assets', // #859 Revamp bridging assets chapter
             from: '/general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime',
         },
+        {
+            to: '/build/opl/hyperlane/',
+            from: '/build/opl/hyperlane/cli', // #1264 Update Hyperlane
+        },
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

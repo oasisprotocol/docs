@@ -70,7 +70,7 @@ export const sidebarNode: SidebarsConfig = {
             'node/run-your-node/prerequisites/stake-requirements',
             'node/run-your-node/prerequisites/oasis-node',
             'node/run-your-node/prerequisites/system-configuration',
-            'node/run-your-node/prerequisites/set-up-trusted-execution-environment-tee',
+            'node/run-your-node/prerequisites/set-up-tee',
           ]
         },
         'node/run-your-node/validator-node',

@@ -261,7 +261,7 @@ Ubuntu 18.04 LTS (and earlier) provide overly-old `bubblewrap`. Follow _Other Di
 
 ### Setting up Trusted Execution Environment (TEE)
 
-If a ParaTime requires the use of a TEE, then make sure you set up TEE as instructed in the [Set up trusted execution environment (TEE)](prerequisites/set-up-trusted-execution-environment-tee.md) doc.
+If a ParaTime requires the use of a TEE, then make sure you set up TEE as instructed in the [Set up trusted execution environment (TEE)](prerequisites/set-up-tee.mdx) doc.
 
 ## Configuration
 
@@ -348,7 +348,7 @@ oasis-node control status -a unix:/node/data/internal.sock
 
 ## Troubleshooting
 
-See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troubleshooting](prerequisites/set-up-trusted-execution-environment-tee.md#troubleshooting) sections before proceeding with ParaTime node-specific troubleshooting.
+See the general [Node troubleshooting](troubleshooting.md) and [Set up TEE troubleshooting](prerequisites/set-up-tee.mdx#troubleshooting) sections before proceeding with ParaTime node-specific troubleshooting.
 
 ### Too Old Bubblewrap Version
 
@@ -432,7 +432,7 @@ You can use the [attestation tool] (at least version 0.3.4) that also checks if 
 
 :::
 
-[BIOS settings]: prerequisites/set-up-trusted-execution-environment-tee.md#bios-configuration
+[BIOS settings]: prerequisites/set-up-tee.mdx#sgx-bios-configuration
 [attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
 
 ## See also

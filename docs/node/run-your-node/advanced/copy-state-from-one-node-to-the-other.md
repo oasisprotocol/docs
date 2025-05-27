@@ -73,4 +73,4 @@ Before starting your new Oasis node, do the following:
 
 Finally, you can start your new Oasis node for the first time.
 
-[TEE-enabled ParaTimes]: ../prerequisites/set-up-trusted-execution-environment-tee.md
+[TEE-enabled ParaTimes]: ../prerequisites/set-up-tee.mdx

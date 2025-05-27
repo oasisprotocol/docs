@@ -1,20 +1,30 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Set up Trusted Execution Environment (TEE)
 
-:::info
+Most Oasis ParaTimes and ROFLs are configured to run in a TEE. There are two
+kinds of Intel TEEs currently in use:
 
-In case the ParaTime you want to run does not require the use of a TEE (e.g.
-Intel SGX), you can skip setting up a TEE.
+- [Intel SGX] is required by the ParaTimes and [ROFL SGX][rofl-types] apps.
+- [Intel TDX] is required by the [ROFL TDX raw and container-based][rofl-types]
+  apps.
 
-:::
+To run SGX/TDX enclaves:
 
-If the ParaTime is configured to run in a TEE (currently only [Intel SGX]), you
-must make sure that your system supports running SGX enclaves. This requires
-that your hardware has SGX support, that SGX support is enabled and that the
-additional driver and software components are properly installed and running.
+1. your hardware must have SGX/TDX support,
+2. you must have the latest BIOS updates installed,
+3. you must have SGX/TDX enabled in your BIOS,
+4. you must have the Linux kernel, drivers and software components properly
+   installed and running.
 
 [Intel SGX]: https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
+[Intel TDX]: https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/trust-domain-extensions.html
+[rofl-types]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/app.mdx
 
-## BIOS Configuration
+## Software Guard Extensions (SGX) {#sgx}
+
+### BIOS Configuration {#sgx-bios-configuration}
 
 To enable Intel SGX on your hardware, you also need to configure the BIOS.
 First, **update the BIOS to the latest version with the latest microcode** and
@@ -29,13 +39,13 @@ set the BIOS settings as follows:
 - **CPU AES**: ENABLE
 - **SGX Auto MP Registration**: ENABLE
 
-## Ensure Clock Synchronization
+### Ensure Clock Synchronization
 
 Due to additional sanity checks within runtime enclaves, you should ensure that
 the node's local clock is synchronized (e.g. using NTP). If it is off by more
 than half a second you may experience unexpected runtime aborts.
 
-## Ensure Proper SGX Device Permissions
+### Ensure Proper SGX Device Permissions
 
 Make sure that the user that is running the Oasis Node binary has access to the
 SGX device (e.g. `/dev/sgx_enclave`). This can usually be achieved by adding
@@ -58,7 +68,7 @@ runtime startup.
 If you are planning to run your node from an interactive session, make sure to
 log out for permissions to take effect.
 
-## AESM Service
+### AESM Service
 
 To allow execution of SGX enclaves, several **Architectural Enclaves (AE)** are
 involved (i.e. Launch Enclave, Provisioning Enclave, Provisioning Certificate
@@ -82,9 +92,9 @@ and look for the following line:
       SGX_LC: SGX launch config supported      = true
 ```
 
-## DCAP Attestation
+### DCAP Attestation
 
-### Ubuntu 22.04+
+#### Ubuntu 22.04+
 
 A convenient way to install the AESM service on Ubuntu 22.04 systems
 is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
@@ -109,7 +119,7 @@ The AESM service should be up and running. To confirm that, use:
 sudo systemctl status aesmd.service
 ```
 
-### Configuring the Quote Provider
+#### Configuring the Quote Provider
 
 The Intel Quote Provider (`libsgx-dcap-default-qpl`) needs to be configured in
 order to use either the Intel PCS, the PCCS of your cloud service provider, or
@@ -122,7 +132,7 @@ configuration, via:
 sudo systemctl restart aesmd.service
 ```
 
-#### Intel PCS
+##### Intel PCS
 
 Using the Intel PCS is the simplest and most generic way, but it may be less
 reliable than using your own PCCS. Some cloud providers (see the [following section](#cloud-service-providers-pccs))
@@ -151,7 +161,7 @@ file invalid.**
 
 :::
 
-#### Cloud Service Provider's PCCS
+##### Cloud Service Provider's PCCS
 
 Some cloud providers require you to use their PCCS.
 
@@ -172,13 +182,13 @@ use one of the other PCCS options.
 [Alibaba Cloud documentation]: https://www.alibabacloud.com/help/en/ecs/user-guide/build-an-sgx-encrypted-computing-environment
 [IBM Cloud documentation]: https://cloud.ibm.com/docs/vpc?topic=vpc-about-attestation-sgx-dcap-vpc
 
-#### Own PCCS
+##### Own PCCS
 
 It is also possible to run PCCS yourself. Follow [official Intel instructions] on how to setup your own PCCS.
 
 [official Intel Instructions]: https://www.intel.com/content/www/us/en/developer/articles/guide/intel-software-guard-extensions-data-center-attestation-primitives-quick-install-guide.html
 
-### DCAP Attestation Docker
+#### DCAP Attestation Docker
 
 Alternatively, an easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled
 system is to use [our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
@@ -218,7 +228,7 @@ docker run \
 
 The default Intel Quote Provider config is available in [Intel SGX Github repository](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf).
 
-### Multi-socket Systems
+#### Multi-socket Systems
 
 Note that platform provisioning for multi-socket systems (e.g. systems with
 multiple CPUs) is more complex, especially if one is using a hypervisor and
@@ -230,7 +240,7 @@ provisioning process uses UEFI variables to communicate with the BIOS. In
 addition the **SGX Auto MP Registration** BIOS configuration setting should be
 set to _enabled_.
 
-#### Ubuntu 22.04+
+##### Ubuntu 22.04+
 
 To provision and register your multi-socket system you need to install the Intel
 SGX Multi-Package Registration Agent Service as follows (assuming Intel's SGX
@@ -246,14 +256,14 @@ enabled SGX Auto MP Registration in the BIOS as mentioned above. You can also
 perform re-provisioning by rebooting and setting the **SGX Factory Reset**
 option to _enabled_.
 
-#### VMware vSphere 8.0+
+##### VMware vSphere 8.0+
 
 In order to enable SGX remote attestation on VMware vSphere-based systems,
 please follow [the vSphere guide].
 
 [the vSphere guide]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-F16476FD-3B66-462F-B7FB-A456BEDC3549.html
 
-## Migrate from EPID Attestation to DCAP Attestation
+### Migrate from EPID Attestation to DCAP Attestation
 
 EPID attestation will be discontinued in 2025 and will no longer be available on
 any processors. All nodes using EPID attestation must migrate to DCAP
@@ -285,298 +295,159 @@ support DCAP attestation, you'll need to migrate your node to newer hardware.
 [Gracefully shutdown]: ../maintenance/shutting-down-a-node.md
 [DCAP attestation]: #dcap-attestation
 [Configure the Quote Provider]: #configuring-the-quote-provider
-[attestation tool]: #oasis-attestation-tool
+[attestation tool]: #check-sgx-setup
 
-## Check SGX Setup
+### Check SGX Setup
 
-In order to make sure that your SGX setup is working, you can use the
-`sgx-detect` tool from the [sgxs-tools](https://lib.rs/crates/sgxs-tools) Rust
-package.
-
-There are no pre-built packages for it, so you will need to compile it yourself.
-
-### Install Dependencies
-
-Make sure you have the following installed on your system:
-
-* [GCC](https://gcc.gnu.org).
-* [Protobuf](https://github.com/protocolbuffers/protobuf) compiler.
-* [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config).
-* [OpenSSL](https://www.openssl.org) development package.
-
-On Fedora, you can install all the above with:
-
-```
-sudo dnf install gcc protobuf-compiler pkg-config openssl-devel
-```
-
-On Ubuntu, you can install all the above with:
-
-```
-sudo apt install gcc protobuf-compiler pkg-config libssl-dev
-```
-
-### Install [Rust](https://www.rust-lang.org)
-
-We follow [Rust upstream's recommendation](https://www.rust-lang.org/tools/install)
-on using [rustup](https://rustup.rs) to install and manage Rust versions.
-
-:::caution
-
-rustup cannot be installed alongside a distribution packaged Rust version. You
-will need to remove it (if it's present) before you can start using rustup.
-
-:::
-
-Install rustup by running:
-
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-:::tip
-
-If you want to avoid directly executing a shell script fetched the internet, you
-can also [download `rustup-init` executable for your platform](https://rust-lang.github.io/rustup/installation/other.html)
-and run it manually. This will run `rustup-init` which will download and install
-the latest stable version of Rust on your system.
-
-:::
-
-### Build and Install sgxs-tools
-
-```bash
-cargo install sgxs-tools
-```
-
-### Run `sgx-detect` Tool
-
-After the installation completes, run `sgx-detect` to make sure that everything
-is set up correctly:
-
-```
-sudo $(which sgx-detect)
-```
-
-:::tip
-
-If you don't run the `sgx-detect` tool as `root`, it might not have the
-necessary permissions to access the SGX kernel device.
-
-:::
-
-When everything works, you should get output similar to the following (some
-things depend on hardware features so your output may differ):
-
-```
-Detecting SGX, this may take a minute...
-✔  SGX instruction set
-  ✔  CPU support
-  ✔  CPU configuration
-  ✔  Enclave attributes
-  ✔  Enclave Page Cache
-  SGX features
-    ✔  SGX2  ✔  EXINFO  ✔  ENCLV  ✔  OVERSUB  ✔  KSS
-    Total EPC size: 92.8MiB
-✘  Flexible launch control
-  ✔  CPU support
-  ？ CPU configuration
-  ✘  Able to launch production mode enclave
-✔  SGX system software
-  ✔  SGX kernel device (/dev/sgx_enclave)
-  ✘  libsgx_enclave_common
-  ✔  AESM service
-  ✔  Able to launch enclaves
-    ✔  Debug mode
-    ✘  Production mode
-    ✔  Production mode (Intel whitelisted)
-```
-
-The important part is the checkbox under _Able to launch enclaves_ in both
-_Debug mode_ and _Production mode (Intel whitelisted)_.
-
-In case you encounter errors, see the [list of common SGX installation issues](https://edp.fortanix.com/docs/installation/help/)
-for help.
-
-### Oasis Attestation tool
-
-To test if your settings are correct, you may use the [attestation tool]
-([binary]) for testing remote attestation against Intel SGX's
+To test if your settings are correct, you may use the [Oasis attestation
+tool][attestation-tool] ([binary]) for testing remote attestation against Intel SGX's
 development server.
 
 [attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
 [binary]: https://github.com/oasisprotocol/tools/releases
 
-## Troubleshooting
+## Trust Domain Extensions (TDX) {#tdx}
 
-See  [the general troubleshooting section](../troubleshooting.md), before
-proceeding with ParaTime node-specific troubleshooting.
+Before proceeding with the TDX installation, **make sure you followed the SGX
+installation steps above and you have a working SGX environment**!
 
-### AESM could not be contacted
+### BIOS configuration {#tdx-bios-configuration}
 
-If running `sgx-detect --verbose` reports:
+- **SGX**: ENABLE
+- **SGX memory**: at least 256MB
+- **SGX Auto MP Registration**: ENABLE
+- **Hyper-Threading**: DISABLE
+- **Intel SpeedStep**: DISABLE
+- **SecureBoot**: DISABLE
+- **All Internal Graphics**: DISABLE
+- **Turbo Mode**: DISABLE
+- **CPU AES**: ENABLE
+- **TDX**: ENABLE
+- **Memory Encryption (TME)**: ENABLE
+- **Total Memory Encryption Bypass**: ENABLE
+- **Total Memory Encryption Multi-Tenant (TME-MT)**: ENABLE
+- **TME-MT memory integrity**: DISABLE
+- **TDX Secure Arbitration Mode Loader (SEAM Loader)**: ENABLE
+- **TME-MT/TDX key split**: non-zero value
+- **ACPI S3 and deeper power states**: DISABLED
 
+### Host OS setup
+
+The following section contains summarized instructions for setting up an
+environment for running ROFL node and other TDX services on Ubuntu 24.04 or
+later. Check out the official [Canonical TDX repository] for details.
+
+[Canonical TDX repository]: https://github.com/canonical/tdx
+
+1. Add the following TDX PPAs to your APT sources and the keyring:
+   
+   ```shell
+   sudo add-apt-repository ppa:kobuk-team/tdx-release
+   sudo add-apt-repository ppa:kobuk-team/tdx-attestation-release
+   sudo apt update
+   ```
+2. Install the TDX quote generation service and QEMU for running
+   guest virtual machines:
+
+    ```shell
+    sudo apt install tdx-qgs qemu-utils qemu-system-x86
+    ```
+   
+3. Install a special TDX-enabled Linux kernel:
+
+    ```shell
+    sudo apt install linux-image-intel
+    ```
+
+3. Disable ACPI S3 (add kernel parameter: `nohibernate`):
+ 
+   ```
+   sed -i -E "s/GRUB_CMDLINE_LINUX=\"(.*)\"/GRUB_CMDLINE_LINUX=\"\1 nohibernate\"/g" /etc/default/grub
+   update-grub
+   ```
+
+4. Make sure the non-root user running Oasis-node is a member of `sgx`,
+   `sgx_prv` and `kvm` groups on host (access to `/dev/sgx*`, `/dev/kvm*` and
+   `/dev/*vsock*` devices).
+
+5. Reboot your system and select the new `-intel` kernel.
+
+:::tip
+
+If you don't have access to the grub selector during machine startup, you can
+also detect and set the correct default kernel by executing the script below
+with elevated privileges:
+
+```bash
+export KERNEL_RELEASE=$(apt show "linux-image-intel" 2>&1 | gawk 'match($0, /Depends:.* linux-image-([^, ]+)/, a) {print a[1]}')
+if [ -z "${KERNEL_RELEASE}" ]; then
+    echo "ERROR : unable to determine kernel release"
+    exit 1
+fi
+MID=$(awk '/Advanced options for Ubuntu/{print $(NF-1)}' /boot/grub/grub.cfg | cut -d\' -f2)
+KID=$(awk "/with Linux $KERNEL_RELEASE/"'{print $(NF-1)}' /boot/grub/grub.cfg | cut -d\' -f2 | head -n1)
+cat > /etc/default/grub.d/99-tdx-kernel.cfg <<EOF
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+EOF
+grub-editenv /boot/grub/grubenv set saved_entry="${MID}>${KID}"
+update-grub
 ```
-🕮  SGX system software > AESM service
-AESM could not be contacted. AESM is needed for launching enclaves and generating attestations.
-
-Please check your AESM installation.
-
-debug: error communicating with aesm
-debug: cause: Connection refused (os error 111)
-
-More information: https://edp.fortanix.com/docs/installation/help/#aesm-service
-```
-
-Ensure  you have completed all the necessary installation steps outlined in
-[DCAP Attestation](#dcap-attestation) section.
-
-### AESM: error 30
-
-If you are encountering the following error message in your node's logs:
-
-```
-failed to initialize TEE: error while getting quote info from AESMD: aesm: error 30
-```
-
-Ensure you have all required SGX driver libraries installed as listed in
-[DCAP Attestation](#dcap-attestation) section.
-
-### Permission Denied When Accessing SGX Kernel Device
-
-If running `sgx-detect --verbose` reports:
-
-```
-🕮  SGX system software > SGX kernel device
-Permission denied while opening the SGX device (/dev/sgx/enclave, /dev/sgx or
-/dev/isgx). Make sure you have the necessary permissions to create SGX enclaves.
-If you are running in a container, make sure the device permissions are
-correctly set on the container.
-
-debug: Error opening device: Permission denied (os error 13)
-debug: cause: Permission denied (os error 13)
-```
-
-Ensure you are running the `sgx-detect` tool as `root` via:
-
-```
-sudo $(which sgx-detect) --verbose
-```
-
-### Error Opening SGX Kernel Device
-
-If running `sgx-detect --verbose` reports:
-
-```
-🕮  SGX system software > SGX kernel device
-The SGX device (/dev/sgx/enclave, /dev/sgx or /dev/isgx) could not be opened:
-"/dev" mounted with `noexec` option.
-
-debug: Error opening device: "/dev" mounted with `noexec` option
-debug: cause: "/dev" mounted with `noexec` option
-```
-
-#### Ensure `/dev` is NOT Mounted with the `noexec` Option
-
-Some Linux distributions mount `/dev` with the `noexec` mount option. If that is
-the case, it will prevent the enclave loader from mapping executable pages.
-
-Ensure your `/dev` (i.e. `devtmpfs`) is not mounted with the `noexec` option.
-To check that, use:
-
-```
-cat /proc/mounts | grep devtmpfs
-```
-
-To temporarily remove the `noexec` mount option for `/dev`, run:
-
-```
-sudo mount -o remount,exec /dev
-```
-
-To permanently remove the `noexec` mount option for `/dev`, add the following to
-the system's `/etc/fstab` file:
-
-```
-devtmpfs        /dev        devtmpfs    defaults,exec 0 0
-```
-
-:::info
-
-This is the recommended way to modify mount options for virtual (i.e. API) file
-system as described in [systemd's API File Systems](https://www.freedesktop.org/wiki/Software/systemd/APIFileSystems/)
-documentation.
 
 :::
 
+### Check TDX Setup
 
-### Unable to Launch Enclaves: Operation not permitted
+To check whether your system is ready to launch TDX VMs, you should see an
+output like this:
 
-If running `sgx-detect --verbose` reports:
-
-```
-🕮  SGX system software > Able to launch enclaves > Debug mode
-The enclave could not be launched.
-
-debug: failed to load report enclave
-debug: cause: failed to load report enclave
-debug: cause: Failed to map enclave into memory.
-debug: cause: Operation not permitted (os error 1)
+```shell
+sudo dmesg | grep -i tdx
 ```
 
-Ensure your system's [`/dev` is NOT mounted with the `noexec` mount option][dev-noexec].
-
-[dev-noexec]: #ensure-dev-is-not-mounted-with-the-noexec-option
-
-### Unable to Launch Enclaves: Invalid argument
-
-If running `sgx-detect --verbose` reports:
-
 ```
-🕮  SGX system software > Able to launch enclaves > Debug mode
-The enclave could not be launched.
-
-debug: failed to load report enclave
-debug: cause: Failed to call EINIT.
-debug: cause: I/O ctl failed.
-debug: cause: Invalid argument (os error 22)
+[    1.368184] virt/tdx: BIOS enabled: private KeyID range [32, 64)
+[    1.368188] virt/tdx: Disable ACPI S3. Turn off TDX in the BIOS to use ACPI S3.
+[    9.483666] virt/tdx: TDX module: attributes 0x0, vendor_id 0x8086, major_version 1, minor_version 5, build_date 20240725, build_num 784
+[    9.483672] virt/tdx: CMR: [0x100000, 0x77800000)
+[    9.483674] virt/tdx: CMR: [0x100000000, 0x3ffe000000)
+[   10.587167] virt/tdx: 1042424 KB allocated for PAMT
+[   10.587173] virt/tdx: module initialized
 ```
 
-This may be related to a bug in the Linux kernel when attempting to run enclaves
-on certain hardware configurations. Upgrading the Linux kernel to a version
-equal to or greater than 6.5.0 may solve the issue.
-
-### Unable to Launch Enclaves: Input/output error
-
-If running `sgx-detect --verbose` reports:
-
-```
-🕮 SGX system software > Able to launch enclaves > Debug mode
-The enclave could not be launched.
-
-debug: failed to load report enclave
-debug: cause: Failed to call ECREATE.
-debug: cause: I/O ctl failed.
-debug: cause: Input/output error (os error 5)
+```shell
+ls -al /dev/*kvm*
 ```
 
-This may be related to a bug in the [`rust-sgx`](https://github.com/fortanix/rust-sgx/issues/565)
-library causing `sgx-detect` (and `attestation-tool`) to fail and report that
-debug enclaves cannot be launched. This is a known issue and is being worked on.
-If the `sgx-detect` is reporting that production enclaves can be launched, you
-can ignore this error when setting up the Oasis node.
-
-### Couldn't find the platform library
-
-If AESMD service log reports:
-
 ```
-[read_persistent_data ../qe_logic.cpp:1084] Couldn't find the platform library. (null)
-[get_platform_quote_cert_data ../qe_logic.cpp:438] Couldn't load the platform library. (null)
+crw-rw---- 1 root kvm 10, 232 Apr 10 09:56 /dev/kvm
 ```
 
-It may be that the [DCAP quote provider] is misconfigured or the configuration
-file is not a valid JSON file but is malformed. Double-check that its
-configuration file (e.g. `/etc/sgx_default_qcnl.conf`) is correct.
+If any of the above is missing, then the following debug tools may help you:
 
-[DCAP quote provider]: #configuring-the-quote-provider
+```shell
+apt install msr-tools
+git clone https://github.com/canonical/tdx && ./tdx/system-report.sh
+```
+
+```
+### Model specific registers (MSRs)
+MK_TME_ENABLED bit: 1 (expected value: 1)
+SEAM_RR bit: 1 (expected value: 1)
+NUM_TDX_PRIV_KEYS: 20
+SGX_AND_MCHECK_STATUS: 0 (expected value: 0)
+Production platform: Production (expected value: Production)
+```
+
+```shell
+sudo rdmsr 0x503
+```
+
+```
+0  # 0 if SGX in production mode
+```
+
+## Troubleshooting
+
+See [the TEE troubleshooting section](../troubleshooting.md#tee) for a list of
+most common errors and solutions.

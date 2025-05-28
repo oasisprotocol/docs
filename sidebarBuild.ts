@@ -65,6 +65,7 @@ export const sidebarBuild: SidebarsConfig = {
           },
           items: [
             'build/rofl/features/secrets',
+            'build/rofl/features/storage',
             'build/rofl/features/manifest',
             'build/rofl/features/rest',
             'build/rofl/features/testing',

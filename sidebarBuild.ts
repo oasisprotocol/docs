@@ -64,6 +64,7 @@ export const sidebarBuild: SidebarsConfig = {
             slug: '/build/rofl/features',
           },
           items: [
+            'build/rofl/features/marketplace',
             'build/rofl/features/secrets',
             'build/rofl/features/storage',
             'build/rofl/features/manifest',

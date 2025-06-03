@@ -137,7 +137,7 @@ const config: Config = {
             'aria-label': 'GitHub repository',
           },
           {
-            href: 'https://oasisprotocol.org/',
+            href: 'https://oasis.net/',
             position: 'right',
             className: 'header-www-link',
             title: 'Oasis Protocol Foundation website',
@@ -222,7 +222,7 @@ const config: Config = {
         ],
         copyright: `
 <p xmlns:cc="http://creativecommons.org/ns#" >Copyright © ${new Date().getFullYear()}
-by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasisprotocol.org">
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
 Oasis Protocol Foundation</a>.
 Unless otherwise specified, all text and images on this website are licensed
 under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"

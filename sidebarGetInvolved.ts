@@ -6,22 +6,22 @@ export const sidebarGetInvolved: SidebarsConfig = {
     {
       type: 'link',
       label: 'Become our Ambassador',
-      href: 'https://oasisprotocol.org/ambassador-program',
+      href: 'https://oasis.net/ambassador-program',
     },
     {
       type: 'link',
       label: 'Become our Influencer',
-      href: 'https://oasisprotocol.org/influencer',
+      href: 'https://oasis.net/influencer',
     },
     {
       type: 'link',
       label: 'Apply for Grant',
-      href: 'https://oasisprotocol.org/grant-programs',
+      href: 'https://oasis.net/grant-programs',
     },
     {
       type: 'link',
       label: 'Join our University Program',
-      href: 'https://oasisprotocol.org/university-program',
+      href: 'https://oasis.net/university-program',
     },
     {
       type: 'link',

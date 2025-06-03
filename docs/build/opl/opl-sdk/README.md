@@ -11,7 +11,7 @@ forward to integrate [Sapphire] and its privacy features into your existing or
 future Web3 applications.
 
 [sapphire-contracts]: https://www.npmjs.com/package/@oasisprotocol/sapphire-contracts
-[Sapphire]: https://oasisprotocol.org/sapphire
+[Sapphire]: https://oasis.net/sapphire
 
 ## Overview
 

@@ -156,19 +156,34 @@ In case your system is using AppArmor and is restricting unprivileged user names
 creation, you may need to allow them for Bubblewrap (the sandbox that Oasis Node is
 using to execute runtimes).
 
-You can use the following policy in `/etc/apparmor.d/bwrap`:
+<Tabs>
+<TabItem value="Ubuntu 24.04 and earlier">
 
-```
-abi <abi/4.0>,
-include <tunables/global>
+    You can add the following policy in `/etc/apparmor.d/bwrap`:
 
-profile bwrap /usr/bin/bwrap flags=(unconfined) {
-  userns,
+    ```
+    abi <abi/4.0>,
+    include <tunables/global>
 
-  # Site-specific additions and overrides. See local/README for details.
-  include if exists <local/bwrap>
-}
-```
+    profile bwrap /usr/bin/bwrap flags=(unconfined) {
+      userns,
+
+      # Site-specific additions and overrides. See local/README for details.
+      include if exists <local/bwrap>
+    }
+    ```
+
+</TabItem>
+<TabItem value="Ubuntu 24.10+">
+
+    Enable the Bubblewrap user namespace restriction policy:
+
+    ```shell
+    sudo ln -s /usr/share/apparmor/extra-profiles/bwrap-userns-restrict /etc/apparmor.d/
+    ```
+
+</TabItem>
+</Tabs>
 
 Then reload AppArmor policies by running:
 

@@ -120,7 +120,7 @@ about!
 If you believe a bug report presents a security risk, please follow
 [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure)
 and report it by following the
-[security disclosure information](https://oasisprotocol.org/security) instead
+[security disclosure information](https://oasis.net/security) instead
 of filing a public issue or posting it to a public forum.
 
 We will get back to you promptly.

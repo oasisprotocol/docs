@@ -8,15 +8,16 @@ of the Oasis CLI.
 
 :::
 
-|                                                         |                                                   Mainnet |                                          Testnet |
-|---------------------------------------------------------|----------------------------------------------------------:|-------------------------------------------------:|
-| Registration of entity[^entity-reg]                     |                                                  100 ROSE |                                         100 TEST |
-| Registration of node                                    |                                                  100 ROSE |                                         100 TEST |
-| Size of the validator set[^validator-set]               |                               120[^validator-set-mainnet] |                      110[^validator-set-testnet] |
-| Run Sapphire or Emerald compute node[^compute-node]     | 5,000,000 ROSE<br/>+ member of the validator set[^member] |                                                / |
-| Run Cipher compute node[^compute-node]                  |                      member of the validator set[^member] |                                                / |
-| Create ROFL app on Sapphire or Cipher[^rofl-app-create] |                      10,000 ROSE[^rofl-app-create-amount] |                100 TEST[^rofl-app-create-amount] |
-| Create a ParaTime                                       |                                               50,000 ROSE |                                      10,000 TEST |
+|                                                         |                                                   Mainnet |                           Testnet |
+|---------------------------------------------------------|----------------------------------------------------------:|----------------------------------:|
+| Registration of entity[^entity-reg]                     |                                                  100 ROSE |                          100 TEST |
+| Registration of node                                    |                                                  100 ROSE |                          100 TEST |
+| Size of the validator set[^validator-set]               |                               120[^validator-set-mainnet] |       110[^validator-set-testnet] |
+| Run Sapphire or Emerald compute node[^compute-node]     | 5,000,000 ROSE<br/>+ member of the validator set[^member] |                                 / |
+| Run Cipher compute node[^compute-node]                  |                      member of the validator set[^member] |                                 / |
+| Create ROFL app on Sapphire or Cipher[^rofl-app-create] |                         100 ROSE[^rofl-app-create-amount] | 100 TEST[^rofl-app-create-amount] |
+| Create ROFL provider                                    |                                                  100 ROSE |                          100 TEST |
+| Create a ParaTime                                       |                                               50,000 ROSE |                       10,000 TEST |
 
 [^entity-reg]: You can fetch the latest entity registration stake requirements
 by running [`oasis network show native-token`].

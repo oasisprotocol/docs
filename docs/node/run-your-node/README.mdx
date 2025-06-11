@@ -58,9 +58,7 @@ an interface for users or other applications to interact with the blockchain.
 Unlike compute nodes, which handle transaction processing and smart contract
 execution, client nodes are primarily responsible for tasks such as querying
 the blockchain, submitting transactions, and retrieving other data from the
-network. For confidential ParaTimes such as Sapphire and Cipher, there is a
-special mode of client node called [Observer Node] that supports confidential
-smart contact queries.
+network.
 
 - **[Non-Validator Node]** is a type of node in the Oasis Network that does not
 participate in the consensus process of validating and proposing new blocks.
@@ -79,18 +77,20 @@ for its strong privacy features, allowing for the execution of confidential
 smart contracts and the development of privacy-preserving decentralized
 applications (dApps).
 
-- **[Emerald Client Node]** is a specific type of client node within the Oasis
-Network, designed to interact with the Emerald ParaTime. The Emerald ParaTime is
-an Ethereum-compatible environment on the Oasis Network, allowing developers
-to deploy and manage decentralized applications (dApps) that utilize the
-Ethereum Virtual Machine (EVM).
+- **[ROFL Node]** is a **Sapphire Client Node** that supports the TEE and hosts
+one or more [ROFL apps].
+
+- **[Observer Node]** is a special type of client node for confidential
+ParaTimes such as Sapphire and Cipher that supports confidential smart contact
+queries.
 
 [Non-Validator Node]: ./non-validator-node.mdx
 [Client Node]: ./paratime-client-node.mdx
 [Observer Node]: ./paratime-observer-node.mdx
 [Sapphire Client Node]: ./paratime-client-node.mdx
 [Cipher Client Node]: ./paratime-client-node.mdx
-[Emerald Client Node]: ./paratime-client-node.mdx
+[ROFL Node]: ./rofl-node.mdx
+[ROFL apps]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/README.mdx
 
 ## Archive Node
 

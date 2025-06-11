@@ -197,12 +197,15 @@ export const redirectsOptions: Options = {
             from: '/general/run-a-node/upgrade-log', // #200 Restructure docs
         },
         {
-            to: '/node/run-your-node/archive-node',
-            from: '/general/run-a-node/set-up-your-node/run-archive-node', // #200 Restructure docs
-        },
-        {
             to: '/node/genesis-doc',
             from: '/general/oasis-network/genesis-doc', // #200 Restructure docs
+        },
+        {
+            to: '/node/run-your-node',
+            from: [
+                '/general/run-a-node/set-up-your-node/run-an-ias-proxy', // #200 Restructure docs
+                '/node/run-your-node/ias-proxy', // #1076 Remove IAS Proxy
+            ],
         },
         {
             to: '/node/run-your-node/advanced/remote-signer',
@@ -212,11 +215,8 @@ export const redirectsOptions: Options = {
             ],
         },
         {
-            to: '/node/run-your-node',
-            from: [
-                '/general/run-a-node/set-up-your-node/run-an-ias-proxy', // #200 Restructure docs
-                '/node/run-your-node/ias-proxy', // #1076 Remove IAS Proxy
-            ],
+            to: '/node/run-your-node/archive-node',
+            from: '/general/run-a-node/set-up-your-node/run-archive-node', // #200 Restructure docs
         },
         {
             to: '/node/run-your-node/non-validator-node',
@@ -229,6 +229,10 @@ export const redirectsOptions: Options = {
         {
             to: '/node/run-your-node/paratime-node',
             from: '/general/run-a-node/set-up-your-node/run-a-paratime-node', // #200 Restructure docs
+        },
+        {
+            to: '/node/run-your-node/prerequisites/set-up-tee',
+            from: '/node/run-your-node/prerequisites/set-up-trusted-execution-environment-tee', // #1261 ROFL revamp for marketplace and ROFL node
         },
         {
             to: '/node/run-your-node/seed-node',

@@ -92,7 +92,13 @@ Testnet.
  const accounts = process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [];
 
  const config: HardhatUserConfig = {
-  solidity: "0.8.24",
+    // Sapphire only supports evmVersion `paris`
+    solidity: {
+      version: "0.8.28",
+      settings: {
+        evmVersion: "paris",
+      }
+    },
   // highlight-start
   networks: {
     'arbitrum-sepolia': {
@@ -111,15 +117,6 @@ Testnet.
 
  export default config;
 ```
-
-:::info
-
-Sapphire only supports evmVersion `paris`, which is the current default for
-Hardhat. Should Hardhat change this, you need to add `evmVersion: "paris"` to
-the solidity config.
-
-:::
-
 
 ### Ping Pong Contract
 
@@ -467,7 +464,7 @@ or use the scripts below.
       // deployed mailbox on Sapphire Testnet
       const mailbox = "0x79d3ECb26619B968A68CE9337DfE016aeA471435";
 
-      const PongFactory = await hre.ethers.getContractFactory("Pong");    
+      const PongFactory = await ethers.getContractFactory("Pong");    
       const pong = await PongFactory.deploy(mailbox);
       const pongAddr = await pong.waitForDeployment();
       console.log(`Pong deployed at: ${pongAddr.target}`);
@@ -670,8 +667,8 @@ use the following script:
       console.log("Calculating fee...");
       let fee = await contract.quoteDispatch(
           destChainId,
-          hre.ethers.toUtf8Bytes(message));
-      console.log(`Fee: ${hre.ethers.formatEther(fee)} ETH`);
+          ethers.toUtf8Bytes(message));
+      console.log(`Fee: ${ethers.formatEther(fee)} ETH`);
       console.log("Sending message...");
       const tx = await contract.sendPing(destChainId, message, {value: fee});
       await tx.wait();

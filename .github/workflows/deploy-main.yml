@@ -22,6 +22,8 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
+        env:
+          REACT_APP_FATHOM_SITE_ID: ${{ secrets.REACT_APP_FATHOM_SITE_ID }}
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

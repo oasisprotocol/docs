@@ -244,6 +244,10 @@ Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p>`,
         respectPrefersColorScheme: true,
       },
     } satisfies Preset.ThemeConfig,
+    customFields: {
+      NODE_ENV: process.env.NODE_ENV,
+      REACT_APP_FATHOM_SITE_ID: process.env.REACT_APP_FATHOM_SITE_ID,
+    }
 };
 
 module.exports = config;

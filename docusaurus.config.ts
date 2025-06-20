@@ -223,7 +223,7 @@ const config: Config = {
         copyright: `
 <p xmlns:cc="http://creativecommons.org/ns#" >Copyright © ${new Date().getFullYear()}
 by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
-Oasis Protocol Foundation</a>.
+Oasis Protocol Foundation</a>. We <a href="https://oasisprotocol.org/privacy-policy" target="_blank" rel="noopener noreferrer">respect your privacy</a>.
 Unless otherwise specified, all text and images on this website are licensed
 under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
 target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
@@ -244,6 +244,10 @@ Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p>`,
         respectPrefersColorScheme: true,
       },
     } satisfies Preset.ThemeConfig,
+    customFields: {
+      NODE_ENV: process.env.NODE_ENV,
+      REACT_APP_FATHOM_SITE_ID: process.env.REACT_APP_FATHOM_SITE_ID,
+    }
 };
 
 module.exports = config;

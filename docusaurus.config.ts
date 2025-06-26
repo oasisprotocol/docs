@@ -34,7 +34,8 @@ const config: Config = {
         /* From https://github.com/oasisprotocol/ui-library/blob/master/src/styles/global.css */
         @import "tailwindcss";
 
-        @custom-variant dark (&:is(.dark *));
+        /* Original: @custom-variant dark (&:is(.dark *)); */
+        @custom-variant dark (&:is(.dark *, [data-theme="dark"] *));
 
         :root {
           --background: hsl(0 0% 100%);
@@ -77,7 +78,8 @@ const config: Config = {
           --radius: 0.5rem;
         }
 
-        .dark {
+        /* Original: .dark { */
+        [data-theme="dark"], .dark {
           --background: hsl(240 10% 4%);
           --foreground: hsl(0 0% 98%);
           --card: hsl(240 6% 10%);

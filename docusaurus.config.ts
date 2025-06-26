@@ -14,6 +14,196 @@ const config: Config = {
   baseUrl: '/',
   favicon: 'img/favicon.svg',
 
+  // Tailwind from CDN + classnames like shadcn
+  // TODO: try https://github.com/namnguyenthanhwork/docusaurus-tailwind-shadcn-template/blob/main/src/plugins/tailwind-config.js#L5
+  scripts: [
+    {
+      src: 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11/dist/index.global.min.js',
+      integrity: 'sha384-A1XhMANHciQ8ED89Ap5K0zOdmQKiEeXSjaN0sakNxIzq9Z2YfXV/BwHp7oP3z5ip',
+      crossorigin: 'anonymous',
+      async: true,
+    },
+  ],
+  headTags: [
+    {
+      tagName: 'style',
+      attributes: {
+        type: 'text/tailwindcss',
+      },
+      innerHTML: `
+        /* From https://github.com/oasisprotocol/ui-library/blob/master/src/styles/global.css */
+        @import "tailwindcss";
+
+        @custom-variant dark (&:is(.dark *));
+
+        :root {
+          --background: hsl(0 0% 100%);
+          --foreground: hsl(240 6% 10%);
+          --card: hsl(0 0% 98%);
+          --card-foreground: hsl(240 10% 4%);
+          --popover: hsl(0 0% 100%);
+          --popover-foreground: hsl(240 10% 4%);
+          --primary: hsl(241 100% 44%);
+          --primary-foreground: hsl(0 0% 98%);
+          --secondary: hsl(240 5% 96%);
+          --secondary-foreground: hsl(240 6% 10%);
+          --muted: hsl(240 5% 96%);
+          --muted-foreground: hsl(240 4% 46%);
+          --accent: hsl(240 5% 96%);
+          --accent-foreground: hsl(240 6% 10%);
+          --destructive: hsl(0 84% 60%);
+          --destructive-foreground: hsl(0 86% 97%);
+          --border: hsl(240 6% 90%);
+          --input: hsl(240 6% 90%);
+          --ring: hsl(240 6% 10%);
+          --chart-1: hsl(209 100% 81%);
+          --chart-2: hsl(217 100% 72%);
+          --chart-3: hsl(211 100% 50%);
+          --chart-4: hsl(233 100% 54%);
+          --chart-5: hsl(241 100% 44%);
+          --sidebar: hsl(0 0% 100%);
+          --sidebar-background: hsl(0 0% 100%);
+          --sidebar-foreground: hsl(240 5% 26%);
+          --sidebar-primary: hsl(240 6% 10%);
+          --sidebar-primary-foreground: hsl(0 0% 98%);
+          --sidebar-accent: hsl(240 5% 96%);
+          --sidebar-accent-foreground: hsl(240 6% 10%);
+          --sidebar-border: hsl(220 13% 91%);
+          --sidebar-ring: hsl(240 5% 65%);
+          --success: hsl(161 94% 30%);
+          --error: hsl(0 72% 51%);
+          --warning: hsl(21 90% 48%);
+
+          --radius: 0.5rem;
+        }
+
+        .dark {
+          --background: hsl(240 10% 4%);
+          --foreground: hsl(0 0% 98%);
+          --card: hsl(240 6% 10%);
+          --card-foreground: hsl(0 0% 98%);
+          --popover: hsl(240 10% 4%);
+          --popover-foreground: hsl(0 0% 98%);
+          --primary: hsl(209 100% 81%);
+          --primary-foreground: hsl(240 10% 4%);
+          --secondary: hsl(240 4% 16%);
+          --secondary-foreground: hsl(0 0% 98%);
+          --muted: hsl(240 4% 16%);
+          --muted-foreground: hsl(240 5% 65%);
+          --accent: hsl(240 4% 16%);
+          --accent-foreground: hsl(0 0% 98%);
+          --destructive: hsl(0 74% 42%);
+          --destructive-foreground: hsl(0 86% 97%);
+          --border: hsl(240 4% 16%);
+          --input: hsl(240 4% 16%);
+          --ring: hsl(240 5% 84%);
+          --chart-1: hsl(241 100% 44%);
+          --chart-2: hsl(233 100% 54%);
+          --chart-3: hsl(211 100% 50%);
+          --chart-4: hsl(217 100% 72%);
+          --chart-5: hsl(209 100% 81%);
+          --sidebar: hsl(240 10% 4%);
+          --sidebar-background: hsl(240 10% 4%);
+          --sidebar-foreground: hsl(240 5% 96%);
+          --sidebar-primary: hsl(224 76% 48%);
+          --sidebar-primary-foreground: hsl(0 0% 100%);
+          --sidebar-accent: hsl(240 4% 16%);
+          --sidebar-accent-foreground: hsl(240 5% 96%);
+          --sidebar-border: hsl(240 4% 16%);
+          --sidebar-ring: hsl(240 5% 84%);
+          --success: hsl(158 64% 52%);
+          --error: hsl(0 91% 71%);
+          --warning: hsl(27 96% 61%);
+
+          --radius: 0.5rem;
+        }
+
+        @theme inline {
+          --color-background: var(--background);
+          --color-foreground: var(--foreground);
+          --color-card: var(--card);
+          --color-card-foreground: var(--card-foreground);
+          --color-popover: var(--popover);
+          --color-popover-foreground: var(--popover-foreground);
+          --color-primary: var(--primary);
+          --color-primary-foreground: var(--primary-foreground);
+          --color-secondary: var(--secondary);
+          --color-secondary-foreground: var(--secondary-foreground);
+          --color-muted: var(--muted);
+          --color-muted-foreground: var(--muted-foreground);
+          --color-accent: var(--accent);
+          --color-accent-foreground: var(--accent-foreground);
+          --color-destructive: var(--destructive);
+          --color-destructive-foreground: var(--destructive-foreground);
+          --color-border: var(--border);
+          --color-input: var(--input);
+          --color-ring: var(--ring);
+          --color-chart-1: var(--chart-1);
+          --color-chart-2: var(--chart-2);
+          --color-chart-3: var(--chart-3);
+          --color-chart-4: var(--chart-4);
+          --color-chart-5: var(--chart-5);
+          --color-sidebar: var(--sidebar);
+          --color-sidebar-background: var(--sidebar-background);
+          --color-sidebar-foreground: var(--sidebar-foreground);
+          --color-sidebar-primary: var(--sidebar-primary);
+          --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+          --color-sidebar-accent: var(--sidebar-accent);
+          --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+          --color-sidebar-border: var(--sidebar-border);
+          --color-sidebar-ring: var(--sidebar-ring);
+          --color-success: var(--success);
+          --color-error: var(--error);
+          --color-warning: var(--warning);
+
+          --radius-sm: calc(var(--radius) - 4px);
+          --radius-md: calc(var(--radius) - 2px);
+          --radius-lg: var(--radius);
+          --radius-xl: calc(var(--radius) + 4px);
+        }
+
+        @layer base {
+          * {
+            @apply border-border outline-ring/50;
+          }
+
+          body {
+            @apply bg-background text-foreground;
+          }
+
+          button:not([disabled]),
+          [role="button"]:not([disabled]) {
+            cursor: pointer;
+          }
+        }
+
+        /* Based on https://github.com/oasisprotocol/ui-library/blob/master/src/components/ui/card.tsx */
+        .card {
+          @apply bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm;
+        }
+        .card-header {
+          @apply @container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6;
+        }
+        .card-title {
+          @apply leading-none font-semibold;
+        }
+        .card-description {
+          @apply text-muted-foreground text-sm;
+        }
+        .card-action {
+          @apply col-start-2 row-span-2 row-start-1 self-start justify-self-end;
+        }
+        .card-content {
+          @apply px-6;
+        }
+        .card-footer {
+          @apply flex items-center px-6 [.border-t]:pt-6;
+        }
+      `,
+    },
+  ],
+
+
   organizationName: 'oasisprotocol', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   deploymentBranch: 'gh-pages',

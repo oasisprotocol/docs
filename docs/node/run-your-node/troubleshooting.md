@@ -292,7 +292,7 @@ malformed. Double-check that its configuration file (e.g.
 
 ### [QPL] Failed to get quote config. Error code is 0xb011
 
-The following error appears in the the QGS daemon logs leaving ROFL runtime
+The following error appears in the QGS daemon logs leaving ROFL runtime
 inoperable:
 
 ```

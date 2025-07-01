@@ -21,7 +21,7 @@ We recommend using [Hardhat] for an easy-to-follow experience.
 :::info Example Code
 
 You can find the contracts and hardhat tasks for deployment and execution
-in our [demo-opl repositiory][opl].
+in our [demo-opl repository][opl].
 
 [opl]: https://github.com/oasisprotocol/demo-opl/tree/main/examples/hyperlane-pingpong
 

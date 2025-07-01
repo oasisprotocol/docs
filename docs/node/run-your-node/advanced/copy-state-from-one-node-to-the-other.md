@@ -1,7 +1,7 @@
 # Copy State from One Node to the Other
 
 A network that's been running for some time can accrue significant amount of
-state. This means  bootstraping a new Oasis node would take quite some time and
+state. This means  bootstrapping a new Oasis node would take quite some time and
 resources (bandwidth, CPU) since it would need to fetch (download) and validate
 (replay) all the blocks from the genesis height onwards.
 

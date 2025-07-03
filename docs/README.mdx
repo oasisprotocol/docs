@@ -1,26 +1,36 @@
-import DocCard from '@theme/DocCard';
-import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+import DocCard from "@theme/DocCard";
+import DocCardList from "@theme/DocCardList";
+import { findSidebarItem } from "@site/src/sidebarUtils";
+import CardSection from "@site/src/components/CardSection";
+import OasisImage from "@site/static/img/OasisImage.svg";
 
 # Getting Started
 
-<h1 className="text-3xl font-bold underline">
-    tailwind
-</h1>
-
-<div className="card mt-10 w-1/2">
-    <div className="card-header">
-    <div className="card-title">Notifications</div>
-    <div className="card-description">You have 3 unread messages.</div>
-    <div className="card-action">
-        <button>Mark as Read</button>
-    </div>
-    </div>
-    <div className="card-content">View your notifications here.</div>
-    <div className="card-footer">
-    <button>View all</button>
-    </div>
-</div>
+<CardSection
+  title="Use Oasis"
+  description="This introductory part contains general overview of the Oasis Network such as the distinction between the consensus layer and different ParaTimes. It also covers wallets and other tools for managing your assets across the Oasis chains and how to use unique Oasis features."
+  image={<OasisImage className="w-80 h-auto text-indigo-600" />}
+  links={[
+    {
+      title: "Oasis Network",
+      description:
+        "This introductory part contains general overview of the Oasis Network such as the distinction between the consensus layer and different ParaTimes.",
+      href: "/general/oasis-network/",
+    },
+    {
+      title: "Manage your Tokens",
+      description:
+        "The native token on Oasis Mainnet is called ROSE. Learn how to manage them.",
+      href: "/general/manage-tokens/",
+    },
+    {
+      title: "Oasis CLI",
+      description:
+        "Oasis command-line interface (CLI) is a powerful all-in-one tool for interacting with the Oasis Network.",
+      href: "/general/manage-tokens/cli/",
+    },
+  ]}
+/>
 
 ## Use Oasis
 
@@ -29,11 +39,13 @@ the distinction between the consensus layer and different ParaTimes. It
 also covers wallets and other tools for managing your assets across the Oasis
 chains and how to use unique Oasis features.
 
-<DocCardList items={[
-    findSidebarItem('/general/oasis-network/'),
-    findSidebarItem('/general/manage-tokens/'),
-    findSidebarItem('/general/manage-tokens/cli/'),
-]} />
+<DocCardList
+  items={[
+    findSidebarItem("/general/oasis-network/"),
+    findSidebarItem("/general/manage-tokens/"),
+    findSidebarItem("/general/manage-tokens/cli/"),
+  ]}
+/>
 
 ## Build on Oasis
 
@@ -49,12 +61,14 @@ offchain** in a trusted environment (TEE) and that seamlessly communicate with
 Oasis Sapphire. This is ideal for trusted oracles, compute-expensive tasks
 in AI or as a backend for interactive games.
 
-<DocCardList items={[
-    findSidebarItem('/build/sapphire/'),
-    findSidebarItem('/build/opl/'),
-    findSidebarItem('/build/rofl/'),
-    findSidebarItem('/build/tools/'),
-]} />
+<DocCardList
+  items={[
+    findSidebarItem("/build/sapphire/"),
+    findSidebarItem("/build/opl/"),
+    findSidebarItem("/build/rofl/"),
+    findSidebarItem("/build/tools/"),
+  ]}
+/>
 
 [Oasis Sapphire]: ./build/sapphire/README.mdx
 [Oasis Privacy Layer]: ./build/opl/README.mdx
@@ -65,12 +79,14 @@ in AI or as a backend for interactive games.
 Contains information on official channels to get in touch with the Oasis Network
 developers and how to contribute to the network.
 
-<DocCardList items={[
-    findSidebarItem('/get-involved/'),
-    findSidebarItem('https://oasisrose.garden'),
-    findSidebarItem('/get-involved/run-node'),
-    findSidebarItem('/get-involved/oasis-core'),
-]} />
+<DocCardList
+  items={[
+    findSidebarItem("/get-involved/"),
+    findSidebarItem("https://oasisrose.garden"),
+    findSidebarItem("/get-involved/run-node"),
+    findSidebarItem("/get-involved/oasis-core"),
+  ]}
+/>
 
 ## Run Node
 
@@ -80,12 +96,14 @@ set up your node, let it be a validator node, perhaps running a ParaTime or
 just a simple client node for your server to submit transactions and perform
 queries on the network.
 
-<DocCardList items={[
-    findSidebarItem('/node/'),
-    findSidebarItem('/node/mainnet/'),
-    findSidebarItem('/node/testnet/'),
-    findSidebarItem('/node/run-your-node/'),
-]} />
+<DocCardList
+  items={[
+    findSidebarItem("/node/"),
+    findSidebarItem("/node/mainnet/"),
+    findSidebarItem("/node/testnet/"),
+    findSidebarItem("/node/run-your-node/"),
+  ]}
+/>
 
 ## Build ParaTimes
 
@@ -93,7 +111,7 @@ Apart from the Sapphire, Emerald, Cipher and the Key manager ParaTimes,
 you can also write, compile, sign and deploy your own ParaTime on the Oasis
 Network. This part describes the knobs you need to use to do so.
 
-<DocCard item={findSidebarItem('/build/tools/build-paratime/')} />
+<DocCard item={findSidebarItem("/build/tools/build-paratime/")} />
 
 ## Develop Core
 
@@ -101,11 +119,11 @@ Whether you want to contribute your code to the core components of the Oasis
 Network or just learn more about the Oasis consensus layer and other core
 components, this is the part for you.
 
-<DocCard item={ findSidebarItem('/core/') } />
+<DocCard item={findSidebarItem("/core/")} />
 
 Additions or changes to the interoperable Oasis network components are always
 made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows
 formal Architectural Decision Records (ADRs) which are first proposed, voted on
 and finally implemented, if accepted.
 
-<DocCard item={ findSidebarItem('/adrs') } />
+<DocCard item={findSidebarItem("/adrs")} />

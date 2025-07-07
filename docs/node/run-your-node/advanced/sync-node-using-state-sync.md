@@ -1,4 +1,4 @@
-# Using State Sync for Quick Bootstraping
+# Using State Sync for Quick Bootstrapping
 
 The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a
 [validator node](../validator-node.mdx) or a
@@ -12,7 +12,7 @@ data from the network's full nodes.
 :::info
 
 If you have access to an Oasis node that is synced with the latest height,
-another option to speed bootstraping a new Oasis node is to [copy state from one
+another option to speed bootstrapping a new Oasis node is to [copy state from one
 node to the other].
 
 :::

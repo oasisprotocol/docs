@@ -2,7 +2,7 @@
 
 [![CI tests status](https://github.com/oasisprotocol/docs/actions/workflows/ci-test.yml/badge.svg)](https://github.com/oasisprotocol/docs/actions/workflows/ci-test.yml)
 [![CI links status](https://github.com/oasisprotocol/docs/actions/workflows/ci-links.yml/badge.svg)](https://github.com/oasisprotocol/docs/actions/workflows/ci-links.yml)
-![Deployment status](https://github.com/oasisprotocol/docs/actions/workflows/deploy-main.yml/badge.svg)
+[![Deployment status](https://github.com/oasisprotocol/docs/actions/workflows/deploy-main.yml/badge.svg)](https://github.com/oasisprotocol/docs/actions/workflows/deploy-main.yml)
 
 This repository contains Oasis Docs deployed at <https://docs.oasis.io/>.
 

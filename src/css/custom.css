@@ -6,15 +6,15 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #0500e2;
-  --ifm-color-primary-dark: #0500e2;
-  --ifm-color-primary-darker: #0500e2;
-  --ifm-color-primary-darkest: #0500e2;
-  --ifm-color-primary-light: #0500e2;
-  --ifm-color-primary-lighter: #0500e2;
-  --ifm-color-primary-lightest: #0500e2;
+  --ifm-color-primary: #0500e1;
+  --ifm-color-primary-dark: #0500e1;
+  --ifm-color-primary-darker: #0500e1;
+  --ifm-color-primary-darkest: #0500e1;
+  --ifm-color-primary-light: #0500e1;
+  --ifm-color-primary-lighter: #0500e1;
+  --ifm-color-primary-lightest: #0500e1;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: "Roboto", sans-serif;
+  --ifm-font-family-base: 'Inter', sans-serif;
   --ifm-font-family-monospace: "Roboto Mono", monospace;
   --ifm-global-radius: 0;
   --ifm-alert-border-width: 5px;
@@ -155,4 +155,29 @@ html[data-theme="dark"] {
   margin-top: inherit !important;
   padding: 1rem;
   border-left: 3px solid var(--ifm-tabs-color-active-border);
+}
+
+/* Homepage specific styling */
+.homepage-container{
+  display: flex;
+  width: 100%;
+  max-width: 80rem;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.docs-doc-id-README .container .row .col{
+   width: 100% !important;
+   max-width: 80rem!important;
+}
+
+.card {
+  z-index: 1;
+}
+
+.card:hover h2::after {
+  top: 0rem;
+  right: 0rem;
 }

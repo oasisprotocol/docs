@@ -20,8 +20,8 @@ export default function CustomDocCardSection({ title, description, itemPaths, fu
   return (
     <div className={`${styles.customCard} ${fullWidth ? styles.fullWidth : ""}`}>
       <div className={`${fullWidth && styles.cardContentFlex}`}>
-  {svg && (
-    <div className={styles.animatedSvgWrapper}>
+      {svg && (
+        <div className={styles.animatedSvgWrapper}>
       {svg}
     </div>
   )}
@@ -36,9 +36,11 @@ export default function CustomDocCardSection({ title, description, itemPaths, fu
               <DocCard item={item} />
             </div>
           ))}
+        </div>
 
           {secondDescription && <p>{secondDescription}</p>}
-
+        
+        <div className={styles.cardLinksList}>
           {secondItems.length > 0 && (
             <div className={styles.cardLinksList}>
               {secondItems.map((item, idx) => (

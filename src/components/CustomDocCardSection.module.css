@@ -1,0 +1,166 @@
+/* CustomDocCardSection.module.css */
+
+.customCard {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, var(--base-primary, #0500E1) 180%);
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  max-width: calc(50% - 0.75rem);
+  padding-top: 18rem;
+  flex: 1 1 calc(50% - 0.75rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.customCard:hover{
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, var(--base-primary, lightblue) 180%);
+}
+
+.fullWidth {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.customCard h2 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.customCard > p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.cardItem {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem;
+}
+
+.cardItem:hover {
+  background-color: #f4f4f5;
+}
+
+.cardItem h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.cardItem p {
+  font-size: 1rem;
+  color: #71717A;
+  margin: 0.25rem 0 0;
+  line-height: 1.5;
+}
+
+.cardItem a {
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative;
+}
+
+.cardItem a h2 {
+  font-size: 1rem!important;
+  margin: 0;
+  font-weight: 600!important;
+}
+
+.cardItem a p {
+  font-size: 0.875rem!important;
+  margin: 0!important;
+  color: #71717A;
+  max-width: 29.625rem;
+}
+
+.cardItem a h2 span{
+  display: none!important;
+}
+
+.cardLinksList > .cardItem:last-child {
+  border-bottom: none;
+}
+
+.cardContentFlex{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.halfWidth{
+  width: 50%;
+  max-width: calc(50% - 0.75rem);
+}
+
+[data-custom-doccard] h2::after {
+  content: '';
+   background-image: url('/img/ArrowUpRight.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  position: absolute;
+  right: 0px;
+  transition: all 0.2s ease;
+}
+
+.cardItem:hover [data-custom-doccard] h2::after {
+  top: 0;
+  right: 0;
+}
+
+.animatedSvgWrapper{
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.animatedSvgWrapper svg {
+  width: auto;
+  height: 16rem;
+  display: block;
+}
+
+.animatedSvgWrapper svg  path, rect {
+  stroke: #0500e1;
+  stroke-width: 1;
+  fill: #0500e1;
+  fill-opacity: 0;
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 10000;
+  transition: all 0.25s ease;
+  animation:
+    draw 6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    fillFade 0.25s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
+}
+
+ .customCard:hover .animatedSvgWrapper svg path,
+.customCard:hover .animatedSvgWrapper svg rect {
+  transform: scale(0.9);
+  transition: all 0.25s ease!important;
+}
+
+
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillFade {
+  to {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+}
+

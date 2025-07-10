@@ -1,93 +1,97 @@
-import DocCard from '@theme/DocCard';
-import DocCardList from '@theme/DocCardList';
-import {findSidebarItem} from '@site/src/sidebarUtils';
+import DocCard from "@theme/DocCard";
+import DocCardList from "@theme/DocCardList";
+import { findSidebarItem } from "@site/src/sidebarUtils";
+import CustomDocCardSection from "@site/src/components/CustomDocCardSection";
+import OasisSvg from "@site/static/img/OasisGraphic.svg?react";
+import GetInvolvedSvg from "@site/static/img/GetInvolvedGraphic.svg?react";
+import BuildSvg from "@site/static/img/BuildGraphic.svg?react";
+import DevelopCoreSvg from "@site/static/img/DevelopCoreGraphic.svg?react";
+import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
 
 # Getting Started
 
-## Use Oasis
-
-This introductory part contains general overview of the Oasis Network such as
+<div class='homepage-container'>
+    <CustomDocCardSection
+  title="Use Oasis"
+  description="This introductory part contains general overview of the Oasis Network such as
 the distinction between the consensus layer and different ParaTimes. It
 also covers wallets and other tools for managing your assets across the Oasis
-chains and how to use unique Oasis features.
+chains and how to use unique Oasis features."
+  itemPaths={[
+    "/general/oasis-network/",
+    "/general/manage-tokens/",
+    "/general/manage-tokens/cli/",
+  ]}
+  svg={
+    <OasisSvg className="animatedSvg" />
+  }
+/>
 
-<DocCardList items={[
-    findSidebarItem('/general/oasis-network/'),
-    findSidebarItem('/general/manage-tokens/'),
-    findSidebarItem('/general/manage-tokens/cli/'),
-]} />
+<CustomDocCardSection
+  title="Get Involved"
+  description="Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network."
+  itemPaths={[
+    "/get-involved/",
+    "https://oasisrose.garden",
+    "/get-involved/run-node",
+    "/get-involved/oasis-core",
+  ]}
+  svg={<GetInvolvedSvg className="animatedSvg" />}
+/>
 
-## Build on Oasis
+<CustomDocCardSection
+  title="Build on Oasis"
+  description={
+    <>
+      Contains learning material for the smart contract developers. Since the
+      Oasis platform is best known for confidentiality, the most notable
+      ParaTime is <a href="/build/sapphire/">Oasis Sapphire</a>, an{" "}
+      <strong>EVM-compatible</strong> ParaTime with{" "}
+      <strong>built-in contract state encryption</strong>. The Oasis team also
+      prepared a set of libraries called the{" "}
+      <a href="/build/opl/">Oasis Privacy Layer</a> to{" "}
+      <strong>bridge existing dApps running on other chains</strong> and use the
+      unique Sapphire's confidentiality.
+      <br />
+      <br />
+      Our <a href="/build/rofl/">Runtime Offchain Logic (ROFL)</a> enables you to{" "}
+      <strong>build secure applications running offchain</strong> in a trusted environment
+      (TEE) that seamlessly communicate with Oasis Sapphire. This is ideal for trusted
+      oracles, compute-expensive tasks in AI, or as a backend for interactive games.
+    </>
+  }
+  fullWidth
+  itemPaths={[
+    "/build/sapphire/",
+    "/build/opl/",
+    "/build/rofl/",
+    "/build/tools/",
+  ]}
+  svg={<BuildSvg className="animatedSvg" />}
+/>
 
-Contains learning material for the smart contract developers. Since the Oasis
-platform is best known for confidentiality, the most notable ParaTime is
-[Oasis Sapphire], an **EVM-compatible** ParaTime with **built-in contract state
-encryption**. The Oasis team also prepared a set of libraries called the
-[Oasis Privacy Layer] to **bridge existing dApps running on other chains** to
-use the unique Sapphire's confidentiality.
+<CustomDocCardSection
+  title="Run Node"
+  description="If you want to run your own Oasis node, this part will provide you with guides on the current Mainnet and Testnet network parameters and how to set up your node, let it be a validator node, perhaps running a ParaTime or just a simple client node for your server to submit transactions and perform queries on the network."
+  itemPaths={[
+    "/node/",
+    "/node/mainnet/",
+    "/node/testnet/",
+    "/node/run-your-node/",
+  ]}
+  svg={<NodeseSvg className="animatedSvg" />}
+/>
 
-Our [Runtime OFfchain Logic (ROFL)][ROFL] enables you to **build secure applications running
-offchain** in a trusted environment (TEE) and that seamlessly communicate with
-Oasis Sapphire. This is ideal for trusted oracles, compute-expensive tasks
-in AI or as a backend for interactive games.
-
-<DocCardList items={[
-    findSidebarItem('/build/sapphire/'),
-    findSidebarItem('/build/opl/'),
-    findSidebarItem('/build/rofl/'),
-    findSidebarItem('/build/tools/'),
-]} />
-
-[Oasis Sapphire]: ./build/sapphire/README.mdx
-[Oasis Privacy Layer]: ./build/opl/README.mdx
-[ROFL]: ./build/rofl/README.mdx
-
-## Get Involved
-
-Contains information on official channels to get in touch with the Oasis Network
-developers and how to contribute to the network.
-
-<DocCardList items={[
-    findSidebarItem('/get-involved/'),
-    findSidebarItem('https://oasisrose.garden'),
-    findSidebarItem('/get-involved/run-node'),
-    findSidebarItem('/get-involved/oasis-core'),
-]} />
-
-## Run Node
-
-If you want to run your own Oasis node, this part will provide you
-with guides on the current Mainnet and Testnet network parameters and how to
-set up your node, let it be a validator node, perhaps running a ParaTime or
-just a simple client node for your server to submit transactions and perform
-queries on the network.
-
-<DocCardList items={[
-    findSidebarItem('/node/'),
-    findSidebarItem('/node/mainnet/'),
-    findSidebarItem('/node/testnet/'),
-    findSidebarItem('/node/run-your-node/'),
-]} />
-
-## Build ParaTimes
-
-Apart from the Sapphire, Emerald, Cipher and the Key manager ParaTimes,
-you can also write, compile, sign and deploy your own ParaTime on the Oasis
-Network. This part describes the knobs you need to use to do so.
-
-<DocCard item={findSidebarItem('/build/tools/build-paratime/')} />
-
-## Develop Core
-
-Whether you want to contribute your code to the core components of the Oasis
-Network or just learn more about the Oasis consensus layer and other core
-components, this is the part for you.
-
-<DocCard item={ findSidebarItem('/core/') } />
-
-Additions or changes to the interoperable Oasis network components are always
-made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows
-formal Architectural Decision Records (ADRs) which are first proposed, voted on
-and finally implemented, if accepted.
-
-<DocCard item={ findSidebarItem('/adrs') } />
+<CustomDocCardSection
+  title="Develop Core"
+  description="Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you."
+  itemPaths={[
+    "/core/",
+  ]}
+  secondDescription={`Additions or changes to the interoperable Oasis network components are always made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows formal Architectural Decision Records (ADRs) which are first proposed, voted on and finally implemented, if accepted.`}
+  secondItemPaths={[
+    "/adrs",
+  ]}
+  svg={<DevelopCoreSvg className="animatedSvg" />}
+/>
+</div>

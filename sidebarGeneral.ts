@@ -10,6 +10,7 @@ export const sidebarGeneral: SidebarsConfig = {
     {
       type: 'category',
       label: 'Oasis Network',
+      description: 'The Oasis Network is a Layer 1 decentralized blockchain network designed to be uniquely scalable, privacy-first and versatile.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -24,6 +25,7 @@ export const sidebarGeneral: SidebarsConfig = {
     {
       type: 'category',
       label: 'Manage your Tokens',
+      description: 'The native token on Oasis Mainnet is called ROSE. Learn how to manage them.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -70,6 +72,7 @@ export const sidebarGeneral: SidebarsConfig = {
         {
           type: 'category',
           label: 'Oasis CLI',
+          description: 'Oasis command-line interface (CLI) is a powerful all-in-one tool for interacting with the Oasis Network.',
           link: {
             type: 'doc',
             id: 'general/manage-tokens/cli/README',

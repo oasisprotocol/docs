@@ -52,6 +52,11 @@
   position: relative;
 }
 
+.cardDescription a{
+  color: var(--ifm-font-color-base)!important;
+  text-decoration: underline;
+}
+
 [data-theme='dark'] .cardItem a{
   border: none!important;
 }

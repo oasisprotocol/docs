@@ -5,12 +5,12 @@ import styles from "./CustomDocCardSection.module.css";
 
 type Props = {
   title: string;
-  description: string;
+  description: React.ReactNode;
   itemPaths: string[];
   fullWidth?: boolean;
   secondDescription?: string;
   secondItemPaths?: string[];
-  svg?: React.ReactNode;
+  svg: React.ReactNode;
 };
 
 export default function CustomDocCardSection({ title, description, itemPaths, fullWidth, secondDescription, secondItemPaths, svg }: Props) {
@@ -27,7 +27,7 @@ export default function CustomDocCardSection({ title, description, itemPaths, fu
   )}
         <div className={`${fullWidth && styles.halfWidth}`}>
             <h2>{title}</h2>
-            <p>{description}</p>
+            <p className={styles.cardDescription}>{description}</p>
         </div>
 
         <div className={`${styles.cardLinksList} ${fullWidth && styles.halfWidth}`}>

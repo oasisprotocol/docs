@@ -208,7 +208,7 @@ Finally execute the function `startPing`.
 :::info
 
 For the `Sapphire Testnet` an executor is running to relay the messages every
-few mintues. If you deploy on mainnet please refer to the [Executor chapter].
+few minutes. If you deploy on mainnet please refer to the [Executor chapter].
 :::
 
 [Executor chapter]:  ../celer/README.md#executor

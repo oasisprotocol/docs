@@ -182,7 +182,7 @@ ping 0.001 tBNB (1000000 gwei) will be enough.
 :::info
 
 For the `Sapphire Testnet` an executor is running to relay the messages every
-few mintues. If you deploy on mainnet please refer to the [Executor chapter].
+few minutes. If you deploy on mainnet please refer to the [Executor chapter].
 
 :::
 

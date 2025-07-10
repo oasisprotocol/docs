@@ -70,9 +70,9 @@ Storage on the Oasis Network is determined by each ParaTime. There is a clear se
 
 The first generation of DeFi dApps has provided the market with a huge number of protocols and primitives that are meant to serve as the foundation for the specific components of a new financial system. Despite the current focus on short-term returns, we at Oasis believe the goal of DeFi applications should be to give rise to a new financial system that removes subjectivity, bias, and inefficiencies by leveraging programmable parameters instead of status, wealth, and geography. Oasis aims to support the next wave of DeFi applications by offering better privacy and scalability features than other Layer 1 networks.
 
-### **I’ve seen Oasis use both the terms “Open Finance” and “DeFi”? What’s the difference?**
+### **I’ve seen Oasis use both the terms "Open Finance" and "DeFi"? What’s the difference?**
 
-The terms “Open Finance” and “DeFi” are interchangeable. However, we believe that “Open Finance” better represents the idea that the new financial system should be accessible to everyone who operates within the bounds of specific programmable parameters, regardless of their status, wealth, or geography**.**
+The terms "Open Finance" and "DeFi" are interchangeable. However, we believe that "Open Finance" better represents the idea that the new financial system should be accessible to everyone who operates within the bounds of specific programmable parameters, regardless of their status, wealth, or geography**.**
 
 ### **Will Oasis provide oracle solutions for use in DeFi applications?**
 

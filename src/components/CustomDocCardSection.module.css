@@ -52,6 +52,10 @@
   position: relative;
 }
 
+.cardDescription{
+  color: var(--ifm-color-secondary-text);
+}
+
 .cardDescription a{
   color: var(--ifm-font-color-base)!important;
   text-decoration: underline;
@@ -69,7 +73,7 @@
 
 .cardItem p {
   font-size: 1rem;
-  color: #71717A;
+  color: var(--ifm-color-secondary-text);
   margin: 0.25rem 0 0;
   line-height: 1.5;
 }
@@ -91,7 +95,7 @@
 .cardItem a p {
   font-size: 0.875rem!important;
   margin: 0!important;
-  color: #71717A;
+  color: var(--ifm-color-secondary-text);
   max-width: 90%;
 }
 
@@ -203,4 +207,3 @@ html[data-theme='dark'] .cardItem::after {
     gap: 1.5rem;
   }
 }
-

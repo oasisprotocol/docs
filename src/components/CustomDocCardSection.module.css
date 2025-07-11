@@ -160,7 +160,8 @@ html[data-theme='dark'] .cardItem::after {
   display: block;
 }
 
-.animatedSvgWrapper svg  path, rect {
+.animatedSvgWrapper svg path,
+.animatedSvgWrapper svg rect {
   stroke: var(--ifm-color-primary);
   stroke-width: 1;
   fill: var(--ifm-color-primary);
@@ -168,6 +169,10 @@ html[data-theme='dark'] .cardItem::after {
   stroke-dasharray: 10000;
   stroke-dashoffset: 10000;
   transition: all 0.25s ease;
+}
+
+.animateSvg svg path,
+.animateSvg svg rect {
   animation:
     draw 6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
     fillFade 0.25s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
@@ -176,7 +181,7 @@ html[data-theme='dark'] .cardItem::after {
 .customCard:hover .animatedSvgWrapper svg path,
 .customCard:hover .animatedSvgWrapper svg rect {
   transform: scale(0.9);
-  transition: all 0.25s ease!important;
+  transition: all 0.25s ease !important;
 }
 
 @keyframes draw {

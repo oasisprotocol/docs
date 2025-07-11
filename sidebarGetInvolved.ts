@@ -31,6 +31,7 @@ export const sidebarGetInvolved: SidebarsConfig = {
     {
       type: 'category',
       label: 'Run a Node',
+      description: 'The Oasis Network consists of several types of nodes, each serving distinct roles to maintain the functionality, security, and decentralization of the network',
       collapsible: false,
       link: {
         type: 'generated-index',

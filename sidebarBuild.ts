@@ -10,6 +10,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Sapphire',
+      description: 'Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -44,6 +45,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'ROFL',
+      description: 'Runtime OFf-chain Logic (ROFL) apps are a mechanism to augment the deterministic on-chain backend with verifiable off-chain applications',
       collapsible: false,
       link: {
         type: 'doc',
@@ -78,6 +80,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Oasis Privacy Layer',
+      description: 'The Oasis Privacy Layer (OPL) is a powerful solution that enables developers to integrate privacy features into their decentralized applications (dApps) across multiple EVM-compatible networks.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -139,6 +142,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Tools & Services',
+      description: 'Oasis integrates with a number of services and provides tooling support for developers using Remix (unencrypted transactions only), Sourcify, Docker images, Band, and more.',
       collapsible: false,
       link: {
         type: 'doc',

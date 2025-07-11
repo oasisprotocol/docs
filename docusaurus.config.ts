@@ -77,6 +77,12 @@ const config: Config = {
       redirectsOptions,
     ],
   ],
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+      type: 'text/css',
+    },
+  ],
   themes: [
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
@@ -113,6 +119,7 @@ const config: Config = {
           },
           {
             label: 'Get Involved',
+            description: 'Welcome! This documentation is designed to provide you with a comprehensive understanding and step-by-step guidance for becoming a node operator within the Oasis Network.',
             to: '/get-involved/',
             position: 'left',
             activeBaseRegex: `/get-involved/`,
@@ -190,10 +197,12 @@ const config: Config = {
             items: [
               {
                 label: 'Mainnet',
+                description: 'These are the current parameters for the Mainnet:',
                 to: 'node/mainnet/',
               },
               {
                 label: 'Testnet',
+                description: 'These are the current parameters for the Testnet, a test-only network for testing out upcoming features and changes to the protocol.',
                 to: 'node/testnet/',
               },
             ],

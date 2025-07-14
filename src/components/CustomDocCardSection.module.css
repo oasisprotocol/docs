@@ -39,10 +39,12 @@
   font-size: 2rem;
   margin: 0 0 0.5rem 0;
   position: relative;
+  color: var(--ifm-color-card-heading);
 }
 
 .customCard h2 a{
-  color: var(--ifm-heading-color);
+  color: var(--ifm-color-card-heading);
+  transition: all .2s ease;
 }
 
 .customCard > p {
@@ -76,6 +78,7 @@
   font-size: 1rem;
   font-weight: 500;
   margin: 0;
+  color: var(--ifm-color-card-heading-secondary);
 }
 
 .cardItem p {
@@ -93,10 +96,16 @@
   overflow: visible;
 }
 
-.cardItem a h2 {
+.cardItem a h3 {
   font-size: 1rem!important;
   margin: 0;
   font-weight: 600!important;
+  color: var(--ifm-color-card-heading-secondary);
+  transition: all .2s ease;
+}
+
+.cardItem a:hover h3 {
+  color: var(--ifm-color-link);
 }
 
 .cardItem a p {

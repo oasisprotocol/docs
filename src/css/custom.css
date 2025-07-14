@@ -21,6 +21,8 @@
   --ifm-alert-border-width: 5px;
   --docusaurus-highlighted-code-line-bg: #dddfe1;
   --ifm-color-secondary-text: #71717A;
+  --ifm-color-card-heading: #09090B;
+  --ifm-color-card-heading-secondary: #18181B;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -34,6 +36,8 @@ html[data-theme='dark'] {
   --ifm-color-primary-lightest: #00ffff;
   --docusaurus-highlighted-code-line-bg: #646464;
   --ifm-color-secondary-text: #A1A1AA;
+  --ifm-color-card-heading: #FAFAFA;
+  --ifm-color-card-heading-secondary: #FAFAFA;
 }
 
 /* Custom fonts */

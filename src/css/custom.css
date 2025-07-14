@@ -185,6 +185,8 @@ html[data-theme="dark"] {
   right: 0rem;
 }
 
-.docs-doc-id-README .theme-doc-footer{
+.docs-doc-id-README .theme-doc-footer,
+.docs-doc-id-README h1{
   display: none;
 }
+

@@ -1,7 +1,7 @@
 import DocCard from "@theme/DocCard";
 import DocCardList from "@theme/DocCardList";
 import { findSidebarItem } from "@site/src/sidebarUtils";
-import CustomDocCardSection from "@site/src/components/CustomDocCardSection";
+import DocCardSection from "@site/src/components/DocCardSection";
 import OasisSvg from "@site/static/img/OasisGraphic.svg?react";
 import GetInvolvedSvg from "@site/static/img/GetInvolvedGraphic.svg?react";
 import BuildSvg from "@site/static/img/BuildGraphic.svg?react";
@@ -11,7 +11,7 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
 # Getting Started
 
 <div className='homepage-container'>
-  <CustomDocCardSection
+  <DocCardSection
     title="Use Oasis"
     path="/general/"
     description="This introductory part contains general overview of the Oasis Network such as
@@ -28,7 +28,7 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
     }
 />
 
-<CustomDocCardSection
+<DocCardSection
   title="Get Involved"
   path="/get-involved/"
   description="Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network."
@@ -41,7 +41,7 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
   svg={<GetInvolvedSvg className="animatedSvg" />}
 />
 
-<CustomDocCardSection
+<DocCardSection
   title="Build on Oasis"
   path="/build/"
   description={
@@ -71,7 +71,7 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
   svg={<BuildSvg className="animatedSvg" />}
 />
 
-<CustomDocCardSection
+<DocCardSection
   title="Run Node"
   path="/node/"
   description="If you want to run your own Oasis node, this part will provide you with guides on the current Mainnet and Testnet network parameters and how to set up your node, let it be a validator node, perhaps running a ParaTime or just a simple client node for your server to submit transactions and perform queries on the network."
@@ -84,7 +84,7 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
   svg={<NodeseSvg className="animatedSvg" />}
 />
 
-<CustomDocCardSection
+<DocCardSection
   title="Develop Core"
   path="/core/"
   description="Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you."

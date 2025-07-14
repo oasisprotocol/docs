@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import DocCard from "@theme/DocCard";
 import { findSidebarItem } from "@site/src/sidebarUtils";
-import styles from "./CustomDocCardSection.module.css";
+import styles from "./DocCardSection.module.css";
 import Link from "@docusaurus/Link";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
   svg: React.ReactNode;
 };
 
-export default function CustomDocCardSection({
+export default function DocCardSection({
   title,
   path,
   description,

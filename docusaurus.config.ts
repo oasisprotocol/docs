@@ -77,12 +77,6 @@ const config: Config = {
       redirectsOptions,
     ],
   ],
-  stylesheets: [
-    {
-      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-      type: 'text/css',
-    },
-  ],
   themes: [
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),

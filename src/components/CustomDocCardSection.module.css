@@ -32,17 +32,24 @@
 .fullWidth {
   flex: 1 1 100%;
   max-width: 100%;
+  position: relative;
 }
 
 .customCard h2 {
   font-size: 2rem;
   margin: 0 0 0.5rem 0;
+  position: relative;
+}
+
+.customCard h2 a{
+  color: var(--ifm-heading-color);
 }
 
 .customCard > p {
   font-size: 0.9rem;
   color: #64748b;
   margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .cardItem {
@@ -57,7 +64,7 @@
 }
 
 .cardDescription a{
-  color: var(--ifm-font-color-base)!important;
+  color: var(--ifm-color-secondary-text)!important;
   text-decoration: underline;
 }
 
@@ -117,6 +124,7 @@
 .halfWidth{
   width: 50%;
   max-width: calc(50% - 0.75rem);
+  z-index: 1;
 }
 
 .cardItem::after {

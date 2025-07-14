@@ -11,24 +11,26 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
 # Getting Started
 
 <div className='homepage-container'>
-    <CustomDocCardSection
-  title="Use Oasis"
-  description="This introductory part contains general overview of the Oasis Network such as
-the distinction between the consensus layer and different ParaTimes. It
-also covers wallets and other tools for managing your assets across the Oasis
-chains and how to use unique Oasis features."
-  itemPaths={[
-    "/general/oasis-network/",
-    "/general/manage-tokens/",
-    "/general/manage-tokens/cli/",
-  ]}
-  svg={
-    <OasisSvg className="animatedSvg" />
-  }
+  <CustomDocCardSection
+    title="Use Oasis"
+    path="/general/"
+    description="This introductory part contains general overview of the Oasis Network such as
+  the distinction between the consensus layer and different ParaTimes. It
+  also covers wallets and other tools for managing your assets across the Oasis
+  chains and how to use unique Oasis features."
+    itemPaths={[
+      "/general/oasis-network/",
+      "/general/manage-tokens/",
+      "/general/manage-tokens/cli/",
+    ]}
+    svg={
+      <OasisSvg className="animatedSvg" />
+    }
 />
 
 <CustomDocCardSection
   title="Get Involved"
+  path="/get-involved/"
   description="Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network."
   itemPaths={[
     "/get-involved/",
@@ -41,6 +43,7 @@ chains and how to use unique Oasis features."
 
 <CustomDocCardSection
   title="Build on Oasis"
+  path="/build/"
   description={
     <>
       Contains learning material for the smart contract developers. Since the
@@ -70,6 +73,7 @@ chains and how to use unique Oasis features."
 
 <CustomDocCardSection
   title="Run Node"
+  path="/node/"
   description="If you want to run your own Oasis node, this part will provide you with guides on the current Mainnet and Testnet network parameters and how to set up your node, let it be a validator node, perhaps running a ParaTime or just a simple client node for your server to submit transactions and perform queries on the network."
   itemPaths={[
     "/node/",
@@ -82,6 +86,7 @@ chains and how to use unique Oasis features."
 
 <CustomDocCardSection
   title="Develop Core"
+  path="/core/"
   description="Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you."
   itemPaths={[
     "/core/",

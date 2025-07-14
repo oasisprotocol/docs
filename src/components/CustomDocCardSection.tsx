@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import DocCard from "@theme/DocCard";
 import { findSidebarItem } from "@site/src/sidebarUtils";
 import styles from "./CustomDocCardSection.module.css";
+import Link from "@docusaurus/Link";
 
 type Props = {
   title: string;
+  path:string;
   description: React.ReactNode;
   itemPaths: string[];
   fullWidth?: boolean;
@@ -15,6 +17,7 @@ type Props = {
 
 export default function CustomDocCardSection({
   title,
+  path,
   description,
   itemPaths,
   fullWidth,
@@ -64,7 +67,9 @@ export default function CustomDocCardSection({
           </div>
         )}
         <div className={`${fullWidth && styles.halfWidth}`}>
-          <h2>{title}</h2>
+          <h2 className="section-title">
+            <Link to={path}>{title}</Link>
+          </h2>
           <p className={styles.cardDescription}>{description}</p>
         </div>
 

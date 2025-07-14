@@ -71,6 +71,7 @@ export default function DocCardSection({
             <Link to={path}>{title}</Link>
           </h2>
           <p className={styles.cardDescription}>{description}</p>
+          {secondDescription && <p className={styles.cardDescription}>{secondDescription}</p>}
         </div>
 
         <div className={`${styles.cardLinksList} ${fullWidth && styles.halfWidth}`}>
@@ -79,11 +80,6 @@ export default function DocCardSection({
               <DocCard item={item} />
             </div>
           ))}
-        </div>
-
-        {secondDescription && <p>{secondDescription}</p>}
-
-        <div className={styles.cardLinksList}>
           {secondItems.length > 0 && (
             <div className={styles.cardLinksList}>
               {secondItems.map((item, idx) => (

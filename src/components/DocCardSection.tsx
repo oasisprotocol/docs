@@ -10,8 +10,6 @@ type Props = {
   description: React.ReactNode;
   itemPaths: string[];
   fullWidth?: boolean;
-  secondDescription?: string;
-  secondItemPaths?: string[];
   svg: React.ReactNode;
 };
 
@@ -21,15 +19,12 @@ export default function DocCardSection({
   description,
   itemPaths,
   fullWidth,
-  secondDescription,
-  secondItemPaths,
   svg,
 }: Props) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [animate, setAnimate] = useState(false);
 
   const items = itemPaths.map((path) => findSidebarItem(path)).filter(Boolean);
-  const secondItems = secondItemPaths?.map((path) => findSidebarItem(path)).filter(Boolean) ?? [];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,7 +66,6 @@ export default function DocCardSection({
             <Link to={path}>{title}</Link>
           </h2>
           <p className={styles.cardDescription}>{description}</p>
-          {secondDescription && <p className={styles.cardDescription}>{secondDescription}</p>}
         </div>
 
         <div className={`${styles.cardLinksList} ${fullWidth && styles.halfWidth}`}>
@@ -80,15 +74,6 @@ export default function DocCardSection({
               <DocCard item={item} />
             </div>
           ))}
-          {secondItems.length > 0 && (
-            <div className={styles.cardLinksList}>
-              {secondItems.map((item, idx) => (
-                <div key={idx} className={styles.cardItem} data-custom-doccard>
-                  <DocCard item={item} />
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </div>
     </div>

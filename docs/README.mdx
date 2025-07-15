@@ -48,17 +48,18 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
     <>
       Contains learning material for the smart contract developers. Since the
       Oasis platform is best known for confidentiality, the most notable
-      ParaTime is <a href="/build/sapphire/">Oasis Sapphire</a>, an{" "}
+      ParaTime is <a href="/build/sapphire/">Oasis Sapphire</a>, an
       EVM-compatible ParaTime with built-in contract state encryption. The Oasis
-      team also prepared a set of libraries called the{" "}
-      <a href="/build/opl/">Oasis Privacy Layer</a> to bridge existing dApps
-      running on other chains and use the unique Sapphire's confidentiality.
+      team also prepared a set of libraries called the
+      <a href="/build/opl/">Oasis Privacy Layer</a> to bridge existing dApps running
+      on other chains and use the unique Sapphire's confidentiality.
       <br />
       <br />
-      Our <a href="/build/rofl/">Runtime Offchain Logic (ROFL)</a> enables you to{" "}
-      build secure applications running offchain in a trusted environment (TEE) that
-      seamlessly communicate with Oasis Sapphire. This is ideal for trusted oracles,
-      compute-expensive tasks in AI, or as a backend for interactive games.
+      Our <a href="/build/rofl/">Runtime Offchain Logic (ROFL)</a> enables you
+      to build secure applications running offchain in a trusted environment
+      (TEE) that seamlessly communicate with Oasis Sapphire. This is ideal for
+      trusted oracles, compute-expensive tasks in AI, or as a backend for
+      interactive games.
     </>
   }
   fullWidth
@@ -87,12 +88,16 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
 <DocCardSection
   title="Develop Core"
   path="/core/"
-  description="Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you."
+  description={
+    <>
+    Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you. 
+    <br/>
+    <br/>
+    Additions or changes to the interoperable Oasis network components are always made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows formal Architectural Decision Records (ADRs) which are first proposed, voted on and finally implemented, if accepted.
+    </>
+  }
   itemPaths={[
     "/core/",
-  ]}
-  secondDescription={`Additions or changes to the interoperable Oasis network components are always made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows formal Architectural Decision Records (ADRs) which are first proposed, voted on and finally implemented, if accepted.`}
-  secondItemPaths={[
     "/adrs",
   ]}
   svg={<DevelopCoreSvg className="animatedSvg" />}

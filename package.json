@@ -26,6 +26,7 @@
     "@docusaurus/preset-classic": "^3.7.0",
     "@docusaurus/remark-plugin-npm2yarn": "^3.7.0",
     "@easyops-cn/docusaurus-search-local": "0.45.0",
+    "@fontsource-variable/inter": "^5.2.6",
     "@mdx-js/react": "^3.0.0",
     "@mermaid-js/mermaid-cli": "^11.4.0",
     "clsx": "^2.0.0",

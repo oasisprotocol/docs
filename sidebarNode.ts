@@ -10,6 +10,7 @@ export const sidebarNode: SidebarsConfig = {
     {
       type: 'category',
       label: 'Mainnet',
+      description: 'These are the current parameters for the Mainnet.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -37,6 +38,7 @@ export const sidebarNode: SidebarsConfig = {
     {
       type: 'category',
       label: 'Testnet',
+      description: 'These are the current parameters for the Testnet, a test-only network for testing out upcoming features and changes to the protocol.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -50,6 +52,7 @@ export const sidebarNode: SidebarsConfig = {
     {
       type: 'category',
       label: 'Run Your Node',
+      description: 'The Oasis Network consists of several types of nodes, each serving distinct roles to maintain the functionality, security, and decentralization of the network.',
       collapsible: false,
       link: {
         type: 'doc',

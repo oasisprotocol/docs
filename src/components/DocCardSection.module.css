@@ -1,0 +1,231 @@
+.customCard {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, var(--ifm-color-primary) 180%);
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  max-width: calc(50% - 0.75rem);
+  padding-top: 18rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.customCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, #5FA8D3	 180%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+
+.customCard:hover::before {
+  opacity: 1;
+}
+
+
+.fullWidth {
+  flex: 1 1 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.customCard h2 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+  color: var(--ifm-color-card-heading);
+}
+
+.customCard h2 a{
+  color: var(--ifm-color-card-heading);
+  transition: all .2s ease;
+}
+
+.customCard > p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.cardItem {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 0;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.cardDescription{
+  color: var(--ifm-color-secondary-text);
+}
+
+.cardDescription a{
+  color: var(--ifm-color-secondary-text)!important;
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .cardItem a{
+  border: none!important;
+}
+
+.cardItem h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--ifm-color-card-heading-secondary);
+}
+
+.cardItem p {
+  font-size: 1rem;
+  color: var(--ifm-color-secondary-text);
+  margin: 0.25rem 0 0;
+  line-height: 1.5;
+}
+
+.cardItem a {
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative;
+  overflow: visible;
+}
+
+.cardItem a h3 {
+  font-size: 1rem!important;
+  margin: 0;
+  font-weight: 600!important;
+  color: var(--ifm-color-card-heading-secondary);
+  transition: all .2s ease;
+}
+
+.cardItem a:hover h3 {
+  color: var(--ifm-color-link);
+}
+
+.cardItem a p {
+  font-size: 0.875rem!important;
+  margin: 0!important;
+  color: var(--ifm-color-secondary-text);
+  max-width: 90%;
+}
+
+.cardItem a h2 span{
+  display: none!important;
+}
+
+.cardLinksList .cardItem:last-child {
+  border-bottom: none;
+}
+
+.cardContentFlex{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.halfWidth{
+  width: 50%;
+  max-width: calc(50% - 0.75rem);
+  z-index: 1;
+}
+
+.cardItem::after {
+  content: '';
+   background-image: url('/img/ArrowUpRight.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  position: absolute;
+  right: 1rem;
+  top: calc(50% - 0.75rem);
+  transition: all 0.25s ease;
+  z-index: 3;
+}
+
+html[data-theme='dark'] .cardItem::after {
+  background-image: url('/img/ArrowUpRightWhite.png');
+}
+
+.cardItem:hover::after {
+  top: calc(50% - 1rem);
+  right: 0.5rem;
+}
+
+.animatedSvgWrapper{
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.animatedSvgWrapper svg {
+  width: auto;
+  height: 16rem;
+  display: block;
+}
+
+.animatedSvgWrapper svg path,
+.animatedSvgWrapper svg rect {
+  stroke: var(--ifm-color-primary);
+  stroke-width: 1;
+  fill: var(--ifm-color-primary);
+  fill-opacity: 0;
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 10000;
+  transition: all 0.25s ease;
+}
+
+.animateSvg svg path,
+.animateSvg svg rect {
+  animation:
+    draw 6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    fillFade 0.25s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
+}
+
+.customCard:hover .animatedSvgWrapper svg path,
+.customCard:hover .animatedSvgWrapper svg rect {
+  transform: scale(0.9);
+  transition: all 0.25s ease !important;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillFade {
+  to {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .customCard {
+    max-width: 100%;
+  }
+
+  .halfWidth{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cardContentFlex{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

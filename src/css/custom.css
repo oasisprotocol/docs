@@ -3,22 +3,26 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
+ @import "@fontsource-variable/inter";
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #0500e2;
-  --ifm-color-primary-dark: #0500e2;
-  --ifm-color-primary-darker: #0500e2;
-  --ifm-color-primary-darkest: #0500e2;
-  --ifm-color-primary-light: #0500e2;
-  --ifm-color-primary-lighter: #0500e2;
-  --ifm-color-primary-lightest: #0500e2;
+  --ifm-color-primary: #0500e1;
+  --ifm-color-primary-dark: #0500e1;
+  --ifm-color-primary-darker: #0500e1;
+  --ifm-color-primary-darkest: #0500e1;
+  --ifm-color-primary-light: #0500e1;
+  --ifm-color-primary-lighter: #0500e1;
+  --ifm-color-primary-lightest: #0500e1;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: "Roboto", sans-serif;
+  --ifm-font-family-base: 'Inter', sans-serif;
   --ifm-font-family-monospace: "Roboto Mono", monospace;
   --ifm-global-radius: 0;
   --ifm-alert-border-width: 5px;
   --docusaurus-highlighted-code-line-bg: #dddfe1;
+  --ifm-color-secondary-text: #71717A;
+  --ifm-color-card-heading: #09090B;
+  --ifm-color-card-heading-secondary: #18181B;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -31,6 +35,9 @@ html[data-theme='dark'] {
   --ifm-color-primary-lighter: #00ffff;
   --ifm-color-primary-lightest: #00ffff;
   --docusaurus-highlighted-code-line-bg: #646464;
+  --ifm-color-secondary-text: #A1A1AA;
+  --ifm-color-card-heading: #FAFAFA;
+  --ifm-color-card-heading-secondary: #FAFAFA;
 }
 
 /* Custom fonts */
@@ -90,7 +97,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   width: 24px;
   height: 24px;
   display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='#000' stroke-width='2' d='M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm0 0c3 0 4-5 4-11S15 1 12 1 8 6 8 12s1 11 4 11zM2 16h20M2 8h20'%3E%3C/path%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2' d='M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm0 0c3 0 4-5 4-11S15 1 12 1 8 6 8 12s1 11 4 11zM2 16h20M2 8h20' /%3E%3C/svg%3E")
   no-repeat;
 }
 
@@ -100,8 +107,8 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 }
 
 [data-theme='dark'] .header-www-link::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='#fff' stroke-width='2' d='M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm0 0c3 0 4-5 4-11S15 1 12 1 8 6 8 12s1 11 4 11zM2 16h20M2 8h20'%3E%3C/path%3E%3C/svg%3E")
-  no-repeat;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' d='M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11zm0 0c3 0 4-5 4-11S15 1 12 1 8 6 8 12s1 11 4 11zM2 16h20M2 8h20' /%3E%3C/svg%3E")
+    no-repeat;
 }
 
 /* Add vertical spacing between the individual DocCards outside of DocCardList
@@ -156,3 +163,34 @@ html[data-theme="dark"] {
   padding: 1rem;
   border-left: 3px solid var(--ifm-tabs-color-active-border);
 }
+
+/* Homepage specific styling */
+.homepage-container{
+  display: flex;
+  width: 100%;
+  max-width: 80rem;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.docs-doc-id-README .container .row .col{
+   width: 100% !important;
+   max-width: 80rem!important;
+}
+
+.card {
+  z-index: 1;
+}
+
+.card:hover h2::after {
+  top: 0rem;
+  right: 0rem;
+}
+
+.docs-doc-id-README .theme-doc-footer,
+.docs-doc-id-README h1{
+  display: none;
+}
+

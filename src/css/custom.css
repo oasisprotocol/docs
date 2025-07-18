@@ -194,3 +194,7 @@ html[data-theme="dark"] {
   display: none;
 }
 
+/* DocCard specific styling */
+.col--6 .card {
+  max-width: 100%!important;
+}

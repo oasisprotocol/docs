@@ -68,7 +68,7 @@ export const sidebarGeneral: SidebarsConfig = {
             'general/manage-tokens/holding-rose-tokens/ledger-wallet',
           ]
         },
-        'general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime',
+        'general/manage-tokens/how-to-bridge-assets',
         {
           type: 'category',
           label: 'Oasis CLI',

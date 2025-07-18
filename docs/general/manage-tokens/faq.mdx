@@ -6,6 +6,8 @@ import TabItem from '@theme/TabItem';
 This documents answers frequently asked questions about the official Oasis and
 3rd party wallets & custody providers supporting ROSE.
 
+## Wallets
+
 ### How can I transfer ROSE tokens from my BitPie wallet to my ROSE Wallet?
 
 :::caution
@@ -33,6 +35,13 @@ your assets.
 [rose-wallet-import-private-key]: ../../general/manage-tokens/oasis-wallets/web.mdx#import-an-existing-account
 
 ### How can I export Oasis private key from a working BitPie wallet?
+
+Access your BitPie wallet's "Receive" screen, tap the kebab menu, select
+"Display Private Key", enter your PIN, and copy the Base64-encoded private key
+to import into ROSE Wallet.
+
+<details>
+<summary>Detailed Info:</summary>
 
 :::tip
 
@@ -63,7 +72,16 @@ format (e.g.
 which you can
 [import into ROSE Wallet][rose-wallet-import-private-key].
 
+</details>
+
 ### How can I export Oasis private key, if BitPie doesn't show my ROSE account anymore?
+
+Use the Oasis unmnemonic tool to convert your BitPie mnemonic to an Oasis
+private key by selecting the Bitpie algorithm, entering your 12-word mnemonic,
+and generating the private key file to import into ROSE Wallet.
+
+<details>
+<summary>Detailed Info:</summary>
 
 <!-- NOTE: This answer is similar to the Ledger answer below. Keep them in sync. -->
 
@@ -156,7 +174,16 @@ and [paste it into the ROSE Wallet][rose-wallet-import-private-key], or
 [unmnemonic-macos]: https://github.com/oasisprotocol/tools/releases/download/unmnemonic-tool-0.1.0/unmnemonic_darwin_all
 [`oasis wallet import-file`]: cli/wallet.md#import-file
 
+</details>
+
 ### Chromium under Ubuntu does not recognize my Ledger device. What is the problem?
+
+The snap-packaged Chromium browser blocks USB device access due to security
+restrictions, so install native Chromium or Google Chrome to resolve Ledger
+connectivity issues.
+
+<details>
+<summary>Detailed Info:</summary>
 
 First check that you added the Ledger udev device descriptors as mentioned in
 the [Linux installation guide]. Next, check that your Ledger wallet is
@@ -179,7 +206,14 @@ official [Chormium beta PPA] or the official [Google Chrome .deb package].
 [Chormium beta PPA]: https://launchpad.net/\~saiarcot895/+archive/ubuntu/chromium-beta
 [Google Chrome .deb package]: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
+</details>
+
 ### Are Ethereum and ROSE Wallet that different? I can use the same mnemonics with both, right?
+
+While both wallets use BIP39 mnemonics, ROSE and Ethereum wallets use different signature schemes and derivation paths, making their addresses and private keys incompatible despite using the same mnemonic words.
+
+<details>
+<summary>Detailed Info:</summary>
 
 Yes, both ROSE and Ethereum wallets make use of the mnemonics as defined in [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) and they even use the same wordlist to derive the keypairs for your wallet. However, they use a different **signature scheme and a derivation path**, so the addresses and the private keys are incompatible.
 
@@ -198,14 +232,21 @@ Here's a task for you:
 
 As an additional exercise, you can also create an Oasis account using the BIP39 mnemonic from the step 1 above. You will notice that the imported account's base64-encoded private key in the account details screen is different from the one in step 7 above. That's because Oasis uses a different _derivation path_ than Ethereum.
 
+</details>
+
 ### Which derivation path should I use on Ledger? ADR-8 or Legacy? {#ledger-derivation-paths}
 
+Use ADR-8 for faster key derivation (twice as fast) and compatibility with ROSE Wallet recovery, though legacy derivation remains supported for existing users.
+
+<details>
+<summary>Detailed Info:</summary>
+
 To convert your mnemonic phrase into a private key for signing transactions,
-each wallet (hardware or software) performs a *key derivation*. The Oasis
+each wallet (hardware or software) performs a _key derivation_. The Oasis
 Protocol Foundation standardized the key derivation for the official ROSE Wallet
 in a document called [ADR-8] back in January 2021. However, the Ledger
 hardware wallet already supported signing transactions at that time using a
-custom (we now call it *legacy*) derivation path which is incompatible with
+custom (we now call it _legacy_) derivation path which is incompatible with
 the one defined in ADR-8. Later, in Oasis app for Ledger v2.3.1 support for
 ADR-8 was added so the wallet can request either derivation from the Ledger
 device.
@@ -223,14 +264,21 @@ For reasons above, we recommend the usage of ADR-8. However, since there are
 no security considerations at stake, the ROSE Wallet will support legacy
 derivation on Ledger for the foreseeable future.
 
+</details>
+
 ### I lost my Ledger or my Ledger is broken. I urgently need to access my assets. Can I import Ledger mnemonic into ROSE Wallet?
+
+For ADR-8 derivation, import directly into Oasis CLI; for legacy derivation, use the unmnemonic tool to convert your 24-word Ledger mnemonic, but note this compromises the mnemonic's security permanently.
+
+<details>
+<summary>Detailed Info:</summary>
 
 <!-- NOTE: This answer is similar to the BitPie answer above. Keep them in sync. -->
 
 :::danger
 
 When you import your Ledger mnemonic to a software wallet, consider
-that mnemonic *potentially exposed/compromised*, i.e. not appropriate for a
+that mnemonic _potentially exposed/compromised_, i.e. not appropriate for a
 hardware wallet mnemonic anymore. If you use a new hardware wallet in the
 future, **never restore it from the mnemonic that was previously used by any
 software wallet!**
@@ -348,6 +396,8 @@ can either:
 
 [`oasis wallet import`]: cli/wallet.md#import
 
+</details>
+
 ### The wallet gives me _Invalid keyphrase_ error when importing my wallet from mnemonics. How do I solve it?
 
 Please check that:
@@ -385,14 +435,85 @@ Discord channel][discord].
 
 ### I sent my ROSE to BinanceStaking address.  Are they staked? Are they lost? What can I do?
 
-If you just make a **Send** transaction to BinanceStaking address `oasis1qqekv2ymgzmd8j2s2u7g0hhc7e77e654kvwqtjwm` then your ROSE coins are not staked. They are now owned by BinanceStaking, which means they are not lost but only owned and managed by them. In this case, you should contact Binance via their [Support Center](https://www.binance.com/en/support) or [Submit a request](https://www.binance.com/en/chat).
+If you just make a **Send** transaction to BinanceStaking address
+`oasis1qqekv2ymgzmd8j2s2u7g0hhc7e77e654kvwqtjwm` then your ROSE coins are not
+staked. They are now owned by BinanceStaking, which means they are not lost but
+only owned and managed by them. In this case, you should contact Binance via
+their [Support Center](https://www.binance.com/en/support) or
+[Submit a request](https://www.binance.com/en/chat).
 
 :::info
 
-Sending ROSE is different than staking it! With the staking transaction you **lend** your ROSE to the chosen validator and you are rewarded for that. **Sending** your ROSE to the receiving address you enter means that only the person who owns the private key (e.g. mnemonics) of that receiving address can manage these tokens and no one else. To learn more, read the [Staking and Delegating chapter](staking-and-delegating.md).
+Sending ROSE is different than staking it! With the staking transaction you
+**lend** your ROSE to the chosen validator and you are rewarded for that.
+**Sending** your ROSE to the receiving address you enter means that only the
+person who owns the private key (e.g. mnemonics) of that receiving address can
+manage these tokens and no one else. To learn more, read the
+[Staking and Delegating chapter](staking-and-delegating.md).
 
 :::
 
 ### I withdrew ROSE from Emerald to an exchange (Binance, KuCoin), but my deposit is not there. What should I do?
 
-Withdrawals from Emerald are slightly different from regular `staking.Transfer` transactions used to send ROSE on the consensus layer. If you withdrew your ROSE directly to an exchange and you were not funded there, contact the exchange support and provide them the link to your account on the [Oasis Scan](https://www.oasisscan.com) where they can verify all transactions. To learn more about this issue, read the [Manage tokens](README.mdx) chapter.
+Withdrawals from Emerald are slightly different from regular `staking.Transfer`
+transactions used to send ROSE on the consensus layer. If you withdrew your
+ROSE directly to an exchange and you were not funded there, contact the
+exchange support and provide them the link to your account on the
+[Oasis Scan](https://www.oasisscan.com) where they can verify all transactions.
+To learn more about this issue, read the [Manage tokens](README.mdx) chapter.
+
+## Bridging and Transferring Assets
+
+### Do I need ROSE in my wallet to bridge assets to Sapphire?
+
+No ROSE needed for bridging (pay in source chain's currency). But you need
+ROSE on Sapphire to use your bridged tokens. Get ROSE first via methods above.
+0.5 ROSE covers many transactions.
+
+### What assets can I bridge to Oasis Sapphire?
+
+ETH, USDC, USDT, WBTC, MATIC, BNB, ROSE, and other major tokens. Check the
+bridge interface for full list. Only bridge tokens with utility on Sapphire.
+
+### Can I bridge directly from Layer-2 networks like Arbitrum or Base?
+
+No. Currently, cBridge only supports bridging to Sapphire from Ethereum, Polygon,
+and BNB Chain. Layer-2 networks like Arbitrum and Base are not supported yet.
+
+### How long does a bridge transfer take?
+
+Usually under 5 minutes. Polygon and BNB Chain are typically faster than
+Ethereum mainnet. Check status after 10-15 minutes if delayed. Keep transaction
+hash for support.
+
+### Are there any fees to bridge apart from network gas fees?
+
+Yes, small bridge fees plus network gas. Ethereum gas is usually the bigger cost
+compared to Polygon or BNB Chain. Check fee info in the interface. Some popular
+routes may have 0% fees.
+
+### What is the difference between using the ROSE App vs. using a bridge?
+
+**ROSE App**: Only for ROSE transfers between consensus layer/exchanges and
+Sapphire. Not for other tokens.
+
+**cBridge**: For all tokens including ETH, USDC, etc. Also works for ROSE from
+BNB Chain.
+
+### The token I bridged has ".e" at the end (like USDC.e). What does that mean?
+
+".e" means "bridged from Ethereum" - helps distinguish token versions. Same
+underlying asset, different contracts. Check which version your dApp supports.
+
+### Can I move my bridged tokens back to the original chain?
+
+Yes, use cBridge in reverse: select Sapphire as source, original chain as
+destination. You'll need ROSE for gas on Sapphire.
+
+### The Wormhole bridge was used in older docs – is that still available?
+
+Wormhole was used for Emerald ParaTime and is considered deprecated (archived
+instructions are available
+[here](https://github.com/oasisprotocol/docs/blob/01cee79bf75fbda1a2f74543f2cf24ccd25eeed1/docs/general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime.md)).
+Sapphire uses **Celer cBridge** as the recommended bridge. Use cBridge for all
+Sapphire bridging.

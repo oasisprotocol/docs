@@ -15,7 +15,7 @@ for:
 
 :::tip ROSE App - The quickest way into the Oasis Ecosystem
 
-The Oasis team built a **[ROSE App]** for you to easily **move ROSE**
+The Oasis team built a **[ROSE App][rose-move]** for you to easily **move ROSE**
 from a crypto exchange to Sapphire and the other way around. This way you
 can quickly and safely start using your tokens with Sapphire dApps without
 diving into mechanics of the Oasis ParaTime deposits and withdrawals! You simply
@@ -26,8 +26,6 @@ need a working [Metamask/Ethereum compatible wallet](#metamask).
 </p>
 
 :::
-
-[ROSE App]: https://rose.oasis.io
 
 ## ROSE and the ParaTimes
 
@@ -52,26 +50,96 @@ tokens]** to a validator and **earn passive income** as a reward.
 [ADR-3]: ../../adrs/0003-consensus-runtime-token-transfer.md
 [Oasis Network architecture]: ../oasis-network/README.mdx
 
-## Obtaining ROSE
+## Get ROSE
+
+### From a Centralized Exchange via ROSE App
 
 The most common way to obtain ROSE is by buying it on a centralized
-[crypto exchange]. **Most exchanges only operate on the Oasis consensus layer**.
+[crypto exchange] (Binance, Coinbase, etc.). 
+**Most exchanges only operate on the Oasis consensus layer**.
 This means that you can deposit and withdraw ROSE from an exchange only to
 **your consensus account**. To address this, the Oasis team built a simple
-**[ROSE App]** tool that quickly and safely **moves funds from the consensus
+**[ROSE App][rose-move]** tool that quickly and safely **moves funds from the consensus
 account derived from your [Ethereum-compatible wallet](#metamask) to Sapphire**
 and the other way around.
 
-Alternatively, you can use a fully-featured [ROSE
-Wallet](#official-non-custodial-wallets) to **create a consensus account** and
-then **deposit ROSE** from that account to your Sapphire one.
+[crypto exchange]: https://en.wikipedia.org/wiki/Cryptocurrency_exchange
+
+1.  **Open the ROSE App Move interface:** Visit
+    [**rose.oasis.io/move**][rose-move] in a web browser.
+
+2.  **Connect Your Wallet:** Click **"Connect Wallet"** and sign in with your
+    EVM wallet (e.g. MetaMask with Oasis Sapphire network). The app will prompt
+    you to select or unlock your wallet.
+
+3.  **Choose the destination:** Click **Select and sign-in** on the left card
+    to move ROSE to Oasis Sapphire. The app will prompt you to sign-in.
+
+4.  **Copy Deposit Address:** The app will display the a **Oasis Consensus Layer
+    address** for your withdrawl. **Copy this address.** (It will be a
+    oasis1… style address).
+
+5.  **Withdraw from the Exchange:** Now go to your exchange account and initiate
+    a **withdrawal of ROSE**. When asked for a destination address, paste the
+    **Oasis Consensus Layer address** you copied in the previous step.
+    **Note:** MEXC supports direct Sapphire withdrawal (0x…). Binance/Coinbase
+    only support consensus layer (oasis1…).
+
+5.  **Confirm the Transfer:** Complete withdrawal on the exchange.
+
+6.  **ROSE Arrives on Sapphire:** ROSE will appear in your Sapphire wallet.
+
+:::info
+If your exchange only supports withdrawal to the **Oasis mainnet
+(consensus)**, an alternative is to withdraw to your Oasis **consensus-layer
+ROSE wallet** (a bech32 address managed in the [ROSE Wallet][rose-wallet]).
+Once you have the ROSE in your consensus account, follow the
+[From Oasis Consensus (Mainnet ROSE)](#from-oasis-consensus-mainnet-rose) guide
+below.
+:::
+
+### From BNB Chain (Bridging wROSE)
 
 **[Decentralized exchanges] (DEX) running on Sapphire** are also gaining pace.
 In this case, the payout is made from the DEX directly to **your account on
 Sapphire**, and you can use a standard [Ethereum-compatible wallet](#metamask).
 
-[crypto exchange]: https://en.wikipedia.org/wiki/Cryptocurrency_exchange
+For **wROSE on BNB Chain**, use cBridge:
+
+1.  In the **cBridge** interface, set **BNB Chain** as the source and **Oasis
+    Sapphire** as the destination .
+
+2.  Select **wROSE** from the token list (this is the wrapped ROSE token on BNB
+    Chain) .
+
+3.  Enter the amount of wROSE to bridge and initiate the transfer. Approve and
+    confirm the transaction in your BSC or MetaMask wallet.
+
+4.  After a few minutes, the ROSE will appear in your Sapphire address.
+
 [Decentralized exchanges]: https://en.wikipedia.org/wiki/Decentralized_finance#Decentralized_exchanges
+
+### From Oasis Consensus (Mainnet ROSE)
+
+Alternatively, you can use a fully-featured [ROSE
+Wallet](#official-non-custodial-wallets) to **create a consensus account** and
+then **deposit ROSE** from that account to your Sapphire one.
+
+*   In the **Oasis Wallet extension** or web wallet, go to the **ParaTimes**
+    section.
+
+*   Select **"Deposit to ParaTime"**, then choose **Sapphire**.
+
+*   Enter your **Sapphire EVM address** (0x… from MetaMask) as the recipient,
+    and the amount of ROSE to deposit .
+
+*   Confirm the transaction to receive ROSE on Sapphire.
+
+For detailed instructions with screenshots, see our
+[onboarding guide][onboarding].
+
+[onboarding]: https://oasis.net/blog/onboarding-guide-rose-sapphire
+
 
 ## The Wallets
 
@@ -126,7 +194,6 @@ chapter.
 
 [MetaMask]: https://metamask.io/download/
 [Sapphire]: ../../build/sapphire/network.mdx#rpc-endpoints
-[Emerald]: ../../build/tools/other-paratimes/emerald/network.mdx#rpc-endpoints
 
 ### Ledger
 
@@ -215,3 +282,5 @@ Token Transfers, Contract Calls, etc.), you have to use the
 [Sapphire Blockchain Explorer](https://explorer.oasis.io/mainnet/sapphire).
 
 :::
+
+[rose-move]: https://rose.oasis.io/move

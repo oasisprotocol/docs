@@ -135,21 +135,6 @@ html[data-theme="dark"] {
   --search-local-highlight-color: #3ec8ff;
 }
 
-/* Make docccard and navcard border stronger */
-.card,
-.pagination-nav__link {
-  border: 1px solid black !important;
-}
-[data-theme='dark'] .card,
-[data-theme='dark'] .pagination-nav__link {
-  border: 1px solid white !important;
-}
-
-.card {
-  --ifm-link-hover-color: inherit !important;
-  height: 100%
-}
-
 /* To have the full description of pages,
    in combination with card heigt 100% to have even size boxes in a list.
   */
@@ -180,8 +165,18 @@ html[data-theme="dark"] {
    max-width: 80rem!important;
 }
 
-.card {
-  z-index: 1;
+.docs-doc-id-README .card {
+  background: none!important;
+  max-width: 100%;
+  backdrop-filter: none;
+}
+
+.docs-doc-id-README .card::before{
+  opacity: 0!important;
+}
+
+.docs-doc-id-README .card::after{
+  background: none!important;
 }
 
 .card:hover h2::after {
@@ -197,4 +192,9 @@ html[data-theme="dark"] {
 /* DocCard specific styling */
 .col--6 .card {
   max-width: 100%!important;
+}
+
+/* Pagination Link styling */
+.pagination-nav__link {
+  border: none !important;
 }

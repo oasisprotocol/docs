@@ -7,19 +7,19 @@
   transition-property: border, box-shadow;
   background-color: transparent;
   border-radius: 6px;
-  border: 1px solid #E4E4E7!important;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 55.67%, var(--ifm-color-primary) 190.98%);
+  border: 1px solid var(--ifm-color-primary);
   backdrop-filter: blur(2px);
   display: flex;
   width: 100%;
-  padding: 100px 24px 32px 24px!important;
+  height: 100%;
+  padding: 24px!important;
   max-width: 50%;
   position: relative;
 }
 
 .cardContainer::after {
   content: '';
-  background-image: url('/img/ArrowUpRight.png');
+  background-image: url('/img/ArrowUpRightBlue.png');
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
@@ -34,32 +34,17 @@
 }
 
 html[data-theme='dark'] .cardContainer::after {
-  background-image: url('/img/ArrowUpRightWhite.png');
+  background-image: url('/img/ArrowUpRightTeal.png');
 }
 
 
 .cardContainer:hover {
-  border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
 }
 
 .cardContainer:hover::after {
   top: 1rem;
   right: 1rem;
-}
-
-.cardContainer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, #5FA8D3	 180%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 0;
-}
-
-.cardContainer:hover::before {
-  opacity: 1;
 }
 
 .cardContainer *:last-child {

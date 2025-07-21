@@ -9,8 +9,6 @@
   position: relative;
   overflow: hidden;
   transition: background 0.5s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .customCard::before {

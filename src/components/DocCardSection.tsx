@@ -7,7 +7,7 @@ import Link from "@docusaurus/Link";
 type Props = {
   title: string;
   path:string;
-  description: React.ReactNode;
+  children: React.ReactNode;
   itemPaths: string[];
   fullWidth?: boolean;
   svg: React.ReactNode;
@@ -16,7 +16,7 @@ type Props = {
 export default function DocCardSection({
   title,
   path,
-  description,
+  children,
   itemPaths,
   fullWidth,
   svg,
@@ -65,7 +65,7 @@ export default function DocCardSection({
           <h2 className="section-title">
             <Link to={path}>{title}</Link>
           </h2>
-          <p className={styles.cardDescription}>{description}</p>
+          <p className={styles.cardDescription}>{children}</p>
         </div>
 
         <div className={`${styles.cardLinksList} ${fullWidth && styles.halfWidth}`}>

@@ -6,32 +6,33 @@ import OasisSvg from "@site/static/img/OasisGraphic.svg?react";
 import GetInvolvedSvg from "@site/static/img/GetInvolvedGraphic.svg?react";
 import BuildSvg from "@site/static/img/BuildGraphic.svg?react";
 import DevelopCoreSvg from "@site/static/img/DevelopCoreGraphic.svg?react";
-import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
+import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
 
 # Getting Started
 
-<div className='homepage-container'>
-  <DocCardSection
-    title="Use Oasis"
-    path="/general/"
-    description="This introductory part contains general overview of the Oasis Network such as
+<div className="homepage-container">
+
+<DocCardSection
+  title="Use Oasis"
+  path="/general/"
+  itemPaths={[
+    "/general/oasis-network/",
+    "/general/manage-tokens/",
+    "/general/manage-tokens/cli/",
+  ]}
+  svg={
+    <OasisSvg className="animatedSvg" />
+  }
+>
+  This introductory part contains general overview of the Oasis Network such as
   the distinction between the consensus layer and different ParaTimes. It
   also covers wallets and other tools for managing your assets across the Oasis
-  chains and how to use unique Oasis features."
-    itemPaths={[
-      "/general/oasis-network/",
-      "/general/manage-tokens/",
-      "/general/manage-tokens/cli/",
-    ]}
-    svg={
-      <OasisSvg className="animatedSvg" />
-    }
-/>
+  chains and how to use unique Oasis features.
+</DocCardSection>
 
 <DocCardSection
   title="Get Involved"
   path="/get-involved/"
-  description="Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network."
   itemPaths={[
     "/get-involved/",
     "https://oasisrose.garden",
@@ -39,29 +40,13 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
     "/get-involved/oasis-core",
   ]}
   svg={<GetInvolvedSvg className="animatedSvg" />}
-/>
+>
+  Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network.
+</DocCardSection>
 
 <DocCardSection
   title="Build on Oasis"
   path="/build/"
-  description={
-    <>
-      Contains learning material for the smart contract developers. Since the
-      Oasis platform is best known for confidentiality, the most notable
-      ParaTime is <a href="/build/sapphire/">Oasis Sapphire</a>, an
-      EVM-compatible ParaTime with built-in contract state encryption. The Oasis
-      team also prepared a set of libraries called the
-      <a href="/build/opl/">Oasis Privacy Layer</a> to bridge existing dApps running
-      on other chains and use the unique Sapphire's confidentiality.
-      <br />
-      <br />
-      Our <a href="/build/rofl/">Runtime Offchain Logic (ROFL)</a> enables you
-      to build secure applications running offchain in a trusted environment
-      (TEE) that seamlessly communicate with Oasis Sapphire. This is ideal for
-      trusted oracles, compute-expensive tasks in AI, or as a backend for
-      interactive games.
-    </>
-  }
   fullWidth
   itemPaths={[
     "/build/sapphire/",
@@ -70,36 +55,48 @@ import NodeseSvg from "@site/static/img/NodesGraphic.svg?react";
     "/build/tools/",
   ]}
   svg={<BuildSvg className="animatedSvg" />}
-/>
+>
+  Contains learning material for the smart contract developers. Since the
+  Oasis platform is best known for confidentiality, the most notable
+  ParaTime is [Oasis Sapphire](/build/sapphire/), an
+  EVM-compatible ParaTime with built-in contract state encryption. The Oasis
+  team also prepared a set of libraries called the
+  [Oasis Privacy Layer](/build/opl/) to bridge existing dApps running
+  on other chains and use the unique Sapphire's confidentiality.
+
+  Our [Runtime Offchain Logic (ROFL)](/build/rofl/) enables you
+  to build secure applications running offchain in a trusted environment
+  (TEE) that seamlessly communicate with Oasis Sapphire. This is ideal for
+  trusted oracles, compute-expensive tasks in AI, or as a backend for
+  interactive games.
+</DocCardSection>
 
 <DocCardSection
   title="Run Node"
   path="/node/"
-  description="If you want to run your own Oasis node, this part will provide you with guides on the current Mainnet and Testnet network parameters and how to set up your node, let it be a validator node, perhaps running a ParaTime or just a simple client node for your server to submit transactions and perform queries on the network."
   itemPaths={[
     "/node/",
     "/node/mainnet/",
     "/node/testnet/",
     "/node/run-your-node/",
   ]}
-  svg={<NodeseSvg className="animatedSvg" />}
-/>
+  svg={<NodesSvg className="animatedSvg" />}
+>
+  If you want to run your own Oasis node, this part will provide you with guides on the current Mainnet and Testnet network parameters and how to set up your node, let it be a validator node, perhaps running a ParaTime or just a simple client node for your server to submit transactions and perform queries on the network.
+</DocCardSection>
 
 <DocCardSection
   title="Develop Core"
   path="/core/"
-  description={
-    <>
-    Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you. 
-    <br/>
-    <br/>
-    Additions or changes to the interoperable Oasis network components are always made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows formal Architectural Decision Records (ADRs) which are first proposed, voted on and finally implemented, if accepted.
-    </>
-  }
   itemPaths={[
     "/core/",
     "/adrs",
   ]}
   svg={<DevelopCoreSvg className="animatedSvg" />}
-/>
+>
+  Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you.
+
+  Additions or changes to the interoperable Oasis network components are always made with consensus. Similar to the Ethereum's ERC/EIP mechanism Oasis follows formal Architectural Decision Records (ADRs) which are first proposed, voted on and finally implemented, if accepted.
+</DocCardSection>
+
 </div>

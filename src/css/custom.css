@@ -33,6 +33,8 @@
   --ifm-info-background: #EFF6FF;
   --ifm-tip-foreground: #059669;
   --ifm-tip-background: #F0FDF4;
+  --ifm-example-foreground: #F59E0B;
+  --ifm-example-background: #FEFCE8;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -58,6 +60,8 @@ html[data-theme='dark'] {
   --ifm-info-background: #082F49;
   --ifm-tip-foreground: #34D399;
   --ifm-tip-background: #052E16;
+  --ifm-example-foreground: #FEF08A;
+  --ifm-example-background: #51430E;
 }
 
 /* Custom fonts */
@@ -282,4 +286,21 @@ html[data-theme="dark"] {
 
 .theme-admonition-tip svg{
   fill: var(--ifm-tip-foreground)!important;
+}
+
+.theme-admonition-example{
+  background-color: var(--ifm-example-background);
+  border: 1px solid var(--ifm-example-foreground);
+}
+
+.theme-admonition-example, .theme-admonition-example a{
+  color: var(--ifm-example-foreground);
+}
+
+.theme-admonition-example svg{
+  fill: transparent!important;
+}
+
+.theme-admonition-example p{
+  margin-bottom: 0;
 }

@@ -379,7 +379,7 @@ export const redirectsOptions: Options = {
             to: '/build/tools/other-paratimes/emerald/',
             from: [
                 '/dapp/emerald/', // #1041 Move Emerald and Cipher to /tools/other-paratimes/
-                '/dapp/tools/other-paratimes/emeerald/', // #1058 Rename dapp to build
+                '/dapp/tools/other-paratimes/emerald/', // #1058 Rename dapp to build
             ]
         },
         {

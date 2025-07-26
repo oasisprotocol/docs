@@ -7,6 +7,7 @@ description: Run a Hyperlane Relayer
 
 [relayer]: https://docs.hyperlane.xyz/docs/protocol/agents/relayer
 
+
 ## Run a Relayer
 
 The easiest way to run a relayer is with the **[Hyperlane CLI]**.
@@ -18,11 +19,22 @@ The easiest way to run a relayer is with the **[Hyperlane CLI]**.
     ```shell
     export HYP_KEY='<YOUR_PRIVATE_KEY>'
     ```
+
+:::info
+
+Make sure that the address behind the `HYP_KEY` has enough native tokens on both networks, so that it can relays messages.
+
+:::
+
+
 2. Start a relayer which watches `Arbitrum Sepolia` & `SapphireTestnet`
 
     ```shell
-    hyperlane relayer --chains sapphiretestnet,arbitrumsepolia
+    yarn workspace @hyperlane-xyz/cli hyperlane relayer \
+      --chains sapphiretestnet,arbitrumsepolia \
+      --verbosity debug
     ```
+
 
 :::info Chain Configs
 

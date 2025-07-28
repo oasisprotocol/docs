@@ -80,12 +80,25 @@ something like the following in your node's logs:
 To obtain the trusted height and the corresponding block header's hash, use one
 of the following options.
 
+:::caution
+
+Checkpoints happen approximately once per week. It is important to set
+sufficiently old trusted height and hash, so that the network has at least one
+checkpoint available to serve. Moreover, to prevent a long range attack
+it is recommended that the light client trust period is lower than the unbonding
+period.
+
+We recommend using the default trust period (2 weeks, no need to configure) and
+configuring the trusted height and hash for the block that is around 10 days old.
+
+:::
+
 #### Block Explorers
 
 Browse to one of our block explorers (e.g. [Oasis Explorer], [Oasis Scan]) and
 obtain the trusted height and hash there:
 
-1. Obtain the current block height from the main page, e.g. 4819139.
+1. Obtain the block height (10 days old) from the main page, e.g. 4819139.
 2. Click on block height's number to view the block's details and obtain its
    hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
 
@@ -129,8 +142,8 @@ First obtain the network's Genesis document's hash (e.g. from the Networks Param
 - mainnet: [bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55](https://docs.oasis.io/node/mainnet/)
 - testnet: [0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76](https://docs.oasis.io/node/testnet/)
 
-Query our public Rosetta Gateway instance and obtain the trusted height and hash
-there (replace the `<chain-context>` with the value obtained in the previous step):
+Query our public Rosetta Gateway instance and obtain the latest height by
+replacing the `<chain-context>` with the value obtained in the previous step:
 
 ```bash
 curl -X POST https://rosetta.oasis.io/api/block \
@@ -152,15 +165,44 @@ This will give you output like the following (non-relevant fields omitted):
 {
 	"block": {
 		"block_identifier": {
-			"index": 16787439,
-			"hash": "443b71d835dbae7ea6233b06280ab596287d5c45f88fa76a71bf6cc52366592e"
+			"index": 25688638,
+			"hash": "3076ae195cfeda09ad49a6c74f6f655bc623e526184f814a842b224bf1846223"
 		},
     ...
 	}
 }
 ```
 
-The values you need are `index` and `hash`.
+Assuming blocks happen every 6 seconds, subtract around `140_000` blocks to
+get the height that is around 10 days old and query again:
+
+```bash
+curl -X POST https://rosetta.oasis.io/api/block \
+-H "Content-Type: application/json" \
+-d '{
+    "network_identifier": {
+        "blockchain": "Oasis",
+        "network": "<chain-context>"
+    },
+    "block_identifier": {
+        "index": 25548638
+    }
+}'
+```
+
+The values you need are `index` and `hash`:
+
+```json
+{
+	"block": {
+		"block_identifier": {
+			"index": 25548638,
+			"hash": "76ac9d6b59e662d024097a07eb65777292ce6a7ebe9aca8bd0caf73e72b06834"
+		},
+    ...
+	}
+}
+```
 
 #### Oasis CLI
 

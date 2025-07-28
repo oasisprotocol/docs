@@ -23,6 +23,15 @@ to be able to [detect and submit evidence for a light client attack].
 
 :::
 
+:::tip
+
+After a successful state sync it is always recommended to check if you see
+the same chain as other nodes. This can be done by comparing block hash at
+a recent height with sources that you trust: e.g. your own nodes, trusted nodes
+from external entity, block explorers, etc.
+
+:::
+
 To configure your node to use the state sync, amend your node's configuration
 (i.e. `config.yml`) with (non-relevant fields omitted):
 
@@ -90,6 +99,13 @@ period.
 
 We recommend using the default trust period (2 weeks, no need to configure) and
 configuring the trusted height and hash for the block that is around 10 days old.
+
+:::
+
+:::tip
+
+If using centralized or untrusted sources it is always recommended to
+fetch and compare data from multiple sources.
 
 :::
 

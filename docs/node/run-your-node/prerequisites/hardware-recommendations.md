@@ -63,8 +63,10 @@ encrypting ParaTime's state.
 The [Advanced Vector Extensions 2 (AVX2)][AVX2] support enables faster Ed25519
 signature verification which in turn makes a node sync faster.
 
-The [Intel SGX] support is required if you want to run Paratime compute nodes
-that use a trusted execution environment (TEE). Intel maintains a comprehensive
+The [Intel SGX] support is required if you want to run ParaTime compute nodes
+for SGX-enabled ParaTimes (such as Sapphire and Cipher). Some ParaTimes like Emerald
+do not require SGX. Check the specific ParaTime documentation to determine if SGX is
+required for your use case. Intel maintains a comprehensive
 list of [processors that support Intel SGX].
 
 :::

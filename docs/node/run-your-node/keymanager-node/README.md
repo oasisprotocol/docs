@@ -110,7 +110,7 @@ Before using this configuration you should collect the following information to 
 * `{{ external_address }}`: The external IP you used when registering this node.
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
   * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
-* `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](../paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+* `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](../paratime-node.mdx#manual-bundle-installation) of the form `/node/runtimes/foo-paratime.orc`.
   * You can find the current Oasis-supported key manager ParaTime in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
 * `{{ keymanager_runtime_id }}`: Runtime identified for the key manager ParaTime.

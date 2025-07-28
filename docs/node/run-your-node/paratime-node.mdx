@@ -5,12 +5,6 @@ import TabItem from '@theme/TabItem';
 
 # ParaTime Node
 
-:::info
-
-These instructions are for setting up a _ParaTime_ node which participates in one or more ParaTime compute committees. If you want to run a _ParaTime client_ node instead, see the [instructions for running a ParaTime client node](paratime-client-node.mdx). If you want to run a _validator_ node instead, see the [instructions for running a validator node](validator-node.mdx). Similarly, if you want to run a non-validator node instead, see the [instructions for running a non-validator node](non-validator-node.mdx).
-
-:::
-
 :::caution
 
 For a production setup, we recommend running the ParaTime compute/storage node separately from the validator node (if you run one).
@@ -70,9 +64,9 @@ To be able to register as a ParaTime node on the Oasis Network, you need to
 have enough tokens staked in your entity's escrow account.
 
 Current minimum staking requirements for a specific ParaTime are listed on the
-Contribute to the Network section—[Run a ParaTime Node] page. Should you want
-to check the staking requirements for other node roles and registered ParaTimes
-manually, use the Oasis CLI tools as described in [Common Staking Info].
+[Stake Requirements] page. Should you want to check the staking requirements
+for other node roles and registered ParaTimes manually, use the Oasis CLI tools
+as described in [Common Staking Info].
 
 Finally, to stake the tokens, use our [Oasis CLI tools]. If everything was set
 up correctly, you should see something like below when running [`oasis account
@@ -90,7 +84,7 @@ change in the future.
 
 :::
 
-[Run a ParaTime Node]: ../../get-involved/run-node/paratime-node.mdx
+[Stake Requirements]: ./prerequisites/stake-requirements.md
 [Common Staking Info]: ../../general/manage-tokens/cli/network.md#show-native-token
 [Oasis CLI tools]: ../../general/manage-tokens/cli/account.md#delegate
 [`oasis account show`]: ../../general/manage-tokens/cli/account.md#show
@@ -142,37 +136,6 @@ command, for example:
 [Register]: validator-node.mdx#entity-registration
 [`oasis account withdraw`]: ../../general/manage-tokens/cli/account.md#withdraw
 
-### The ParaTime Bundle
-
-In order to run a ParaTime node you need to obtain the ParaTime bundle that
-needs to come from a trusted source. The bundle (usually with an `.orc`
-extension that stands for Oasis Runtime Container) contains all the needed
-ParaTime binaries together with the identifier and version metadata to ease
-deployment.
-
-When the ParaTime is running in a trusted execution environment (TEE) the bundle
-will also contain all the required artifacts (e.g. SGXS version of the binary
-and any enclave signatures).
-
-:::danger
-
-Like the genesis document, make sure you obtain these from a trusted source.
-
-:::
-
-:::caution
-
-#### **Compiling the ParaTime Binary from Source Code**
-
-In case you decide to build the ParaTime binary from source yourself, make sure
-that you follow our [guidelines for deterministic compilation](../../build/tools/build-paratime/reproducibility.md)
-to ensure that you receive the exact same binary.
-
-When the ParaTime is running in a TEE, a different binary to what is registered
-in the consensus layer will not work and will be rejected by the network.
-
-:::
-
 ### Install Oasis Core Runtime Loader
 
 For ParaTimes running inside [Intel SGX trusted execution environment](paratime-node.mdx#setting-up-trusted-execution-environment-tee), you will need to install the Oasis Core Runtime Loader.
@@ -183,19 +146,6 @@ Install it to `bin` subdirectory of your node's working directory, e.g. `/node/b
 
 [Mainnet]: ../mainnet/README.md
 [Testnet]: ../testnet/README.md
-
-### Install ParaTime Bundle
-
-For each ParaTime, you need to obtain its bundle and install it to the
-`runtimes` subdirectory of your node's working directory.
-
-:::info
-
-For example, for the [Cipher ParaTime](../mainnet/README.md#cipher),
-you would have to obtain the `cipher-paratime.orc` bundle and install it to
-`/node/runtimes/cipher-paratime.orc`.
-
-:::
 
 ### Install Bubblewrap Sandbox (at least version 0.3.3)
 
@@ -265,7 +215,18 @@ If a ParaTime requires the use of a TEE, then make sure you set up TEE as instru
 
 ## Configuration
 
-In order to configure the node create the `/node/etc/config.yml` file with the following content:
+You can configure a ParaTime in two ways. If the ParaTime supports hot-loading,
+use [Hot-loading ParaTime Bundle Installation](#hot-loading). Otherwise, use
+[Manual Bundle Installation](#manual-bundle-installation). Sapphire and Cipher
+ParaTimes support hot-loading installation, allowing bundles to be dynamically
+downloaded using the metadata from the [Oasis Bundle Registry]. For Emerald and
+other ParaTimes, that don't support hot-loading you have to configure the node
+manually.
+
+### Hot-loading
+
+In order to configure the node with ParaTimes that support hot-loading, create
+the `/node/etc/config.yml` file with the following content:
 
 ```yaml
 mode: compute
@@ -306,22 +267,23 @@ registration:
     entity_id: {{ entity_id }}
 
 runtime:
-    paths:
-        # Paths to ParaTime bundles for all of the supported ParaTimes.
-        - {{ runtime_orc_path }}
-    # The following section is required for ParaTimes which are running inside
-    # the Intel SGX Trusted Execution Environment.
+    # Configuration for all ParaTimes with hot-loading support
+    # (e.g., Sapphire, Cipher)
+    runtimes:
+        - id: {{ runtime_identifier }}
+        # List additional ParaTimes here.
+    # The following section is required if at least one ParaTime is running
+    # inside the Intel SGX Trusted Execution Environment.
     sgx_loader: /node/bin/oasis-core-runtime-loader
 ```
 
-Before using this configuration you should collect the following information to replace the  variables present in the configuration file:
+Before using the configuration, replace the following variables:
 
 * `{{ external_address }}`: The external IP you used when registering this node.
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
   * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
 * `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
-* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
-  * You can find the current Oasis-supported ParaTimes in the Network Parameters page ([Mainnet], [Testnet]).
+* `{{ runtime_identifier }}`: You can find the runtime identifier in the Network Parameters page ([Mainnet], [Testnet]).
 
 :::caution
 
@@ -329,6 +291,36 @@ Make sure the `consensus` port (default: `26656`) and `p2p.port` (default: `9200
 accessible on the internet (for `TCP` and `UDP` traffic).
 
 :::
+
+#### Custom Bundle Registry
+
+If you want to download bundles using a registry other than the
+[Oasis Bundle Registry], add the URL of your desired registry to the runtime
+configuration.
+
+```
+# ... sections not relevant are omitted ...
+runtime:
+    runtimes:
+        - id: {{ runtime_identifier }}
+        # Custom registries for all ParaTimes
+        registries:
+            - {{ url_to_registry }}
+```
+
+Before using the configuration, replace the following variables:
+
+* `{{ runtime_identifier }}`: You can find the runtime identifier in the Network
+Parameters page ([Mainnet], [Testnet]).
+* `{{ url_to_registry }}`: Url to your custom registry. The registry must ensure
+that all metadata files are accessible through a bundle registry URL, as
+metadata URLs are formed by appending the metadata file name, i.e. the bundle
+checksum, to this URL. Therefore, the bundle registry URL doesn't need to be
+valid endpoint, only the constructed metadata URLs need to be valid.
+For more information, see [ADR-25].
+
+[ADR-25]: ../../adrs/0025-bundle_hot_loading/
+[Oasis Bundle Registry]: https://github.com/oasisprotocol/bundle-registry
 
 ## Starting the Oasis Node
 
@@ -408,7 +400,7 @@ If there is a misconfiguration in the prerequisite [BIOS settings], you can see 
 problem when running SGX enclaves.
 
 ```json
-{"component":"ronl","level":"warn","module":"runtime","msg":"runtime execution failed: Enclave panicked: Enclave triggered exception: SgxEnclaveRun { function: EResume, exception_vector: 6, exception_error_code: 0, exception_addr: 0x0 }","runtime_id":"0000000000000000000000000000000000000000000000000000000000000000","runtime_name":"cipher-paratime","ts":"2024-06-03T11:00:43.417403299Z"}
+{"component":"ronl","level":"warn","module":"runtime","msg":"runtime execution failed: Enclave panicked: Enclave triggered exception: SgxEnclaveRun { function: EResume, exception_vector: 6, exception_error_code: 0, exception_addr: 0x0 }","runtime_id":"000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c","runtime_name":"sapphire-paratime","ts":"2024-06-03T11:00:43.417403299Z"}
 ```
 
 For example, this can happen if you forget to configure AES instruction set (i.e. the `CPU AES: ENABLE` BIOS setting).
@@ -434,6 +426,99 @@ You can use the [attestation tool] (at least version 0.3.4) that also checks if 
 
 [BIOS settings]: prerequisites/set-up-tee.mdx#sgx-bios-configuration
 [attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
+
+## Advanced
+
+### Manual Bundle Installation
+
+The ParaTime bundle needs to be obtained from a trusted source. The bundle
+(usually with an `.orc` extension that stands for Oasis Runtime Container)
+contains all the needed ParaTime binaries together with the identifier and
+version metadata to ease deployment.
+
+When the ParaTime is running in a trusted execution environment (TEE) the bundle
+will also contain all the required artifacts (e.g. SGXS version of the binary
+and any enclave signatures).
+
+:::caution
+
+#### **Compiling the ParaTime Binary from Source Code**
+
+In case you decide to build the ParaTime binary from source yourself, make sure
+that you follow our [guidelines for deterministic compilation](../../build/tools/build-paratime/reproducibility.md)
+to ensure that you receive the exact same binary.
+
+When the ParaTime is running in a TEE, a different binary to what is registered
+in the consensus layer will not work and will be rejected by the network.
+
+:::
+
+#### Install ParaTime Bundle
+
+For Emerald ParaTime, you need to obtain its bundle and install it to the
+`runtimes` subdirectory of your node's working directory.
+
+:::info
+
+For example, for the [Sapphire ParaTime](../mainnet/README.md#sapphire),
+you would have to obtain the `sapphire-paratime.orc` bundle and install it to
+`/node/runtimes/sapphire-paratime.orc`.
+
+:::
+
+```yaml
+mode: compute
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: info
+            cometbft/context: error
+            default: info
+
+consensus:
+    # The external IP that is used when registering this node to the network.
+    # NOTE: If you are using the Sentry node setup, this option should be
+    # omitted.
+    external_address: tcp://{{ external_address }}:26656
+    listen_address: tcp://0.0.0.0:26656
+
+genesis:
+    file: /node/etc/genesis.json
+
+p2p:
+    # External P2P configuration.
+    port: 9200
+    registration:
+        addresses:
+            # The external IP that is used when registering this node to the
+            # network.
+            - {{ external_address }}:9200
+    seeds:
+        # List of seed nodes to connect to.
+        # NOTE: You can add additional seed nodes to this list if you want.
+        - {{ seed_node_address }}
+
+registration:
+    # In order for the node to register itself, the entity ID must be set.
+    entity_id: {{ entity_id }}
+
+runtime:
+    paths:
+        # Paths to bundles for ParaTimes without hot-loading support (e.g., Emerald)
+        - {{ runtime_orc_path }}
+```
+
+Before using the configuration, replace the following variables:
+
+* `{{ external_address }}`: The external IP you used when registering this node.
+* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+  * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
+* `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
+* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-node.mdx#manual-bundle-installation) of the form
+`/node/runtimes/foo-paratime.orc`.
+  * You can find the current Oasis-supported ParaTimes in the Network Parameters page ([Mainnet], [Testnet]).
 
 ## See also
 

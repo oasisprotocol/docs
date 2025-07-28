@@ -10,7 +10,6 @@
   overflow: hidden;
   transition: all 0.25s ease;
   position: relative;
-  overflow: hidden;
 }
 
 .customCard::before {
@@ -20,7 +19,7 @@
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, #5FA8D3	 180%);
   opacity: 0;
   transition: opacity 0.5s ease;
-  z-index: 0;
+  z-index: -1;
 }
 
 
@@ -32,13 +31,11 @@
 .fullWidth {
   flex: 1 1 100%;
   max-width: 100%;
-  position: relative;
 }
 
 .customCard h2 {
   font-size: 2rem;
   margin: 0 0 0.5rem 0;
-  position: relative;
   color: var(--ifm-color-card-heading);
 }
 
@@ -51,7 +48,6 @@
   font-size: 0.9rem;
   color: #64748b;
   margin-bottom: 1.5rem;
-  position: relative;
 }
 
 .cardItem {
@@ -133,7 +129,6 @@
 .halfWidth{
   width: 50%;
   max-width: calc(50% - 0.75rem);
-  z-index: 1;
 }
 
 .cardItem::after {

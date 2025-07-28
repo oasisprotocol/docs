@@ -425,6 +425,10 @@ export const redirectsOptions: Options = {
             to: '/build/opl/router-protocol',
             from: '/dapp/opl/router-protocol', // #1058 Rename dapp to build
         },
+        {
+            to: '/general/manage-tokens/how-to-bridge-assets', // #859 Revamp bridging assets chapter
+            from: '/general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime',
+        },
     ],
     createRedirects(existingPath) {
         // #119 Add /oasis-core/adr/* -> /adrs/* redirection

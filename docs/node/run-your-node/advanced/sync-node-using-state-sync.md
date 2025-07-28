@@ -2,12 +2,11 @@
 
 The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a
 [validator node](../validator-node.mdx) or a
-[non-validator node](../non-validator-node.mdx)) by using the
-[CometBFT's Light Client protocol]. It allows one to initialize a node from a
-trusted height, its corresponding block's header and a trusted validator set
-(given in the [genesis document](../../genesis-doc.md)). It does so by securely
-updating the node's trusted state by requesting and verifying a minimal set of
-data from the network's full nodes.
+[non-validator node](../non-validator-node.mdx)) by initializing it from the
+trusted block's header, identified by the trusted height and hash. The node's
+trusted state is then securely updated by requesting and verifying a minimal set of
+data (checkpoints metadata and chunks) from the P2P network. Internally, it uses
+[CometBFT's Light Client protocol] and Merkle proofs to filter out invalid data.
 
 :::info
 

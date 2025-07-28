@@ -54,7 +54,7 @@ The network is agnostic in this regard. Anyone can run a ParaTime. It is complet
 
 ### **What consensus mechanism are you running? Is it BFT?**
 
-The Oasis Network uses Tendermint as its BFT consensus protocol. Given that the consensus layer uses a BFT protocol, the Oasis Network offers instant finality, meaning that once a block is finalized, it cannot be reverted (at least not for full nodes). A ParaTime commitment goes into a block and as such the ParaTime state is also finalized and cannot be reverted once a block is finalized.
+The Oasis Network uses CometBFT as its BFT consensus protocol. Given that the consensus layer uses a BFT protocol, the Oasis Network offers instant finality, meaning that once a block is finalized, it cannot be reverted (at least not for full nodes). A ParaTime commitment goes into a block and as such the ParaTime state is also finalized and cannot be reverted once a block is finalized.
 
 ### **Why doesn’t the Oasis Network do sharding? Does that mean it’s slow?**
 

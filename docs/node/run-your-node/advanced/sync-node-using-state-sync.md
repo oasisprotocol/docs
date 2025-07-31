@@ -46,9 +46,10 @@ consensus:
   # Enable consensus state sync (i.e. CometBFT light client sync).
   state_sync:
     enabled: true
-  # Configure trusted height & hash for the light client.
+  # Configure trusted period, height and hash for the light client.
   light_client:
     trust:
+      period: {{ trusted_period }}
       height: {{ trusted_height }}
       hash: "{{ trusted_height_hash }}"
 
@@ -58,6 +59,7 @@ consensus:
 
 and replace the following variables in the configuration snippet:
 
+* `{{ trusted_period }}`: Trusted period is the duration for which trust remains valid.
 * `{{ trusted_height }}`: Trusted height defines the height at which your node should trust the chain.
 * `{{ trusted_height_hash }}`: Trusted height hash defines the hash of the block header corresponding to the trusted height.
 
@@ -84,23 +86,40 @@ something like the following in your node's logs:
   https://docs.cometbft.com/main/explanation/core/light-client#where-to-obtain-trusted-height--hash
 [Wiping Node State]: ../maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
 
-### Obtaining Trusted Height and Hash
-
-To obtain the trusted height and the corresponding block header's hash, use one
-of the following options.
+### Obtaining Trusted Period
 
 :::caution
 
-Checkpoints happen approximately once per week. It is important to set
-sufficiently old trusted height and hash, so that the network has at least one
-checkpoint available to serve. Moreover, to prevent a long range attack
-it is recommended that the light client trust period is lower than the unbonding
-period.
-
-We recommend using the default trust period (2 weeks, no need to configure) and
-configuring the trusted height and hash for the block that is around 10 days old.
+To prevent long-range attacks it is recommended that the light client trust period
+is shorter than the debonding period (currently 336 epochs or ~14 days). If you
+trust a header older than the debonding period, you risk accepting invalid headers
+from nodes that have already withdrawn their stake. Such nodes can no longer be
+penalized for their misbehaviour and you may be tricked into following the wrong chain.
 
 :::
+
+We recommend using `trust_period=288h` (12 days). This way the time required
+to verify headers, submit possible misbehavior evidence and penalize nodes
+is still less than the debonding period, giving nodes strong incentive not to lie.
+
+
+
+### Obtaining Trusted Height and Hash
+
+:::caution
+
+Currently, checkpoints happen approximately once per week. It is important to set
+sufficiently old trusted height and hash, so that the network has at least one
+checkpoint that is more recent than the configured trust.
+
+:::
+
+We recommend configuring trusted header that is around 10 days old. This way
+there will be checkpoints available and the trust will still be shorter than
+the debonding period.
+
+To obtain the trusted height and the corresponding block header's hash, use one
+of the following options.
 
 :::tip
 

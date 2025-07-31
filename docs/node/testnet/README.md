@@ -66,7 +66,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 * Runtime bundle version:
   * [1.0.0-testnet](https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v1.0.0-testnet)
 * Web3 Gateway version:
-  * [5.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.3.0)
+  * [5.3.1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.3.1)
 
 ### Cipher
 
@@ -86,7 +86,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 * Runtime bundle version (or [build your own](https://github.com/oasisprotocol/emerald-paratime/tree/v11.0.0-testnet#building)):
   * [11.0.0-testnet](https://github.com/oasisprotocol/emerald-paratime/releases/tag/v11.0.0-testnet)
 * Web3 Gateway version:
-  * [5.3.0](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.3.0)
+  * [5.3.1](https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/v5.3.1)
 
 ### Key Manager
 

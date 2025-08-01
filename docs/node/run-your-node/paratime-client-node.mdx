@@ -72,50 +72,6 @@ For example, running a ParaTime client node for an SGX-enabled ParaTime like Cip
 
 :::
 
-### The ParaTime Bundle
-
-In order to run a ParaTime node you need to obtain an active ParaTime bundle,
-see the Network Parameters page ([Mainnet], [Testnet]). The bundle (`.orc`
-extension that stands for Oasis Runtime Container) contains all the needed
-ParaTime binaries together with the identifier and version metadata to ease
-deployment.
-
-[Mainnet]: ../mainnet/README.md
-[Testnet]: ../testnet/README.md
-
-When the ParaTime is running in a trusted execution environment (TEE) the bundle
-will also contain all the required artifacts (e.g. SGXS version of the binary
-and any enclave signatures).
-
-:::danger
-
-Like the genesis document, make sure you obtain these from a trusted source.
-
-:::
-
-:::caution
-
-#### **Compiling the ParaTime Binary from Source Code**
-
-In case you decide to build the ParaTime binary from source yourself, make sure
-that you follow our [guidelines for deterministic compilation](../../build/tools/build-paratime/reproducibility)
-to ensure that you receive the exact same binary.
-
-:::
-
-### Install ParaTime Bundle
-
-For each ParaTime, you need to obtain its bundle and install it to the
-`runtimes` subdirectory of your node's working directory.
-
-:::info
-
-For example, for the [Cipher ParaTime](../mainnet/README.md#cipher),
-you would have to obtain the `cipher-paratime.orc` bundle and install it to
-`/node/runtimes/cipher-paratime.orc`.
-
-:::
-
 ### Install Bubblewrap Sandbox (at least version 0.3.3)
 
 ParaTime client nodes execute ParaTime binaries inside a sandboxed environment provided by [Bubblewrap](https://github.com/containers/bubblewrap). In order to install it, please follow these instructions, depending on your distribution:
@@ -197,17 +153,26 @@ p2p:
       # NOTE: You can add additional seed nodes to this list if you want.
         - {{ seed_node_address }}
 runtime:
-    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    # Path to Emerald ParaTime bundle.
     paths:
         - {{ runtime_orc_path }}
+    # The following section is required for ParaTimes which are running inside
+    # the Intel SGX Trusted Execution Environment.
+    runtimes:
+        - id: {{ runtime_identifier }}
+    sgx_loader: /node/bin/oasis-core-runtime-loader
 ```
 
-Before using this configuration you should collect the following information to replace  the  variables present in the configuration file:.
+Before using this configuration you should collect the following information to replace  the  variables present in
+the configuration file:.
 
 * `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
   * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
-* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form `/node/runtimes/foo-paratime.orc`.
+* `{{ runtime_orc_path }}`: Path to the [ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form
+`/node/runtimes/foo-paratime.orc`. See the [Extra Configuration](#extra-configuration) section for more information.
   * You can find the current Oasis-supported ParaTimes in the Network Parameters page ([Mainnet], [Testnet]).
+* `{{ runtime_identifier }}`: You can find the runtime identifier in the Network
+Parameters page ([Mainnet], [Testnet]).
 
 :::caution
 
@@ -226,19 +191,18 @@ content to the `runtime` part within the `/node/etc/config.yml` file:
 ```yaml
 # ... sections not relevant are omitted ...
 runtime:
-    # Paths to ParaTime bundles for all of the supported ParaTimes.
-    paths:
-        - {{ runtime_orc_path }}
-    environment: sgx
+    # The following section is required for ParaTimes which are running inside
+    # the Intel SGX Trusted Execution Environment.
+    runtimes:
+        - id: {{ runtime_identifier }}
     sgx_loader: /node/bin/oasis-core-runtime-loader
 ```
 
 Before using this configuration you should collect the following information to
 replace the variables present in the configuration file:
 
-* `{{ runtime_orc_path }}`: Path to the
-[ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form
-`/node/runtimes/foo-paratime.orc`.
+* `{{ runtime_identifier }}`: You can find the runtime identifier in the Network
+Parameters page ([Mainnet], [Testnet]).
 
 ## Enabling Expensive Queries
 
@@ -249,8 +213,10 @@ in your node's `/node/etc/config.yml` file:
 ```yaml
 # ... sections not relevant are omitted ...
 runtime:
-    paths:
-      - {{ runtime_orc_path }}
+    # The following section is required for ParaTimes which are running inside
+    # the Intel SGX Trusted Execution Environment.
+    runtimes:
+      - id: {{ runtime_identifier }}
     environment: sgx
     config:
       {{ runtime_id }}:
@@ -261,9 +227,60 @@ runtime:
 
 * `{{ runtime_id}}`: You can find the `runtime_id` in the Network Parameters
 chapter ([Mainnet], [Testnet])
-* `{{ runtime_orc_path }}`: Path to the
-[ParaTime bundle](paratime-client-node.mdx#the-paratime-bundle) of the form
-`/node/runtimes/foo-paratime.orc`.
+* `{{ runtime_identifier }}`: You can find the runtime identifier in the Network
+Parameters page ([Mainnet], [Testnet]).
+
+## Extra Configuration
+
+For the Emerald ParaTime, configuring paths to ParaTime bundles is required.
+However, for the Sapphire and Cipher ParaTimes, this setup is optional, as
+bundles can be automatically downloaded from the [Oasis Bundle Registry].
+
+[Oasis Bundle Registry]: https://github.com/oasisprotocol/bundle-registry
+
+### The ParaTime Bundle
+
+In order to run an Emerald ParaTime node you need to obtain an active ParaTime
+bundle, see the Network Parameters page ([Mainnet], [Testnet]). The bundle
+(`.orc` extension that stands for Oasis Runtime Container) contains all the
+needed ParaTime binaries together with the identifier and version metadata to
+ease deployment.
+
+[Mainnet]: ../mainnet/README.md
+[Testnet]: ../testnet/README.md
+
+When the ParaTime is running in a trusted execution environment (TEE) the bundle
+will also contain all the required artifacts (e.g. SGXS version of the binary
+and any enclave signatures).
+
+:::danger
+
+Like the genesis document, make sure you obtain these from a trusted source.
+
+:::
+
+:::caution
+
+#### **Compiling the ParaTime Binary from Source Code**
+
+In case you decide to build the ParaTime binary from source yourself, make sure
+that you follow our [guidelines for deterministic compilation](../../build/tools/build-paratime/reproducibility)
+to ensure that you receive the exact same binary.
+
+:::
+
+### Install ParaTime Bundle
+
+For each ParaTime, you need to obtain its bundle and install it to the
+`runtimes` subdirectory of your node's working directory.
+
+:::info
+
+For example, for the [Cipher ParaTime](../mainnet/README.md#cipher),
+you would have to obtain the `cipher-paratime.orc` bundle and install it to
+`/node/runtimes/cipher-paratime.orc`.
+
+:::
 
 ## Starting the Oasis Node
 

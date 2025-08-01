@@ -173,7 +173,7 @@ The subdirectory (located inside the node's data directory) used to store
 consensus-related data, previously called `tendermint` (after the consensus
 layer protocol backend) has been renamed to `consensus` in Oasis Core 23.0. If
 any of your scripts rely on specific directory names, please make sure to update
-them to reflect the changed sdirectory name.
+them to reflect the changed directory name.
 
 ### State Changes
 

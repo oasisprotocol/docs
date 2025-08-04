@@ -54,6 +54,7 @@ html[data-theme='dark'] .cardContainer::after {
 .cardTitle {
   font-size: 1.2rem;
   color: var(--ifm-color-card-heading);
+  width: calc(100% - 1.5rem);
 }
 
 .cardDescription {

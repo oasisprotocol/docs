@@ -224,7 +224,8 @@ html[data-theme="dark"] {
 }
 
 /* Admonition cards styling */
-.theme-admonition{
+.theme-admonition,
+.alert{
   border-radius: 6px;
 }
 
@@ -254,15 +255,18 @@ html[data-theme="dark"] {
   fill: var(--ifm-note-foreground)!important;
 }
 
-.theme-admonition-caution{
+.theme-admonition-caution,
+.theme-admonition-warning{
   background-color: var(--ifm-caution-background);
   border: 1px solid var(--ifm-caution-foreground);
 }
 
+.theme-admonition-warning, .theme-admonition-warning a,
 .theme-admonition-caution, .theme-admonition-caution a{
   color: var(--ifm-caution-foreground);
 }
 
+.theme-admonition-warning svg,
 .theme-admonition-caution svg{
   fill: var(--ifm-caution-foreground)!important;
 }

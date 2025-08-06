@@ -9,7 +9,7 @@ description: Oasis Node Troubleshooting for Node Operators and Hackers
 Before you begin troubleshooting your Oasis Node we suggest you check all of the
 following:
 
-* Check that your current binary version is the latest listed on the Network Parameters page ([Mainnet](../mainnet/README.md), [Testnet](../testnet/README.md))
+* Check that your current binary version matches the version listed on the Network Parameters page ([Mainnet](../mainnet/README.md), [Testnet](../testnet/README.md))
   * Check the version on your localhost using `oasis-node --version`
   * Check the version on your server using `oasis-node --version`
 * If upgrading, make sure that you've wiped state (unless that is explicitly not required)
@@ -19,9 +19,9 @@ following:
   * Do you have the correct private key (or Ledger device).
   * If you're signing a transaction:
     * Do you have a sufficient account balance to make the transaction?
-      * Run `oasis-node stake account info`
+      * Check your account balance using the `oasis-node stake account info` command with appropriate parameters
     * Are you using the correct nonce?
-      * Run `oasis-node stake account info`
+      * Check your account nonce using the `oasis-node stake account info` command with appropriate parameters
 * If you're generating a transaction:
   * Do you have the latest genesis?
 * If you're submitting a transaction:

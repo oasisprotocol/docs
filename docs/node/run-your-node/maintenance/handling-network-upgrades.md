@@ -220,7 +220,7 @@ Let's break down the diff and explain what has changed.
 
 The following genesis file fields will always change on a network upgrade:
 
-* `chain_id`: A unique ID of the network. Mainnet upgrades follow a pattern `oasis-1`, `oasis-2`, `oasis-3`, `oasis-4`, ...
+* `chain_id`: A unique ID of the network. Mainnet upgrades follow a pattern `oasis-1`, `oasis-2`, ...
 * `genesis_time`: Time from which the genesis file is valid.
 * `halt_epoch`: The epoch when the node will stop functioning. We set this to
   intentionally force an upgrade.

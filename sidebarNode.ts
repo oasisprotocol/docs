@@ -23,7 +23,8 @@ export const sidebarNode: SidebarsConfig = {
           label: 'Previous Upgrades',
           link: {
             type: 'generated-index',
-            description: "This section provides documentation on previous upgrades of Oasis Network's Mainnet.",
+            description:
+              "This section provides documentation on previous upgrades of Oasis Network's Mainnet.",
             slug: 'node/mainnet/previous-upgrades',
           },
           items: [
@@ -38,21 +39,21 @@ export const sidebarNode: SidebarsConfig = {
     {
       type: 'category',
       label: 'Testnet',
-      description: 'These are the current parameters for the Testnet, a test-only network for testing out upcoming features and changes to the protocol.',
+      description:
+        'These are the current parameters for the Testnet, a test-only network for testing out upcoming features and changes to the protocol.',
       collapsible: false,
       link: {
         type: 'doc',
         id: 'node/testnet/README',
       },
-      items: [
-        'node/testnet/upgrade-log',
-      ],
+      items: ['node/testnet/upgrade-log'],
     },
     'node/genesis-doc',
     {
       type: 'category',
       label: 'Run Your Node',
-      description: 'The Oasis Network consists of several types of nodes, each serving distinct roles to maintain the functionality, security, and decentralization of the network.',
+      description:
+        'The Oasis Network consists of several types of nodes, each serving distinct roles to maintain the functionality, security, and decentralization of the network.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -64,7 +65,8 @@ export const sidebarNode: SidebarsConfig = {
           label: 'Prerequisites',
           link: {
             type: 'generated-index',
-            description: "This sections lists hardware and software prerequisites for running an Oasis node.",
+            description:
+              'This section lists hardware and software prerequisites for running an Oasis node.',
             slug: 'node/run-your-node/prerequisites',
           },
           items: [
@@ -74,7 +76,7 @@ export const sidebarNode: SidebarsConfig = {
             'node/run-your-node/prerequisites/oasis-node',
             'node/run-your-node/prerequisites/system-configuration',
             'node/run-your-node/prerequisites/set-up-tee',
-          ]
+          ],
         },
         'node/run-your-node/validator-node',
         'node/run-your-node/non-validator-node',
@@ -88,9 +90,7 @@ export const sidebarNode: SidebarsConfig = {
             type: 'doc',
             id: 'node/run-your-node/paratime-client-node',
           },
-          items: [
-            'node/run-your-node/paratime-observer-node',
-          ],
+          items: ['node/run-your-node/paratime-observer-node'],
         },
         'node/run-your-node/rofl-node',
         {
@@ -111,7 +111,8 @@ export const sidebarNode: SidebarsConfig = {
           label: 'Maintenance',
           link: {
             type: 'generated-index',
-            description: "This section provides documentation on how to maintain your Oasis node setup over long run.",
+            description:
+              'This section provides documentation on how to maintain your Oasis node setup over long run.',
             slug: 'node/run-your-node/maintenance',
           },
           items: [
@@ -120,24 +121,25 @@ export const sidebarNode: SidebarsConfig = {
             'node/run-your-node/maintenance/adding-or-removing-nodes',
             'node/run-your-node/maintenance/refreshing-certificates',
             'node/run-your-node/maintenance/shutting-down-a-node',
-          ]
+          ],
         },
         {
           type: 'category',
           label: 'Advanced',
           link: {
             type: 'generated-index',
-            description: "This section provides documentation on advanced usages of the Oasis node.",
+            description:
+              'This section provides documentation on advanced usages of the Oasis node.',
             slug: 'node/run-your-node/advanced',
           },
           items: [
             'node/run-your-node/advanced/sync-node-using-state-sync',
             'node/run-your-node/advanced/copy-state-from-one-node-to-the-other',
             'node/run-your-node/advanced/remote-signer',
-          ]
+          ],
         },
         'node/run-your-node/troubleshooting',
-      ]
+      ],
     },
     {
       type: 'doc',

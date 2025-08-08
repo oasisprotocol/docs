@@ -51,6 +51,10 @@ const config: Config = {
           routeBasePath: '/',
           showLastUpdateTime: true,
           sidebarPath: './sidebars.ts',
+          admonitions: {
+            keywords: ['example'],
+            extendDefaults: true,
+          },
         },
         blog: false,
         theme: {

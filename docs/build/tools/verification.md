@@ -76,18 +76,31 @@ To see all available options and more examples visit the
 [foundry-verify]: https://book.getfoundry.sh/reference/forge/forge-verify-contract
 [sourcify docs]: https://docs.sourcify.dev/docs/how-to-verify/#foundry
 
-## Verification on Sourcify
+## Verification with Sourcify UI
 
-To verify maunally a contract deployed on Sapphire Mainnet or Testnet on Sourcify:
+To manually verify a contract deployed on Sapphire Mainnet or Testnet on Sourcify:
 
 1. Visit the [Sourcify] website and hit the "VERIFY CONTRACT" button.
 
    ![Sourcify website](../images/tools/sourcify1.png)
 
-2. Upload the contracts JSON metadata file. (Sourcify can parse the Hardhat
-   .json output file under `artifacts/build-info`)
+2. Select the "Oasis Sapphire" or "Oasis Sapphire Testnet" chain for Mainnet or
+   Testnet accordingly and enter the address of the specific contract. Then,
+   select the "Solidity" language", either "Hardhat" or "Foundry" and toggle the
+   "Upload build-info" file.
 
    ![Sourcify: Upload metadata JSON file](../images/tools//sourcify2.png)
+
+3. Under the "File Upload" section go ahead and upload the contract's build-info
+   JSON file that bundles your contract metadata. This file should be located
+   under `artifacts/build-info` on Hardhat or `out/build-info` on Foundry once
+   you compile the contract.
+   
+   Sourcify will then unpack the metadata and collect bundled contracts. Pick
+   the contract name you want to verify from the "Contract Identifier" dropdown
+   below.
+
+   ![Sourcify: File upload](../images/tools/sourcify3.png)
 
    :::tip Store your metadata files
 
@@ -101,27 +114,22 @@ To verify maunally a contract deployed on Sapphire Mainnet or Testnet on Sourcif
 
    :::
 
-3. Sourcify will decode the metadata and prepare a list of included contracts on
-   the right. Enter the address of the specific contract and select the "Oasis
-   Sapphire" or "Oasis Sapphire Testnet" chain for Mainnet or Testnet
-   accordingly. If your contract assigns any immutable variables in the
-   constructor, you will also need to correctly fill those out under the "More
-   Inputs (optional)" panel. Finally, click on the "Verify" button.
+4. Finally, click on the "Verify Contract" button to submit verification data.
+   In a few moments the job should succeed and your contract is now verified!
 
-   ![Sourcify: Verify contract](../images/tools/sourcify3.png)
+   ![Sourcify: Verify contract](../images/tools/sourcify4.png)
 
-4. If everything goes well, you will get a *Perfect match* notice. Your
-   contract is now verified. Congratulations!
-
-In case of a *Partial match*, the contracts metadata JSON differs from the one
+In case of a *Partial match*, the contracts metadata JSON differed from the one
 used for deployment although the compiled contract bytecode matched. Make sure
-the source code `.sol` file of the contract is the same as the one used during the
-deployment (including the comments, variable names and source code file
+the source code `.sol` file of the contract is the same as the one used during
+the deployment (including the comments, variable names and source code file
 names) and use the same version of Hardhat and solc compiler.
 
 :::info
+
 You can also explore all verification methods on Sourcify by reading the
 [official Sourcify contract verification instructions][sourcify-contract-verify].
+
 :::
 
 [Sourcify]: https://sourcify.dev/

@@ -23,6 +23,18 @@
   --ifm-color-secondary-text: #71717A;
   --ifm-color-card-heading: #09090B;
   --ifm-color-card-heading-secondary: #18181B;
+  --ifm-alert-foreground: #EF4444;
+  --ifm-alert-background: #FEF2F2;
+  --ifm-note-foreground: #71717A;
+  --ifm-note-background: #F4F4F5;
+  --ifm-caution-foreground: #FB923C;
+  --ifm-caution-background: #FFF7ED;
+  --ifm-info-foreground: #3B82F6;
+  --ifm-info-background: #EFF6FF;
+  --ifm-tip-foreground: #059669;
+  --ifm-tip-background: #F0FDF4;
+  --ifm-example-foreground: #F59E0B;
+  --ifm-example-background: #FEFCE8;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -38,6 +50,18 @@ html[data-theme='dark'] {
   --ifm-color-secondary-text: #A1A1AA;
   --ifm-color-card-heading: #FAFAFA;
   --ifm-color-card-heading-secondary: #FAFAFA;
+  --ifm-alert-foreground: #FEE2E2;
+  --ifm-alert-background: #431407;
+  --ifm-note-foreground: #A1A1AA;
+  --ifm-note-background: #27272A;
+  --ifm-caution-foreground: #FB923C;
+  --ifm-caution-background: #422006;
+  --ifm-info-foreground: #BFDBFE;
+  --ifm-info-background: #082F49;
+  --ifm-tip-foreground: #34D399;
+  --ifm-tip-background: #052E16;
+  --ifm-example-foreground: #FEF08A;
+  --ifm-example-background: #51430E;
 }
 
 /* Custom fonts */
@@ -135,21 +159,6 @@ html[data-theme="dark"] {
   --search-local-highlight-color: #3ec8ff;
 }
 
-/* Make docccard and navcard border stronger */
-.card,
-.pagination-nav__link {
-  border: 1px solid black !important;
-}
-[data-theme='dark'] .card,
-[data-theme='dark'] .pagination-nav__link {
-  border: 1px solid white !important;
-}
-
-.card {
-  --ifm-link-hover-color: inherit !important;
-  height: 100%
-}
-
 /* To have the full description of pages,
    in combination with card heigt 100% to have even size boxes in a list.
   */
@@ -180,8 +189,18 @@ html[data-theme="dark"] {
    max-width: 80rem!important;
 }
 
-.card {
-  z-index: 1;
+.docs-doc-id-README .card {
+  background: none!important;
+  max-width: 100%;
+  backdrop-filter: none;
+}
+
+.docs-doc-id-README .card::before{
+  opacity: 0!important;
+}
+
+.docs-doc-id-README .card::after{
+  background: none!important;
 }
 
 .card:hover h2::after {
@@ -194,3 +213,103 @@ html[data-theme="dark"] {
   display: none;
 }
 
+/* DocCard specific styling */
+.col--6 .card {
+  max-width: 100%!important;
+}
+
+/* Pagination Link styling */
+.pagination-nav__link {
+  border: none !important;
+}
+
+/* Admonition cards styling */
+.theme-admonition,
+.alert{
+  border-radius: 6px;
+}
+
+.theme-admonition-danger{
+  background-color: var(--ifm-alert-background)!important;
+  border: 1px solid var(--ifm-alert-foreground);
+}
+
+.theme-admonition-danger, .theme-admonition-danger a{
+  color: var(--ifm-alert-foreground);
+}
+
+.theme-admonition-danger svg{
+  fill: var(--ifm-alert-foreground)!important;
+}
+
+.theme-admonition-note{
+  background-color: var(--ifm-note-background);
+  border: 1px solid var(--ifm-note-foreground);
+}
+
+.theme-admonition-note, .theme-admonition-note a{
+  color: var(--ifm-note-foreground);
+}
+
+.theme-admonition-note svg{
+  fill: var(--ifm-note-foreground)!important;
+}
+
+.theme-admonition-caution,
+.theme-admonition-warning{
+  background-color: var(--ifm-caution-background);
+  border: 1px solid var(--ifm-caution-foreground);
+}
+
+.theme-admonition-warning, .theme-admonition-warning a,
+.theme-admonition-caution, .theme-admonition-caution a{
+  color: var(--ifm-caution-foreground);
+}
+
+.theme-admonition-warning svg,
+.theme-admonition-caution svg{
+  fill: var(--ifm-caution-foreground)!important;
+}
+
+.theme-admonition-info{
+  background-color: var(--ifm-info-background);
+  border: 1px solid var(--ifm-info-foreground);
+}
+
+.theme-admonition-info, .theme-admonition-info a{
+  color: var(--ifm-info-foreground);
+}
+
+.theme-admonition-info svg{
+  fill: var(--ifm-info-foreground)!important;
+}
+
+.theme-admonition-tip{
+  background-color: var(--ifm-tip-background);
+  border: 1px solid var(--ifm-tip-foreground);
+}
+
+.theme-admonition-tip, .theme-admonition-tip a{
+  color: var(--ifm-tip-foreground);
+}
+
+.theme-admonition-tip svg{
+  fill: var(--ifm-tip-foreground)!important;
+}
+
+.theme-admonition-example{
+  background-color: var(--ifm-example-background);
+  border: 1px solid var(--ifm-example-foreground);
+}
+
+.theme-admonition-example, .theme-admonition-example a{
+  color: var(--ifm-example-foreground);
+}
+
+.theme-admonition-example svg{
+  fill: transparent!important;
+}
+
+.theme-admonition-example p{
+  margin-bottom: 0;
+}

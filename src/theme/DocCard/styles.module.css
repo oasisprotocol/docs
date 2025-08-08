@@ -3,16 +3,48 @@
   --ifm-link-hover-color: var(--ifm-color-emphasis-700);
   --ifm-link-hover-decoration: none;
 
-  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
-  border: 1px solid var(--ifm-color-emphasis-200);
   transition: all var(--ifm-transition-fast) ease;
   transition-property: border, box-shadow;
   background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-primary);
+  backdrop-filter: blur(2px);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 24px!important;
+  max-width: 50%;
+  position: relative;
 }
 
+.cardContainer::after {
+  content: '';
+  background-image: url('/img/ArrowUpRightBlue.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  transition: all 0.25s ease;
+  z-index: 3;
+}
+
+html[data-theme='dark'] .cardContainer::after {
+  background-image: url('/img/ArrowUpRightTeal.png');
+}
+
+
 .cardContainer:hover {
-  border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+}
+
+.cardContainer:hover::after {
+  top: 1rem;
+  right: 1rem;
 }
 
 .cardContainer *:last-child {
@@ -21,8 +53,18 @@
 
 .cardTitle {
   font-size: 1.2rem;
+  color: var(--ifm-color-card-heading);
+  width: calc(100% - 1.5rem);
 }
 
 .cardDescription {
   font-size: 0.8rem;
+  color: var(--ifm-color-secondary-text);
+}
+
+
+@media (max-width: 768px) {
+  .cardContainer{
+    max-width: 100%;
+  }
 }

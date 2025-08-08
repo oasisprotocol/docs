@@ -8,7 +8,8 @@
   padding-top: 18rem;
   position: relative;
   overflow: hidden;
-  transition: background 0.5s ease;
+  transition: all 0.25s ease;
+  position: relative;
 }
 
 .customCard::before {
@@ -132,7 +133,7 @@
 
 .cardItem::after {
   content: '';
-   background-image: url('/img/ArrowUpRight.png');
+  background-image: url('/img/ArrowUpRight.png');
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;

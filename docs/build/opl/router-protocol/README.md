@@ -4,6 +4,14 @@ description: Cross-chain dApps with Router Protocol
 
 # Router Protocol
 
+:::warning Temporarily Unavailable
+
+Router Protocol had a [security incident] and is currently not available. They plan to return in a few months. This documentation is kept for reference and will be updated when Router Protocol resumes operations.
+
+:::
+
+[security incident]: https://routerprotocol.medium.com/incident-report-router-protocol-asset-bridge-exploit-and-response-833f5bb95a31
+
 Router Protocol offers two frameworks for cross-chain interactions:
 
 - **Router CrossTalk**: Enables stateless and stateful cross-chain messaging

@@ -38,7 +38,14 @@ export const sidebarBuild: SidebarsConfig = {
             'build/sapphire/develop/dappwright',
           ],
         },
-        'build/sapphire/examples',
+        {
+          type: 'category',
+          label: 'Examples',
+          link: { type: 'doc', id: 'build/sapphire/examples/README' },
+          items: [
+            'build/sapphire/examples/encrypted-events',
+          ],
+        },
         'build/sapphire/addresses',
       ],
     },

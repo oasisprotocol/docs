@@ -40,7 +40,7 @@ export const sidebarBuild: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Tutorials',
+          label: 'Examples',
           link: { type: 'doc', id: 'build/sapphire/examples/README' },
           items: [
             'build/sapphire/examples/encrypted-events',

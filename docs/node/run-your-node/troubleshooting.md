@@ -18,8 +18,7 @@ following:
   * Do you have the latest genesis?
   * Do you have the correct private key (or Ledger device).
   * If you're signing a transaction:
-  * If you're signing a transaction:
-    * Check your account balance and nonce using the `oasis account show <address>` command.
+    * Check your account balance and nonce using the [`oasis account show`](https://github.com/oasisprotocol/cli/blob/master/docs/account.md#show) command.
 * If you're generating a transaction:
   * Do you have the latest genesis?
 * If you're submitting a transaction:

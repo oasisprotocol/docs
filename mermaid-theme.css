@@ -107,6 +107,10 @@ rect.note,
     stroke: #1b1b1d!important;
 }
 
+[fill="rgba(999,999,999,0)"] { /* Acts as selector to override background color as details.alert--info */
+    stroke: none;
+}
+
 @media (prefers-color-scheme: dark) {
     & { /* mermaid converts to #my-svg { background-color: ..; } */
         background-color: #1b1b1d !important;
@@ -212,6 +216,14 @@ rect.note,
     .endpointNode rect{
         fill: #1b1b1d!important;
         stroke: #ffffff!important;
+    }
+
+    &:has([fill="rgba(999,999,999,0)"]) { /* Acts as selector to override background color as details.alert--info */
+        background-color: #193c47 !important; /* var(--ifm-alert-background-color); */
+
+        .messageText {
+            stroke: #193c47 !important;
+        }
     }
 }
 

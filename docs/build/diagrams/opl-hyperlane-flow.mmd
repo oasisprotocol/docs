@@ -1,25 +1,19 @@
 flowchart TB
- subgraph Origin["Origin"]
-        Sender["Sender"]
-        M_O[("Mailbox")]
+  subgraph Origin["Origin"]
+    Sender["Sender"]
+    M_O[("Mailbox")]
   end
- subgraph Destination["Destination"]
-        Recipient["Recipient"]
-        M_D[("Mailbox")]
-        ISM["InterchainSecurityModule"]
+  subgraph Destination["Destination"]
+    Recipient["Recipient"]
+    M_D[("Mailbox")]
+    ISM["InterchainSecurityModule"]
   end
-    Sender -- "1.dispatch(destination, recipient, body)" --> M_O
-    M_O -. "2.emit dispatch(sender, destination, recipient, body)" .-> Relayer(("Relayer"))
-    Relayer -- "3.process(metadata, message)" --> M_D
-    M_D -. "4.interchainSecurityModule()" .-> Recipient
-    M_D -- "5.verify(metadata, message)" --> ISM
-    M_D -- "6.handle(origin, sender, body)" --> Recipient
+  Sender -- "1.dispatch(destination, recipient, body)" --> M_O
+  M_O -. "2.emit dispatch(sender, destination, recipient, body)" .-> Relayer(("Relayer"))
+  Relayer -- "3.process(metadata, message)" --> M_D
+  M_D -. "4.interchainSecurityModule()" .-> Recipient
+  M_D -- "5.verify(metadata, message)" --> ISM
+  M_D -- "6.handle(origin, sender, body)" --> Recipient
 
-    style Sender fill:#FFFFFF,color:#000000,stroke-width:1px,stroke-dasharray: 0,stroke:#000000
-    style M_O stroke-width:1px,stroke-dasharray: 0,stroke:#000000,fill:#0500e2,color:#FFFFFF
-    style Recipient fill:#FFFFFF,color:#000000,stroke-width:1px,stroke-dasharray: 0,stroke:#000000
-    style M_D stroke-width:1px,stroke-dasharray: 0,stroke:#000000,fill:#0500e2,color:#FFFFFF
-    style ISM stroke-width:1px,stroke-dasharray: 0,stroke:#000000,fill:#0500e2,color:#FFFFFF
-    style Relayer stroke-width:1px,stroke-dasharray: 0,stroke:#000000,fill:#0500e2,color:#FFFFFF
-    style Origin fill:#BBDEFB,stroke:#000000
-    style Destination fill:#BBDEFB,stroke:#000000
+  class M_O,M_D,Relayer,ISM highlightNodes;
+  class Sender,Recipient endpointNode;

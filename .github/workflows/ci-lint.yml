@@ -29,4 +29,4 @@ jobs:
       - name: Mermaid diagrams synced with sources
         run: |
           yarn diagrams
-          git diff --exit-code
+          git diff --submodule=diff --exit-code

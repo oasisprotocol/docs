@@ -2,12 +2,11 @@
 
 The State Sync is a way to **quickly bootstrap** a **full Oasis node** (either a
 [validator node](../validator-node.mdx) or a
-[non-validator node](../non-validator-node.mdx)) by using the
-[CometBFT's Light Client protocol]. It allows one to initialize a node from a
-trusted height, its corresponding block's header and a trusted validator set
-(given in the [genesis document](../../genesis-doc.md)). It does so by securely
-updating the node's trusted state by requesting and verifying a minimal set of
-data from the network's full nodes.
+[non-validator node](../non-validator-node.mdx)) by initializing it from the
+trusted block's header, identified by the trusted height and hash. The node's
+trusted state is then securely updated by requesting and verifying a minimal set of
+data (checkpoints metadata and chunks) from the P2P network. Internally, it uses
+[CometBFT's Light Client protocol] and Merkle proofs to filter out invalid data.
 
 :::info
 
@@ -21,6 +20,15 @@ node to the other].
 
 CometBFT's Light Client protocol requires at least 1 full node to be correct
 to be able to [detect and submit evidence for a light client attack].
+
+:::
+
+:::tip
+
+After a successful state sync it is always recommended to check if you see
+the same chain as other nodes. This can be done by comparing block hash at
+a recent height with sources that you trust: e.g. your own nodes, trusted nodes
+from external entity, block explorers, etc.
 
 :::
 
@@ -38,9 +46,10 @@ consensus:
   # Enable consensus state sync (i.e. CometBFT light client sync).
   state_sync:
     enabled: true
-  # Configure trusted height & hash for the light client.
+  # Configure trusted period, height and hash for the light client.
   light_client:
     trust:
+      period: {{ trusted_period }}
       height: {{ trusted_height }}
       hash: "{{ trusted_height_hash }}"
 
@@ -50,6 +59,7 @@ consensus:
 
 and replace the following variables in the configuration snippet:
 
+* `{{ trusted_period }}`: Trusted period is the duration for which trust remains valid.
 * `{{ trusted_height }}`: Trusted height defines the height at which your node should trust the chain.
 * `{{ trusted_height_hash }}`: Trusted height hash defines the hash of the block header corresponding to the trusted height.
 
@@ -76,17 +86,52 @@ something like the following in your node's logs:
   https://docs.cometbft.com/main/explanation/core/light-client#where-to-obtain-trusted-height--hash
 [Wiping Node State]: ../maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
 
+### Obtaining Trusted Period
+
+:::caution
+
+To prevent long-range attacks it is recommended that the light client trust period
+is shorter than the debonding period (currently 336 epochs or ~14 days). If you
+trust a header older than the debonding period, you risk accepting invalid headers
+from nodes that have already withdrawn their stake. Such nodes can no longer be
+penalized for their misbehaviour and you may be tricked into following the wrong chain.
+
+:::
+
+We recommend using `trust_period=288h` (12 days). This way the time required
+to verify headers, submit possible misbehavior evidence and penalize nodes
+is still less than the debonding period, giving nodes strong incentive not to lie.
+
 ### Obtaining Trusted Height and Hash
+
+:::caution
+
+Currently, checkpoints happen approximately once per week. It is important to set
+sufficiently old trusted height and hash, so that the network has at least one
+checkpoint that is more recent than the configured trust.
+
+:::
+
+We recommend configuring trusted header that is around 10 days old. This way
+there will be checkpoints available and the trust will still be shorter than
+the debonding period.
 
 To obtain the trusted height and the corresponding block header's hash, use one
 of the following options.
+
+:::tip
+
+If using centralized or untrusted sources it is always recommended to
+fetch and compare data from multiple sources.
+
+:::
 
 #### Block Explorers
 
 Browse to one of our block explorers (e.g. [Oasis Explorer], [Oasis Scan]) and
 obtain the trusted height and hash there:
 
-1. Obtain the current block height from the main page, e.g. 4819139.
+1. Obtain the block height (10 days old) from the main page, e.g. 4819139.
 2. Click on block height's number to view the block's details and obtain its
    hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
 
@@ -127,11 +172,11 @@ the values you need are `latest_height` and `latest_hash`.
 #### Public Rosetta Gateway
 
 First obtain the network's Genesis document's hash (e.g. from the Networks Parameters Page):
-- mainnet: [bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55](https://docs.oasis.io/node/mainnet/)
-- testnet: [0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76](https://docs.oasis.io/node/testnet/)
+- [Mainnet](https://docs.oasis.io/node/mainnet/): `bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55`
+- [Testnet](https://docs.oasis.io/node/testnet/): `0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76`
 
-Query our public Rosetta Gateway instance and obtain the trusted height and hash
-there (replace the `<chain-context>` with the value obtained in the previous step):
+Query our public Rosetta Gateway instance and obtain the latest height by
+replacing the `<chain-context>` with the value obtained in the previous step:
 
 ```bash
 curl -X POST https://rosetta.oasis.io/api/block \
@@ -153,15 +198,44 @@ This will give you output like the following (non-relevant fields omitted):
 {
 	"block": {
 		"block_identifier": {
-			"index": 16787439,
-			"hash": "443b71d835dbae7ea6233b06280ab596287d5c45f88fa76a71bf6cc52366592e"
+			"index": 25688638,
+			"hash": "3076ae195cfeda09ad49a6c74f6f655bc623e526184f814a842b224bf1846223"
 		},
     ...
 	}
 }
 ```
 
-The values you need are `index` and `hash`.
+Assuming blocks happen every 6 seconds, subtract around `140_000` blocks to
+get the height that is around 10 days old and query again:
+
+```bash
+curl -X POST https://rosetta.oasis.io/api/block \
+-H "Content-Type: application/json" \
+-d '{
+    "network_identifier": {
+        "blockchain": "Oasis",
+        "network": "<chain-context>"
+    },
+    "block_identifier": {
+        "index": 25548638
+    }
+}'
+```
+
+The values you need are `index` and `hash`:
+
+```json
+{
+	"block": {
+		"block_identifier": {
+			"index": 25548638,
+			"hash": "76ac9d6b59e662d024097a07eb65777292ce6a7ebe9aca8bd0caf73e72b06834"
+		},
+    ...
+	}
+}
+```
 
 #### Oasis CLI
 

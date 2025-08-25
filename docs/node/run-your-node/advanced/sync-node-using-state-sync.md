@@ -172,8 +172,8 @@ the values you need are `latest_height` and `latest_hash`.
 #### Public Rosetta Gateway
 
 First obtain the network's Genesis document's hash (e.g. from the Networks Parameters Page):
-- mainnet: [bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55](https://docs.oasis.io/node/mainnet/)
-- testnet: [0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76](https://docs.oasis.io/node/testnet/)
+- [Mainnet](https://docs.oasis.io/node/mainnet/): `bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55`
+- [Testnet](https://docs.oasis.io/node/testnet/): `0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76`
 
 Query our public Rosetta Gateway instance and obtain the latest height by
 replacing the `<chain-context>` with the value obtained in the previous step:

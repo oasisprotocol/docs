@@ -9,8 +9,43 @@ export const sidebarBuild: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'ROFL',
+      description: 'Runtime OFf-chain Logic (ROFL) apps are a mechanism to augment the deterministic on-chain backend with verifiable off-chain applications',
+      collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'build/rofl/README',
+      },
+      items: [
+        'build/rofl/quickstart',
+        'build/rofl/prerequisites',
+        'build/rofl/app',
+        'build/rofl/deployment',
+        {
+          type: 'category',
+          label: 'Features',
+          description: 'Containerized ROFL apps automatically have access to some useful features that ease development. This chapter provides an introduction to these features.',
+          link: {
+            type: 'generated-index',
+            slug: '/build/rofl/features',
+          },
+          items: [
+            'build/rofl/features/marketplace',
+            'build/rofl/features/secrets',
+            'build/rofl/features/storage',
+            'build/rofl/features/manifest',
+            'build/rofl/features/rest',
+            'build/rofl/features/proxy',
+            'build/rofl/features/testing',
+          ]
+        },
+        'build/rofl/troubleshooting',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Sapphire',
-      description: 'Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.',
+      description: 'Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.',
       collapsible: false,
       link: {
         type: 'doc',
@@ -40,42 +75,6 @@ export const sidebarBuild: SidebarsConfig = {
         },
         'build/sapphire/examples',
         'build/sapphire/addresses',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'ROFL',
-      description: 'Runtime OFf-chain Logic (ROFL) apps are a mechanism to augment the deterministic on-chain backend with verifiable off-chain applications',
-      collapsible: false,
-      link: {
-        type: 'doc',
-        id: 'build/rofl/README',
-      },
-      items: [
-        'build/rofl/quickstart',
-        'build/rofl/prerequisites',
-        'build/rofl/app',
-        'build/rofl/deployment',
-        {
-          type: 'category',
-          label: 'Features',
-          link: {
-            type: 'generated-index',
-            description: "Containerized ROFL apps automatically have access to some useful features that\n" +
-              "ease development. This chapter provides an introduction to these features.",
-            slug: '/build/rofl/features',
-          },
-          items: [
-            'build/rofl/features/marketplace',
-            'build/rofl/features/secrets',
-            'build/rofl/features/storage',
-            'build/rofl/features/manifest',
-            'build/rofl/features/rest',
-            'build/rofl/features/proxy',
-            'build/rofl/features/testing',
-          ]
-        },
-        'build/rofl/troubleshooting',
       ],
     },
     {
@@ -142,7 +141,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Tools & Services',
-      description: 'Oasis integrates with a number of services and provides tooling support for developers using Remix (unencrypted transactions only), Sourcify, Docker images, Band, and more.',
+      description: 'Oasis integrates with a number of services and provides tooling support for developers using Foundry, Remix (unencrypted transactions only), Sourcify, Docker images, Band, and others.',
       collapsible: false,
       link: {
         type: 'doc',

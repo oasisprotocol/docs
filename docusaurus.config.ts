@@ -104,15 +104,15 @@ const config: Config = {
         },
         items: [
           {
-            label: 'Use Oasis',
-            to: '/general/',
-            activeBaseRegex: '/general/',
-            position: 'left',
-          },
-          {
             label: 'Build',
             to: '/build/',
             activeBaseRegex: '/build/',
+            position: 'left',
+          },
+          {
+            label: 'Use Oasis',
+            to: '/general/',
+            activeBaseRegex: '/general/',
             position: 'left',
           },
           {

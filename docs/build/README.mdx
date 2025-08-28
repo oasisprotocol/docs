@@ -10,30 +10,29 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 ![Oasis architectural design including ParaTime and consensus layers](../general/images/architecture/technology_scalability.svg)
 
-The [Oasis architecture] is designed to have a simple, robust consensus layer
-on top which connects handful of ParaTimes executing smart contracts.
+## ROFL
+
+Runtime OFfchain Logic (ROFL) enables you to build secure applications running
+offchain in a trusted environment (TEE) containers. This is ideal for trusted
+oracles, compute-expensive tasks in AI or as a backend for interactive games.
+ROFL apps can seamlessly sign transactions running on [Sapphire].
+
+<DocCard item={findSidebarItem('/build/rofl/')} />
 
 ## Sapphire
 
-[Sapphire] is the primary ParaTime. It is EVM-compatible and allows you to
-write both confidential and non-confidential smart contracts.
+[Sapphire] is an EVM-compatible Layer 1 blockchain that allows you to
+write both confidential and non-confidential smart contracts. The transactions
+can also be end-to-end encrypted and stored on the blockchain ledger.
 
-For an overview of the other ParaTimes, refer to the [Other ParaTimes] chapter.
+Sapphire is just one of the ParaTimes running on the Oasis platform. For an
+overview of other ParaTimes, refer to the [Other ParaTimes] chapter.
 
 <DocCard item={findSidebarItem('/build/sapphire/')} />
 
 [Oasis architecture]: ../general/oasis-network/README.mdx
 [Sapphire]: https://github.com/oasisprotocol/docs/blob/main/docs/build/sapphire/README.mdx
 [Other ParaTimes]: ./tools/other-paratimes/README.mdx
-
-## ROFL
-
-Runtime OFfchain Logic (ROFL) enables you to build secure applications running
-offchain in a trusted environment (TEE) and that seamlessly communicate with
-Oasis Sapphire. This is ideal for trusted oracles, compute-expensive tasks
-in AI or as a backend for interactive games.
-
-<DocCard item={findSidebarItem('/build/rofl/')} />
 
 ## Oasis Privacy Layer (OPL)
 
@@ -49,7 +48,9 @@ and working examples for you to explore and extend.
 
 <DocCard item={findSidebarItem('/build/opl/')} />
 
-## Consensus Layer RPC Endpoints
+## Consensus Network Information
+
+### RPC Endpoints
 
 :::danger
 
@@ -81,7 +82,7 @@ Public gRPC endpoints (in alphabetic order):
 [web3]: ../node/web3.mdx
 [grpc]: ../node/grpc.mdx
 
-## Consensus Layer Block Explorers
+### Block Explorers
 
 | Name (Provider)          | Mainnet URL                                   | Testnet URL                                 |
 |--------------------------|-----------------------------------------------|---------------------------------------------|
@@ -90,7 +91,7 @@ Public gRPC endpoints (in alphabetic order):
 
 [Bit Cat]: https://www.bitcat365.com/
 
-## Consensus Layer Indexers
+### Indexers
 
 | Name (Provider)        | Mainnet URL                            | Testnet URL                            | Documentation                              |
 |------------------------|----------------------------------------|----------------------------------------|--------------------------------------------|
@@ -100,7 +101,7 @@ Public gRPC endpoints (in alphabetic order):
 [Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
 [OasisScan-docs]: https://api.oasisscan.com/v2/swagger/
 
-## Rosetta Endpoints
+### Rosetta Endpoints
 
 | Provider | Mainnet URL                               | Testnet URL                               |
 |----------|-------------------------------------------|-------------------------------------------|

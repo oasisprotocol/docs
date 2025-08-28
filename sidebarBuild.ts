@@ -9,41 +9,6 @@ export const sidebarBuild: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Sapphire',
-      description: 'Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.',
-      collapsible: false,
-      link: {
-        type: 'doc',
-        id: 'build/sapphire/README',
-      },
-      items: [
-        'build/sapphire/quickstart',
-        'build/sapphire/network',
-        'build/sapphire/ethereum',
-        {
-          type: 'category',
-          label: 'Develop',
-          link: {
-            type: 'doc',
-            id: 'build/sapphire/develop/README',
-          },
-          items: [
-            'build/sapphire/develop/concept',
-            'build/sapphire/develop/browser',
-            'build/sapphire/develop/authentication',
-            'build/sapphire/develop/gasless',
-            'build/sapphire/develop/deployment',
-            'build/sapphire/develop/security',
-            'build/sapphire/develop/testing',
-            'build/sapphire/develop/dappwright',
-          ],
-        },
-        'build/sapphire/examples',
-        'build/sapphire/addresses',
-      ],
-    },
-    {
-      type: 'category',
       label: 'ROFL',
       description: 'Runtime OFf-chain Logic (ROFL) apps are a mechanism to augment the deterministic on-chain backend with verifiable off-chain applications',
       collapsible: false,
@@ -76,6 +41,41 @@ export const sidebarBuild: SidebarsConfig = {
           ]
         },
         'build/rofl/troubleshooting',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Sapphire',
+      description: 'Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.',
+      collapsible: false,
+      link: {
+        type: 'doc',
+        id: 'build/sapphire/README',
+      },
+      items: [
+        'build/sapphire/quickstart',
+        'build/sapphire/network',
+        'build/sapphire/ethereum',
+        {
+          type: 'category',
+          label: 'Develop',
+          link: {
+            type: 'doc',
+            id: 'build/sapphire/develop/README',
+          },
+          items: [
+            'build/sapphire/develop/concept',
+            'build/sapphire/develop/browser',
+            'build/sapphire/develop/authentication',
+            'build/sapphire/develop/gasless',
+            'build/sapphire/develop/deployment',
+            'build/sapphire/develop/security',
+            'build/sapphire/develop/testing',
+            'build/sapphire/develop/dappwright',
+          ],
+        },
+        'build/sapphire/examples',
+        'build/sapphire/addresses',
       ],
     },
     {
@@ -143,7 +143,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Tools & Services',
-      description: 'Oasis integrates with a number of services and provides tooling support for developers using Remix (unencrypted transactions only), Sourcify, Docker images, Band, and more.',
+      description: 'Oasis integrates with a number of services and provides tooling support for developers using Foundry, Remix (unencrypted transactions only), Sourcify, Docker images, Band, and others.',
       collapsible: false,
       link: {
         type: 'doc',

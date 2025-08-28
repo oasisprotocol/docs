@@ -224,6 +224,17 @@ html[data-theme="dark"] {
   max-width: 100%!important;
 }
 
+table .card{
+  min-width: 250px;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  table .card{
+    min-width: 182px;
+  }
+}
+
 /* Pagination Link styling */
 .pagination-nav__link {
   border: none !important;

@@ -71,6 +71,7 @@ export const sidebarBuild: SidebarsConfig = {
             'build/rofl/features/storage',
             'build/rofl/features/manifest',
             'build/rofl/features/rest',
+            'build/rofl/features/proxy',
             'build/rofl/features/testing',
           ]
         },

@@ -97,6 +97,7 @@ export const sidebarBuild: SidebarsConfig = {
             'build/sapphire/develop/browser',
             'build/sapphire/develop/authentication',
             'build/sapphire/develop/gasless',
+            'build/sapphire/develop/encrypted-events',
             'build/sapphire/develop/deployment',
             'build/sapphire/develop/security',
             'build/sapphire/develop/testing',

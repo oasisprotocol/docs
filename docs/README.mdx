@@ -13,6 +13,33 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
 <div className="homepage-container">
 
 <DocCardSection
+    title="Build on Oasis"
+    path="/build/"
+    fullWidth
+    itemPaths={[
+        "/build/rofl/",
+        "/build/sapphire/",
+        "/build/opl/",
+        "/build/tools/",
+    ]}
+    svg={<BuildSvg className="animatedSvg" />}
+>
+    Our [Runtime Offchain Logic (ROFL)](/build/rofl/) enables you to build
+    secure applications running in a trusted environment (TEE). This is ideal
+    for trusted oracles, AI agents, verifiable compute tasks such as AI
+    training, or game servers.
+
+    ROFL can seamlessly communicate with [Oasis Sapphire](/build/sapphire/)—an
+    EVM-compatible L1 blockchain with built-in contract state and end-to-end
+    transaction encryption.
+
+    The Oasis team also prepared a set of libraries called the
+    [Oasis Privacy Layer](/build/opl/) to bridge existing dApps running
+    on other chains with the unique Sapphire's confidentiality and other
+    [tools](/build/tools/).
+</DocCardSection>
+
+<DocCardSection
   title="Use Oasis"
   path="/general/"
   itemPaths={[
@@ -42,33 +69,6 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
   svg={<GetInvolvedSvg className="animatedSvg" />}
 >
   Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network.
-</DocCardSection>
-
-<DocCardSection
-  title="Build on Oasis"
-  path="/build/"
-  fullWidth
-  itemPaths={[
-    "/build/sapphire/",
-    "/build/opl/",
-    "/build/rofl/",
-    "/build/tools/",
-  ]}
-  svg={<BuildSvg className="animatedSvg" />}
->
-  Contains learning material for the smart contract developers. Since the
-  Oasis platform is best known for confidentiality, the most notable
-  ParaTime is [Oasis Sapphire](/build/sapphire/), an
-  EVM-compatible ParaTime with built-in contract state encryption. The Oasis
-  team also prepared a set of libraries called the
-  [Oasis Privacy Layer](/build/opl/) to bridge existing dApps running
-  on other chains and use the unique Sapphire's confidentiality.
-
-  Our [Runtime Offchain Logic (ROFL)](/build/rofl/) enables you
-  to build secure applications running offchain in a trusted environment
-  (TEE) that seamlessly communicate with Oasis Sapphire. This is ideal for
-  trusted oracles, compute-expensive tasks in AI, or as a backend for
-  interactive games.
 </DocCardSection>
 
 <DocCardSection

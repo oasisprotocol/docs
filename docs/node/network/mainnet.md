@@ -14,7 +14,7 @@ authenticity, follow the [PGP verification instructions].
 
 :::
 
-* Genesis document's hash ([explanation](../genesis-doc.md#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](../reference/genesis-doc.md#genesis-file-vs-genesis-document)):
   * `bb3d748def55bdfb797a2ac53ee6ee141e54cd2ab2dc2375f4a0703a178e6e55`
 * Oasis seed node addresses:
   * `H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:26656`
@@ -46,7 +46,7 @@ are incompatible with the version of Oasis Core used by other nodes.
 
 :::
 
-If you want to join our Testnet, see the [Testnet](../testnet/README.md) docs
+If you want to join our Testnet, see the [Testnet](../network/testnet.md) docs
 for the current Testnet parameters.
 
 [network's current maintainers]: https://github.com/oasisprotocol/mainnet-artifacts/blob/master/README.md#pgp-keys-of-current-maintainers

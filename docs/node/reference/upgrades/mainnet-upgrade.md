@@ -59,7 +59,7 @@ The following parts of the genesis file will be updated:
 
 :::
 
-See the updated [Network Parameters](../README.md) for the published Mainnet genesis file.
+See the updated [Network Parameters](../../network/mainnet.md) for the published Mainnet genesis file.
 
 :::info
 

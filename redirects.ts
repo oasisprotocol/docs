@@ -189,16 +189,39 @@ export const redirectsOptions: Options = {
             from: '/general/run-a-node/node-operator-overview', // #200 Restructure docs
         },
         {
-            to: '/node/mainnet/',
-            from: '/general/oasis-network/network-parameters', // #200 Restructure docs
+            to: '/node/network/mainnet',
+            from: [
+                '/general/oasis-network/network', // #200 Restructure docs, #1438 Reorganize network parameters
+                '/node/mainnet/', // #1438 Reorganize network parameters
+            ]
         },
         {
-            to: '/node/mainnet/upgrade-log',
-            from: '/general/run-a-node/upgrade-log', // #200 Restructure docs
+            to: '/node/network/testnet', // #1438 Reorganize network parameters
+            from: [
+                '/general/foundation/testnet/', // #200 Restructure docs
+                '/node/testnet/', // #1438 Reorganize network parameters
+            ]
         },
         {
-            to: '/node/genesis-doc',
-            from: '/general/oasis-network/genesis-doc', // #200 Restructure docs
+            to: '/node/reference/genesis-doc', // #1438 Reorganize network parameters
+            from: [
+                '/general/oasis-network/genesis-doc', // #200 Restructure docs
+                '/node/genesis-doc', // #1438 Reorganize network parameters
+            ]
+        },
+        {
+            to: '/node/reference/upgrade-logs/mainnet', // #1438 Reorganize network parameters
+            from: [
+                '/general/run-a-node/upgrade-log', // #200 Restructure docs
+                '/node/mainnet/upgrade-log', // #1438 Reorganize network parameters
+            ]
+        },
+        {
+            to: '/node/reference/upgrade-logs/testnet',
+            from: [
+                '/general/foundation/testnet/upgrade-log', // #200 Restructure docs
+                '/node/testnet/upgrade-log', // #1438 Reorganize network parameters
+            ]
         },
         {
             to: '/node/run-your-node',
@@ -254,14 +277,6 @@ export const redirectsOptions: Options = {
             from: '/general/run-a-node/troubleshooting', // #200 Restructure docs
         },
         {
-            to: '/node/testnet/',
-            from: '/general/foundation/testnet/', // #200 Restructure docs
-        },
-        {
-            to: '/node/testnet/upgrade-log',
-            from: '/general/foundation/testnet/upgrade-log', // #200 Restructure docs
-        },
-        {
             to: '/build/tools/build-paratime/',
             from: [
                 '/oasis-sdk/runtime/getting-started', // #200 Restructure docs
@@ -269,12 +284,18 @@ export const redirectsOptions: Options = {
             ]
         },
         {
-            to: '/node/mainnet/previous-upgrades/damask-upgrade',
-            from: '/node/mainnet/damask-upgrade' // #572 Move Damask Upgrade docs
+            to: '/node/reference/upgrades/damask-upgrade', // #1438 Reorganize network parameters
+            from: [
+                '/node/mainnet/damask-upgrade', // #572 Move Damask Upgrade docs
+                '/node/mainnet/previous-upgrades/damask-upgrade', // #1438 Reorganize network parameters
+            ]
         },
         {
-            to: '/node/mainnet/eden-upgrade',
-            from: '/node/mainnet/e-upgrade' // #600 Add 23.0 upgrade's name
+            to: '/node/reference/upgrades/eden-upgrade', // #1438 Reorganize network parameters
+            from: [
+                '/node/mainnet/e-upgrade', // #600 Add 23.0 upgrade's name
+                '/node/mainnet/eden-upgrade', // #1438 Reorganize network parameters
+            ]
         },
         {
             to: 'https://api.docs.oasis.io/sol/sapphire-contracts',
@@ -432,6 +453,14 @@ export const redirectsOptions: Options = {
         {
             to: '/build/opl/hyperlane/',
             from: '/build/opl/hyperlane/cli', // #1264 Update Hyperlane
+        },
+        {
+            to: '/node/reference/upgrades/cobalt-upgrade',
+            from: '/node/mainnet/previous-upgrades/cobalt-upgrade', // #1438 Reorganize network parameters
+        },
+        {
+            to: '/node/reference/upgrades/mainnet-upgrade',
+            from: '/node/mainnet/previous-upgrades/mainnet-upgrade', // #1438 Reorganize network parameters
         },
     ],
     createRedirects(existingPath) {

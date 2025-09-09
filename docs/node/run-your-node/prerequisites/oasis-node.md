@@ -48,8 +48,8 @@ The latest Genesis file can be found in the Network Parameters page ([Mainnet],
 [Testnet]). You should download the latest `genesis.json` file and
 copy it to `/node/etc/genesis.json` on the `server`.
 
-[Mainnet]: ../../mainnet/README.md
-[Testnet]: ../../testnet/README.md
+[Mainnet]: ../../network/mainnet.md
+[Testnet]: ../../network/testnet.md
 
 ## Obtain the `oasis-node` Binary
 
@@ -59,8 +59,8 @@ For convenience, we provide binaries that have been built by the Oasis Protocol
 Foundation. Links to the binaries are provided in the Network Parameters page
 ([Mainnet], [Testnet]).
 
-[Mainnet]: ../../mainnet/README.md
-[Testnet]: ../../testnet/README.md
+[Mainnet]: ../../network/mainnet.md
+[Testnet]: ../../network/testnet.md
 
 ### Building From Source
 

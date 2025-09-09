@@ -9,46 +9,18 @@ export const sidebarNode: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Mainnet',
-      description: 'These are the current parameters for the Mainnet.',
+      label: 'Network Information',
+      description: 'These are the current parameters for the network.',
       collapsible: false,
       link: {
         type: 'doc',
-        id: 'node/mainnet/README',
+        id: 'node/network/README',
       },
       items: [
-        'node/mainnet/eden-upgrade',
-        {
-          type: 'category',
-          label: 'Previous Upgrades',
-          link: {
-            type: 'generated-index',
-            description:
-              "This section provides documentation on previous upgrades of Oasis Network's Mainnet.",
-            slug: 'node/mainnet/previous-upgrades',
-          },
-          items: [
-            'node/mainnet/previous-upgrades/damask-upgrade',
-            'node/mainnet/previous-upgrades/cobalt-upgrade',
-            'node/mainnet/previous-upgrades/mainnet-upgrade',
-          ],
-        },
-        'node/mainnet/upgrade-log',
+        'node/network/mainnet',
+        'node/network/testnet',
       ],
     },
-    {
-      type: 'category',
-      label: 'Testnet',
-      description:
-        'These are the current parameters for the Testnet, a test-only network for testing out upcoming features and changes to the protocol.',
-      collapsible: false,
-      link: {
-        type: 'doc',
-        id: 'node/testnet/README',
-      },
-      items: ['node/testnet/upgrade-log'],
-    },
-    'node/genesis-doc',
     {
       type: 'category',
       label: 'Run Your Node',
@@ -150,6 +122,56 @@ export const sidebarNode: SidebarsConfig = {
       type: 'doc',
       label: 'gRPC Proxy',
       id: 'node/grpc',
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      collapsible: true,
+      link: {
+        type: 'generated-index',
+        description: 'Reference guide for node operators.',
+        slug: 'node/reference',
+      },
+      items: [
+        'node/reference/genesis-doc',
+        {
+          type: 'category',
+          label: 'Network Upgrades',
+          link: {
+            type: 'generated-index',
+            description:
+              "This section provides information about previous upgrades.",
+            slug: 'node/reference/upgrades',
+          },
+          items: [
+            'node/reference/upgrades/damask-upgrade',
+            'node/reference/upgrades/cobalt-upgrade',
+            'node/reference/upgrades/mainnet-upgrade',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Upgrade Logs',
+          link: {
+            type: 'generated-index',
+            description:
+              "This section provides upgrade logs.",
+            slug: 'node/reference/upgrade-logs',
+          },
+          items: [
+            {
+              type: 'doc',
+              id: 'node/reference/upgrade-logs/mainnet',
+              label: 'Mainnet',
+            },
+            {
+              type: 'doc', 
+              id: 'node/reference/upgrade-logs/testnet',
+              label: 'Testnet',
+            },
+          ],
+        },
+      ],
     },
   ],
 };

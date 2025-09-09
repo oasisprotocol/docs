@@ -31,8 +31,8 @@ Before following this guide, make sure you've followed the [Prerequisites](../pr
 * Initialized a new node and updated your entity registration by following the [Register a New Entity or Update Your Entity Registration](../paratime-node.mdx#register-a-new-entity-or-update-your-entity-registration) instructions.
   * The entity descriptor file copied to `/node/etc/entity.json`.
 
-[Mainnet]: ../../mainnet/README.md
-[Testnet]: ../../testnet/README.md
+[Mainnet]: ../../network/mainnet.md
+[Testnet]: ../../network/testnet.md
 
 :::tip
 

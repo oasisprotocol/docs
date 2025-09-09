@@ -77,15 +77,15 @@ and observe the value of the `consensus.latest_height` and
 Once the upgrade epoch is reached, follow the instructions in the corresponding
 [upgrade log].
 
-[upgrade log]: ../../mainnet/upgrade-log.md
-[Mainnet]: ../../mainnet/README.md
-[Testnet]: ../../testnet/README.md
-[Testnet upgrade 2022-04-04]: ../../testnet/upgrade-log.md#2022-04-04-upgrade
-[Testnet upgrade 2022-03-03]: ../../testnet/upgrade-log.md#2022-03-03-upgrade
-[Testnet upgrade 2021-08-11]: ../../testnet/upgrade-log.md#2021-08-11-upgrade
-[Mainnet upgrade 2022-04-11 (Damask)]: ../../mainnet/upgrade-log.md#damask-upgrade
-[Mainnet upgrade 2021-08-31]: ../../mainnet/upgrade-log.md#2021-08-31-upgrade
-[Mainnet upgrade 2021-04-28 (Cobalt)]: ../../mainnet/upgrade-log.md#cobalt-upgrade
+[upgrade log]: ../../reference/upgrade-logs/mainnet.md
+[Mainnet]: ../../network/mainnet.md
+[Testnet]: ../../network/testnet.md
+[Testnet upgrade 2022-04-04]: ../../reference/upgrade-logs/testnet.md#2022-04-04-upgrade
+[Testnet upgrade 2022-03-03]: ../../reference/upgrade-logs/testnet.md#2022-03-03-upgrade
+[Testnet upgrade 2021-08-11]: ../../reference/upgrade-logs/testnet.md#2021-08-11-upgrade
+[Mainnet upgrade 2022-04-11 (Damask)]: ../../reference/upgrade-logs/mainnet.md#damask-upgrade
+[Mainnet upgrade 2021-08-31]: ../../reference/upgrade-logs/mainnet.md#2021-08-31-upgrade
+[Mainnet upgrade 2021-04-28 (Cobalt)]: ../../reference/upgrade-logs/mainnet.md#cobalt-upgrade
 
 ## Preparing New Genesis File and Wiping State
 
@@ -109,8 +109,8 @@ Other parts of the genesis need to be updated manually, as described in each
 upgrade's *Proposed State Changes* section (e.g. [Damask upgrade's Proposed
 State Changes], [Cobalt upgrade's Proposed State Changes]).
 
-[Cobalt upgrade's Proposed State Changes]: ../../mainnet/previous-upgrades/cobalt-upgrade.md#proposed-state-changes
-[Damask upgrade's Proposed State Changes]: ../../mainnet/previous-upgrades/damask-upgrade.md#proposed-state-changes
+[Cobalt upgrade's Proposed State Changes]: ../../reference/upgrades/cobalt-upgrade.md#proposed-state-changes
+[Damask upgrade's Proposed State Changes]: ../../reference/upgrades/damask-upgrade.md#proposed-state-changes
 
 ### Download and Verify the Provided Genesis File {#verify-genesis}
 
@@ -248,7 +248,7 @@ The following fields were a particular change in this upgrade:
 
 The balances in the genesis file are enumerated in base units with 1 ROSE token
 equaling 10^9 (i.e. billion) base units. For more details, see the
-[Genesis Document](../../genesis-doc.md#parameters).
+[Genesis Document](../../reference/genesis-doc.md#parameters).
 
 :::
 

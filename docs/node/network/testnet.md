@@ -1,5 +1,7 @@
 # Testnet
 
+## Network Parameters
+
 These are the current parameters for the Testnet, a test-only network for
 testing out upcoming features and changes to the protocol.
 
@@ -26,7 +28,7 @@ This page is meant to be kept up to date with the information from the currently
 * Latest Testnet version: **2023-10-12**
 * [Genesis file](https://github.com/oasisprotocol/testnet-artifacts/releases/download/2023-10-12/genesis.json):
   * SHA256: `02ce385c050b2a5c7cf0e5e34f5e4930f7804bb21efba2d1d3aa8215123aab68`
-* Genesis document's hash ([explanation](../genesis-doc.md#genesis-file-vs-genesis-document)):
+* Genesis document's hash ([explanation](../reference/genesis-doc.md#genesis-file-vs-genesis-document)):
   * `0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76`
 * Oasis seed node addresses:
   * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:26656`

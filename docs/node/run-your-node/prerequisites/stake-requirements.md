@@ -74,10 +74,10 @@ want to set up a working node from scratch.
 [`oasis network show validators`]: ../../../general/manage-tokens/cli/network.md#show-validators
 [`oasis network show parameters`]: ../../../general/manage-tokens/cli/network.md#show-parameters
 [Delegation Policy]: ../../../get-involved/delegation-policy.md
-[**max_validators** committee-scheduler parameter]: ../../genesis-doc.md#committee-scheduler
+[**max_validators** committee-scheduler parameter]: ../../reference/genesis-doc.md#committee-scheduler
 [faucet-testnet]: https://faucet.testnet.oasis.io/
 [discord]: https://oasis.io/discord
 [`oasis network show`]: ../../../general/manage-tokens/cli/network.md#show-id
-[Mainnet]: ../../mainnet/README.md#paratimes
-[Testnet]: ../../testnet/README.md#paratimes
+[Mainnet]: ../../network/mainnet.md#paratimes
+[Testnet]: ../../network/testnet.md#paratimes
 [`oasis paratime show parameters`]: ../../../general/manage-tokens/cli/paratime.md#show-parameters

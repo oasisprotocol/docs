@@ -35,8 +35,8 @@ Before using this configuration you should collect the following information to 
 * `{{ external_address }}`: This is the external IP on which sentry node will be reachable.
 * `{{ seed_node_address }}`: This the seed node address of the form `ID@IP:port`. You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
 
-[Mainnet]: ../mainnet/README.md
-[Testnet]: ../testnet/README.md
+[Mainnet]: ../network/mainnet.md
+[Testnet]: ../network/testnet.md
 
 * `{{ validator_tendermint_id }}`: This is the Tendermint ID (address) of the Oasis validator node that will be protected by the sentry node. This address can be obtained by running:
 

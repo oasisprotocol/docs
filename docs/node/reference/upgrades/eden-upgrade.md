@@ -207,13 +207,13 @@ Ubuntu versions (or other distributions using older system libraries).
 
 12. Start your node and re-enable auto-starting via your process manager.
 
-[Oasis CLI]: ../../general/manage-tokens/cli/README.md
-[Import your keys into the wallet]: ../../general/manage-tokens/cli/wallet.md#import-file
-[Cast your vote]: ../../general/manage-tokens/cli/network.md#governance-cast-vote
+[Oasis CLI]: ../../../general/manage-tokens/cli/README.md
+[Import your keys into the wallet]: ../../../general/manage-tokens/cli/wallet.md#import-file
+[Cast your vote]: ../../../general/manage-tokens/cli/network.md#governance-cast-vote
 [Mainnet 2023-11-29 release]: https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2023-11-29
 [systemd]: https://systemd.io/
 [Supervisor]: http://supervisord.org/
-[Wipe state]: ../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
+[Wipe state]: ../../run-your-node/maintenance/wiping-node-state.md#state-wipe-and-keep-node-identity
 [23.0.7]: https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7
 [rosetta-gw-2.6.0]:
   https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0
@@ -414,7 +414,7 @@ oasis-node genesis migrate --genesis.new_chain_id oasis-4
   }
   ```
 
-[Genesis Document]: ../genesis-doc.md#parameters
+[Genesis Document]: ../../reference/genesis-doc.md#parameters
 [Mainnet genesis file]:
   https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18
 [mainnet-quote]: https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F

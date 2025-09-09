@@ -23,7 +23,7 @@ export default function plugin(): Transformer {
      *   /paratime/prerequisites
      * https://github.com/oasisprotocol/oasis-core/blob/master/docs/runtime/index.md ->
      *   /core/runtime/
-     * https://github.com/oasisprotocol/docs/blob/main/docs/node/genesis-doc.md#committee-scheduler ->
+     * https://github.com/oasisprotocol/docs/blob/main/docs/node/reference/genesis-doc.md#committee-scheduler ->
      *   /node/genesis-doc#committee-scheduler
      */
     function visitor(untypedNode: mdast.Node) {

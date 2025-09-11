@@ -194,11 +194,11 @@ const config: Config = {
             items: [
               {
                 label: 'Mainnet',
-                to: 'node/mainnet/',
+                to: 'node/network-parameters/mainnet',
               },
               {
                 label: 'Testnet',
-                to: 'node/testnet/',
+                to: 'node/network-parameters/testnet',
               },
             ],
           },

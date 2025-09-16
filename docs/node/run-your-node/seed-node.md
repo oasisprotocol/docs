@@ -25,8 +25,8 @@ mkdir -m700 -p /node/{etc,data}
 
 The latest genesis file can be found in the Network Parameters page ([Mainnet], [Testnet]). You should download the latest `genesis.json` file and copy it to the `/node/etc` directory we just created.
 
-[Mainnet]: ../mainnet/README.md
-[Testnet]: ../testnet/README.md
+[Mainnet]: ../network/mainnet.md
+[Testnet]: ../network/testnet.md
 
 ## Configuration
 

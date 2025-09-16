@@ -7,13 +7,13 @@ necessary information for launching that particular network (e.g. [Mainnet],
 :::info
 
 For a more in-depth explanation of the genesis document, see the
-[Genesis Document](../core/consensus/genesis.md) part of Oasis Core's developer
+[Genesis Document](../../core/consensus/genesis.md) part of Oasis Core's developer
 documentation.
 
 :::
 
 The important thing to note is that the genesis document is used to compute the
-[genesis document's hash](../core/consensus/genesis.md#genesis-documents-hash).
+[genesis document's hash](../../core/consensus/genesis.md#genesis-documents-hash).
 This hash is used to verify for which network a given transaction is intended
 for.
 
@@ -32,8 +32,8 @@ document's hash can be found on the Network Parameters page ([Mainnet],
 
 :::
 
-[Mainnet]: mainnet/README.md
-[Testnet]: testnet/README.md
+[Mainnet]: ../network/mainnet.md
+[Testnet]: ../network/testnet.md
 
 ## Parameters
 
@@ -61,7 +61,7 @@ base-10 exponent. For the Mainnet it is set to 9 which means 1 ROSE equals 10^9
 
 The **`height`** parameter specifies the network's initial block height. When a
 network is upgraded, its height is retained. For example, for the
-[Cobalt upgrade](mainnet/previous-upgrades/cobalt-upgrade.md) the height of the
+[Cobalt upgrade](./upgrades/cobalt-upgrade.md) the height of the
 Mainnet state dump was bumped by 1 from 3,027,600 to 3,027,601.
 
 The **`genesis_time`** parameter is an ISO8601 UTC timestamp that specifies when
@@ -76,7 +76,7 @@ The **`chain_id`** is a human-readable version identifier for a network.
 
 It is important to note that this value alone doesn't dictate the version of an
 Oasis network. Rather, the hash of the whole genesis document, i.e. the
-[genesis document's hash](../core/consensus/genesis.md#genesis-documents-hash),
+[genesis document's hash](../../core/consensus/genesis.md#genesis-documents-hash),
 is the network's unique identifier.
 
 :::
@@ -126,7 +126,7 @@ the network's current entity and node registrations.
 
 :::
 
-[runtime governance models]: ../core/consensus/services/registry.md#runtimes
+[runtime governance models]: ../../core/consensus/services/registry.md#runtimes
 [`Runtime` structure]: https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go/registry/api?tab=doc#Runtime
 [Mainnet Network Entities]: https://github.com/oasisprotocol/mainnet-entities
 
@@ -193,9 +193,9 @@ and minimal state related to runtimes.
   rounds) of submitted evidence for [compute node slashing]. The value is set to
   100.
 
-[Root Hash service]: ../core/consensus/services/roothash.md
-[messages]: ../core/runtime/messages.md
-[compute node slashing]: ../adrs/0005-runtime-compute-slashing.md
+[Root Hash service]: ../../core/consensus/services/roothash.md
+[messages]: ../../core/runtime/messages.md
+[compute node slashing]: ../../adrs/0005-runtime-compute-slashing.md
 
 ### Staking
 
@@ -247,7 +247,7 @@ The following parameters control how delegations behave on the network:
 * **`staking.params.min_delegation`** The minimum amount of tokens one can
   delegate. The value is set to 100,000,000,000 base units, or 100 ROSE tokens.
 * **`staking.params.allow_escrow_messages`** Indicator whether to enable support
-  for `AddEscrow` and `ReclaimEscrow` [runtime messages](../core/runtime/messages.md).
+  for `AddEscrow` and `ReclaimEscrow` [runtime messages](../../core/runtime/messages.md).
   The value is set to `true`.
 
 #### Node & ParaTime Token Thresholds {#staking-thresholds}
@@ -295,7 +295,7 @@ The following parameters control the staking rewards on the network:
   earned for block proposal. The value is set to 0, indicating validators get no
   extra staking rewards for proposing a block.
 
-[Staking Incentives]: ../general/oasis-network/token-metrics-and-distribution.mdx#staking-incentives
+[Staking Incentives]: ../../general/oasis-network/token-metrics-and-distribution.mdx#staking-incentives
 
 #### Commission Schedule
 
@@ -362,7 +362,7 @@ committees (validator, compute, key manager) are periodically [scheduled].
   from a given entity that can be in the consensus committee at any time. The
   value is set to 1.
 
-[scheduled]: ../core/consensus/services/roothash.md
+[scheduled]: ../../core/consensus/services/roothash.md
 
 ### Random Beacon
 
@@ -370,7 +370,7 @@ The **`beacon`** object contains parameters controlling the network's random
 beacon.
 
 * **`beacon.base`** Network's starting epoch. When a network is upgraded, its
-  epoch is retained. For example, for the [Cobalt upgrade](mainnet/previous-upgrades/cobalt-upgrade.md)
+  epoch is retained. For example, for the [Cobalt upgrade](./upgrades/cobalt-upgrade.md)
   the epoch of the Mainnet state dump was bumped by 1 from 5,046 to 5,047.
 
 * **`beacon.params.backend`** The random beacon backend to use. The value is set
@@ -396,8 +396,8 @@ These parameters control the behavior of the VRF random beacon:
 ### **Governance**
 
 The **`governance`** object contains parameters controlling the network's
-[on-chain governance](../core/consensus/services/governance.md) introduced in
-the [Cobalt upgrade](mainnet/previous-upgrades/cobalt-upgrade.md):
+[on-chain governance](../../core/consensus/services/governance.md) introduced in
+the [Cobalt upgrade](./upgrades/cobalt-upgrade.md):
 
 * **`governance.params.min_proposal_deposit`** The amount of tokens (in base
   units) that are deposited when creating a new proposal. The value is set to

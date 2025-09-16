@@ -9,7 +9,7 @@ description: Oasis Node Troubleshooting for Node Operators and Hackers
 Before you begin troubleshooting your Oasis Node we suggest you check all of the
 following:
 
-* Check that your current binary version matches the version listed on the Network Parameters page ([Mainnet](../mainnet/README.md), [Testnet](../testnet/README.md))
+* Check that your current binary version matches the version listed on the Network Parameters page ([Mainnet](../network/mainnet.md), [Testnet](../network/testnet.md))
   * Check the version on your localhost using `oasis-node --version`
   * Check the version on your server using `oasis-node --version`
 * If upgrading, make sure that you've wiped state (unless that is explicitly not required)

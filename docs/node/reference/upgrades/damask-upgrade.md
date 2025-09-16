@@ -110,7 +110,7 @@ For the actual steps that node operators need to make on their nodes, see the
   https://github.com/oasisprotocol/community/discussions/30
 [Oasis Community Forum on GitHub]:
   https://github.com/oasisprotocol/community
-[upgrade-log-damask]: ../upgrade-log.md#damask-upgrade
+[upgrade-log-damask]: ../upgrade-logs/mainnet.md#damask-upgrade
 
 ## Proposed State Changes
 
@@ -351,8 +351,8 @@ as well.
   }
   ```
 
-[genesis-doc]: ../../genesis-doc.md#parameters
-[minimum staking thresholds]: ../../genesis-doc.md#staking-thresholds
+[genesis-doc]: ../../reference/genesis-doc.md#parameters
+[minimum staking thresholds]: ../../reference/genesis-doc.md#staking-thresholds
 [oasis-core-4308]: https://github.com/oasisprotocol/oasis-core/pull/4308
 [pvss-beacon]: ../../../adrs/0007-improved-random-beacon.md
 [Mainnet genesis file]:

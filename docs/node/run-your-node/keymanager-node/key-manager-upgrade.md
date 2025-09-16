@@ -54,8 +54,8 @@ rm -rf runtimes/4000000000000000000000000000000000000000000000004a1a53dff2ae482d
 continuing.
 5. Verify that secrets have been replicated [as shown below].
 
-[mainnet]: ../../mainnet/#key-manager
-[testnet]: ../../testnet/#key-manager
+[mainnet]: ../../network/mainnet#key-manager
+[testnet]: ../../network/testnet#key-manager
 
 ### After the Upgrade
 

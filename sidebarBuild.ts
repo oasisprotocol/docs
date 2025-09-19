@@ -18,16 +18,43 @@ export const sidebarBuild: SidebarsConfig = {
       },
       items: [
         'build/rofl/quickstart',
-        'build/rofl/prerequisites',
-        'build/rofl/app',
-        'build/rofl/deployment',
+        {
+          type: 'category',
+          label: 'How-tos',
+          description: 'TODO',
+          link: {
+            type: 'generated-index',
+            slug: '/build/rofl/howto',
+          },
+          items: [
+            'build/rofl/howto/price-oracle',
+            'build/rofl/howto/tgbot',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Workflow',
+          description: 'TODO',
+          link: {
+            type: 'doc',
+            id: 'build/rofl/workflow/README',
+          },
+          items: [
+            'build/rofl/workflow/prerequisites',
+            'build/rofl/workflow/init',
+            'build/rofl/workflow/create',
+            'build/rofl/workflow/build',
+            'build/rofl/workflow/deploy',
+            'build/rofl/workflow/test',
+          ]
+        },
         {
           type: 'category',
           label: 'Features',
           description: 'Containerized ROFL apps automatically have access to some useful features that ease development. This chapter provides an introduction to these features.',
           link: {
             type: 'generated-index',
-            slug: '/build/rofl/features',
+            slug: '/build/rofl/features/',
           },
           items: [
             'build/rofl/features/marketplace',
@@ -36,7 +63,6 @@ export const sidebarBuild: SidebarsConfig = {
             'build/rofl/features/manifest',
             'build/rofl/features/rest',
             'build/rofl/features/proxy',
-            'build/rofl/features/testing',
           ]
         },
         'build/rofl/troubleshooting',

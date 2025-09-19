@@ -48,8 +48,8 @@ For example:
 
 Now store the obtained JSON as `entity.json`.
 
-[`oasis network show`]: ../../../general/manage-tokens/cli/network.md#show-id
-[Oasis CLI]: ../../../general/manage-tokens/cli/README.md
+[`oasis network show`]: ../../../build/tools/cli/network.md#show-id
+[Oasis CLI]: ../../../build/tools/cli/README.md
 
 ## Updating Your Entity Descriptor
 

@@ -11,6 +11,148 @@ export const redirectsOptions: Options = {
             ],
         },
         {
+            to: '/build/rofl/features/appd',
+            from: [
+                '/build/rofl/features/rest', // #1456 New ROFL build structure
+            ],
+        },
+        {
+            to: '/build/rofl/workflow',
+            from: [
+              '/build/rofl/app', // #1456 New ROFL build structure
+              '/rofl/app', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/rofl/workflow/deploy',
+            from: [
+                '/build/rofl/deployment', // #1456 New ROFL build structure
+                '/rofl/deployment', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/rofl/workflow/prerequisites',
+            from: [
+                '/build/rofl/prerequisites', // #1456 New ROFL build structure
+                '/rofl/prerequisites', // #1058 Rename dapp to build
+            ],
+        },
+        {
+            to: '/build/rofl/workflow/test',
+            from: [
+                '/build/rofl/features/test', // #1456 New ROFL build structure
+            ],
+        },
+        {
+            to: '/build/tools/cli',
+            from: [
+                '/general/manage-tokens/advanced', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/oasis-cli-tools/', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/file-based-signer', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/cli', // #1456 New ROFL build structure
+            ],
+        },
+        {
+            to: '/build/tools/cli/account',
+            from: '/general/manage-tokens/cli/account', // #1456 New ROFL build structure
+        },
+        {
+            to: '/build/tools/cli/account#amend-commission-schedule',
+            from: [
+                '/general/run-a-node/set-up-your-node/amend-commission-schedule', // #200 Restructure docs
+                '/node/run-your-node/validator-node/amend-commission-schedule', // #399 Replace oasis-node with Oasis CLI
+
+            ],
+        },
+        {
+            to: '/build/tools/cli/account#delegate',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/delegate-tokens', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/account#deposit',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/account#from-public-key',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/address', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/account#show',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-info', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/account#transfer',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/transfer-tokens', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/account#undelegate',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/reclaim-tokens', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/addressbook',
+            from: '/general/manage-tokens/cli/addressbook', // #1456 New ROFL build structure
+        },
+        {
+            to: '/build/tools/cli/network',
+            from: '/general/manage-tokens/cli/network', // #1456 New ROFL build structure
+        },
+        {
+            to: '/build/tools/cli/network#gas-costs',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/gas-costs', // #399 Replace oasis-node with Oasis CLI
+            ]
+        },
+        {
+            to: '/build/tools/cli/network#governance_cast_vote',
+            from: [
+                '/general/run-a-node/set-up-your-node/governance', // #200 Restructure docs
+                '/node/run-your-node/validator-node/governance', // #399 Replace oasis-node with Oasis CLI
+            ],
+        },
+        {
+            to: '/build/tools/cli/network#show-native-token',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/common-staking-info', // #399 Replace oasis-node with Oasis CLI
+            ],
+        },
+        {
+            to: '/build/tools/cli/paratime',
+            from: '/general/manage-tokens/cli/paratime', // #1456 New ROFL build structure
+        },
+        {
+            to: '/build/tools/cli/rofl',
+            from: '/general/manage-tokens/cli/rofl', // #1456 New ROFL build structure
+        },
+        {
+            to: '/build/tools/cli/setup',
+            from: [
+                '/general/manage-tokens/advanced/oasis-cli-tools/prerequisites', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/advanced/oasis-cli-tools/setup', // #399 Replace oasis-node with Oasis CLI
+                '/general/manage-tokens/cli/setup', // #1456 New ROFL build structure
+            ],
+        },
+        {
+            to: '/build/tools/cli/transaction',
+            from: '/general/manage-tokens/cli/transaction', // #1456 New ROFL build structure
+        },
+        {
+            to: '/build/tools/cli/wallet',
+            from: '/general/manage-tokens/cli/wallet', // #1456 New ROFL build structure
+        },
+        {
             to: '/core/oasis-node/cli#dump',
             from: [
                 '/general/manage-tokens/advanced/oasis-cli-tools/list-accounts', // #399 Replace oasis-node with Oasis CLI
@@ -26,84 +168,6 @@ export const redirectsOptions: Options = {
         {
             to: '/general/manage-tokens/faq', // #how-can-i-transfer-rose-tokens-from-my-bitpie-wallet-to-my-oasis-wallet
             from: '/general/manage-tokens/holding-rose-tokens/bitpie-wallet', // #475 Delete bitpie-wallet.md
-        },
-        {
-            to: '/general/manage-tokens/cli',
-            from: [
-                '/general/manage-tokens/advanced', // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/', // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/file-based-signer', // #399 Replace oasis-node with Oasis CLI
-            ],
-        },
-        {
-            to: '/general/manage-tokens/cli/account#amend-commission-schedule',
-            from: [
-                '/general/run-a-node/set-up-your-node/amend-commission-schedule', // #200 Restructure docs
-                '/node/run-your-node/validator-node/amend-commission-schedule', // #399 Replace oasis-node with Oasis CLI
-            ],
-        },
-        {
-            to: '/general/manage-tokens/cli/account#delegate',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/delegate-tokens', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/account#deposit',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/deposit-withdraw-tokens-to-from-paratime', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/account#from-public-key',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/address', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/account#show',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-info', // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/get-account-nonce', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/account#transfer',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/transfer-tokens', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/account#undelegate',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/reclaim-tokens', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/network#gas-costs',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/gas-costs', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/network#governance_cast_vote',
-            from: [
-                '/general/run-a-node/set-up-your-node/governance', // #200 Restructure docs
-                '/node/run-your-node/validator-node/governance', // #399 Replace oasis-node with Oasis CLI
-            ],
-        },
-        {
-            to: '/general/manage-tokens/cli/network#show-native-token',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/common-staking-info', // #399 Replace oasis-node with Oasis CLI
-            ]
-        },
-        {
-            to: '/general/manage-tokens/cli/setup',
-            from: [
-                '/general/manage-tokens/advanced/oasis-cli-tools/prerequisites', // #399 Replace oasis-node with Oasis CLI
-                '/general/manage-tokens/advanced/oasis-cli-tools/setup', // #399 Replace oasis-node with Oasis CLI
-            ]
         },
         {
             to: '/get-involved/',
@@ -417,18 +481,6 @@ export const redirectsOptions: Options = {
 		    '/rofl/', // #1058 Rename dapp to build
 		    '/rofl/trust-root', // #1058 Rename dapp to build
 	    ],
-        },
-        {
-            to: '/build/rofl/prerequisites',
-            from: '/rofl/prerequisites', // #1058 Rename dapp to build
-        },
-        {
-            to: '/build/rofl/app',
-            from: '/rofl/app', // #1058 Rename dapp to build
-        },
-        {
-            to: '/build/rofl/deployment',
-            from: '/rofl/deployment', // #1058 Rename dapp to build
         },
         {
             to: '/build/opl/',

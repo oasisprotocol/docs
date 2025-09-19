@@ -19,7 +19,7 @@ network. To ensure the security of these private keys, we strongly recommend
 to either isolate the `localhost` from any network or internet connectivity, or
 use a [hardware wallet] as a secure storage, such as [Ledger].
 
-[Oasis CLI]: ../../general/manage-tokens/cli/README.md
+[Oasis CLI]: ../../build/tools/cli/README.md
 [hardware wallet]:
   https://en.wikipedia.org/wiki/Hardware_security_module
 [Ledger]:
@@ -148,11 +148,11 @@ the [`oasis wallet show`] command. Your entity ID will be displayed in the
 
 [Ledger]: ../../general/manage-tokens/holding-rose-tokens/ledger-wallet.md
 [offline/air-gapped machine]: https://en.wikipedia.org/wiki/Air_gap_\(networking\)
-[`oasis wallet create`]: ../../general/manage-tokens/cli/wallet.md#create
-[`oasis wallet import`]: ../../general/manage-tokens/cli/wallet.md#import
-[`oasis wallet import-file`]: ../../general/manage-tokens/cli/wallet.md#import-file
-[`oasis account entity init`]: ../../general/manage-tokens/cli/account.md#entity-init
-[`oasis wallet show`]: ../../general/manage-tokens/cli/wallet.md#show
+[`oasis wallet create`]: ../../build/tools/cli/wallet.md#create
+[`oasis wallet import`]: ../../build/tools/cli/wallet.md#import
+[`oasis wallet import-file`]: ../../build/tools/cli/wallet.md#import-file
+[`oasis account entity init`]: ../../build/tools/cli/account.md#entity-init
+[`oasis wallet show`]: ../../build/tools/cli/wallet.md#show
 
 ## Configuration
 
@@ -388,7 +388,7 @@ the `--account` parameter. For example:
 oasis account delegate 200 my_entity --no-paratime --account my_funding_account
 ```
 
-[`oasis account delegate`]: ../../general/manage-tokens/cli/account.md#delegate
+[`oasis account delegate`]: ../../build/tools/cli/account.md#delegate
 
 ### Add your Node ID to the Entity Descriptor
 
@@ -416,7 +416,7 @@ We can submit the fresh entity file descriptor by invoking the
 oasis account entity register entity.json --account my_entity
 ```
 
-[`oasis account entity register`]: ../../general/manage-tokens/cli/account.md#entity-register
+[`oasis account entity register`]: ../../build/tools/cli/account.md#entity-register
 
 ### Check that Your Node is Properly Registered
 
@@ -470,7 +470,7 @@ the node operator's name and the avatar.
 # See also
 
 <DocCardList items={[
-    findSidebarItem('/general/manage-tokens/cli/'),
+    findSidebarItem('/build/tools/cli/'),
     findSidebarItem('/core/oasis-node/cli'),
     findSidebarItem('/node/grpc')]}
 />

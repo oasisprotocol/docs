@@ -67,17 +67,17 @@ want to set up a working node from scratch.
 
 [Oasis Explorer]: https://explorer.oasis.io/mainnet/consensus
 [Oasis Scan]: https://www.oasisscan.com
-[`oasis account show`]: ../../../general/manage-tokens/cli/account.md#show
-[`oasis network show native-token`]: ../../../general/manage-tokens/cli/network.md#show-native-token
+[`oasis account show`]: ../../../build/tools/cli/account.md#show
+[`oasis network show native-token`]: ../../../build/tools/cli/network.md#show-native-token
 [oasis-explorer-validators]: https://explorer.oasis.io/mainnet/consensus/validators
 [oasis-scan-validators]: https://www.oasisscan.com/validators
-[`oasis network show validators`]: ../../../general/manage-tokens/cli/network.md#show-validators
-[`oasis network show parameters`]: ../../../general/manage-tokens/cli/network.md#show-parameters
+[`oasis network show validators`]: ../../../build/tools/cli/network.md#show-validators
+[`oasis network show parameters`]: ../../../build/tools/cli/network.md#show-parameters
 [Delegation Policy]: ../../../get-involved/delegation-policy.md
 [**max_validators** committee-scheduler parameter]: ../../reference/genesis-doc.md#committee-scheduler
 [faucet-testnet]: https://faucet.testnet.oasis.io/
 [discord]: https://oasis.io/discord
-[`oasis network show`]: ../../../general/manage-tokens/cli/network.md#show-id
+[`oasis network show`]: ../../../build/tools/cli/network.md#show-id
 [Mainnet]: ../../network/mainnet.md#paratimes
 [Testnet]: ../../network/testnet.md#paratimes
-[`oasis paratime show parameters`]: ../../../general/manage-tokens/cli/paratime.md#show-parameters
+[`oasis paratime show parameters`]: ../../../build/tools/cli/paratime.md#show-parameters

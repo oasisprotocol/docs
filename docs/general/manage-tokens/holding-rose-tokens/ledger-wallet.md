@@ -140,5 +140,5 @@ network.
 [Stax]: https://support.ledger.com/article/360013349800-zd
 [Flex]: https://support.ledger.com/article/360013349800-zd
 [BIP 39]: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
-[Oasis CLI]: ../cli/README.md
-[`oasis wallet create`]: ../cli/wallet.md#create
+[Oasis CLI]: ../../../build/tools/cli/README.md
+[`oasis wallet create`]: ../../../build/tools/cli/wallet.md#create

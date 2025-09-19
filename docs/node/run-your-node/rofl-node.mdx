@@ -1,7 +1,5 @@
-import DocCard from '@theme/DocCard';
+import DocCardList from '@theme/DocCardList';
 import {findSidebarItem} from '@site/src/sidebarUtils';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # ROFL Node
 
@@ -35,7 +33,7 @@ Node instructions:
 [Mainnet]: ../network/mainnet.md#sapphire
 [Testnet]: ../network/testnet.md#sapphire
 [Intel TDX]: ./prerequisites/set-up-tee.mdx#tdx
-[rofl-types]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/app.mdx
+[rofl-types]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/workflow/init.md
 
 ### Configure Firewall
 
@@ -328,4 +326,7 @@ Scheduler-managed apps [will be remapped](#rofl-app-id-remap).
 
 ## See also
 
-<DocCard item={findSidebarItem('/build/rofl/deployment')} />
+<DocCardList items={[
+    findSidebarItem('/build/rofl/workflow/deploy'),
+    findSidebarItem('/build/rofl/features/marketplace')
+]} />

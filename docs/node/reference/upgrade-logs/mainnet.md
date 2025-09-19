@@ -364,7 +364,7 @@ oasis-node consensus submit_tx \
 ```
 
 [upgrade governance proposal]: ../../../core/consensus/services/governance.md#submit-proposal
-[your entity's nonce]: ../../../general/manage-tokens/cli/account.md#show
+[your entity's nonce]: ../../../build/tools/cli/account.md#show
 [Oasis node CLI Tools Setup]: ../../../core/oasis-node/cli.md
 [Installing Oasis App on Your Ledger Wallet]: ../../../general/manage-tokens/holding-rose-tokens/ledger-wallet.md
 
@@ -709,7 +709,7 @@ The output should look like:
 ]
 ```
 
-Obtain [your entity's nonce](../../../general/manage-tokens/cli/account.md#show) and store it in the `NONCE` variable. You can do that by running:
+Obtain [your entity's nonce](../../../build/tools/cli/account.md#show) and store it in the `NONCE` variable. You can do that by running:
 
 ```yaml
 ENTITY_DIR=<PATH-TO-YOUR-ENTITY>

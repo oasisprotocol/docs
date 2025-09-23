@@ -8,9 +8,8 @@ import TabItem from '@theme/TabItem';
 # Localnet
 
 For convenient development and testing of your dApps the Oasis team prepared
-both [ghcr.io/oasisprotocol/sapphire-localnet][sapphire-localnet] and
-[ghcr.io/oasisprotocol/emerald-localnet][emerald-localnet] Docker images.
-They will bring you a complete Oasis network stack to your workspace. The
+the [ghcr.io/oasisprotocol/sapphire-localnet][sapphire-localnet] container image.
+It will bring you a complete Oasis network stack to your workspace. The
 Localnet Sapphire instance **mimics confidential transactions**, but it does
 not run in a trusted execution environment nor does it require Intel's SGX on
 your computer. The network is isolated from the Mainnet or Testnet and consists
@@ -18,7 +17,7 @@ of a:
 
 - single Oasis validator node with 1-second block time and 30-second epoch,
 - single Oasis client node,
-- single compute node running Oasis Sapphire or Emerald,
+- single compute node running Oasis Sapphire,
 - single key manager node,
 - PostgreSQL instance,
 - Oasis Web3 gateway with transaction indexer and enabled Oasis RPCs,
@@ -27,7 +26,7 @@ of a:
 
 :::note Hardware requirements
 
-You will need at least 16GB of RAM to run the Docker images in addition to your
+You will need at least 16GB of RAM to run the Docker image in addition to your
 machine's OS.
 
 :::
@@ -37,17 +36,39 @@ machine's OS.
 To run the image, execute:
 
 <Tabs>
-<TabItem value="Sapphire">
+<TabItem value="linux-intel-win" label="Linux (Intel) / Windows">
 
 ```sh
-docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet
+docker run -it --rm -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet
 ```
 
 </TabItem>
-<TabItem value="Emerald">
+<TabItem value="macos" label="macOS">
 
 ```sh
-docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/emerald-localnet
+docker run -it --rm -p8544-8548:8544-8548 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
+```
+
+:::info macOS Startup Issue on Apple Silicon
+
+On Apple Silicon Macs running macOS 26 (Tahoe) or later, the `sapphire-localnet` Docker
+image may hang on startup with peer authentication errors (e.g.,
+`chacha20poly1305: message authentication failed`).
+
+This is due to a bug in Rosetta 2's x86_64 emulation. The workaround is to
+disable Rosetta in Docker Desktop settings, which makes Docker use QEMU
+instead.
+
+Go to `Settings > Virtual Machine Options` and disable
+"Use Rosetta for x86/amd64 emulation on Apple Silicon".
+
+:::
+
+</TabItem>
+<TabItem value="linux-non-intel" label="Linux (non-Intel)">
+
+```sh
+docker run -it --rm -p8544-8548:8544-8548 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
 ```
 
 </TabItem>
@@ -121,6 +142,8 @@ and an Explorer instance on `http://localhost:8548`.
 These can be disabled by passing `--no-explorer` or setting the environment
 variable `OASIS_DOCKER_START_EXPLORER` to `no`.
 
+## Optional Parameters
+
 By default, the Localnet docker image will populate the first five accounts
 derived from the standard test mnemonic, compatible with `hardhat node`.
 These accounts are typically used for Solidity unit tests. If you prefer
@@ -128,53 +151,23 @@ populating different accounts, use `-to` flag and pass the mnemonics seed
 phrases or wallet addresses. Use the `-n` parameter to define the number of
 derived addresses to fund.
 
-<Tabs>
-<TabItem value="Sapphire">
-
 ```sh
 docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet -to "bench remain brave curve frozen verify dream margin alarm world repair innocent" -n3
 docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2,0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
 ```
 
-</TabItem>
-<TabItem value="Emerald">
+:::danger
 
-```sh
-docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/emerald-localnet -to "bench remain brave curve frozen verify dream margin alarm world repair innocent" -n3
-docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/emerald-localnet -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2,0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
-```
-
-</TabItem>
-</Tabs>
-
-:::note Running on Apple M chips
-
-There is currently no `arm64` build available for M Macs, so you will need to
-force the docker image to use the `linux/x86_64` platform, like this:
-
-<Tabs>
-<TabItem value="Sapphire">
-
-```sh
-docker run -it -p8544-8548:8544-8548 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
-```
-
-</TabItem>
-<TabItem value="Emerald">
-
-```sh
-docker run -it -p8544-8548:8544-8548 --platform linux/x86_64 ghcr.io/oasisprotocol/emerald-localnet
-```
-
-</TabItem>
-</Tabs>
+The [sapphire-localnet] runs in ephemeral mode. Any smart
+contract and wallet balance will be lost after you quit the Docker container!
 
 :::
 
-:::danger
+:::note Emerald Localnet
 
-[sapphire-localnet] and [emerald-localnet] run in ephemeral mode. Any smart
-contract and wallet balance will be lost after you quit the Docker container!
+An Emerald flavor of [sapphire-localnet] also exists, called
+[emerald-localnet]. It behaves the same way as Sapphire, but without
+confidentiality.
 
 :::
 
@@ -184,11 +177,8 @@ contract and wallet balance will be lost after you quit the Docker container!
 ## GitHub Actions
 
 You can easily integrate localnet into your CI/CD workflow. Use the example
-GitHub Action configuration to start a Sapphire or Emerald stack and expose
+GitHub Action configuration to start a Sapphire stack and expose
 the necessary ports for testing.
-
-<Tabs>
-<TabItem value="Sapphire">
 
 ```yaml
 jobs:
@@ -207,27 +197,3 @@ jobs:
           --health-cmd="test -f /CONTAINER_READY"
           --health-start-period=90s
 ```
-
-</TabItem>
-<TabItem value="Emerald">
-
-```yaml
-jobs:
-  example-test:
-    services:
-      emerald-localnet-ci:
-        image: ghcr.io/oasisprotocol/emerald-localnet
-        ports:
-          - 8544:8544
-          - 8545:8545
-          - 8546:8546
-        env:
-          OASIS_DOCKER_START_EXPLORER: no
-        options: >-
-          --rm
-          --health-cmd="test -f /CONTAINER_READY"
-          --health-start-period=90s
-```
-
-</TabItem>
-</Tabs>

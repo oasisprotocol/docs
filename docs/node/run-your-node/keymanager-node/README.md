@@ -49,60 +49,52 @@ The key manager ParaTime requires the use of a TEE. See the [Set up trusted exec
 In order to configure the node create the `/node/etc/config.yml` file with the following content:
 
 ```yaml
-datadir: /node/data
+mode: keymanager
 
-log:
-  level:
-    default: info
-    tendermint: info
-    tendermint/context: error
-  format: JSON
+common:
+  data_dir: /node/data
+  log:
+    format: JSON
+    level:
+      cometbft: info
+      cometbft/context: error
+      default: info
 
 genesis:
   file: /node/etc/genesis.json
 
-consensus:
-  tendermint:
-    core:
-      listen_address: tcp://0.0.0.0:26656
+registration:
+  # In order for the node to register itself, the entity ID must be set.
+  entity_id: {{ entity_id }}
 
+p2p:
+  # External P2P configuration.
+  port: 9200
+  registration:
+    addresses:
       # The external IP that is used when registering this node to the network.
-      # NOTE: If you are using the Sentry node setup, this option should be
-      # omitted.
-      external_address: tcp://{{ external_address }}:26656
+      - "{{ external_address }}:9200"
+  seeds:
+    # List of seed nodes to connect to.
+    # NOTE: You can add additional seed nodes to this list if you want.
+    - {{ seed_node_address }}
 
-    p2p:
-      # List of seed nodes to connect to.
-      # NOTE: You can add additional seed nodes to this list if you want.
-      seed:
-        - "{{ seed_node_address }}"
+consensus:
+  listen_address: tcp://0.0.0.0:26656
+  # The external IP that is used when registering this node to the network.
+  external_address: tcp://{{ external_address }}:26656
 
 runtime:
-  mode: keymanager
   paths:
     # Path to the key manager ParaTime bundle.
     - "{{ keymanager_runtime_orc_path }}"
-
   # The following section is required for ParaTimes which are running inside the
   # Intel SGX Trusted Execution Environment.
   sgx:
     loader: /node/bin/oasis-core-runtime-loader
 
-worker:
-  registration:
-    # In order for the node to register itself, the entity ID must be set.
-    entity_id: {{ entity_id }}
-
-  keymanager:
-    runtime:
-      id: "{{ keymanager_runtime_id }}"
-
-  p2p:
-    # External P2P configuration.
-    port: 20104
-    addresses:
-      # The external IP that is used when registering this node to the network.
-      - "{{ external_address }}:20104"
+keymanager:
+  runtime_id: "{{ keymanager_runtime_id }}"
 ```
 
 Before using this configuration you should collect the following information to replace the `{{ ... }}` variables present in the configuration file:

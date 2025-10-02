@@ -9,8 +9,22 @@ export const sidebarBuild: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Use cases',
+      description: 'Task-oriented how-to guides for building apps on Oasis',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        slug: '/build/use-cases',
+      },
+      items: [
+        'build/use-cases/price-oracle',
+        'build/use-cases/tgbot',
+      ]
+    },
+    {
+      type: 'category',
       label: 'ROFL',
-      description: 'Runtime OFf-chain Logic (ROFL) apps are a mechanism to augment the deterministic on-chain backend with verifiable off-chain applications',
+      description: 'A framework that enables offchain computation with private data and verifiable results',
       collapsible: false,
       link: {
         type: 'doc',
@@ -18,25 +32,39 @@ export const sidebarBuild: SidebarsConfig = {
       },
       items: [
         'build/rofl/quickstart',
-        'build/rofl/prerequisites',
-        'build/rofl/app',
-        'build/rofl/deployment',
+        {
+          type: 'category',
+          label: 'Workflow',
+          description: 'Detailed instructions for writing an app in ROFL from scratch',
+          link: {
+            type: 'doc',
+            id: 'build/rofl/workflow/README',
+          },
+          items: [
+            'build/rofl/workflow/prerequisites',
+            'build/rofl/workflow/containerize-app',
+            'build/rofl/workflow/init',
+            'build/rofl/workflow/create',
+            'build/rofl/workflow/build',
+            'build/rofl/workflow/deploy',
+            'build/rofl/workflow/test',
+          ]
+        },
         {
           type: 'category',
           label: 'Features',
-          description: 'Containerized ROFL apps automatically have access to some useful features that ease development. This chapter provides an introduction to these features.',
+          description: 'Apps in ROFL have powerful features. Learn how to use them.',
           link: {
             type: 'generated-index',
-            slug: '/build/rofl/features',
+            slug: '/build/rofl/features/',
           },
           items: [
             'build/rofl/features/marketplace',
             'build/rofl/features/secrets',
             'build/rofl/features/storage',
             'build/rofl/features/manifest',
-            'build/rofl/features/rest',
+            'build/rofl/features/appd',
             'build/rofl/features/proxy',
-            'build/rofl/features/testing',
           ]
         },
         'build/rofl/troubleshooting',
@@ -45,7 +73,7 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Sapphire',
-      description: 'Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.',
+      description: 'EVM-compatible blockchain featuring encrypted transactions and confidential smart contracts',
       collapsible: false,
       link: {
         type: 'doc',
@@ -80,8 +108,8 @@ export const sidebarBuild: SidebarsConfig = {
     {
       type: 'category',
       label: 'Oasis Privacy Layer',
-      description: 'The Oasis Privacy Layer (OPL) is a powerful solution that enables developers to integrate privacy features into their decentralized applications (dApps) across multiple EVM-compatible networks.',
-      collapsible: false,
+      description: 'Cross-chain solution bringing privacy to existing apps on Ethereum and other networks',
+      collapsible: true,
       link: {
         type: 'doc',
         id: 'build/opl/README',
@@ -142,12 +170,31 @@ export const sidebarBuild: SidebarsConfig = {
       type: 'category',
       label: 'Tools & Services',
       description: 'Oasis integrates with a number of services and provides tooling support for developers using Foundry, Remix (unencrypted transactions only), Sourcify, Docker images, Band, and others.',
-      collapsible: false,
+      collapsible: true,
       link: {
         type: 'doc',
         id: 'build/tools/README',
       },
       items: [
+        {
+          type: 'category',
+          label: 'Oasis CLI',
+          description: 'Oasis command-line interface (CLI) is a powerful all-in-one tool for interacting with the Oasis Network.',
+          link: {
+            type: 'doc',
+            id: 'build/tools/cli/README',
+          },
+          items: [
+            'build/tools/cli/setup',
+            'build/tools/cli/network',
+            'build/tools/cli/paratime',
+            'build/tools/cli/wallet',
+            'build/tools/cli/account',
+            'build/tools/cli/transaction',
+            'build/tools/cli/addressbook',
+            'build/tools/cli/rofl',
+          ]
+        },
         'build/tools/abi-playground',
         'build/tools/verification',
         'build/tools/band',
@@ -185,27 +232,17 @@ export const sidebarBuild: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Other Paratimes',
+          label: 'Consensus Layer and Other ParaTimes',
           link: {
             type: 'doc',
             id: 'build/tools/other-paratimes/README',
           },
           items: [
-            {
-              type: 'category',
-              label: 'Emerald',
-              link: {
-                type: 'doc',
-                id: 'build/tools/other-paratimes/emerald/README',
-              },
-              items: [
-                'build/tools/other-paratimes/emerald/network',
-                'build/tools/other-paratimes/emerald/writing-dapps-on-emerald',
-              ],
-            },
+            'build/tools/other-paratimes/network',
             {
               type: 'category',
               label: 'Cipher',
+              description: 'Confidential blockchain executing Oasis Wasm smart contracts',
               link: {
                 type: 'doc',
                 id: 'build/tools/other-paratimes/cipher/README',
@@ -221,7 +258,20 @@ export const sidebarBuild: SidebarsConfig = {
                   href: 'https://api.docs.oasis.io/rust/oasis_contract_sdk',
                 },
               ],
-            }
+            },
+            {
+              type: 'category',
+              label: 'Emerald',
+              description: 'Transparent EVM-compatible blockchain',
+              link: {
+                type: 'doc',
+                id: 'build/tools/other-paratimes/emerald/README',
+              },
+              items: [
+                'build/tools/other-paratimes/emerald/network',
+                'build/tools/other-paratimes/emerald/writing-dapps-on-emerald',
+              ],
+            },
           ],
         },
       ],

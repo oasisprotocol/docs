@@ -110,7 +110,7 @@ const config: Config = {
             position: 'left',
           },
           {
-            label: 'Use Oasis',
+            label: 'Learn',
             to: '/general/',
             activeBaseRegex: '/general/',
             position: 'left',
@@ -152,7 +152,7 @@ const config: Config = {
       footer: {
         links: [
           {
-            title: 'General',
+            title: 'Tools',
             items: [
               {
                 label: 'Explorer',

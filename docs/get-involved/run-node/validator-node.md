@@ -26,7 +26,7 @@ To become a validator on the Oasis Network, you need to have enough tokens stake
 
 :::info
 
-For more information about obtaining information on your entity's account, see the [Account Get Info](../../general/manage-tokens/cli/account.md#show) doc.
+For more information about obtaining information on your entity's account, see the [Account Get Info](../../build/tools/cli/account.md#show) doc.
 
 :::
 

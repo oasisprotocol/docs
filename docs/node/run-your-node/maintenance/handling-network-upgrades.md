@@ -72,7 +72,7 @@ and observe the value of the `consensus.latest_height` and
 
 :::
 
-[governance proposal]: ../../../general/manage-tokens/cli/network.md#governance-cast-vote
+[governance proposal]: ../../../build/tools/cli/network.md#governance-cast-vote
 
 Once the upgrade epoch is reached, follow the instructions in the corresponding
 [upgrade log].
@@ -319,7 +319,7 @@ runtime:
 The node will then automatically run the correct version of the ParaTime as
 specified in the registry.
 
-[`oasis network show paratimes`]: ../../../general/manage-tokens/cli/network.md#show-paratimes
+[`oasis network show paratimes`]: ../../../build/tools/cli/network.md#show-paratimes
 
 ## Start Your Node
 

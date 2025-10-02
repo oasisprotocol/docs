@@ -54,7 +54,7 @@ sections based on your wallet for a step-by-step walkthrough:
 
 * [ROSE Wallet - Web](oasis-wallets/web.mdx#stake)
 * [ROSE Wallet - Browser Extension](oasis-wallets/browser-extension.mdx#stake)
-* [Oasis CLI](cli/account.md#delegate)
+* [Oasis CLI](../../build/tools/cli/account.md#delegate)
 
 :::danger Staking your ROSE is a different transaction than sending them!
 

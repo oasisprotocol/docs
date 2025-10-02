@@ -20,7 +20,6 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
         "/build/rofl/",
         "/build/sapphire/",
         "/build/opl/",
-        "/build/tools/",
     ]}
     svg={<BuildSvg className="animatedSvg" />}
 >
@@ -40,21 +39,18 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
 </DocCardSection>
 
 <DocCardSection
-  title="Use Oasis"
+  title="Learn"
   path="/general/"
   itemPaths={[
     "/general/oasis-network/",
     "/general/manage-tokens/",
-    "/general/manage-tokens/cli/",
   ]}
   svg={
     <OasisSvg className="animatedSvg" />
   }
 >
-  This introductory part contains general overview of the Oasis Network such as
-  the distinction between the consensus layer and different ParaTimes. It
-  also covers wallets and other tools for managing your assets across the Oasis
-  chains and how to use unique Oasis features.
+  Learn the fundamentals of Oasis architecture, wallets, and unique privacy
+  features.
 </DocCardSection>
 
 <DocCardSection
@@ -62,20 +58,16 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
   path="/get-involved/"
   itemPaths={[
     "/get-involved/",
-    "https://oasisrose.garden",
-    "/get-involved/run-node",
-    "/get-involved/oasis-core",
   ]}
   svg={<GetInvolvedSvg className="animatedSvg" />}
 >
-  Contains information on official channels to get in touch with the Oasis Network developers and how to contribute to the network.
+  Connect with developers, run infrastructure, and contribute to the future of Oasis.
 </DocCardSection>
 
 <DocCardSection
   title="Run Node"
   path="/node/"
   itemPaths={[
-    "/node/",
     "/node/network/mainnet",
     "/node/network/testnet",
     "/node/run-your-node/",
@@ -89,7 +81,8 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
   title="Develop Core"
   path="/core/"
   itemPaths={[
-    "/core/",
+    "/core/consensus/",
+    "/core/runtime/",
     "/adrs",
   ]}
   svg={<DevelopCoreSvg className="animatedSvg" />}

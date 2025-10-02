@@ -35,7 +35,7 @@ export default function plugin(): Transformer {
         } else if (oasisSdkRoflRegex.test(node.url)) {
             node.url = node.url.replace(oasisSdkRoflRegex, '/build/rofl/$1$2');
         } else if (cliRegex.test(node.url)) {
-            node.url = node.url.replace(cliRegex, '/general/manage-tokens/cli/$1$2');
+            node.url = node.url.replace(cliRegex, '/build/tools/cli/$1$2');
         } else if (oasisCoreRegex.test(node.url)) {
             node.url = node.url.replace(oasisCoreRegex, '/core/$1$2');
         } else if (adrsRegex.test(node.url)) {

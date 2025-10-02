@@ -8,115 +8,55 @@ import {findSidebarItem} from '@site/src/sidebarUtils';
 
 # Build on Oasis
 
-![Oasis architectural design including ParaTime and consensus layers](../general/images/architecture/technology_scalability.svg)
+The best way to start learning is by example! If you want to jumpstart
+right into it, check out our use cases that combine TEE and blockchain to
+build trustless distributed apps.
 
-## ROFL
+<DocCardList items={[
+    findSidebarItem('/build/use-cases/price-oracle'),
+    findSidebarItem('/build/use-cases/tgbot'),
+]} />
 
-Runtime OFfchain Logic (ROFL) enables you to build secure applications running
-offchain in a trusted environment (TEE) containers. This is ideal for trusted
-oracles, compute-expensive tasks in AI or as a backend for interactive games.
-ROFL apps can seamlessly sign transactions running on [Sapphire].
+## The Oasis SDK
+
+![Oasis architectural design including ParaTime and consensus layers](./images/oasis-sdk.svg)
+
+### ROFL-Powered Apps
+
+[Runtime off-chain logic (ROFL)][rofl] enables you to wrap applications in
+trusted environment (TEE) containers managed through [Sapphire]. This
+framework is ideal for deploying provably trusted oracles, compute-expensive
+tasks in AI or a backend for interactive games.
 
 <DocCard item={findSidebarItem('/build/rofl/')} />
 
-## Sapphire
+### Smart Contracts
 
-[Sapphire] is an EVM-compatible Layer 1 blockchain that allows you to
-write both confidential and non-confidential smart contracts. The transactions
-can also be end-to-end encrypted and stored on the blockchain ledger.
-
-Sapphire is just one of the ParaTimes running on the Oasis platform. For an
-overview of other ParaTimes, refer to the [Other ParaTimes] chapter.
+Smart Contracts are deployed to [Sapphire], an EVM-compatible Layer 1
+blockchain assuring confidential smart contract state. Extra on-chain
+features in your contracts such as the random number generator, cryptography,
+a cross-chain [privacy layer](opl/README.mdx) and ROFL verification are
+supported.
 
 <DocCard item={findSidebarItem('/build/sapphire/')} />
 
-[Oasis architecture]: ../general/oasis-network/README.mdx
-[Sapphire]: https://github.com/oasisprotocol/docs/blob/main/docs/build/sapphire/README.mdx
-[Other ParaTimes]: ./tools/other-paratimes/README.mdx
+[rofl]: ./rofl/README.mdx
+[Sapphire]: ./sapphire/README.mdx
 
-## Oasis Privacy Layer (OPL)
+### Web Browser
 
-In addition to building fully native dApps running on one of the Oasis
-ParaTimes, you can also add privacy to your existing dApps running on other,
-non-confidential chains, and only use Oasis as a *privacy service*.
+Sapphire supports optional encrypted transactions and queries through
+client-side end-to-end encryption. Modern Web3 libraries running in a [web
+browser] are supported.
 
-The Oasis team prepared a rich cross-chain toolkit called the
-[**Oasis Privacy Layer**](opl/README.mdx). It consists of solidity precompiles
-integrating bridges and wrapping the OpenZeppelin ERC2771 contract on top of
-Sapphire, demonstrates best practices for writing confidential smart contracts
-and working examples for you to explore and extend.
+[web browser]: ./sapphire/develop/browser.md
+<DocCard item={findSidebarItem('/build/sapphire/develop/browser')} />
 
-<DocCard item={findSidebarItem('/build/opl/')} />
+### Server-Side Apps
 
-## Consensus Network Information
+End-to-end encrypted transactions and queries are often required by server-side
+applications running either inside ROFL or outside of the TEE. Check out our
+comprehensive [API reference guide] for your preferred programming language to
+learn how to integrate with Oasis network.
 
-### RPC Endpoints
-
-:::danger
-
-The RPC endpoint is a **point of trust**. Beside rate limiting, it can also
-perform censorship or even man-in-the-middle attack. If you have security
-considerations, we strongly recommend that you [run your own client
-node][non-validator-node],
-
-:::
-
-[non-validator-node]: ../node/run-your-node/non-validator-node.mdx
-
-Most dApp developers will build dApps on the ParaTime layer (the *compute*
-layer) depicted above. For Sapphire and Emerald which are EVM-compatible chains,
-those dApps connect directly to an [EVM-compatible Web3 endpoint][web3].
-However, if you are building a dApp for Cipher or the one that needs to
-perform consensus operations such as the consensus-layer token transfers,
-governance transactions, cross-chain ParaTime deposits and withdrawals and
-similar, you will need to connect to the one of the endpoints speaking
-[Oasis gRPC][grpc].
-
-Public gRPC endpoints (in alphabetic order):
-
-| Provider | Mainnet URL         | Testnet URL                 |
-|----------|---------------------|-----------------------------|
-| [Oasis]  | `grpc.oasis.io:443` | `testnet.grpc.oasis.io:443` |
-
-[Oasis]: https://oasis.net
-[web3]: ../node/web3.mdx
-[grpc]: ../node/grpc.mdx
-
-### Block Explorers
-
-| Name (Provider)          | Mainnet URL                                   | Testnet URL                                 |
-|--------------------------|-----------------------------------------------|---------------------------------------------|
-| Oasis Explorer ([Oasis]) | https://explorer.oasis.io/mainnet/consensus   | https://explorer.oasis.io/testnet/consensus |
-| Oasis Scan ([Bit Cat])   | https://www.oasisscan.com                     | https://testnet.oasisscan.com               |
-
-[Bit Cat]: https://www.bitcat365.com/
-
-### Indexers
-
-| Name (Provider)        | Mainnet URL                            | Testnet URL                            | Documentation                              |
-|------------------------|----------------------------------------|----------------------------------------|--------------------------------------------|
-| Oasis Nexus ([Oasis])  | `https://nexus.oasis.io/v1`            | `https://testnet.nexus.oasis.io/v1`    | [API][Nexus-docs]                          |
-| Oasis Scan ([Bit Cat]) | `https://api.oasisscan.com/v2/mainnet` | `https://api.oasisscan.com/v2/testnet` | [API][OasisScan-docs]                      |
-
-[Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
-[OasisScan-docs]: https://api.oasisscan.com/v2/swagger/
-
-### Rosetta Endpoints
-
-| Provider | Mainnet URL                               | Testnet URL                               |
-|----------|-------------------------------------------|-------------------------------------------|
-| [Oasis]  | `https://rosetta.oasis.io/api/mainnet/v1` | `https://rosetta.oasis.io/api/testnet/v1` |
-
-:::note
-
-If you are running your own Oasis client node endpoint, a block explorer, an
-indexer, or the Rosetta gateway and wish to be added to these docs, open an
-issue at [github.com/oasisprotocol/docs].
-
-:::
-
-[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs/issues
-
-## See also
-
-<DocCardList items={[findSidebarItem('https://api.docs.oasis.io/js/client'), findSidebarItem('https://pkg.go.dev/github.com/oasisprotocol/oasis-core/go')]} />
+[API reference guide]: https://api.docs.oasis.io

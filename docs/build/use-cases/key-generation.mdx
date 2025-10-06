@@ -565,19 +565,10 @@ Look for the **Proxy** section (e.g., `https://p8080.mXXX.test-proxy...`).
   Do **not** use a dev key in production.
 * Public RPCs may rate‑limit; prefer a dedicated Base RPC URL.
 
-## API summary
-
-* `GET /health` → `{ ok }`
-* `GET /app-id` → `{ appId }`
-* `GET /info` → `{ keyId, chainId, rpcHost, appId }`
-* `GET /address` → `{ keyId, address }`
-* `POST /sign-message { message }` → `{ signature, address }`
-* `POST /send-eth { to, amount }` → `{ txHash, status }`
-
 That’s it! You generated a key in ROFL with **appd**, signed messages,
 and moved ETH on Base Sepolia with a few lines of TypeScript. 🎉
 
-:::example Price Oracle Demo
+:::example Key Generation Demo
 
 You can fetch a complete example shown in this chapter from
 https://github.com/oasisprotocol/demo-rofl-keygen.

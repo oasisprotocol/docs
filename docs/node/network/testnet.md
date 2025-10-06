@@ -31,8 +31,8 @@ This page is meant to be kept up to date with the information from the currently
 * Genesis document's hash ([explanation](../reference/genesis-doc.md#genesis-file-vs-genesis-document)):
   * `0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76`
 * Oasis seed node addresses:
-  * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:26656`
-  * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@34.86.165.6:9200`
+  * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@35.247.24.212:26656`
+  * `HcDFrTp/MqRHtju5bCx6TIhIMd6X/0ZQ3lUG73q5898=@35.247.24.212:9200`
   * `kqsc8ETIgG9LCmW5HhSEUW80WIpwKhS7hRQd8FrnkJ0=@34.140.116.202:26656`
   * `kqsc8ETIgG9LCmW5HhSEUW80WIpwKhS7hRQd8FrnkJ0=@34.140.116.202:9200`
 

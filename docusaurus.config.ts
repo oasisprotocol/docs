@@ -25,7 +25,6 @@ const config: Config = {
 
   onBrokenLinks: process.env.NETLIFY ? 'warn' : 'throw',
   onBrokenAnchors: process.env.NETLIFY ? 'warn' : 'throw',
-  onBrokenMarkdownLinks: process.env.NETLIFY ? 'warn' : 'throw',
 
   presets: [
     [
@@ -63,6 +62,12 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: process.env.NETLIFY ? 'warn' : 'throw',
+      onBrokenMarkdownImages: process.env.NETLIFY ? 'warn' : 'throw',
+    },
+  },
   plugins: [
     function (context, options) {
       return {

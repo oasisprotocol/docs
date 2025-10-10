@@ -206,6 +206,19 @@ There are three kinds of image assets used in the docs.
    diagram source will be stored along in the .svg file and you will
    be able to edit it in the future.
 
+**Note**: CI linter will complain if compiled SVG of mermaid diagrams in your
+commit are not pixel-perfect with the one from CI. To reproducibly compile SVG
+diagrams locally before commiting you can use:
+
+```shell
+docker run --platform linux/amd64 -v .:/docs -it node:latest \
+  apt update; apt install jq fonts-noto-core -y; \
+  cd docs; \
+  npx puppeteer browsers install chrome-headless-shell; \
+  yarn diagrams
+```
+
+
 #### Dark Mode
 
 We aim to support dark mode when introducing new assets. We prefer to include

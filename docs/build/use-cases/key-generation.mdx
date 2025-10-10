@@ -1,6 +1,6 @@
 ---
-description: Generate an EVM key inside ROFL via appd and use it to sign and send transactions on Base.
-tags: [ROFL, appd, keys, EVM]
+description: Generate an Ethereum-compatible key inside ROFL via appd and use it to sign and send transactions on Base.
+tags: [ROFL, appd, KMS, EVM]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,8 +10,9 @@ import TabItem from '@theme/TabItem';
 
 This chapter shows how to build a tiny TypeScript app that **generates a
 secp256k1 key inside ROFL** via the [appd REST API], derives an **EVM
-address**, and **signs & sends** EIP‑1559 transactions on **Base Sepolia**.
-We also include an optional **contract deployment** step.
+address**, **signs** a message, **deploys a contract**, and **sends**
+EIP‑1559 transactions on **Base Sepolia**. We use a simple **smoke test**
+that prints to logs.
 
 [appd REST API]: ../rofl/features/appd.md
 
@@ -34,7 +35,7 @@ Initialize a new app using the [Oasis CLI]:
 ```shell
 oasis rofl init rofl-keygen
 cd rofl-keygen
-````
+```
 
 ## Create App
 
@@ -44,38 +45,58 @@ Create the app on Testnet (100 TEST deposit):
 oasis rofl create --network testnet
 ```
 
-The CLI prints the **App ID** (e.g., `rofl1...`). We will expose it
-via an HTTP endpoint as well.
+The CLI prints the **App ID** (e.g., `rofl1...`).
 
-## Install minimal deps
-
-We keep dependencies lean:
+## Init a Hardhat (TypeScript) project
 
 ```shell
-npm init -y
-npm i express ethers zod dotenv
-npm i -D typescript tsx @types/node @types/express hardhat
-npx tsc --init --rootDir src --outDir dist --module NodeNext --target ES2022
+npx hardhat --init
+```
+
+When prompted, **choose TypeScript** and accept the defaults.
+
+Now add the small runtime deps we use outside of Hardhat:
+
+```shell
+npm i ethers dotenv
+npm i -D tsx
+```
+
+Using Hardhat’s TypeScript template, it already created a `tsconfig.json`.
+Add the following so our app code compiles to `dist/`:
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
 ```
 
 ## App structure
 
-We'll add four small TS files and one Solidity contract:
+We'll add a few small TS files and one Solidity contract:
 
 ```
 src/
-  appd.ts        # talks to appd over /run/rofl-appd.sock
-  evm.ts         # ethers helpers (provider, wallet, tx)
-  keys.ts        # tiny helpers (checksum)
-  server.ts      # HTTP API to drive the demo
+├── appd.ts               # talks to appd over /run/rofl-appd.sock
+├── evm.ts                # ethers helpers (provider, wallet, tx, deploy)
+├── keys.ts               # tiny helpers (checksum)
+└── scripts/
+    ├── deploy-contract.ts  # generic deploy script for compiled artifacts
+    └── smoke-test.ts       # end-to-end demo (logs)
 contracts/
-  Counter.sol    # optional sample contract
+└── Counter.sol           # sample contract
 ```
 
 ### `src/appd.ts` — keygen over UNIX socket
 
-This calls `POST /rofl/v1/keys/generate` and returns a **0x‑hex private
-key**. Outside ROFL, it can fall back to a **dev key** for local tests.
+This calls `POST /rofl/v1/keys/generate` and returns a **0x‑hex secret
+key**. Outside ROFL, it can fall back to a **dev secret key** for local
+tests when explicitly allowed.
 
 <details>
   <summary>src/appd.ts</summary>
@@ -152,12 +173,12 @@ export async function getAppId(): Promise<string> {
   });
 }
 
-export async function getEvmPrivateKey(keyId: string): Promise<string> {
+export async function getEvmSecretKey(keyId: string): Promise<string> {
   try {
     return await generateKey(keyId, "secp256k1");
   } catch (e) {
     const allow = process.env.ALLOW_LOCAL_DEV === "true";
-    const pk = process.env.LOCAL_DEV_PK;
+    const pk = process.env.LOCAL_DEV_SK;
     if (allow && pk && /^0x[0-9a-fA-F]{64}$/.test(pk)) return pk;
     throw e;
   }
@@ -176,7 +197,8 @@ import {
   JsonRpcProvider,
   Wallet,
   parseEther,
-  type TransactionReceipt
+  type TransactionReceipt,
+  ContractFactory
 } from "ethers";
 
 export function makeProvider(rpcUrl: string, chainId: number) {
@@ -184,26 +206,49 @@ export function makeProvider(rpcUrl: string, chainId: number) {
 }
 
 export function connectWallet(
-  pkHex: string,
+  skHex: string,
   rpcUrl: string,
   chainId: number
 ): Wallet {
-  return new Wallet(pkHex).connect(makeProvider(rpcUrl, chainId));
+  const w = new Wallet(skHex);
+  return w.connect(makeProvider(rpcUrl, chainId));
 }
 
-export async function signPersonalMessage(w: Wallet, msg: string) {
-  return w.signMessage(msg);
+export async function signPersonalMessage(wallet: Wallet, msg: string) {
+  return wallet.signMessage(msg);
 }
 
 export async function sendEth(
-  w: Wallet,
+  wallet: Wallet,
   to: string,
   amountEth: string
 ): Promise<TransactionReceipt> {
-  const tx = await w.sendTransaction({ to, value: parseEther(amountEth) });
-  const rcpt = await tx.wait();
-  if (!rcpt) throw new Error("tx dropped before confirmation");
-  return rcpt;
+  const tx = await wallet.sendTransaction({
+    to,
+    value: parseEther(amountEth)
+  });
+  const receipt = await tx.wait();
+  if (receipt == null) {
+    throw new Error("Transaction dropped or replaced before confirmation");
+  }
+  return receipt;
+}
+
+export async function deployContract(
+  wallet: Wallet,
+  abi: any[],
+  bytecode: string,
+  args: unknown[] = []
+): Promise<{ address: string; receipt: TransactionReceipt }> {
+  const factory = new ContractFactory(abi, bytecode, wallet);
+  const contract = await factory.deploy(...args);
+  const deployTx = contract.deploymentTransaction();
+  const receipt = await deployTx?.wait();
+  await contract.waitForDeployment();
+  if (!receipt) {
+    throw new Error("Deployment TX not mined");
+  }
+  return { address: contract.target as string, receipt };
 }
 ```
 
@@ -217,8 +262,8 @@ export async function sendEth(
 ```ts
 import { Wallet, getAddress } from "ethers";
 
-export function privateKeyToWallet(pkHex: string): Wallet {
-  return new Wallet(pkHex);
+export function secretKeyToWallet(skHex: string): Wallet {
+  return new Wallet(skHex);
 }
 
 export function checksumAddress(addr: string): string {
@@ -228,92 +273,92 @@ export function checksumAddress(addr: string): string {
 
 </details>
 
-### `src/server.ts` — minimal HTTP API
+### `src/scripts/smoke-test.ts` — single end‑to‑end flow
 
-We expose endpoints to fetch the address, sign a message, and send ETH.
-All signing uses the **ROFL‑generated key** (or a dev key when allowed).
+This script prints the App ID (inside ROFL), address, a signed message,
+waits for funding, and deploys the counter contract.
 
 <details>
-  <summary>src/server.ts</summary>
+  <summary>src/scripts/smoke-test.ts</summary>
 
 ```ts
 import "dotenv/config";
-import express from "express";
-import { z } from "zod";
-import { getEvmPrivateKey, getAppId } from "./appd.js";
-import { privateKeyToWallet, checksumAddress } from "./keys.js";
-import { makeProvider, signPersonalMessage, sendEth } from "./evm.js";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { getAppId, getEvmSecretKey } from "../appd.js";
+import { secretKeyToWallet, checksumAddress } from "../keys.js";
+import { makeProvider, signPersonalMessage, sendEth, deployContract } from "../evm.js";
+import { formatEther, JsonRpcProvider } from "ethers";
 
-const app = express();
-app.use(express.json());
-
-const KEY_ID = process.env.KEY_ID ?? "evm:base:sepolia";
 const RPC_URL = process.env.BASE_RPC_URL ?? "https://sepolia.base.org";
 const CHAIN_ID = Number(process.env.BASE_CHAIN_ID ?? "84532");
+const KEY_ID = process.env.KEY_ID ?? "evm:base:sepolia";
 
-app.get("/health", (_req, res) => res.json({ ok: true }));
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
 
-app.get("/app-id", async (_req, res) => {
-  try {
-    res.json({ appId: await getAppId() });
-  } catch (e: any) {
-    res.status(500).json({ error: e?.message ?? "internal" });
+async function waitForFunding(
+  provider: JsonRpcProvider,
+  addr: string,
+  minWei: bigint = 1n,
+  timeoutMs = 15 * 60 * 1000,
+  pollMs = 5_000
+): Promise<bigint> {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    const bal = await provider.getBalance(addr);
+    if (bal >= minWei) return bal;
+    console.log(`Waiting for funding... current balance=${formatEther(bal)} ETH`);
+    await sleep(pollMs);
   }
-});
+  throw new Error("Timed out waiting for funding.");
+}
 
-app.get("/info", async (_req, res) => {
-  const rpcHost = new URL(RPC_URL).host;
+async function main() {
   const appId = await getAppId().catch(() => null);
-  res.json({ keyId: KEY_ID, chainId: CHAIN_ID, rpcHost, appId });
-});
+  console.log(`ROFL App ID: ${appId ?? "(unavailable outside ROFL)"}`);
 
-app.get("/address", async (_req, res) => {
-  try {
-    const pk = await getEvmPrivateKey(KEY_ID);
-    const w = privateKeyToWallet(pk).connect(makeProvider(RPC_URL, CHAIN_ID));
-    res.json({ keyId: KEY_ID, address: checksumAddress(w.address) });
-  } catch (e: any) {
-    res.status(500).json({ error: e?.message ?? "internal" });
+  const sk = await getEvmSecretKey(KEY_ID);
+  const wallet = secretKeyToWallet(sk).connect(makeProvider(RPC_URL, CHAIN_ID));
+  const addr = checksumAddress(await wallet.getAddress());
+  console.log(`EVM address (Base Sepolia): ${addr}`);
+
+  const msg = "hello from rofl";
+  const sig = await signPersonalMessage(wallet, msg);
+  console.log(`Signed message: "${msg}"`);
+  console.log(`Signature: ${sig}`);
+
+  const provider = wallet.provider as JsonRpcProvider;
+
+  let bal = await provider.getBalance(addr);
+  if (bal === 0n) {
+    console.log("Please fund the above address with Base Sepolia ETH to continue.");
+    bal = await waitForFunding(provider, addr);
   }
-});
+  console.log(`Balance detected: ${formatEther(bal)} ETH`);
 
-app.post("/sign-message", async (req, res) => {
-  try {
-    const { message } = z.object({ message: z.string().min(1) }).parse(req.body);
-    const pk = await getEvmPrivateKey(KEY_ID);
-    const sig = await signPersonalMessage(privateKeyToWallet(pk), message);
-    const addr = checksumAddress(privateKeyToWallet(pk).address);
-    res.json({ signature: sig, address: addr });
-  } catch (e: any) {
-    res.status(400).json({ error: e?.message ?? "bad request" });
+  const artifactPath = join(process.cwd(), "artifacts", "contracts", "Counter.sol", "Counter.json");
+  const artifact = JSON.parse(readFileSync(artifactPath, "utf8"));
+  if (!artifact?.abi || !artifact?.bytecode) {
+    throw new Error("Counter artifact missing abi/bytecode");
   }
-});
+  const { address: contractAddress, receipt: deployRcpt } =
+    await deployContract(wallet, artifact.abi, artifact.bytecode, []);
+  console.log(`Deployed Counter at ${contractAddress} (tx=${deployRcpt.hash})`);
 
-app.post("/send-eth", async (req, res) => {
-  try {
-    const schema = z.object({
-      to: z.string().regex(/^0x[0-9a-fA-F]{40}$/),
-      amount: z.string().regex(/^\d+(\.\d+)?$/)
-    });
-    const { to, amount } = schema.parse(req.body);
-    const pk = await getEvmPrivateKey(KEY_ID);
-    const w = privateKeyToWallet(pk).connect(makeProvider(RPC_URL, CHAIN_ID));
-    const rcpt = await sendEth(w, checksumAddress(to), amount);
-    res.json({ txHash: rcpt.hash, status: rcpt.status });
-  } catch (e: any) {
-    res.status(400).json({ error: e?.message ?? "bad request" });
-  }
-});
+  console.log("Smoke test completed successfully!");
+}
 
-const port = Number(process.env.PORT ?? "8080");
-app.listen(port, () => console.log(`keygen demo listening on :${port}`));
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
 ```
 
 </details>
 
-### Optional: deploy a sample contract
-
-Add a tiny counter and a deploy script. The Docker build will compile it.
+### `contracts/Counter.sol` — minimal sample
 
 <details>
   <summary>contracts/Counter.sol</summary>
@@ -335,35 +380,60 @@ contract Counter {
 
 </details>
 
+### `src/scripts/deploy-contract.ts` — generic deployer
+
 <details>
-  <summary>scripts/deploy-contract.ts</summary>
+  <summary>src/scripts/deploy-contract.ts</summary>
 
 ```ts
 import "dotenv/config";
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { getEvmPrivateKey } from "../src/appd.js";
-import { privateKeyToWallet } from "../src/keys.js";
-import { makeProvider } from "../src/evm.js";
-import { ContractFactory } from "ethers";
+import { getEvmSecretKey } from "../appd.js";
+import { secretKeyToWallet } from "../keys.js";
+import { makeProvider, deployContract } from "../evm.js";
 
 const KEY_ID = process.env.KEY_ID ?? "evm:base:sepolia";
 const RPC_URL = process.env.BASE_RPC_URL ?? "https://sepolia.base.org";
 const CHAIN_ID = Number(process.env.BASE_CHAIN_ID ?? "84532");
 
+/**
+ * Usage:
+ *   npm run deploy-contract -- ./artifacts/MyContract.json '[arg0, arg1]'
+ * The artifact must contain { abi, bytecode }.
+ */
 async function main() {
-  const p = join(process.cwd(), "artifacts", "contracts", "Counter.sol", "Counter.json");
-  const { abi, bytecode } = JSON.parse(readFileSync(p, "utf8"));
-  const pk = await getEvmPrivateKey(KEY_ID);
-  const wallet = privateKeyToWallet(pk).connect(makeProvider(RPC_URL, CHAIN_ID));
-  const factory = new ContractFactory(abi, bytecode, wallet);
-  const c = await factory.deploy();
-  const rcpt = await c.deploymentTransaction()?.wait();
-  await c.waitForDeployment();
-  console.log(JSON.stringify({ contractAddress: c.target, txHash: rcpt?.hash }, null, 2));
+  const [artifactPath, ctorJson = "[]"] = process.argv.slice(2);
+  if (!artifactPath) {
+    console.error("Usage: npm run deploy-contract -- <artifact.json> '[constructorArgsJson]'");
+    process.exit(2);
+  }
+
+  const artifactRaw = readFileSync(artifactPath, "utf8");
+  const artifact = JSON.parse(artifactRaw);
+  const { abi, bytecode } = artifact ?? {};
+  if (!abi || !bytecode) {
+    throw new Error("Artifact must contain { abi, bytecode }");
+  }
+
+  let args: unknown[];
+  try {
+    args = JSON.parse(ctorJson);
+    if (!Array.isArray(args)) throw new Error("constructor args must be a JSON array");
+  } catch (e) {
+    throw new Error(`Failed to parse constructor args JSON: ${String(e)}`);
+  }
+
+  const sk = await getEvmSecretKey(KEY_ID);
+  const wallet = secretKeyToWallet(sk).connect(makeProvider(RPC_URL, CHAIN_ID));
+  const { address, receipt } = await deployContract(wallet, abi, bytecode, args);
+
+  console.log(JSON.stringify({ contractAddress: address, txHash: receipt.hash, status: receipt.status }, null, 2));
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
 ```
 
 </details>
@@ -373,14 +443,26 @@ main().catch((e) => { console.error(e); process.exit(1); });
 Minimal config to compile `Counter.sol`:
 
 <details>
-  <summary>hardhat.config.cjs</summary>
+  <summary>hardhat.config.ts</summary>
 
-```cjs
-/** @type import('hardhat/config').HardhatUserConfig */
-module.exports = {
-  solidity: { version: "0.8.24", settings: { optimizer: { enabled: true, runs: 200 } } },
-  paths: { sources: "./contracts", artifacts: "./artifacts", cache: "./cache" }
+```ts
+import type { HardhatUserConfig } from "hardhat/config";
+
+const config: HardhatUserConfig = {
+  solidity: {
+    version: "0.8.24",
+    settings: {
+      optimizer: { enabled: true, runs: 200 }
+    }
+  },
+  paths: {
+    sources: "./contracts",
+    artifacts: "./artifacts",
+    cache: "./cache"
+  }
 };
+
+export default config;
 ```
 
 </details>
@@ -393,8 +475,7 @@ npx hardhat compile
 
 ## Containerize
 
-Add a compose file that mounts the **appd socket** provided by ROFL and
-exposes port **8080**. We set Base Sepolia RPC defaults.
+Mount the **appd socket** provided by ROFL. No public ports are exposed.
 
 <details>
   <summary>compose.yaml</summary>
@@ -405,19 +486,17 @@ services:
     image: docker.io/YOURUSER/rofl-keygen:0.1.0
     platform: linux/amd64
     environment:
-      - PORT=${PORT:-8080}
       - KEY_ID=${KEY_ID:-evm:base:sepolia}
       - BASE_RPC_URL=${BASE_RPC_URL:-https://sepolia.base.org}
       - BASE_CHAIN_ID=${BASE_CHAIN_ID:-84532}
-    ports:
-      - "8080:8080"
     volumes:
       - /run/rofl-appd.sock:/run/rofl-appd.sock
 ```
 
 </details>
 
-Add a Dockerfile that builds TS and compiles the contract (optional):
+Add a Dockerfile that builds TS and compiles the contract, runs the
+**smoke test** once, then idles so you can inspect logs.
 
 <details>
   <summary>Dockerfile</summary>
@@ -432,15 +511,11 @@ RUN npm ci
 COPY tsconfig.json ./
 COPY src ./src
 COPY contracts ./contracts
-COPY hardhat.config.cjs ./
-RUN npm run build || npx tsc \
- && npx hardhat compile \
- && npm prune --omit=dev
+COPY hardhat.config.ts ./
+RUN npm run build && npx hardhat compile && npm prune --omit=dev
 
 ENV NODE_ENV=production
-ENV PORT=8080
-EXPOSE 8080
-CMD ["node", "dist/server.js"]
+CMD ["sh", "-c", "node dist/scripts/smoke-test.js || true; tail -f /dev/null"]
 ```
 
 </details>
@@ -453,9 +528,16 @@ Add handy scripts to `package.json`:
 {
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/server.js",
-    "dev": "tsx src/server.ts",
-    "deploy-counter": "node scripts/deploy-contract.js"
+    "build:all": "npm run build && npm run compile:contracts",
+    "smoke-test": "node dist/scripts/smoke-test.js",
+    "get-address": "tsx src/scripts/get-address.ts",
+    "sign-message": "tsx src/scripts/sign-message.ts",
+    "send-eth": "tsx src/scripts/send-eth.ts",
+    "get-app-id": "tsx src/scripts/get-app-id.ts",
+    "deploy-contract:dev": "tsx src/scripts/deploy-contract.ts",
+    "deploy-contract": "node dist/scripts/deploy-contract.js",
+    "compile:contracts": "hardhat compile",
+    "deploy-counter": "npm run compile:contracts && node dist/scripts/deploy-contract.js ./artifacts/contracts/Counter.sol/Counter.json \"[]\""
   }
 }
 ```
@@ -501,72 +583,40 @@ Deploy to a Testnet provider:
 oasis rofl deploy
 ```
 
-Find your public HTTPS URL:
-
-```shell
-oasis rofl machine show
-```
-
-Look for the **Proxy** section (e.g., `https://p8080.mXXX.test-proxy...`).
-
 ## End‑to‑end (Base Sepolia)
 
-1. **Get App ID**
+1. **View smoke‑test logs**
 
    ```shell
-   curl -s https://YOUR-PROXY/app-id | jq
+   oasis rofl machine logs
    ```
 
-2. **Get address and fund it**
+   You should see:
+
+   * App ID
+   * EVM address and a signed message
+   * A prompt to fund the address
+   * After funding: a Counter.sol deployment
+
+2. **Local dev (optional)**
 
    ```shell
-   curl -s https://YOUR-PROXY/address | jq
-   # Use a Base Sepolia faucet to send test ETH to the address.
-   ```
-
-3. **Sign a message**
-
-   ```shell
-   curl -s -X POST https://YOUR-PROXY/sign-message \
-     -H 'content-type: application/json' \
-     -d '{"message":"hello from rofl"}' | jq
-   ```
-
-4. **Send ETH back to yourself**
-
-   ```shell
-   curl -s -X POST https://YOUR-PROXY/send-eth \
-     -H 'content-type: application/json' \
-     -d '{"to":"0xYourSepoliaAddr","amount":"0.001"}' | jq
-   ```
-
-5. **Optional: deploy the counter**
-
-   If you baked `Counter.sol` into the image, exec into the container or
-   include a route that loads the artifact and deploys it. With the
-   provided script:
-
-   ```shell
-   node scripts/deploy-contract.js
+   export ALLOW_LOCAL_DEV=true
+   export LOCAL_DEV_SK=0x<64-hex-dev-secret-key>   # DO NOT USE IN PROD
+   npm run get-address
+   npm run sign-message -- "hello from rofl"
+   npm run deploy-counter
+   npm run send-eth -- 0xYourSepoliaAddress 0.001
    ```
 
 ## Security & notes
 
-* **Never** log private keys. Provider logs are not encrypted at rest.
-* The appd socket `/run/rofl-appd.sock` exists **only inside ROFL**.
-* For local dev (outside ROFL), you can use:
-
-  ```shell
-  export ALLOW_LOCAL_DEV=true
-  export LOCAL_DEV_PK=0x<64-hex-dev-key>
-  npm run dev
-  ```
-
-  Do **not** use a dev key in production.
-* Public RPCs may rate‑limit; prefer a dedicated Base RPC URL.
+- **Never** log secret keys. Provider logs are not encrypted at rest.
+- The appd socket `/run/rofl-appd.sock` exists **only inside ROFL**.
+- Public RPCs may rate‑limit; prefer a dedicated Base RPC URL.
 
 That’s it! You generated a key in ROFL with **appd**, signed messages,
-and moved ETH on Base Sepolia with a few lines of TypeScript. 🎉
+deployed a contract, and moved ETH on Base Sepolia.
 
 :::example Key Generation Demo
 

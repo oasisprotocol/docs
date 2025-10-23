@@ -63,6 +63,14 @@ const config: Config = {
     ],
   ],
   markdown: {
+    // Copy tags into sidebar props so we can print tags in DocCard
+    parseFrontMatter: async (params) => {
+      const frontmatter = await params.defaultParseFrontMatter(params);
+      frontmatter.frontMatter.sidebar_custom_props ??= {}
+      // @ts-expect-error Wrong type
+      frontmatter.frontMatter.sidebar_custom_props.tags = frontmatter.frontMatter.tags
+      return frontmatter
+    },
     hooks: {
       onBrokenMarkdownLinks: process.env.NETLIFY ? 'warn' : 'throw',
       onBrokenMarkdownImages: process.env.NETLIFY ? 'warn' : 'throw',

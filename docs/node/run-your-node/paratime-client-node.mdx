@@ -76,23 +76,33 @@ accessible on the internet (for `TCP` and `UDP` traffic).
 [Mainnet]: ../network/mainnet.md
 [Testnet]: ../network/testnet.md
 
-### Steteless Client Node (optional)
+### Stateless Client Node (optional)
 
-Client node requires sufficient disk space and must wait for synchronization.
-A stateless client node fetches state via configured gRPC endpoints (provider node addresses) and uses a light client
-to verify data against state roots from block headers. It can be started using the following configuration:
+Client node requires sufficient disk space and must wait for state synchronization.
+A stateless client node avoids these problems by fetching the state and light blocks via configured gRPC endpoints
+(provider node addresses) and using a light client to verify the data against state roots from block headers.
+It can be started using the following configuration:
 
 ```yaml
 mode: client-stateless
 # ... sections not relevant are omitted ...
 consensus:
+    # Light client configuration
+    light_client:
+        trust:
+            # ... sections less relevant are omitted ...
     providers:
         - <node-address-1>
         - <node-address-2>
         # Add more node addresses as needed
 ```
 
-To ensure compatibility, all provider nodes specified must be running the latest version of Oasis Core.
+See the [State Sync](./advanced/sync-node-using-state-sync.md) documentation for configuring trusted period, height and
+hash for the light client.
+
+To ensure compatibility, all provider nodes specified must be running the latest version of Oasis Core. The provider
+address contains the `oasis1` prefix. It can also be an IP of a node on the network, or a path to the socket of a local
+node.
 
 ### TEE ParaTime Client Node (optional)
 

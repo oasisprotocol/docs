@@ -229,6 +229,21 @@ table .card{
   max-width: 400px;
 }
 
+.tag,
+a[rel="tag"] {
+  border: 0.0625rem solid var(--ifm-color-primary);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  display: inline-block;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+.tag {
+  margin-right: 0.375rem;
+}
+
 @media (max-width: 768px) {
   table .card{
     min-width: 182px;

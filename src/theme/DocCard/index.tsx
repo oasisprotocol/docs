@@ -56,11 +56,13 @@ function CardLayout({
   icon,
   title,
   description,
+  customProps,
 }: {
   href: string;
   icon: ReactNode;
   title: string;
   description?: string;
+  customProps: {[key: string]: unknown} | undefined;
 }): ReactNode {
   return (
     <CardContainer href={href}>
@@ -77,6 +79,15 @@ function CardLayout({
           {description}
         </p>
       )}
+      {customProps?.tags && Array.isArray(customProps.tags) ? (
+        <div className="pill">
+          {customProps.tags.map((tag) => (
+            <div className="pills__item pills__item--active tag " key={tag}>
+              {tag}
+            </div>
+          ))}
+        </div>
+      ) : null}
     </CardContainer>
   );
 }
@@ -97,6 +108,7 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
       title={item.label}
       // description={item.description ?? categoryItemsPlural(item.items.length)}
       description={item.description}
+      customProps={item.customProps}
     />
   );
 }
@@ -110,6 +122,7 @@ function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
       icon={icon}
       title={item.label}
       description={item.description ?? doc?.description}
+      customProps={item.customProps}
     />
   );
 }

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkdocs_oasis_io=globalThis.webpackChunkdocs_oasis_io||[]).push([[9174],{5332:a=>{a.exports=JSON.parse('{"tags":[{"label":"ROFL","permalink":"/tags/rofl","count":2},{"label":"Sapphire","permalink":"/tags/sapphire","count":1},{"label":"appd","permalink":"/tags/appd","count":1},{"label":"secrets","permalink":"/tags/secrets","count":1}]}')}}]);

@@ -106,6 +106,7 @@ export const sidebarNode: SidebarsConfig = {
           },
           items: [
             'node/run-your-node/advanced/sync-node-using-state-sync',
+            'node/run-your-node/advanced/pruning',
             'node/run-your-node/advanced/copy-state-from-one-node-to-the-other',
             'node/run-your-node/advanced/remote-signer',
           ],
@@ -165,7 +166,7 @@ export const sidebarNode: SidebarsConfig = {
               label: 'Mainnet',
             },
             {
-              type: 'doc', 
+              type: 'doc',
               id: 'node/reference/upgrade-logs/testnet',
               label: 'Testnet',
             },

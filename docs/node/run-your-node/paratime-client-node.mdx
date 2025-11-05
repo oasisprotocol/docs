@@ -78,6 +78,12 @@ accessible on the internet (for `TCP` and `UDP` traffic).
 
 ### Stateless Client Node (optional)
 
+:::info
+
+Stateless client is still in early stage, and thus not suitable for use cases where you need high availability.
+
+:::
+
 Client node requires sufficient disk space and must wait for state synchronization.
 A stateless client node avoids these problems by fetching the state and light blocks via configured gRPC endpoints
 (provider node addresses) and using a light client to verify the data against state roots from block headers.
@@ -97,12 +103,30 @@ consensus:
         # Add more node addresses as needed
 ```
 
-See the [State Sync](./advanced/sync-node-using-state-sync.md) documentation for configuring trusted period, height and
-hash for the light client.
+We recommend configuring a recent trust root (e.g. 1000 blocks old), that is younger than your providers last retained
+height, taking their pruning into account.
 
-To ensure compatibility, all provider nodes specified must be running the latest version of Oasis Core. The provider
-address contains the `oasis1` prefix. It can also be an IP of a node on the network, or a path to the socket of a local
-node.
+:::info
+
+See the [State Sync](./advanced/sync-node-using-state-sync.md) documentation for more info on configuring trusted
+period, height and hash for the light client.
+
+:::
+
+The provider address can be a domain name, IP of a node on the network, or a path to the socket of a local node.
+To ensure compatibility, all provider nodes specified must be running the latest version of Oasis Core.
+
+:::note
+
+Make sure you allow all the methods listed in [this example](../grpc.mdx#envoy) in your gRPC proxy for Oasis node.
+
+:::
+
+:::tip
+
+You can use `grpc.oasis.io:443` or `grpc.testnet.oasis.io:443` as provider addresses for Mainnet and Testnet.
+
+:::
 
 ### TEE ParaTime Client Node (optional)
 

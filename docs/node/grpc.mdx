@@ -117,17 +117,28 @@ static_resources:
   Consensus/(\
     EstimateGas|\
     GetBlock|\
+    GetBlockResults|\
     GetChainContext|\
     GetGenesisDocument|\
+    GetLastRetainedHeight|\
+    GetLatestHeight|\
+    GetLightBlock|\
     GetNextBlockState|\
     GetParameters|\
     GetSignerNonce|\
     GetStatus|\
     GetTransactions|\
     GetTransactionsWithResults|\
+    GetTransactionsWithProofs|\
     GetUnconfirmedTransactions|\
     MinGasPrice|\
-    SubmitTx)|\
+    SubmitEvidence|\
+    SubmitTx|\
+    SubmitTxWithProof|\
+    StateSyncGet|\
+    StateSyncGetPrefixes|\
+    StateSyncIterate|\
+    WatchBlocks)|\
   Governance/(\
     ActiveProposals|\
     ConsensusParameters|\
@@ -157,6 +168,7 @@ static_resources:
   RuntimeClient/(\
     CheckTx|\
     GetBlock|\
+    GetBlockResults|\
     GetEvents|\
     GetGenesisBlock|\
     GetLastRetainedBlock|\

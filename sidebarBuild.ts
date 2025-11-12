@@ -17,9 +17,10 @@ export const sidebarBuild: SidebarsConfig = {
         slug: '/build/use-cases',
       },
       items: [
+        'build/use-cases/key-generation',
+        'build/use-cases/trustless-agent',
         'build/use-cases/price-oracle',
         'build/use-cases/tgbot',
-        'build/use-cases/key-generation',
       ]
     },
     {

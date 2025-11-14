@@ -19,6 +19,7 @@ export const sidebarBuild: SidebarsConfig = {
       items: [
         'build/use-cases/price-oracle',
         'build/use-cases/tgbot',
+        'build/use-cases/key-generation',
       ]
     },
     {

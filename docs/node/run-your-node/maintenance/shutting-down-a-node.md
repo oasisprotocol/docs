@@ -1,30 +1,32 @@
 # Shutting Down a Node
 
-When a node registers for an epoch, it is committing to being available
-to service requests for the entire epoch.  Due to this availability
-commitment, validator and non-client paratime nodes must be shutdown
+Depending on the role (e.g. validator), a node may periodically register itself
+to the consensus registry, committing itself to serve requests until the
+expiration epoch. Due to this availability commitment, nodes must be shutdown
 gracefully to avoid network disruption.
 
-The graceful shutdown process involves the following steps:
+To have the node gracefully shutdown:
 
 1. Ensure your service manager (e.g. systemd) will not restart the node after
    exit. Otherwise the node may re-register on startup and you will need to wait
-   another epoch for it to expire.
-2. Halt the automatic re-registration.
-3. Wait for the node's existing registration to expire.
-4. Terminate the node binary.
-
-To have the node gracefully shutdown, run:
+   again.
+2. Run one of the commands below:
 
 ```bash
 # Issue a graceful shutdown request.
 oasis-node control shutdown
 
 # Issue a graceful shutdown request, and block until the node terminates.
-# Note: This can take up to a full epoch to complete.
+# Note: This can take up to 3 full epochs to complete, because the node
+# registers each epoch for the next 2 epochs (inclusive).
 oasis-node control shutdown \
   --wait
-````
+```
+
+Internally, the command will halt the automatic re-registration, wait for the
+node's existing registration to expire and terminate the node binary. If the
+node is not registered (e.g. non-validator or paratime client node) this command
+will immediately terminate the node binary.
 
 :::caution
 

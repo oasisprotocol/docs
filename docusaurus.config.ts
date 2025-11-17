@@ -100,6 +100,7 @@ const config: Config = {
       {
         indexBlog: false,
         docsRouteBasePath: '/',
+        ignoreCssSelectors: '.exclude-from-search',
       } satisfies import('@easyops-cn/docusaurus-search-local').PluginOptions,
     ],
   ],

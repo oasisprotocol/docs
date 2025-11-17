@@ -38,14 +38,16 @@ function useCategoryItemsPlural() {
 function CardContainer({
   href,
   children,
+  className,
 }: {
   href: string;
   children: ReactNode;
+  className?: string;
 }): ReactNode {
   return (
     <Link
       href={href}
-      className={clsx('card padding--lg', styles.cardContainer)}>
+      className={clsx('card padding--lg', styles.cardContainer, className)}>
       {children}
     </Link>
   );
@@ -57,15 +59,17 @@ function CardLayout({
   title,
   description,
   customProps,
+  className,
 }: {
   href: string;
   icon: ReactNode;
   title: string;
   description?: string;
   customProps: {[key: string]: unknown} | undefined;
+  className?: string;
 }): ReactNode {
   return (
-    <CardContainer href={href}>
+    <CardContainer href={href} className={className}>
       <Heading
         as="h3"
         className={clsx('text--truncate', styles.cardTitle)}
@@ -92,7 +96,7 @@ function CardLayout({
   );
 }
 
-function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
+function CardCategory({item, className}: {item: PropSidebarItemCategory, className?: string}): ReactNode {
   const href = findFirstSidebarItemLink(item);
   const categoryItemsPlural = useCategoryItemsPlural();
 
@@ -109,11 +113,12 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
       // description={item.description ?? categoryItemsPlural(item.items.length)}
       description={item.description}
       customProps={item.customProps}
+      className={className}
     />
   );
 }
 
-function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
+function CardLink({item, className}: {item: PropSidebarItemLink, className?: string}): ReactNode {
   const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
   const doc = useDocById(item.docId ?? undefined);
   return (
@@ -123,6 +128,7 @@ function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
       title={item.label}
       description={item.description ?? doc?.description}
       customProps={item.customProps}
+      className={className}
     />
   );
 }
@@ -130,9 +136,9 @@ function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
 export default function DocCard({item}: Props): ReactNode {
   switch (item.type) {
     case 'link':
-      return <CardLink item={item} />;
+      return <CardLink item={item} className="exclude-from-search" />;
     case 'category':
-      return <CardCategory item={item} />;
+      return <CardCategory item={item} className="exclude-from-search" />;
     default:
       throw new Error(`unknown item type ${JSON.stringify(item)}`);
   }

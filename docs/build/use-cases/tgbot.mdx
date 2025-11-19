@@ -1,6 +1,6 @@
 ---
 description: Build a private Telegram bot running in ROFL containing a simple python script and an Ollama LLM.
-tags: [ROFL, secrets]
+tags: [ROFL, AI, secrets]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -18,18 +18,17 @@ protected by the Trusted Execution Environment and the Oasis blockchain!
 This guide requires:
 - a working python (>3.9)
 - a working Docker (or Podman),
-- [Oasis CLI] and
-- at least 120 TEST tokens in your wallet.
+- **Oasis CLI** and at least **120 TEST** tokens in your wallet
+  (use [Oasis Testnet faucet]).
 
 Check out the [Quickstart Prerequisites] section for details.
 
 [Quickstart Prerequisites]: ../rofl/quickstart#prerequisites
-[Oasis CLI]: https://github.com/oasisprotocol/cli/blob/master/docs/README.md
+[Oasis Testnet faucet]: https://faucet.testnet.oasis.io
 
 ## Init App
 
-First we init the basic directory structure for the app using the [Oasis
-CLI]:
+First we init the basic directory structure for the app using the Oasis CLI:
 
 ```shell
 oasis rofl init rofl-tgbot
@@ -202,6 +201,5 @@ You can fetch a finished project of this tutorial from GitHub
 
 :::
 
-[oasis-cli-dl]: https://github.com/oasisprotocol/cli/releases
 [demo-rofl-tgbot]: https://github.com/oasisprotocol/demo-rofl-tgbot
 [Oasis Explorer]: https://explorer.oasis.io/testnet/sapphire/rofl/app/rofl1qpjsc3qplf2szw7w3rpzrpq5rqvzv4q5x5j23msu

@@ -2,15 +2,35 @@ import DocCard from "@theme/DocCard";
 import DocCardList from "@theme/DocCardList";
 import { findSidebarItem } from "@site/src/sidebarUtils";
 import DocCardSection from "@site/src/components/DocCardSection";
+import HammerSvg from "@site/static/img/HammerGraphic.svg?react";
 import OasisSvg from "@site/static/img/OasisGraphic.svg?react";
-import GetInvolvedSvg from "@site/static/img/GetInvolvedGraphic.svg?react";
-import BuildSvg from "@site/static/img/BuildGraphic.svg?react";
-import DevelopCoreSvg from "@site/static/img/DevelopCoreGraphic.svg?react";
-import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
+import SpeakerSvg from "@site/static/img/SpeakerGraphic.svg?react";
+import CogSvg from "@site/static/img/CogGraphic.svg?react";
+import CoreSvg from "@site/static/img/CoreGraphic.svg?react";
+import BlocksSvg from "@site/static/img/BlocksGraphic.svg?react";
 
 # Getting Started
 
 <div className="homepage-container">
+
+<DocCardSection
+    title="Use Cases"
+    path="/build/use-cases"
+    fullWidth
+    itemPaths={[
+        "/build/use-cases/key-generation",
+        "/build/use-cases/trustless-agent",
+    ]}
+    svg={<OasisSvg className="animatedSvg" />}
+>
+    Use Oasis to build verifiable, auditable applications
+    powered by TEE running on a permissionless network of nodes. No censorship,
+    no hidden costs, no central authority!
+
+    Get your hands dirty quickly by reviewing [top use cases](/build/use-cases)
+    and considering one that fits your needs. Our tutorials will help you make
+    your app up and running in no time.
+</DocCardSection>
 
 <DocCardSection
     title="Build on Oasis"
@@ -21,7 +41,7 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
         "/build/sapphire/",
         "/build/opl/",
     ]}
-    svg={<BuildSvg className="animatedSvg" />}
+    svg={<HammerSvg className="animatedSvg" />}
 >
     Our [Runtime Offchain Logic (ROFL)](/build/rofl/) enables you to build
     secure applications running in a trusted environment (TEE). This is ideal
@@ -46,7 +66,7 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
     "/general/manage-tokens/",
   ]}
   svg={
-    <OasisSvg className="animatedSvg" />
+    <BlocksSvg className="animatedSvg" />
   }
 >
   Learn the fundamentals of Oasis architecture, wallets, and unique privacy
@@ -59,7 +79,7 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
   itemPaths={[
     "/get-involved/",
   ]}
-  svg={<GetInvolvedSvg className="animatedSvg" />}
+  svg={<SpeakerSvg className="animatedSvg" />}
 >
   Connect with developers, run infrastructure, and contribute to the future of Oasis.
 </DocCardSection>
@@ -72,7 +92,7 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
     "/node/network/testnet",
     "/node/run-your-node/",
   ]}
-  svg={<NodesSvg className="animatedSvg" />}
+  svg={<CogSvg className="animatedSvg" />}
 >
   If you want to run your own Oasis node, this part will provide you with guides on the current Mainnet and Testnet network parameters and how to set up your node, let it be a validator node, perhaps running a ParaTime or just a simple client node for your server to submit transactions and perform queries on the network.
 </DocCardSection>
@@ -85,7 +105,7 @@ import NodesSvg from "@site/static/img/NodesGraphic.svg?react";
     "/core/runtime/",
     "/adrs",
   ]}
-  svg={<DevelopCoreSvg className="animatedSvg" />}
+  svg={<CoreSvg className="animatedSvg" />}
 >
   Whether you want to contribute your code to the core components of the Oasis Network or just learn more about the Oasis consensus layer and other core components, this is the part for you.
 

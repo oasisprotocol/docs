@@ -119,7 +119,7 @@ Inspect on-chain activity and app details in the [Oasis Explorer].
 
 ## Build ROFL bundle
 
-Eliza requires at least 2 GiB of memory and 5 GB of storage. Update the
+Eliza requires at least 2 GiB of memory and 10 GB of storage. Update the
 `resources` section in `rofl.yaml` accordingly:
 
 ```yaml title="rofl.yaml"
@@ -128,7 +128,7 @@ resources:
   cpus: 1
   storage:
     kind: disk-persistent
-    size: 5000
+    size: 10000
 ```
 
 Then, build the ROFL bundle by invoking:

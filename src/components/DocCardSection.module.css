@@ -1,5 +1,4 @@
 .customCard {
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, var(--ifm-color-primary) 180%);
   border: 1px solid #e2e8f0;
   border-radius: 0.5rem;
   padding: 1.5rem;
@@ -15,18 +14,20 @@
 .customCard::before {
   content: '';
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25rem;
   inset: 0;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 53.75%, #5FA8D3	 180%);
-  opacity: 0;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 10.75%, var(--ifm-color-primary) 220%);
+  opacity: 1;
   transition: opacity 0.5s ease;
   z-index: -1;
 }
 
-
 .customCard:hover::before {
-  opacity: 1;
+  opacity: 0.8;
 }
-
 
 .fullWidth {
   flex: 1 1 100%;
@@ -39,12 +40,12 @@
   color: var(--ifm-color-card-heading);
 }
 
-.customCard h2 a{
+.customCard h2 a {
   color: var(--ifm-color-card-heading);
   transition: all .2s ease;
 }
 
-.customCard > p {
+.customCard>p {
   font-size: 0.9rem;
   color: #64748b;
   margin-bottom: 1.5rem;
@@ -57,17 +58,17 @@
   position: relative;
 }
 
-.cardDescription{
+.cardDescription {
   color: var(--ifm-color-secondary-text);
 }
 
-.cardDescription a{
-  color: var(--ifm-color-secondary-text)!important;
+.cardDescription a {
+  color: var(--ifm-color-secondary-text) !important;
   text-decoration: underline;
 }
 
-[data-theme='dark'] .cardItem a{
-  border: none!important;
+[data-theme='dark'] .cardItem a {
+  border: none !important;
 }
 
 .cardItem h3 {
@@ -93,9 +94,9 @@
 }
 
 .cardItem a h3 {
-  font-size: 1rem!important;
+  font-size: 1rem !important;
   margin: 0;
-  font-weight: 600!important;
+  font-weight: 600 !important;
   color: var(--ifm-color-card-heading-secondary);
   transition: all .2s ease;
 }
@@ -105,28 +106,28 @@
 }
 
 .cardItem a p {
-  font-size: 0.875rem!important;
-  margin: 0!important;
+  font-size: 0.875rem !important;
+  margin: 0 !important;
   color: var(--ifm-color-secondary-text);
   max-width: 90%;
 }
 
-.cardItem a h2 span{
-  display: none!important;
+.cardItem a h2 span {
+  display: none !important;
 }
 
 .cardLinksList .cardItem:last-child {
   border-bottom: none;
 }
 
-.cardContentFlex{
+.cardContentFlex {
   display: flex;
   justify-content: space-between;
   align-items: start;
   gap: 1.5rem;
 }
 
-.halfWidth{
+.halfWidth {
   width: 50%;
   max-width: calc(50% - 0.75rem);
 }
@@ -156,7 +157,7 @@ html[data-theme='dark'] .cardItem::after {
   right: 0.5rem;
 }
 
-.animatedSvgWrapper{
+.animatedSvgWrapper {
   position: absolute;
   width: 100%;
   max-width: 400px;
@@ -212,14 +213,27 @@ html[data-theme='dark'] .cardItem::after {
 @media (max-width: 768px) {
   .customCard {
     max-width: 100%;
+    padding-top: 10rem;
   }
 
-  .halfWidth{
+  .customCard::before {
+    height: 13rem;
+  }
+
+  .animatedSvgWrapper {
+    max-width: 180px;
+  }
+
+  .animatedSvgWrapper svg {
+    height: auto;
+  }
+
+  .halfWidth {
     width: 100%;
     max-width: 100%;
   }
 
-  .cardContentFlex{
+  .cardContentFlex {
     flex-direction: column;
     gap: 1.5rem;
   }

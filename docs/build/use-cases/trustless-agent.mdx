@@ -59,38 +59,29 @@ elizaos start
 
 ## Containerize the App and the ERC-8004 wrapper
 
-The Eliza agent startup wizard already generated the `Dockerfile` that packs
-your agent into a container.
+The Eliza agent startup wizard already generated `Dockerfile` that packs your
+agent into a container and `docker-compose.yaml` that orchestrates the
+`postgres` and `elizaos` containers. Edit `docker-compose.yaml` with the
+following changes:
 
-Next, we'll make sure that the Eliza agent is registered as a trustless agent in
-the ERC-8004 registry. A helper image called [`rofl-8004`] will do the
-registration for us. Create the following `compose.yaml` file:
+1. In the PostgreSQL section replace relative `image: ankane/pgvector:latest`
+   with `image: docker.io/ankane/pgvector:latest`.
+2. Name our `elizaos` image with a corresponding absolute path, e.g.
+   `image: docker.io/YOUR_USERNAME/elizaos:latest`
+3. Make our Eliza agent registered as a trustless agent in the ERC-8004
+   registry. Paste the following [`rofl-8004`] snippet that will register it
+   for us (keep the environment variables mapping!):
 
-```yaml title="compose.yaml"
-services:
-  rofl-eliza:
-    build: .
-    image: docker.io/YOUR_USERNAME/rofl-eliza:latest
-    platform: linux/amd64
-    environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-    ports:
-      - "3000:3000"
-    volumes:
-      - eliza-storage:/root/.eliza
-
-  rofl-8004:
-    image: ghcr.io/oasisprotocol/rofl-8004@sha256:f57373103814a0ca4c0a03608284451221b026e695b0b8ce9ca3d4153819a349
-    platform: linux/amd64
-    environment:
-      - RPC_URL=${RPC_URL}
-      - PINATA_JWT=${PINATA_JWT}
-    volumes:
-      - /run/rofl-appd.sock:/run/rofl-appd.sock
-
-volumes:
-  eliza-storage:
-```
+   ```yaml title="docker-compose.yaml"
+     rofl-8004:
+       image: ghcr.io/oasisprotocol/rofl-8004@sha256:f57373103814a0ca4c0a03608284451221b026e695b0b8ce9ca3d4153819a349
+       platform: linux/amd64
+       environment:
+         - RPC_URL=${RPC_URL}
+         - PINATA_JWT=${PINATA_JWT}
+       volumes:
+         - /run/rofl-appd.sock:/run/rofl-appd.sock
+   ```
 
 Build and push:
 
@@ -99,8 +90,8 @@ docker compose build
 docker compose push
 ```
 
-For extra security and verifiability pin the digest and use
-`image: ...@sha256:...` in `compose.yaml`.
+For full verifiability pin the digest by appending `image: ...@sha256:...` in
+`docker-compose.yaml` to all images.
 
 [`rofl-8004`]: https://github.com/oasisprotocol/erc-8004
 
@@ -108,7 +99,7 @@ For extra security and verifiability pin the digest and use
 
 The agent will run in a container inside a TEE. ROFL will handle the startup
 attestation of the container and the secrets in form of environment variables.
-This way TEE will be completely transparent to the agent app.
+This way TEE will be completely transparent to the Eliza agent app.
 
 ```shell
 oasis rofl init
@@ -119,7 +110,7 @@ Inspect on-chain activity and app details in the [Oasis Explorer].
 
 ## Build ROFL bundle
 
-Eliza requires at least 2 GiB of memory and 10 GB of storage. Update the
+Eliza requires at least 2 GiB of memory and 10 GB of storage. First, update the
 `resources` section in `rofl.yaml` accordingly:
 
 ```yaml title="rofl.yaml"
@@ -158,7 +149,7 @@ echo -n "https://sepolia.infura.io/v3/<YOUR_KEY>" | oasis rofl secret set RPC_UR
 echo -n "<your-pinata-key-here>" | oasis rofl secret set PINATA_JWT -
 ```
 
-Then store enclave identities and secrets on-chain:
+Then store the secrets and previously built enclave identities on-chain:
 
 ```shell
 oasis rofl update
@@ -166,7 +157,7 @@ oasis rofl update
 
 ## Deploy
 
-Deploy your Eliza agent to a ROLF provider by invoking:
+Deploy your Eliza agent to a ROFL provider by invoking:
 
 ```shell
 oasis rofl deploy
@@ -195,7 +186,7 @@ URL where your agent is accessible on, for example:
 Proxy:
   Domain: m1058.opf-testnet-rofl-25.rofl.app
   Ports from compose file:
-    3000 (rofl-eliza): https://p3000.m1058.opf-testnet-rofl-25.rofl.app
+    3000 (elizaos): https://p3000.m1058.opf-testnet-rofl-25.rofl.app
 ```
 
 In the example above, our app is accessible at

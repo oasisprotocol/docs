@@ -90,6 +90,46 @@ const config: Config = {
       };
     },
     [
+      require.resolve('./plugins/llms-symlinks'),
+      {
+        docsDir: 'docs',
+
+        // Use site metadata in generated headers
+        title: 'Oasis Documentation',
+        description: 'Official Oasis developer documentation.',
+
+        // Generate both files
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+
+        // Clean MDX a bit but keep content readable
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+
+        // Strip "docs" from URLs to match the deployed site paths
+        pathTransformation: {
+          ignorePaths: ['docs'],
+        },
+
+        // Prioritize Build docs in order: use-cases, ROFL, Sapphire, CLI, then rest of build.
+        // Keep unmatched docs at the end so we don't drop anything.
+        includeOrder: [
+          'docs/build/use-cases/**',
+          'docs/build/rofl/**',
+          'docs/build/sapphire/**',
+          'docs/build/tools/cli/**',
+          'docs/build/**',
+        ],
+        includeUnmatchedLast: true,
+        // Mirror ADR exclusions from the main docs plugin to avoid boilerplate entries.
+        ignoreFiles: [
+          'docs/adrs/README.md',
+          'docs/adrs/0000-architectural-decision-records.md',
+          'docs/adrs/template.md',
+        ],
+      },
+    ],
+    [
       '@docusaurus/plugin-client-redirects',
       redirectsOptions,
     ],

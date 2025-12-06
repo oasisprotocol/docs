@@ -1,87 +1,146 @@
 ---
 description: Deploy a trustless Eliza AI agent on Oasis using ROFL enclaves,
   with enclave-managed keys and on-chain verification on Sapphire.
-tags: [ROFL, AI, appd, secrets]
+tags: [ROFL, Sapphire, AI, agents, secrets, governance]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Trustless AI Agent
+# Launch Trustless AI Agents on Oasis
 
 Learn how to deploy a trustless Eliza agent on Oasis using ROFL enclaves.
 
+
 ## What You’ll Build
 
-By the end you will have a working Eliza agent running inside a ROFL Trusted
-Execution Environment (TEE), registered and validated as a trustless agent in
-the [ERC-8004] registry. The agent's code can be fully audited and proved that
-the deployed instance really originates from it and cannot be silently altered.
-
-[ERC-8004]: https://eips.ethereum.org/EIPS/eip-8004
+By the end you will have:
+- a ROFL-deployed Eliza agent running inside a TEE
+- enclave-managed keys for on-chain actions
 
 ## Prerequisites
 
 You will need:
-- **Docker** (or Podman) with credentials on docker.io, ghcr.io or other
-  public OCI registry
-- **Oasis CLI** and at least **120 TEST** tokens in your wallet
-  (use [Oasis Testnet faucet]).
-- **Node.js 22+** (for Eliza and helper scripts)
-- **OpenAI** API key
-- **RPC URL** for accessing the ERC-8004 registry (e.g. Infura)
-- **Pinata JWT** for storing agent information to IPFS
+- Docker (or Podman)
+- [Oasis CLI]
+- Node.js 18+ (for Eliza and helper scripts)
+- a Sapphire Testnet wallet funded with TEST
 
-Check [Quickstart Prerequisites] for setup details.
+Optional depending on your LLM choice:
+- OpenAI API key or a reachable Ollama instance
 
-[Quickstart Prerequisites]: ../rofl/quickstart#prerequisites
-[Oasis Testnet faucet]: https://faucet.testnet.oasis.io
+[Oasis CLI]: https://github.com/oasisprotocol/cli/blob/master/docs/README.md
 
-## Create an Eliza Agent
+
+## Architecture Overview
+
+- ROFL (Runtime Off-chain Logic)
+  - Enclave execution, sealed secrets, app identity, attestation
+  - In-enclave key manager via `appd` UNIX socket
+- Sapphire (Verification Layer)
+  - Confidential EVM chain verifying ROFL identities and policies
+  - Runs confidential contracts that can verify ROFL origin
+
+## Init and Create App
+
+We package the agent as a container and deploy it to a TEE via ROFL. ROFL
+handles attestation, sealed secrets, and app identity bound to your on-chain
+registration.
+
+
+
+```shell
+oasis rofl init rofl-eliza
+cd rofl-eliza
+oasis rofl create --network testnet
+```
+
+After creation, note your ROFL app ID. You can monitor deployments with:
+`oasis rofl machine show` and `oasis rofl machine logs`, or use the Oasis
+Explorer on Sapphire Testnet.
+
+## Eliza example (local run)
+
+First we initialize our Eliza agent:
+
+```shell
+mkdir eliza-app && cd eliza-app
+npm init -y
+# install your Eliza framework deps here
+# npm install @your-eliza/pkg ...
+```
 
 Initialize a project using the ElizaOS CLI and prepare it for ROFL.
 
+
 ```shell
-# Install bun and ElizaOS CLI
+# 1) Install bun and ElizaOS CLI
 bun --version || curl -fsSL https://bun.sh/install | bash
 bun install -g @elizaos/cli
 
-# Create and configure the agent
-elizaos create -t project rofl-eliza
-# 1) Select Pqlite database
-# 2) Select the OpenAI model and enter your OpenAI key
+# Configure model credentials locally
+elizaos create eliza-agent
+# OPENAI key when prompted
 
-# Test the agent locally
-cd rofl-eliza
+# Start the agent locally
 elizaos start
-# Visiting http://localhost:3000 with your browser should open Eliza UI
 ```
+#### Containerize and deploy to ROFL
 
-## Containerize the App and the ERC-8004 wrapper
+Proceed to “Eliza agent container (inside ROFL)” below to package the agent
+for enclave execution and deploy it using the Oasis CLI.
 
-The Eliza agent startup wizard already generated `Dockerfile` that packs your
-agent into a container and `docker-compose.yaml` that orchestrates the
-`postgres` and `elizaos` containers. Edit `docker-compose.yaml` with the
-following changes:
+Create a `docker` folder with a minimal runner that starts an ElizaOS agent via the CLI and reads model configuration from environment variables.
 
-1. In the PostgreSQL section replace relative `image: ankane/pgvector:latest`
-   with `image: docker.io/ankane/pgvector:latest`.
-2. Name our `elizaos` image with a corresponding absolute path, e.g.
-   `image: docker.io/YOUR_USERNAME/elizaos:latest`
-3. Make our Eliza agent registered as a trustless agent in the ERC-8004
-   registry. Paste the following [`rofl-8004`] snippet that will register it
-   for us (keep the environment variables mapping!):
+<details>
+  <summary>docker/entry.sh</summary>
 
-   ```yaml title="docker-compose.yaml"
-     rofl-8004:
-       image: ghcr.io/oasisprotocol/rofl-8004@sha256:f57373103814a0ca4c0a03608284451221b026e695b0b8ce9ca3d4153819a349
-       platform: linux/amd64
-       environment:
-         - RPC_URL=${RPC_URL}
-         - PINATA_JWT=${PINATA_JWT}
-       volumes:
-         - /run/rofl-appd.sock:/run/rofl-appd.sock
-   ```
+```shell
+#!/bin/sh
+set -e
+
+# Expected env in ROFL:
+#   OPENAI_API_KEY for the model provider
+# Provide any additional vars your agent needs here.
+exec elizaos start
+```
+</details>
+
+
+<details>
+  <summary>docker/Dockerfile</summary>
+
+```dockerfile
+FROM node:24-alpine
+WORKDIR /app
+
+# Copy your ElizaOS project (created with `elizaos create ...`).
+ADD . /app
+
+# Install ElizaOS CLI and project dependencies (npm-based).
+RUN npm i -g @elizaos/cli && npm ci
+
+# Minimal entrypoint that launches the agent.
+ENTRYPOINT ["/bin/sh", "/app/docker/entry.sh"]
+```
+</details>
+
+
+Add `compose.yaml` at project root:
+
+<details>
+  <summary>compose.yaml</summary>
+
+```yaml
+services:
+  eliza-agent:
+    build: ./docker
+    image: docker.io/YOUR_USERNAME/rofl-eliza:latest
+    platform: linux/amd64
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+```
+</details>
 
 Build and push:
 
@@ -90,66 +149,31 @@ docker compose build
 docker compose push
 ```
 
-For full verifiability pin the digest by appending `image: ...@sha256:...` in
-`docker-compose.yaml` to all images.
-
-[`rofl-8004`]: https://github.com/oasisprotocol/erc-8004
-
-## Init ROFL and Create App
-
-The agent will run in a container inside a TEE. ROFL will handle the startup
-attestation of the container and the secrets in form of environment variables.
-This way TEE will be completely transparent to the Eliza agent app.
-
-```shell
-oasis rofl init
-oasis rofl create --network testnet
-```
-
-Inspect on-chain activity and app details in the [Oasis Explorer].
+For extra security, **pin the image digest** in `compose.yaml`.
 
 ## Build ROFL bundle
 
-Eliza requires at least 2 GiB of memory and 10 GB of storage. First, update the
-`resources` section in `rofl.yaml` accordingly:
-
-```yaml title="rofl.yaml"
-resources:
-  memory: 2048
-  cpus: 1
-  storage:
-    kind: disk-persistent
-    size: 10000
-```
-
-Then, build the ROFL bundle by invoking:
-
 <Tabs>
-    <TabItem value="Native Linux">
-        ```shell
-        oasis rofl build
-        ```
-    </TabItem>
-    <TabItem value="Docker (Mac/Windows/Linux)">
-        ```shell
-        docker run --platform linux/amd64 --volume .:/src \
-        -it ghcr.io/oasisprotocol/rofl-dev:main oasis rofl build
-        ```
-    </TabItem>
-</Tabs>
-
-## Secrets
-
-Let's end-to-end encrypt `OPENAI_API_KEY` and store it on-chain. Also, provide
-the `RPC_URL` and `PINATA_JWT` values for ERC-8004 registration.
+  <TabItem value="Native Linux">
 
 ```shell
-echo -n "<your-openai-key-here>" | oasis rofl secret set OPENAI_API_KEY -
-echo -n "https://sepolia.infura.io/v3/<YOUR_KEY>" | oasis rofl secret set RPC_URL -
-echo -n "<your-pinata-key-here>" | oasis rofl secret set PINATA_JWT -
+oasis rofl build
 ```
 
-Then store the secrets and previously built enclave identities on-chain:
+  </TabItem>
+  <TabItem value="Docker (Windows, Mac, Linux)">
+
+```shell
+docker run --platform linux/amd64 --volume .:/src -it \
+  ghcr.io/oasisprotocol/rofl-dev:main oasis rofl build
+```
+
+  </TabItem>
+</Tabs>
+
+This produces the `.orc` bundle for deployment, sealing in enclave identity.
+
+Then publish the enclave identities and config:
 
 ```shell
 oasis rofl update
@@ -157,70 +181,211 @@ oasis rofl update
 
 ## Deploy
 
-Deploy your Eliza agent to a ROFL provider by invoking:
-
 ```shell
 oasis rofl deploy
 ```
 
-By default, the Oasis-maintained provider is selected on Testnet that lends
-you a node for 1 hour. You can extend the rental, for example by 4 hours by
-invoking `oasis rofl machine top-up --term hour --term-count 4`
-[command][deploy].
+By default, the Oasis-maintained provider is selected on Testnet.
 
-[deploy]: https://github.com/oasisprotocol/cli/blob/master/docs/rofl.md#deploy
+## How the agent interacts on Sapphire
 
-## Trying it out
+- Encode calldata for your contract method and call [`signSubmit()`] via
+  `appd`. The tx originates from the enclave-bound key of your ROFL app.
+- Contracts can require verified ROFL origin to bind calls to your app.
+
+### Eliza + ROFL TypeScript client (inline)
+
+Use the official ROFL TypeScript client directly inside your Eliza agent. Add a
+small helper you can import from any Eliza action/tool to derive the enclave key,
+expose the wallet address, and sign+submit transactions via appd.
+
+<details>
+  <summary>src/rofl.ts</summary>
+
+```ts
+import { RoflClient, KeyKind } from "@oasisprotocol/rofl-client";
+import { Interface, Wallet } from "ethers";
+import http from "node:http";
+
+export async function ensureEnclaveWallet(keyId = "agent-identity-key") {
+  const client = new RoflClient(); // connects to /run/rofl-appd.sock inside ROFL
+  const key = await client.generateKey(keyId, KeyKind.SECP256K1);
+  const wallet = new Wallet("0x" + key);
+  await client.setMetadata({ key_fingerprint: key.slice(0, 16) });
+  return { wallet, key, client };
+}
+
+export async function signSubmitEthTx(params: {
+  to: string;
+  abi: any[];
+  method: string;
+  args?: any[];
+  gasLimit?: number;
+}) {
+  const { to, abi, method, args, gasLimit } = params;
+  const iface = new Interface(abi);
+  const data = iface.encodeFunctionData(method, args ?? []);
+  const body = JSON.stringify({
+    tx: { kind: "eth", data: { gas_limit: gasLimit ?? 200000, to, value: 0, data } },
+  });
+  return await new Promise<any>((resolve, reject) => {
+    const req = http.request(
+      {
+        socketPath: "/run/rofl-appd.sock",
+        path: "/rofl/v1/tx/sign-submit",
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(body) },
+      },
+      (res) => {
+        let buf = "";
+        res.on("data", (c) => (buf += c));
+        res.on("end", () => {
+          try {
+            resolve(JSON.parse(buf || "{}"));
+          } catch {
+            resolve({ raw: buf });
+          }
+        });
+      }
+    );
+    req.on("error", reject);
+    req.write(body);
+    req.end();
+  });
+}
+```
+</details>
+
+Use the helper from inside your Eliza agent (e.g., in a tool/action handler):
+
+<details>
+  <summary>Example usage in an Eliza handler</summary>
+
+```ts
+import { ensureEnclaveWallet, signSubmitEthTx } from "./rofl";
+
+// During agent startup (once):
+const { wallet } = await ensureEnclaveWallet("agent-identity-key");
+console.log("ROFL enclave EVM address:", wallet.address);
+
+// Later, on user intent (e.g., tool call):
+await signSubmitEthTx({
+  to: "0xYourContract",
+  abi: [ /* contract ABI */ ],
+  method: "yourMethod",
+  args: [ /* arguments */ ],
+  gasLimit: 200000,
+});
+```
+</details>
+
+#### Wire into ElizaOS (enable tool and prompting)
+
+Add a small tool wrapper Eliza can call. Register it in your agent config and nudge the model to invoke it via system instructions.
+
+<details>
+  <summary>tools/rofl.ts</summary>
+
+```ts
+import { ensureEnclaveWallet, signSubmitEthTx } from "../src/rofl";
+
+export async function generate_rofl_wallet(params?: { keyId?: string }) {
+  const { wallet } = await ensureEnclaveWallet(params?.keyId ?? "agent-identity-key");
+  return { address: wallet.address };
+}
+
+export async function submit_rofl_tx(input: {
+  to: string;
+  abi: any[];
+  method: string;
+  args?: any[];
+  gasLimit?: number;
+}) {
+  return await signSubmitEthTx(input);
+}
+```
+</details>
+
+Register the tool in your Eliza agent configuration (adjust pathing to your build output):
+
+<details>
+  <summary>agent.config.json</summary>
+
+```json
+{
+  "name": "rofl-eliza",
+  "model": "openai:gpt-4o-mini",
+  "tools": ["./dist/tools/rofl.js"]
+}
+```
+</details>
+
+Guide the model to use the tool via system prompt:
+
+<details>
+  <summary>system-prompt.txt</summary>
+
+```
+You are a ROFL-enabled Eliza agent. When a user asks to create a wallet or perform an on-chain action:
+- First call generate_rofl_wallet to ensure an enclave-bound EVM address exists.
+- Then call submit_rofl_tx with the target contract (to), ABI, method and args.
+Never expose private keys; only share the EVM address.
+```
+</details>
+
+Ensure the appd UNIX socket is available to your container:
+
+<details>
+  <summary>compose.yaml (socket mount)</summary>
+
+```yaml
+services:
+  eliza-agent:
+    # ...
+    volumes:
+      - /run/rofl-appd.sock:/run/rofl-appd.sock
+```
+</details>
  
-After deploying the agent, use the CLI to check, if the agent is running:
+Install dependencies and build with your app:
 
 ```shell
-# Show machine details (state, proxy URLs, expiration).
+npm i ethers @oasisprotocol/rofl-client typescript
+npx tsc
+```
+
+Your `docker/entry.sh` can continue to start just the Eliza agent:
+
+```shell
+#!/bin/sh
+set -e
+exec elizaos start
+```
+
+## Testing it out
+ 
+After `oasis rofl deploy`, use the CLI to check machine status and view logs.
+ 
+```shell
+# Show machine details (IDs, state, proxy URLs, expiration).
 oasis rofl machine show
-```
-
-If the agent successfully booted up, the `Proxy:` section contains the
-URL where your agent is accessible on, for example:
-
-```
-Proxy:
-  Domain: m1058.opf-testnet-rofl-25.rofl.app
-  Ports from compose file:
-    3000 (elizaos): https://p3000.m1058.opf-testnet-rofl-25.rofl.app
-```
-
-In the example above, our app is accessible at
-https://p3000.m1058.opf-testnet-rofl-25.rofl.app.
-
-## ERC-8004 Registration and Validation
-
-When spinning up the agent for the first time, the `rofl-8004` service will
-derive the ethereum address for registering the agent. You will need to
-fund that account with a small amount of ether to pay for the fees.
-
-Fetch your app logs:
-
-```shell
+ 
+# Fetch logs from your running ROFL app.
 oasis rofl machine logs
 ```
-
-Then look for `Please top it up` line which contains the derived address.
-After funding it, your agent will automatically be registered and validated.
-
-:::warning
-
-Logs are accessible to the app admin and are stored **unencrypted on the ROFL
-node**. Avoid printing secrets!
-
-:::
-
-:::example Trustless Agent Demo
-
-You can fetch a complete example shown in this chapter from
-https://github.com/oasisprotocol/demo-trustless-agent.
-
-:::
-
+ 
+- Expect standard output from your app container (anything your entrypoint prints).
+- If your app initializes services on startup, those startup logs will appear here.
+- Use this to check enclave startup issues and app readiness.
+ 
+Note: Logs are accessible to the app admin and are stored unencrypted on the ROFL node. Avoid printing secrets. See the official docs:
+- [oasis rofl machine logs][machine-logs]
+- [ROFL workflow — logs and deploy notes][sdk-deploy-logs]
+ 
+Inspect on-chain activity and app details in the Oasis Explorer:
+- [Oasis Explorer] — inspect ROFL apps and Sapphire activity
+ 
 [machine-logs]: https://github.com/oasisprotocol/cli/blob/master/docs/rofl.md#machine-logs
 [sdk-deploy-logs]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/workflow/deploy.md#check-that-the-app-is-running
 [Oasis Explorer]: https://explorer.oasis.io/testnet/sapphire
+[`signSubmit()`]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/features/appd.md

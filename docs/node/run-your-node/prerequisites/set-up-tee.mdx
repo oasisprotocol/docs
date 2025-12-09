@@ -263,40 +263,6 @@ please follow [the vSphere guide].
 
 [the vSphere guide]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-F16476FD-3B66-462F-B7FB-A456BEDC3549.html
 
-### Migrate from EPID Attestation to DCAP Attestation
-
-EPID attestation will be discontinued in 2025 and will no longer be available on
-any processors. All nodes using EPID attestation must migrate to DCAP
-attestation.
-
-For transitioning to the DCAP attestation, follow these steps:
-1. See if your system [supports DCAP attestation]. If your hardware does not
-support DCAP attestation, you'll need to migrate your node to newer hardware.
-2. Transition to DCAP attestation:
-  - In case you are running AESM service on Docker follow [these instructions].
-  - Otherwise manually configure AESM service to use DCAP attestation:
-    1. Remove any leftover EPID attestation packages. If running on Ubuntu 22.04 run
-      the following command:
-      ```bash
-        sudo apt remove libsgx-aesm-launch-plugin libsgx-aesm-epid-plugin
-      ```
-    2. Configure AESM service to use [DCAP attestation]
-    3. Restart the AESM service. If running on Ubuntu 22.04 run the following
-      command:
-      ```bash
-      sudo systemctl restart aesmd.service
-      ```
-3. [Configure the Quote Provider].
-4. Use the [attestation tool] to test if your settings are correct.
-5. Restart your compute node and verify that node is `ready`.
-
-[these instructions]: #dcap-attestation-docker
-[supports DCAP attestation]: #aesm-service
-[Gracefully shutdown]: ../maintenance/shutting-down-a-node.md
-[DCAP attestation]: #dcap-attestation
-[Configure the Quote Provider]: #configuring-the-quote-provider
-[attestation tool]: #check-sgx-setup
-
 ### Check SGX Setup
 
 To test if your settings are correct, you may use the Oasis [attestation

@@ -340,7 +340,7 @@ later. Check out the official [Canonical TDX repository] for details.
 [Canonical TDX repository]: https://github.com/canonical/tdx
 
 1. Add the following TDX PPAs to your APT sources and the keyring:
-   
+
    ```shell
    sudo add-apt-repository ppa:kobuk-team/tdx-release
    sudo add-apt-repository ppa:kobuk-team/tdx-attestation-release
@@ -352,7 +352,7 @@ later. Check out the official [Canonical TDX repository] for details.
     ```shell
     sudo apt install tdx-qgs qemu-utils qemu-system-x86
     ```
-   
+
 3. Install a special TDX-enabled Linux kernel:
 
     ```shell
@@ -360,7 +360,7 @@ later. Check out the official [Canonical TDX repository] for details.
     ```
 
 3. Disable ACPI S3 (add kernel parameter: `nohibernate`):
- 
+
    ```
    sed -i -E "s/GRUB_CMDLINE_LINUX=\"(.*)\"/GRUB_CMDLINE_LINUX=\"\1 nohibernate\"/g" /etc/default/grub
    update-grub

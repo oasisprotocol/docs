@@ -27,7 +27,7 @@ Designed for the next generation of blockchain, the Oasis Network is the first p
 
 ### **Is the Oasis Protocol Foundation still taking grant applications for projects that are building new dApps?**
 
-Yes! We are still taking grant applications. You can apply any time [here](https://medium.com/oasis-protocol-project/oasis-foundation-grant-wishlist-3ad73b723d7).
+Yes! We are still taking grant applications. You can apply any time [here](https://oasis.net/contact).
 
 ## **Architecture**
 
@@ -74,9 +74,6 @@ The first generation of DeFi dApps has provided the market with a huge number of
 
 The terms "Open Finance" and "DeFi" are interchangeable. However, we believe that "Open Finance" better represents the idea that the new financial system should be accessible to everyone who operates within the bounds of specific programmable parameters, regardless of their status, wealth, or geography**.**
 
-### **Will Oasis provide oracle solutions for use in DeFi applications?**
-
-Oasis recently announced a partnership with [Chainlink](https://medium.com/oasis-protocol-project/oasis-network-chainlink-integrating-secure-and-reliable-oracles-for-access-to-off-chain-data-5d31e6e4591c?source=collection_home---4------1-----------------------) as the preferred oracle provider of the Oasis Network. This integration is ongoing.
 
 ### **What aspects of DeFi require privacy? How can the Oasis Network’s focus on privacy help with DeFi applications?**
 

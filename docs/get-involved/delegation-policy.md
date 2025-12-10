@@ -53,13 +53,13 @@ instructions at the bottom of this page.
 [`#mainnet-announcements`]: https://discord.com/channels/748635004384313474/960599344745185330
 [`#testnet-announcements`]: https://discord.com/channels/748635004384313474/967039075527827496
 [`#node-operators`]: https://discord.com/channels/748635004384313474/748644177394532463
-[@oasisnodeoperators]: https://t.me/oasisnodeoperators
+[@oasisnodeoperators]: https://t.me/oasisoperators
 [entity keys]: ../node/run-your-node/validator-node#initialize-entity
 [Configure and start]: ../node/run-your-node/validator-node#configuration
 [Provide metadata]: ../node/run-your-node/validator-node#oasis-metadata-registry
-[Oasis Mainnet Announcements]: https://t.me/oasisMAINNETannouncements
-[Oasis Testnet Announcements]: https://t.me/oasisTESTNETannouncements
-[Oasis Node Operators Group]: https://t.me/oasisnodeoperators
+[Oasis Mainnet Announcements]: https://t.me/mainnetannouncements
+[Oasis Testnet Announcements]: https://t.me/testnetannouncements
+[Oasis Node Operators Group]: https://t.me/oasisoperators
 
 ### Code of Conduct
 

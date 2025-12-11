@@ -1,90 +1,79 @@
 # Delegation Policy
 
-The Oasis Protocol Foundation (OPF) delegates ROSE tokens to node operators who
-run Oasis Consensus and ParaTime nodes on Mainnet and/or Testnet. Delegations
-are based on node reliability, performance, community engagement, and overall
-contributions to the network’s growth and stability.
+The Oasis Protocol Foundation delegates ROSE tokens to node operators who run
+Oasis Consensus validator and ParaTime compute nodes on Mainnet and/or Testnet.
+Delegations are based on node reliability, performance, community engagement,
+and overall contributions to the network’s growth and stability.
 
 ## Requirements for Receiving Delegations
 
-To be eligible for a delegation, you have to [join the network], follow the [Code
-of Conduct], and meet [performance requirements].
-
-For guidance on how to increase your delegation over time, please refer to the
-instructions at the bottom of this page.
+To be eligible for a delegation, you have to [Join the Network][join-network],
+follow the [Code of Conduct][code-of-conduct], and meet
+[Performance Requirements][requirements]. For guidance on how to increase
+your delegation over time, please refer to the instructions at the bottom
+of this page.
 
 ### Join the Network
 
 1. **Join the Community Channels**
-   - Join the `#node-operators` channel on the [Oasis Discord server]
-   - Or join the Telegram group: [@oasisnodeoperators]
+   - Join the [#node-operators][discord-node-operators] channel on the
+     [Discord server][discord-server].
+   - Or join [@oasisoperators][telegram-node-operators] Telegram group.
 
 2. **Create Your Entity Keys**
-   - Generate your **Testnet** and **Mainnet** [entity keys]
+   - Generate your Testnet and/or Mainnet [entity keys][entity-keys].
 
 3. **Set Up Your Nodes**
-   - [Configure and start] your Testnet Consensus and ParaTime nodes
-   - [Configure and start] your Mainnet Consensus and ParaTime nodes
+   - [Configure and start][node-configuration] your Consensus validator and
+     ParaTime compute nodes on Testnet and/or Mainnet.
 
 4. **Submit Your Metadata**
-   - [Provide metadata] for both **Mainnet** and **Testnet**
+   - [Provide metadata][metadata-registry-instructions] for Mainnet and/or
+     Testnet.
 
 5. **Reach Out to the Node Operator Relationship Manager**
-   - Message `@peternose` on Discord or Telegram
-   - Be prepared to answer any follow-up questions
+   - Message `@peternose` on Discord or Telegram and be prepared to answer
+     any follow-up questions.
 
 6. **Stay Updated**
-   - Follow network announcements:
-      - 📢 [Oasis Discord server]: [`#mainnet-announcements`],
-      [`#testnet-announcements`], [`#node-operators`]
-      - 📢 Telegram: [Oasis Mainnet Announcements], [Oasis Testnet Announcements]
-      and [Oasis Node Operators Group]
+   - Follow network announcements on:
+      - [Discord server][discord-server]:
+         - [#mainnet-announcements][discord-mainnet-announcements],
+         - [#testnet-announcements][discord-testnet-announcements],
+         - [#node-operators][discord-node-operators].
+      - Telegram groups:
+         - [@mainnetannouncements][telegram-mainnet-announcements],
+         - [@testnetannouncements][telegram-testnet-announcements],
+         - [@oasisoperators][telegram-node-operators].
 
 7. **Engage with the Community**
-   - Actively participate on the Oasis Network Community on Discord or Telegram
-   - Follow the Code of Conduct and meet Performance Requirements
+   - Actively participate in the Oasis Network Community on Discord or Telegram.
+   - Follow the [Code of Conduct][code-of-conduct] and meet [Performance Requirements][requirements].
    - Help others and answer questions from fellow node operators and community
-   members
-
-[join the network]: #join-the-network
-[Code of Conduct]: #code-of-conduct
-[performance requirements]: #performance-requirements
-[Oasis Discord server]: https://oasis.io/discord
-[`#mainnet-announcements`]: https://discord.com/channels/748635004384313474/960599344745185330
-[`#testnet-announcements`]: https://discord.com/channels/748635004384313474/967039075527827496
-[`#node-operators`]: https://discord.com/channels/748635004384313474/748644177394532463
-[@oasisnodeoperators]: https://t.me/oasisoperators
-[entity keys]: ../node/run-your-node/validator-node#initialize-entity
-[Configure and start]: ../node/run-your-node/validator-node#configuration
-[Provide metadata]: ../node/run-your-node/validator-node#oasis-metadata-registry
-[Oasis Mainnet Announcements]: https://t.me/mainnetannouncements
-[Oasis Testnet Announcements]: https://t.me/testnetannouncements
-[Oasis Node Operators Group]: https://t.me/oasisoperators
+     members.
 
 ### Code of Conduct
 
 - **Set Appropriate Commission Rates**
-  - Ensure your commission rate and commission rate bounds do not exceed *20%*
-  - Keep your commission rate within ±10% of the weighted median commission rate
-  on the network
+  - Ensure your commission rate and commission rate bounds do not exceed **20%**.
+  - Keep your commission rate within **±10%** of the weighted median commission rate
+  on the network.
 
 - **Keep Metadata Updated**
   - Ensure your entity’s website, social media, and/or contact information in
-  the [Oasis Metadata Registry] is accurate and current
+    the [Oasis Metadata Registry][metadata-registry] is accurate and current.
 
 - **Respect Branding Guidelines**
-  - Do not include the word "Oasis" in your entity name
-  - Do not use Oasis Foundation logos or branding in your entity’s logo
+  - Do not include the word "Oasis" in your entity name.
+  - Do not use Oasis Foundation logos or branding in your entity’s logo.
 
 - **Maintain Integrity**
-  - Avoid any dishonest, fraudulent, or malicious behavior
+  - Avoid any dishonest, fraudulent, or malicious behavior.
 
 - **Participate Actively in Governance and Network Operations**
-  - Participate in on-chain governance and network upgrade votes
+  - Participate in on-chain governance and network upgrade votes.
   - Be available and ready to collaborate with other node operators during
-  unplanned network upgrades or events
-
-[Oasis Metadata Registry]: https://github.com/oasisprotocol/metadata-registry
+  unplanned network upgrades or events.
 
 ### Performance Requirements
 
@@ -122,7 +111,8 @@ as possible.
 
 - **Communicate Downtime Transparently**  
    If you experience downtime or technical issues, report them promptly to the
-   Oasis Protocol Foundation (OPF) — contact `@peternose` on Discord or Telegram.
+   Oasis Protocol Foundation by contacting node operator relationship manager
+   on Discord or Telegram.
 
 - **Maintain Credible Stakeholding**  
    Maintain a meaningful level of self-delegation and/or
@@ -151,3 +141,18 @@ as possible.
 ## Disclaimer
 Delegations from the Oasis Foundation are discretionary and may be adjusted or
 revoked at any time, with or without prior notice.
+
+[join-network]: #join-the-network
+[code-of-conduct]: #code-of-conduct
+[requirements]: #performance-requirements
+[entity-keys]: ../node/run-your-node/validator-node#initialize-entity
+[node-configuration]: ../node/run-your-node/validator-node#configuration
+[metadata-registry-instructions]: ../node/run-your-node/validator-node#oasis-metadata-registry
+[metadata-registry]: https://github.com/oasisprotocol/metadata-registry
+[discord-server]: https://oasis.io/discord
+[discord-mainnet-announcements]: https://discord.com/channels/748635004384313474/960599344745185330
+[discord-testnet-announcements]: https://discord.com/channels/748635004384313474/967039075527827496
+[discord-node-operators]: https://discord.com/channels/748635004384313474/748644177394532463
+[telegram-mainnet-announcements]: https://t.me/mainnetannouncements
+[telegram-testnet-announcements]: https://t.me/testnetannouncements
+[telegram-node-operators]: https://t.me/oasisoperators

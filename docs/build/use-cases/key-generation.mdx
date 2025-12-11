@@ -4,9 +4,6 @@ description: Generate an Ethereum-compatible key inside ROFL via appd and use it
 tags: [ROFL, appd, KMS, EVM]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Cross-Chain Key Generation (EVM / Base)
 
 This chapter shows how to build a tiny TypeScript app that **generates a
@@ -501,19 +498,9 @@ For TypeScript projects, image size may be larger, update the `rofl.yaml`
 `resources` section to at least: `memory: 1024` and `storage.size: 4096`.
 :::
 
-<Tabs>
-  <TabItem value="Native Linux">
-    ```shell
-    oasis rofl build
-    ```
-  </TabItem>
-  <TabItem value="Docker (Mac/Windows/Linux)">
-    ```shell
-    docker run --platform linux/amd64 --volume .:/src \
-      -it ghcr.io/oasisprotocol/rofl-dev:main oasis rofl build
-    ```
-  </TabItem>
-</Tabs>
+```shell
+oasis rofl build
+```
 
 Then publish the enclave identities and config:
 

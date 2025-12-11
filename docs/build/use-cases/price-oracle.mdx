@@ -3,9 +3,6 @@ description: Build an app that fetches latest price quotes from a centralized ex
 tags: [ROFL, Sapphire, appd]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Trustless Price Oracle
 
 This chapter will show you how to quickly create, build and test a minimal
@@ -269,18 +266,9 @@ For extra security, you can **[pin the image digest]** inside `compose.yaml`.
 
 To build an app and update the enclave identity in the app manifest, run:
 
-<Tabs>
-    <TabItem value="Native Linux">
-        ```shell
-        oasis rofl build
-        ```
-    </TabItem>
-    <TabItem value="Docker (Windows, Mac, Linux)">
-        ```shell
-        docker run --platform linux/amd64 --volume .:/src -it ghcr.io/oasisprotocol/rofl-dev:main oasis rofl build
-        ```
-    </TabItem>
-</Tabs>
+```shell
+oasis rofl build
+```
 
 This will generate the ROFL bundle which can be used for later deployment and
 output something like:

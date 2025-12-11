@@ -30,7 +30,7 @@ instructions at the bottom of this page.
    - [Provide metadata] for both **Mainnet** and **Testnet**
 
 5. **Reach Out to the Node Operator Relationship Manager**
-   - Message `@am3lody` on Discord or Telegram
+   - Message `@peternose` on Discord or Telegram
    - Be prepared to answer any follow-up questions
 
 6. **Stay Updated**
@@ -122,7 +122,7 @@ as possible.
 
 - **Communicate Downtime Transparently**  
    If you experience downtime or technical issues, report them promptly to the
-   Oasis Protocol Foundation (OPF) — contact `@am3lody` on Discord or Telegram.
+   Oasis Protocol Foundation (OPF) — contact `@peternose` on Discord or Telegram.
 
 - **Maintain Credible Stakeholding**  
    Maintain a meaningful level of self-delegation and/or

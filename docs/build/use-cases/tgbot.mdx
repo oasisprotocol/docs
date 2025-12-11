@@ -3,9 +3,6 @@ description: Build a private Telegram bot running in ROFL containing a simple py
 tags: [ROFL, AI, secrets]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Private Telegram Chat Bot
 
 This chapter shows you how to build a simple Telegram bot that will run inside
@@ -148,18 +145,9 @@ services:
 
 To build a ROFL bundle invoke the following:
 
-<Tabs>
-    <TabItem value="Native Linux">
-        ```shell
-        oasis rofl build
-        ```
-    </TabItem>
-    <TabItem value="Docker (Windows, Mac, Linux)">
-        ```shell
-        docker run --platform linux/amd64 --volume .:/src -it ghcr.io/oasisprotocol/rofl-dev:main oasis rofl build
-        ```
-    </TabItem>
-</Tabs>
+```shell
+oasis rofl build
+```
 
 ## Secrets
 

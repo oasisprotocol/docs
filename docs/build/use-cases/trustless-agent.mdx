@@ -4,9 +4,6 @@ description: Deploy a trustless Eliza AI agent on Oasis using ROFL enclaves,
 tags: [ROFL, AI, appd, secrets]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 # Trustless AI Agent
 
 Learn how to deploy a trustless Eliza agent on Oasis using ROFL enclaves.
@@ -124,19 +121,9 @@ resources:
 
 Then, build the ROFL bundle by invoking:
 
-<Tabs>
-    <TabItem value="Native Linux">
-        ```shell
-        oasis rofl build
-        ```
-    </TabItem>
-    <TabItem value="Docker (Mac/Windows/Linux)">
-        ```shell
-        docker run --platform linux/amd64 --volume .:/src \
-        -it ghcr.io/oasisprotocol/rofl-dev:main oasis rofl build
-        ```
-    </TabItem>
-</Tabs>
+```shell
+oasis rofl build
+```
 
 ## Secrets
 

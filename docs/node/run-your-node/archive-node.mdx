@@ -1,0 +1,222 @@
+---
+description: This page describes how to run an archive node on the Oasis Network.
+---
+
+# Archive Node
+
+This guide will cover setting up an archive node for the Oasis Network. Node
+started in archive mode only serves existing consensus and runtime states.
+The node has all unneeded consensus and P2P functionality disabled, therefore
+it will not participate in the network. Archive nodes can be used to access
+historic state which is pruned in dump-restore network upgrades.
+
+## Prerequisites
+
+Running an archive node requires a pre-existing `oasis-node` state. If you don't have one,
+you can download a snapshot of a specific network state [here][snapshots].
+
+[snapshots]: https://snapshots.oasis.io
+
+## Configuration (Oasis Core 23 and later)
+
+Starting from the Oasis Core version 23, the configuration for enabling archive mode has changed.
+Use the `mode` setting:
+
+:::info
+
+This setting configures the node to act as an archive node.
+
+:::
+
+```yaml
+mode: archive
+common:
+    data_dir: /node/data
+    log:
+        format: JSON
+        level:
+            cometbft: info
+            cometbft/context: error
+            default: info
+genesis:
+    file: /node/etc/genesis.json
+runtime:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    paths:
+        - {{ runtime_orc_path }}
+```
+
+:::info
+
+Keep all other settings the same as those for a full client node. For example, to serve archived runtime
+state, the node needs to have the runtime configured and the state present.
+
+:::
+
+## Configuration (Oasis Core 22 and earlier)
+
+For all pre-Eden networks, such as Damask, the configuration remains the same but requires the
+appropriate version of `oasis-node` and the node state.
+
+#### Damask
+
+To run an archive node for Damask, use [Oasis Core v22.2.13] and the following
+configuration:
+
+```yaml
+datadir: /node/data
+
+log:
+  level:
+    default: info
+    tendermint: info
+    tendermint/context: error
+  format: JSON
+
+genesis:
+  file: /node/etc/genesis.json
+
+consensus:
+  tendermint:
+    mode: archive
+
+runtime:
+  mode: client
+  paths:
+    # Paths to ParaTime bundles for all of the supported ParaTimes.
+    - "{{ runtime_orc_path }}"
+```
+
+#### Cobalt
+
+To run an archive node for Cobalt, use [Oasis Core v21.3.14] and the following configuration:
+
+```yaml
+datadir: /node/data
+
+log:
+  level:
+    default: info
+    tendermint: info
+    tendermint/context: error
+  format: JSON
+
+genesis:
+  file: /node/etc/genesis.json
+
+consensus:
+  tendermint:
+    mode: archive
+
+runtime:
+  supported:
+    - "{{ runtime_id }}"
+
+  paths:
+    "{{ runtime_id }}": {{ paratime_binary_path }}
+
+worker:
+  storage:
+    enabled: true
+```
+
+:::warning
+
+Ensure you are using the correct version of oasis-node and the pre-existing state for your specific pre-Eden network.
+
+:::
+
+## Starting the Oasis Node
+
+You can start the node by running the following command:
+
+```bash
+oasis-node --config /node/etc/config.yml
+```
+
+### Archive node status
+
+To ensure the node is running in archive mode, run the following command:
+
+```bash
+oasis-node control status -a unix:/node/data/internal.sock
+```
+
+Output should report `archive` consensus mode status:
+
+```json
+{
+  // other fields omitted ...
+  "mode": "archive",
+  // ...
+}
+```
+
+## Version Compatibility Matrix
+
+The following tables outline the version compatibility matrix for running archive nodes for different network generations.
+
+### Testnet
+
+Network Upgrade | Genesis URL | Compatible Versions | Snapshot URL
+----------------|-------------|---------------------|-------------
+a0 | [2020-09-15][testnet-2020-09-15] | [Oasis Core v20.10.2] | [20200915-20201104]
+b0 | [2020-11-04][testnet-2020-11-04] | [Oasis Core v20.12.8] | [20201104-20210203]
+[c0] | [2021-02-03][testnet-2021-02-03] | [Oasis Core v20.12.8] | [20210203-20210324]
+[c1] | [2021-03-24][testnet-2021-03-24] | [Oasis Core v21.0.2] | [20210324-20210413]
+[c2] | [2021-04-13][testnet-2021-04-13] | [Oasis Core v21.3.14] | [20210413-20220303]
+[d0] | [2022-03-03][testnet-2022-03-03] | [Oasis Core v22.2.13]<br />[Cipher 2.6.2]<br />[Emerald 10.0.0]<br />[Sapphire 0.6.4]<br />[Web3 Gateway 3.4.0] | [20220303-20231012]
+
+### Mainnet
+
+Network Upgrade | Genesis URL | Compatible Versions | Snapshot URL
+----------------|-------------|---------------------|-------------
+[Mainnet Beta] | [2020-10-01][mainnet-2020-10-01] | [Oasis Core v20.10.2] | [20201001-20201118]
+[Mainnet] | [2020-11-18][mainnet-2020-11-18] | [Oasis Core v20.12.8] | [20201118-20210428]
+[Cobalt] | [2021-04-28][mainnet-2021-04-28] | [Oasis Core v21.3.14]<br />[Cipher 1.0.0]<br />[Emerald 7.1.0]<br />[Web3 Gateway 1.7.0] | [20210428-20220411]
+[Damask] | [2022-04-11][mainnet-2022-04-11] | [Oasis Core v22.2.13]<br />[Cipher 2.6.2]<br />[Emerald 10.0.0]<br />[Sapphire 0.6.4]<br />[Web3 Gateway 3.4.0] | [20220411-20231129]
+
+## See also
+
+[Archive Web3 Gateway](../web3.mdx#archive-web3-gateway)
+
+[c0]: ../reference/upgrade-logs/testnet.md#2021-03-24-upgrade
+[c1]: ../reference/upgrade-logs/testnet.md#2021-04-13-upgrade
+[c2]: ../reference/upgrade-logs/testnet.md#2021-06-23-upgrade
+[d0]: ../reference/upgrade-logs/testnet.md#2022-03-03-upgrade
+[Damask]: ../reference/upgrade-logs/mainnet.md#damask-upgrade
+[Cobalt]: ../reference/upgrade-logs/mainnet.md#cobalt-upgrade
+[Mainnet]: ../reference/upgrade-logs/mainnet.md#mainnet-upgrade
+[Mainnet Beta]: ../reference/upgrade-logs/mainnet.md#mainnet-beta-upgrade
+[testnet-2020-09-15]: https://github.com/oasisprotocol/testnet-artifacts/releases/2020-09-15
+[testnet-2020-11-04]: https://github.com/oasisprotocol/testnet-artifacts/releases/2020-11-04
+[testnet-2021-02-03]: https://github.com/oasisprotocol/testnet-artifacts/releases/2021-02-03
+[testnet-2021-03-24]: https://github.com/oasisprotocol/testnet-artifacts/releases/2021-03-24
+[testnet-2021-04-13]: https://github.com/oasisprotocol/testnet-artifacts/releases/2021-04-13
+[testnet-2022-03-03]: https://github.com/oasisprotocol/testnet-artifacts/releases/2022-03-03
+[mainnet-2020-10-01]: https://github.com/oasisprotocol/mainnet-artifacts/releases/2020-10-01
+[mainnet-2020-11-18]: https://github.com/oasisprotocol/mainnet-artifacts/releases/2020-11-18
+[mainnet-2021-04-28]: https://github.com/oasisprotocol/mainnet-artifacts/releases/2021-04-28
+[mainnet-2022-04-11]: https://github.com/oasisprotocol/mainnet-artifacts/releases/2022-04-11
+[Oasis Core v20.10.2]: https://github.com/oasisprotocol/oasis-core/releases/tag/v20.10.2
+[Oasis Core v20.12.8]: https://github.com/oasisprotocol/oasis-core/releases/tag/v20.12.8
+[Oasis Core v21.0.2]: https://github.com/oasisprotocol/oasis-core/releases/tag/v21.0.2
+[Oasis Core v21.3.14]: https://github.com/oasisprotocol/oasis-core/releases/tag/v21.3.14
+[Oasis Core v22.2.13]: https://github.com/oasisprotocol/oasis-core/releases/tag/v22.2.13
+[Cipher 1.0.0]: https://github.com/oasisprotocol/cipher-paratime/releases/tag/v1.0.0
+[Cipher 2.6.2]: https://github.com/oasisprotocol/cipher-paratime/releases/tag/v2.6.2
+[Emerald 7.1.0]: https://github.com/oasisprotocol/emerald-paratime/releases/tag/v7.1.0
+[Emerald 10.0.0]: https://github.com/oasisprotocol/emerald-paratime/releases/tag/v10.0.0
+[Sapphire 0.6.4]: https://github.com/oasisprotocol/sapphire-paratime/releases/tag/v0.6.4
+[Web3 Gateway 1.7.0]: https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/1.7.0
+[Web3 Gateway 3.4.0]: https://github.com/oasisprotocol/oasis-web3-gateway/releases/tag/3.4.0
+[20200915-20201104]: https://snapshots.oasis.io/#node/testnet/20200915-20201104/
+[20201104-20210203]: https://snapshots.oasis.io/#node/testnet/20201104-20210203/
+[20210203-20210324]: https://snapshots.oasis.io/#node/testnet/20210203-20210324/
+[20210324-20210413]: https://snapshots.oasis.io/#node/testnet/20210324-20210413/
+[20210413-20220303]: https://snapshots.oasis.io/#node/testnet/20210413-20220303/
+[20220303-20231012]: https://snapshots.oasis.io/#node/testnet/20220303-20231012/
+[20201001-20201118]: https://snapshots.oasis.io/#node/mainnet/20201001-20201118/
+[20201118-20210428]: https://snapshots.oasis.io/#node/mainnet/20201118-20210428/
+[20210428-20220411]: https://snapshots.oasis.io/#node/mainnet/20210428-20220411/
+[20220411-20231129]: https://snapshots.oasis.io/#node/mainnet/20220411-20231129/

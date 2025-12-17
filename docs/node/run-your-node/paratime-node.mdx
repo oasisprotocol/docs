@@ -354,6 +354,12 @@ If the environment in which you are running the ParaTime node applies too restri
 {"level":"warn","module":"runtime","msg":"bwrap: Failed to mount tmpfs: Permission denied","runtime_id":"000000000000000000000000000000000000000000000000f80306c9858e7279","runtime_name":"sapphire-paratime","ts":"2023-03-06T10:08:51.983330021Z"}
 ```
 
+or a sandbox error, like:
+
+```json
+{"caller":"host.go:495","err":"failed to spawn sandbox: sandbox: failed to copy bound data to sandbox: write |1: i/o timeout","level":"error","module":"runtime/host/sgx","msg":"failed to start runtime","runtime_id":"000000000000000000000000000000000000000000000000f80306c9858e7279","ts":"2025-12-16T22:40:58.109093494Z"}
+```
+
 In case of `bwrap` issues you need to adjust your Seccomp or AppArmor profiles to support Bubblewrap sandboxes. In Docker you can set or disable Seccomp and AppArmor profiles with parameters:
 
 ```

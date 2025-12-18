@@ -17,6 +17,7 @@
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: "Inter Variable", sans-serif;
   --ifm-font-family-monospace: "Roboto Mono", monospace;
+  --ifm-font-weight-bold: 640;
   --ifm-global-radius: 0;
   --ifm-alert-border-width: 5px;
   --docusaurus-highlighted-code-line-bg: #dddfe1;
@@ -88,7 +89,7 @@ code {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Inter Variable", sans-serif;
   letter-spacing: -0.04em;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 article strong {

@@ -96,7 +96,6 @@
 .cardItem a h3 {
   font-size: 1rem !important;
   margin: 0;
-  font-weight: 600 !important;
   color: var(--ifm-color-card-heading-secondary);
   transition: all .2s ease;
 }

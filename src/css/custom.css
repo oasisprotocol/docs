@@ -80,6 +80,11 @@ html[data-theme='dark'] {
   src: url("/static/fonts/RobotoMono-Regular.ttf") format("truetype");
 }
 
+/* https://github.com/facebook/docusaurus/issues/10652 */
+code {
+  vertical-align: baseline;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Inter Variable", sans-serif;
   letter-spacing: -0.04em;

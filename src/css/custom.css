@@ -17,9 +17,10 @@
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: "Inter Variable", sans-serif;
   --ifm-font-family-monospace: "Roboto Mono", monospace;
+  --ifm-font-weight-bold: 640;
   --ifm-global-radius: 0;
   --ifm-alert-border-width: 5px;
-  --docusaurus-highlighted-code-line-bg: #dddfe1;
+  --docusaurus-highlighted-code-line-bg: #e8e8ff;
   --ifm-color-secondary-text: #71717A;
   --ifm-color-card-heading: #09090B;
   --ifm-color-card-heading-secondary: #18181B;
@@ -27,7 +28,7 @@
   --ifm-alert-background: #FEF2F2;
   --ifm-note-foreground: #71717A;
   --ifm-note-background: #F4F4F5;
-  --ifm-caution-foreground: #FB923C;
+  --ifm-caution-foreground: #FB843C;
   --ifm-caution-background: #FFF7ED;
   --ifm-info-foreground: #3B82F6;
   --ifm-info-background: #EFF6FF;
@@ -46,7 +47,7 @@ html[data-theme='dark'] {
   --ifm-color-primary-light: #00ffff;
   --ifm-color-primary-lighter: #00ffff;
   --ifm-color-primary-lightest: #00ffff;
-  --docusaurus-highlighted-code-line-bg: #646464;
+  --docusaurus-highlighted-code-line-bg: #343484;
   --ifm-color-secondary-text: #A1A1AA;
   --ifm-color-card-heading: #FAFAFA;
   --ifm-color-card-heading-secondary: #FAFAFA;
@@ -80,10 +81,15 @@ html[data-theme='dark'] {
   src: url("/static/fonts/RobotoMono-Regular.ttf") format("truetype");
 }
 
+/* https://github.com/facebook/docusaurus/issues/10652 */
+code {
+  vertical-align: baseline;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Inter Variable", sans-serif;
   letter-spacing: -0.04em;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 article strong {

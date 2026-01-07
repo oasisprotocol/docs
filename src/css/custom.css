@@ -18,6 +18,9 @@
   --ifm-font-family-base: "Inter Variable", sans-serif;
   --ifm-font-family-monospace: "Roboto Mono", monospace;
   --ifm-font-weight-bold: 640;
+  --ifm-h4-font-size: 20px;
+  --ifm-h5-font-size: 18px;
+  --ifm-h6-font-size: 16px;
   --ifm-global-radius: 0;
   --ifm-alert-border-width: 5px;
   --docusaurus-highlighted-code-line-bg: #e8e8ff;

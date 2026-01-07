@@ -109,12 +109,12 @@ const config: Config = {
       navbar: {
         logo: {
           alt: 'Oasis Docs',
-          //src: 'img/logo.svg',
-          //srcDark: 'img/logo_dark.svg', // Workaround for browsers that don't support @media (prefers-color-scheme: dark) in external SVGs.
+          src: 'img/logo.svg',
+          srcDark: 'img/logo_dark.svg', // Workaround for browsers that don't support @media (prefers-color-scheme: dark) in external SVGs.
           // Uncomment src and style below to enable christmas mode ;)
-          src: 'img/logo_christmas.svg',
-          srcDark: 'img/logo_christmas_dark.svg',
-          style: {marginTop: '-13px', marginLeft: '-10px', height: '3rem'},
+          //src: 'img/logo_christmas.svg',
+          //srcDark: 'img/logo_christmas_dark.svg',
+          //style: {marginTop: '-13px', marginLeft: '-10px', height: '3rem'},
         },
         items: [
           {

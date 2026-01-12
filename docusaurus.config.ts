@@ -12,7 +12,7 @@ const config: Config = {
   tagline: '',
   url: process.env.URL ?? 'https://docs.oasis.io',
   baseUrl: '/',
-  favicon: 'img/favicon.svg',
+  favicon: 'img/favicon/favicon.ico',
 
   organizationName: 'oasisprotocol', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.

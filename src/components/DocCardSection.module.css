@@ -115,6 +115,10 @@
   display: none !important;
 }
 
+.cardItem a div { /* Pill */
+  margin-top: 5px;
+}
+
 .cardLinksList .cardItem:last-child {
   border-bottom: none;
 }

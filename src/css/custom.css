@@ -350,7 +350,3 @@ a[rel="tag"] {
 .theme-admonition-example svg{
   fill: transparent!important;
 }
-
-.theme-admonition-example p{
-  margin-bottom: 0;
-}

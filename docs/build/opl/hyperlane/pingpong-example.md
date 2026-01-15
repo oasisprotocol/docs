@@ -18,7 +18,7 @@ You'll learn how to:
 
 We recommend using [Hardhat] for an easy-to-follow experience.
 
-:::info Example Code
+:::example Code
 
 You can find the contracts and hardhat tasks for deployment and execution
 in our [demo-opl repository][opl].

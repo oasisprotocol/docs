@@ -5,7 +5,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 import {editLinkUrl as editUrlFunction} from './src/editUrl';
 import crossRepoLinksPlugin from './src/remark/cross-repo-links';
 import {plugin as codeBlockSnippetsPlugin} from './src/remark/code-block-snippets';
+import llmsCapture from './src/remark/llms-capture';
+import llmsPlugin from './src/plugins/llms';
 import {redirectsOptions} from './redirects';
+
+const siteDir = __dirname;
 
 const config: Config = {
   title: 'Oasis Documentation',
@@ -46,6 +50,7 @@ const config: Config = {
                 converters:['pnpm','yarn'], // Package managers to use.
               },
             ],
+            [llmsCapture, {siteDir}],
           ],
           routeBasePath: '/',
           showLastUpdateTime: true,
@@ -89,6 +94,7 @@ const config: Config = {
         }
       };
     },
+    llmsPlugin,
     [
       '@docusaurus/plugin-client-redirects',
       redirectsOptions,

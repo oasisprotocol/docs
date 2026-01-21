@@ -175,7 +175,7 @@ html[data-theme="dark"] {
 }
 
 /* To have the full description of pages,
-   in combination with card heigt 100% to have even size boxes in a list.
+   in combination with card height 100% to have even size boxes in a list.
   */
 .card p {
   white-space: normal;

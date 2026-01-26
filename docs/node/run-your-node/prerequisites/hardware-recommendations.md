@@ -152,18 +152,12 @@ running a separate archive node.
 
 :::info
 
-You can configure your node _not to_ keep a complete state from the genesis
-onward. This will reduce the amount of storage required for the consensus and
-ParaTime state.
+Unless running a node to preserve historical state you are encouraged _not to_
+keep a complete state from the genesis onward. This will significantly reduce
+the amount of storage required for the consensus and ParaTime state and improve
+the overall latency of the storage related operations.
 
-To enable pruning of the consensus state set the
-`consensus.prune.strategy` and
-`consensus.prune.num_kept` parameters appropriately in your
-[node's configuration].
-
-To enable pruning of the ParaTime state set the
-`runtime.prune.strategy` and `runtime.prune.num_kept`
-parameters appropriately in your [node's configuration].
+To enable it, see relevant [consensus pruning] and [ParaTime pruning] sections.
 
 :::
 
@@ -174,6 +168,8 @@ parameters appropriately in your [node's configuration].
 [Emerald Mainnet launch]:
   https://medium.com/oasis-protocol-project/oasis-emerald-evm-paratime-is-live-on-mainnet-13afe953a4c9
 [node's configuration]: ../validator-node.mdx#configuration
+[consensus pruning]: ../advanced/pruning.md#consensus-pruning
+[ParaTime pruning]: ../advanced/pruning.md#paratime-pruning
 
 
 ### Network

@@ -2,6 +2,8 @@
 description: Transfer, deposit, withdraw and delegate your ROSE
 ---
 
+import {AddSapphireToMetaMask as S, AddSapphireTestnetToMetaMask as ST} from '@site/src/AddToMetaMask';
+
 # Manage your Tokens
 
 The **native token** on Oasis Mainnet is called **ROSE**. Native tokens are used
@@ -181,17 +183,23 @@ as a laptop or a mobile phone, and **you are responsible to keep it safe**:
 
 ### MetaMask
 
-[MetaMask] is probably the best-known crypto wallet. However, it is an
-**EVM-compatible** wallet. This means **you can only use it to check the account
-balances and sign transactions on Sapphire and Emerald chains**. You cannot use
-it, for example, to sign **consensus layer transactions** or perform
-**deposits** and **withdrawals** to and from ParaTimes.
+[MetaMask] is probably the best-known crypto wallet. Use the buttons below
+to add Oasis-managed endpoints for the **Sapphire chain** to your Metamask:
 
-You can add the Sapphire RPC endpoint by clicking on the "Add to MetaMask"
-button next to your preferred Mainnet endpoint provider in the [Sapphire]
-chapter.
+| Mainnet | Testnet |
+|---------|---------|
+| <S rpcs={['https://sapphire.oasis.io','wss://sapphire.oasis.io/ws']} hideRpcs={true} /> | <ST rpcs={['https://testnet.sapphire.oasis.io','wss://testnet.sapphire.oasis.io/ws']} hideRpcs={true} /> |
 
 ![Metamask - Adding Sapphire Mainnet Network Configuration](../images/wallet/metamask/settings.png)
+
+To learn more about Sapphire and explore other RPC endpoints check out the
+[Sapphire] chapter.
+
+Keep in mind that Metamask is an EVM-compatible wallet. This means **you
+can only use it to check the account balances and sign transactions on
+Sapphire and Emerald chains**. You cannot use it, for example, to sign
+**consensus layer transactions** or perform **deposits** and **withdrawals**
+to and from ParaTimes.
 
 [MetaMask]: https://metamask.io/download/
 [Sapphire]: ../../build/sapphire/network.mdx#rpc-endpoints

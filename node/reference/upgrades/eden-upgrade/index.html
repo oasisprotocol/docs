@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-node/reference/upgrades/eden-upgrade" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Eden Upgrade | Oasis Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.oasis.io/node/reference/upgrades/eden-upgrade"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Eden Upgrade | Oasis Documentation"><meta data-rh="true" name="description" content="This document provides an overview of the changes for the Eden Mainnet"><meta data-rh="true" property="og:description" content="This document provides an overview of the changes for the Eden Mainnet"><link data-rh="true" rel="icon" href="/img/favicon/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.oasis.io/node/reference/upgrades/eden-upgrade"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/node/reference/upgrades/eden-upgrade" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/node/reference/upgrades/eden-upgrade" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.551f8251.css">
+<script src="/assets/js/runtime~main.4f6be8e5.js" defer="defer"></script>
+<script src="/assets/js/main.9d193f4f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/logo_dark.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo_dark.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a class="navbar__item navbar__link" href="/build/">Build</a><a class="navbar__item navbar__link" href="/general/">Learn</a><a class="navbar__item navbar__link" href="/get-involved/">Get Involved</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/node/">Run Node</a><a class="navbar__item navbar__link" href="/core/">Develop Core</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" title="GitHub repository" aria-label="GitHub repository"></a><a href="https://oasis.net/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-www-link" title="Oasis website" aria-label="Oasis website"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Eden Upgrade</h1></header>
+<p>This document provides an overview of the changes for the Eden Mainnet
+upgrade.</p>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>The Eden upgrade on Mainnet is scheduled at epoch 28017 which will happen
+on 2023-11-29 at 10:02 AM UTC.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="major-features">Major Features<a href="#major-features" class="hash-link" aria-label="Direct link to Major Features" title="Direct link to Major Features" translate="no">​</a></h2>
+<p>All features for the Eden upgrade are implemented as part of
+<strong>Oasis Core 23.0.x</strong> release series which is a consensus protocol-breaking
+release.</p>
+<p>Summary of the major features is as follows:</p>
+<ul>
+<li class="">
+<p><strong>On-Chain Governance</strong>:</p>
+<ul>
+<li class="">The upgrade adds support for delegators to participate in on-chain
+governance. So far, only validators have been able to vote on governance
+proposals on upgrades. From now on, anyone who is staking will be able to
+override the votes of the validator.</li>
+<li class="">Prior to this upgrade, validators could vote solely on one specific type of
+upgrade proposal. This upgrade adds support for voting on parameter changes.
+An example of such a change includes voting on the staking rewards schedule
+modifications.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Node Operators UX</strong>:</p>
+<ul>
+<li class="">With the enhancement of the P2P Stack in the latest upgrade, we&#x27;ve
+integrated support for state sync. This improvement simplifies the process
+of initiating a new node, enabling immediate synchronization without the
+need for manual RPC node configuration.</li>
+<li class="">The upgrade lays the foundation for the system to distribute bundles
+automatically. While this update doesn&#x27;t enable this feature, in the future
+nodes will have the capability to upgrade automatically to the appropriate
+version immediately after a governance vote passes.</li>
+<li class="">Enhancements have been made to bolster security and optimize the efficiency
+of specific queries.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Key Rotations</strong>:</p>
+<ul>
+<li class="">The upgrade introduces major updates to facilitate key rotations, both for
+ephemeral and state keys.<!-- -->
+<ul>
+<li class="">Key derivation for ephemeral keys will be modified such that the master
+ephemeral key will be rotated on every epoch and old entropy will be
+discarded after a few epochs. As a result, past transaction keys will be
+irretrievable unless the user keeps additional data to enable disclosure
+of past transactions.</li>
+<li class="">The upgrade introduces support for state key rotations, incorporating key
+generations. ParaTimes can now rotate state keys daily, and use new keys
+for newer state. This facilitates re-encryption and, in the event of a TCB
+recovery, helps to partially mitigate the effects of compromised nodes.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>ParaTime Confidential Query Latency</strong>:</p>
+<ul>
+<li class="">The current confidential ParaTimes have a block delay when querying
+confidential state following transaction execution. This is due to the fact
+that the ParaTime needs to independently verify finalization in the
+consensus layer to guard against attacks. The upcoming version introduces
+same-block execution. As soon as a block gets finalized on the consensus
+layer, ParaTimes can promptly obtain the latest state root hash and verify
+the state without delay. This reduces latency for those looking to query
+outcomes of their transactions, e.g. dApp users and developers.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>ParaTime Upgrades</strong>:</p>
+<ul>
+<li class="">The upgrade reduces downtime associated with upgrading confidential
+ParaTimes. Previously, an upgrade to Sapphire mandated an epoch of downtime.
+Now, as compute nodes transition to the new version, the upgrade will be
+instantaneous, ensuring no delays or downtime.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>ParaTime Performance</strong>:</p>
+<ul>
+<li class="">The upgrade implements a series of modifications to enhance the robustness
+of runtimes. These improvements encompass better response mechanisms for SGX
+TCB recovery events, expanded support for new SGX platforms, and improved
+proof validation within runtimes.</li>
+<li class="">The upgrade improves runtime performance, especially in scenarios involving
+node failures. Should nodes malfunction, the impact on performance will now
+be significantly reduced.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mechanics-of-the-upgrade">Mechanics of the Upgrade<a href="#mechanics-of-the-upgrade" class="hash-link" aria-label="Direct link to Mechanics of the Upgrade" title="Direct link to Mechanics of the Upgrade" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="voting">Voting<a href="#voting" class="hash-link" aria-label="Direct link to Voting" title="Direct link to Voting" translate="no">​</a></h3>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>On 2023-11-14, an upgrade proposal was proposed, which was accepted with
+more than 86% of the total voting power of the validator set.
+The upgrade is now scheduled for epoch <strong>28017</strong>
+(2023-11-29, start at 10:02 AM UTC).</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The Eden upgrade proposal has the ID number 3.</p></div></div>
+<p>For optimal voting experience, we recommend using the <a class="" href="/build/tools/cli/">Oasis CLI</a>.
+Follow these steps to cast your vote:</p>
+<ol>
+<li class=""><a class="" href="/build/tools/cli/wallet#import-file">Import your keys into the wallet</a></li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">oasis wallet import-file my_entity entity.pem</span><br></span></code></pre></div></div>
+<ol start="2">
+<li class=""><a class="" href="/build/tools/cli/network#governance-cast-vote">Cast your vote</a>:</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">oasis network governance cast-vote 3 yes</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="upgrade-instructions">Upgrade Instructions<a href="#upgrade-instructions" class="hash-link" aria-label="Direct link to Upgrade Instructions" title="Direct link to Upgrade Instructions" translate="no">​</a></h3>
+<p>The following steps should be performed only after the network has reached the
+upgrade epoch and has halted:</p>
+<ol>
+<li class="">
+<p>Wait for the network to reach the upgrade epoch and halt. The node
+will automatically stop without any action required on your part. After the
+network has halted, proceed to the next steps.</p>
+</li>
+<li class="">
+<p>Download the Mainnet genesis file published in the
+<a href="https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2023-11-29" target="_blank" rel="noopener noreferrer" class="">Mainnet 2023-11-29 release</a>.</p>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>Mainnet state at epoch <strong>28017</strong> will be exported and migrated to a 23.0.x
+compatible genesis file.</p><p>The new genesis file will be published on the above link soon after reaching the
+upgrade epoch.</p></div></div>
+<ol start="3">
+<li class="">
+<p>Verify the provided Mainnet upgrade genesis file by comparing it to the
+local network state dump.</p>
+<p>Find the <code>genesis-oasis-3-at-HEIGHT.json</code> file in the <code>exports</code> subdirectory in
+your data dir (e.g. <code>/node/</code>, <code>/srv/oasis/node/</code>)  and run <code>sha256sum</code> on it.
+Afterwards, compare it with the hash that we will share on the
+<code>#node-operators</code> Discord channel.</p>
+<p>The state changes are described in the <a href="#state-changes" class="">State Changes</a>
+section below.</p>
+</li>
+<li class="">
+<p>Replace the old genesis file with the new Mainnet genesis file.</p>
+</li>
+<li class="">
+<p>Ensure your node will remain stopped by disabling auto-starting via your
+process manager (e.g., <a href="https://systemd.io/" target="_blank" rel="noopener noreferrer" class="">systemd</a> or <a href="http://supervisord.org/" target="_blank" rel="noopener noreferrer" class="">Supervisor</a>).</p>
+</li>
+<li class="">
+<p>Back up the entire data directory of your node. Verify that the backup
+includes the following folders:</p>
+</li>
+</ol>
+<ul>
+<li class="">for consensus: <code>tendermint/abci-state</code> and <code>tendermint/data</code></li>
+<li class="">for runtimes: <code>runtimes/*/mkvs_storage.badger.db</code> and
+<code>runtimes/*/worker-local-storage.badger.db</code></li>
+</ul>
+<ol start="7">
+<li class=""><a class="" href="/node/run-your-node/maintenance/wiping-node-state#state-wipe-and-keep-node-identity">Wipe state</a>. This must be performed <em>before</em> replacing the Oasis Node
+binary. In case you are upgrading ParaTimes/runtimes ensure you read the
+following section:</li>
+</ol>
+<div class="theme-admonition theme-admonition-danger admonition_xJq3 alert alert--danger"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>danger</div><div class="admonitionContent_BuS1"><p>State of ParaTimes/runtimes is not affected by this upgrade and MUST NOT be
+wiped. Wiping state for confidential ParaTimes will prevent your compute or
+key manager node from transitioning to the new network.</p><p>To safely wipe the blockchain state on a runtime while preserving the runtime
+state, follow these steps:</p><ol>
+<li class=""><strong>Dry run:</strong> initiate a dry run to preview which files will be deleted by
+running the following command:</li>
+</ol><div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># specify &#x27;datadir&#x27; as your node&#x27;s data directory</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">oasis-node unsafe-reset </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--datadir</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/node/data </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--dry_run</span><br></span></code></pre></div></div><ol start="2">
+<li class=""><strong>Wipe blockchain state:</strong> after reviewing the dry run results, proceed with
+the reset by running:</li>
+</ol><div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># specify &#x27;datadir&#x27; as your node&#x27;s data directory</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">oasis-node unsafe-reset </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--datadir</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/node/data</span><br></span></code></pre></div></div><p>Transitioning confidential ParaTimes to the new network requires local state
+that is sealed to the CPU. This also means that bootstrapping a new node on a
+separate CPU immediately after the network upgrade will not be possible until
+an updated ParaTime containing new trust roots is released and adopted.</p></div></div>
+<ol start="8">
+<li class="">Replace the old version of Oasis Node with version <a href="https://github.com/oasisprotocol/oasis-core/releases/tag/v23.0.7" target="_blank" rel="noopener noreferrer" class="">23.0.7</a>.</li>
+</ol>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The Oasis Core 23.0.7 binary in our published releases is built only for Ubuntu
+22.04 (GLIBC&gt;=2.32). You&#x27;ll have to build it yourself if you&#x27;re using prior
+Ubuntu versions (or other distributions using older system libraries).</p></div></div>
+<ol start="9">
+<li class="">
+<p>Perform any needed <a href="#configuration-changes" class="">configuration changes</a> described
+below.</p>
+</li>
+<li class="">
+<p>(only Rosetta Gateway operators) Replace old version of Oasis Rosetta
+Gateway with version <a href="https://github.com/oasisprotocol/oasis-rosetta-gateway/releases/tag/v2.6.0" target="_blank" rel="noopener noreferrer" class="">2.6.0</a>.</p>
+</li>
+<li class="">
+<p>(only Emerald paratime operators) Upgrade Emerald to version 11.0.0.</p>
+</li>
+<li class="">
+<p>Start your node and re-enable auto-starting via your process manager.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="configuration-changes">Configuration Changes<a href="#configuration-changes" class="hash-link" aria-label="Direct link to Configuration Changes" title="Direct link to Configuration Changes" translate="no">​</a></h3>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>To see the full extent of the changes examine the <a href="https://github.com/oasisprotocol/oasis-core/blob/stable/23.0.x/CHANGELOG.md" target="_blank" rel="noopener noreferrer" class="">Change Log</a> of the 23.0.x
+release.</p></div></div>
+<p>The node configuration has been refactored so that everything is now configured
+via a YAML configuration file and <strong>configuring via command-line options is no
+longer supported</strong>.</p>
+<p>Some configuration options have changed and so the configuration file needs to
+be updated. To make this step easier, a command-line tool has been provided that
+will perform most of the changes automatically. You can run it with:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">oasis-node config migrate --in config.yml --out new-config.yml</span><br></span></code></pre></div></div>
+<p>The migration subcommand logs the various changes it makes and warns you if a
+config option is no longer supported, etc. At the end, any unknown sections of
+the input config file are printed to the terminal to give you a chance to review
+them and make manual changes if required.</p>
+<p>Note that the migration subcommand does not preserve comments and order of
+sections from the input YAML config file. You should always carefully read the
+output of this command, as well as compare the generated config file with the
+original before using it.</p>
+<p>After you are satisfied with the new configuration file, replace the old file
+with the new one as follows:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">mv new-config.yml config.yml</span><br></span></code></pre></div></div>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>The configuration format for seed nodes has changed and it now requires the
+node&#x27;s P2P public key to be used. In case your old configuration file contains
+known Mainnet seed nodes, this transformation is performed automatically.</p><p>However, if it contains unknown seed nodes then the conversion did not happen
+automatically and you may need to obtain the seed node&#x27;s P2P public key. For
+Mainnet you can use the following addresses:</p><ul>
+<li class=""><code>H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:26656</code></li>
+<li class=""><code>H6u9MtuoWRKn5DKSgarj/dzr2Z9BsjuRHgRAoXITOcU=@35.199.49.168:9200</code></li>
+</ul><p>Please be aware that every seed node should be configured to listen on two
+distinct ports. One is dedicated to peer discovery within the CometBFT P2P
+network, while the other is used to bootstrap the Oasis P2P network.</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>For those running the Emerald ParaTime, please make sure to upgrade to Emerald
+version 11.0.0 before or soon after the network upgrade is completed.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="data-directory-changes">Data Directory Changes<a href="#data-directory-changes" class="hash-link" aria-label="Direct link to Data Directory Changes" title="Direct link to Data Directory Changes" translate="no">​</a></h3>
+<p>The subdirectory (located inside the node&#x27;s data directory) used to store
+consensus-related data, previously called <code>tendermint</code> (after the consensus
+layer protocol backend) has been renamed to <code>consensus</code> in Oasis Core 23.0.x. If
+any of your scripts rely on specific directory names, please make sure to update
+them to reflect the changed sdirectory name.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="state-changes">State Changes<a href="#state-changes" class="hash-link" aria-label="Direct link to State Changes" title="Direct link to State Changes" translate="no">​</a></h3>
+<p>The following parts of the genesis document will be updated:</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>For a more detailed explanation of the parameters below, see the
+<a class="" href="/node/reference/genesis-doc#parameters">Genesis Document</a> docs.</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>All state changes will be done automatically with the migration command provided
+by the new version of <code>oasis-node</code>. It can be used as follows to derive the same
+genesis file from an existing state dump at the correct height (assuming there
+is a <code>genesis.json</code> present in the current working directory):</p><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">oasis-node genesis migrate --genesis.new_chain_id oasis-4</span><br></span></code></pre></div></div></div></div>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="general">General<a href="#general" class="hash-link" aria-label="Direct link to General" title="Direct link to General" translate="no">​</a></h4>
+<ul>
+<li class="">
+<p><strong><code>chain_id</code></strong> will be set to <code>oasis-4</code>.</p>
+</li>
+<li class="">
+<p><strong><code>halt_epoch</code></strong> will be removed as it is no longer used.</p>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="registry">Registry<a href="#registry" class="hash-link" aria-label="Direct link to Registry" title="Direct link to Registry" translate="no">​</a></h4>
+<ul>
+<li class="">
+<p><strong><code>registry.runtimes[].txn_scheduler.propose_batch_timeout</code></strong> specifies how
+long to wait before accepting proposal from the next backup scheduler. It will
+be set to <code>5000000000</code> (5 seconds). Previously the value was represented in
+the number of consensus layer blocks.</p>
+</li>
+<li class="">
+<p><strong><code>registry.params.gas_costs.prove_freshness</code></strong> specifies the cost of the
+freshness proof transaction. It will be set to <code>1000</code>.</p>
+</li>
+<li class="">
+<p><strong><code>registry.params.gas_costs.update_keymanager</code></strong> specifies the cost of the
+keymanager policy update transaction. It will be removed as the parameter has
+been moved under <code>keymanager.params.gas_costs.update_policy</code>.</p>
+</li>
+<li class="">
+<p><strong><code>registry.params.tee_features</code></strong> specify various TEE features supported by
+the consensus layer registry service. These will be set to the following
+values to activate the new features:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token property" style="color:#36acaa">&quot;tee_features&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;sgx&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;pcs&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;signed_attestations&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;max_attestation_age&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1200</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;freshness_proofs&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong><code>registry.params.max_runtime_deployments</code></strong> specifies the maximum number of
+runtime deployments that can be specified in the runtime descriptor. It will
+be set to <code>5</code>.</p>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="root-hash">Root Hash<a href="#root-hash" class="hash-link" aria-label="Direct link to Root Hash" title="Direct link to Root Hash" translate="no">​</a></h4>
+<ul>
+<li class=""><strong><code>roothash.params.max_past_roots_stored</code></strong> specifies the maximum number of
+past runtime state roots that are stored in consensus state for each runtime.
+It will be set to <code>1200</code>.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="staking">Staking<a href="#staking" class="hash-link" aria-label="Direct link to Staking" title="Direct link to Staking" translate="no">​</a></h4>
+<ul>
+<li class="">
+<p><strong><code>staking.params.commission_schedule_rules.min_commission_rate</code></strong> specifies
+the minimum commission rate. It will be set to <code>0</code> to maintain the existing
+behavior.</p>
+</li>
+<li class="">
+<p><strong><code>staking.params.thresholds.node-observer</code></strong> specifies the stake threshold
+for registering an observer node. It will be set to <code>100000000000</code> base units
+(or <code>100</code> tokens), same as for existing compute nodes.</p>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-manager">Key Manager<a href="#key-manager" class="hash-link" aria-label="Direct link to Key Manager" title="Direct link to Key Manager" translate="no">​</a></h4>
+<ul>
+<li class="">
+<p><strong><code>keymanager.params.gas_costs</code></strong> specify the cost of key manager
+transactions. These will be set to the following values:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token property" style="color:#36acaa">&quot;gas_costs&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;publish_ephemeral_secret&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;publish_master_secret&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;update_policy&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1000</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="random-beacon">Random Beacon<a href="#random-beacon" class="hash-link" aria-label="Direct link to Random Beacon" title="Direct link to Random Beacon" translate="no">​</a></h4>
+<ul>
+<li class=""><strong><code>beacon.base</code></strong> is the network&#x27;s starting epoch. It will be set to the epoch
+of Mainnet&#x27;s state dump + 1, <code>28017</code>.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="governance">Governance<a href="#governance" class="hash-link" aria-label="Direct link to Governance" title="Direct link to Governance" translate="no">​</a></h4>
+<ul>
+<li class=""><strong><code>governance.params.enable_change_parameters_proposal</code></strong> specifies whether
+parameter change governance proposals are allowed. It will be set to <code>true</code>.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="consensus">Consensus<a href="#consensus" class="hash-link" aria-label="Direct link to Consensus" title="Direct link to Consensus" translate="no">​</a></h4>
+<ul>
+<li class=""><strong><code>consensus.params.max_block_size</code></strong> specifies the maximum block size in the
+consensus layer. It will be set to <code>1048576</code> (1 MiB).</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="other">Other<a href="#other" class="hash-link" aria-label="Direct link to Other" title="Direct link to Other" translate="no">​</a></h4>
+<ul>
+<li class="">
+<p><strong><code>extra_data</code></strong> will be set back to the value in the <a href="https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18" target="_blank" rel="noopener noreferrer" class="">Mainnet genesis file</a>
+to include the Oasis Network&#x27;s genesis quote:</p>
+<p><em>”</em><a href="https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F" target="_blank" rel="noopener noreferrer" class=""><em>Quis custodiet ipsos custodes?</em></a><em>” [submitted by Oasis
+Community Member Daniyar Borangaziyev]:</em></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&quot;extra_data&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;quote&quot;: &quot;UXVpcyBjdXN0b2RpZXQgaXBzb3MgY3VzdG9kZXM/IFtzdWJtaXR0ZWQgYnkgT2FzaXMgQ29tbXVuaXR5IE1lbWJlciBEYW5peWFyIEJvcmFuZ2F6aXlldl0=&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/oasisprotocol/docs/edit/main/docs/node/reference/upgrades/eden-upgrade.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2026-01-27T11:48:58.000Z" itemprop="dateModified">Jan 27, 2026</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#major-features" class="table-of-contents__link toc-highlight">Major Features</a></li><li><a href="#mechanics-of-the-upgrade" class="table-of-contents__link toc-highlight">Mechanics of the Upgrade</a><ul><li><a href="#voting" class="table-of-contents__link toc-highlight">Voting</a></li><li><a href="#upgrade-instructions" class="table-of-contents__link toc-highlight">Upgrade Instructions</a></li><li><a href="#configuration-changes" class="table-of-contents__link toc-highlight">Configuration Changes</a></li><li><a href="#data-directory-changes" class="table-of-contents__link toc-highlight">Data Directory Changes</a></li><li><a href="#state-changes" class="table-of-contents__link toc-highlight">State Changes</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Tools</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://explorer.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Explorer</a></li><li class="footer__item"><a href="https://wallet.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Wallet</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol/cli" target="_blank" rel="noopener noreferrer" class="footer__link-item">CLI</a></li><li class="footer__item"><a href="https://status.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Build</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://faucet.testnet.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Testnet Faucet</a></li><li class="footer__item"><a href="https://playground.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Playground</a></li><li class="footer__item"><a href="https://api.docs.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">API</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Node</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/node/network/mainnet">Mainnet</a></li><li class="footer__item"><a class="footer__link-item" href="/node/network/testnet">Testnet</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://oasis.io/discord" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord</a></li><li class="footer__item"><a href="https://t.me/oasisprotocolcommunity" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram</a></li><li class="footer__item"><a href="https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ" target="_blank" rel="noopener noreferrer" class="footer__link-item">Youtube</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
+<p xmlns:cc="http://creativecommons.org/ns#">Copyright © 2026
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
+Oasis Protocol Foundation</a>. We <a href="https://oasisprotocol.org/privacy-policy" target="_blank" rel="noopener noreferrer">respect your privacy</a>.
+Unless otherwise specified, all text and images on this website are licensed
+under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/by.svg"></a>.
+This does not include the Oasis software and the code examples, both of which are
+licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p></div></div></div></footer><!--$--><!--/$--></div>
+</body>
+</html>

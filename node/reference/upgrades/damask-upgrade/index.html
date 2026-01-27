@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-node/reference/upgrades/damask-upgrade" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Damask Upgrade | Oasis Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.oasis.io/node/reference/upgrades/damask-upgrade"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Damask Upgrade | Oasis Documentation"><meta data-rh="true" name="description" content="This document provides an overview of the changes for the Damask Mainnet"><meta data-rh="true" property="og:description" content="This document provides an overview of the changes for the Damask Mainnet"><link data-rh="true" rel="icon" href="/img/favicon/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.oasis.io/node/reference/upgrades/damask-upgrade"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/node/reference/upgrades/damask-upgrade" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/node/reference/upgrades/damask-upgrade" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.551f8251.css">
+<script src="/assets/js/runtime~main.4f6be8e5.js" defer="defer"></script>
+<script src="/assets/js/main.9d193f4f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/logo_dark.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo_dark.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a class="navbar__item navbar__link" href="/build/">Build</a><a class="navbar__item navbar__link" href="/general/">Learn</a><a class="navbar__item navbar__link" href="/get-involved/">Get Involved</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/node/">Run Node</a><a class="navbar__item navbar__link" href="/core/">Develop Core</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" title="GitHub repository" aria-label="GitHub repository"></a><a href="https://oasis.net/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-www-link" title="Oasis website" aria-label="Oasis website"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/node/"><span title="Overview" class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link" href="/node/network/"><span title="Network Information" class="categoryLinkLabel_W154">Network Information</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/network/mainnet"><span title="Mainnet" class="linkLabel_WmDU">Mainnet</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/network/testnet"><span title="Testnet" class="linkLabel_WmDU">Testnet</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link" href="/node/run-your-node/"><span title="Run Your Node" class="categoryLinkLabel_W154">Run Your Node</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/node/run-your-node/prerequisites"><span title="Prerequisites" class="categoryLinkLabel_W154">Prerequisites</span></a><button aria-label="Expand sidebar category &#x27;Prerequisites&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/validator-node"><span title="Validator Node" class="linkLabel_WmDU">Validator Node</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/non-validator-node"><span title="Non-validator Node" class="linkLabel_WmDU">Non-validator Node</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/seed-node"><span title="Seed Node" class="linkLabel_WmDU">Seed Node</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/archive-node"><span title="Archive Node" class="linkLabel_WmDU">Archive Node</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/paratime-node"><span title="ParaTime Node" class="linkLabel_WmDU">ParaTime Node</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/node/run-your-node/paratime-client-node"><span title="ParaTime Client Node" class="categoryLinkLabel_W154">ParaTime Client Node</span></a><button aria-label="Expand sidebar category &#x27;ParaTime Client Node&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/rofl-node"><span title="ROFL Node" class="linkLabel_WmDU">ROFL Node</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/node/run-your-node/keymanager-node/"><span title="Key Manager Node" class="categoryLinkLabel_W154">Key Manager Node</span></a><button aria-label="Expand sidebar category &#x27;Key Manager Node&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/sentry-node"><span title="Sentry Node" class="linkLabel_WmDU">Sentry Node</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/node/run-your-node/maintenance"><span title="Maintenance" class="categoryLinkLabel_W154">Maintenance</span></a><button aria-label="Expand sidebar category &#x27;Maintenance&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/node/run-your-node/advanced"><span title="Advanced" class="categoryLinkLabel_W154">Advanced</span></a><button aria-label="Expand sidebar category &#x27;Advanced&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/run-your-node/troubleshooting"><span title="Troubleshooting" class="linkLabel_WmDU">Troubleshooting</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/node/web3"><span title="Web3 Gateway" class="linkLabel_WmDU">Web3 Gateway</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/node/grpc"><span title="gRPC Proxy" class="linkLabel_WmDU">gRPC Proxy</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/node/reference"><span title="Reference" class="categoryLinkLabel_W154">Reference</span></a><button aria-label="Collapse sidebar category &#x27;Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/node/reference/genesis-doc"><span title="Genesis Document" class="linkLabel_WmDU">Genesis Document</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/node/reference/upgrades"><span title="Network Upgrades" class="categoryLinkLabel_W154">Network Upgrades</span></a><button aria-label="Collapse sidebar category &#x27;Network Upgrades&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/node/reference/upgrades/damask-upgrade"><span title="Damask Upgrade" class="linkLabel_WmDU">Damask Upgrade</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/node/reference/upgrades/cobalt-upgrade"><span title="Cobalt Upgrade" class="linkLabel_WmDU">Cobalt Upgrade</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/node/reference/upgrades/mainnet-upgrade"><span title="Upgrade to Mainnet" class="linkLabel_WmDU">Upgrade to Mainnet</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/node/reference/upgrade-logs"><span title="Upgrade Logs" class="categoryLinkLabel_W154">Upgrade Logs</span></a><button aria-label="Expand sidebar category &#x27;Upgrade Logs&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Damask Upgrade</h1></header>
+<p>This document provides an overview of the changes for the Damask Mainnet
+upgrade.</p>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>The Damask upgrade on Mainnet is scheduled at epoch <strong>13402</strong> which will happen
+around <strong>Apr 11, 2022 at 8:30 UTC</strong>.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="major-features">Major Features<a href="#major-features" class="hash-link" aria-label="Direct link to Major Features" title="Direct link to Major Features" translate="no">​</a></h2>
+<p>All features for the Damask upgrade are implemented as part of
+<strong>Oasis Core 22.1.x</strong> release series which is a consensus protocol-breaking
+release.</p>
+<p>Summary of the major features is as follows:</p>
+<ul>
+<li class="">
+<p><strong>Random Beacon</strong>: The random beacon is used by the consensus layer for
+ParaTime committee elections and is a critical component in providing
+security for ParaTimes with an open admission policy.
+To make the random beacon more performant and scalable, the upgrade
+transitions the election procedure to one that is based on cryptographic
+sortition of Verifiable Random Function (VRF) outputs.
+For more details, see <a class="" href="/adrs/0010-vrf-elections">ADR 0010</a>.</p>
+</li>
+<li class="">
+<p><strong>On-Chain Governance</strong>: The upgrade simplifies the governance by replacing
+separate quorum and threshold parameters with a single unified stake threshold
+parameter that represents the percentage of <em>yes</em> votes in terms of total
+voting power for a governance proposal to pass.</p>
+</li>
+<li class="">
+<p><strong>ParaTime Performance</strong>: By simplifying the protocol (executor and storage
+committees are merged into a single committee) the upgrade improves ParaTime
+committee performance and opens the way for even more improvements on the
+ParaTime side. It also leads to simplified configuration of ParaTime nodes.</p>
+</li>
+<li class="">
+<p><strong>ParaTime Upgrades</strong>: After the Damask upgrade, runtime descriptors will
+include information regarding supported versions, and the epoch from which
+they are valid, which will allow ParaTime upgrades to happen without incurring
+downtime by having upgrades and the descriptor changes pre-staged well in
+advance of the upgrade epoch.
+For more details, see <a class="" href="/adrs/0013-runtime-upgrades">ADR 0013</a>.</p>
+</li>
+<li class="">
+<p><strong>ParaTime Packaging</strong>: This upgrade changes runtime bundles to be unified
+across all supported TEE types and self describing so that configuring
+ParaTimes is only a matter of passing in the runtime bundle file.</p>
+</li>
+<li class="">
+<p><strong>Consensus and ParaTime Communication</strong>: The upgrade adds support for
+incoming runtime messages where consensus layer transactions can trigger
+actions inside ParaTimes.
+For more details, see <a class="" href="/adrs/0011-incoming-runtime-messages">ADR 0011</a>.</p>
+<p>The upgrade also adds support for runtime message results which extends the
+results of the emitted runtime messages with relevant information beyond
+indicating whether the message execution was successful or not.
+For more details, see <a class="" href="/adrs/0012-runtime-message-results">ADR 0012</a>.</p>
+</li>
+</ul>
+<p>In addition to the specified additional features, we also propose the
+<strong>validator set size</strong> to be <strong>increased from</strong> the current <strong>110 to 120</strong> as
+discussed in the
+<a href="https://oasiscommunity.slack.com/archives/CMUSJCRFA/p1647881564057319?thread_ts=1647448573.197229&amp;cid=CMUSJCRFA" target="_blank" rel="noopener noreferrer" class="">Oasis Community Slack #nodeoperators channel</a>.</p>
+<p>This upgrade marks an important milestone for the Oasis Network, as it sets the
+foundation for unlocking the network&#x27;s full capabilities.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mechanics-of-the-upgrade">Mechanics of the Upgrade<a href="#mechanics-of-the-upgrade" class="hash-link" aria-label="Direct link to Mechanics of the Upgrade" title="Direct link to Mechanics of the Upgrade" translate="no">​</a></h2>
+<p>On Mar 24, 2022, the Oasis Protocol Foundation submitted the upgrade governance
+proposal with id of <code>2</code> which proposed upgrading the network at epoch 13402.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>In addition to submitting the actual governance proposal to the network, Oasis
+Protocol Foundation also published the <a href="https://github.com/oasisprotocol/community/discussions/30" target="_blank" rel="noopener noreferrer" class="">Damask Upgrade Proposal discussion</a> to
+the <a href="https://github.com/oasisprotocol/community" target="_blank" rel="noopener noreferrer" class="">Oasis Community Forum on GitHub</a>.</p></div></div>
+<p>Node operators which had an active validator node in the validator set had 1
+week to cast their vote.</p>
+<p>Validators representing more than 88% of the total stake in the consensus
+committee participated in the vote, and 100% of them voted <em>yes</em> for the proposal.</p>
+<p>The upgrade will be performed by exporting the network&#x27;s state at the upgrade
+epoch, updating the <a class="" href="/node/reference/genesis-doc#parameters">genesis document</a>, upgrading the Oasis Node
+and the ParaTime binaries and starting a new network from the new genesis file.</p>
+<p>This will require coordination between node operators and the Oasis Protocol
+Foundation.
+All nodes will need to configure the new genesis file that they can generate or
+verify independently and reset/archive any existing state from Mainnet.</p>
+<p>Once enough nodes (representing 2/3+ of stake) have taken this step, the
+upgraded network will start.</p>
+<p>For the actual steps that node operators need to make on their nodes, see the
+<a class="" href="/node/reference/upgrade-logs/mainnet#damask-upgrade">Upgrade Log</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="proposed-state-changes">Proposed State Changes<a href="#proposed-state-changes" class="hash-link" aria-label="Direct link to Proposed State Changes" title="Direct link to Proposed State Changes" translate="no">​</a></h2>
+<p>The following parts of the genesis document will be updated:</p>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>This section will be updated with the exact details as we get closer to the
+upgrade.</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>For a more detailed explanation of the parameters below, see the
+<a class="" href="/node/reference/genesis-doc#parameters">Genesis Document</a> docs.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="general"><strong>General</strong><a href="#general" class="hash-link" aria-label="Direct link to general" title="Direct link to general" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>height</code></strong> will be set to the height of the Mainnet state dump + 1,
+<code>8048956</code>.</p>
+</li>
+<li class="">
+<p><strong><code>genesis_time</code></strong> will be set to<code>2022-04-11T09:30:00Z</code>.</p>
+</li>
+<li class="">
+<p><strong><code>chain_id</code></strong> will be set to <code>oasis-3</code>.</p>
+</li>
+<li class="">
+<p><strong><code>halt_epoch</code></strong> will be bumped by <code>10000</code> (a little more than a year) to
+<code>23807</code>.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="registry"><strong>Registry</strong><a href="#registry" class="hash-link" aria-label="Direct link to registry" title="Direct link to registry" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>registry.runtimes</code></strong> list contains the registered runtimes&#x27; descriptors.
+In this upgrade, all runtime descriptors will be migrated from version <code>2</code> to
+version <code>3</code>.</p>
+<p>The migration will be done automatically with the
+<code>oasis-node debug fix-genesis</code> command.</p>
+</li>
+<li class="">
+<p><strong><code>registry.runtimes.[id=000000000000000000000000000000000000000000000000e2eaa99fc008f87f].deployments.version</code></strong>
+specifies Emerald ParaTime&#x27;s version on Mainnet.</p>
+<p>It will be upgraded from version 7.1.0 to 8.2.0 and hence the configuration
+needs to be manually updated to:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&quot;version&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;major&quot;: 8,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;minor&quot;: 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">},</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong><code>registry.runtimes.[id=000000000000000000000000000000000000000000000000e199119c992377cb].deployments</code></strong>
+specifies Cipher ParaTime&#x27;s version and TEE identity on Mainnet.</p>
+<p>It will be upgraded from version 1.0.0 to 1.1.0 and hence the configuration
+needs to be manually updated to:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&quot;version&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;major&quot;: 1,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;minor&quot;: 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">},</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;valid_from&quot;: 0,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;tee&quot;: &quot;oWhlbmNsYXZlc4GiaW1yX3NpZ25lclggQCXat+vaH77MTjY3YG4CEhTQ9BxtBCL9N4sqi4iBhFlqbXJfZW5jbGF2ZVggoiJgre0cDF5arUk9wh0X9eGWr5cHb8LY0A3/msmznHc=&quot;</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong><code>registry.suspended_runtimes</code></strong> list contains the suspended registered
+runtimes&#x27; descriptors. In this upgrade, all runtime descriptors for suspended
+runtimes will be migrated from version <code>2</code> to version <code>3</code>.</p>
+<p>The migration will be done automatically with the
+<code>oasis-node debug fix-genesis</code> command.</p>
+</li>
+<li class="">
+<p>Inactive registered entities in <strong><code>registry.entities</code></strong> (and their
+corresponding nodes in <strong><code>registry.nodes</code></strong>) that don&#x27;t pass the
+<a class="" href="/node/reference/genesis-doc#staking-thresholds">minimum staking thresholds</a> will be removed.</p>
+<p>The removal will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="root-hash"><strong>Root Hash</strong><a href="#root-hash" class="hash-link" aria-label="Direct link to root-hash" title="Direct link to root-hash" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>roothash.params.gas_costs.submit_msg</code></strong> is a new parameter that specifies
+the cost for a submit message transaction. It will be set to <code>1000</code>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>roothash.params.max_in_runtime_messages</code></strong> is a new parameter that
+specifies the maximum number of incoming messages that can be queued for
+processing by a runtime. It will be set to <code>128</code>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>roothash.runtime_state</code></strong> contains the state roots of the runtimes.
+Empty fields will be omitted.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="staking"><strong>Staking</strong><a href="#staking" class="hash-link" aria-label="Direct link to staking" title="Direct link to staking" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>staking.params.thresholds</code></strong> specifies the minimum number of tokens that
+need to be staked in order for a particular entity or a particular type of
+node to participate in the network.</p>
+<p>The <code>node-storage</code> key is removed since Oasis Core 22.0+ removes separate
+storage nodes.
+For more details, see: <a href="https://github.com/oasisprotocol/oasis-core/pull/4308" target="_blank" rel="noopener noreferrer" class="">Oasis Core #4308</a>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>staking.params.min_transfer</code></strong> is a new parameter that specifies the
+minimum number of tokens one can transfer.
+It will be set to 10,000,000 base units, or 0.01 ROSE tokens.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>staking.params.min_transact_balance</code></strong> is a new parameter that specifies
+the minimum general balance an account must have to be able to perform
+transactions on the network.
+It will be set to 0 base units, meaning this requirement is currently not
+enforced.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="committee-scheduler"><strong>Committee Scheduler</strong><a href="#committee-scheduler" class="hash-link" aria-label="Direct link to committee-scheduler" title="Direct link to committee-scheduler" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>scheduler.params.min_validators</code></strong> is the minimum size of the consensus
+committee (i.e. the validator set). It will be increased from <code>15</code> to <code>30</code>.</p>
+</li>
+<li class="">
+<p><strong><code>scheduler.params.max_validators</code></strong> is the maximum size of the consensus
+committee (i.e. the validator set). It will be increased from <code>110</code> to <code>120</code>.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="random-beacon"><strong>Random Beacon</strong><a href="#random-beacon" class="hash-link" aria-label="Direct link to random-beacon" title="Direct link to random-beacon" translate="no">​</a></h3>
+<p>The <strong><code>beacon</code></strong> object contains parameters controlling the new
+<a class="" href="/adrs/0010-vrf-elections">improved VRF-based random beacon</a> introduced in the Damask upgrade.</p>
+<ul>
+<li class="">
+<p><strong><code>beacon.base</code></strong> is the network&#x27;s starting epoch. It will be set to the epoch
+of Mainnet&#x27;s state dump + 1, <code>13402</code>.</p>
+</li>
+<li class="">
+<p><strong><code>beacon.params.backend</code></strong> configures the random beacon backend to use.
+It will be set to <code>&quot;vrf&quot;</code> indicating that the beacon implementing
+<a class="" href="/adrs/0010-vrf-elections">VRF-based random beacon</a> should be used.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+</ul>
+<p>The <strong><code>beacon.params.vrf_parameters</code></strong> control the behavior of the new
+<a class="" href="/adrs/0010-vrf-elections">VRF-based random beacon</a>:</p>
+<ul>
+<li class="">
+<p><strong><code>beacon.params.vrf_parameters.alpha_hq_threshold</code></strong> is minimal number of
+nodes that need to contribute a VRF proof for the beacon&#x27;s output to be valid.
+It will be set to <code>20</code>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>beacon.params.vrf_parameters.interval</code></strong> is the duration of an epoch.
+It will be set to <code>600</code>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>beacon.params.vrf_parameters.proof_delay</code></strong> is number of blocks since the
+beginning of an epoch after a node can still submit its VRF proof.
+It will be set to <code>400</code>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>beacon.params.vrf_parameters.gas_costs.vrf_prove</code></strong> specifies the cost for
+a VRF prove transaction.
+It will be set to <code>1000</code>.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+</ul>
+<p>The <strong><code>beacon.params.pvss_parameters</code></strong> control the behavior of the
+<a class="" href="/adrs/0007-improved-random-beacon">previous random beacon implementing a PVSS scheme</a>.</p>
+<p>Since PVSS is no longer supported, all its configuration options are removed
+as well.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="governance"><strong>Governance</strong><a href="#governance" class="hash-link" aria-label="Direct link to governance" title="Direct link to governance" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>governance.params.stake_threshold</code></strong> is a new parameter specifying the
+single unified stake threshold representing the percentage of <code>VoteYes</code> votes
+in terms of total voting power for a governance proposal to pass.
+It will be set to <code>68</code> (i.e. 68%).</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>governance.params.quorum</code></strong> is the minimum percentage of voting power that
+needs to be cast on a proposal for the result to be valid.</p>
+<p>It will be removed since it is being replaced by the single
+<strong><code>governance.params.staking_threshold</code></strong> parameter.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+<li class="">
+<p><strong><code>governance.params.threshold</code></strong> is the minimum percentage of <code>VoteYes</code> votes
+in order for a proposal to be accepted.</p>
+<p>It will be removed since it is being replaced by the single
+<strong><code>governance.params.staking_threshold</code></strong> parameter.</p>
+<p>This will be done automatically with the <code>oasis-node debug fix-genesis</code>
+command.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="consensus"><strong>Consensus</strong><a href="#consensus" class="hash-link" aria-label="Direct link to consensus" title="Direct link to consensus" translate="no">​</a></h3>
+<ul>
+<li class=""><strong><code>consensus.params.state_checkpoint_interval</code></strong> parameter controls the
+interval (in blocks) on which state checkpoints should be taken. It will be
+increased from <code>10000</code> to <code>100000</code> to improve nodes&#x27; performance since
+computing checkpoints is I/O intensive.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="other">Other<a href="#other" class="hash-link" aria-label="Direct link to Other" title="Direct link to Other" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p><strong><code>extra_data</code></strong> will be set back to the value in the <a href="https://github.com/oasisprotocol/mainnet-artifacts/releases/tag/2020-11-18" target="_blank" rel="noopener noreferrer" class="">Mainnet genesis file</a>
+to include the Oasis Network&#x27;s genesis quote:</p>
+<p><em>”</em><a href="https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F" target="_blank" rel="noopener noreferrer" class=""><em>Quis custodiet ipsos custodes?</em></a><em>” [submitted by Oasis
+Community Member Daniyar Borangaziyev]:</em></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&quot;extra_data&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;quote&quot;: &quot;UXVpcyBjdXN0b2RpZXQgaXBzb3MgY3VzdG9kZXM/IFtzdWJtaXR0ZWQgYnkgT2FzaXMgQ29tbXVuaXR5IE1lbWJlciBEYW5peWFyIEJvcmFuZ2F6aXlldl0=&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="launch-support">Launch Support<a href="#launch-support" class="hash-link" aria-label="Direct link to Launch Support" title="Direct link to Launch Support" translate="no">​</a></h2>
+<p>The Oasis team will be offering live video support during the Damask upgrade.
+Video call link and calendar details will be shared with node operators via
+email and Slack.</p>
+<p>For any additional support, please reach out via the
+<a class="" href="/get-involved/"><strong>#nodeoperators</strong> Oasis Community Slack channel</a> with
+your questions, comments, and feedback related to Damask upgrade.</p>
+<p>To follow the network, please use one of the many
+<a href="https://github.com/oasisprotocol/docs/blob/0aeeb93a6e7c9001925923661e4eb3340ec4fb4b/docs/general/community-resources/community-made-resources.md#block-explorers--validator-leaderboards-block-explorers-validator-leaderboards" target="_blank" rel="noopener noreferrer" class="">community block explorers</a>.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/oasisprotocol/docs/edit/main/docs/node/reference/upgrades/damask-upgrade.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2026-01-27T11:48:58.000Z" itemprop="dateModified">Jan 27, 2026</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/node/reference/upgrades"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Network Upgrades</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/node/reference/upgrades/cobalt-upgrade"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Cobalt Upgrade</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#major-features" class="table-of-contents__link toc-highlight">Major Features</a></li><li><a href="#mechanics-of-the-upgrade" class="table-of-contents__link toc-highlight">Mechanics of the Upgrade</a></li><li><a href="#proposed-state-changes" class="table-of-contents__link toc-highlight">Proposed State Changes</a><ul><li><a href="#general" class="table-of-contents__link toc-highlight"><strong>General</strong></a></li><li><a href="#registry" class="table-of-contents__link toc-highlight"><strong>Registry</strong></a></li><li><a href="#root-hash" class="table-of-contents__link toc-highlight"><strong>Root Hash</strong></a></li><li><a href="#staking" class="table-of-contents__link toc-highlight"><strong>Staking</strong></a></li><li><a href="#committee-scheduler" class="table-of-contents__link toc-highlight"><strong>Committee Scheduler</strong></a></li><li><a href="#random-beacon" class="table-of-contents__link toc-highlight"><strong>Random Beacon</strong></a></li><li><a href="#governance" class="table-of-contents__link toc-highlight"><strong>Governance</strong></a></li><li><a href="#consensus" class="table-of-contents__link toc-highlight"><strong>Consensus</strong></a></li><li><a href="#other" class="table-of-contents__link toc-highlight">Other</a></li></ul></li><li><a href="#launch-support" class="table-of-contents__link toc-highlight">Launch Support</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Tools</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://explorer.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Explorer</a></li><li class="footer__item"><a href="https://wallet.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Wallet</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol/cli" target="_blank" rel="noopener noreferrer" class="footer__link-item">CLI</a></li><li class="footer__item"><a href="https://status.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Build</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://faucet.testnet.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Testnet Faucet</a></li><li class="footer__item"><a href="https://playground.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Playground</a></li><li class="footer__item"><a href="https://api.docs.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">API</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Node</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/node/network/mainnet">Mainnet</a></li><li class="footer__item"><a class="footer__link-item" href="/node/network/testnet">Testnet</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://oasis.io/discord" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord</a></li><li class="footer__item"><a href="https://t.me/oasisprotocolcommunity" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram</a></li><li class="footer__item"><a href="https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ" target="_blank" rel="noopener noreferrer" class="footer__link-item">Youtube</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
+<p xmlns:cc="http://creativecommons.org/ns#">Copyright © 2026
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
+Oasis Protocol Foundation</a>. We <a href="https://oasisprotocol.org/privacy-policy" target="_blank" rel="noopener noreferrer">respect your privacy</a>.
+Unless otherwise specified, all text and images on this website are licensed
+under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/by.svg"></a>.
+This does not include the Oasis software and the code examples, both of which are
+licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p></div></div></div></footer><!--$--><!--/$--></div>
+</body>
+</html>

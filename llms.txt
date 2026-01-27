@@ -1,0 +1,227 @@
+# Oasis Documentation
+> Oasis Protocol developer documentation for Sapphire, ROFL, node operation, and Oasis Core.
+
+## Build
+
+- [Overview](https://docs.oasis.io/build.md): Home of the Oasis dApp developer resources
+- [Use cases: Cross-Chain Key Generation (EVM / Base)](https://docs.oasis.io/build/use-cases/key-generation.md): Generate an Ethereum-compatible key inside ROFL via appd and use it to sign and send transactions on Base.
+- [Use cases: Trustless AI Agent](https://docs.oasis.io/build/use-cases/trustless-agent.md): Deploy a trustless Eliza AI agent on Oasis using ROFL enclaves, with enclave-managed keys and on-chain verification on Sapphire.
+- [Use cases: Trustless Price Oracle](https://docs.oasis.io/build/use-cases/price-oracle.md): Build an app that fetches latest price quotes from a centralized exchange and stores them to the blockchain.
+- [Use cases: Private Telegram Chat Bot](https://docs.oasis.io/build/use-cases/tgbot.md): Build a private Telegram bot running in ROFL containing a simple python script and an Ollama LLM.
+- [ROFL](https://docs.oasis.io/build/rofl.md): Build your own ROFL-Powered App
+- [ROFL: Quickstart](https://docs.oasis.io/build/rofl/quickstart.md): How to build your app for ROFL in five simple steps.
+- [ROFL: Workflow](https://docs.oasis.io/build/rofl/workflow.md): ROFL Workflow for Developers
+- [ROFL / Workflow: Prerequisites](https://docs.oasis.io/build/rofl/workflow/prerequisites.md): Prerequisites for Building ROFL-Powered Apps
+- [ROFL / Workflow: Containerize an App](https://docs.oasis.io/build/rofl/workflow/containerize-app.md): Containerize your app inside a Docker-like container
+- [ROFL / Workflow: Init](https://docs.oasis.io/build/rofl/workflow/init.md): Apps running in ROFL come in different flavors and the right choice is a tradeoff between the Trusted Computing Base (TCB) size and ease of use
+- [ROFL / Workflow: Create](https://docs.oasis.io/build/rofl/workflow/create.md): Before the app can be built it needs to be created on chain and assigned a unique identifier or app ID which can be used by on-chain smart contracts to ensure that they are talking to the right...
+- [ROFL / Workflow: Build](https://docs.oasis.io/build/rofl/workflow/build.md): This operation packs compose.yaml, specific operating system components and the hash of a trusted block on the Sapphire chain. All these pieces are needed to safely execute our app inside a TEE.
+- [ROFL / Workflow: Deploy](https://docs.oasis.io/build/rofl/workflow/deploy.md): ROFLs can be deployed to any ParaTime that has the ROFL module installed. Most common is Sapphire which implements all ROFL functionalities.
+- [ROFL / Workflow: Test](https://docs.oasis.io/build/rofl/workflow/test.md): Apps running in SGX ROFL are fully supported by the sapphire-localnet Docker image. Simply bind-mount your app folder and any ORC bundles will automatically be registered and executed on startup
+- [ROFL / Features: Marketplace](https://docs.oasis.io/build/rofl/features/marketplace.md): The ROFL marketplace is an on-chain protocol that allows app developers to easily and safely deploy their apps for a small fee on one side and on the other enables ROFL node providers to lend...
+- [ROFL / Features: Secrets](https://docs.oasis.io/build/rofl/features/secrets.md): Sometimes containers need access to data that should not be disclosed publicly, for example API keys to access certain services. This data can be passed to containers running in ROFL via secrets.
+- [ROFL / Features: Persistent Storage](https://docs.oasis.io/build/rofl/features/storage.md): ROFL developers may use Sapphire smart contracts for secure and consistent storage across all ROFL replicas. This storage however, is not appropriate for read/write intensive applications.
+- [ROFL / Features: rofl.yaml Manifest File](https://docs.oasis.io/build/rofl/features/manifest.md): The following fields are valid in your yaml root
+- [ROFL / Features: appd REST API](https://docs.oasis.io/build/rofl/features/appd.md): Each containerized app running in ROFL runs a special daemon (called rofl-appd) that exposes additional functions via a simple HTTP REST API.
+- [ROFL / Features: Port Proxy](https://docs.oasis.io/build/rofl/features/proxy.md): Port proxy for your ROFL automatically generates public HTTPS URLs for services in your app. Simply publish a port in your compose.yaml and the proxy handles TLS certificates and routing.
+- [ROFL: Troubleshooting](https://docs.oasis.io/build/rofl/troubleshooting.md): You will see the following error, if the aes and ssse3 compiler flags are not enabled during compilation of your SGX and TDX-raw ROFL
+- [Sapphire](https://docs.oasis.io/build/sapphire.md): Sapphire is our official confidential ParaTime for smart contract development with Ethereum Virtual Machine (EVM) compatibility.
+- [Sapphire: Quickstart](https://docs.oasis.io/build/sapphire/quickstart.md): In this tutorial, you will build and deploy a unique dApp that requires confidentiality to work.
+- [Sapphire: Network information](https://docs.oasis.io/build/sapphire/network.md): Detailed information for Sapphire about chains, RPCs, block explorers and indexers
+- [Sapphire: Sapphire vs Ethereum](https://docs.oasis.io/build/sapphire/ethereum.md): Differences to Ethereum
+- [Sapphire: Develop](https://docs.oasis.io/build/sapphire/develop.md): Develop new dApps on Sapphire
+- [Sapphire / Develop: Concepts](https://docs.oasis.io/build/sapphire/develop/concept.md): Sapphire concepts
+- [Sapphire / Develop: Browser Support](https://docs.oasis.io/build/sapphire/develop/browser.md): Integrating Sapphire in your web dApp
+- [Sapphire / Develop: View-Call Authentication](https://docs.oasis.io/build/sapphire/develop/authentication.md): Authenticate users with your confidential contracts
+- [Sapphire / Develop: Gasless Transactions](https://docs.oasis.io/build/sapphire/develop/gasless.md): Sign and submit transactions without paying for fees
+- [Sapphire / Develop: Encrypted Events](https://docs.oasis.io/build/sapphire/develop/encrypted-events.md): Emit confidential event data on Sapphire that only specific users can read, while keeping logs indexable.
+- [Sapphire / Develop: Deployment Patterns](https://docs.oasis.io/build/sapphire/develop/deployment.md): Deploying upgradable and deterministic contracts with proxies
+- [Sapphire / Develop: Security](https://docs.oasis.io/build/sapphire/develop/security.md): Recipes for Confidentiality, Security considerations when writing confidential contracts
+- [Sapphire / Develop: Testing](https://docs.oasis.io/build/sapphire/develop/testing.md): Testing contracts on Oasis Sapphire
+- [Sapphire / Develop: End-to-End Testing](https://docs.oasis.io/build/sapphire/develop/dappwright.md): End-to-End Testing of Oasis Sapphire dApps
+- [Sapphire: Examples](https://docs.oasis.io/build/sapphire/examples.md): Examples built with Sapphire
+- [Sapphire: Contract Addresses and Deployments](https://docs.oasis.io/build/sapphire/addresses.md): List of Standard Contract Addresses
+- [Oasis Privacy Layer](https://docs.oasis.io/build/opl.md): Integrating privacy into dApps on other blockchains
+- [Oasis Privacy Layer: Hyperlane Protocol](https://docs.oasis.io/build/opl/hyperlane.md): Hyperlane Protocol Overview
+- [Oasis Privacy Layer / Hyperlane Protocol: Relayer](https://docs.oasis.io/build/opl/hyperlane/relayer.md): Run a Hyperlane Relayer
+- [Oasis Privacy Layer / Hyperlane Protocol: Ping Pong Example](https://docs.oasis.io/build/opl/hyperlane/pingpong-example.md): Ping Pong example with Hyperlane Protocol
+- [Oasis Privacy Layer: Router Protocol](https://docs.oasis.io/build/opl/router-protocol.md): Cross-chain dApps with Router Protocol
+- [Oasis Privacy Layer / Router Protocol: PingPong Example](https://docs.oasis.io/build/opl/router-protocol/pingpong-example.md): PingPong example with Router CrossTalk
+- [Oasis Privacy Layer / Router Protocol: Router Interfaces](https://docs.oasis.io/build/opl/router-protocol/interface.md): Router Protocol Interfaces
+- [Oasis Privacy Layer / Router Protocol: Approving the Fee Payer](https://docs.oasis.io/build/opl/router-protocol/approve.md): Approving fee payer in Router Protocol
+- [Oasis Privacy Layer: OPL SDK](https://docs.oasis.io/build/opl/opl-sdk.md): OPL sdk
+- [Oasis Privacy Layer / OPL SDK: Ping Example](https://docs.oasis.io/build/opl/opl-sdk/ping-example.md): Ping example with OPL SDK
+- [Oasis Privacy Layer: Celer Inter-Chain Messaging](https://docs.oasis.io/build/opl/celer.md): A message bridge by Celer
+- [Oasis Privacy Layer / Celer Inter-Chain Messaging: Ping Example](https://docs.oasis.io/build/opl/celer/ping-example.md): Ping example with Celer IM
+- [Oasis Privacy Layer / Celer Inter-Chain Messaging: Supported Networks](https://docs.oasis.io/build/opl/celer/networks.md): Supported networks on Celer IM
+- [Tools & Services](https://docs.oasis.io/build/tools.md): Oasis integrates with a number of services and provides tooling support for developers using Remix (unencrypted transactions only), Sourcify, Docker images, Band, and more.
+- [Tools & Services: Oasis CLI](https://docs.oasis.io/build/tools/cli.md): Powerful CLI for managing Oasis networks, nodes, tokens and dApps
+- [Tools & Services / Oasis CLI: Setup](https://docs.oasis.io/build/tools/cli/setup.md): The Oasis team provides CLI binaries for Linux, macOS and Windows operating systems. If you want to run it on another platform, you can build the CLI from source.
+- [Tools & Services / Oasis CLI: Network](https://docs.oasis.io/build/tools/cli/network.md): Managing Mainnet, Testnet or Localnet endpoints
+- [Tools & Services / Oasis CLI: ParaTime](https://docs.oasis.io/build/tools/cli/paratime.md): Managing ParaTimes
+- [Tools & Services / Oasis CLI: Wallet](https://docs.oasis.io/build/tools/cli/wallet.md): Manage accounts in your CLI wallet
+- [Tools & Services / Oasis CLI: Account](https://docs.oasis.io/build/tools/cli/account.md): Using CLI for performing account-related tasks
+- [Tools & Services / Oasis CLI: Transaction](https://docs.oasis.io/build/tools/cli/transaction.md): Use CLI to decode, verify, sign and submit a transaction
+- [Tools & Services / Oasis CLI: Address book](https://docs.oasis.io/build/tools/cli/addressbook.md): Storing your blockchain contacts for future use
+- [Tools & Services / Oasis CLI: ROFL](https://docs.oasis.io/build/tools/cli/rofl.md): Manage "Runtime OFfchain Logic" apps
+- [Tools & Services: ABI Playground](https://docs.oasis.io/build/tools/abi-playground.md): Interacting with contracts in the browser
+- [Tools & Services: Contract Verification](https://docs.oasis.io/build/tools/verification.md): Verifying deployed contracts
+- [Tools & Services: Band Oracle](https://docs.oasis.io/build/tools/band.md): A guide to integrate the Band Oracle
+- [Tools & Services: Localnet](https://docs.oasis.io/build/tools/localnet.md): A Docker container that simulates a local Sapphire blockchain
+- [Tools & Services: Remix](https://docs.oasis.io/build/tools/remix.md): A guide for the Remix web IDE
+- [Tools & Services: Foundry](https://docs.oasis.io/build/tools/foundry.md): A guide for Foundry
+- [Tools & Services: Build Paratime](https://docs.oasis.io/build/tools/build-paratime.md): Build your own ParaTime using Oasis Runtime SDK
+- [Tools & Services / Build Paratime: Prerequisites](https://docs.oasis.io/build/tools/build-paratime/prerequisites.md): How to build your first runtime
+- [Tools & Services / Build Paratime: Minimal Runtime](https://docs.oasis.io/build/tools/build-paratime/minimal-runtime.md): This chapter will show you how to quickly create, build and test a minimal runtime that allows transfers between accounts by using the accounts module provided by the Runtime SDK.
+- [Tools & Services / Build Paratime: Modules](https://docs.oasis.io/build/tools/build-paratime/modules.md): As we saw in the minimal runtime example, creating an Oasis runtime is very easy to do thanks to the boilerplate provided by the Oasis SDK.
+- [Tools & Services / Build Paratime: Reproducibility](https://docs.oasis.io/build/tools/build-paratime/reproducibility.md): If you wish to build paratime binaries yourself, you can use the environment provided as part of the SDK. This way you can also verify that the binaries match the ones running on the network.
+- [Tools & Services: Consensus Layer and Other ParaTimes](https://docs.oasis.io/build/tools/other-paratimes.md): Other Paratimes
+- [Tools & Services / Consensus Layer and Other ParaTimes: Consensus network information](https://docs.oasis.io/build/tools/other-paratimes/network.md): Detailed information for the consensus layer about RPCs, block explorers and indexers
+- [Tools & Services / Consensus Layer and Other ParaTimes: Cipher](https://docs.oasis.io/build/tools/other-paratimes/cipher.md): Cipher is a confidential ParaTime for executing Wasm smart contracts.
+- [Tools & Services / Consensus Layer and Other ParaTimes / Cipher: Prerequisites](https://docs.oasis.io/build/tools/other-paratimes/cipher/prerequisites.md): How to build your first smart contract on Oasis
+- [Tools & Services / Consensus Layer and Other ParaTimes / Cipher: Network Information](https://docs.oasis.io/build/tools/other-paratimes/cipher/network.md): Network Information for Cipher, with detailed information about RPCs, block explorer and indexer
+- [Tools & Services / Consensus Layer and Other ParaTimes / Cipher: Hello World](https://docs.oasis.io/build/tools/other-paratimes/cipher/hello-world.md): This chapter will show you how to quickly create, build and test a minimal Oasis WebAssembly smart contract.
+- [Tools & Services / Consensus Layer and Other ParaTimes / Cipher: Confidential Hello World](https://docs.oasis.io/build/tools/other-paratimes/cipher/confidential-smart-contract.md): Confidential smart contract execution on Oasis is assured by three mechanisms
+- [Tools & Services / Consensus Layer and Other ParaTimes: Emerald](https://docs.oasis.io/build/tools/other-paratimes/emerald.md): Emerald is our official ParaTime which executes smart contracts inside the Ethereum Virtual Machine (EVM).
+- [Tools & Services / Consensus Layer and Other ParaTimes / Emerald: Network Information](https://docs.oasis.io/build/tools/other-paratimes/emerald/network.md): Network Information for Emerald, with detailed information about chains, RPCs, block explorer and indexer
+- [Tools & Services / Consensus Layer and Other ParaTimes / Emerald: Writing dApps on Emerald](https://docs.oasis.io/build/tools/other-paratimes/emerald/writing-dapps-on-emerald.md): This tutorial will show you how to set up dApp development environment for Emerald to be able to write and deploy dApps on Oasis Emerald.
+
+## Learn
+
+- [Overview](https://docs.oasis.io/general.md): This chapter provides general overview of the Oasis Network and introduces basic tools for you to get started.
+- [Oasis Network](https://docs.oasis.io/general/oasis-network.md): The Oasis Network is a Layer 1 decentralized blockchain network designed to be uniquely scalable, privacy-first and versatile.
+- [Oasis Network: Token Metrics and Distribution](https://docs.oasis.io/general/oasis-network/token-metrics-and-distribution.md): Supply: The ROSE native token is a capped supply token. The circulating supply at launch will be approximately 1.5 billion tokens, and the total cap is fixed at 10 billion tokens.
+- [Oasis Network: Papers](https://docs.oasis.io/general/oasis-network/papers.md): Liquefaction: Privately Liquefying Blockchain Assets [arXiv PDF] James Austgen, Andrés Fábrega, Mahimna Kelkar, Dani Vilardell, Sarah Allen, Kushal Babel, Jay Yu, Ari Juels 2025 IEEE Symposium on...
+- [Oasis Network: Frequently Asked Questions](https://docs.oasis.io/general/oasis-network/faq.md): This page tries to answer some of the most frequently asked questions about the Oasis Network.
+- [Manage your Tokens](https://docs.oasis.io/general/manage-tokens.md): Transfer, deposit, withdraw and delegate your ROSE
+- [Manage your Tokens: Terminology](https://docs.oasis.io/general/manage-tokens/terminology.md): A staking account is an entry in the staking ledger.
+- [Manage your Tokens: Staking and Delegating](https://docs.oasis.io/general/manage-tokens/staking-and-delegating.md): The Oasis Network is a proof-of-stake network. This means that the voting power of an entity in the network is determined by the amount of tokens staked to that entity.
+- [Manage your Tokens / ROSE Wallet: Web](https://docs.oasis.io/general/manage-tokens/oasis-wallets/web.md): The Oasis Foundation-managed non-custodial web wallet
+- [Manage your Tokens / ROSE Wallet: Browser Extension](https://docs.oasis.io/general/manage-tokens/oasis-wallets/browser-extension.md): The Oasis Foundation-managed non-custodial browser extension wallet
+- [Manage your Tokens / 3rd Party Wallets and Services: Custody Providers & Protocols](https://docs.oasis.io/general/manage-tokens/holding-rose-tokens/custody-providers.md): Not comfortable keeping the keys on your own?
+- [Manage your Tokens / 3rd Party Wallets and Services: Ledger Hardware Wallet](https://docs.oasis.io/general/manage-tokens/holding-rose-tokens/ledger-wallet.md): How to setup your Ledger hardware wallet
+- [Manage your Tokens: How to Bridge Assets to Oasis Sapphire](https://docs.oasis.io/general/manage-tokens/how-to-bridge-assets.md): This guide shows how to bridge assets (ETH, USDC, USDT, etc.) from networks like Ethereum, BNB Chain, or Polygon to Oasis Sapphire - an EVM-compatible ParaTime with confidential smart contracts.
+- [Manage your Tokens: Frequently Asked Questions](https://docs.oasis.io/general/manage-tokens/faq.md): This documents answers frequently asked questions about the official Oasis and 3rd party wallets & custody providers supporting ROSE.
+
+## Get Involved
+
+- [Join our Community](https://docs.oasis.io/get-involved.md): Whether you're a blockchain enthusiast, a software developer, or someone who is just starting to learn about crypto, we're excited to welcome you to our community.
+- [Run a Node: Consensus Validator Node](https://docs.oasis.io/get-involved/run-node/validator-node.md): This guide provides an overview of the technical setup and stake requirements to become a validator on the consensus layer of the Oasis Network.
+- [Run a Node: ParaTime Node](https://docs.oasis.io/get-involved/run-node/paratime-node.md): This guide provides an overview of the requirements to become a compute node for a ParaTime connected to the Oasis Network.
+- [Develop Oasis Core](https://docs.oasis.io/get-involved/oasis-core.md): This document outlines our guidelines for contributing to the Oasis Network's codebase and documentation.
+- [Network Governance](https://docs.oasis.io/get-involved/network-governance.md): If you have a general question on how to use and deploy our software, please read our Run a Node section or join our community Discord.
+- [Delegation Policy](https://docs.oasis.io/get-involved/delegation-policy.md): The Oasis Protocol Foundation delegates ROSE tokens to node operators who run Oasis Consensus validator and ParaTime compute nodes on Mainnet and/or Testnet.
+- [Token Delivery & KYC Guide](https://docs.oasis.io/get-involved/token-delivery-and-kyc.md): If you're visiting this page, you may have recently earned ROSE tokens via the Community Cup program, the Ambassador Rewards program, or a recent hackathon. Congratulations!
+
+## Run Node
+
+- [Overview](https://docs.oasis.io/node.md): Welcome! This documentation is designed to provide you with a comprehensive understanding and step-by-step guidance for becoming a node operator within the Oasis Network.
+- [Network Information](https://docs.oasis.io/node/network.md)
+- [Network Information: Mainnet](https://docs.oasis.io/node/network/mainnet.md): These are the current parameters for the Mainnet
+- [Network Information: Testnet](https://docs.oasis.io/node/network/testnet.md): These are the current parameters for the Testnet, a test-only network for testing out upcoming features and changes to the protocol.
+- [Run Your Node](https://docs.oasis.io/node/run-your-node.md): The Oasis Network consists of several types of nodes, each serving distinct roles to maintain the functionality, security, and decentralization of the network.
+- [Run Your Node / Prerequisites: Hardware Requirements](https://docs.oasis.io/node/run-your-node/prerequisites/hardware-recommendations.md): The Oasis Network is composed of multiple classes of nodes and services such as
+- [Run Your Node / Prerequisites: Cloud Providers](https://docs.oasis.io/node/run-your-node/prerequisites/cloud-providers.md): Before committing to a service be sure to verify the processor compatibility and enquire with the provider about the status of Intel SGX support.
+- [Run Your Node / Prerequisites: Stake Requirements](https://docs.oasis.io/node/run-your-node/prerequisites/stake-requirements.md): To check the balance of your account, use one of the blockchain explorers like the Oasis Explorer, Oasis Scan or the oasis account show command part of the Oasis CLI.
+- [Run Your Node / Prerequisites: Install the Oasis Node](https://docs.oasis.io/node/run-your-node/prerequisites/oasis-node.md): The Oasis node is a binary that is created from the Oasis Core repository's go/ directory. It is a single executable that contains the logic for running your node in various roles.
+- [Run Your Node / Prerequisites: System Configuration](https://docs.oasis.io/node/run-your-node/prerequisites/system-configuration.md): This page outlines the modifications necessary that should be made to the configuration of the system where you are running an Oasis Node instance.
+- [Run Your Node / Prerequisites: Set up Trusted Execution Environment (TEE)](https://docs.oasis.io/node/run-your-node/prerequisites/set-up-tee.md): Most Oasis ParaTimes and ROFLs are configured to run in a TEE. There are two kinds of Intel TEEs currently in use
+- [Run Your Node: Validator Node](https://docs.oasis.io/node/run-your-node/validator-node.md): This guide will walk you through the process of setting up your validator node for the Oasis Network either on Mainnet or Testnet.
+- [Run Your Node: Non-validator Node](https://docs.oasis.io/node/run-your-node/non-validator-node.md): These instructions are for setting up a non-validator node. If you want to run a validator node instead, see the instructions for running a validator node.
+- [Run Your Node: Seed Node](https://docs.oasis.io/node/run-your-node/seed-node.md): This guide will cover setting up a seed node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+- [Run Your Node: Archive Node](https://docs.oasis.io/node/run-your-node/archive-node.md): This page describes how to run an archive node on the Oasis Network.
+- [Run Your Node: ParaTime Node](https://docs.oasis.io/node/run-your-node/paratime-node.md): For a production setup, we recommend running the ParaTime compute/storage node separately from the validator node (if you run one).
+- [Run Your Node: ParaTime Client Node](https://docs.oasis.io/node/run-your-node/paratime-client-node.md): This guide will cover setting up your ParaTime client node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+- [Run Your Node / ParaTime Client Node: ParaTime Observer Node](https://docs.oasis.io/node/run-your-node/paratime-observer-node.md): These instructions are for setting up a ParaTime observer node, which is a special client node that supports confidential smart contact queries.
+- [Run Your Node: ROFL Node](https://docs.oasis.io/node/run-your-node/rofl-node.md): These instructions are for setting up a ROFL node which executes ROFLs inside a TEE, but otherwise only observes the ParaTime activity and can also submit transactions.
+- [Run Your Node: Key Manager Node](https://docs.oasis.io/node/run-your-node/keymanager-node.md): These instructions are for setting up a key manager node. Key manager nodes run a special runtime that provides confidentiality to other ParaTimes.
+- [Run Your Node / Key Manager Node: Signing Key Manager Policy](https://docs.oasis.io/node/run-your-node/keymanager-node/signing-key-manager-policy.md): This guide will describe how to print and sign an Oasis key manager policy.
+- [Run Your Node / Key Manager Node: Upgrading Key Managers](https://docs.oasis.io/node/run-your-node/keymanager-node/key-manager-upgrade.md): This guide will describe how to upgrade a key manager node.
+- [Run Your Node: Sentry Node](https://docs.oasis.io/node/run-your-node/sentry-node.md): This guide provides instructions for a deployment using the Sentry node architecture to protect validator nodes from being directly exposed on the public network.
+- [Run Your Node / Maintenance: Wiping Node State](https://docs.oasis.io/node/run-your-node/maintenance/wiping-node-state.md): In certain situations, you may need to do a complete node redeployment with a clean state. Two common scenarios for this are during a breaking network upgrade or in cases of severe data corruption.
+- [Run Your Node / Maintenance: Handling Network Upgrades](https://docs.oasis.io/node/run-your-node/maintenance/handling-network-upgrades.md): Changes between the major consensus network versions are backward and forward breaking.
+- [Run Your Node / Maintenance: Adding or Removing Nodes](https://docs.oasis.io/node/run-your-node/maintenance/adding-or-removing-nodes.md): At some point you may wish to add or remove nodes from your entity. In order to do so, you will need to have at least the following
+- [Run Your Node / Maintenance: Refreshing Node Certificates](https://docs.oasis.io/node/run-your-node/maintenance/refreshing-certificates.md): Go to your validator node's data directory, e.g. /node/data
+- [Run Your Node / Maintenance: Shutting Down a Node](https://docs.oasis.io/node/run-your-node/maintenance/shutting-down-a-node.md): Depending on the role (e.g. validator), a node may periodically register itself to the consensus registry, committing itself to serve requests until the expiration epoch.
+- [Run Your Node / Advanced: Using State Sync for Quick Bootstrapping](https://docs.oasis.io/node/run-your-node/advanced/sync-node-using-state-sync.md): The State Sync is a way to quickly bootstrap a full Oasis node (either a validator node or a non-validator node) by initializing it from the trusted block's header, identified by the trusted...
+- [Run Your Node / Advanced: Pruning State](https://docs.oasis.io/node/run-your-node/advanced/pruning.md): To reduce hardware requirements and improve the overall latency of the node, operators are encouraged to prune their state (unless also serving historical state).
+- [Run Your Node / Advanced: Copy State from One Node to the Other](https://docs.oasis.io/node/run-your-node/advanced/copy-state-from-one-node-to-the-other.md): A network that's been running for some time can accrue significant amount of state.
+- [Run Your Node / Advanced: Remote Signer for Oasis Node Keys](https://docs.oasis.io/node/run-your-node/advanced/remote-signer.md): The Oasis remote signer is an application that contains logic for various Oasis Core signers. Currently, only the file-based signer is implemented, but support for hardware signers is in the works.
+- [Run Your Node: Troubleshooting](https://docs.oasis.io/node/run-your-node/troubleshooting.md): Oasis Node Troubleshooting for Node Operators and Hackers
+- [Web3 Gateway](https://docs.oasis.io/node/web3.md): Web3 gateway for Emerald and Sapphire ParaTimes
+- [gRPC Proxy](https://docs.oasis.io/node/grpc.md): gRPC proxy for Oasis node
+- [Reference: Genesis Document](https://docs.oasis.io/node/reference/genesis-doc.md): A genesis document contains the initial state of an Oasis Network, and all the necessary information for launching that particular network (e.g. Mainnet, Testnet).
+- [Reference / Network Upgrades: Damask Upgrade](https://docs.oasis.io/node/reference/upgrades/damask-upgrade.md): This document provides an overview of the changes for the Damask Mainnet upgrade.
+- [Reference / Network Upgrades: Cobalt Upgrade](https://docs.oasis.io/node/reference/upgrades/cobalt-upgrade.md): This document provides an overview of the proposed criteria and changes for the Cobalt Mainnet upgrade.
+- [Reference / Network Upgrades: Upgrade to Mainnet](https://docs.oasis.io/node/reference/upgrades/mainnet-upgrade.md): This document provides an overview of the proposed criteria and changes to upgrade from Mainnet Beta to Mainnet.
+- [Reference / Upgrade Logs: Mainnet](https://docs.oasis.io/node/reference/upgrade-logs/mainnet.md): For each upgrade of the Oasis Network, we are tracking important changes for node operators' deployments.
+- [Reference / Upgrade Logs: Testnet](https://docs.oasis.io/node/reference/upgrade-logs/testnet.md): For each upgrade of the Testnet network, we are tracking important changes for node operators' deployments.
+
+## Develop Core
+
+- [Overview](https://docs.oasis.io/core.md): Here are instructions on how to set up the local build environment, run the tests and some examples on how to prepare test networks for local development of Oasis Core components.
+- [Development Setup / Build Environment Setup and Building: Prerequisites](https://docs.oasis.io/core/development-setup/prerequisites.md): The following is a list of prerequisites required to start developing on Oasis Core
+- [Development Setup / Build Environment Setup and Building: Building](https://docs.oasis.io/core/development-setup/building.md): This chapter contains a description of steps required to build Oasis Core. Before proceeding, make sure to look at the prerequisites required for running an Oasis Core environment.
+- [Development Setup / Running Tests and Development Networks: Running Tests](https://docs.oasis.io/core/development-setup/running-tests.md): Before proceeding, make sure to look at the prerequisites required for running an Oasis Core environment followed by build instructions for the respective environment (non-SGX or SGX).
+- [Development Setup / Running Tests and Development Networks: Local Network Runner](https://docs.oasis.io/core/development-setup/oasis-net-runner.md): In order to make development easier (and also to facilitate automated E2E tests), the Oasis Core repository provides a utility called oasis-net-runner that enables developers to quickly set up...
+- [Development Setup / Running Tests and Development Networks: Single Validator Node Network](https://docs.oasis.io/core/development-setup/single-validator-node-network.md): It is possible to provision a local "network" consisting of a single validator node. This may be useful for specific development use cases.
+- [Development Setup / Running Tests and Development Networks: Deploying a Runtime](https://docs.oasis.io/core/development-setup/deploying-a-runtime.md): Before proceeding, make sure to look at the prerequisites required for running an Oasis Core environment followed by build instructions for the respective environment (non-SGX or SGX), using the...
+- [High-Level Components: Consensus Layer](https://docs.oasis.io/core/consensus.md): Oasis Core is designed around the principle of modularity. The consensus layer is an interface that provides a number of important services to other parts of Oasis Core.
+- [High-Level Components / Consensus Layer: Transactions](https://docs.oasis.io/core/consensus/transactions.md): The consensus layer uses a common transaction format for all transactions. As with other Oasis Core components, it tries to be independent of any concrete consensus backend.
+- [High-Level Components / Consensus Layer / Services: Epoch Time](https://docs.oasis.io/core/consensus/services/epochtime.md)
+- [High-Level Components / Consensus Layer / Services: Random Beacon](https://docs.oasis.io/core/consensus/services/beacon.md): The random beacon service is responsible for providing a source of unbiased randomness on each epoch.
+- [High-Level Components / Consensus Layer / Services: Staking](https://docs.oasis.io/core/consensus/services/staking.md): The staking service is responsible for managing the staking ledger in the consensus layer.
+- [High-Level Components / Consensus Layer / Services: Registry](https://docs.oasis.io/core/consensus/services/registry.md): The registry service is responsible for managing a registry of runtime, entity and node public keys and metadata.
+- [High-Level Components / Consensus Layer / Services: Committee Scheduler](https://docs.oasis.io/core/consensus/services/scheduler.md): The committee scheduler service is responsible for periodically scheduling all committees (validator, compute, key manager) based on epoch-based time and entropy provided by the random beacon.
+- [High-Level Components / Consensus Layer / Services: Governance](https://docs.oasis.io/core/consensus/services/governance.md): The governance service is responsible for providing an on-chain governance mechanism.
+- [High-Level Components / Consensus Layer / Services: Root Hash](https://docs.oasis.io/core/consensus/services/roothash.md): The roothash service is responsible for runtime commitment processing and minimal runtime state keeping.
+- [High-Level Components / Consensus Layer / Services: Key Manager](https://docs.oasis.io/core/consensus/services/keymanager.md): The key manager service is responsible for coordinating the SGX-based key manager runtimes. It stores and publishes policy documents and status updates required for key manager replication.
+- [High-Level Components / Consensus Layer: Genesis Document](https://docs.oasis.io/core/consensus/genesis.md): The genesis document contains a set of parameters that outline the initial state of the consensus layer and its services.
+- [High-Level Components / Consensus Layer: Transaction Test Vectors](https://docs.oasis.io/core/consensus/test-vectors.md): In order to test transaction generation, parsing and signing, we provide a set of test vectors. They can be generated for the following consensus services
+- [High-Level Components: Runtime Layer](https://docs.oasis.io/core/runtime.md): The Oasis Core runtime layer enables independent runtimes to schedule and execute stateful computations and commit result summaries to the consensus layer.
+- [High-Level Components / Runtime Layer: Runtime Host Protocol](https://docs.oasis.io/core/runtime/runtime-host-protocol.md): The Runtime Host Protocol (RHP) is a simple RPC protocol which is used to communicate between a runtime and an Oasis Core Compute Node.
+- [High-Level Components / Runtime Layer: Runtime IDs](https://docs.oasis.io/core/runtime/identifiers.md): Identifiers for runtimes are represented by the common.Namespace type.
+- [High-Level Components / Runtime Layer: Runtime Messages](https://docs.oasis.io/core/runtime/messages.md): In order to enable runtimes to perform actions in the consensus layer on their behalf, they can emit messages in each round.
+- [High-Level Components / Oasis Node: RPC](https://docs.oasis.io/core/oasis-node/rpc.md): Oasis Node exposes an RPC interface to enable external applications to query current consensus and runtime states, submit transactions, etc.
+- [High-Level Components / Oasis Node: Metrics](https://docs.oasis.io/core/oasis-node/metrics.md): oasis-node can report a number of metrics to Prometheus server. By default, no metrics are collected and reported. There is one way to enable metrics reporting
+- [High-Level Components / Oasis Node: oasis-node CLI](https://docs.oasis.io/core/oasis-node/cli.md): To check if a given genesis file is valid, run
+- [Common Functionality: Encoding](https://docs.oasis.io/core/encoding.md): All messages exchanged by different components in Oasis Core are encoded using canonical CBOR as defined by RFC 7049.
+- [Common Functionality: Cryptography](https://docs.oasis.io/core/crypto.md): In most places where cryptographic hashes are required, we use the SHA-512/256 hash function as specified in FIPS 180-4.
+- [Common Functionality / Protocols: Authenticated gRPC](https://docs.oasis.io/core/authenticated-grpc.md): Oasis Core nodes communicate between themselves over various protocols. One of those protocols is gRPC which is currently used for the following
+- [Common Functionality: Merklized Key-Value Store (MKVS)](https://docs.oasis.io/core/mkvs.md): For all places that require an authenticated data structure (ADS) we provide an implementation of a Merklized Key-Value Store, internally implemented as a Merklized Patricia trie.
+- [Processes: Release Process](https://docs.oasis.io/core/release-process.md): The following steps should be followed when preparing a release.
+- [Processes: Versioning](https://docs.oasis.io/core/versioning.md): Oasis Core (as a whole) uses a CalVer (calendar versioning) scheme with the following format
+- [Processes: Security](https://docs.oasis.io/core/SECURITY.md): At Oasis Foundation, we take security very seriously and we deeply appreciate any effort to discover and fix vulnerabilities in Oasis Core and other projects powering the Oasis Network.
+
+## Other
+
+- [Getting Started](https://docs.oasis.io/index.md): Use Oasis to build verifiable, auditable applications powered by TEE running on a permissionless network of nodes. No censorship, no hidden costs, no central authority!
+- [Big Integer Quantities](https://docs.oasis.io/core/bigint.md): Arbitrary-precision positive integer quantities are represented by the quantity.Quantity type.
+- [Eden Upgrade](https://docs.oasis.io/node/reference/upgrades/eden-upgrade.md): This document provides an overview of the changes for the Eden Mainnet upgrade.
+
+## Optional
+
+- [Docs for LLMs](https://docs.oasis.io/llms-full.txt)
+- [Architectural Decision Records: ADR 0001: Multiple Roots Under the Tendermint Application Hash](https://docs.oasis.io/adrs/0001-tm-multi-root-apphash.md): Currently the Tendermint ABCI application hash is equal to the consensus state root for a specific height.
+- [Architectural Decision Records: ADR 0002: Go Modules Compatible Git Tags](https://docs.oasis.io/adrs/0002-go-modules-compatible-git-tags.md): Projects that depend on Oasis Core's Go module, i.e. github.com/oasisprotocol/oasis-core/go, need a way to depend on its particular version.
+- [Architectural Decision Records: ADR 0003: Consensus/Runtime Token Transfer](https://docs.oasis.io/adrs/0003-consensus-runtime-token-transfer.md): Currently each runtime can define its own token (or none at all) and there is no mechanism that would support transfer of consensus layer tokens into a runtime and back out.
+- [Architectural Decision Records: ADR 0004: Runtime Governance](https://docs.oasis.io/adrs/0004-runtime-governance.md): Currently all runtimes can only be governed by a single entity -- the runtime owner.
+- [Architectural Decision Records: ADR 0005: Runtime Compute Node Slashing](https://docs.oasis.io/adrs/0005-runtime-compute-slashing.md): The runtime compute nodes make updates to the runtime state by submitting commitment messages to the roothash service in the consensus layer where discrepancy detection and resolution are performed.
+- [Architectural Decision Records: ADR 0006: Consensus Governance](https://docs.oasis.io/adrs/0006-consensus-governance.md): Currently the consensus layer does not contain any on-chain governance mechanism so any network upgrades need to be carefully coordinated off-chain.
+- [Architectural Decision Records: ADR 0007: Improved Random Beacon](https://docs.oasis.io/adrs/0007-improved-random-beacon.md): The existing random beacon used by Oasis Core, is largely a placeholder implementation that naively uses the previous block's commit hash as the entropy input.
+- [Architectural Decision Records: ADR 0008: Standard Account Key Generation](https://docs.oasis.io/adrs/0008-standard-account-key-generation.md): Currently, each application interacting with the Oasis Network defines its own method of generating an account's private/public key pair.
+- [Architectural Decision Records: ADR 0009: Ed25519 Signature Verification Semantics](https://docs.oasis.io/adrs/0009-ed25519-semantics.md): For a large host of reasons, mostly historical, there are numerous definitions of "Ed25519 signature validation" in the wild, which have the potential to be mutually incompatible.
+- [Architectural Decision Records: ADR 0010: VRF-based Committee Elections](https://docs.oasis.io/adrs/0010-vrf-elections.md): While functional, the current PVSS-based random beacon is neither all that performant, nor all that scalable.
+- [Architectural Decision Records: ADR 0011: Incoming Runtime Messages](https://docs.oasis.io/adrs/0011-incoming-runtime-messages.md): There is currently a single mechanism through which the consensus layer and a runtime may interact in a consistent and secure manner.
+- [Architectural Decision Records: ADR 0012: Runtime Message Results](https://docs.oasis.io/adrs/0012-runtime-message-results.md): Currently, the results of emitted runtime messages are MessageEvent s, which only provide information whether the message execution was successful or not.
+- [Architectural Decision Records: ADR 0013: Runtime Upgrade Improvements](https://docs.oasis.io/adrs/0013-runtime-upgrades.md): Currently major runtime updates incur at least one epoch worth of downtime for the transition period.
+- [Architectural Decision Records: ADR 0014: Signing Runtime Transactions with Hardware Wallet](https://docs.oasis.io/adrs/0014-runtime-signing-tx-with-hardware-wallet.md): This document proposes additions to APDU specification, guidelines for parsing runtime transactions and general UI/UX for signing them on a hardware wallet
+- [Architectural Decision Records: ADR 0015: Randomized Paratime Proposer Selection](https://docs.oasis.io/adrs/0015-vrf-per-block-entropy.md): The paratime block proposer currently is selected via a round-robin algorithm, and it is trivial to determine the block proposer well in advance.
+- [Architectural Decision Records: ADR 0016: Consensus Parameters Change Proposal](https://docs.oasis.io/adrs/0016-consensus-parameters-change-proposal.md): Currently consensus parameters can only be changed with an upgrade governance proposal which is effective but not very efficient.
+- [Architectural Decision Records: ADR 0017: ParaTime Application Standard Proposal Process](https://docs.oasis.io/adrs/0017-app-standards.md): Applications running within a ParaTime having a novel runtime environment (e.g., Sapphire, Cipher) benefit from interoperability standards. For example, ERCs in Ethereum.
+- [Architectural Decision Records: ADR 0020: Governance Support for Delegator Votes](https://docs.oasis.io/adrs/0020-governance-delegator-votes.md): With the current governance voting mechanism (ADR 04), only the active validator set is participating in voting. This means that the validators are voting on behalf of all their delegators.
+- [Architectural Decision Records: ADR 0021: Forward-Secret Ephemeral Secrets](https://docs.oasis.io/adrs/0021-keymanager-ephemeral-secrets.md): The network needs forward-secret ephemeral secrets that are distributed amongst enclave executors.
+- [Architectural Decision Records: ADR 0022: Forward-Secret Master Secrets](https://docs.oasis.io/adrs/0022-keymanager-master-secrets.md): The network needs forward-secret master secrets that are generated periodically and distributed amongst enclave executors.
+- [Architectural Decision Records: ADR 0023: Secret Sharing Schemes (CHURP)](https://docs.oasis.io/adrs/0023-keymanager-secret-sharing.md): Currently, key managers derive keys from either master secrets or ephemeral secrets, which are unique to the key manager runtime and shared among key manager nodes.
+- [Architectural Decision Records: ADR 0024: Runtime Off-chain Logic (ROFL)](https://docs.oasis.io/adrs/0024-off-chain-runtime-logic.md): Sometimes we may want the runtime compute nodes to run additional off-chain logic that communicates with the on-chain state securely (e.g.
+- [Architectural Decision Records: ADR 0025: Hot-loading of Runtime Bundles](https://docs.oasis.io/adrs/0025-bundle_hot_loading.md): The secure procedure for upgrading runtimes is not simple and requires significant effort from node operators.

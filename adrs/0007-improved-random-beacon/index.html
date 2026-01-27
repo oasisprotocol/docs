@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-adrs/0007-improved-random-beacon" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">ADR 0007: Improved Random Beacon | Oasis Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.oasis.io/adrs/0007-improved-random-beacon"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ADR 0007: Improved Random Beacon | Oasis Documentation"><meta data-rh="true" name="description" content="Component"><meta data-rh="true" property="og:description" content="Component"><link data-rh="true" rel="icon" href="/img/favicon/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.oasis.io/adrs/0007-improved-random-beacon"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/adrs/0007-improved-random-beacon" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/adrs/0007-improved-random-beacon" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.551f8251.css">
+<script src="/assets/js/runtime~main.4f6be8e5.js" defer="defer"></script>
+<script src="/assets/js/main.9d193f4f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/logo_dark.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo_dark.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a class="navbar__item navbar__link" href="/build/">Build</a><a class="navbar__item navbar__link" href="/general/">Learn</a><a class="navbar__item navbar__link" href="/get-involved/">Get Involved</a><a class="navbar__item navbar__link" href="/node/">Run Node</a><a class="navbar__item navbar__link" href="/core/">Develop Core</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" title="GitHub repository" aria-label="GitHub repository"></a><a href="https://oasis.net/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-www-link" title="Oasis website" aria-label="Oasis website"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/adrs"><span title="Architectural Decision Records" class="categoryLinkLabel_W154">Architectural Decision Records</span></a><button aria-label="Collapse sidebar category &#x27;Architectural Decision Records&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0001-tm-multi-root-apphash"><span title="ADR 0001: Multiple Roots Under the Tendermint Application Hash" class="linkLabel_WmDU">ADR 0001: Multiple Roots Under the Tendermint Application Hash</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0002-go-modules-compatible-git-tags"><span title="ADR 0002: Go Modules Compatible Git Tags" class="linkLabel_WmDU">ADR 0002: Go Modules Compatible Git Tags</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0003-consensus-runtime-token-transfer"><span title="ADR 0003: Consensus/Runtime Token Transfer" class="linkLabel_WmDU">ADR 0003: Consensus/Runtime Token Transfer</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0004-runtime-governance"><span title="ADR 0004: Runtime Governance" class="linkLabel_WmDU">ADR 0004: Runtime Governance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0005-runtime-compute-slashing"><span title="ADR 0005: Runtime Compute Node Slashing" class="linkLabel_WmDU">ADR 0005: Runtime Compute Node Slashing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0006-consensus-governance"><span title="ADR 0006: Consensus Governance" class="linkLabel_WmDU">ADR 0006: Consensus Governance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/adrs/0007-improved-random-beacon"><span title="ADR 0007: Improved Random Beacon" class="linkLabel_WmDU">ADR 0007: Improved Random Beacon</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0008-standard-account-key-generation"><span title="ADR 0008: Standard Account Key Generation" class="linkLabel_WmDU">ADR 0008: Standard Account Key Generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0009-ed25519-semantics"><span title="ADR 0009: Ed25519 Signature Verification Semantics" class="linkLabel_WmDU">ADR 0009: Ed25519 Signature Verification Semantics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0010-vrf-elections"><span title="ADR 0010: VRF-based Committee Elections" class="linkLabel_WmDU">ADR 0010: VRF-based Committee Elections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0011-incoming-runtime-messages"><span title="ADR 0011: Incoming Runtime Messages" class="linkLabel_WmDU">ADR 0011: Incoming Runtime Messages</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0012-runtime-message-results"><span title="ADR 0012: Runtime Message Results" class="linkLabel_WmDU">ADR 0012: Runtime Message Results</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0013-runtime-upgrades"><span title="ADR 0013: Runtime Upgrade Improvements" class="linkLabel_WmDU">ADR 0013: Runtime Upgrade Improvements</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0014-runtime-signing-tx-with-hardware-wallet"><span title="ADR 0014: Signing Runtime Transactions with Hardware Wallet" class="linkLabel_WmDU">ADR 0014: Signing Runtime Transactions with Hardware Wallet</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0015-vrf-per-block-entropy"><span title="ADR 0015: Randomized Paratime Proposer Selection" class="linkLabel_WmDU">ADR 0015: Randomized Paratime Proposer Selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0016-consensus-parameters-change-proposal"><span title="ADR 0016: Consensus Parameters Change Proposal" class="linkLabel_WmDU">ADR 0016: Consensus Parameters Change Proposal</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0017-app-standards"><span title="ADR 0017: ParaTime Application Standard Proposal Process" class="linkLabel_WmDU">ADR 0017: ParaTime Application Standard Proposal Process</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0020-governance-delegator-votes"><span title="ADR 0020: Governance Support for Delegator Votes" class="linkLabel_WmDU">ADR 0020: Governance Support for Delegator Votes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0021-keymanager-ephemeral-secrets"><span title="ADR 0021: Forward-Secret Ephemeral Secrets" class="linkLabel_WmDU">ADR 0021: Forward-Secret Ephemeral Secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0022-keymanager-master-secrets"><span title="ADR 0022: Forward-Secret Master Secrets" class="linkLabel_WmDU">ADR 0022: Forward-Secret Master Secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0023-keymanager-secret-sharing"><span title="ADR 0023: Secret Sharing Schemes (CHURP)" class="linkLabel_WmDU">ADR 0023: Secret Sharing Schemes (CHURP)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0024-off-chain-runtime-logic"><span title="ADR 0024: Runtime Off-chain Logic (ROFL)" class="linkLabel_WmDU">ADR 0024: Runtime Off-chain Logic (ROFL)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0025-bundle_hot_loading"><span title="ADR 0025: Hot-loading of Runtime Bundles" class="linkLabel_WmDU">ADR 0025: Hot-loading of Runtime Bundles</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>ADR 0007: Improved Random Beacon</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="component">Component<a href="#component" class="hash-link" aria-label="Direct link to Component" title="Direct link to Component" translate="no">​</a></h2>
+<p>Oasis Core</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="changelog">Changelog<a href="#changelog" class="hash-link" aria-label="Direct link to Changelog" title="Direct link to Changelog" translate="no">​</a></h2>
+<ul>
+<li class="">2020-10-22: Initial version</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="status">Status<a href="#status" class="hash-link" aria-label="Direct link to Status" title="Direct link to Status" translate="no">​</a></h2>
+<p>Proposed</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="context">Context<a href="#context" class="hash-link" aria-label="Direct link to Context" title="Direct link to Context" translate="no">​</a></h2>
+<blockquote>
+<p>Any one who considers arithmetical methods of producing random digits
+is, of course, in a state of sin.</p>
+<p>--Dr. John von  Neumann</p>
+</blockquote>
+<p>The existing random beacon used by Oasis Core, is largely a placeholder
+implementation that naively uses the previous block&#x27;s commit hash as the
+entropy input.  As such it is clearly insecure as it is subject to
+manipulation.</p>
+<p>A better random beacon which is harder for an adversary to manipulate
+is required to provide entropy for secure committee elections.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="decision">Decision<a href="#decision" class="hash-link" aria-label="Direct link to Decision" title="Direct link to Decision" translate="no">​</a></h2>
+<p>At a high level, this ADR proposes implementing an on-chain random beacon
+based on &quot;SCRAPE: Scalabe Randomness Attested by Public Entities&quot; by
+Cascudo and David.  The new random beacon will use a commit-reveal scheme
+backed by a PVSS scheme so that as long as the threshold of participants
+is met, and one participant is honest, secure entropy will be generated.</p>
+<p>Note: This document assumes the reader understands SCRAPE. Details
+regarding the underlying SCRAPE implementation are omitted for brevity.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="node-descriptor">Node Descriptor<a href="#node-descriptor" class="hash-link" aria-label="Direct link to Node Descriptor" title="Direct link to Node Descriptor" translate="no">​</a></h3>
+<p>The node descriptor of each node will be extended to include the following
+datastructure.</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">type Node struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // ... existing fields omitted ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // Beacon contains information for this node&#x27;s participation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // in the random beacon protocol.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  //</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // TODO: This is optional for now, make mandatory once enough</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // nodes provide this field.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Beacon *BeaconInfo `json:&quot;beacon,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// BeaconInfo contains information for this node&#x27;s participation in</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// the random beacon protocol.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type BeaconInfo struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // Point is the elliptic curve point used for the PVSS algorithm.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Point scrape.Point `json:&quot;point&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>Each node will generate and maintain a long term elliptic curve point
+and scalar pair (public/private key pair), the point (public key) of
+which will be included in the node descriptor.</p>
+<p>For the purposes of the initial implementation, the curve will be P-256.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="consensus-parameters">Consensus Parameters<a href="#consensus-parameters" class="hash-link" aria-label="Direct link to Consensus Parameters" title="Direct link to Consensus Parameters" translate="no">​</a></h3>
+<p>The beacon module will have the following consensus parameters that
+control behavior.</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">type SCRAPEParameters struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Participants  uint64 `json:&quot;participants&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Threshold     uint64 `json:&quot;threshold&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  PVSSThreshold uint64 `json:&quot;pvss_threshold&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  CommitInterval  int64 `json:&quot;commit_interval&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  RevealInterval  int64 `json:&quot;reveal_interval&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  TransitionDelay int64 `json:&quot;transition_delay&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>Fields:</p>
+<ul>
+<li class="">
+<p><code>Participants</code> - The number of participants to be selected for each
+beacon generation protocol round.</p>
+</li>
+<li class="">
+<p><code>Threshold</code> - The minimum number of participants which must
+successfully contribute entropy for the final output to be
+considered valid.</p>
+</li>
+<li class="">
+<p><code>PVSSThreshold</code> - The minimum number of participants that are
+required to reconstruct a PVSS secret from the corresponding
+decrypted shares (Note: This usually should just be set to
+<code>Threshold</code>).</p>
+</li>
+<li class="">
+<p><code>CommitInterval</code> - The duration of the Commit phase, in blocks.</p>
+</li>
+<li class="">
+<p><code>RevealInterval</code> - The duration of the Reveal phase, in blocks.</p>
+</li>
+<li class="">
+<p><code>TransitionDelay</code> - The duration of the post Reveal phase delay, in blocks.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="consensus-state-and-events">Consensus State and Events<a href="#consensus-state-and-events" class="hash-link" aria-label="Direct link to Consensus State and Events" title="Direct link to Consensus State and Events" translate="no">​</a></h3>
+<p>The on-chain beacon will maintain and make available the following consensus
+state.</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// RoundState is a SCRAPE round state.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type RoundState uint8</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">const (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  StateInvalid  RoundState = 0</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  StateCommit   RoundState = 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  StateReveal   RoundState = 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  StateComplete RoundState = 3</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// SCRAPEState is the SCRAPE backend state.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type SCRAPEState struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Height int64 `json:&quot;height,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Epoch EpochTime  `json:&quot;epoch,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Round uint64     `json:&quot;round,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  State RoundState `json:&quot;state,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Instance     *scrape.Instance      `json:&quot;instance,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Participants []signature.PublicKey `json:&quot;participants,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Entropy      []byte                `json:&quot;entropy,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  BadParticipants map[signature.PublicKey]bool `json:&quot;bad_participants,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  CommitDeadline   int64 `json:&quot;commit_deadline,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  RevealDeadline   int64 `json:&quot;reveal_deadline,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  TransitionHeight int64 `json:&quot;transition_height,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  RuntimeDisableHeight int64 `json:&quot;runtime_disable_height,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>Fields:</p>
+<ul>
+<li class="">
+<p><code>Height</code> - The block height at which the last event was emitted.</p>
+</li>
+<li class="">
+<p><code>Epoch</code> - The epoch in which this beacon is being generated.</p>
+</li>
+<li class="">
+<p><code>Round</code> - The epoch beacon generation round.</p>
+</li>
+<li class="">
+<p><code>State</code> - The beacon generation step (commit/reveal/complete).</p>
+</li>
+<li class="">
+<p><code>Instance</code> - The SCRAPE protocol state (encrypted/decrypted shares of
+all participants).</p>
+</li>
+<li class="">
+<p><code>Participants</code> - The node IDs of the nodes selected to participate
+in this beacon generation round.</p>
+</li>
+<li class="">
+<p><code>Entropy</code> - The final raw entropy, if any.</p>
+</li>
+<li class="">
+<p><code>BadParticipants</code> - A map of nodes that were selected, but have failed
+to execute the protocol correctly.</p>
+</li>
+<li class="">
+<p><code>CommitDeadline</code> - The height in blocks by which participants must
+submit their encrypted shares.</p>
+</li>
+<li class="">
+<p><code>RevealDeadline</code> - The height in blocks by which participants must
+submit their decrypted shares.</p>
+</li>
+<li class="">
+<p><code>TransitionHeight</code> - The height at which the epoch will transition
+assuming this round completes successfully.</p>
+</li>
+<li class="">
+<p><code>RuntimeDisableHeight</code> - The height at which, upon protocol failure,
+runtime transactions will be disabled.  This height will be set to
+the transition height of the 0th round.</p>
+</li>
+</ul>
+<p>Upon transition to a next step of the protocol, the on-chain beacon will
+emit the following event.</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// SCRAPEEvent is a SCRAPE backend event.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type SCRAPEEvent struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Height int64 `json:&quot;height,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Epoch EpochTime  `json:&quot;epoch,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Round uint64     `json:&quot;round,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  State RoundState `json:&quot;state,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Participants []signature.PublicKey `json:&quot;participants,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>Field definitions are identical to that of those in the <code>SCRAPEState</code>
+datastructure.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="transactions">Transactions<a href="#transactions" class="hash-link" aria-label="Direct link to Transactions" title="Direct link to Transactions" translate="no">​</a></h2>
+<p>Participating nodes will submit the following transactions when required,
+signed by the node identity key.</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">var (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // MethodSCRAPECommit is the method name for a SCRAPE commitment.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  MethodSCRAPECommit = transaction.NewMethodName(ModuleName, &quot;SCRAPECommit&quot;, SCRAPECommit{})</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // MethodSCRAPEReveal is the method name for a SCRAPE reveal.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  MethodSCRAPEReveal = transaction.NewMethodName(ModuleName, &quot;SCRAPEReveal&quot;, SCRAPEReveal{})</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// SCRAPECommit is a SCRAPE commitment transaction payload.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type SCRAPECommit struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Epoch EpochTime `json:&quot;epoch&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Round uint64    `json:&quot;round&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Commit *scrape.Commit `json:&quot;commit,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// SCRAPEReveal is a SCRAPE reveal transaction payload.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type SCRAPEReveal struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Epoch EpochTime `json:&quot;epoch&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Round uint64    `json:&quot;round&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Reveal *scrape.Reveal `json:&quot;reveal,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>Fields:</p>
+<ul>
+<li class="">
+<p><code>Epoch</code> - The epoch in which the transaction is applicable.</p>
+</li>
+<li class="">
+<p><code>Round</code> - The epoch beacon generation round for the transaction.</p>
+</li>
+<li class="">
+<p><code>Commit</code> - The SCRAPE commit consisting of PVSS shares encrypted to
+every participant.</p>
+</li>
+<li class="">
+<p><code>Reveal</code> - The SCRAPE reveal consisting of the decrypted result of
+PVSS shares received from every participant.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="beacon-generation">Beacon Generation<a href="#beacon-generation" class="hash-link" aria-label="Direct link to Beacon Generation" title="Direct link to Beacon Generation" translate="no">​</a></h3>
+<p>The beacon generation process is split into three sequential stages,
+roughly corresponding to the steps in the SCRAPE protocol.  Any failures
+in the Commit and Reveal phases result in a failed protocol round, and
+the generation process will restart after disqualifying participants who
+have induced the failure.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="commit-phase">Commit Phase<a href="#commit-phase" class="hash-link" aria-label="Direct link to Commit Phase" title="Direct link to Commit Phase" translate="no">​</a></h4>
+<p>Upon epoch transition or a prior failed round the commit phase is initiated
+the consensus application will select  <code>Particpants</code> nodes from the current
+validator set (in order of decending stake) to serve as entropy contributors.</p>
+<p>The <code>SCRAPEState</code> structure is (re)-initialized, and a <code>SCRAPEEvent</code> is
+broadcast to signal to the participants that they should generate and
+submit their encrypted shares via a <code>SCRAPECommit</code> transaction.</p>
+<p>Each commit phase lasts exactly <code>CommitInterval</code> blocks, at the end of which,
+the round will be closed to further commits.</p>
+<p>At the end of the commit phase, the SCRAPE protocol state is evaluated
+to ensure that <code>Threshold</code>/<code>PVSSThreshold</code> nodes have published encrypted
+shares, and if an insufficient number of nodes have published in either
+case, the round is considered to have failed.</p>
+<p>The following behaviors are currently candidates for a node being marked
+as malicious/non-particpatory (<code>BadParticipant</code>) and subject to exclusion
+from future rounds and slashing.</p>
+<ul>
+<li class="">
+<p>Not submitting a commitment.</p>
+</li>
+<li class="">
+<p>Malformed commitments (corrupted/fails to validate/etc).</p>
+</li>
+<li class="">
+<p>Attempting to alter an existing commitment for a given Epoch/Round.</p>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="reveal-phase">Reveal Phase<a href="#reveal-phase" class="hash-link" aria-label="Direct link to Reveal Phase" title="Direct link to Reveal Phase" translate="no">​</a></h4>
+<p>When the <code>CommitInterval</code> has passed, assuming that a sufficient number of
+commits have been received, the consensus application transitions into the
+reveal phase by updating the <code>SCRAPEState</code> structure and broadcasting a
+<code>SCRAPEEvent</code> to signal to the participants that they should reveal the
+decrypted values of the encrypted shares received from other participants
+via a <code>SCRAPEReveal</code> transaction.</p>
+<p>Each reveal phase lasts exactly <code>RevealInterval</code> blocks, at the end of which,
+the round will be closed to further reveals.</p>
+<p>At the end of the reveal phase, the SCRAPE protocol state is evaluated to
+ensure that <code>Threshold</code>/<code>PVSSThreshold</code> nodes have published decrypted
+shares, and if an insufficient number of nodes have published in either
+case, the round is considered to have failed.</p>
+<p>The following behaviors are currently candidates for a node being marked
+as malicious/non-participatory (<code>BadParticipant</code>) and subject to exclusion
+from future rounds and slashing.</p>
+<ul>
+<li class="">
+<p>Not submitting a reveal.</p>
+</li>
+<li class="">
+<p>Malformed commitments (corrupted/fails to validate/etc).</p>
+</li>
+<li class="">
+<p>Attempting to alter an existing reveal for a given Epoch/Round.</p>
+</li>
+</ul>
+<p>Note: It is possible for anybody who can observe consensus state to derive
+the entropy the moment a threshold number of <code>SCRAPEReveal</code> transactions
+have been processed.  Therefore the reveal phase should be a small fraction
+of the desired epoch as it is possible to derive the results of the
+committee elections for the next epoch mid-reveal phase.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="complete-transition-wait-phase">Complete (Transition Wait) Phase<a href="#complete-transition-wait-phase" class="hash-link" aria-label="Direct link to Complete (Transition Wait) Phase" title="Direct link to Complete (Transition Wait) Phase" translate="no">​</a></h4>
+<p>When the <code>RevealInterval</code> has passed, assuming that a sufficient number
+of reveals have been received, the consensus application recovers the
+final entropy output (the hash of the secret shared by each participant)
+and transitions into the complete (transition wait) phase by updating the
+<code>SCRAPEState</code> structure and broadcasting a <code>SCRAPEEvent</code> to signal to
+participants the completion of the round.</p>
+<p>No meaningful protocol activity happens one a round has successfully
+completed, beyond the scheduling of the next epoch transition.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="misc-changesnotes">Misc. Changes/Notes<a href="#misc-changesnotes" class="hash-link" aria-label="Direct link to Misc. Changes/Notes" title="Direct link to Misc. Changes/Notes" translate="no">​</a></h3>
+<p>Nodes MUST not be slashed for non-participation if they have not had
+the opportunity to propose any blocks during the relevant interval.</p>
+<p>Processing commitments and reveals is currently rather CPU intensive
+and thus each block SHOULD only contain one of each to prevent the
+consesus from stalling.</p>
+<p>To thwart attempts to manipulate committee placement by virute of the
+fact that it is possible to observe the entropy used for elections early
+nodes that register between the completion of the final commit phase and
+the epoch transition in any given epoch MUST be excluded from committee
+eligibility.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="consequences">Consequences<a href="#consequences" class="hash-link" aria-label="Direct link to Consequences" title="Direct link to Consequences" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="positive">Positive<a href="#positive" class="hash-link" aria-label="Direct link to Positive" title="Direct link to Positive" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p>The random beacon output is unbaised, provided that at least one
+participant is honest.</p>
+</li>
+<li class="">
+<p>The amount of consensus state required is relatively small.</p>
+</li>
+<li class="">
+<p>All protocol messages and steps can be verified on-chain, and misbehavior
+can be attributed.</p>
+</li>
+<li class="">
+<p>The final output can be generated on-chain.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="negative">Negative<a href="#negative" class="hash-link" aria-label="Direct link to Negative" title="Direct link to Negative" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p>Epoch intervals are theoretically variable under this proposal, as the
+beacon generation needs to be re-ran with new participants upon failure.</p>
+</li>
+<li class="">
+<p>A new failure mode is introduced at the consensus layer, where the
+beacon generation protocol exhausts eligible participants.</p>
+</li>
+<li class="">
+<p>Without using pairing based cryptography, the number of participants
+in the beacon generation is limited to a small subset of the anticipated
+active validator set.</p>
+</li>
+<li class="">
+<p>There is a time window where the next beacon can be derived by anyone
+with access to the consensus state before the epoch transition actually
+happens.  This should be mitigated by having a relatively short reveal
+period.</p>
+</li>
+<li class="">
+<p>The commit and reveal steps of the protocol are rather slow, especially
+as the number of participants increases.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="neutral">Neutral<a href="#neutral" class="hash-link" aria-label="Direct link to Neutral" title="Direct link to Neutral" translate="no">​</a></h3>
+<ul>
+<li class="">Due to performance reasons, the curve used by the PVSS scheme will
+be P-256 instead of Ed25519.  The point and scalar pairs that each
+node generates on this curve are exclusively for use in the random
+beacon protocol and are not used anywhere else.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://eprint.iacr.org/2017/216.pdf" target="_blank" rel="noopener noreferrer" class="">SCRAPE: SCalabe Randomness Attested by Public Entities</a></li>
+<li class=""><a href="https://github.com/oasisprotocol/oasis-core/pull/3180" target="_blank" rel="noopener noreferrer" class="">oasis-core#3180</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/oasisprotocol/adrs/edit/main/0007-improved-random-beacon.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-08-04T08:13:58.000Z" itemprop="dateModified">Aug 4, 2025</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/adrs/0006-consensus-governance"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">ADR 0006: Consensus Governance</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/adrs/0008-standard-account-key-generation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ADR 0008: Standard Account Key Generation</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#component" class="table-of-contents__link toc-highlight">Component</a></li><li><a href="#changelog" class="table-of-contents__link toc-highlight">Changelog</a></li><li><a href="#status" class="table-of-contents__link toc-highlight">Status</a></li><li><a href="#context" class="table-of-contents__link toc-highlight">Context</a></li><li><a href="#decision" class="table-of-contents__link toc-highlight">Decision</a><ul><li><a href="#node-descriptor" class="table-of-contents__link toc-highlight">Node Descriptor</a></li><li><a href="#consensus-parameters" class="table-of-contents__link toc-highlight">Consensus Parameters</a></li><li><a href="#consensus-state-and-events" class="table-of-contents__link toc-highlight">Consensus State and Events</a></li></ul></li><li><a href="#transactions" class="table-of-contents__link toc-highlight">Transactions</a><ul><li><a href="#beacon-generation" class="table-of-contents__link toc-highlight">Beacon Generation</a></li><li><a href="#misc-changesnotes" class="table-of-contents__link toc-highlight">Misc. Changes/Notes</a></li></ul></li><li><a href="#consequences" class="table-of-contents__link toc-highlight">Consequences</a><ul><li><a href="#positive" class="table-of-contents__link toc-highlight">Positive</a></li><li><a href="#negative" class="table-of-contents__link toc-highlight">Negative</a></li><li><a href="#neutral" class="table-of-contents__link toc-highlight">Neutral</a></li></ul></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Tools</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://explorer.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Explorer</a></li><li class="footer__item"><a href="https://wallet.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Wallet</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol/cli" target="_blank" rel="noopener noreferrer" class="footer__link-item">CLI</a></li><li class="footer__item"><a href="https://status.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Build</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://faucet.testnet.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Testnet Faucet</a></li><li class="footer__item"><a href="https://playground.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Playground</a></li><li class="footer__item"><a href="https://api.docs.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">API</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Node</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/node/network/mainnet">Mainnet</a></li><li class="footer__item"><a class="footer__link-item" href="/node/network/testnet">Testnet</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://oasis.io/discord" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord</a></li><li class="footer__item"><a href="https://t.me/oasisprotocolcommunity" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram</a></li><li class="footer__item"><a href="https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ" target="_blank" rel="noopener noreferrer" class="footer__link-item">Youtube</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
+<p xmlns:cc="http://creativecommons.org/ns#">Copyright © 2026
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
+Oasis Protocol Foundation</a>. We <a href="https://oasisprotocol.org/privacy-policy" target="_blank" rel="noopener noreferrer">respect your privacy</a>.
+Unless otherwise specified, all text and images on this website are licensed
+under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/by.svg"></a>.
+This does not include the Oasis software and the code examples, both of which are
+licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p></div></div></div></footer><!--$--><!--/$--></div>
+</body>
+</html>

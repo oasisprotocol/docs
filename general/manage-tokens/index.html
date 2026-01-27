@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-general/manage-tokens/README" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Manage your Tokens | Oasis Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.oasis.io/general/manage-tokens/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Manage your Tokens | Oasis Documentation"><meta data-rh="true" name="description" content="Transfer, deposit, withdraw and delegate your ROSE"><meta data-rh="true" property="og:description" content="Transfer, deposit, withdraw and delegate your ROSE"><link data-rh="true" rel="icon" href="/img/favicon/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.oasis.io/general/manage-tokens/"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/general/manage-tokens/" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/general/manage-tokens/" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.551f8251.css">
+<script src="/assets/js/runtime~main.4f6be8e5.js" defer="defer"></script>
+<script src="/assets/js/main.9d193f4f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/logo_dark.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo_dark.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a class="navbar__item navbar__link" href="/build/">Build</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/general/">Learn</a><a class="navbar__item navbar__link" href="/get-involved/">Get Involved</a><a class="navbar__item navbar__link" href="/node/">Run Node</a><a class="navbar__item navbar__link" href="/core/">Develop Core</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" title="GitHub repository" aria-label="GitHub repository"></a><a href="https://oasis.net/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-www-link" title="Oasis website" aria-label="Oasis website"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/general/"><span title="Overview" class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link" href="/general/oasis-network/"><span title="Oasis Network" class="categoryLinkLabel_W154">Oasis Network</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/oasis-network/token-metrics-and-distribution"><span title="Token Metrics and Distribution" class="linkLabel_WmDU">Token Metrics and Distribution</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/oasis-network/papers"><span title="Papers" class="linkLabel_WmDU">Papers</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/oasis-network/faq"><span title="Frequently Asked Questions" class="linkLabel_WmDU">Frequently Asked Questions</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible menu__list-item-collapsible--active"><a class="categoryLink_byQd menu__link menu__link--active" aria-current="page" href="/general/manage-tokens/"><span title="Manage your Tokens" class="categoryLinkLabel_W154">Manage your Tokens</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/manage-tokens/terminology"><span title="Terminology" class="linkLabel_WmDU">Terminology</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/manage-tokens/staking-and-delegating"><span title="Staking and Delegating" class="linkLabel_WmDU">Staking and Delegating</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/general/manage-tokens/oasis-wallets"><span title="ROSE Wallet" class="categoryLinkLabel_W154">ROSE Wallet</span></a><button aria-label="Expand sidebar category &#x27;ROSE Wallet&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/general/manage-tokens/holding-rose-tokens"><span title="3rd Party Wallets and Services" class="categoryLinkLabel_W154">3rd Party Wallets and Services</span></a><button aria-label="Expand sidebar category &#x27;3rd Party Wallets and Services&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/manage-tokens/how-to-bridge-assets"><span title="How to Bridge Assets to Oasis Sapphire" class="linkLabel_WmDU">How to Bridge Assets to Oasis Sapphire</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/general/manage-tokens/faq"><span title="Frequently Asked Questions" class="linkLabel_WmDU">Frequently Asked Questions</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Manage your Tokens</h1></header>
+<p>The <strong>native token</strong> on Oasis Mainnet is called <strong>ROSE</strong>. Native tokens are used
+for:</p>
+<ul>
+<li class="">proof-of-stake <strong>block proposal and validation</strong>,</li>
+<li class=""><strong>governance proposal voting</strong>,</li>
+<li class="">paying out <strong>staking rewards</strong>,</li>
+<li class="">paying <strong>network gas fees</strong>,</li>
+<li class="">dApp-specific use cases.</li>
+</ul>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>ROSE App - The quickest way into the Oasis Ecosystem</div><div class="admonitionContent_BuS1"><p>The Oasis team built a <strong><a href="https://rose.oasis.io/move" target="_blank" rel="noopener noreferrer" class="">ROSE App</a></strong> for you to easily <strong>move ROSE</strong>
+from a crypto exchange to Sapphire and the other way around. This way you
+can quickly and safely start using your tokens with Sapphire dApps without
+diving into mechanics of the Oasis ParaTime deposits and withdrawals! You simply
+need a working <a href="#metamask" class="">Metamask/Ethereum compatible wallet</a>.</p><p style="width:100%"><iframe style="margin:auto;display:block;border:none" width="560" height="380" src="https://www.youtube-nocookie.com/embed/2AEBhbArV0k" title="How to Deposit &amp; Withdraw on ROSE App" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rose-and-the-paratimes">ROSE and the ParaTimes<a href="#rose-and-the-paratimes" class="hash-link" aria-label="Direct link to ROSE and the ParaTimes" title="Direct link to ROSE and the ParaTimes" translate="no">​</a></h2>
+<p>The <a class="" href="/general/oasis-network/">Oasis Network architecture</a> separates between the <strong>consensus</strong> and the
+<strong>compute</strong> (a.k.a. ParaTime) layer. The consensus layer and each ParaTime
+running on the compute layer have their own <strong>ledger</strong> containing, among other
+data, the <strong>balances of the accounts</strong>.</p>
+<p><img decoding="async" loading="lazy" alt="Deposits, withdrawals, transfers" src="/assets/images/transfer_deposit_withdrawal-d53358728bc9cebd8d63b5dcae70ce41.svg" class="img_ev3q"></p>
+<p>Moving tokens from the consensus layer to a ParaTime is called a <strong>deposit</strong> and
+moving them from a ParaTime back to the consensus layer is a <strong>withdrawal</strong> (see
+<a class="" href="/adrs/0003-consensus-runtime-token-transfer">ADR-3</a> for technical specifications).</p>
+<p>You can <strong>transfer</strong> tokens from your account to another account only, if both
+accounts are either on the consensus layer or inside the same ParaTime.</p>
+<p>Besides moving the tokens across layers and accounts, you can also <strong><a class="" href="/general/manage-tokens/staking-and-delegating">delegate
+tokens</a></strong> to a validator and <strong>earn passive income</strong> as a reward.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="get-rose">Get ROSE<a href="#get-rose" class="hash-link" aria-label="Direct link to Get ROSE" title="Direct link to Get ROSE" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="from-a-centralized-exchange-via-rose-app">From a Centralized Exchange via ROSE App<a href="#from-a-centralized-exchange-via-rose-app" class="hash-link" aria-label="Direct link to From a Centralized Exchange via ROSE App" title="Direct link to From a Centralized Exchange via ROSE App" translate="no">​</a></h3>
+<p>The most common way to obtain ROSE is by buying it on a centralized
+<a href="https://en.wikipedia.org/wiki/Cryptocurrency_exchange" target="_blank" rel="noopener noreferrer" class="">crypto exchange</a> (Binance, Coinbase, etc.).
+<strong>Most exchanges only operate on the Oasis consensus layer</strong>.
+This means that you can deposit and withdraw ROSE from an exchange only to
+<strong>your consensus account</strong>. To address this, the Oasis team built a simple
+<strong><a href="https://rose.oasis.io/move" target="_blank" rel="noopener noreferrer" class="">ROSE App</a></strong> tool that quickly and safely <strong>moves funds from the consensus
+account derived from your <a href="#metamask" class="">Ethereum-compatible wallet</a> to Sapphire</strong>
+and the other way around.</p>
+<ol>
+<li class="">
+<p><strong>Open the ROSE App Move interface:</strong> Visit
+<a href="https://rose.oasis.io/move" target="_blank" rel="noopener noreferrer" class=""><strong>rose.oasis.io/move</strong></a> in a web browser.</p>
+</li>
+<li class="">
+<p><strong>Connect Your Wallet:</strong> Click <strong>&quot;Connect Wallet&quot;</strong> and sign in with your
+EVM wallet (e.g. MetaMask with Oasis Sapphire network). The app will prompt
+you to select or unlock your wallet.</p>
+</li>
+<li class="">
+<p><strong>Choose the destination:</strong> Click <strong>Select and sign-in</strong> on the left card
+to move ROSE to Oasis Sapphire. The app will prompt you to sign-in.</p>
+</li>
+<li class="">
+<p><strong>Copy Deposit Address:</strong> The app will display the a <strong>Oasis Consensus Layer
+address</strong> for your withdrawl. <strong>Copy this address.</strong> (It will be a
+oasis1… style address).</p>
+</li>
+<li class="">
+<p><strong>Withdraw from the Exchange:</strong> Now go to your exchange account and initiate
+a <strong>withdrawal of ROSE</strong>. When asked for a destination address, paste the
+<strong>Oasis Consensus Layer address</strong> you copied in the previous step.
+<strong>Note:</strong> MEXC supports direct Sapphire withdrawal (0x…). Binance/Coinbase
+only support consensus layer (oasis1…).</p>
+</li>
+<li class="">
+<p><strong>Confirm the Transfer:</strong> Complete withdrawal on the exchange.</p>
+</li>
+<li class="">
+<p><strong>ROSE Arrives on Sapphire:</strong> ROSE will appear in your Sapphire wallet.</p>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>If your exchange only supports withdrawal to the <strong>Oasis mainnet
+(consensus)</strong>, an alternative is to withdraw to your Oasis <strong>consensus-layer
+ROSE wallet</strong> (a bech32 address managed in the [ROSE Wallet][rose-wallet]).
+Once you have the ROSE in your consensus account, follow the
+<a href="#from-oasis-consensus-mainnet-rose" class="">From Oasis Consensus (Mainnet ROSE)</a> guide
+below.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="from-bnb-chain-bridging-wrose">From BNB Chain (Bridging wROSE)<a href="#from-bnb-chain-bridging-wrose" class="hash-link" aria-label="Direct link to From BNB Chain (Bridging wROSE)" title="Direct link to From BNB Chain (Bridging wROSE)" translate="no">​</a></h3>
+<p><strong><a href="https://en.wikipedia.org/wiki/Decentralized_finance#Decentralized_exchanges" target="_blank" rel="noopener noreferrer" class="">Decentralized exchanges</a> (DEX) running on Sapphire</strong> are also gaining pace.
+In this case, the payout is made from the DEX directly to <strong>your account on
+Sapphire</strong>, and you can use a standard <a href="#metamask" class="">Ethereum-compatible wallet</a>.</p>
+<p>For <strong>wROSE on BNB Chain</strong>, use cBridge:</p>
+<ol>
+<li class="">
+<p>In the <strong>cBridge</strong> interface, set <strong>BNB Chain</strong> as the source and <strong>Oasis
+Sapphire</strong> as the destination .</p>
+</li>
+<li class="">
+<p>Select <strong>wROSE</strong> from the token list (this is the wrapped ROSE token on BNB
+Chain) .</p>
+</li>
+<li class="">
+<p>Enter the amount of wROSE to bridge and initiate the transfer. Approve and
+confirm the transaction in your BSC or MetaMask wallet.</p>
+</li>
+<li class="">
+<p>After a few minutes, the ROSE will appear in your Sapphire address.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="from-oasis-consensus-mainnet-rose">From Oasis Consensus (Mainnet ROSE)<a href="#from-oasis-consensus-mainnet-rose" class="hash-link" aria-label="Direct link to From Oasis Consensus (Mainnet ROSE)" title="Direct link to From Oasis Consensus (Mainnet ROSE)" translate="no">​</a></h3>
+<p>Alternatively, you can use a fully-featured <a href="#official-non-custodial-wallets" class="">ROSE
+Wallet</a> to <strong>create a consensus account</strong> and
+then <strong>deposit ROSE</strong> from that account to your Sapphire one.</p>
+<ul>
+<li class="">
+<p>In the <strong>Oasis Wallet extension</strong> or web wallet, go to the <strong>ParaTimes</strong>
+section.</p>
+</li>
+<li class="">
+<p>Select <strong>&quot;Deposit to ParaTime&quot;</strong>, then choose <strong>Sapphire</strong>.</p>
+</li>
+<li class="">
+<p>Enter your <strong>Sapphire EVM address</strong> (0x… from MetaMask) as the recipient,
+and the amount of ROSE to deposit .</p>
+</li>
+<li class="">
+<p>Confirm the transaction to receive ROSE on Sapphire.</p>
+</li>
+</ul>
+<p>For detailed instructions with screenshots, see our
+<a href="https://oasis.net/blog/onboarding-guide-rose-sapphire" target="_blank" rel="noopener noreferrer" class="">onboarding guide</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-wallets">The Wallets<a href="#the-wallets" class="hash-link" aria-label="Direct link to The Wallets" title="Direct link to The Wallets" translate="no">​</a></h2>
+<p>To sign the token-related transactions such as transfers, deposits, withdrawals
+and delegations described above, you need a <strong>private key</strong> tied to the
+corresponding account. Your keys are stored in <em><a href="https://en.wikipedia.org/wiki/Cryptocurrency_wallet" target="_blank" rel="noopener noreferrer" class="">crypto wallets</a></em>.</p>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>For your own security and peace of mind, please only use the wallets that are
+listed here. <strong>Using unofficial wallets can result in the permanent loss of your
+ROSE!</strong></p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="official-non-custodial-wallets">Official Non-Custodial Wallets<a href="#official-non-custodial-wallets" class="hash-link" aria-label="Direct link to Official Non-Custodial Wallets" title="Direct link to Official Non-Custodial Wallets" translate="no">​</a></h3>
+<p>The Oasis team developed the following <strong>non-custodial wallets</strong> for you. This
+means that the keys for managing the tokens are <strong>stored on your device</strong> such
+as a laptop or a mobile phone, and <strong>you are responsible to keep it safe</strong>:</p>
+<ul>
+<li class="">
+<p><strong><a class="" href="/general/manage-tokens/oasis-wallets/web">ROSE Wallet - Web</a></strong>: Runs as a web application in your web browser, the
+private keys are encrypted with a password and stored inside your Browser&#x27;s
+local store.</p>
+</li>
+<li class="">
+<p><strong><a class="" href="/general/manage-tokens/oasis-wallets/browser-extension">ROSE Wallet - Browser extension</a></strong>: Runs as an extension to your
+Chrome-based browser, the private keys are encrypted with a password and
+stored inside your Browser&#x27;s encrypted store.</p>
+</li>
+<li class="">
+<p><strong><a class="" href="/build/tools/cli/">Oasis CLI</a></strong>: Command line tool, suitable for builders on Oasis,
+automation, the private keys are encrypted by a password and stored inside
+your home folder.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="metamask">MetaMask<a href="#metamask" class="hash-link" aria-label="Direct link to MetaMask" title="Direct link to MetaMask" translate="no">​</a></h3>
+<p><a href="https://metamask.io/download/" target="_blank" rel="noopener noreferrer" class="">MetaMask</a> is probably the best-known crypto wallet. Use the buttons below
+to add Oasis-managed endpoints for the <strong>Sapphire chain</strong> to your Metamask:</p>
+<table><thead><tr><th>Mainnet</th><th>Testnet</th></tr></thead><tbody><tr><td><span><button class="button button--primary">Add to MetaMask</button></span></td><td><span><button class="button button--primary">Add to MetaMask</button></span></td></tr></tbody></table>
+<p><img decoding="async" loading="lazy" alt="Metamask - Adding Sapphire Mainnet Network Configuration" src="/assets/images/settings-939608ea8571e8881597cf3b86e09c98.png" width="363" height="623" class="img_ev3q"></p>
+<p>To learn more about Sapphire and explore other RPC endpoints check out the
+<a class="" href="/build/sapphire/network#rpc-endpoints">Sapphire</a> chapter.</p>
+<p>Keep in mind that Metamask is an EVM-compatible wallet. This means <strong>you
+can only use it to check the account balances and sign transactions on
+Sapphire and Emerald chains</strong>. You cannot use it, for example, to sign
+<strong>consensus layer transactions</strong> or perform <strong>deposits</strong> and <strong>withdrawals</strong>
+to and from ParaTimes.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ledger">Ledger<a href="#ledger" class="hash-link" aria-label="Direct link to Ledger" title="Direct link to Ledger" translate="no">​</a></h3>
+<p>The wallets above are just carefully programmed computer programs that store
+your keys (in an encrypted form) somewhere on your disk and then use them to
+sign the transactions. However, if your device gets infected with a piece of
+malicious software (malware, keyloggers, screen captures), <strong>the password to
+decrypt your private keys may be obtained and your private keys stolen</strong>.</p>
+<p>To mitigate such attacks, a <strong>hardware wallet</strong> should be used. This is a
+physical device which stores your private key and which is only accessed when
+you send the hardware wallet a transaction to be signed. The transaction content
+is then shown on the hardware wallet screen for a user to verify and if the
+user agrees, the transaction is signed and sent back to your computer or your
+mobile phone for submission to the network. The Oasis team <strong>integrated support
+for Ledger hardware wallets into all ROSE wallets and the Oasis CLI</strong>. Check out
+a special <a class="" href="/general/manage-tokens/holding-rose-tokens/ledger-wallet">Ledger chapter</a> to learn how to install the Oasis nano app
+on your Ledger device.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="custodial-services">Custodial Services<a href="#custodial-services" class="hash-link" aria-label="Direct link to Custodial Services" title="Direct link to Custodial Services" translate="no">​</a></h3>
+<p>It is up to you to pick the right strategy for keeping the private key of your
+account holding your tokens safe. Some users may decide to trust their tokens to
+a <strong>custody provider</strong>. You can read more about those in the
+<a class="" href="/general/manage-tokens/holding-rose-tokens/custody-providers">Custody providers</a> chapter.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="account-formats-and-signature-schemes">Account Formats and Signature Schemes<a href="#account-formats-and-signature-schemes" class="hash-link" aria-label="Direct link to Account Formats and Signature Schemes" title="Direct link to Account Formats and Signature Schemes" translate="no">​</a></h2>
+<p>Transactions on the consensus layer must be signed using the <strong>ed25519
+signature scheme</strong>. The addresses on the consensus layer use the
+<strong><a href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#bech32" target="_blank" rel="noopener noreferrer" class="">Bech-32 encoding</a></strong>, and you can recognize them by a typical <code>oasis1</code> prefix.</p>
+<p>ParaTimes can implement arbitrary signature schemes and address encodings. For
+example, since the Sapphire and Emerald ParaTimes are EVM-compatible, they
+implement the <strong>secp256k1</strong> scheme and prefer the <strong>hex-encoded</strong>
+addresses and private keys starting with <code>0x</code>.</p>
+<p>The table below summarizes the current state of the address formats, signature
+schemes and compatible wallets.</p>
+<table><thead><tr><th>Consensus or ParaTime</th><th>Address Format</th><th>Digital Signature Scheme</th><th>Supported Wallets</th></tr></thead><tbody><tr><td>Consensus</td><td><code>oasis1</code></td><td>ed25519</td><td><ul><li>ROSE Wallet - Web</li><li>ROSE Wallet - Browser Extension</li><li>Oasis CLI</li></ul></td></tr><tr><td>Sapphire</td><td><code>0x</code>, <code>oasis1</code></td><td>secp256k1, ed25519, sr25519</td><td><ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>ROSE Wallet - Browser Extension</li><li>ROSE Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul></td></tr><tr><td>Cipher</td><td><code>oasis1</code></td><td>secp256k1, ed25519, sr25519</td><td><ul><li>Oasis CLI</li></ul></td></tr><tr><td>Emerald</td><td><code>0x</code>, <code>oasis1</code></td><td>secp256k1, ed25519, sr25519</td><td><ul><li>Metamask and other EVM-compatible wallets (transfers only)</li><li>ROSE Wallet - Browser Extension</li><li>ROSE Wallet - Web (deposits and withdrawals only)</li><li>Oasis CLI</li></ul></td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="check-your-account">Check your account<a href="#check-your-account" class="hash-link" aria-label="Direct link to Check your account" title="Direct link to Check your account" translate="no">​</a></h2>
+<p>To check the balance of your consensus account, you can use the
+<a href="https://www.oasisscan.com" target="_blank" rel="noopener noreferrer" class="">Oasis Scan</a> block explorer. Enter your <code>oasis1</code>
+address at the top and hit enter. For example:</p>
+<p><img decoding="async" loading="lazy" alt="Account details of entered oasis1 address in Oasis Scan" src="/assets/images/oasisscan_account_details-7d22b004206bda2502eee1ff799f731c.png" width="1273" height="958" class="img_ev3q"></p>
+<p>The &quot;Amount&quot; is a sum of three values:</p>
+<ul>
+<li class="">the &quot;Available&quot; tokens that can immediately be transferred,</li>
+<li class="">the &quot;Escrow&quot; tokens that are delegated,</li>
+<li class="">the &quot;Reclaim&quot; tokens that are waiting for the debonding period to pass.</li>
+</ul>
+<p>To check the account&#x27;s deposits and withdrawals navigate to &quot;Transactions&quot; pane
+and press &quot;ParaTime&quot; on the right side, next to the &quot;Consensus&quot; button.
+You will see all ParaTime-related transactions including deposits, withdrawals,
+transfers and even smart contract transactions.</p>
+<p><img decoding="async" loading="lazy" alt="Search result of oasis1 address - Account details" src="/assets/images/oasisscan_paratime_txes-e8560712be9b215cd6aca4ceb52c892f.png" width="1626" height="979" class="img_ev3q"></p>
+<p>Furthermore, you can view the transaction details, if you click on a
+transaction&#x27;s &quot;Tx Hash&quot;. Among others, you will see the transaction type, the
+&quot;from&quot;, &quot;to&quot; and &quot;amount&quot; fields.</p>
+<p><img decoding="async" loading="lazy" alt="Tx Hash - Transaction details" src="/assets/images/oasisscan_paratime_tx_details-9769c53959d64e58ffa4a387b78aede5.png" width="1626" height="979" class="img_ev3q"></p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>Be aware that the <a href="https://www.oasisscan.com" target="_blank" rel="noopener noreferrer" class="">Oasis Scan Blockchain Explorer</a>
+is built for consensus layer. If you want to explore Sapphire (0x addresses,
+Token Transfers, Contract Calls, etc.), you have to use the
+<a href="https://explorer.oasis.io/mainnet/sapphire" target="_blank" rel="noopener noreferrer" class="">Sapphire Blockchain Explorer</a>.</p></div></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/oasisprotocol/docs/edit/main/docs/general/manage-tokens/README.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2026-01-27T11:48:58.000Z" itemprop="dateModified">Jan 27, 2026</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/general/oasis-network/faq"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Frequently Asked Questions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/general/manage-tokens/terminology"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Terminology</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#rose-and-the-paratimes" class="table-of-contents__link toc-highlight">ROSE and the ParaTimes</a></li><li><a href="#get-rose" class="table-of-contents__link toc-highlight">Get ROSE</a><ul><li><a href="#from-a-centralized-exchange-via-rose-app" class="table-of-contents__link toc-highlight">From a Centralized Exchange via ROSE App</a></li><li><a href="#from-bnb-chain-bridging-wrose" class="table-of-contents__link toc-highlight">From BNB Chain (Bridging wROSE)</a></li><li><a href="#from-oasis-consensus-mainnet-rose" class="table-of-contents__link toc-highlight">From Oasis Consensus (Mainnet ROSE)</a></li></ul></li><li><a href="#the-wallets" class="table-of-contents__link toc-highlight">The Wallets</a><ul><li><a href="#official-non-custodial-wallets" class="table-of-contents__link toc-highlight">Official Non-Custodial Wallets</a></li><li><a href="#metamask" class="table-of-contents__link toc-highlight">MetaMask</a></li><li><a href="#ledger" class="table-of-contents__link toc-highlight">Ledger</a></li><li><a href="#custodial-services" class="table-of-contents__link toc-highlight">Custodial Services</a></li></ul></li><li><a href="#account-formats-and-signature-schemes" class="table-of-contents__link toc-highlight">Account Formats and Signature Schemes</a></li><li><a href="#check-your-account" class="table-of-contents__link toc-highlight">Check your account</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Tools</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://explorer.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Explorer</a></li><li class="footer__item"><a href="https://wallet.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Wallet</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol/cli" target="_blank" rel="noopener noreferrer" class="footer__link-item">CLI</a></li><li class="footer__item"><a href="https://status.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Build</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://faucet.testnet.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Testnet Faucet</a></li><li class="footer__item"><a href="https://playground.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Playground</a></li><li class="footer__item"><a href="https://api.docs.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">API</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Node</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/node/network/mainnet">Mainnet</a></li><li class="footer__item"><a class="footer__link-item" href="/node/network/testnet">Testnet</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://oasis.io/discord" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord</a></li><li class="footer__item"><a href="https://t.me/oasisprotocolcommunity" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram</a></li><li class="footer__item"><a href="https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ" target="_blank" rel="noopener noreferrer" class="footer__link-item">Youtube</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
+<p xmlns:cc="http://creativecommons.org/ns#">Copyright © 2026
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
+Oasis Protocol Foundation</a>. We <a href="https://oasisprotocol.org/privacy-policy" target="_blank" rel="noopener noreferrer">respect your privacy</a>.
+Unless otherwise specified, all text and images on this website are licensed
+under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/by.svg"></a>.
+This does not include the Oasis software and the code examples, both of which are
+licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p></div></div></div></footer><!--$--><!--/$--></div>
+</body>
+</html>

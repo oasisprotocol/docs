@@ -1,0 +1,195 @@
+# Setup
+
+Source: https://docs.oasis.io/build/tools/cli/setup
+
+## Download and Run
+
+The Oasis team provides CLI binaries for Linux,
+macOS and Windows operating systems.
+If you want to run it on another platform,
+you can [build the CLI from source][cli-source].
+
+Download the latest release from our [GitHub repository][cli-releases] and
+follow the instructions for **your platform** below:
+
+**Tab**: Linux
+
+### Homebrew
+
+If you use [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux),
+you can install the Oasis CLI with:
+
+#### Installation
+
+```shell
+brew install oasis
+```
+
+#### Verify
+
+```shell
+oasis --version
+```
+
+### Manual
+
+#### Prerequisites
+
+* amd64 or arm64 Linux.
+* Ensure `~/.local/bin` is on your `PATH`:
+  ```shell
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  source ~/.bashrc
+  mkdir -p ~/.local/bin
+  ```
+
+#### Installation
+
+1. Download the latest **Linux** archive (e.g. `oasis_cli_X.Y.Z_linux_amd64.tar.gz`).
+2. Extract it:
+   ```shell
+   cd ~/Downloads
+   tar -xzf oasis_cli_X.Y.Z_linux_amd64.tar.gz   # adjust version and architecture
+   ```
+3. Move the binary to your path:
+   ```shell
+   mv oasis ~/.local/bin/
+   ```
+4. Verify:
+   ```shell
+   oasis --version
+   ```
+
+**Tab**: macOS
+
+### Homebrew (Recommended)
+
+The recommended way to install the Oasis CLI on macOS is via
+[Homebrew](https://brew.sh/).
+
+#### Installation
+
+```shell
+brew install oasis
+```
+
+#### Verify
+
+```shell
+oasis --version
+```
+
+### Manual
+
+#### Prerequisites
+
+* macOS (Apple Silicon & Intel).
+* Ensure `~/.local/bin` is on your `PATH` (add it in `~/.zshrc` or `~/.bashrc`):
+  ```shell
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+  source ~/.zshrc
+  mkdir -p ~/.local/bin
+  ```
+
+#### Installation
+
+1. Download the latest **macOS** archive (e.g. `oasis_cli_X.Y.Z_darwin_all.tar.gz`) from the releases page.
+2. Extract it:
+   ```shell
+   cd ~/Downloads
+   tar -xzf oasis_cli_X.Y.Z_darwin_all.tar.gz   # adjust version
+   ```
+3. Move the binary to your path:
+   ```shell
+   mv oasis ~/.local/bin/
+   ```
+4. Bypass Gatekeeper (first run only):
+   ```shell
+   xattr -d com.apple.quarantine ~/.local/bin/oasis
+   ```
+   If a dialog appears, open **System Settings → Privacy & Security** and click **Open Anyway**.
+5. Verify:
+   ```shell
+   oasis --version
+   ```
+
+**Tab**: Windows
+
+#### Prerequisites
+
+* Windows 10/11 (x86-64).
+* Decide on a folder already in your `PATH` (e.g. `%USERPROFILE%\bin`) or add one.
+
+#### Installation
+
+1. Download the latest **Windows** ZIP file (e.g. `oasis_cli_X.Y.Z_windows_amd64.zip`).
+2. Extract it (double-click or `tar -xf` in PowerShell).
+3. Copy `oasis.exe` to a directory on your `PATH`, for example:
+   ```powershell
+   New-Item -ItemType Directory -Force "$env:USERPROFILE\bin"
+   Copy-Item .\oasis.exe "$env:USERPROFILE\bin\"
+   ```
+   If that folder isn’t on the `PATH`, add it via **System Properties → Environment Variables**.
+4. Verify:
+   ```powershell
+   oasis --version
+   ```
+
+## Update
+
+If you installed Oasis CLI manually, the application includes a built-in
+`oasis update` command which upgrades software to the latest version.
+
+This command will check for a newer version on GitHub, show you the
+release notes, and ask for confirmation before downloading and replacing
+the current binary.
+
+## Configuration
+
+When running the Oasis CLI for the first time, it will generate a configuration
+file and populate it with the current Mainnet and Testnet networks. It will also
+configure all [ParaTimes supported by the Oasis Foundation][paratimes].
+
+The configuration folder of Oasis CLI is located:
+
+* on Linux:
+  * `$HOME/.config/oasis/`
+* on macOS:
+  * `/Users/$USER/Library/Application Support/oasis/`
+* on Windows:
+  * `%USERPROFILE%\AppData\Local\oasis\`
+
+There, you will find `cli.toml` which contains the configuration of the
+networks, ParaTimes and your wallet. Additionally, each file-based account in
+your wallet will have a separate, password-encrypted JSON file in the same
+folder named after the name of the account with the `.wallet` extension.
+
+## Multiple Profiles
+
+You can utilize multiple profiles of your Oasis CLI by
+passing the `--config` parameter
+with a location of a desired `cli.toml`:
+
+```shell
+oasis wallet list --config ~/.config/oasis_dev/cli.toml
+```
+
+```
+ACCOUNT                         KIND                            ADDRESS
+oscar                           file (ed25519-adr8:0)           oasis1qp87hflmelnpqhzcqcw8rhzakq4elj7jzv090p3e
+```
+
+## Back Up Your Wallet
+
+To back up your complete Oasis CLI configuration including your wallet, archive
+the configuration folder containing `cli.toml` and `.wallet` files.
+
+[cli-releases]: https://github.com/oasisprotocol/cli/releases
+
+[cli-source]: https://github.com/oasisprotocol/cli
+
+[paratimes]: https://docs.oasis.io/build/tools/other-paratimes.md
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

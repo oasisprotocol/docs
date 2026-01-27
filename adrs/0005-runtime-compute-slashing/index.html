@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-adrs/0005-runtime-compute-slashing" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">ADR 0005: Runtime Compute Node Slashing | Oasis Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.oasis.io/adrs/0005-runtime-compute-slashing"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ADR 0005: Runtime Compute Node Slashing | Oasis Documentation"><meta data-rh="true" name="description" content="Component"><meta data-rh="true" property="og:description" content="Component"><link data-rh="true" rel="icon" href="/img/favicon/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.oasis.io/adrs/0005-runtime-compute-slashing"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/adrs/0005-runtime-compute-slashing" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oasis.io/adrs/0005-runtime-compute-slashing" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.551f8251.css">
+<script src="/assets/js/runtime~main.4f6be8e5.js" defer="defer"></script>
+<script src="/assets/js/main.9d193f4f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><link rel="preload" as="image" href="/img/logo_dark.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo_dark.svg" alt="Oasis Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a><a class="navbar__item navbar__link" href="/build/">Build</a><a class="navbar__item navbar__link" href="/general/">Learn</a><a class="navbar__item navbar__link" href="/get-involved/">Get Involved</a><a class="navbar__item navbar__link" href="/node/">Run Node</a><a class="navbar__item navbar__link" href="/core/">Develop Core</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" title="GitHub repository" aria-label="GitHub repository"></a><a href="https://oasis.net/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-www-link" title="Oasis website" aria-label="Oasis website"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/adrs"><span title="Architectural Decision Records" class="categoryLinkLabel_W154">Architectural Decision Records</span></a><button aria-label="Collapse sidebar category &#x27;Architectural Decision Records&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0001-tm-multi-root-apphash"><span title="ADR 0001: Multiple Roots Under the Tendermint Application Hash" class="linkLabel_WmDU">ADR 0001: Multiple Roots Under the Tendermint Application Hash</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0002-go-modules-compatible-git-tags"><span title="ADR 0002: Go Modules Compatible Git Tags" class="linkLabel_WmDU">ADR 0002: Go Modules Compatible Git Tags</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0003-consensus-runtime-token-transfer"><span title="ADR 0003: Consensus/Runtime Token Transfer" class="linkLabel_WmDU">ADR 0003: Consensus/Runtime Token Transfer</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0004-runtime-governance"><span title="ADR 0004: Runtime Governance" class="linkLabel_WmDU">ADR 0004: Runtime Governance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/adrs/0005-runtime-compute-slashing"><span title="ADR 0005: Runtime Compute Node Slashing" class="linkLabel_WmDU">ADR 0005: Runtime Compute Node Slashing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0006-consensus-governance"><span title="ADR 0006: Consensus Governance" class="linkLabel_WmDU">ADR 0006: Consensus Governance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0007-improved-random-beacon"><span title="ADR 0007: Improved Random Beacon" class="linkLabel_WmDU">ADR 0007: Improved Random Beacon</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0008-standard-account-key-generation"><span title="ADR 0008: Standard Account Key Generation" class="linkLabel_WmDU">ADR 0008: Standard Account Key Generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0009-ed25519-semantics"><span title="ADR 0009: Ed25519 Signature Verification Semantics" class="linkLabel_WmDU">ADR 0009: Ed25519 Signature Verification Semantics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0010-vrf-elections"><span title="ADR 0010: VRF-based Committee Elections" class="linkLabel_WmDU">ADR 0010: VRF-based Committee Elections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0011-incoming-runtime-messages"><span title="ADR 0011: Incoming Runtime Messages" class="linkLabel_WmDU">ADR 0011: Incoming Runtime Messages</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0012-runtime-message-results"><span title="ADR 0012: Runtime Message Results" class="linkLabel_WmDU">ADR 0012: Runtime Message Results</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0013-runtime-upgrades"><span title="ADR 0013: Runtime Upgrade Improvements" class="linkLabel_WmDU">ADR 0013: Runtime Upgrade Improvements</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0014-runtime-signing-tx-with-hardware-wallet"><span title="ADR 0014: Signing Runtime Transactions with Hardware Wallet" class="linkLabel_WmDU">ADR 0014: Signing Runtime Transactions with Hardware Wallet</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0015-vrf-per-block-entropy"><span title="ADR 0015: Randomized Paratime Proposer Selection" class="linkLabel_WmDU">ADR 0015: Randomized Paratime Proposer Selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0016-consensus-parameters-change-proposal"><span title="ADR 0016: Consensus Parameters Change Proposal" class="linkLabel_WmDU">ADR 0016: Consensus Parameters Change Proposal</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0017-app-standards"><span title="ADR 0017: ParaTime Application Standard Proposal Process" class="linkLabel_WmDU">ADR 0017: ParaTime Application Standard Proposal Process</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0020-governance-delegator-votes"><span title="ADR 0020: Governance Support for Delegator Votes" class="linkLabel_WmDU">ADR 0020: Governance Support for Delegator Votes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0021-keymanager-ephemeral-secrets"><span title="ADR 0021: Forward-Secret Ephemeral Secrets" class="linkLabel_WmDU">ADR 0021: Forward-Secret Ephemeral Secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0022-keymanager-master-secrets"><span title="ADR 0022: Forward-Secret Master Secrets" class="linkLabel_WmDU">ADR 0022: Forward-Secret Master Secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0023-keymanager-secret-sharing"><span title="ADR 0023: Secret Sharing Schemes (CHURP)" class="linkLabel_WmDU">ADR 0023: Secret Sharing Schemes (CHURP)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0024-off-chain-runtime-logic"><span title="ADR 0024: Runtime Off-chain Logic (ROFL)" class="linkLabel_WmDU">ADR 0024: Runtime Off-chain Logic (ROFL)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/adrs/0025-bundle_hot_loading"><span title="ADR 0025: Hot-loading of Runtime Bundles" class="linkLabel_WmDU">ADR 0025: Hot-loading of Runtime Bundles</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>ADR 0005: Runtime Compute Node Slashing</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="component">Component<a href="#component" class="hash-link" aria-label="Direct link to Component" title="Direct link to Component" translate="no">​</a></h2>
+<p>Oasis Core</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="changelog">Changelog<a href="#changelog" class="hash-link" aria-label="Direct link to Changelog" title="Direct link to Changelog" translate="no">​</a></h2>
+<ul>
+<li class="">2020-10-14: Evidence expiry, duplicate evidence detection</li>
+<li class="">2020-09-28: Initial draft</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="status">Status<a href="#status" class="hash-link" aria-label="Direct link to Status" title="Direct link to Status" translate="no">​</a></h2>
+<p>Accepted</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="context">Context<a href="#context" class="hash-link" aria-label="Direct link to Context" title="Direct link to Context" translate="no">​</a></h2>
+<p>The runtime compute nodes make updates to the runtime state by submitting
+commitment messages to the roothash service in the consensus layer where
+discrepancy detection and resolution are performed.</p>
+<p>Currently, the compute nodes are never slashed even if they commit incorrect
+results. While integrity is guarded by discrepancy detection and resolution,
+compute nodes should be disincentivized to behave incorrectly.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="decision">Decision<a href="#decision" class="hash-link" aria-label="Direct link to Decision" title="Direct link to Decision" translate="no">​</a></h2>
+<p>This proposal introduces a slashing mechanism for punishing misbehaving compute
+nodes as follows:</p>
+<ul>
+<li class="">
+<p><strong>Per-runtime configurable slashing parameters</strong> are added to the runtime
+descriptor similar to the global slashing configuration that currently exists
+in the staking service.</p>
+</li>
+<li class="">
+<p><strong>New runtime-specific slashing reasons</strong> are introduced: (i) submitting
+incorrect compute results and (ii) signing two different executor commits or
+proposed batches for the same round.</p>
+</li>
+<li class="">
+<p><strong>Failure-indicating executor commits</strong> are introduced in order to give the
+compute nodes a possibility to vote for failure when they cannot execute the
+given batch (e.g., due to unavailability of storage or key manager) without
+getting slashed. Such commits will always trigger a discrepancy during
+discrepancy detection and will vote for failing the round in discrepancy
+resolution phase.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="runtime-descriptor">Runtime Descriptor<a href="#runtime-descriptor" class="hash-link" aria-label="Direct link to Runtime Descriptor" title="Direct link to Runtime Descriptor" translate="no">​</a></h3>
+<p>This proposal updates the runtime staking parameters (stored under the <code>staking</code>
+field of the runtime descriptor) as follows:</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">type RuntimeStakingParameters struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // ... existing fields omitted ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // Slashing are the per-runtime misbehavior slashing parameters.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    Slashing map[staking.SlashReason]staking.Slash `json:&quot;slashing,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // RewardSlashEquvocationRuntimePercent is the percentage of the reward obtained when slashing</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // for equivocation that is transferred to the runtime&#x27;s account.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    RewardSlashEquvocationRuntimePercent uint8 `json:&quot;reward_equivocation,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // RewardSlashBadResultsRuntimePercent is the percentage of the reward obtained when slashing</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // for incorrect results that is transferred to the runtime&#x27;s account.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    RewardSlashBadResultsRuntimePercent uint8 `json:&quot;reward_bad_results,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="slashing-parameters">Slashing Parameters<a href="#slashing-parameters" class="hash-link" aria-label="Direct link to Slashing Parameters" title="Direct link to Slashing Parameters" translate="no">​</a></h3>
+<p>The slash reason type in the staking module is changed from <code>int</code> to <code>uint8</code>.</p>
+<p>The slash reason definitions are updated as follows:</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">const (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // SlashConsensusEquivocation is slashing due to equivocation in the</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // consensus layer.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    SlashConsensusEquivocation SlashReason = 0x00</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // SlashRuntimeIncorrectResults is slashing due to submission of incorrect</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // results in runtime executor commitments.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    SlashRuntimeIncorrectResults SlashReason = 0x80</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // SlashRuntimeEquivocation is slashing due to signing two different</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // executor commits or proposed batches for the same round.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    SlashRuntimeEquivocation SlashReason = 0x81</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">)</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="executor-commitments">Executor Commitments<a href="#executor-commitments" class="hash-link" aria-label="Direct link to Executor Commitments" title="Direct link to Executor Commitments" translate="no">​</a></h3>
+<p>The executor commitment body structures are updated to make certain fields
+optional and to introduce the <code>failure</code> field as follows:</p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">type ExecutorCommitmentFailure uint8</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">const (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // FailureNone indicates that no failure has occurred.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    FailureNone ExecutorCommitmentFailure = 0</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // FailureUnknown indicates a generic failure.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    FailureUnknown ExecutorCommitmentFailure = 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // FailureStorageUnavailable indicates that batch processing failed due to</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // storage being unavailable.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    FailureStorageUnavailable ExecutorCommitmentFailure = 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // FailureKeyManagerUnavailable indicates that batch processing failed due</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // to key manager being unavailable.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    FailureKeyManagerUnavailable ExecutorCommitmentFailure = 3</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type ExecutorCommitmentHeader struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // Required fields.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    Round        uint64    `json:&quot;round&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    PreviousHash hash.Hash `json:&quot;previous_hash&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // Optional fields (may be absent for failure indication).</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    IORoot       *hash.Hash `json:&quot;io_root,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    StateRoot    *hash.Hash `json:&quot;state_root,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    MessageHash  *hash.Hash `json:&quot;messages_hash,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type ExecutorCommitmentBody struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Header  ExecutorCommitmentHeader  `json:&quot;header&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  Failure ExecutorCommitmentFailure `json:&quot;failure,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  TxnSchedSig      signature.Signature   `json:&quot;txn_sched_sig&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  InputRoot        hash.Hash             `json:&quot;input_root&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  InputStorageSigs []signature.Signature `json:&quot;input_storage_sigs&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // Optional fields (may be absent for failure indication).</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  StorageSignatures []signature.Signature   `json:&quot;storage_signatures,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  RakSig            *signature.RawSignature `json:&quot;rak_sig,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>The notion of an <em>failure-indicating</em> executor commitment is introduced as being
+an executor commitment with the following field values:</p>
+<ul>
+<li class="">
+<p>The <code>failure</code> field must be present and non-zero. The code can indicate a
+reason for the failure but currently the reason is ignored during processing.</p>
+</li>
+<li class="">
+<p><code>header.round</code>, <code>header.previous_hash</code>, <code>txn_sched_sig</code>, <code>input_root</code> and
+<code>input_storage_sigs</code> are set as for usual commitments (e.g., they must be
+valid).</p>
+</li>
+<li class="">
+<p>All other fields must be omitted or set to nil.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="root-hash-commitment-processing">Root Hash Commitment Processing<a href="#root-hash-commitment-processing" class="hash-link" aria-label="Direct link to Root Hash Commitment Processing" title="Direct link to Root Hash Commitment Processing" translate="no">​</a></h3>
+<p>The processing of executor commitments by the commitment pool is modified as
+follows:</p>
+<ul>
+<li class="">
+<p><strong>Adding new commitments (<code>AddExecutorCommitment</code>)</strong></p>
+<ul>
+<li class="">If a commitment for a node already exists the existing commitment is
+checked for evidence of equivocation. Any evidence of misbehavior is
+processed as described in the <em>Evidence</em> subsection below.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Discrepancy detection (<code>DetectDiscrepancy</code>)</strong></p>
+<ul>
+<li class="">If any executor commitment indicates failure, the discrepancy detection
+process signals a discrepancy (which implies that discrepancy resolution is
+triggered).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Discrepancy resolution (<code>ResolveDiscrepancy</code>)</strong></p>
+<ul>
+<li class="">
+<p>When tallying votes, any executor commitments indicating failure are tallied
+into its own bucket. If the failure bucket receives 1/2+ votes, the round
+fails.</p>
+</li>
+<li class="">
+<p>If after discrepancy resolution a non-failure option receives 1/2+ votes,
+this is considered the correct result. Executor commitments for any other
+result (excluding failure indication) are considered incorrect and are
+subject to slashing (based on the configured slashing instructions for the
+<code>SlashRuntimeIncorrectResults</code> reason).</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>A portion of slashed funds is disbursed equally to the compute nodes which
+participated in discrepancy resolution for the round. The remainder of slashed
+funds is transferred to the runtime account.</p>
+<p>Any slashing instructions related to freezing nodes are currently ignored.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="state">State<a href="#state" class="hash-link" aria-label="Direct link to State" title="Direct link to State" translate="no">​</a></h3>
+<p>This proposal introduces/updates the following consensus state in the roothash
+module:</p>
+<ul>
+<li class="">
+<p><strong>List of past valid evidence (<code>0x24</code>)</strong></p>
+<p>A hash uniquely identifying the evidence is stored for each successfully
+processed evidence that has not yet expired using the following key format:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">0x24 &lt;H(runtime-id) (hash.Hash)&gt; &lt;round (uint64)&gt; &lt;evidence-hash (hash.Hash)&gt;</span><br></span></code></pre></div></div>
+<p>The value is empty as we only need to detect duplicate evidence.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="transaction-methods">Transaction Methods<a href="#transaction-methods" class="hash-link" aria-label="Direct link to Transaction Methods" title="Direct link to Transaction Methods" translate="no">​</a></h3>
+<p>This proposal updates the following transaction methods in the roothash module:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="evidence">Evidence<a href="#evidence" class="hash-link" aria-label="Direct link to Evidence" title="Direct link to Evidence" translate="no">​</a></h4>
+<p>The evidence method allows anyone to submit evidence of runtime node
+misbehavior.</p>
+<p><strong>Method name:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">roothash.Evidence</span><br></span></code></pre></div></div>
+<p><strong>Body:</strong></p>
+<div class="language-golang codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-golang codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">type EvidenceKind uint8</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">const (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // EvidenceKindEquivocation is the evidence kind for equivocation.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    EvidenceKindEquivocation = 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type Evidence struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ID   common.Namespace `json:&quot;id&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    EquivocationExecutor *EquivocationExecutorEvidence `json:&quot;equivocation_executor,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    EquivocationBatch    *EquivocationBatchEvidence    `json:&quot;equivocation_batch,omitempty&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type EquivocationExecutorEvidence struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    CommitA commitment.ExecutorCommitment `json:&quot;commit_a&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    CommitB commitment.ExecutorCommitment `json:&quot;commit_b&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type EquivocationBatchEvidence struct {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    BatchA commitment.SignedProposedBatch `json:&quot;batch_a&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    BatchB commitment.SignedProposedBatch `json:&quot;batch_b&quot;`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p><strong>Fields:</strong></p>
+<ul>
+<li class=""><code>id</code> specifies the runtime identifier of a runtime this evidence is for.</li>
+<li class=""><code>equivocation_executor</code> (optional) specifies evidence of an executor node
+equivocating when signing commitments.</li>
+<li class=""><code>equivocation_batch</code> (optional) specifies evidence of an executor node
+equivocating when signing proposed batches.</li>
+</ul>
+<p>If no evidence is specified (e.g., all evidence fields are <code>nil</code>) the method
+call is invalid and must fail with <code>ErrInvalidArgument</code>.</p>
+<p>For all kinds of evidence, the following steps are performed to verify evidence
+validity:</p>
+<ul>
+<li class="">
+<p>Current state for the runtime identified by <code>id</code> is fetched. If the runtime
+does not exist, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>If no slashing instructions for <code>SlashRuntimeEquivocation</code> are configured for
+the given runtime, there is no point in collecting evidence so the method call
+must fail with <code>ErrRuntimeDoesNotSlash</code>.</p>
+</li>
+</ul>
+<p>When processing <strong><code>EquivocationExecutor</code></strong> evidence, the following steps are
+performed to verify evidence validity:</p>
+<ul>
+<li class="">
+<p><code>header.round</code> fields of both commitments are compared. If they are not the
+same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>Both executor commitments are checked for basic validity. If either is
+invalid, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>The <code>header.previous_hash</code>, <code>header.io_root</code>, <code>header.state_root</code> and
+<code>header.messages_hash</code> fields of both commitments are compared. If they are
+the same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>The failure indication fields of both commitments are compared. If they are
+the same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p><code>header.round</code> field is compared with the runtime&#x27;s current state. If it is
+more than <code>max_evidence_age</code> (consensus parameter) rounds behind, the evidence
+is invalid.</p>
+</li>
+<li class="">
+<p>Public keys of signers of both commitments are compared. If they are not the
+same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>Signatures of both commitments are verified. If either is invalid, the
+evidence is invalid.</p>
+</li>
+<li class="">
+<p>Otherwise the evidence is valid.</p>
+</li>
+</ul>
+<p>When processing <strong><code>EquivocationBatch</code></strong> evidence, the following steps are
+performed to verify evidence validity:</p>
+<ul>
+<li class="">
+<p>The <code>header.round</code> fields of both proposed batches are compared. If they are
+not the same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>The <code>header</code> fields of both proposed batches are checked for basic validity.
+If any is invalid, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>The <code>io_root</code> fields of both proposed batches are compared. If they are the
+same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>Public keys of signers of both commitments are compared. If they are not the
+same, the evidence is invalid.</p>
+</li>
+<li class="">
+<p>Signatures of both proposed batches are validated. If either is invalid, the
+evidence is invalid.</p>
+</li>
+<li class="">
+<p>Otherwise the evidence is valid.</p>
+</li>
+</ul>
+<p>For all kinds of valid evidence, the following steps are performed after
+validation:</p>
+<ul>
+<li class="">
+<p>The evidence hash is derived by hashing the evidence kind and the public key
+of the signer and the evidence is looked up in the <em>list of past valid
+evidence</em>. If evidence already exists there, the method fails with
+<code>ErrDuplicateEvidence</code>.</p>
+</li>
+<li class="">
+<p>The valid evidence hash is stored in the <em>list of past valid evidence</em>.</p>
+</li>
+</ul>
+<p>If the evidence is deemed valid by the above procedure, the misbehaving compute
+node is slashed based on the runtime slashing parameters for the
+<code>SlashRuntimeEquivocation</code> reason.</p>
+<p>Any slashing instructions related to freezing nodes are currently ignored.</p>
+<p>The node submitting the evidence may be rewarded from part of the slashed
+amount to incentivize evidence submission. The remainder of slashed funds is
+transferred to the runtime account.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="evidence-expiry">Evidence Expiry<a href="#evidence-expiry" class="hash-link" aria-label="Direct link to Evidence Expiry" title="Direct link to Evidence Expiry" translate="no">​</a></h3>
+<p>On each epoch transition, for each runtime, expired evidence (as defined by the
+<code>max_evidence_age</code> and the current runtime&#x27;s round) must be pruned from the
+<em>list of past valid evidence</em>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="evidence-collection">Evidence Collection<a href="#evidence-collection" class="hash-link" aria-label="Direct link to Evidence Collection" title="Direct link to Evidence Collection" translate="no">​</a></h3>
+<p>Nodes collect commitment messages distributed via the P2P gossip network and
+check for any signs of misbehavior. In case valid evidence can be constructed,
+it is submitted to the consensus layer. Any evidence parts that have expired
+should be discarded.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="consensus-parameters">Consensus Parameters<a href="#consensus-parameters" class="hash-link" aria-label="Direct link to Consensus Parameters" title="Direct link to Consensus Parameters" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="roothash">Roothash<a href="#roothash" class="hash-link" aria-label="Direct link to Roothash" title="Direct link to Roothash" translate="no">​</a></h4>
+<p>This proposal introduces the following new consensus parameters in the roothash
+module:</p>
+<ul>
+<li class=""><code>max_evidence_age</code> (uint64) specifies the maximum age of submitted evidence in
+the number of rounds.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="consequences">Consequences<a href="#consequences" class="hash-link" aria-label="Direct link to Consequences" title="Direct link to Consequences" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="positive">Positive<a href="#positive" class="hash-link" aria-label="Direct link to Positive" title="Direct link to Positive" translate="no">​</a></h3>
+<ul>
+<li class="">Compute nodes can be disincentivized to submit incorrect results by runtimes
+configuring slashing parameters.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="negative">Negative<a href="#negative" class="hash-link" aria-label="Direct link to Negative" title="Direct link to Negative" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p>Checking for duplicate evidence requires additional state in the consensus
+layer to store the evidence hashes (73 bytes per evidence).</p>
+</li>
+<li class="">
+<p>Expiring old evidence requires additional per-runtime state lookups and
+updates that happen on each epoch transition.</p>
+</li>
+<li class="">
+<p>If a runtime exhibits non-determinism, this can result in a compute node being
+slashed. While we specify that runtimes should be deterministic, for non-SGX
+runtimes we have no way determining whether a discrepancy is due to runtime
+non-determinism or a faulty compute node.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="neutral">Neutral<a href="#neutral" class="hash-link" aria-label="Direct link to Neutral" title="Direct link to Neutral" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p>This proposal does not introduce any kind of slashing for liveness.</p>
+</li>
+<li class="">
+<p>This proposal does not introduce freezing misbehaving nodes.</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://github.com/oasisprotocol/oasis-core/issues/2078" target="_blank" rel="noopener noreferrer" class="">oasis-core#2078</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/oasisprotocol/adrs/edit/main/0005-runtime-compute-slashing.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-08-04T08:13:58.000Z" itemprop="dateModified">Aug 4, 2025</time></b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/adrs/0004-runtime-governance"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">ADR 0004: Runtime Governance</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/adrs/0006-consensus-governance"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ADR 0006: Consensus Governance</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#component" class="table-of-contents__link toc-highlight">Component</a></li><li><a href="#changelog" class="table-of-contents__link toc-highlight">Changelog</a></li><li><a href="#status" class="table-of-contents__link toc-highlight">Status</a></li><li><a href="#context" class="table-of-contents__link toc-highlight">Context</a></li><li><a href="#decision" class="table-of-contents__link toc-highlight">Decision</a><ul><li><a href="#runtime-descriptor" class="table-of-contents__link toc-highlight">Runtime Descriptor</a></li><li><a href="#slashing-parameters" class="table-of-contents__link toc-highlight">Slashing Parameters</a></li><li><a href="#executor-commitments" class="table-of-contents__link toc-highlight">Executor Commitments</a></li><li><a href="#root-hash-commitment-processing" class="table-of-contents__link toc-highlight">Root Hash Commitment Processing</a></li><li><a href="#state" class="table-of-contents__link toc-highlight">State</a></li><li><a href="#transaction-methods" class="table-of-contents__link toc-highlight">Transaction Methods</a></li><li><a href="#evidence-expiry" class="table-of-contents__link toc-highlight">Evidence Expiry</a></li><li><a href="#evidence-collection" class="table-of-contents__link toc-highlight">Evidence Collection</a></li><li><a href="#consensus-parameters" class="table-of-contents__link toc-highlight">Consensus Parameters</a></li></ul></li><li><a href="#consequences" class="table-of-contents__link toc-highlight">Consequences</a><ul><li><a href="#positive" class="table-of-contents__link toc-highlight">Positive</a></li><li><a href="#negative" class="table-of-contents__link toc-highlight">Negative</a></li><li><a href="#neutral" class="table-of-contents__link toc-highlight">Neutral</a></li></ul></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Tools</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://explorer.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Explorer</a></li><li class="footer__item"><a href="https://wallet.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Wallet</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol/cli" target="_blank" rel="noopener noreferrer" class="footer__link-item">CLI</a></li><li class="footer__item"><a href="https://status.oasis.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Build</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://faucet.testnet.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Testnet Faucet</a></li><li class="footer__item"><a href="https://playground.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Playground</a></li><li class="footer__item"><a href="https://api.docs.oasis.io/" target="_blank" rel="noopener noreferrer" class="footer__link-item">API</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Node</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/node/network/mainnet">Mainnet</a></li><li class="footer__item"><a class="footer__link-item" href="/node/network/testnet">Testnet</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://oasis.io/discord" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord</a></li><li class="footer__item"><a href="https://t.me/oasisprotocolcommunity" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram</a></li><li class="footer__item"><a href="https://www.youtube.com/channel/UC35UFPcZ2F1wjPxhPrSsESQ" target="_blank" rel="noopener noreferrer" class="footer__link-item">Youtube</a></li><li class="footer__item"><a href="https://github.com/oasisprotocol" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">
+<p xmlns:cc="http://creativecommons.org/ns#">Copyright © 2026
+by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://oasis.net">
+Oasis Protocol Foundation</a>. We <a href="https://oasisprotocol.org/privacy-policy" target="_blank" rel="noopener noreferrer">respect your privacy</a>.
+Unless otherwise specified, all text and images on this website are licensed
+under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/cc.svg"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="/img/by.svg"></a>.
+This does not include the Oasis software and the code examples, both of which are
+licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+Apache 2.0</a>. Built with &#x2665; and Docusaurus.</p></div></div></div></footer><!--$--><!--/$--></div>
+</body>
+</html>

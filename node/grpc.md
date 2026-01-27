@@ -1,0 +1,311 @@
+# gRPC proxy for your Oasis node
+
+Source: https://docs.oasis.io/node/grpc
+
+The Oasis node API is exposed via the [gRPC protocol]. It enables communication
+with external applications such as the Oasis CLI, dApps running in your browser
+that need to perform actions on the consensus layer or a ParaTime, services for
+monitoring and controlling your node and similar.
+
+**Tip**: Web3 gateway
+
+The Oasis gRPC **is not related to the standardized Web3 JSON-RPC API**. For
+EVM-compatible dApps configure a [Web3 gateway] instead which is also compatible
+with other Ethereum tooling.
+
+The gRPC proxy may perform the following:
+
+* makes gRPC available to in-browser applications via gRPC-Web,
+* filters out control methods such as shutting down your node,
+* authentication,
+* load balances the traffic to multiple Oasis nodes.
+
+This chapter will show you how to set up a **public** gRPC endpoint using Envoy
+so that it exposes only a **safe subset of the [Oasis RPC services]**. The
+final section presents an alternative approach to communicate with your node by
+**securely tunnelling the Unix socket over the network**, so it can safely be
+used by the client, but **does not filter out any services**.
+
+**Danger**: Never expose the UNIX socket directly!
+
+The `oasis-node` deliberately exposes the RPC interface only via an AF\_LOCAL
+socket called `internal.sock` located in the node's data directory.
+This socket should **never be directly exposed over the network** as it has no
+authentication and allows full control—including shutting down your node.
+
+[gRPC protocol]: https://docs.oasis.io/core/oasis-node/rpc.md
+
+[Web3 gateway]: https://docs.oasis.io/node/web3.md
+
+[Oasis RPC services]: https://docs.oasis.io/core/oasis-node/rpc.md#services
+
+## gRPC Proxy with Envoy
+
+Let's set up a typical public Oasis endpoint using the [Envoy HTTP proxy] with
+the following behavior:
+
+* whitelisted methods for checking the network status, performing queries and
+  submitting transactions,
+* no control methods allowed and no queries that are CPU or I/O intensive,
+* lives on `grpc.example.com` with TLS-enabled connection and certificates
+  that you already have from Let's Encrypt,
+* `internal.sock` of the Oasis node is accessible at `/node/data/internal.sock`.
+
+**Example**: Hostnames
+
+This chapter uses various hostnames under the `example.com` domain. These only
+serve as an example and in a real deployment you should replace them with your
+own domain.
+
+Envoy already has built-in support for gRPC so after installing Envoy, simply
+put the configuration below inside your `envoy.yaml` and then execute the proxy
+with `envoy -c envoy.yaml`.
+
+```yaml title="envoy.yaml"
+# Envoy gRPC-web proxy configuration
+---
+admin:
+  address:
+    socket_address:
+      address: "127.0.0.1"
+      port_value: 10000
+static_resources:
+  listeners:
+    - name: listener_0
+      address:
+        socket_address:
+          address: "0.0.0.0"
+          port_value: 443
+      filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                codec_type: AUTO
+                stat_prefix: ingress_http
+                access_log:
+                  - name: envoy.file_access_log
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+                      path: /dev/stdout
+                route_config:
+                  virtual_hosts:
+                    - name: vh_0
+                      domains:
+                        - "*"
+                      routes:
+                        - match:
+                            safe_regex:
+                              regex: "\
+/oasis-core\\.(\
+  Beacon/(\
+    ConsensusParameters|\
+    GetBaseEpoch|\
+    GetBeacon|\
+    GetEpoch|\
+    GetEpochBlock|\
+    GetFutureEpoch)|\
+  Consensus/(\
+    EstimateGas|\
+    GetBlock|\
+    GetBlockResults|\
+    GetChainContext|\
+    GetGenesisDocument|\
+    GetLastRetainedHeight|\
+    GetLatestHeight|\
+    GetLightBlock|\
+    GetNextBlockState|\
+    GetParameters|\
+    GetSignerNonce|\
+    GetStatus|\
+    GetTransactions|\
+    GetTransactionsWithResults|\
+    GetTransactionsWithProofs|\
+    GetUnconfirmedTransactions|\
+    MinGasPrice|\
+    SubmitEvidence|\
+    SubmitTx|\
+    SubmitTxWithProof|\
+    StateSyncGet|\
+    StateSyncGetPrefixes|\
+    StateSyncIterate|\
+    WatchBlocks)|\
+  Governance/(\
+    ActiveProposals|\
+    ConsensusParameters|\
+    GetEvents|\
+    PendingUpgrades|\
+    Proposal|\
+    Proposals|\
+    Votes)|\
+  NodeController/(\
+    GetStatus)|\
+  Registry/(\
+    ConsensusParameters|\
+    GetEntity|\
+    GetEvents|\
+    GetNode|\
+    GetNodeByConsensusAddress|\
+    GetNodeStatus|\
+    GetRuntime|\
+    GetRuntimes)|\
+  RootHash/(\
+    ConsensusParameters|\
+    GetEvents|\
+    GetGenesisBlock|\
+    GetLastRoundResults|\
+    GetLatestBlock|\
+    GetRuntimeState)|\
+  RuntimeClient/(\
+    CheckTx|\
+    GetBlock|\
+    GetBlockResults|\
+    GetEvents|\
+    GetGenesisBlock|\
+    GetLastRetainedBlock|\
+    GetTransactions|\
+    GetTransactionsWithResults|\
+    Query|\
+    SubmitTx|\
+    SubmitTxMeta|\
+    SubmitTxNoWait|\
+    WatchBlocks)|\
+  Scheduler/(\
+    ConsensusParameters|\
+    GetCommittees|\
+    GetValidators)|\
+  Staking/(\
+    Account|\
+    Allowance|\
+    CommonPool|\
+    ConsensusParameters|\
+    DebondingDelegationInfosFor|\
+    DebondingDelegationsFor|\
+    DebondingDelegationsTo|\
+    DelegationInfosFor|\
+    DelegationsFor|\
+    DelegationsTo|\
+    GetEvents|\
+    GovernanceDeposits|\
+    LastBlockFees|\
+    Threshold|\
+    TokenSymbol|\
+    TokenValueExponent|\
+    TotalSupply))\
+"
+                          route:
+                            cluster: oasis_node_grpc
+                            timeout: "0s"
+                            max_stream_duration:
+                              grpc_timeout_header_max: "0s"
+                        - match:
+                            prefix: /oasis-core
+                          direct_response:
+                            status: 404
+                            body:
+                              inline_string: Only some methods are allowed on this proxy.
+                      typed_per_filter_config:
+                        envoy.filters.http.cors:
+                          "@type": type.googleapis.com/envoy.extensions.filters.http.cors.v3.CorsPolicy
+                          expose_headers: grpc-status,grpc-message,grpc-status-details-bin
+                          allow_origin_string_match:
+                            - exact: '*'
+                          allow_headers: content-type,x-grpc-web,x-user-agent
+                          max_age: '1728000'
+                http_filters:
+                  - name: envoy.health_check
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.health_check.v3.HealthCheck
+                      pass_through_mode: false
+                      headers:
+                        - name: :path
+                          string_match:
+                            exact: /health
+                  - name: envoy.filters.http.grpc_web
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
+                  - name: envoy.filters.http.cors
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.cors.v3.Cors
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+          transport_socket:
+            name: envoy.transport_sockets.tls
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
+              common_tls_context:
+                alpn_protocols:
+                  - h2,http/1.1
+                tls_certificates:
+                  - certificate_chain:
+                      filename: /etc/letsencrypt/live/grpc.example.com/fullchain.pem
+                    private_key:
+                      filename: /etc/letsencrypt/live/grpc.example.com/privkey.pem
+  clusters:
+    - name: oasis_node_grpc
+      connect_timeout: 0.25s
+      load_assignment:
+        cluster_name: cluster_0
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    pipe:
+                      path: /node/data/internal.sock
+      typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          explicit_http_config:
+            http2_protocol_options: {}
+layered_runtime:
+  layers:
+    - name: static
+      static_layer:
+        re2:
+          max_program_size:
+            error_level: 1000000
+```
+
+[Envoy HTTP proxy]: https://www.envoyproxy.io/
+
+## Tunnel Unix socket via SSH
+
+SSH supports forwarding a Unix socket over a secure layer. The command below
+will establish a secure shell to the `example.com` server and then tunnel
+the `internal.sock` file inside the data directory to a Unix socket inside your
+home folder:
+
+```shell
+ssh oasis@example.com -L /home/user/oasis-node-internal.sock:/node/data/internal.sock
+```
+
+The `/home/user/oasis-node-internal.sock` can now be used to safely connect to
+the Oasis node **as if it was running locally without filtering any services**.
+For example, using the [Oasis CLI]:
+
+```shell
+oasis network add-local my-oasis-node unix:/home/user/oasis-node-internal.sock
+```
+
+```shell
+oasis network status --network my-oasis-node
+```
+
+**Tip**: Permanent SSH channel
+
+To make a tunneled Unix socket over SSH permanent, consider using [autossh].
+
+[Oasis CLI]: https://docs.oasis.io/build/tools/cli/network.md#add-local
+
+[autossh]: https://www.harding.motd.ca/autossh/
+
+## See also
+
+* [Run your node](https://docs.oasis.io/node/run-your-node.md)
+
+* [Oasis Web3 Gateway for your EVM ParaTime](https://docs.oasis.io/node/web3.md)
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

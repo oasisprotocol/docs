@@ -1,0 +1,131 @@
+# Key Manager Node
+
+Source: https://docs.oasis.io/node/run-your-node/keymanager-node/
+
+**Info**:
+
+These instructions are for setting up a *key manager* node. Key manager nodes run a special runtime that provides confidentiality to other ParaTimes. If you want to run a *validator* node instead, see the [instructions for running a validator node](https://docs.oasis.io/node/run-your-node/validator-node.md). Similarly, if you want to run a *ParaTime* node instead, see the [instructions for running a ParaTime node](https://docs.oasis.io/node/run-your-node/paratime-node.md).
+
+**Tip**:
+
+At time of writing the key manager ParaTime is deployed only on the Testnet to support Cipher and Sapphire ParaTimes, and limited to be run by trustworthy partners.
+
+This guide will cover setting up your key manager node for the Oasis Network. This guide assumes some basic knowledge on the use of command line tools.
+
+## Prerequisites
+
+Before following this guide, make sure you've followed the [Prerequisites](https://docs.oasis.io/node/run-your-node/prerequisites.md) and [Run a Non-validator Node](https://docs.oasis.io/node/run-your-node/non-validator-node.md) sections and have:
+
+* Oasis Node binary installed on your system and a dedicated non-root user that will run your Oasis Node.
+* The chosen top-level `/node/` working directory prepared (feel free to name it as you wish, e.g. `/srv/oasis/`) with:
+  * `etc`: This will store the node configuration and genesis file.
+  * `data`: This will store the data directory needed by Oasis Node, including your node identity and the blockchain state. The directory permissions should be `rwx------`.
+  * `bin`: This will store binaries needed by Oasis Node for running the ParaTimes.
+  * `runtimes`: This will store the ParaTime bundles.
+* Downloaded or compiled the correct versions of everything according to Network Parameters page ([Mainnet], [Testnet]).
+  * The genesis file copied to `/node/etc/genesis.json`.
+  * The binaries needed by Oasis Node for running the ParaTimes copied to `/node/bin/`.
+  * The key manager ParaTime bundle (`.orc` extension) copied to `/node/runtimes/`.
+* Initialized a new node and updated your entity registration by following the [Register a New Entity or Update Your Entity Registration](https://docs.oasis.io/node/run-your-node/paratime-node.md#register-a-new-entity-or-update-your-entity-registration) instructions.
+  * The entity descriptor file copied to `/node/etc/entity.json`.
+
+[Mainnet]: https://docs.oasis.io/node/network/mainnet.md
+
+[Testnet]: https://docs.oasis.io/node/network/testnet.md
+
+**Tip**:
+
+Reading the rest of the [validator node setup instructions](https://docs.oasis.io/node/run-your-node/validator-node.md) and [ParaTime node setup instructions](https://docs.oasis.io/node/run-your-node/paratime-node.md) may also be useful.
+
+### Setting up Trusted Execution Environment (TEE)
+
+The key manager ParaTime requires the use of a TEE. See the [Set up trusted execution environment](https://docs.oasis.io/node/run-your-node/prerequisites/set-up-tee.md) doc for instructions on how to set it up before proceeding.
+
+## Configuration
+
+In order to configure the node create the `/node/etc/config.yml` file with the following content:
+
+```yaml
+mode: keymanager
+
+common:
+  data_dir: /node/data
+  log:
+    format: JSON
+    level:
+      cometbft: info
+      cometbft/context: error
+      default: info
+
+genesis:
+  file: /node/etc/genesis.json
+
+registration:
+  # In order for the node to register itself, the entity ID must be set.
+  entity_id: {{ entity_id }}
+
+p2p:
+  # External P2P configuration.
+  port: 9200
+  registration:
+    addresses:
+      # The external IP that is used when registering this node to the network.
+      - "{{ external_address }}:9200"
+  seeds:
+    # List of seed nodes to connect to.
+    # NOTE: You can add additional seed nodes to this list if you want.
+    - {{ seed_node_address }}
+
+consensus:
+  listen_address: tcp://0.0.0.0:26656
+  # The external IP that is used when registering this node to the network.
+  external_address: tcp://{{ external_address }}:26656
+
+runtime:
+  paths:
+    # Path to the key manager ParaTime bundle.
+    - "{{ keymanager_runtime_orc_path }}"
+  # The following section is required for ParaTimes which are running inside the
+  # Intel SGX Trusted Execution Environment.
+  sgx:
+    loader: /node/bin/oasis-core-runtime-loader
+
+keymanager:
+  runtime_id: "{{ keymanager_runtime_id }}"
+```
+
+Before using this configuration you should collect the following information to replace the `{{ ... }}` variables present in the configuration file:
+
+* `{{ external_address }}`: The external IP you used when registering this node.
+* `{{ seed_node_address }}`: The seed node address in the form `ID@IP:port`.
+  * You can find the current Oasis Seed Node address in the Network Parameters page ([Mainnet], [Testnet]).
+* `{{ keymanager_runtime_orc_path }}`: Path to the key manager [ParaTime bundle](https://docs.oasis.io/node/run-your-node/paratime-node.md#manual-bundle-installation) of the form `/node/runtimes/foo-paratime.orc`.
+  * You can find the current Oasis-supported key manager ParaTime in the Network Parameters page ([Mainnet], [Testnet]).
+* `{{ entity_id }}`: The node's entity ID from the `entity.json` file.
+* `{{ keymanager_runtime_id }}`: Runtime identified for the key manager ParaTime.
+  * You can find the current Oasis-supported key manager ParaTime identifiers in the Network Parameters page ([Mainnet], [Testnet]).
+
+**Caution**:
+
+Make sure the `consensus` port (default: `26656`) and `p2p.port` (default: `9200`) are exposed and publicly
+accessible on the internet (for `TCP` and `UDP` traffic).
+
+## Starting the Oasis Node
+
+You can start the node by running the following command:
+
+```bash
+oasis-node --config /node/etc/config.yml
+```
+
+## Checking Node Status
+
+To ensure that your node is properly connected with the network, you can run the following command after the node has started:
+
+```bash
+oasis-node control status -a unix:/node/data/internal.sock
+```
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

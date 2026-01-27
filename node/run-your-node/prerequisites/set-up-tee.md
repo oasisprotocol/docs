@@ -1,0 +1,425 @@
+# Set up Trusted Execution Environment (TEE)
+
+Source: https://docs.oasis.io/node/run-your-node/prerequisites/set-up-tee
+
+Most Oasis ParaTimes and ROFLs are configured to run in a TEE. There are two
+kinds of Intel TEEs currently in use:
+
+* [Intel SGX] is required by the ParaTimes and [ROFL SGX][rofl-types] apps.
+* [Intel TDX] is required by the [ROFL TDX raw and container-based][rofl-types]
+  apps.
+
+To run SGX/TDX enclaves:
+
+1. your hardware must have SGX/TDX support,
+2. you must have the latest BIOS updates installed,
+3. you must have SGX/TDX enabled in your BIOS,
+4. you must have the Linux kernel, drivers and software components properly
+   installed and running.
+
+[Intel SGX]: https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html
+
+[Intel TDX]: https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/trust-domain-extensions.html
+
+[rofl-types]: https://docs.oasis.io/build/rofl/workflow/init.md
+
+## Software Guard Extensions (SGX)
+
+### BIOS Configuration
+
+To enable Intel SGX on your hardware, you also need to configure the BIOS.
+First, **update the BIOS to the latest version with the latest microcode** and
+then proceed with BIOS configuration as shown below. Note that some settings may
+not apply to your BIOS. In that case, configure only the relevant ones. Please
+set the BIOS settings as follows:
+
+* **SGX**: ENABLE
+* **Hyper-Threading**: DISABLE
+* **Intel SpeedStep**: DISABLE
+* **Turbo Mode**: DISABLE
+* **CPU AES**: ENABLE
+* **SGX Auto MP Registration**: ENABLE
+
+### Ensure Clock Synchronization
+
+Due to additional sanity checks within runtime enclaves, you should ensure that
+the node's local clock is synchronized (e.g. using NTP). If it is off by more
+than half a second you may experience unexpected runtime aborts.
+
+### Ensure Proper SGX Device Permissions
+
+Make sure that the user that is running the Oasis Node binary has access to the
+SGX device (e.g. `/dev/sgx_enclave`). This can usually be achieved by adding
+the user into the right group, for example in case the permissions of the SGX
+device are as follows:
+
+```
+crw-rw---- 1 root sgx 10, 125 Oct 28 09:28 /dev/sgx_enclave
+```
+
+and the user running Oasis Node is `oasis`, you can do:
+
+```bash
+sudo adduser oasis sgx
+```
+
+Failure to do so may result in the "permission denied OS error 13" during
+runtime startup.
+
+If you are planning to run your node from an interactive session, make sure to
+log out for permissions to take effect.
+
+### AESM Service
+
+To allow execution of SGX enclaves, several **Architectural Enclaves (AE)** are
+involved (i.e. Launch Enclave, Provisioning Enclave, Provisioning Certificate
+Enclave, Quoting Enclave, Platform Services Enclaves).
+
+Communication between application-spawned SGX enclaves and Intel-provided
+Architectural Enclaves is through **Application Enclave Service Manager
+(AESM)**. AESM runs as a daemon and provides a socket through which applications
+can facilitate various SGX services such as launch approval, remote attestation
+quote signing, etc.
+
+Oasis node requires the use of DCAP attestation. To see if your system supports
+it, run the following:
+
+```bash
+ cpuid -1  | grep "SGX"
+```
+
+and look for the following line:
+
+```
+      SGX_LC: SGX launch config supported      = true
+```
+
+### DCAP Attestation
+
+#### Ubuntu 22.04+
+
+A convenient way to install the AESM service on Ubuntu 22.04 systems
+is to use the Intel's [official Intel SGX APT repository](https://download.01.org/intel-sgx/sgx_repo/).
+
+First add Intel SGX APT repository to your system:
+
+```bash
+curl -fsSL https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo gpg --dearmor -o /usr/share/keyrings/intel-sgx-deb.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/intel-sgx-deb.gpg] https://download.01.org/intel-sgx/sgx_repo/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/intel-sgx.list > /dev/null
+```
+
+And then install the `sgx-aesm-service`, `libsgx-aesm-ecdsa-plugin`, `libsgx-aesm-quote-ex-plugin` and `libsgx-dcap-default-qpl` packages:
+
+```bash
+sudo apt update
+sudo apt install sgx-aesm-service libsgx-aesm-ecdsa-plugin libsgx-aesm-quote-ex-plugin libsgx-dcap-default-qpl
+```
+
+The AESM service should be up and running. To confirm that, use:
+
+```bash
+sudo systemctl status aesmd.service
+```
+
+#### Configuring the Quote Provider
+
+The Intel Quote Provider (`libsgx-dcap-default-qpl`) needs to be configured in
+order to use either the Intel PCS, the PCCS of your cloud service provider, or
+your own PCCS. The configuration file is located at `/etc/sgx_default_qcnl.conf`.
+
+Make sure to always restart the `aesmd.service` after updating the
+configuration, via:
+
+```bash
+sudo systemctl restart aesmd.service
+```
+
+##### Intel PCS
+
+Using the Intel PCS is the simplest and most generic way, but it may be less
+reliable than using your own PCCS. Some cloud providers (see the [following section](#cloud-service-providers-pccs))
+also require you to use their PCCS.
+
+To use Intel PCS update the `pccs_url` value in `/etc/sgx_default_qcnl.conf`
+to the Intel PCS API URL:
+
+```json
+  //PCCS server address
+  "pccs_url": "https://api.trustedservices.intel.com/sgx/certification/v4/"
+```
+
+**Tip**:
+
+In case there is an error in the QPL configuration file, attestation will refuse
+to work and the AESM service may produce unhelpful errors like the following:
+
+```
+Couldn't find the platform library. (null)
+```
+
+The only thing that needs to be changed is the `pccs_url` value above. **Do not
+add any comments and/or modify punctuation as these could make the configuration
+file invalid.**
+
+##### Cloud Service Provider's PCCS
+
+Some cloud providers require you to use their PCCS.
+
+* Azure: See the [Azure documentation] for details on configuring the quote provider. The documentation
+  contains an example of an Intel QPL configuration file that can be used.
+
+* Alibaba Cloud: See the [Alibaba Cloud documentation] for details on configuring the quote provider. The
+  documentation shows the required `sgx_default_qcnl.conf` changes.
+
+* IBM Cloud: See the [IBM Cloud documentation] for details on configuring the quote provider. The
+  documentation shows the required `sgx_default_qcnl.conf` changes.
+
+* Other cloud providers: If you are using a different cloud service provider, consult their
+  specific documentation for the appropriate PCCS configuration and guidance on configuring the quote provider, or
+  use one of the other PCCS options.
+
+[Azure documentation]: https://learn.microsoft.com/en-us/azure/security/fundamentals/trusted-hardware-identity-management#how-do-i-use-intel-qpl-with-trusted-hardware-identity-management
+
+[Alibaba Cloud documentation]: https://www.alibabacloud.com/help/en/ecs/user-guide/build-an-sgx-encrypted-computing-environment
+
+[IBM Cloud documentation]: https://cloud.ibm.com/docs/vpc?topic=vpc-about-attestation-sgx-dcap-vpc
+
+##### Own PCCS
+
+It is also possible to run PCCS yourself. Follow [official Intel instructions] on how to setup your own PCCS.
+
+[official Intel Instructions]: https://www.intel.com/content/www/us/en/developer/articles/guide/intel-software-guard-extensions-data-center-attestation-primitives-quick-install-guide.html
+
+#### DCAP Attestation Docker
+
+Alternatively, an easy way to install and run the AESM service on a [Docker](https://docs.docker.com/engine/)-enabled
+system is to use [our AESM container image](https://github.com/oasisprotocol/oasis-core/pkgs/container/aesmd).
+
+Executing the following command should (always) pull the latest version of our
+AESMD Docker container, map the SGX devices and `/var/run/aesmd` directory
+and ensure AESM is running in the background (also automatically started on boot):
+
+```bash
+docker run \
+  --pull always \
+  --detach \
+  --restart always \
+  --device /dev/sgx_enclave \
+  --device /dev/sgx_provision \
+  --volume /var/run/aesmd:/var/run/aesmd \
+  --name aesmd \
+  ghcr.io/oasisprotocol/aesmd-dcap:master
+```
+
+By default, the Intel Quote Provider in the docker container is configured to use the Intel PCS endpoint.
+To override the Intel Quote Provider configuration within the container mount your own custom configuration using
+the `volume` flag.
+
+```bash
+docker run \
+  --pull always \
+  --detach \
+  --restart always \
+  --device /dev/sgx_enclave \
+  --device /dev/sgx_provision \
+  --volume /var/run/aesmd:/var/run/aesmd \
+  --volume /etc/sgx_default_qcnl.conf:/etc/sgx_default_qcnl.conf \
+  --name aesmd \
+  ghcr.io/oasisprotocol/aesmd-dcap:master
+```
+
+The default Intel Quote Provider config is available in [Intel SGX Github repository](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/qcnl/linux/sgx_default_qcnl.conf).
+
+#### Multi-socket Systems
+
+Note that platform provisioning for multi-socket systems (e.g. systems with
+multiple CPUs) is more complex, especially if one is using a hypervisor and
+running SGX workloads inside guest VMs. In this case additional provisioning may
+be required to be performed on the host.
+
+Note that the system must be booted in UEFI mode for provisioning to work as the
+provisioning process uses UEFI variables to communicate with the BIOS. In
+addition the **SGX Auto MP Registration** BIOS configuration setting should be
+set to *enabled*.
+
+##### Ubuntu 22.04+
+
+To provision and register your multi-socket system you need to install the Intel
+SGX Multi-Package Registration Agent Service as follows (assuming Intel's SGX
+apt repository has been added as discussed above):
+
+```shell
+sudo apt install sgx-ra-service
+```
+
+After boot, the log in `/var/log/mpa_registration.log` should indicate
+successful registration. If an error is reported, make sure that you have
+enabled SGX Auto MP Registration in the BIOS as mentioned above. You can also
+perform re-provisioning by rebooting and setting the **SGX Factory Reset**
+option to *enabled*.
+
+##### VMware vSphere 8.0+
+
+In order to enable SGX remote attestation on VMware vSphere-based systems,
+please follow [the vSphere guide].
+
+[the vSphere guide]: https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-F16476FD-3B66-462F-B7FB-A456BEDC3549.html
+
+### Check SGX Setup
+
+To test if your settings are correct, you may use the Oasis [attestation
+tool] ([binary]) for testing remote attestation against Intel SGX's
+development server.
+
+[attestation tool]: https://github.com/oasisprotocol/tools/tree/main/attestation-tool#readme
+
+[binary]: https://github.com/oasisprotocol/tools/releases
+
+## Trust Domain Extensions (TDX)
+
+Before proceeding with the TDX installation, **make sure you followed the SGX
+installation steps above and you have a working SGX environment**!
+
+### BIOS configuration
+
+* **SGX**: ENABLE
+* **SGX memory**: at least 256MB
+* **SGX Auto MP Registration**: ENABLE
+* **Hyper-Threading**: DISABLE
+* **Intel SpeedStep**: DISABLE
+* **SecureBoot**: DISABLE
+* **All Internal Graphics**: DISABLE
+* **Turbo Mode**: DISABLE
+* **CPU AES**: ENABLE
+* **TDX**: ENABLE
+* **Memory Encryption (TME)**: ENABLE
+* **Total Memory Encryption Bypass**: ENABLE
+* **Total Memory Encryption Multi-Tenant (TME-MT)**: ENABLE
+* **TME-MT memory integrity**: DISABLE
+* **TDX Secure Arbitration Mode Loader (SEAM Loader)**: ENABLE
+* **TME-MT/TDX key split**: non-zero value
+* **ACPI S3 and deeper power states**: DISABLED
+
+### Host OS setup
+
+The following section contains summarized instructions for setting up an
+environment for running ROFL node and other TDX services on Ubuntu 24.04 or
+later. Check out the official [Canonical TDX repository] for details.
+
+[Canonical TDX repository]: https://github.com/canonical/tdx
+
+1. Add the following TDX PPAs to your APT sources and the keyring:
+
+   ```shell
+   sudo add-apt-repository ppa:kobuk-team/tdx-release
+   sudo add-apt-repository ppa:kobuk-team/tdx-attestation-release
+   sudo apt update
+   ```
+
+2. Install the TDX quote generation service and QEMU for running
+   guest virtual machines:
+
+   ```shell
+   sudo apt install tdx-qgs qemu-utils qemu-system-x86
+   ```
+
+3. Install a special TDX-enabled Linux kernel:
+
+   ```shell
+   sudo apt install linux-image-intel
+   ```
+
+4. Disable ACPI S3 (add kernel parameter: `nohibernate`):
+
+   ```
+   sed -i -E "s/GRUB_CMDLINE_LINUX=\"(.*)\"/GRUB_CMDLINE_LINUX=\"\1 nohibernate\"/g" /etc/default/grub
+   update-grub
+   ```
+
+5. Make sure the non-root user running Oasis-node is a member of `sgx`,
+   `sgx_prv` and `kvm` groups on host (access to `/dev/sgx*`, `/dev/kvm*` and
+   `/dev/*vsock*` devices).
+
+6. Reboot your system and select the new `-intel` kernel.
+
+**Tip**:
+
+If you don't have access to the grub selector during machine startup, you can
+also detect and set the correct default kernel by executing the script below
+with elevated privileges:
+
+```bash
+export KERNEL_RELEASE=$(apt show "linux-image-intel" 2>&1 | gawk 'match($0, /Depends:.* linux-image-([^, ]+)/, a) {print a[1]}')
+if [ -z "${KERNEL_RELEASE}" ]; then
+    echo "ERROR : unable to determine kernel release"
+    exit 1
+fi
+MID=$(awk '/Advanced options for Ubuntu/{print $(NF-1)}' /boot/grub/grub.cfg | cut -d\' -f2)
+KID=$(awk "/with Linux $KERNEL_RELEASE/"'{print $(NF-1)}' /boot/grub/grub.cfg | cut -d\' -f2 | head -n1)
+cat > /etc/default/grub.d/99-tdx-kernel.cfg <<EOF
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+EOF
+grub-editenv /boot/grub/grubenv set saved_entry="${MID}>${KID}"
+update-grub
+```
+
+### Check TDX Setup
+
+To check whether your system is ready to launch TDX VMs, you should see an
+output like this:
+
+```shell
+sudo dmesg | grep -i tdx
+```
+
+```
+[    1.368184] virt/tdx: BIOS enabled: private KeyID range [32, 64)
+[    1.368188] virt/tdx: Disable ACPI S3. Turn off TDX in the BIOS to use ACPI S3.
+[    9.483666] virt/tdx: TDX module: attributes 0x0, vendor_id 0x8086, major_version 1, minor_version 5, build_date 20240725, build_num 784
+[    9.483672] virt/tdx: CMR: [0x100000, 0x77800000)
+[    9.483674] virt/tdx: CMR: [0x100000000, 0x3ffe000000)
+[   10.587167] virt/tdx: 1042424 KB allocated for PAMT
+[   10.587173] virt/tdx: module initialized
+```
+
+```shell
+ls -al /dev/*kvm*
+```
+
+```
+crw-rw---- 1 root kvm 10, 232 Apr 10 09:56 /dev/kvm
+```
+
+If any of the above is missing, then the following debug tools may help you:
+
+```shell
+apt install msr-tools
+git clone https://github.com/canonical/tdx && ./tdx/system-report.sh
+```
+
+```
+### Model specific registers (MSRs)
+MK_TME_ENABLED bit: 1 (expected value: 1)
+SEAM_RR bit: 1 (expected value: 1)
+NUM_TDX_PRIV_KEYS: 20
+SGX_AND_MCHECK_STATUS: 0 (expected value: 0)
+Production platform: Production (expected value: Production)
+```
+
+```shell
+sudo rdmsr 0x503
+```
+
+```
+0  # 0 if SGX in production mode
+```
+
+## Troubleshooting
+
+See [the TEE troubleshooting section](https://docs.oasis.io/node/run-your-node/troubleshooting.md#tee) for a list of
+most common errors and solutions.
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

@@ -5,15 +5,16 @@ const AddToMetaMask = (props: {
   chainId: string,
   token: string,
   rpcs: string[],
+  hideRpcs: boolean,
   be: string[],
 }) => {
   return (
     <span>
-      {props.rpcs.map(item => (
+      {!props.hideRpcs && props.rpcs.map(item => (
         <code key={item}>{item}<br/></code>
       ))}
       <button
-        className="button button--primary margin-top--md"
+        className={"button button--primary"+(props.hideRpcs ? "" : " margin-top--md")}
         onClick={() => {
           if (!window.ethereum?.request) {
             return alert('Have you installed MetaMask yet? If not, please do so.\n\nComputer: Once it is installed, you will be able to add the ParaTime to your MetaMask.\n\nPhone: Open the website through your MetaMask Browser to add the ParaTime.')
@@ -49,48 +50,56 @@ const AddToMetaMask = (props: {
 
 export const AddSapphireToMetaMask = (props: {
   rpcs: string[],
+  hideRpcs: boolean,
 }) => {
   return AddToMetaMask({
     name: 'Oasis Sapphire',
     chainId: '0x5afe',
     token: 'ROSE',
     rpcs: props.rpcs,
+    hideRpcs: props.hideRpcs,
     be: ['https://explorer.oasis.io/mainnet/sapphire'],
   });
 };
 
 export const AddSapphireTestnetToMetaMask = (props: {
   rpcs: string[],
+  hideRpcs: boolean,
 }) => {
   return AddToMetaMask({
     name: 'Oasis Sapphire Testnet',
     chainId: '0x5aff',
     token: 'TEST',
     rpcs: props.rpcs,
+    hideRpcs: props.hideRpcs,
     be: ['https://explorer.oasis.io/testnet/sapphire'],
   });
 };
 
 export const AddEmeraldToMetaMask = (props: {
   rpcs: string[],
+  hideRpcs: boolean,
 }) => {
   return AddToMetaMask({
     name: 'Oasis Emerald',
     chainId: '0xa516',
     token: 'ROSE',
     rpcs: props.rpcs,
+    hideRpcs: props.hideRpcs,
     be: ['https://explorer.oasis.io/mainnet/emerald'],
   });
 };
 
 export const AddEmeraldTestnetToMetaMask = (props: {
   rpcs: string[],
+  hideRpcs: boolean,
 }) => {
   return AddToMetaMask({
     name: 'Oasis Emerald Testnet',
     chainId: '0xa515',
     token: 'TEST',
     rpcs: props.rpcs,
+    hideRpcs: props.hideRpcs,
     be: ['https://explorer.oasis.io/testnet/emerald'],
   });
 };

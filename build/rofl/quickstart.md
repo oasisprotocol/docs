@@ -1,0 +1,203 @@
+# Quickstart
+
+Source: https://docs.oasis.io/build/rofl/quickstart
+
+You will **ROFLize your app** in five steps:
+
+1. [Initialize](#initialize) the ROFL manifest.
+2. [Create](#create) a new app on blockchain.
+3. [Build](#build) a ROFL bundle.
+4. Encrypt [secrets](#secrets) and store them on-chain.
+5. [Deploy](#deploy) your app to ROFL node.
+
+[`oasis rofl init`]: https://docs.oasis.io/build/tools/cli/rofl.md#init
+
+[`oasis rofl create`]: https://docs.oasis.io/build/tools/cli/rofl.md#create
+
+[`oasis rofl build`]: https://docs.oasis.io/build/tools/cli/rofl.md#build
+
+[`oasis rofl update`]: https://docs.oasis.io/build/tools/cli/rofl.md#update
+
+[`oasis rofl secret`]: https://docs.oasis.io/build/tools/cli/rofl.md#secret
+
+[`oasis rofl deploy`]: https://docs.oasis.io/build/tools/cli/rofl.md#deploy
+
+[`oasis rofl machine show`]: https://docs.oasis.io/build/tools/cli/rofl.md#machine-show
+
+[`oasis rofl machine logs`]: https://docs.oasis.io/build/tools/cli/rofl.md#machine-logs
+
+## Prerequisites
+
+### Containerized App
+
+Your app should already run inside a container and have a Docker-like image
+ready to download from [docker.io], [GitHub containers registry][ghcr] or some
+other public OCI repository.
+
+If you never containerized an app yet, head over to the [Containerize your app]
+chapter.
+
+[docker.io]: https://docker.io
+
+[ghcr]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
+[Containerize your app]: https://docs.oasis.io/build/rofl/workflow/containerize-app.md
+
+### Oasis CLI
+
+Download the [latest Oasis CLI release][oasis-cli-dl] and install it on
+your computer.
+
+[oasis-cli-dl]: https://docs.oasis.io/build/tools/cli/setup.md
+
+### Some Tokens
+
+You'll need about 150 tokens in your Oasis CLI account for ROFL registration,
+renting a machine and paying for gas:
+
+**Tab**: Create a new account
+
+Invoke the following to create a new account:
+
+```shell
+oasis wallet create my_account --file.algorithm secp256k1-bip44
+```
+
+You can later also import this account to Metamask or other Ethereum-compatible
+tooling like Hardhat.
+
+**Tab**: Import an existing account
+
+Export a `secp256k1` private key or mnemonic from your existing wallet.
+Then run the following command and follow the wizard:
+
+```shell
+oasis wallet import my_account
+```
+
+Next, head over to the [Oasis faucet] to get free Testnet tokens. When deploying
+your app on Mainnet, you will need to [buy ROSE][get-rose].
+
+[`oasis wallet create`]: https://docs.oasis.io/build/tools/cli/wallet.md#create
+
+[Oasis faucet]: https://faucet.testnet.oasis.io
+
+[create or import a `secp256k1-bip44` account]: https://docs.oasis.io/build/tools/cli/wallet.md
+
+[get-rose]: https://docs.oasis.io/general/manage-tokens.md#get-rose
+
+## Initialize
+
+Inside your app folder which contains `compose.yaml` run [`oasis rofl init`].
+This will generate the initial `rofl.yaml` manifest file:
+
+```shell
+oasis rofl init
+```
+
+Change the `memory`, the number of `cpus` and the root filesystem `storage`
+section under `resources` to fit your needs:
+
+```yaml title="rofl.yaml" {5-10}
+name: my-app
+version: 0.1.0
+tee: tdx
+kind: container
+resources:
+  memory: 512 # in megabytes
+  cpus: 1
+  storage:
+    kind: disk-persistent
+    size: 512 # in megabytes
+artifacts:
+  firmware: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.2/ovmf.tdx.fd#db47100a7d6a0c1f6983be224137c3f8d7cb09b63bb1c7a5ee7829d8e994a42f
+  kernel: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.2/stage1.bin#e5d4d654ca1fa2c388bf64b23fc6e67815893fc7cb8b7cfee253d87963f54973
+  stage2: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.2/stage2-podman.tar.bz2#b2ea2a0ca769b6b2d64e3f0c577ee9c08f0bb81a6e33ed5b15b2a7e50ef9a09f
+  container:
+    runtime: https://github.com/oasisprotocol/oasis-sdk/releases/download/rofl-containers%2Fv0.8.0/rofl-containers#08eb5bbe5df26af276d9a72e9fd7353b3a90b7d27e1cf33e276a82dfd551eec6
+    compose: compose.yaml
+```
+
+## Create
+
+Create a new app on-chain with [`oasis rofl create`]. By default, the app will
+be registered on Sapphire Mainnet. Pass `--network tesnet` parameter to use
+Testnet:
+
+```shell
+oasis rofl create --network testnet
+```
+
+If the transaction succeeds, you should be able to find your app on the
+[Oasis Explorer].
+
+[Oasis Explorer]: https://explorer.oasis.io/testnet/sapphire/rofl/app
+
+## Build
+
+Next, build the ROFL bundle.
+
+```shell
+oasis rofl build
+```
+
+As a result, a new `.orc` file will appear inside your project folder.
+
+## Secrets
+
+If your application uses environment variables you would like to privately
+store on-chain, use the [`oasis rofl secret`] command, for example:
+
+```shell
+echo -n "my-secret-token" | oasis rofl secret set TOKEN -
+```
+
+This will populate the `TOKEN` secret and you can use it in your compose
+file as follows:
+
+```yaml title="compose.yaml" {6-7}
+services:
+  python-telegram-bot:
+    build: .
+    image: "ghcr.io/oasisprotocol/demo-rofl-tgbot:ollama"
+    platform: linux/amd64
+    environment:
+      - TOKEN=${TOKEN}
+```
+
+To submit the secrets and the ROFL bundle information from the previous step
+on-chain, run [`oasis rofl update`]:
+
+```shell
+oasis rofl update
+```
+
+## Deploy
+
+Deploy your app to a ROFL provider with the [`oasis rofl deploy`] command:
+
+```shell
+oasis rofl deploy
+```
+
+By default, a new machine that fits required resources provided by the Oasis
+foundation will be bootstrapped.
+
+You can check the status of the machine with [`oasis rofl machine show`]:
+
+```shell
+oasis rofl machine show
+```
+
+If everything works, you should be able to fetch your application logs with
+[`oasis rofl machine logs`]:
+
+```shell
+oasis rofl machine logs
+```
+
+**Congratulations, you have just deployed your first app in ROFL! 🎉**
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

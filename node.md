@@ -1,0 +1,101 @@
+# Run Node
+
+Source: https://docs.oasis.io/node/
+
+Welcome! This documentation is designed to provide you with a comprehensive
+understanding and step-by-step guidance for becoming a node operator within the
+Oasis Network.
+
+Embark on your journey by setting up a node on the Testnet. The Testnet serves
+as an experimental sandbox, offering a safe environment for learning and
+experimentation, free from the risks associated with real token loss.
+
+For any queries or support related to node operation, our team and community
+members are readily available on [Discord] to assist you.
+
+[Discord]: https://oasis.io/discord
+
+## Validator and ParaTime nodes
+
+[Oasis Network] consists of the consensus layer and ParaTimes. Consensus and
+ParaTime nodes can be operated by anyone.
+
+To run a **validator node**, make sure your system meets the [hardware] and the
+[system] prerequisites and has [Oasis Node] installed.
+
+Then proceed by following the [Run a Validator Node] guide to:
+
+* Create your entity.
+* Initialize and configure your node.
+* Put enough stake in your escrow account.
+* Register your entity on the network.
+
+To run a **ParaTime node** make sure to first set up a validator node. Then,
+set up a [trusted execution environment (TEE)], if you want to run confidential
+ParaTimes. Afterwards, proceed to the [Run a ParaTime node] chapter.
+
+**Info**:
+
+Consensus layer is a decentralised set of 120 validator nodes that are a
+backbone of the Oasis Network. The current validator set size is determined by
+governance - the network started with 80 nodes in the validator set in 2020 and
+has expanded to 120 nodes over the past few network upgrades. Current node
+operators can be seen on a block explorer such as [Oasis Scan].
+
+**Info**:
+
+Operating a ParaTime Node on the Mainnet requires the participation of node
+operators who have the validator node in the active validator set. ParaTimes
+have their own reward system, participation requirements and structure. As a
+node operator you can participate in any number of ParaTimes.
+
+[Oasis Network]: https://docs.oasis.io/general/oasis-network.md
+
+[Oasis Scan]: https://www.oasisscan.com/validators
+
+## DApp Developers
+
+If you are **building a service** on top of the Oasis Network, you will simply
+want to set up your own **[Non-validator node]** and (optionally) a
+**[ParaTime client node]**. This way, your service will not depend on third
+party endpoints which can be behind a traffic limiter, can go down unexpectedly,
+or they can have some more CPU-intensive queries disabled which you would like
+to use.
+
+[hardware]: https://docs.oasis.io/node/run-your-node/prerequisites/hardware-recommendations.md
+
+[system]: https://docs.oasis.io/node/run-your-node/prerequisites/system-configuration.md
+
+[Oasis Node]: https://docs.oasis.io/node/run-your-node/prerequisites/oasis-node.md
+
+[Run a Validator Node]: https://docs.oasis.io/node/run-your-node/validator-node.md
+
+[trusted execution environment (TEE)]: https://docs.oasis.io/node/run-your-node/prerequisites/set-up-tee.md
+
+[Run a ParaTime node]: https://docs.oasis.io/node/run-your-node/paratime-node.md
+
+[ParaTime client node]: https://docs.oasis.io/node/run-your-node/paratime-node.md
+
+[Non-validator node]: https://docs.oasis.io/node/run-your-node/non-validator-node.md
+
+## Quick Navigation
+
+* [Network Information](https://docs.oasis.io/node/network.md)
+
+* [/node/run-your-node/prerequisites](https://docs.oasis.io/node/run-your-node/prerequisites.md)
+
+* [Validator Node](https://docs.oasis.io/node/run-your-node/validator-node.md)
+
+* [ParaTime Node](https://docs.oasis.io/node/run-your-node/paratime-node.md)
+
+* [ParaTime Client Node](https://docs.oasis.io/node/run-your-node/paratime-client-node.md)
+
+* [ROFL Node](https://docs.oasis.io/node/run-your-node/rofl-node.md)
+
+* [Oasis Web3 Gateway for your EVM ParaTime](https://docs.oasis.io/node/web3.md)
+
+* [gRPC proxy for your Oasis node](https://docs.oasis.io/node/grpc.md)
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

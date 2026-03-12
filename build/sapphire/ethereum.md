@@ -1,0 +1,109 @@
+# Sapphire vs Ethereum
+
+Source: https://docs.oasis.io/build/sapphire/ethereum
+
+Sapphire is generally compatible with Ethereum, the EVM, and all the user and
+developer tooling that you are used to. In addition to confidentiality
+features, you get a few extra benefits including the ability to **generate
+private entropy**, and **make signatures on-chain**. An example of a dApp that
+uses both is an HSM contract that generates an Ethereum wallet and signs
+transactions sent to it via transactions.
+
+There are also a few breaking changes compared to Ethereum though, but we think
+that you'll quickly grasp them:
+
+* [Encrypted Contract State](#encrypted-contract-state)
+* [End-to-End Encrypted Transactions and Calls](#end-to-end-encrypted-transactions-and-calls)
+* [`from` Address is Zero for Unsigned Calls](#from-address-is-zero-for-unsigned-calls)
+* [Override `receive` and `fallback` when Funding the Contract](#override-receive-and-fallback-when-funding-the-contract)
+* [Instant Finality](#instant-finality)
+
+Read below to learn more about them. Otherwise, Sapphire is like Emerald, a
+fast, cheap Ethereum.
+
+## Encrypted Contract State
+
+The contract state is only visible to the contract that wrote it. With respect
+to the contract API, it's as if all state variables are declared as `private`,
+but with the further restriction that not even full nodes can read the values.
+Public or access-controlled values are provided instead through explicit
+getters.
+
+Calling `eth_getStorageAt()` will return zero for all storage slots, **except**
+for the following well-known [EIP-1967] proxy-related slots, which remain
+readable to support compatibility with standard tooling:
+
+* `0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc` — Proxy implementation address
+* `0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50` — Beacon proxy implementation
+* `0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103` — Admin slot
+
+[EIP-1967]: https://eips.ethereum.org/EIPS/eip-1967
+
+**Danger**:
+
+Do not use `immutable` nor `constant` for variables you want to keep private, since
+they are stored in the runtime bytecode, which is unencrypted on Sapphire.
+
+## End-to-End Encrypted Transactions and Calls
+
+Transactions and calls are end-to-end encrypted into the contract. Only the
+caller and the contract can see the data sent to/received from the ParaTime.
+This ends up defeating some utility of block explorers, however.
+
+The status of the transaction is public and so are the error code, the revert
+message and logs (emitted events).
+
+## `from` Address is Zero for Unsigned Calls
+
+The `from` address using of calls is derived from a signature attached to the
+call. Unsigned calls have their sender set to the zero address. This allows
+contract authors to write getters that release secrets to authenticated callers
+(e.g. by checking the `msg.sender` value), but without requiring a transaction
+to be posted on-chain.
+
+## Override `receive` and `fallback` when Funding the Contract
+
+In Ethereum, you can fund a contract by sending Ether along the transaction in
+two ways:
+
+1. a transaction must call a *payable* function in the contract, or
+2. not calling any specific function (i.e. empty *calldata*). In this case,
+   the payable `receive()` and/or `fallback()` functions need to be defined in
+   the contract. If no such functions exist, the transaction will revert.
+
+The behavior described above is the same in Sapphire when using EVM transactions
+to fund a contract.
+
+However, the Oasis Network also uses [Oasis-native transactions] such as a
+deposit to a ParaTime account or a transfer. In this case, **you will be able to
+fund the contract's account even though the contract may not implement payable
+`receive()` or `fallback()`!** Or, if these functions do exist, **they will not
+be triggered**. You can send such Oasis-native transactions by using the [Oasis
+CLI] for example.
+
+[Oasis-native transactions]: https://docs.oasis.io/general/manage-tokens.md
+
+[Oasis CLI]: https://docs.oasis.io/build/tools/cli.md
+
+## Instant Finality
+
+The Oasis Network is a proof of stake network where 2/3+ of the validator nodes
+need to verify each block in order to consider it final. However, in Ethereum
+the signatures of those validator nodes can be submitted minutes after the block
+is proposed, which makes the block proposal mechanism independent of the
+validation, but adds uncertainty if and when will the proposed block actually be
+finalized.
+
+In the Oasis Network, the 2/3+ of signatures need to be provided immediately
+after the block is proposed and **the network will halt, until the required
+number signatures are provided**. This means that you can rest assured that any
+validated block is final. As a consequence, the cross-chain bridges are more
+responsive yet safe on the Oasis Network.
+
+## See also
+
+* [Concepts](https://docs.oasis.io/build/sapphire/develop/concept.md)
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

@@ -39,14 +39,14 @@ To run the image, execute:
 <TabItem value="linux-intel-win" label="Linux (Intel) / Windows">
 
 ```sh
-docker run -it --rm -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet
+docker run -it --rm -p8544-8549:8544-8549 ghcr.io/oasisprotocol/sapphire-localnet
 ```
 
 </TabItem>
 <TabItem value="macos" label="macOS">
 
 ```sh
-docker run -it --rm -p8544-8548:8544-8548 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
+docker run -it --rm -p8544-8549:8544-8549 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
 ```
 
 :::info Apple Silicon on macOS
@@ -67,7 +67,7 @@ Make sure to pull the latest version of the image:
 <TabItem value="linux-non-intel" label="Linux (non-Intel)">
 
 ```sh
-docker run -it --rm -p8544-8548:8544-8548 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
+docker run -it --rm -p8544-8549:8544-8549 --platform linux/x86_64 ghcr.io/oasisprotocol/sapphire-localnet
 ```
 
 </TabItem>
@@ -151,8 +151,8 @@ phrases or wallet addresses. Use the `-n` parameter to define the number of
 derived addresses to fund.
 
 ```sh
-docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet -to "bench remain brave curve frozen verify dream margin alarm world repair innocent" -n3
-docker run -it -p8544-8548:8544-8548 ghcr.io/oasisprotocol/sapphire-localnet -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2,0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
+docker run -it -p8544-8549:8544-8549 ghcr.io/oasisprotocol/sapphire-localnet -to "bench remain brave curve frozen verify dream margin alarm world repair innocent" -n3
+docker run -it -p8544-8549:8544-8549 ghcr.io/oasisprotocol/sapphire-localnet -to "0x75eCF0d4496C2f10e4e9aF3D4d174576Ee9010E2,0xbDA5747bFD65F08deb54cb465eB87D40e51B197E"
 ```
 
 :::danger

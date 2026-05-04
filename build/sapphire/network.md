@@ -1,0 +1,127 @@
+# Network information
+
+Source: https://docs.oasis.io/build/sapphire/network
+
+## Networks
+
+|                   | Mainnet                       | Testnet                        | Localnet                                   |
+| ----------------- | ----------------------------- | ------------------------------ | ------------------------------------------ |
+| Network name      | `sapphire`                    | `sapphire-testnet`             | `sapphire-localnet`                        |
+| Long network name | `Oasis Sapphire`              | `Oasis Sapphire Testnet`       | `Oasis Sapphire Localnet`                  |
+| Chain ID          | Hex:`0x5afe` Decimal: `23294` | Hex:`0x5aff` Decimal: `23295`  | Hex:`0x5afd` Decimal: `23293`              |
+| Tools             |                               | [Testing token Faucet][faucet] | [Local development Docker image][localnet] |
+
+**Danger**: Never deploy production services on Testnet
+
+Because Testnet state can be wiped in the future, you should **never** deploy a
+production service on Testnet! Just don't do it!
+
+Also note that while Testnet does use proper TEEs, due to experimental
+software and different security parameters, **confidentiality of Sapphire on
+Testnet is not guaranteed** -- all transactions and state published on the
+Sapphire Testnet should be considered public.
+
+[faucet]: https://faucet.testnet.oasis.io/
+
+[localnet]: https://docs.oasis.io/build/tools/localnet.md
+
+## RPC Endpoints
+
+**Danger**:
+
+The RPC endpoint is a *point of trust*. Beside traffic rate limiting, it can
+also perform censorship or even a man-in-the-middle attack. If you have security
+considerations, we strongly recommend that you set up your own [ParaTime client
+node][paratime-client-node] and the [Web3-compatible gateway].
+
+[Web3-compatible gateway]: https://docs.oasis.io/node/web3.md
+
+[paratime-client-node]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md
+
+You can connect to one of the public Web3 gateways below (in alphabetic order):
+
+| Provider   | Mainnet RPC URLs | Testnet RPC URLs | Supports Confidential Queries |
+| ---------- | ---------------- | ---------------- | ----------------------------- |
+| [1RPC]     |                  | *N/A*            | Yes                           |
+| [Oasis]    |                  |                  | Yes                           |
+| [thirdweb] |                  |                  | Yes                           |
+
+[Oasis]: https://oasis.net
+
+[thirdweb]: https://thirdweb.com
+
+Public RPCs may have rate limits or traffic restrictions. For professional,
+dedicated RPC endpoints, consider the following providers (in alphabetic order):
+
+| Provider     | Instructions                           | Pricing                       | Supports Confidential Queries |
+| ------------ | -------------------------------------- | ----------------------------- | ----------------------------- |
+| [1RPC]       | [docs.1rpc.io][1RPC-docs]              | [Pricing][1RPC-pricing]       | Yes                           |
+| [Chainstack] | [docs.chainstack.com][Chainstack-docs] | [Pricing][Chainstack-pricing] | Yes                           |
+| [thirdweb]   | [portal.thirdweb.com][thirdweb-docs]   | [Pricing][thirdweb-pricing]   | Yes                           |
+
+[1RPC]: https://www.1rpc.io/
+
+[1RPC-docs]: https://docs.1rpc.io/guide/how-to-use-1rpc
+
+[1RPC-pricing]: https://www.1rpc.io/#pricing
+
+[Chainstack]: https://chainstack.com/build-better-with-oasis-sapphire/
+
+[Chainstack-docs]: https://docs.chainstack.com/docs/oasis-sapphire-tooling
+
+[Chainstack-pricing]: https://chainstack.com/pricing/
+
+[thirdweb-docs]: https://portal.thirdweb.com/
+
+[thirdweb-pricing]: https://thirdweb.com/pricing
+
+## Block Explorers
+
+| Name (Provider)          | Mainnet URL                                                                                                                                         | Testnet URL                                                                                                                                                 | EIP-3091 compatible |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| Oasis Explorer ([Oasis]) | `https://explorer.oasis.io/mainnet/sapphire`                                                                                                        | `https://explorer.oasis.io/testnet/sapphire`                                                                                                                | Yes                 |
+| Oasis Scan ([Bit Cat])   | [https://www.oasisscan.com/paratimes/000…279](https://www.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000f80306c9858e7279) | [https://testnet.oasisscan.com/paratimes/000…f6c](https://testnet.oasisscan.com/paratimes/000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c) | No                  |
+
+[Bit Cat]: https://www.bitcat365.com/
+
+## Indexers
+
+| Name (Provider)              | Mainnet URL                                            | Testnet URL                                            | Documentation                                                                                             |
+| ---------------------------- | ------------------------------------------------------ | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| [Covalent]                   | `https://api.covalenthq.com/v1/oasis-sapphire-mainnet` | `https://api.covalenthq.com/v1/oasis-sapphire-testnet` | [Unified API docs][Covalent-docs]                                                                         |
+| [Goldsky Subgraph][Goldsky]  | *N/A*                                                  | *N/A*                                                  | [Documentation site][Goldsky-docs]                                                                        |
+| Oasis Nexus ([Oasis])        | `https://nexus.oasis.io/v1/`                           | `https://testnet.nexus.oasis.io/v1/`                   | [API][Nexus-docs]                                                                                         |
+| Oasis Scan ([Bit Cat])       | `https://api.oasisscan.com/v2/mainnet`                 | `https://api.oasisscan.com/v2/testnet`                 | [Runtime API][OasisScan-docs]                                                                             |
+| [SubQuery Network][SubQuery] | *N/A*                                                  | *N/A*                                                  | [SubQuery Academy][SubQuery-docs], [QuickStart][SubQuery-quickstart], [Starter project][SubQuery-starter] |
+
+[Covalent]: https://www.covalenthq.com/
+
+[Covalent-docs]: https://www.covalenthq.com/docs/unified-api/
+
+[Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
+
+[Goldsky]: https://goldsky.com
+
+[Goldsky-docs]: https://docs.goldsky.com/subgraphs/deploying-subgraphs
+
+[OasisScan-docs]: https://api.oasisscan.com/v2/swagger/#/runtime
+
+[SubQuery]: https://subquery.network
+
+[SubQuery-docs]: https://academy.subquery.network/
+
+[SubQuery-quickstart]: https://academy.subquery.network/quickstart/quickstart.html
+
+[SubQuery-starter]: https://github.com/subquery/ethereum-subql-starter/tree/main/Oasis/oasis-sapphire-starter
+
+**Note**:
+
+If you are running your own Sapphire endpoint, a block explorer, or an indexer
+and wish to be added to these docs, open an issue at
+[github.com/oasisprotocol/docs].
+
+[github.com/oasisprotocol/docs]: https://github.com/oasisprotocol/docs
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

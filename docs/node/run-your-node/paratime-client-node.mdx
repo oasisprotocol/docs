@@ -90,9 +90,10 @@ A stateless client node avoids these problems by fetching the state and light bl
 It can be started using the following configuration:
 
 ```yaml
-mode: client-stateless
+mode: client
 # ... sections not relevant are omitted ...
 consensus:
+    local_storage: false
     # Light client configuration
     light_client:
         trust:

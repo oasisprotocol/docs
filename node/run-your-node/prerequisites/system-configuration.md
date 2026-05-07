@@ -1,0 +1,234 @@
+# System Configuration
+
+Source: https://docs.oasis.io/node/run-your-node/prerequisites/system-configuration
+
+This page outlines the modifications necessary that should be made to the
+configuration of the system where you are running an Oasis Node instance. To
+prepare the system for running an Oasis Node, we will guide you through the
+process of creating a dedicated user account, increasing the file descriptor
+limit and optional AppArmor profiles.
+
+## Create a user
+
+Nothing in Oasis Node requires elevated privileges, so running the Oasis Node
+with root privileges is not allowed. Attempting to run the `oasis-node` process
+as the root user will terminate immediately on startup. You will need to
+create a dedicated user account to manage the Oasis Node processes.
+
+To create a new user run as root:
+
+```shell
+adduser oasis
+```
+
+If you have an existing data directory, change its ownership to the `oasis`
+user. If not, you may skip this step.
+
+```shell
+chown -R oasis /node/data
+```
+
+**Tip**:
+
+Adjust the user as appropriate to your setup. For example, setting the `oasis`
+user's Shell to `/usr/sbin/nologin` prevents (accidentally) logging in as this
+user. See the following examples on how to create a user on different systems.
+
+**Tab**: Ubuntu
+
+As root, run:
+
+```shell
+adduser --system oasis --shell /usr/sbin/nologin
+```
+
+**Tab**: Fedora
+
+As root, run:
+
+```shell
+useradd -r -s /usr/sbin/nologin
+```
+
+**Tab**: Ansible
+
+Add the following task to your playbook:
+
+```yml
+- name: Create oasis user
+  ansible.builtin.user:
+    name: oasis
+    comment: Oasis Services user
+    system: yes
+    shell: /usr/sbin/nologin
+```
+
+## Increase file descriptor limit
+
+Make sure that the user under which you are running your Oasis Node has a
+high-enough file descriptor limit as the databases can have many opened files.
+Running out of file descriptors can lead to the node stopping unexpectedly.
+
+You can check the file descriptor limit by running the following as the same
+user that will run the Oasis Node:
+
+```shell
+ulimit -n
+```
+
+If this number is lower than 102400 you should consider increasing it by
+updating your system configuration. You can configure *temporary* limits by
+running:
+
+```shell
+ulimit -n 102400
+```
+
+This limit will only apply to any processes started from the same shell after
+the command was executed. If you want to make the change *permanent*, you have
+the following options:
+
+**Tab**: systemd
+
+In case you are running your Oasis Node process via
+[systemd](https://systemd.io/), you can add the following directive under the
+`[Service]` section:
+
+```
+LimitNOFILE=102400
+```
+
+**Tab**: Docker
+
+If you are running the Oasis Node via [Docker](https://www.docker.com/) you can
+pass the following option to `docker run` in order to increase the limit to
+desired values:
+
+```
+--ulimit nofile=102400:1048576
+```
+
+**Tab**: limits.conf
+
+As `root`, create a system-wide *resource limits* configuration File in
+`/etc/security/limits.d/99-oasis-node.conf` with content similar to the
+following example:
+
+```
+*        soft    nofile    102400
+*        hard    nofile    1048576
+```
+
+You can replace `*` with the name of the user that is running the Oasis Node in
+case you only want to change the limits for that particular user.
+
+**Caution**:
+
+The change above will increase the limit for all processes and not just the
+Oasis Node.
+
+**Info**:
+
+In order for the changes to take effect a system restart may be required.
+
+## AppArmor profiles
+
+In case your system is using AppArmor and is restricting unprivileged user namespace
+creation, you may need to allow them for Bubblewrap (the sandbox that Oasis Node is
+using to execute runtimes).
+
+**Tab**: Ubuntu 24.04 and earlier
+
+You can add the following policy in `/etc/apparmor.d/bwrap`:
+
+```
+abi <abi/4.0>,
+include <tunables/global>
+
+profile bwrap /usr/bin/bwrap flags=(unconfined) {
+  userns,
+
+  # Site-specific additions and overrides. See local/README for details.
+  include if exists <local/bwrap>
+}
+```
+
+**Tab**: Ubuntu 24.10+
+
+Enable the Bubblewrap user namespace restriction policy:
+
+```shell
+sudo ln -s /usr/share/apparmor/extra-profiles/bwrap-userns-restrict /etc/apparmor.d/
+```
+
+Then reload AppArmor policies by running:
+
+```
+sudo systemctl reload apparmor.service
+```
+
+## Example snippets for different setups
+
+You may find the following snippets helpful in case you are running `oasis-node`
+process with systemd, Docker or runit.
+
+**Tab**: systemd
+
+Add a [`User` directive] to the Oasis service's systemd unit file:
+
+```
+...
+User=oasis
+...
+```
+
+Below can be found a simple systemd unit file for `oasis-node` that can be used
+as a starting point.
+
+```ini
+[Unit]
+Description=Oasis Node
+After=network.target
+
+[Service]
+Type=simple
+User=oasis
+WorkingDirectory=/node/data
+ExecStart=/node/bin/oasis-node --config /node/etc/config.yml
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=1024000
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Tab**: Docker
+
+Add [`USER` instruction] to your Oasis service's Dockerfile:
+
+```
+...
+USER oasis
+...
+```
+
+**Tab**: runit
+
+Wrap the invocation in a [`chpst` command]:
+
+```shell
+chpst -u oasis oasis-node ...
+```
+
+[`User` directive]: https://www.freedesktop.org/software/systemd/man/systemd.exec.html#User=
+
+[`User` instruction]: https://docs.docker.com/engine/reference/builder/#user
+
+[`chpst` command]: http://smarden.org/runit/chpst.8.html
+
+[Invalid Permissions]: https://docs.oasis.io/node/run-your-node/troubleshooting.md#invalid-permissions
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

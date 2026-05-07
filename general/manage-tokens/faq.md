@@ -1,0 +1,548 @@
+# Frequently Asked Questions
+
+Source: https://docs.oasis.io/general/manage-tokens/faq
+
+This documents answers frequently asked questions about the official Oasis and
+3rd party wallets & custody providers supporting ROSE.
+
+## Wallets
+
+### How can I transfer ROSE tokens from my BitPie wallet to my ROSE Wallet?
+
+**Caution**:
+
+BitPie wallet doesn't use the [standardized Oasis mnemonic derivation (ADR-8)][ADR-8].
+Consequently, your **Bitpie wallet's mnemonic phrase will not open the same
+account in the ROSE Wallet**.
+
+In May 2023, the BitPie team [removed support for the Oasis
+network][bitpie-announcement]. Thus, the only way to access your tokens stored
+on your BitPie wallet is to obtain the private key of your BitPie's wallet in
+one of the two ways:
+
+* [Export private key from a working BitPie wallet](#how-can-i-export-oasis-private-key-from-a-working-bitpie-wallet)
+* [Convert BitPie mnemonic to Oasis private key offline](#how-can-i-export-oasis-private-key-if-bitpie-doesnt-show-my-rose-account-anymore)
+
+Once you obtained the private key, you can
+[import it to the ROSE Wallet][rose-wallet-import-private-key] and access
+your assets.
+
+[bitpie-announcement]: https://medium.com/bitpie/announcement-on-suspension-of-support-for-algo-and-rose-fc35cb322617
+
+[ADR-8]: https://docs.oasis.io/adrs/0008-standard-account-key-generation.md
+
+[rose-wallet-import-private-key]: https://docs.oasis.io/general/manage-tokens/oasis-wallets/web.md#import-an-existing-account
+
+### How can I export Oasis private key from a working BitPie wallet?
+
+Access your BitPie wallet's "Receive" screen, tap the kebab menu, select
+"Display Private Key", enter your PIN, and copy the Base64-encoded private key
+to import into ROSE Wallet.
+
+Detailed Info:
+
+**Tip**:
+
+Chinese users can follow the [official BitPie support article] on how to export
+the Oasis private key from your BitPie wallet.
+
+[official BitPie support article]: https://bitpie.zendesk.com/hc/zh-cn/articles/6796209839503
+
+If you have an existing ROSE account in your BitPie wallet, you can obtain the
+wallet's private key by following the steps below.
+
+On the main BitPie wallet screen, click on the "Receive" button.
+
+Image: BitPie main screen
+
+The QR code with your ROSE address will appear. Then, in the top right corner,
+tap on the kebab menu "⋮" and select "Display Private Key"*.*
+
+Image: BitPie show private key
+
+BitPie wallet will now ask you to enter your PIN to access the private key.
+
+Finally, your account's private key will be shown to you encoded in Base64
+format (e.g.
+`YgwGOfrHG1TVWSZBs8WM4w0BUjLmsbk7Gqgd7IGeHfSqdbeQokEhFEJxtc3kVQ4KqkdZTuD0bY7LOlhdEKevaQ==`)
+which you can
+[import into ROSE Wallet][rose-wallet-import-private-key].
+
+### How can I export Oasis private key, if BitPie doesn't show my ROSE account anymore?
+
+Use the Oasis unmnemonic tool to convert your BitPie mnemonic to an Oasis
+private key by selecting the Bitpie algorithm, entering your 12-word mnemonic,
+and generating the private key file to import into ROSE Wallet.
+
+Detailed Info:
+
+If you reinstalled BitPie or restored it with a mnemonic on a new device, you
+may not have your ROSE account present anymore. In this case, you will have
+to convert your BitPie mnemonic to the Oasis private key using the [Oasis
+unmnemonic tool] (64-bit binaries available for [Linux][unmnemonic-linux],
+[MacOS][unmnemonic-macos] and [Windows][unmnemonic-windows]).
+
+Open a terminal (on Windows run `cmd`), move to the corresponding folder and
+invoke the unmnemonic executable:
+
+**Tab**: Linux
+
+```shell
+./unmnemonic_linux_amd64
+```
+
+**Tab**: MacOS
+
+```shell
+./unmnemonic_darwin_all
+```
+
+**Tab**: Windows
+
+```shell
+unmnemonic_windows_amd64
+```
+
+An interactive prompt will be shown to you:
+
+1. select the **Bitpie** algorithm,
+2. enter the number of words in the mnemonic (typically **12**) and carefully
+   type them in one by line,
+3. enter the private key index (start with **0** and gradually increase it by 1,
+   if the resulting account does not contain any tokens),
+4. answer **Yes** for writing the keys to disk,
+5. enter the name of the **output directory** to store the Oasis private key
+   into (by default the folder name starts with `wallet-export-`)
+
+For example:
+
+```
+  unmnemonic - Recover Oasis Network signing keys from mnemonics
+
+? Which algorithm does your wallet use Bitpie
+? How many words is your mnemonic 12
+? Enter word 1 *****
+? Enter word 2 ******
+? Enter word 3 ******
+? Enter word 4 *******
+? Enter word 5 *****
+? Enter word 6 *******
+? Enter word 7 *******
+? Enter word 8 ****
+? Enter word 9 *****
+? Enter word 10 ******
+? Enter word 11 *****
+? Enter word 12 ******
+? Wallet index(es) (comma separated) 0
+ Index[0]: oasis1qp8d9kuduq0zutuatjsgltpugxvl38cuaq3gzkmn
+? Write the keys to disk Yes
+? Output directory /home/user/unmnemonic/wallet-export-2023-05-01
+ Index[0]: oasis1qp8d9kuduq0zutuatjsgltpugxvl38cuaq3gzkmn.private.pem - done
+Done writing wallet keys to disk, goodbye.
+```
+
+Finally, look into the output directory. There you should find a `.private.pem`
+file containing the private key and named after the address it belongs to. You
+can either:
+
+* Open it with a text editor, copy the Base64-encoded key between the
+  `-----BEGIN ED25519 PRIVATE KEY-----` and `-----END ED25519 PRIVATE KEY-----`,
+  and [paste it into the ROSE Wallet][rose-wallet-import-private-key], or
+* if you use the [Oasis CLI] simply execute the [`oasis wallet import-file`]
+  command to add the exported account to your CLI wallet, for example:
+
+  ```shell
+  oasis wallet import-file my_unmnemonic_account oasis1qpl4axynedmdrrgrg7dpw3yxc4a8crevr5dkuksl.private.pem
+  ```
+
+[Oasis unmnemonic tool]: https://github.com/oasisprotocol/tools/tree/main/unmnemonic
+
+[unmnemonic-linux]: https://github.com/oasisprotocol/tools/releases/download/unmnemonic-tool-0.1.0/unmnemonic_linux_amd64
+
+[unmnemonic-windows]: https://github.com/oasisprotocol/tools/releases/download/unmnemonic-tool-0.1.0/unmnemonic_windows_amd64.exe
+
+[unmnemonic-macos]: https://github.com/oasisprotocol/tools/releases/download/unmnemonic-tool-0.1.0/unmnemonic_darwin_all
+
+[`oasis wallet import-file`]: https://docs.oasis.io/build/tools/cli/wallet.md#import-file
+
+### Chromium under Ubuntu does not recognize my Ledger device. What is the problem?
+
+The snap-packaged Chromium browser blocks USB device access due to security
+restrictions, so install native Chromium or Google Chrome to resolve Ledger
+connectivity issues.
+
+Detailed Info:
+
+First check that you added the Ledger udev device descriptors as mentioned in
+the [Linux installation guide]. Next, check that your Ledger wallet is
+recognized by the [Oasis CLI]. You should be able to add your Ledger account to
+the Oasis CLI wallet by running:
+
+```shell
+oasis wallet create oscar
+```
+
+If all of the above works, then the issue is most likely that Chromium does not
+have the permission to access your Ledger device. Starting with Ubuntu 20.04 the
+Chromium browser is installed via snap package by default. Snap is more
+convenient for upstream developers to deploy their software and it also adds
+additional layer of security by using apparmor. In our case however, it prevents
+Chromium to access arbitrary USB devices with WebUSB API including your Ledger
+device. A workaround for this issue is to install Chromium natively using the
+official [Chormium beta PPA] or the official [Google Chrome .deb package].
+
+[Linux installation guide]: https://support.ledger.com/article/4404389606417-zd
+
+[Oasis CLI]: https://docs.oasis.io/build/tools/cli.md
+
+[Chormium beta PPA]: https://launchpad.net/~saiarcot895/+archive/ubuntu/chromium-beta
+
+[Google Chrome .deb package]: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+### Are Ethereum and ROSE Wallet that different? I can use the same mnemonics with both, right?
+
+While both wallets use BIP39 mnemonics, ROSE and Ethereum wallets use different signature schemes and derivation paths, making their addresses and private keys incompatible despite using the same mnemonic words.
+
+Detailed Info:
+
+Yes, both ROSE and Ethereum wallets make use of the mnemonics as defined in [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) and they even use the same wordlist to derive the keypairs for your wallet. However, they use a different **signature scheme and a derivation path**, so the addresses and the private keys are incompatible.
+
+Here's a task for you:
+
+1. Visit <https://iancoleman.io/bip39/> to generate a BIP39 mnemonic.
+2. Select ETH token and copy the hex-encoded private key of the first derived account, for example `0xab2c4f3bc70d40f12f6030750fe452448b5464114cbfc46704edeef2cd06da74`.
+3. Import the Ethereum-compatible account with the private key obtained above to your ROSE Wallet.
+4. Notice the Ethereum address of the account, for example `0x58c72Eb040Dd0DF10882aA87a39851c21Ae5F331`.
+5. Now in the Account management screen, select this account and click on the "Export private key" button. Confirm the risk warning.
+6. You will notice the private key of the Ethereum-compatible account, the hex-encoded address and the very same address encoded in the Oasis Bech32 format, in our case `oasis1qpaj6hznytpvyvalmsdg8vw5fzlpftpw7g7ku0h0`.
+7. Now let's use the private key from step 2 to import the account. First, convert the hex-encoded key to base64 format, for example by using [this service](https://base64.guru/converter/encode/hex). In our example, that would be `qyxPO8cNQPEvYDB1D+RSRItUZBFMv8RnBO3u8s0G2nQ=`.
+8. Next, import this base64-encoded private key to the ROSE Wallet Browser Extension.
+9. You should see your newly imported account and the Oasis address. In our case `oasis1qzaf9zd8rlmchywmkkqmy00wrczstugfxu9q09ng`.
+10. Observe that this account address **is different** than the Bech32-encoded version of the Ethereum-compatible address despite using the same private key to import the wallet with, because of a different *signature scheme*.
+
+As an additional exercise, you can also create an Oasis account using the BIP39 mnemonic from the step 1 above. You will notice that the imported account's base64-encoded private key in the account details screen is different from the one in step 7 above. That's because Oasis uses a different *derivation path* than Ethereum.
+
+### Which derivation path should I use on Ledger? ADR-8 or Legacy?
+
+Use ADR-8 for faster key derivation (twice as fast) and compatibility with ROSE Wallet recovery, though legacy derivation remains supported for existing users.
+
+Detailed Info:
+
+To convert your mnemonic phrase into a private key for signing transactions,
+each wallet (hardware or software) performs a *key derivation*. The Oasis
+Protocol Foundation standardized the key derivation for the official ROSE Wallet
+in a document called [ADR-8] back in January 2021. However, the Ledger
+hardware wallet already supported signing transactions at that time using a
+custom (we now call it *legacy*) derivation path which is incompatible with
+the one defined in ADR-8. Later, in Oasis app for Ledger v2.3.1 support for
+ADR-8 was added so the wallet can request either derivation from the Ledger
+device.
+
+The key derivation path defined in ADR-8 has the following advantages
+compared to the legacy one:
+
+* Derivation path is shorter which results in approximately twice as fast
+  key derivation (and transaction signing) without compromising security.
+* In case your Ledger device is broken or lost and you are unable to retrieve
+  a new one, you will be able to import your Ledger mnemonic and restore your
+  private key in a ROSE Wallet which implements ADR-8.
+
+For reasons above, we recommend the usage of ADR-8. However, since there are
+no security considerations at stake, the ROSE Wallet will support legacy
+derivation on Ledger for the foreseeable future.
+
+### I lost my Ledger or my Ledger is broken. I urgently need to access my assets. Can I import Ledger mnemonic into ROSE Wallet?
+
+For ADR-8 derivation, import directly into Oasis CLI; for legacy derivation, use the unmnemonic tool to convert your 24-word Ledger mnemonic, but note this compromises the mnemonic's security permanently.
+
+Detailed Info:
+
+**Danger**:
+
+When you import your Ledger mnemonic to a software wallet, consider
+that mnemonic *potentially exposed/compromised*, i.e. not appropriate for a
+hardware wallet mnemonic anymore. If you use a new hardware wallet in the
+future, **never restore it from the mnemonic that was previously used by any
+software wallet!**
+
+Ledger supports [two derivation paths](#ledger-derivation-paths) on the Oasis
+network.
+
+If you used your Ledger with the [Oasis CLI] and the [ADR-8] derivation path,
+you can import the mnemonic directly into the CLI wallet by invoking
+[`oasis wallet import`] and selecting the `ed25519-adr8` algorithm.
+
+If you used your Ledger with the ROSE Wallet Web, the browser extension, the
+Oasis CLI with the `ed25519-legacy` derivation path or the Oasis Core, then you
+will need to use the [Oasis unmnemonic tool] (64-bit binaries available for
+[Linux][unmnemonic-linux], [MacOS][unmnemonic-macos] and
+[Windows][unmnemonic-windows]).
+
+Open a terminal (on Windows run `cmd`), move to the corresponding folder and
+invoke the unmnemonic executable:
+
+**Tab**: Linux
+
+```shell
+./unmnemonic_linux_amd64
+```
+
+**Tab**: MacOS
+
+```shell
+./unmnemonic_darwin_all
+```
+
+**Tab**: Windows
+
+```shell
+unmnemonic_windows_amd64
+```
+
+An interactive prompt will be shown to you:
+
+1. select the **Ledger** algorithm,
+2. enter the number of words in the mnemonic (typically **24**) and carefully
+   type them in one by line,
+3. enter the private key index (start with **0** and gradually increase it by 1,
+   if the resulting account does not contain any tokens),
+4. answer **Yes** for writing the keys to disk,
+5. enter the name of the **output directory** to store the Oasis private key
+   into (by default the folder name starts with `wallet-export-`)
+
+For example:
+
+```
+  unmnemonic - Recover Oasis Network signing keys from mnemonics
+
+? Which algorithm does your wallet use Ledger
+ WARNING:
+
+  Entering your Ledger device mnemonic into any non-Leger device
+  can COMPROMISE THE SECURITY OF ALL ACCOUNTS TIED TO THE MNEMONIC.
+  Use of this tool is STRONGLY DISCOURAGED.
+
+? Have you read and understand the warning Yes
+? How many words is your mnemonic 24
+? Enter word 1 *****
+? Enter word 2 ****
+? Enter word 3 ****
+? Enter word 4 ******
+? Enter word 5 ****
+? Enter word 6 *****
+? Enter word 7 ****
+? Enter word 8 *******
+? Enter word 9 ******
+? Enter word 10 *****
+? Enter word 11 ***
+? Enter word 12 *****
+? Enter word 13 *****
+? Enter word 14 ****
+? Enter word 15 ****
+? Enter word 16 ******
+? Enter word 17 ****
+? Enter word 18 *****
+? Enter word 19 ****
+? Enter word 20 *******
+? Enter word 21 ******
+? Enter word 22 *****
+? Enter word 23 ***
+? Enter word 24 *****
+? Wallet index(es) (comma separated) 4
+ Index[4]: oasis1qqwkm23pyg638xvl2nu00frxhapusjjv8qhh3p77
+? Write the keys to disk Yes
+? Output directory /home/oa/tmp/wallet-export-2023-11-28
+ Index[4]: oasis1qqwkm23pyg638xvl2nu00frxhapusjjv8qhh3p77.private.pem - done
+Done writing wallet keys to disk, goodbye.
+```
+
+Finally, look into the output directory. There you should find a `.private.pem`
+file containing the private key and named after the address it belongs to. You
+can either:
+
+* Open it with a text editor, copy the Base64-encoded key between the
+  `-----BEGIN ED25519 PRIVATE KEY-----` and `-----END ED25519 PRIVATE KEY-----`,
+  and [paste it into the ROSE Wallet][rose-wallet-import-private-key], or
+* if you use the [Oasis CLI] simply execute the [`oasis wallet import-file`]
+  command to add the exported account to your CLI wallet, for example:
+
+  ```shell
+  oasis wallet import-file my_unmnemonic_account oasis1qpl4axynedmdrrgrg7dpw3yxc4a8crevr5dkuksl.private.pem
+  ```
+
+[`oasis wallet import`]: https://docs.oasis.io/build/tools/cli/wallet.md#import
+
+### The wallet gives me *Invalid keyphrase* error when importing my wallet from mnemonics. How do I solve it?
+
+Please check that:
+
+* All mnemonics were spelled correctly. The ROSE Wallet uses English mnemonic phrase words as defined in BIP39. You can find a complete list of valid phrase words [here](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt).
+* The mnemonics were input in correct order.
+* All mnemonics were provided. The keyphrase should be either 12, 15, 18, 21, or 24 words long.
+
+If you checked all of the above and the keyphrase still cannot be imported, please contact Oasis support.
+
+### I imported my wallet with mnemonics. The wallet should contain funds, but the balance is empty. What can I do?
+
+First, check your wallet address. If the address equals the one that you
+expected your funds on, then the key derivation from mnemonics worked correctly.
+Make sure you have a working internet connection so that the wallet can fetch
+the latest balance. Then check that the correct network (Mainnet or Testnet) is
+selected. These are completely separated networks and although the wallet
+address can be the same, the transactions and consequently the balances may
+differ. Finally, there might be a temporary problem with the
+[Oasis Explorer backend](https://explorer.oasis.io) itself which observes the network
+and indexes transactions. The ROSE Wallet relies on that service and once it is
+back up and running, you should be able to see the correct balance.
+
+If your wallet address is different than the one you used to transfer your funds
+to, then you used one of the wallets that don't implement the [standardized key
+derivation path][ADR-8]. If you were using the BitPie wallet see
+[this question](#how-can-i-export-oasis-private-key-from-a-working-bitpie-wallet).
+Ledger hardware wallet users should refer to
+[this question](#ledger-derivation-paths).
+
+If you still cannot access your funds, please contact Oasis support on [#wallets
+Discord channel][discord].
+
+[discord]: https://oasis.io/discord
+
+### I sent my ROSE to BinanceStaking address.  Are they staked? Are they lost? What can I do?
+
+If you just make a **Send** transaction to BinanceStaking address
+`oasis1qqekv2ymgzmd8j2s2u7g0hhc7e77e654kvwqtjwm` then your ROSE coins are not
+staked. They are now owned by BinanceStaking, which means they are not lost but
+only owned and managed by them. In this case, you should contact Binance via
+their [Support Center](https://www.binance.com/en/support) or
+[Submit a request](https://www.binance.com/en/chat).
+
+**Info**:
+
+Sending ROSE is different than staking it! With the staking transaction you
+**lend** your ROSE to the chosen validator and you are rewarded for that.
+**Sending** your ROSE to the receiving address you enter means that only the
+person who owns the private key (e.g. mnemonics) of that receiving address can
+manage these tokens and no one else. To learn more, read the
+[Staking and Delegating chapter](https://docs.oasis.io/general/manage-tokens/staking-and-delegating.md).
+
+### I withdrew ROSE from Emerald to an exchange (Binance, KuCoin), but my deposit is not there. What should I do?
+
+Withdrawals from Emerald are slightly different from regular `staking.Transfer`
+transactions used to send ROSE on the consensus layer. If you withdrew your
+ROSE directly to an exchange and you were not funded there, contact the
+exchange support and provide them the link to your account on the
+[Oasis Scan](https://www.oasisscan.com) where they can verify all transactions.
+To learn more about this issue, read the [Manage tokens](https://docs.oasis.io/general/manage-tokens.md) chapter.
+
+### Error when accessing Ledger on Linux
+
+The following error is common on fresh Linux installations when accessing your
+Ledger device from the Oasis CLI or Ledger Live:
+
+```
+Error: ledger: failed to connect to device: hidapi: failed to open device
+```
+
+If you are running the application as a normal user, you need to add some **udev
+rules** to fix the USB device permissions.
+
+**Tab**: Debian, Ubuntu
+
+Install the `ledger-wallets-udev` package to enable access to Ledger
+devices for all users inside the `udev` group:
+
+```shell
+sudo apt install ledger-wallets-udev
+```
+
+**Tab**: Other distros
+
+The Ledger team [prepared the script][ledger-udev-script] that enables
+access to Ledger devices for all users inside the `udev` group. You
+can download and run the original script as `sudo` or copy\&paste the
+following snippet to your terminal:
+
+```bash
+#!/bin/bash
+cat <<EOF | sudo tee /etc/udev/rules.d/20-hw1.rules > /dev/null
+# HW.1 / Nano
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="1b7c|2b7c|3b7c|4b7c", TAG+="uaccess", TAG+="udev-acl"
+# Blue
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0000|0000|0001|0002|0003|0004|0005|0006|0007|0008|0009|000a|000b|000c|000d|000e|000f|0010|0011|0012|0013|0014|0015|0016|0017|0018|0019|001a|001b|001c|001d|001e|001f", TAG+="uaccess", TAG+="udev-acl"
+# Nano S
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0001|1000|1001|1002|1003|1004|1005|1006|1007|1008|1009|100a|100b|100c|100d|100e|100f|1010|1011|1012|1013|1014|1015|1016|1017|1018|1019|101a|101b|101c|101d|101e|101f", TAG+="uaccess", TAG+="udev-acl"
+# Aramis
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0002|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|200a|200b|200c|200d|200e|200f|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|201a|201b|201c|201d|201e|201f", TAG+="uaccess", TAG+="udev-acl"
+# HW2
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0003|3000|3001|3002|3003|3004|3005|3006|3007|3008|3009|300a|300b|300c|300d|300e|300f|3010|3011|3012|3013|3014|3015|3016|3017|3018|3019|301a|301b|301c|301d|301e|301f", TAG+="uaccess", TAG+="udev-acl"
+# Nano X
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0004|4000|4001|4002|4003|4004|4005|4006|4007|4008|4009|400a|400b|400c|400d|400e|400f|4010|4011|4012|4013|4014|4015|4016|4017|4018|4019|401a|401b|401c|401d|401e|401f", TAG+="uaccess", TAG+="udev-acl"
+# Ledger Test
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", ATTRS{idProduct}=="0005|5000|5001|5002|5003|5004|5005|5006|5007|5008|5009|500a|500b|500c|500d|500e|500f|5010|5011|5012|5013|5014|5015|5016|5017|5018|5019|501a|501b|501c|501d|501e|501f", TAG+="uaccess", TAG+="udev-acl"
+EOF
+
+sudo udevadm trigger
+sudo udevadm control --reload-rules
+```
+
+[ledger-udev-script]: https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh
+
+## Bridging and Transferring Assets
+
+### Do I need ROSE in my wallet to bridge assets to Sapphire?
+
+No ROSE needed for bridging (pay in source chain's currency). But you need
+ROSE on Sapphire to use your bridged tokens. Get ROSE first via methods above.
+0.5 ROSE covers many transactions.
+
+### What assets can I bridge to Oasis Sapphire?
+
+ETH, USDC, USDT, WBTC, MATIC, BNB, ROSE, and other major tokens. Check the
+bridge interface for full list. Only bridge tokens with utility on Sapphire.
+
+### Can I bridge directly from Layer-2 networks like Arbitrum or Base?
+
+No. Currently, cBridge only supports bridging to Sapphire from Ethereum, Polygon,
+and BNB Chain. Layer-2 networks like Arbitrum and Base are not supported yet.
+
+### How long does a bridge transfer take?
+
+Usually under 5 minutes. Polygon and BNB Chain are typically faster than
+Ethereum mainnet. Check status after 10-15 minutes if delayed. Keep transaction
+hash for support.
+
+### Are there any fees to bridge apart from network gas fees?
+
+Yes, small bridge fees plus network gas. Ethereum gas is usually the bigger cost
+compared to Polygon or BNB Chain. Check fee info in the interface. Some popular
+routes may have 0% fees.
+
+### What is the difference between using the ROSE App vs. using a bridge?
+
+**ROSE App**: Only for ROSE transfers between consensus layer/exchanges and
+Sapphire. Not for other tokens.
+
+**cBridge**: For all tokens including ETH, USDC, etc. Also works for ROSE from
+BNB Chain.
+
+### The token I bridged has ".e" at the end (like USDC.e). What does that mean?
+
+".e" means "bridged from Ethereum" - helps distinguish token versions. Same
+underlying asset, different contracts. Check which version your dApp supports.
+
+### Can I move my bridged tokens back to the original chain?
+
+Yes, use cBridge in reverse: select Sapphire as source, original chain as
+destination. You'll need ROSE for gas on Sapphire.
+
+### The Wormhole bridge was used in older docs – is that still available?
+
+Wormhole was used for Emerald ParaTime and is considered deprecated (archived
+instructions are available
+[here](https://github.com/oasisprotocol/docs/blob/01cee79bf75fbda1a2f74543f2cf24ccd25eeed1/docs/general/manage-tokens/how-to-transfer-eth-erc20-to-emerald-paratime.md)).
+Sapphire uses **Celer cBridge** as the recommended bridge. Use cBridge for all
+Sapphire bridging.
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

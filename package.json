@@ -30,6 +30,7 @@
     "@mdx-js/react": "^3.0.0",
     "@mermaid-js/mermaid-cli": "^11.4.0",
     "clsx": "^2.0.0",
+    "docusaurus-plugin-copy-page-button": "^0.6.1",
     "fathom-client": "^3.7.2",
     "linkinator": "^6.0.3",
     "markdownlint-cli2": "^0.11.0",

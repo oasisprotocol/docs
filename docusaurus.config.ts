@@ -95,6 +95,7 @@ const config: Config = {
       };
     },
     llmsPlugin,
+    'docusaurus-plugin-copy-page-button',
     [
       '@docusaurus/plugin-client-redirects',
       redirectsOptions,

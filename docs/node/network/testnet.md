@@ -77,7 +77,7 @@ This chapter contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `0000000000000000000000000000000000000000000000000000000000000000`
 * Runtime bundle version:
-  * [3.6.0-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.6.0-testnet)
+  * [3.7.1-testnet](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.7.1-testnet)
 
 ### Emerald
 

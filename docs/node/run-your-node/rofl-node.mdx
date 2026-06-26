@@ -133,37 +133,15 @@ and 20 GB of storage. Hourly rent will cost 10 tokens and there can be at most
 
 [Node ID]: ./validator-node.mdx#obtain-the-node-id
 
-```yaml title="rofl-provider.yaml"
-network: testnet
-paratime: sapphire
-provider: test:erin
-nodes:
-  - 5MsgQwijUlpH9+0Hbyors5jwmx7tTmKMA4c9leV3prI=
-scheduler_app: rofl1qrqw99h0f7az3hwt2cl7yeew3wtz0fxunu7luyfg
-payment_address: test:erin
-offers:
-  - id: small
-    resources:
-      tee: tdx
-      memory: 4096
-      cpus: 2
-      storage: 20000
-    payment:
-      native:
-        terms:
-          hourly: 10
-    capacity: 50
-```
+![code yaml title="rofl-provider.yaml"](../../../external/cli/examples/rofl/rofl-provider.yaml)
 
-To register a new provider using the configuration above, run:
+To register a new provider using the configuration above, run the
+[`oasis rofl provider create`] command.
 
-```shell
-oasis rofl provider create
-```
-
-The account signing the transaction is now registered as a ROFL provider
-on-chain. In our case, the built-in `test:erin` account which we used for
-signing has address `oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6`.
+The account that signed the transaction is now registered as a ROFL provider
+on-chain. In our case, we used the `rofl_provider` account which we previously
+created with the [`oasis wallet create`] command and has address
+`oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6`.
 
 :::info
 
@@ -176,6 +154,8 @@ it.
 [stake-requirements]: ./prerequisites/stake-requirements.md
 
 [Oasis CLI]: https://github.com/oasisprotocol/cli/blob/master/docs/README.md
+[`oasis wallet create`]: https://github.com/oasisprotocol/cli/blob/master/docs/wallet.md#create
+[`oasis rofl provider create`]: https://github.com/oasisprotocol/cli/blob/master/docs/rofl.md#provider-create
 
 #### Configure your ROFL node for the marketplace {#configure-rofl-node-marketplace}
 
@@ -210,8 +190,8 @@ it.
              config:
                rofl_scheduler:
                  provider_address: oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6 # Your provider address
-                 offers:
-                   - small # Your offer name(s)
+                 offers: # List of allowed offers for execution on this node
+                   - small
                  capacity:
                    instances: 24
                    memory: 65536
@@ -227,21 +207,18 @@ it.
    oasis rofl deploy --provider oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6
    ```
 
-:::tip Multiple ROFL nodes
+#### Multiple ROFL nodes
 
-If you configured multiple ROFL nodes for a single provider, the machine
-instantiated to execute the ROFL app will be arbitrarily picked depending on
-which ROFL node register transaction appears first on chain.
+If you declared multiple ROFL nodes in `rofl-provider.yaml` and you are running
+them in parallel, the machine instantiated to execute an incoming ROFL
+will be arbitrarily picked depending on whose ROFL node register transaction
+appears first on the chain.
 
-:::
-
-#### {#rofl-app-id-remap}
-
-:::tip Multiple ROFL replicas on a single node
+#### Multiple ROFL replicas on a single node {#rofl-app-id-remap}
 
 The ROFL scheduler supports running multiple replicas of the same ROFL app on
-the same ROFL node by **remapping** the ROFL app ID to a unique value on each
-deployment. Look for the `starting processor` message in [your
+the same ROFL node by automatically **mapping** the app ID to a unique
+value on each deployment. Look for the `starting processor` message in [your
 logs](#checking-status) to figure out the remapped value, for example:
 
 ```json
@@ -256,7 +233,33 @@ logs](#checking-status) to figure out the remapped value, for example:
 Above, the original ROFL app ID `rofl1qrjtky678pd3uchsdlhqtjugnsvtck3wyg7w5324`
 was remapped to `4bd2d31255ae7e5cec31084cde02fb40640d4d678db111d1c6ba53478f5f2fc2`.
 
-:::
+#### Limit ROFL node to specific ROFL creators
+
+Sometimes you want your ROFL node to be used only by yourself or your team.
+Or have market-priced offers that can be rented by anyone and "internal"
+offers that are free of charge for yourself or your team. `allowed_creators`
+option in the `rofl_scheduler` section of your node's configuration allows
+you to do that. You can define the whitelist globally and/or per-offer in
+your node configuration.
+
+```yaml title="config.yml"
+...
+config:
+  rofl_scheduler:
+    provider_address: oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6
+    allowed_creators: # Global whitelist of allowed apps by ROFL creators on this node
+      - oasis1qrk58a6j2qn065m6p06jgjyt032f7qucy5wqeqpt
+    offers:
+      - small
+      - id: internal # Per-offer whitelist of allowed apps by ROFL creators on this node
+        allowed_creators:
+          - oasis1qqnf0s9p8z79zfutszt0hwlh7w7jjrfqnq997mlw
+    capacity:
+      instances: 24
+      memory: 65536
+      cpus: 24
+      storage: 549755813888
+```
 
 [rofl-scheduler]: https://github.com/oasisprotocol/oasis-sdk/releases
 

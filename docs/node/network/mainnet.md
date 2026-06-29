@@ -74,7 +74,7 @@ This section contains parameters for various ParaTimes known to be deployed on t
 * Runtime identifier:
   * `000000000000000000000000000000000000000000000000e199119c992377cb`
 * Runtime bundle version:
-  * [3.6.0](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.6.0)
+  * [3.7.1](https://github.com/oasisprotocol/cipher-paratime/releases/tag/v3.7.1)
 
 ### Emerald
 

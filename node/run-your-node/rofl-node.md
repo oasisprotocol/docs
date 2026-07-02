@@ -1,0 +1,374 @@
+# ROFL Node
+
+Source: https://docs.oasis.io/node/run-your-node/rofl-node
+
+**Info**:
+
+These instructions are for setting up a *ROFL node* which executes ROFLs inside
+a TEE, but otherwise only observes the ParaTime activity and can also submit
+transactions.
+
+This guide will cover setting up your ROFL node for running ROFL apps on the
+Oasis Network. This guide assumes some basic knowledge on the use of command
+line tools.
+
+## Prerequisites
+
+### ParaTime Client Node
+
+ROFL node is a special kind of a **ParaTime Client Node** with a TEE-capable
+hardware in order to securely run ROFLs. First, complete the ParaTime Client
+Node instructions:
+
+1. Set up your [ParaTime Client Node] including support for [TEE ParaTimes].
+2. Add the Sapphire ParaTime to your node ([Mainnet], [Testnet]).
+3. To support [ROFL TDX apps][rofl-types] enable support for the
+   [Intel TDX] on your node.
+
+[ParaTime Client Node]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md#configuration
+
+[TEE ParaTimes]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md#tee-paratime-client-node-optional
+
+[Mainnet]: https://docs.oasis.io/node/network/mainnet.md#sapphire
+
+[Testnet]: https://docs.oasis.io/node/network/testnet.md#sapphire
+
+[Intel TDX]: https://docs.oasis.io/node/run-your-node/prerequisites/set-up-tee.md#tdx
+
+[rofl-types]: https://docs.oasis.io/build/rofl/workflow/init.md
+
+[client-stateless]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md#stateless-client-node-optional
+
+**Tip**:
+
+Consider running ROFL node in [client-stateless] mode for faster bootstrapping and using less resources.
+
+### Configure Firewall
+
+Since you will be hosting 3rd party applications on your server, we strongly
+recommend to **configure your firewall to prevent any local area network
+connections from ROFL apps**.
+
+Using `iptables`, running something like this will prevent Oasis node and other
+processes owned by the `oasis` user accessing LAN on `192.168.0.255` except for
+the gateway:
+
+```
+iptables -A OUTPUT -d 192.168.0.1/32 -m owner --uid-owner $(id -u oasis) -j ACCEPT
+iptables -A OUTPUT -d 192.168.0.0/16 -m owner --uid-owner $(id -u oasis) -j DROP
+```
+
+You can also permanently store the rules above. On Debian-based OSes you can do
+so by running:
+
+```shell
+sudo apt install iptables-persistent
+sudo /etc/init.d/iptables-persistent save
+```
+
+### Fund Your Node
+
+The node will also need to cover any transaction fees required to maintain
+registration of the ROFL node and the apps. First, determine the address of the
+account corresponding to your node:
+
+```shell
+oasis-node identity show-address -a unix:/node/data/internal.sock
+```
+
+```
+oasis1qp6tl30ljsrrqnw2awxxu2mtxk0qxyy2nymtsy90
+```
+
+Then fund this account **on Sapphire** by transferring or depositing
+tokens with the [`oasis account`] command, for example:
+
+```shell
+oasis account transfer 10 oasis1qp6tl30ljsrrqnw2awxxu2mtxk0qxyy2nymtsy90
+```
+
+If you are just testing out your node on Sapphire Testnet, you can also request
+some TEST from the [Testnet Faucet].
+
+[`oasis account`]: https://docs.oasis.io/build/tools/cli/account.md
+
+[Testnet Faucet]: https://faucet.testnet.oasis.io/?paratime=sapphire
+
+## Configuration
+
+There are two ways you can host ROFL apps on your ROFL node. The preferred way
+is to join a network of ROFL providers called the **ROFL marketplace** and which
+is also integrated in the [`oasis rofl deploy`] command. Alternatively, you can
+copy ROFL bundle(s) directly to your node and configure each one of them in your
+node configuration file.
+
+[`oasis rofl deploy`]: https://docs.oasis.io/build/tools/cli/rofl.md#deploy
+
+### Hosting via ROFL marketplace
+
+To make your ROFL node accessible through [ROFL marketplace], you will:
+
+1. Create a new [ROFL provider entity](#register-rofl-provider).
+2. [Configure one or more ROFL nodes](#configure-rofl-node-marketplace) to
+   execute ROFL transactions corresponding to that provider and/or machine.
+
+Both steps take place solely on-chain. There is no centralized mechanism or KYC
+process involved at any time.
+
+[ROFL marketplace]: https://docs.oasis.io/build/rofl/features/marketplace.md
+
+#### Register your ROFL provider
+
+To register a new ROFL provider, using the [Oasis CLI] to run the following
+command:
+
+```shell
+oasis rofl provider init
+```
+
+Then edit your `rofl-provider.yaml` and add one or more hosting offers. Now
+obtain your [Node ID] and decide how much resources you are willing to lend out.
+In the example below, we'll offer *small* instances with 4 GiB of memory, 2 CPUs
+and 20 GB of storage. Hourly rent will cost 10 tokens and there can be at most
+50 active instances at a time.
+
+[Node ID]: https://docs.oasis.io/node/run-your-node/validator-node.md#obtain-the-node-id
+
+```yaml {title="rofl-provider.yaml"}
+# Network name in your Oasis CLI
+network: testnet
+# ParaTime name in your Oasis CLI
+paratime: sapphire
+# Account name in your Oasis CLI
+provider: rofl_provider
+# List of Base64-encoded node IDs allowed to execute ROFL apps
+nodes:
+  - 5MsgQwijUlpH9+0Hbyors5jwmx7tTmKMA4c9leV3prI=
+# Address of the scheduler app:
+# - Sapphire Testnet: rofl1qrqw99h0f7az3hwt2cl7yeew3wtz0fxunu7luyfg
+# - Sapphire Mainnet: rofl1qr95suussttd2g9ehu3zcpgx8ewtwgayyuzsl0x2
+scheduler_app: rofl1qrqw99h0f7az3hwt2cl7yeew3wtz0fxunu7luyfg
+# Account name or address of who receives ROFL machine rental payments
+payment_address: rofl_provider
+offers:
+  - id: small # Short human-readable name
+    resources:
+      tee: tdx # Possible values: sgx, tdx
+      memory: 4096 # In MiB
+      cpus: 2
+      storage: 20000 # In MiB
+    payment:
+      native: # Possible keys: native, evm
+        terms:
+          hourly: 10 # Possible keys: hourly, monthly, yearly
+    capacity: 50 # Max number of actively rented machines
+```
+
+To register a new provider using the configuration above, run the
+[`oasis rofl provider create`] command.
+
+The account that signed the transaction is now registered as a ROFL provider
+on-chain. In our case, we used the `rofl_provider` account which we previously
+created with the [`oasis wallet create`] command and has address
+`oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6`.
+
+**Info**:
+
+Registering a new ROFL provider requires depositing
+[100 tokens][stake-requirements] which are returned to you, when you deregister
+it.
+
+[stake-requirements]: https://docs.oasis.io/node/run-your-node/prerequisites/stake-requirements.md
+
+[Oasis CLI]: https://docs.oasis.io/build/tools/cli.md
+
+[`oasis wallet create`]: https://docs.oasis.io/build/tools/cli/wallet.md#create
+
+[`oasis rofl provider create`]: https://docs.oasis.io/build/tools/cli/rofl.md#provider-create
+
+#### Configure your ROFL node for the marketplace
+
+1. Download the [latest release of the Scheduler ROFL app][rofl-scheduler]
+   and save it to your ROFL node, for example `/node/rofls/`. This app will
+   listen to ROFL hosting requests, configure any incoming ROFLs and spin them
+   up. It will also listen to ROFL admin request for stopping or restarting the
+   ROFL machines.
+2. Add the Scheduler ROFL app to your Oasis node's `config.yml` inside the
+   `runtime.paths` and configure the scheduler specifics such as the provider
+   address, acceptable offers and capacities on this node:
+
+   ```yaml title="config.yml"
+   runtime:
+     sgx:
+       loader: /node/bin/oasis-core-runtime-loader
+     paths:
+       - /node/rofls/rofl-scheduler.testnet.orc
+     runtimes:
+       # Sapphire Testnet RONL with SGX
+       - id: "000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c"
+         config:
+           allowed_queries:
+             - all_expensive: true
+         components:
+          - id: rofl.rofl1qrqw99h0f7az3hwt2cl7yeew3wtz0fxunu7luyfg # ROFL scheduler app ID, should not change
+            permissions:
+              - bundle_add
+              - bundle_remove
+              - volume_add
+              - volume_remove
+            config:
+              rofl_scheduler:
+                provider_address: oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6 # Your provider address
+                offers: # List of allowed offers for execution on this node
+                  - small
+                capacity:
+                  instances: 24
+                  memory: 65536
+                  cpus: 24
+                  storage: 549755813888
+   ```
+3. Restart your Oasis node. After a while, your ROFL node will be ready to
+   accept ROFLs. ROFL app developers can now simply deploy their ROFL to your
+   node by providing the `--provider <your address>` to the [`oasis rofl deploy`]
+   command.
+
+   ```shell
+   oasis rofl deploy --provider oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6
+   ```
+
+#### Multiple ROFL nodes
+
+If you declared multiple ROFL nodes in `rofl-provider.yaml` and you are running
+them in parallel, the machine instantiated to execute an incoming ROFL
+will be arbitrarily picked depending on whose ROFL node register transaction
+appears first on the chain.
+
+#### Multiple ROFL replicas on a single node
+
+The ROFL scheduler supports running multiple replicas of the same ROFL app on
+the same ROFL node by automatically **mapping** the app ID to a unique
+value on each deployment. Look for the `starting processor` message in [your
+logs](#checking-status) to figure out the remapped value, for example:
+
+```json
+{
+  "app_id":"rofl1qrjtky678pd3uchsdlhqtjugnsvtck3wyg7w5324",
+  "component":"rofl.4bd2d31255ae7e5cec31084cde02fb40640d4d678db111d1c6ba53478f5f2fc2",
+  "msg":"starting processor",
+  ...
+}
+```
+
+Above, the original ROFL app ID `rofl1qrjtky678pd3uchsdlhqtjugnsvtck3wyg7w5324`
+was remapped to `4bd2d31255ae7e5cec31084cde02fb40640d4d678db111d1c6ba53478f5f2fc2`.
+
+#### Limit ROFL node to specific ROFL creators
+
+Sometimes you want your ROFL node to be used only by yourself or your team.
+Or have market-priced offers that can be rented by anyone and "internal"
+offers that are free of charge for yourself or your team. `allowed_creators`
+option in the `rofl_scheduler` section of your node's configuration allows
+you to do that. You can define the whitelist globally and/or per-offer in
+your node configuration.
+
+```yaml title="config.yml"
+...
+config:
+  rofl_scheduler:
+    provider_address: oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6
+    allowed_creators: # Global whitelist of allowed apps by ROFL creators on this node
+      - oasis1qrk58a6j2qn065m6p06jgjyt032f7qucy5wqeqpt
+    offers:
+      - small
+      - id: internal # Per-offer whitelist of allowed apps by ROFL creators on this node
+        allowed_creators:
+          - oasis1qqnf0s9p8z79zfutszt0hwlh7w7jjrfqnq997mlw
+    capacity:
+      instances: 24
+      memory: 65536
+      cpus: 24
+      storage: 549755813888
+```
+
+[rofl-scheduler]: https://github.com/oasisprotocol/oasis-sdk/releases
+
+### Hosting the ROFL App Bundle Directly
+
+To execute a ROFL app on your node, simply copy it over to your node, for
+example inside the `/node/rofls` folder. Then, put the location of the ORC
+bundle to the `runtime.paths` section of your configuration similarly to
+how other ParaTimes can be enabled on your node:
+
+```yaml title="config.yml"
+runtime:
+  # ... other options omitted ...
+  paths:
+    - /node/rofls/myapp.default.orc
+```
+
+Check that the path to your ROFL app bundle is correct. After starting your
+node, please make sure that the node is fully synchronized with Sapphire.
+
+### Exposing the ports
+
+To expose a specific TCP port of a ROFL app externally, add the following
+configuration to your Oasis node config:
+
+```yaml title="config.yml"
+runtime:
+  runtimes:
+    - id: "000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c"
+      components:
+        - id: rofl.rofl1qpkplp3uq5yage4kunt0ylmulett0arzwcdjvc8u # Your ROFL app ID
+          networking:
+            incoming:
+              - ip: 192.168.0.10
+                protocol: tcp
+                src_port: 443
+                dst_port: 443
+```
+
+In the example above, we exposed a TCP port `443` externally on the IP address
+`192.168.0.10` of our host.
+
+[client node documentation]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md#configuring-tee-paratime-client-node
+
+## Persistent storage
+
+The encrypted persistent storage of each ROFL app replica lives in
+`/node/data/runtimes/volumes/{random hex value}` folder.
+
+It is generated when a ROFL app is executed for the first time and will remain
+intact even during ROFL upgrades and removal. Beside is also a `descriptor.json`
+that contains information which ROFL app does this volume belong to and other
+metadata.
+
+## Checking status
+
+You can check the logs of any ROFL app by grepping its app ID in your Oasis node
+log file. Since a Scheduler app to manage your ROFLs is also just a ROFL app,
+you can check if there are any issues reported by Scheduler by grepping for
+the its app ID:
+
+```shell
+grep rofl.rofl1qrqw99h0f7az3hwt2cl7yeew3wtz0fxunu7luyfg /node/data/node.log
+```
+
+To extract only the relevant `msg` field you may do:
+
+```shell
+grep rofl.rofl1qrqw99h0f7az3hwt2cl7yeew3wtz0fxunu7luyfg /node/data/node.log | jq -r '.msg'
+```
+
+When exploring the logs, keep in mind that the ROFL app IDs of the
+Scheduler-managed apps [will be remapped](#rofl-app-id-remap).
+
+## See also
+
+* [Deploy](https://docs.oasis.io/build/rofl/workflow/deploy.md)
+
+* [Marketplace](https://docs.oasis.io/build/rofl/features/marketplace.md)
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

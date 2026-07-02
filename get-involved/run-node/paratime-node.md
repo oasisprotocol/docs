@@ -1,0 +1,143 @@
+# ParaTime Node
+
+Source: https://docs.oasis.io/get-involved/run-node/paratime-node
+
+This guide provides an overview of the requirements to become a compute node for
+a ParaTime connected to the Oasis Network.
+
+## About Oasis Network
+
+The Oasis Network has two main components, the consensus layer and the ParaTime
+Layer.
+
+1. The **consensus layer** is a scalable, high-throughput, secure,
+   proof-of-stake consensus run by a decentralized set of validator nodes.
+2. The **ParaTime layer** hosts many parallel runtimes (ParaTimes), each
+   representing a replicated compute environment with shared state.
+
+Image: Oasis architectural design including ParaTime and consensus layers
+
+## Operating ParaTimes
+
+Operating a ParaTime requires the participation of node operators who
+contribute nodes to the committee in exchange for rewards.
+ParaTimes can be operated by anyone, and have their own reward system,
+participation requirements, and structure.
+
+As a node operator you can participate in any number of ParaTimes.
+While there are a number of ParaTimes under development, below are a few key
+ParaTimes that you can get involved in today.
+For operational documentation on running a ParaTime, please see the section on
+[running a ParaTime node for node operators].
+
+[running a ParaTime node for node operators]: https://docs.oasis.io/node/run-your-node/paratime-node.md
+
+**Tab**: Sapphire ParaTime
+
+### Sapphire ParaTime
+
+A confidential EVM-compatible Oasis Foundation developed ParaTime that enables
+the use of EVM smart contracts on the Oasis network.
+
+### Overview
+
+* **Leading Developer:** [Oasis], with contributions from
+  community developers
+* **Status:** Deployed on Mainnet and Testnet
+* **Testnet Launch Date:** July 2022
+* **Mainnet Launch Date:** Dec 2022
+* **Discord Channel:** [#node-operators][connect-with-us]
+* **Requires SGX:** Yes
+* **Parameters:**
+  * [Mainnet](https://docs.oasis.io/node/network/mainnet.md#sapphire)
+  * [Testnet](https://docs.oasis.io/node/network/testnet.md#sapphire)
+
+### Features
+
+* Fully decentralized with node operators distributed across the world.
+* Oasis **ROSE** tokens are the native token used in the ParaTime for gas fees.
+* Support for EVM smart contracts.
+* Support for confidential compute.
+
+### Mainnet Requirements
+
+For your Sapphire ParaTime node to be eligible to be elected into the Sapphire
+committee on Mainnet, your entity needs to:
+
+* Have a validator in the **validator set**.
+* Have at least **5,000,000.00 ROSE staked/delegated** to it.
+
+**Tab**: Cipher ParaTime
+
+### Cipher ParaTime
+
+An Oasis Foundation developed ParaTime that enables WebAssembly-based
+confidential smart contracts.
+
+### Overview
+
+* **Leading Developer:** [Oasis], with contributions from
+  community developers
+* **Status:** Deployed on Mainnet and Testnet
+* **Testnet Launch Date:** June 2021
+* **Mainnet Launch Date:** October 2021
+* **Discord Channel:** [#node-operators][connect-with-us]
+* **Requires SGX:** Yes
+* **Parameters:**
+  * [Mainnet](https://docs.oasis.io/node/network/mainnet.md#cipher)
+  * [Testnet](https://docs.oasis.io/node/network/testnet.md#cipher)
+
+### Features
+
+* Fully decentralized with node operators distributed across the world.
+* Oasis **ROSE** tokens are the native token used in the ParaTime for gas fees.
+* Support for WebAssembly smart contracts.
+* Support for confidential compute.
+
+### Mainnet Requirements
+
+For your Cipher ParaTime node to be eligible to be elected into the Cipher
+committee on Mainnet, your entity needs to:
+
+* Have a validator in the **validator set**.
+
+**Tab**: Emerald ParaTime
+
+### Emerald ParaTime
+
+An EVM-compatible Oasis Foundation developed ParaTime that enables the use of
+EVM smart contracts on the Oasis network.
+
+### Overview
+
+* **Leading Developer:** [Oasis], with contributions from
+  community developers
+* **Status:** Deployed on Mainnet and Testnet
+* **Testnet Launch Date:** October 2021
+* **Mainnet Launch Date:** November 2021
+* **Discord Channel:** [#node-operators][connect-with-us]
+* **Requires SGX:** No
+* **Parameters:**
+  * [Mainnet](https://docs.oasis.io/node/network/mainnet.md#emerald)
+  * [Testnet](https://docs.oasis.io/node/network/testnet.md#emerald)
+
+### Features
+
+* Fully decentralized with node operators distributed across the world.
+* Oasis **ROSE** tokens are the native token used in the ParaTime for gas fees.
+
+### Mainnet Requirements
+
+For your Emerald ParaTime node to be eligible to be elected into the Emerald
+committee on Mainnet, your entity needs to:
+
+* Have a validator in the **validator set**.
+* Have at least **5,000,000.00 ROSE staked/delegated** to it.
+
+[Oasis]: http://oasis.net
+
+[connect-with-us]: https://docs.oasis.io/get-involved.md
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

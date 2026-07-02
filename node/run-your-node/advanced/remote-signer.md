@@ -1,0 +1,210 @@
+# Remote Signer for Oasis Node Keys
+
+Source: https://docs.oasis.io/node/run-your-node/advanced/remote-signer
+
+The [Oasis remote signer][oasis-core-remote-signer] is an application that
+contains logic for various Oasis Core signers. Currently, only the file-based
+signer is implemented, but support for hardware signers is in the works. Access
+to the remote signer is provided via a gRPC service through which the Oasis node
+can connect to it and request signatures.
+
+This chapter will describe how to install the Oasis remote signer and then
+configure your Oasis node to use it. We will use two separate physical machines
+for deployment:
+
+* a `server` which will function as a system running the Oasis node,
+* a `signer-server` which will run the Oasis remote signer and store the node
+  keys.
+
+**These are advanced instructions intended for node operators that want to
+increase the security of their validator nodes.**
+
+**Tip**:
+
+This chapter describes a tool to remotely access the [node keys] (i.e.
+`beacon.pem`, `consensus.pem`, `identity.pem`, `p2p.pem`...). There is another
+[`oasis wallet remote-signer`] Oasis CLI command which enables remote access to
+your [entity key] and should not be confused with.
+
+[oasis-core-remote-signer]: https://github.com/oasisprotocol/oasis-core/tree/master/go/oasis-remote-signer
+
+[node keys]: https://docs.oasis.io/node/run-your-node/validator-node.md#node-keys
+
+[entity key]: https://docs.oasis.io/node/run-your-node/validator-node.md#initialize-entity
+
+[validator-node]: https://docs.oasis.io/node/run-your-node/validator-node.md
+
+[discord]: https://docs.oasis.io/get-involved.md
+
+[`oasis wallet remote-signer`]: https://docs.oasis.io/build/tools/cli/wallet.md#remote-signer
+
+### Prerequisites
+
+Before we continue, make sure you've followed the [Install Oasis Node Binary]
+chapter and have the Oasis node binary installed on your system.
+
+[Install Oasis Node Binary]: https://docs.oasis.io/node/run-your-node/prerequisites/oasis-node.md
+
+### Install Oasis Remote Signer Binary
+
+The Oasis remote signer is part of the [Oasis Core][oasis-core-remote-signer].
+You can either download the binary or compile it from source and then copy it
+over to your `signer-server` system.
+
+**Info**:
+
+The Oasis remote signer is currently only supported on x86\_64 Linux systems.
+
+#### Downloading a Binary Release
+
+The Oasis remote signer binary is part of the **Oasis Core release bundle**.
+Links to the latest releases are on the Network Parameters page ([Mainnet],
+[Testnet]). The Oasis remote signer binary inside the release bundle is called
+`oasis-remote-signer`. You should always use the version of the remote signer
+matching the version of your Oasis node.
+
+[Mainnet]: https://docs.oasis.io/node/network/mainnet.md
+
+[Testnet]: https://docs.oasis.io/node/network/testnet.md
+
+#### Building From Source
+
+Follow the [Oasis Core's Build Environment Setup and Building][oasis-core-build]
+chapter. After the Oasis Core is compiled, the `oasis-remote-signer` binary
+should be located in the `go/oasis-remote-signer` subdirectory.
+
+**Caution**:
+
+The code in the current [`master`] branch may be incompatible with the code used
+by other nodes on the network. Make sure to use the version specified on the
+Network Parameters page ([Mainnet], [Testnet]).
+
+[oasis-core-build]: https://docs.oasis.io/core/development-setup/build-environment-setup-and-building.md
+
+[`master`]: https://github.com/oasisprotocol/oasis-core/tree/master/
+
+#### Adding `oasis-remote-signer` Binary to `PATH`
+
+To install the `oasis-remote-signer` binary for the current user, copy/symlink
+it to `~/.local/bin`.
+
+To install the `oasis-remote-signer` binary for all users of the system, copy
+it to `/usr/local/bin`.
+
+### Set Up Remote Signer System
+
+#### Initialize Remote Signer
+
+On `signer-server`, create a directory for the remote signer, e.g.
+`remote-signer`, by running:
+
+```
+mkdir --mode=700 remote-signer
+```
+
+Then, generate the [node keys] and the server certificate by running:
+
+```
+oasis-remote-signer init --datadir remote-signer/
+```
+
+Also, generate the remote signer's client certificate which will be used by
+the Oasis node to connect to the remote signer:
+
+```
+oasis-remote-signer init_client --datadir remote-signer/
+```
+
+#### Run Remote Signer
+
+Choose the gRPC port on which the remote signer will listen for client requests
+and run:
+
+```
+oasis-remote-signer \
+--datadir remote-signer \
+--client.certificate remote-signer/remote_signer_client_cert.pem \
+--grpc.port <REMOTE-SIGNER-PORT> \
+--log.level DEBUG
+```
+
+**Tip**:
+
+The Oasis Remote Signer is configured to run in the foreground by default.
+
+We recommend you configure and use it with a process manager like [systemd] or
+[Supervisor].  Check out the [System Configuration] page for examples.
+
+[systemd]: https://github.com/systemd/systemd
+
+[Supervisor]: http://supervisord.org
+
+[System Configuration]: https://docs.oasis.io/node/run-your-node/prerequisites/system-configuration.md#create-a-user
+
+#### Copy Remote Signer Certificate, Client Key and Certificate
+
+In order for the Oasis node to securely connect to the Oasis remote signer and
+be able to demonstrate its authenticity, you need to copy the following files
+from `signer-server` to `server` inside the `/node/data/remote-signer`
+directory:
+
+* `remote-signer/remote_signer_server_cert.pem`: The remote signer's
+  certificate. This certificate ensures the Oasis node system is connecting to
+  the trusted remote signer system.
+* `remote-signer/remote_signer_client_key.pem`: The remote signer's client key.
+  This key enables the Oasis node system to demonstrate its authenticity when it
+  is requesting signatures from the remote signer system.
+* `remote-signer/remote_signer_client_cert.pem`: The remote signer's client
+  certificate. This certificate is the counterpart of the remote signer's client
+  key.
+
+### Configuration
+
+When [configuring your Oasis Node](https://docs.oasis.io/node/run-your-node/validator-node.md#configuration)
+on `server`, you need to add the appropriate `signer` section to configure the
+**composite** and **remote** signers. For example:
+
+```yaml
+# Signer.
+signer:
+  backend: composite
+  # Use file-based signer for entity, node and P2P keys and remote signer for the
+  # consensus key.
+  composite:
+    backends: entity:file,node:file,p2p:file,consensus:remote
+  # Configure how to connect to the Oasis Remote Signer.
+  remote:
+    address: <YOUR-REMOTE-SIGNER-IP>:<YOUR-REMOTE-SIGNER-PORT>
+    server:
+      certificate: /node/data/remote-signer/remote_signer_server_cert.pem
+    client:
+      key: /node/data/remote-signer/remote_signer_client_key.pem
+      certificate: /node/data/remote-signer/remote_signer_client_cert.pem
+```
+
+This assumes you've copied the remote signer's certificate and remote signer's
+client key and certificate to the `/node/data/remote-signer/` directory.
+
+### Starting the Oasis node
+
+[Start the Oasis node] using the modified config above. To ensure that your
+Oasis node will be able to sign consensus transactions, check that the Oasis
+remote signer is running and accepting remote client connections via the
+designated port.
+
+**Info**:
+
+The `/node/data` directory on `server` will only have `consensus_pub.pem` and no
+`consensus.pem` since the consensus key is backed by the Oasis remote signer.
+
+[Start the Oasis node]: https://docs.oasis.io/node/run-your-node/validator-node.md#starting-the-oasis-node
+
+## See also
+
+* [Validator Node](https://docs.oasis.io/node/run-your-node/validator-node.md)
+
+- [Wallet](https://docs.oasis.io/build/tools/cli/wallet.md)
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

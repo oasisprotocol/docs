@@ -63,6 +63,7 @@ export const sidebarBuild: SidebarsConfig = {
           items: [
             'build/rofl/features/marketplace',
             'build/rofl/features/secrets',
+            'build/rofl/features/public-variables',
             'build/rofl/features/storage',
             'build/rofl/features/manifest',
             'build/rofl/features/appd',

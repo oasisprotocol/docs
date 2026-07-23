@@ -48,8 +48,8 @@ To change pruning configuration operators must follow this steps:
 
 [LSM tree]: https://en.wikipedia.org/wiki/Log-structured_merge-tree
 [graceful shutdown]: ../maintenance/shutting-down-a-node.md
-[pruning command]: https://github.com/oasisprotocol/oasis-core/blob/master/docs/oasis-node/cli.md#prune-experimental
-[compaction command]: https://github.com/oasisprotocol/oasis-core/blob/master/docs/oasis-node/cli.md#compact-experimental
+[pruning command]: https://github.com/oasisprotocol/oasis-core/blob/master/docs/oasis-node/cli.md#prune
+[compaction command]: https://github.com/oasisprotocol/oasis-core/blob/master/docs/oasis-node/cli.md#compact
 
 ## ParaTime Pruning
 

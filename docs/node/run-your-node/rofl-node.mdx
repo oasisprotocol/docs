@@ -233,35 +233,61 @@ logs](#checking-status) to figure out the remapped value, for example:
 Above, the original ROFL app ID `rofl1qrjtky678pd3uchsdlhqtjugnsvtck3wyg7w5324`
 was remapped to `4bd2d31255ae7e5cec31084cde02fb40640d4d678db111d1c6ba53478f5f2fc2`.
 
-#### Limit ROFL node to specific ROFL creators
+#### Limit an offer to specific ROFL creators {#limit-rofl-node-to-specific-rofl-creators}
 
 Sometimes you want your ROFL node to be used only by yourself or your team.
 Or have market-priced offers that can be rented by anyone and "internal"
-offers that are free of charge for yourself or your team. `allowed_creators`
-option in the `rofl_scheduler` section of your node's configuration allows
-you to do that. You can define the whitelist globally and/or per-offer in
-your node configuration.
+offers that are free of charge for yourself or your team.
 
-```yaml title="config.yml"
-...
-config:
-  rofl_scheduler:
-    provider_address: oasis1qqcd0qyda6gtwdrfcqawv3s8cr2kupzw9v967au6
-    allowed_creators: # Global whitelist of allowed apps by ROFL creators on this node
-      - oasis1qrk58a6j2qn065m6p06jgjyt032f7qucy5wqeqpt
-    offers:
-      - small
-      - id: internal # Per-offer whitelist of allowed apps by ROFL creators on this node
-        allowed_creators:
-          - oasis1qqnf0s9p8z79zfutszt0hwlh7w7jjrfqnq997mlw
-    capacity:
-      instances: 24
-      memory: 65536
-      cpus: 24
-      storage: 549755813888
+This access policy is defined **per-offer and on-chain**, as part of the offer
+metadata. Consequently, you can change it by submitting a transaction instead of
+editing your node's configuration file and restarting the node. Add the
+corresponding keys to the `metadata` section of an offer in your
+`rofl-provider.yaml`:
+
+```yaml title="rofl-provider.yaml"
+offers:
+  - id: small
+    # ...resources, payment and capacity omitted...
+  - id: internal_small
+    # ...resources, payment and capacity omitted...
+    metadata:
+      # Only these accounts can rent machines from this offer.
+      net.oasis.scheduler.offer.allowed_creators: >-
+        oasis1qrk58a6j2qn065m6p06jgjyt032f7qucy5wqeqpt,
+        oasis1qqnf0s9p8z79zfutszt0hwlh7w7jjrfqnq997mlw
+      # Hide this offer from public offer listings.
+      net.oasis.scheduler.offer.private: "1"
 ```
 
+Then run [`oasis rofl provider update-offers`] to store the updated offers
+on-chain. The ROFL Scheduler picks up the new policy on the next round, no node
+restart required.
+
+The ROFL Scheduler recognizes the following offer metadata keys:
+
+| Key | Value |
+|-----|-------|
+| `net.oasis.scheduler.offer.allowed_creators` | Comma-separated list of accounts allowed to rent machines from this offer. If the key is absent or empty, anyone can rent a machine. |
+| `net.oasis.scheduler.offer.allowed_artifacts.<kind>` | Comma-separated list of allowed SHA256 hashes of the artifact `<kind>` which is one of `firmware`, `kernel`, `initrd` or `stage2`. If the key for a specific kind is absent, any artifact of that kind is allowed. |
+| `net.oasis.scheduler.offer.private` | Set to `"1"` to hint that this offer should be hidden from public-facing offer listings. Any other value (or an absent key) keeps the offer public. This is only a listing hint and does **not** restrict who can rent the offer — combine it with `allowed_creators` for that. |
+
+Malformed entries (an invalid address or artifact hash) are ignored and reported
+as a warning in [your logs](#checking-status).
+
+:::caution
+
+ROFL Scheduler versions before 0.9.0 read `allowed_creators` and
+`allowed_artifacts` from the `rofl_scheduler` section of the node's
+`config.yml`. These options have been removed without a fallback, so when
+upgrading, move them to the offer metadata as shown above and remove them from
+your node configuration. `offers` is now strictly a list of offer identifiers
+and no longer accepts per-offer override blocks.
+
+:::
+
 [rofl-scheduler]: https://github.com/oasisprotocol/oasis-sdk/releases
+[`oasis rofl provider update-offers`]: https://github.com/oasisprotocol/cli/blob/master/docs/rofl.md#provider-update-offers
 
 ### Hosting the ROFL App Bundle Directly
 

@@ -98,23 +98,23 @@ penalized for their misbehaviour and you may be tricked into following the wrong
 
 :::
 
-We recommend using `trust_period=288h` (12 days). This way the time required
-to verify headers, submit possible misbehavior evidence and penalize nodes
-is still less than the debonding period, giving nodes strong incentive not to lie.
+To obtain recommended trust period run Oasis CLI's [trust command][oasis-network-trust].
+
+With current consensus parameters, setting `trust_period` to any value between `220-290h`
+(9-12 days) is optimal. This way the time required to verify headers, submit possible misbehavior evidence
+and penalize nodes is still less than the debonding period, giving remote peers strong incentive not to lie.
+Moreover, it enables configuring sufficiently old trust as will be explained in the next section.
+
+[oasis-network-trust]: https://github.com/oasisprotocol/cli/blob/master/docs/network.md#trust
 
 ### Obtaining Trusted Height and Hash
 
-:::caution
+It is important to set sufficiently old trust, so that the network has at least one
+checkpoint that is more recent than the configured trust. At the same time, for the trust to be valid,
+it should not be older than the trust period obtained above.
 
-Currently, checkpoints happen approximately once per week. It is important to set
-sufficiently old trusted height and hash, so that the network has at least one
-checkpoint that is more recent than the configured trust.
-
-:::
-
-We recommend configuring trusted header that is around 10 days old. This way
-there will be checkpoints available and the trust will still be shorter than
-the debonding period.
+Currently, checkpoints happen approximately once per week. E.g. assuming a trust period
+of 12 days, a 10 days old trust is recommended.
 
 To obtain the trusted height and the corresponding block header's hash, use one
 of the following options.
@@ -126,48 +126,23 @@ fetch and compare data from multiple sources.
 
 :::
 
+#### Oasis CLI
+
+If you have Oasis CLI conected to an existing node that you trust, or if your
+trust assumptions are fine with using (default) public grpc endpoints (e.g. testnet)
+run CLI's [trust command][oasis-network-trust].
+
 #### Block Explorers
 
 Browse to one of our block explorers (e.g. [Oasis Explorer], [Oasis Scan]) and
 obtain the trusted height and hash there:
 
-1. Obtain the block height (10 days old) from the main page, e.g. 4819139.
+1. Assuming a trust period of 12 days, obtain the block height that is 10 days old from the main page, e.g. 4819139.
 2. Click on block height's number to view the block's details and obtain its
    hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
 
 [Oasis Explorer]: https://explorer.oasis.io/
 [Oasis Scan]: https://www.oasisscan.com
-
-#### A Trusted Node
-
-If you have an existing node that you trust, you can use its status output to
-retrieve the current block height and hash by running:
-
-```bash
-oasis-node control status -a unix:/node/data/internal.sock
-```
-
-This will give you output like the following (non-relevant fields omitted):
-
-```json
-{
-  "software_version": "23.0.5",
-  "identity": {
-    ...
-  },
-  "consensus": {
-    ...
-    "latest_height": 18466200,
-    "latest_hash": "9611c81c7e231a281f1de491047a833364f97c38142a80abd65ce41bce123378",
-    "latest_time": "2023-11-27T08:31:15Z",
-    "latest_epoch": 30760,
-    ...
-  },
-  ...
-}
-```
-
-the values you need are `latest_height` and `latest_hash`.
 
 #### Public Rosetta Gateway
 
@@ -206,8 +181,8 @@ This will give you output like the following (non-relevant fields omitted):
 }
 ```
 
-Assuming blocks happen every 6 seconds, subtract around `140_000` blocks to
-get the height that is around 10 days old and query again:
+Assuming a trust period of 12 days and blocks happening every 6 seconds,
+subtract around `140_000` blocks (cca 10 days) and query again:
 
 ```bash
 curl -X POST https://rosetta.oasis.io/api/block \
@@ -236,34 +211,3 @@ The values you need are `index` and `hash`:
 	}
 }
 ```
-
-#### Oasis CLI
-
-Query our public Oasis node's endpoint using the Oasis CLI and obtain the
-trusted height and hash there:
-
-```bash
-oasis network status
-```
-
-This will give you output like the following (non-relevant fields omitted):
-
-```json
-{
-  "software_version": "23.0.5",
-  "identity": {
-    ...
-  },
-  "consensus": {
-    ...
-    "latest_height": 18466200,
-    "latest_hash": "9611c81c7e231a281f1de491047a833364f97c38142a80abd65ce41bce123378",
-    "latest_time": "2023-11-27T08:31:15Z",
-    "latest_epoch": 30760,
-    ...
-  },
-  ...
-}
-```
-
-The values you need are `latest_height` and `latest_hash` .

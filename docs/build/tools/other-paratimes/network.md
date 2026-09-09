@@ -57,9 +57,16 @@ Public gRPC endpoints (in alphabetic order):
 
 ## Rosetta Endpoints
 
-| Provider | Mainnet URL                               | Testnet URL                               |
-|----------|-------------------------------------------|-------------------------------------------|
-| [Oasis]  | `https://rosetta.oasis.io/api/mainnet/v1` | `https://rosetta.oasis.io/api/testnet/v1` |
+| Provider | Mainnet URL                   | Testnet URL                           |
+|----------|-------------------------------|---------------------------------------|
+| [Oasis]  | `https://rosetta.oasis.io/v1` | `https://testnet.rosetta.oasis.io/v1` |
+
+:::info
+
+The previous URLs, `https://rosetta.oasis.io/api/mainnet/v1` and
+`https://rosetta.oasis.io/api/testnet/v1`, keep working and need no change.
+
+:::
 
 :::note
 

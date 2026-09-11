@@ -32,9 +32,7 @@ ParaTimes also allow you to implicitly delegate tokens from your ParaTime
 account.
 
 Check out the current validator set, their escrow of staked tokens, the
-commission rate, and the availability in the [Oasis Scan explorer][explorer-validators].
-
-![The validator set in the morning of March 29, 2024](../images/manage-tokens/oasisscan_validators.png)
+commission rate, and the availability in the [Oasis Explorer][explorer-validators].
 
 :::info
 
@@ -83,7 +81,7 @@ Some custody providers may also allow delegation of your tokens. Check out the
 :::
 
 [check-account]: ./README.mdx#check-your-account
-[explorer-validators]: https://www.oasisscan.com/validators
+[explorer-validators]: https://explorer.oasis.io/mainnet/consensus/validators
 
 ## Become a validator yourself?
 

@@ -3,7 +3,7 @@
 :::tip
 
 To check the balance of your account, use one of the blockchain explorers like
-the [Oasis Explorer], [Oasis Scan] or the [`oasis account show`] command part
+the [Oasis Explorer] or the [`oasis account show`] command part
 of the Oasis CLI.
 
 :::
@@ -35,8 +35,7 @@ TEST tokens by using our [Oasis Network Testnet Faucet][faucet-testnet]. For
 more tokens please contact us on our official [Discord in the #testnet channel][discord].
 
 [^member]: You can check the current top validators on the blockchain explorers
-like the [Oasis Explorer][oasis-explorer-validators],
-[Oasis Scan][oasis-scan-validators] or by running
+like the [Oasis Explorer][oasis-explorer-validators] or by running
 [`oasis network show validators`].
 
 [^compute-node]: You can fetch the latest ParaTime-specific stake requirements
@@ -66,11 +65,9 @@ want to set up a working node from scratch.
 [ParaTime observer node]: ../paratime-observer-node.mdx
 
 [Oasis Explorer]: https://explorer.oasis.io/mainnet/consensus
-[Oasis Scan]: https://www.oasisscan.com
 [`oasis account show`]: ../../../build/tools/cli/account.md#show
 [`oasis network show native-token`]: ../../../build/tools/cli/network.md#show-native-token
 [oasis-explorer-validators]: https://explorer.oasis.io/mainnet/consensus/validators
-[oasis-scan-validators]: https://www.oasisscan.com/validators
 [`oasis network show validators`]: ../../../build/tools/cli/network.md#show-validators
 [`oasis network show parameters`]: ../../../build/tools/cli/network.md#show-parameters
 [Delegation Policy]: ../../../get-involved/delegation-policy.md

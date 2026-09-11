@@ -1,0 +1,181 @@
+# Run your node
+
+Source: https://docs.oasis.io/node/run-your-node/
+
+The Oasis Network consists of several types of nodes, each serving distinct
+roles to maintain the functionality, security, and decentralization of the
+network. In this section you can find descriptions of the main types of nodes
+within the Oasis Network.
+
+## Validator Node
+
+A [Validator Node] is an essential component, as Oasis Network uses
+proof-of-stake (PoS) consensus mechanisms. It is responsible for verifying transactions and proposing new blocks to be added to the blockchain. Validator
+nodes operate on the consensus layer by staking the network's tokens, which
+grants them the right to participate in the consensus process. This process
+involves validating transactions, signing blocks, and ensuring the integrity of
+the blockchain.
+
+[Validator Node]: https://docs.oasis.io/node/run-your-node/validator-node.md
+
+## Compute Nodes
+
+[Compute Nodes] are responsible for executing smart contracts and processing
+transactions within a specific ParaTime (Parallel Runtime). These nodes handle
+the actual computation tasks, such as running decentralized applications
+(dApps), performing data processing, and executing privacy-preserving smart
+contracts.
+
+* **Sapphire Compute Node** is responsible for executing EVM-compatible
+  privacy-preserving smart contracts and processing transactions within the
+  Sapphire ParaTime. These nodes validate and execute transactions while
+  maintaining the confidentiality of sensitive data, which is a crucial aspect
+  of applications that handle private information or require enhanced security.
+  This is achieved through trusted execution environments (TEEs) that ensure
+  data remains encrypted and confidential, even while being processed.
+
+* **Cipher Compute Node** is responsible for executing privacy-preserving smart
+  contracts written in Oasis Wasm and processing transactions within the Cipher
+  ParaTime. These nodes validate and execute transactions while maintaining the
+  confidentiality of sensitive data, which is a crucial aspect of applications
+  that handle private information or require enhanced security. This is achieved
+  through trusted execution environments (TEEs) that ensure data remains
+  encrypted and confidential, even while being processed.
+
+* **Emerald Compute Node** is responsible for executing EVM-compatible smart
+  contracts and processing transactions within the Emerald ParaTime. It performs
+  tasks such as validating transactions, running EVM-based smart contracts, and
+  ensuring that the operations within the Emerald ParaTime are carried out
+  efficiently.
+
+[Compute Nodes]: https://docs.oasis.io/node/run-your-node/paratime-node.md
+
+## Client Nodes
+
+A [Client Node] is a type of node within the Oasis Network that serves as
+an interface for users or other applications to interact with the blockchain.
+Unlike compute nodes, which handle transaction processing and smart contract
+execution, client nodes are primarily responsible for tasks such as querying
+the blockchain, submitting transactions, and retrieving other data from the
+network.
+
+* **[Non-Validator Node]** is a type of node in the Oasis Network that does not
+  participate in the consensus process of validating and proposing new blocks.
+  Instead, it has client node functions that support the network's operations and
+  decentralization.
+
+* **[Sapphire Client Node]** is a specific type of client node within the Oasis
+  Network that interacts with the Sapphire ParaTime. The Sapphire ParaTime is
+  designed to support EVM-compatible confidential smart contracts and
+  privacy-preserving decentralized applications (dApps) with strong privacy
+  features and high performance.
+
+* **[Cipher Client Node]** is a type of node within the Oasis Network designed
+  to interact specifically with the Cipher ParaTime. The Cipher ParaTime is known
+  for its strong privacy features, allowing for the execution of confidential
+  smart contracts and the development of privacy-preserving decentralized
+  applications (dApps).
+
+* **[ROFL Node]** is a **Sapphire Client Node** that supports the TEE and hosts
+  one or more [ROFL apps].
+
+* **[Observer Node]** is a special type of client node for confidential
+  ParaTimes such as Sapphire and Cipher that supports confidential smart contact
+  queries.
+
+* **[Stateless Node]** is a special type of client node that operates without
+  maintaining state, allowing it to bootstrap instantly, making it particularly
+  well-suited for ROFL development.
+
+[Non-Validator Node]: https://docs.oasis.io/node/run-your-node/non-validator-node.md
+
+[Client Node]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md
+
+[Observer Node]: https://docs.oasis.io/node/run-your-node/paratime-observer-node.md
+
+[Stateless Node]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md#stateless-client-node-optional
+
+[Sapphire Client Node]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md
+
+[Cipher Client Node]: https://docs.oasis.io/node/run-your-node/paratime-client-node.md
+
+[ROFL Node]: https://docs.oasis.io/node/run-your-node/rofl-node.md
+
+[ROFL apps]: https://docs.oasis.io/build/rofl.md
+
+## Archive Node
+
+An [Archive Node] is a specialized node within the Oasis Network that stores the
+entire blockchain history, making it a crucial tool for in-depth analysis,
+development, and ensuring that the network's past states remain accessible.
+
+[Archive Node]: https://docs.oasis.io/node/run-your-node/archive-node.md
+
+## Seed Node
+
+A [Seed Node] is a type of node in the Oasis Network that serves a critical role
+in helping other nodes discover peers and join the network (*address book*).
+Unlike validator nodes, which participate in the consensus process, Seed Nodes
+do not play a direct role in consensus.
+
+[Seed Node]: https://docs.oasis.io/node/run-your-node/seed-node.md
+
+## Key Manager Node
+
+A [Key Manager Node] is a specialized node in the Oasis Network responsible for
+securely managing cryptographic keys used in confidential computing. These nodes
+are crucial for the network's privacy-preserving features, enabling secure
+encryption and decryption of data processed within Trusted Execution
+Environments (TEEs). They play a vital role in enabling the Oasis Network's
+secure, decentralized, and privacy-focused operations.
+
+[Key Manager Node]: https://docs.oasis.io/node/run-your-node/keymanager-node.md
+
+## Services
+
+### Rosetta Gateway
+
+A [Rosetta Gateway] service is a specialized service within the Oasis Network
+that implements the [Rosetta API] to provide a standardized and simplified
+interface for interacting with the blockchain. This service is crucial for
+enabling seamless integration between the Oasis Network and various external
+platforms, such as exchanges, wallets, custodians, and blockchain-based
+applications. The Rosetta Gateway connects to a [non-validator](#client-nodes)
+node.
+
+[Rosetta Gateway]: https://github.com/oasisprotocol/oasis-rosetta-gateway
+
+[Rosetta API]: https://docs.cdp.coinbase.com/mesh/docs/api-reference
+
+### Public gRPC
+
+The [Oasis gRPC protocol] is an efficient, real-time, and cross-platform
+communication protocol that allows developers to both manage the Oasis node and communicate with the Oasis network. While each Oasis node opens a gRPC socket,
+the public endpoints run a proxy and expose only a small, safe subset of the
+API calls publicly.
+
+[Oasis gRPC protocol]: https://docs.oasis.io/node/grpc.md
+
+### Web3 Gateway
+
+A [Web3 Gateway] enables interaction with the Oasis Network using standard
+Web3 protocol, which is widely used in the Ethereum ecosystem. It acts as a
+bridge between Web3-based applications and the Oasis Network, allowing
+developers to leverage the tools, libraries, and practices familiar in
+Ethereum development while benefiting from the unique features of the Oasis
+Network, such as privacy and confidentiality.  The Web3 gateway connects to a
+[compute](#compute-nodes) or a [client](#client-nodes) Sapphire or Emerald node.
+
+[Web3 Gateway]: https://docs.oasis.io/node/web3.md
+
+## See also
+
+* [/node/run-your-node/maintenance](https://docs.oasis.io/node/run-your-node/maintenance.md)
+
+* [/node/run-your-node/advanced](https://docs.oasis.io/node/run-your-node/advanced.md)
+
+* [Troubleshooting](https://docs.oasis.io/node/run-your-node/troubleshooting.md)
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*

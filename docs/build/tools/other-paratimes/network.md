@@ -41,25 +41,27 @@ Public gRPC endpoints (in alphabetic order):
 | Name (Provider)          | Mainnet URL                                   | Testnet URL                                 |
 |--------------------------|-----------------------------------------------|---------------------------------------------|
 | Oasis Explorer ([Oasis]) | https://explorer.oasis.io/mainnet/consensus   | https://explorer.oasis.io/testnet/consensus |
-| Oasis Scan ([Bit Cat])   | https://www.oasisscan.com                     | https://testnet.oasisscan.com               |
-
-[Bit Cat]: https://www.bitcat365.com/
 
 ## Indexers
 
 | Name (Provider)        | Mainnet URL                            | Testnet URL                            | Documentation                              |
 |------------------------|----------------------------------------|----------------------------------------|--------------------------------------------|
 | Oasis Nexus ([Oasis])  | `https://nexus.oasis.io/v1`            | `https://testnet.nexus.oasis.io/v1`    | [API][Nexus-docs]                          |
-| Oasis Scan ([Bit Cat]) | `https://api.oasisscan.com/v2/mainnet` | `https://api.oasisscan.com/v2/testnet` | [API][OasisScan-docs]                      |
 
 [Nexus-docs]: https://nexus.oasis.io/v1/spec/v1.html
-[OasisScan-docs]: https://api.oasisscan.com/v2/swagger/
 
 ## Rosetta Endpoints
 
-| Provider | Mainnet URL                               | Testnet URL                               |
-|----------|-------------------------------------------|-------------------------------------------|
-| [Oasis]  | `https://rosetta.oasis.io/api/mainnet/v1` | `https://rosetta.oasis.io/api/testnet/v1` |
+| Provider | Mainnet URL                   | Testnet URL                           |
+|----------|-------------------------------|---------------------------------------|
+| [Oasis]  | `https://rosetta.oasis.io/v1` | `https://testnet.rosetta.oasis.io/v1` |
+
+:::info
+
+The previous URLs, `https://rosetta.oasis.io/api/mainnet/v1` and
+`https://rosetta.oasis.io/api/testnet/v1`, keep working and need no change.
+
+:::
 
 :::note
 

@@ -75,4 +75,4 @@ The Oasis team will be offering live video support during the launch of Mainnet.
 
 For any additional support, please reach out via the [**#node-operators** channel at the Oasis Network Community server on Discord](../../../get-involved/README.md) with your questions, comments, and feedback related to Mainnet.
 
-To follow the network, please use one of the many community block explorers including [oasisscan.com](https://www.oasisscan.com/).
+To follow the network, please use one of the many community block explorers including [explorer.oasis.io](https://explorer.oasis.io/).

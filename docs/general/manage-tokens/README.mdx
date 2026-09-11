@@ -259,35 +259,24 @@ schemes and compatible wallets.
 ## Check your account
 
 To check the balance of your consensus account, you can use the
-[Oasis Scan](https://www.oasisscan.com) block explorer. Enter your `oasis1`
-address at the top and hit enter. For example:
+[Oasis Explorer](https://explorer.oasis.io/mainnet/consensus) block explorer.
+Enter your `oasis1` address in the search field at the top and hit enter.
 
-![Account details of entered oasis1 address in Oasis Scan](../images/manage-tokens/oasisscan_account_details.png)
+The total balance is a sum of three values:
 
-The "Amount" is a sum of three values:
+- the available tokens that can immediately be transferred,
+- the staked (escrowed) tokens that are delegated,
+- the debonding tokens that are waiting for the debonding period to pass.
 
-- the "Available" tokens that can immediately be transferred,
-- the "Escrow" tokens that are delegated,
-- the "Reclaim" tokens that are waiting for the debonding period to pass.
-
-To check the account's deposits and withdrawals navigate to "Transactions" pane
-and press "ParaTime" on the right side, next to the "Consensus" button.
-You will see all ParaTime-related transactions including deposits, withdrawals,
-transfers and even smart contract transactions.
-
-![Search result of oasis1 address - Account details](../images/manage-tokens/oasisscan_paratime_txes.png)
-
-Furthermore, you can view the transaction details, if you click on a
-transaction's "Tx Hash". Among others, you will see the transaction type, the
-"from", "to" and "amount" fields.
-
-![Tx Hash - Transaction details](../images/manage-tokens/oasisscan_paratime_tx_details.png)
+The account's transactions include deposits, withdrawals and transfers.
+You can view the details of a specific transaction by clicking on its hash.
+Among others, you will see the transaction type, the "from", "to" and "amount"
+fields.
 
 :::info
 
-Be aware that the [Oasis Scan Blockchain Explorer](https://www.oasisscan.com)
-is built for consensus layer. If you want to explore Sapphire (0x addresses,
-Token Transfers, Contract Calls, etc.), you have to use the
+If you want to explore Sapphire (`0x` addresses, token transfers, contract
+calls, etc.), use the
 [Sapphire Blockchain Explorer](https://explorer.oasis.io/mainnet/sapphire).
 
 :::

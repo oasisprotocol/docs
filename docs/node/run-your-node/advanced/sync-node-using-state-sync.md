@@ -128,15 +128,14 @@ fetch and compare data from multiple sources.
 
 #### Block Explorers
 
-Browse to one of our block explorers (e.g. [Oasis Explorer], [Oasis Scan]) and
-obtain the trusted height and hash there:
+Browse to one of our block explorers (e.g. [Oasis Explorer]) and obtain the
+trusted height and hash there:
 
 1. Obtain the block height (10 days old) from the main page, e.g. 4819139.
 2. Click on block height's number to view the block's details and obtain its
    hash, e.g. `377520acaf7b8011b95686b548504a973aa414abba2db070b6a85725dec7bd21`.
 
 [Oasis Explorer]: https://explorer.oasis.io/
-[Oasis Scan]: https://www.oasisscan.com
 
 #### A Trusted Node
 
@@ -176,10 +175,13 @@ First obtain the network's Genesis document's hash (e.g. from the Networks Param
 - [Testnet](https://docs.oasis.io/node/testnet/): `0b91b8e4e44b2003a7c5e23ddadb5e14ef5345c0ebcb3ddcae07fa2f244cab76`
 
 Query our public Rosetta Gateway instance and obtain the latest height by
-replacing the `<chain-context>` with the value obtained in the previous step:
+replacing the `<chain-context>` with the value obtained in the previous step.
+The examples below use the Mainnet gateway; for Testnet, replace
+`https://rosetta.oasis.io/v1` with `https://testnet.rosetta.oasis.io/v1`, since
+each gateway only serves its own network:
 
 ```bash
-curl -X POST https://rosetta.oasis.io/api/block \
+curl -X POST https://rosetta.oasis.io/v1/block \
 -H "Content-Type: application/json" \
 -d '{
     "network_identifier": {
@@ -210,7 +212,7 @@ Assuming blocks happen every 6 seconds, subtract around `140_000` blocks to
 get the height that is around 10 days old and query again:
 
 ```bash
-curl -X POST https://rosetta.oasis.io/api/block \
+curl -X POST https://rosetta.oasis.io/v1/block \
 -H "Content-Type: application/json" \
 -d '{
     "network_identifier": {

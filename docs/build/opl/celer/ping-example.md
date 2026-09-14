@@ -169,7 +169,7 @@ cross-chain.
 
 You'll need the following three parameters:
 
-- `_dstContract`: The contract address of the reveiving contract on the
+- `_dstContract`: The contract address of the receiving contract on the
   destination chain which you just deployed.
 - `_dstChainId`: The chain id of the destination chain. Which is in our
   example `Sapphire Testnet` - `23295`.

@@ -44,24 +44,23 @@ messages, please visit our [Gasless Transactions chapter].
 
 ## Message Bridges
 
-You can integrate messaging bridges into your dApps using one of these four
+You can integrate messaging bridges into your dApps using one of these three
 methods:
 
 - **[Hyperlane Protocol][hyperlane]**: A permissionless interoperability
 protocol that enables seamless cross-chain communication for developers.
-- **[Router Protocol CrossTalk][router]**: An extensible cross-chain framework
-that enables seamless state transitions across multiple chains.
 - **[OPL SDK]**: A wrapper provided by the Oasis Protocol that simplifies the
 integration of message bridging with Oasis’s privacy features.
 - **[Celer Inter-Chain Messaging (IM)][celer]**: A generalized message bridging
 solution by Celer, which lets you build more complex solutions.
+
+Router Protocol had a [security incident][router-incident] and is at the moment not available.
 
 ### Comparison
 
 | Protocol                      | Validator Network                   | Relayer                                                | Fees                                                                                   |
 | ----------------------------- | ----------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | **[Hyperlane][hyperlane]**    | Self-hosted or<br/>run by Hyperlane | Self-hosted or <br/>run by Hyperlane                   | Interchain Gas Payments on origin chain                                                |
-| **[Router Protocol][router]** | Orchestrators (Router Chain)        | Relayer (run by 3rd party)                             | Paid by the approved feepayer on the Routerchain                                       |
 | **[OPL SDK]**                 | SGN (Celer)                         | Executor (self-hosted or <br/>hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
 | **[Celer IM][celer]**         | SGN (Celer)                         | Executor (self-hosted or <br/>hosted service by Celer) | SGN Fee: Paid via `msg.value` <br/> Executor Fee: Charged externally (Free on testnet) |
 
@@ -76,10 +75,12 @@ testing environments.
 
 #### Production
 
-**[Router Protocol][router]**: Battle-tested by ecosystem dApps like Neby and
-features the most active token pairs. Router provides a highly reliable,
-solution for cross-chain communication, making it a top recommendation
-for production-ready environments.
+**[Celer IM][celer] (OPL SDK)**: Celer IM is a working solution since 2023.
+
+Hyperlane will soon be live on Sapphire Mainnet. If you don't need Mainnet
+support immediately, wait for it as it generally supports more chains.
+
+Alternatively: Build your own privacy layer with [ROFL]
 
 ## Examples
 
@@ -87,10 +88,10 @@ for production-ready environments.
     findSidebarItem('/build/opl/opl-sdk/ping-example'),
     findSidebarItem('/build/opl/celer/ping-example'),
     findSidebarItem('/build/opl/hyperlane/pingpong-example'),
-    findSidebarItem('/build/opl/router-protocol/pingpong-example'),
     ]} />
 
 [OPL SDK]: ./opl-sdk/README.md
 [celer]: ./celer/README.md
-[router]: ./router-protocol/README.md
 [hyperlane]: ./hyperlane/README.md
+[router-incident]: https://routerprotocol.medium.com/incident-report-router-protocol-asset-bridge-exploit-and-response-833f5bb95a31
+[ROFL]: https://github.com/oasisprotocol/oasis-sdk/blob/main/docs/rofl/README.mdx

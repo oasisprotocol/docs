@@ -2,7 +2,7 @@
 
 The Oasis node is a binary that is created from the [Oasis Core] repository's
 [`go/`] directory. It is a single executable that contains the logic for running
-your node in various [roles]. 
+your node in various [roles].
 
 :::caution
 
@@ -59,14 +59,13 @@ For convenience, we provide binaries that have been built by the Oasis Protocol
 Foundation. Links to the binaries are provided in the Network Parameters page
 ([Mainnet], [Testnet]).
 
-[Mainnet]: ../../network/mainnet.md
-[Testnet]: ../../network/testnet.md
-
 ### Building From Source
 
 Although highly suggested, building from source is currently beyond the scope of
 this documentation.
 
+<!-- Docusaurus generates this category URL without a source Markdown file. -->
+<!-- markdownlint-disable-next-line relative-links-have-ext -->
 See [Oasis Core's Build Environment Setup and Building][oasis-core-build]
 documentation for more details.
 

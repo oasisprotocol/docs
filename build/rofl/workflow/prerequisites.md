@@ -1,0 +1,100 @@
+# Prerequisites
+
+Source: https://docs.oasis.io/build/rofl/workflow/prerequisites
+
+The following tools are used for ROFL development and deployment:
+
+* **Oasis CLI**: The [`oasis`][oasis-cli] command will be used to manage your
+  wallet and your app, including registering, building, deploying and managing
+  your ROFL replicas.
+* **Docker** (or **Podman**): Having build environment inside container to build
+  your ROFL is perfect because you don't need to install a handful of
+  Intel-specific libraries and dependencies on your system. Also, Compose is
+  useful for testing your ROFL locally before deploying on-chain.
+
+Pick among the three setups below.
+
+[oasis-cli]: https://docs.oasis.io/build/tools/cli.md
+
+## Preferred: Native Oasis CLI + Container for building and testing
+
+1. [Download and install][oasis-cli-setup] the Oasis CLI to your platform.
+
+2. Test that everything works by building the ROFL app:
+
+   ```shell
+   oasis rofl build
+   ```
+
+[rofl-dev]: https://github.com/oasisprotocol/oasis-sdk/pkgs/container/rofl-dev
+
+[oasis-cli-setup]: https://docs.oasis.io/build/tools/cli/setup.md
+
+## Conservative: Containers Everywhere
+
+If you're having issues installing the Oasis CLI locally or you simply don't
+want to, you can run the `oasis` command from the [`rofl-dev`][rofl-dev] image.
+
+**Danger**: Oasis CLI config
+
+You will need to carefully bind-mount the Oasis CLI config folder which contains
+your wallet. Failing to do so will result in losing access to your (funded)
+accounts.
+
+1. Invoke `oasis` from the `rofl-dev` image:
+
+   **Tab**: Linux
+
+   ```shell
+   docker run --platform linux/amd64 --rm -v .:/src -v ~/.config/oasis:/root/.config/oasis -it ghcr.io/oasisprotocol/rofl-dev:main oasis
+   ```
+
+   **Tab**: MacOS
+
+   ```shell
+   docker run --platform linux/amd64 --rm -v .:/src -v "~/Library/Application Support/oasis/":/root/.config/oasis -it ghcr.io/oasisprotocol/rofl-dev:main oasis
+   ```
+
+   **Tab**: Windows
+
+   ```shell
+   docker run --platform linux/amd64 --rm -v .:/src -v %USERPROFILE%/AppData/Local/oasis/:/root/.config/oasis -it ghcr.io/oasisprotocol/rofl-dev:main oasis
+   ```
+
+2. (optionally) Add `oasis` alias to your shell startup script to get the same
+   behavior as if Oasis CLI was installed locally:
+
+   **Tab**: Linux
+
+   ```bash title="~/.bashrc"
+   alias oasis='docker run --platform linux/amd64 --rm -v .:/src -v ~/.config/oasis:/root/.config/oasis -it ghcr.io/oasisprotocol/rofl-dev:main oasis'
+   ```
+
+   **Tab**: MacOS
+
+   ```bash title="~/.bash_profile"
+   alias oasis='docker run --platform linux/amd64 --rm -v .:/src -v "~/Library/Application Support/oasis/":/root/.config/oasis -it ghcr.io/oasisprotocol/rofl-dev:main oasis'
+   ```
+
+## Advanced: Native Oasis CLI and ROFL build utils (`linux/amd64` only)
+
+1. Install the [Oasis CLI][oasis-cli] locally.
+
+2. Install tools for creating and encrypting partitions and QEMU. On a
+   Debian-based Linux you can do so by running:
+
+   ```
+   sudo apt install squashfs-tools cryptsetup-bin qemu-utils
+   ```
+
+3. If you want to build SGX and TDX-raw ROFL bundles, you will need to follow
+   the installation of the Rust toolchain and Fortanix libraries as described in
+   the [Oasis Core prerequisites] chapter. For building ROFL natively, you do
+   not need a working SGX/TDX TEE, just the Intel-based CPU and the
+   corresponding libraries.
+
+[Oasis Core prerequisites]: https://docs.oasis.io/core/development-setup/prerequisites.md
+
+---
+
+*To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.oasis.io/llms.txt*
